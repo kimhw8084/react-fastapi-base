@@ -241,6 +241,7 @@ export interface OperationInputs {
   "history_api_v1_manufacturing_lots__record_id__history_get": { path: { "record_id": string } }
   "lifecycle_api_v1_manufacturing_lots__record_id__lifecycle__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "revert_api_v1_manufacturing_lots__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
+  "listNotificationPreferences": {  }
   "setNotificationPreference": { path: { "kind": string }; body: NotificationPreferenceUpdate }
   "listNotifications": { query?: { "unread_only"?: boolean; "limit"?: number } }
   "markAllNotificationsRead": {  }
@@ -455,6 +456,7 @@ export interface OperationOutputs {
   "history_api_v1_manufacturing_lots__record_id__history_get": Array<AuditRead>
   "lifecycle_api_v1_manufacturing_lots__record_id__lifecycle__action__post": ManufacturingLotRead
   "revert_api_v1_manufacturing_lots__record_id__revert_post": ManufacturingLotRead
+  "listNotificationPreferences": Array<NotificationPreferenceRead>
   "setNotificationPreference": NotificationPreferenceRead
   "listNotifications": Array<NotificationRead>
   "markAllNotificationsRead": unknown
@@ -914,6 +916,10 @@ export const operationRoutes = {
   "revert_api_v1_manufacturing_lots__record_id__revert_post": {
     "method": "POST",
     "path": "/api/v1/manufacturing-lots/{record_id}/revert"
+  },
+  "listNotificationPreferences": {
+    "method": "GET",
+    "path": "/api/v1/notification-preferences"
   },
   "setNotificationPreference": {
     "method": "PUT",

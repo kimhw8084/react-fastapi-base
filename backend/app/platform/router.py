@@ -184,6 +184,10 @@ def mark_all_notifications_read(request:Request,actor:A):
 def dismiss_notification(request:Request,actor:A,notification_id:str):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_notifications.dismiss(db,actor,notification_id)
 
+@router.get('/notification-preferences',response_model=list[NotificationPreferenceRead],operation_id='listNotificationPreferences')
+def list_notification_preferences(request:Request,actor:A):
+    with request.app.state.database.session(actor.tenant_id) as db:return platform_notifications.list_preferences(db,actor)
+
 @router.put('/notification-preferences/{kind}',response_model=NotificationPreferenceRead,operation_id='setNotificationPreference')
 def set_notification_preference(request:Request,actor:A,kind:str,data:NotificationPreferenceUpdate):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_notifications.set_preference(db,actor,kind,data.enabled,data.revision)

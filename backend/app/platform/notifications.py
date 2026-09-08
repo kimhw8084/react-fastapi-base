@@ -35,6 +35,11 @@ def mark_all_read(session:Session,actor:Actor)->int:
     for row in rows:row.read_at=now
     session.flush();return len(rows)
 
+def list_preferences(session:Session,actor:Actor)->list[NotificationPreferenceRead]:
+    actor.require('read')
+    rows=session.scalars(select(NotificationPreference).where(NotificationPreference.user_id==actor.user_id).order_by(NotificationPreference.kind)).all()
+    return [NotificationPreferenceRead.model_validate(row) for row in rows]
+
 def dismiss(session:Session,actor:Actor,notification_id:str)->NotificationRead:
     row=session.get(Notification,notification_id)
     if not row or row.user_id!=actor.user_id:raise AppError(404,'notification_missing','Notification is not available.')

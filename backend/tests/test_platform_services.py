@@ -32,6 +32,7 @@ def test_notification_preferences_and_private_inbox(env,client):
     assert env['client']('bob').get('/api/v1/notifications').json()==[]
     marked=client.post('/api/v1/notifications/'+inbox[0]['id']+'/read');assert marked.status_code==200 and marked.json()['read_at']
     pref=client.put('/api/v1/notification-preferences/release.ready',json={'enabled':False});assert pref.status_code==200 and pref.json()['revision']==1
+    assert client.get('/api/v1/notification-preferences').json()[0]['enabled'] is False
     assert client.post('/api/v1/notifications/read-all').json()=={'updated':0}
     dismissed=client.post('/api/v1/notifications/'+inbox[0]['id']+'/dismiss');assert dismissed.status_code==200 and dismissed.json()['dismissed_at']
     assert client.get('/api/v1/notifications').json()==[]
