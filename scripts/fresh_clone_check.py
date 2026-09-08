@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import shutil
 import subprocess
 import tempfile
 from datetime import datetime, timezone
@@ -24,10 +25,11 @@ def main() -> int:
         ['python3', 'dev', 'contracts'],
         ['python3', 'dev', 'architecture'],
         ['python3', 'scripts/catalog.py', '--check', '--release'],
-        ['backend/.venv/bin/python', '-m', 'pytest', '-q'],
+        ['.venv/bin/python', '-m', 'pytest', '-q'],
         ['npm', 'run', 'typecheck'],
         ['npm', 'run', 'build'],
         ['npm', 'run', 'build:storybook'],
+        ['npx', 'playwright', 'install', 'chromium'],
         ['python3', 'scripts/e2e_runner.py'],
     ]
     results = []
@@ -37,11 +39,19 @@ def main() -> int:
         clone = folder / 'clone'
         environment = {key: value for key, value in os.environ.items() if not key.startswith('BASE_') and key not in {'AccessKey', 'PIP_CACHE_DIR', 'npm_config_cache'}}
         environment.update(PIP_NO_CACHE_DIR='1', npm_config_cache=str(folder / 'npm-cache'), PLAYWRIGHT_BROWSERS_PATH=str(folder / 'browsers'))
+        node_bins = [path for path in (Path.home() / '.nvm/versions/node').glob('v22*/bin') if (path / 'node').is_file()]
+        if node_bins:
+            environment['PATH'] = f"{sorted(node_bins)[-1]}:{environment.get('PATH', '')}"
+        node_path = shutil.which('node', path=environment.get('PATH'))
+        if not node_path or not subprocess.check_output([node_path, '--version'], text=True).strip().startswith('v22.'):
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps({'schema_version': 1, 'platform': platform.platform(), 'result': 'FAIL', 'reason': 'Node 22 is required for the locked frontend.'}, indent=2) + '\n')
+            return 1
         preinstall_clean = True
         for index, command in enumerate(commands):
             cwd = folder if index == 0 else clone
-            if command[0] == 'npm': cwd = clone / 'frontend'
-            if command[0] == 'backend/.venv/bin/python': cwd = clone / 'backend'
+            if command[0] in {'npm', 'npx'}: cwd = clone / 'frontend'
+            if command[0] == '.venv/bin/python': cwd = clone / 'backend'
             if command[0] == 'python3' and len(command) > 2 and command[1] == 'scripts/e2e_runner.py': cwd = clone
             if index == 1 and ((clone / 'backend/.venv').exists() or (clone / 'frontend/node_modules').exists()):
                 preinstall_clean = False
