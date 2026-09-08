@@ -40,9 +40,9 @@ export type FeatureFlagRead = { "key": string; "enabled": boolean; "description"
 export type FeatureFlagWrite = { "enabled"?: boolean; "description"?: string; "rules"?: { [key: string]: unknown }; "revision"?: (number | null) }
 export type FieldDefinition = { "key": string; "label": string; "kind": "text" | "textarea" | "long_text" | "select" | "integer" | "number" | "decimal" | "boolean" | "date" | "datetime" | "email" | "url" | "markdown" | "code" | "json" | "object" | "array" | "multiselect" | "multi_enum" | "percent" | "duration" | "scientific" | "unit_number" | "file" | "image" | "relationship" | "range" | "tolerance" | "coordinates" | "formula" | "computed"; "required": boolean; "nullable": boolean; "max_length": (number | null); "choices": Array<string>; "minimum": (number | null); "maximum": (number | null); "step": (number | null); "unit": (string | null); "precision": (number | null); "display_format": (string | null); "searchable": boolean; "filterable": boolean; "sortable": boolean; "exportable": boolean; "computed": boolean; "read_only": boolean }
 export type GlobalSearchResult = { "kind": "record" | "saved_view"; "id": string; "label": string; "description": string; "entity": (string | null); "workspace": string }
-export type ImportCommit = { "csv": string; "fingerprint": string }
+export type ImportCommit = { "csv"?: (string | null); "xlsx_base64"?: (string | null); "fingerprint": string }
 export type ImportPreview = { "rows": Array<WorkItemCreateOutput>; "errors": Array<string>; "fingerprint": string }
-export type ImportPreviewRequest = { "csv": string }
+export type ImportPreviewRequest = { "csv"?: (string | null); "xlsx_base64"?: (string | null) }
 export type IncidentBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type IncidentCreate = { "incident_number": string; "title": string; "status"?: "investigating" | "identified" | "monitoring" | "resolved" | "closed"; "severity"?: "sev_1" | "sev_2" | "sev_3" | "sev_4"; "started_at": string; "resolved_at"?: (string | null); "duration_minutes"?: number; "commander"?: (string | null); "impact"?: (string | null); "timeline"?: { [key: string]: unknown }; "actions"?: { [key: string]: unknown } }
 export type IncidentPage = { "items": Array<IncidentRead>; "total": number; "limit": number; "offset": number }
@@ -356,6 +356,7 @@ export interface OperationInputs {
   "createWorkItem": { body: WorkItemCreateInput }
   "bulkWorkItems": { body: BulkRequest }
   "exportWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean } }
+  "exportWorkItemsXlsx": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean } }
   "commitWorkItemImport": { body: ImportCommit }
   "previewWorkItemImport": { body: ImportPreviewRequest }
   "getWorkItem": { path: { "item_id": string } }
@@ -571,6 +572,7 @@ export interface OperationOutputs {
   "createWorkItem": WorkItemRead
   "bulkWorkItems": Array<WorkItemRead>
   "exportWorkItems": unknown
+  "exportWorkItemsXlsx": unknown
   "commitWorkItemImport": Array<WorkItemRead>
   "previewWorkItemImport": ImportPreview
   "getWorkItem": WorkItemRead
@@ -1376,6 +1378,10 @@ export const operationRoutes = {
   "exportWorkItems": {
     "method": "GET",
     "path": "/api/v1/work-items/export.csv"
+  },
+  "exportWorkItemsXlsx": {
+    "method": "GET",
+    "path": "/api/v1/work-items/export.xlsx"
   },
   "commitWorkItemImport": {
     "method": "POST",

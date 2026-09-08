@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Literal
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from app.platform.schemas import StrictSchema
 
 class WorkItemCreate(StrictSchema):
@@ -42,7 +42,12 @@ class BulkRequest(StrictSchema):
     targets: list[BulkTarget] = Field(min_length=1, max_length=100)
 
 class ImportPreviewRequest(StrictSchema):
-    csv: str = Field(max_length=500000)
+    csv: str|None = Field(default=None,max_length=500000)
+    xlsx_base64: str|None = Field(default=None,max_length=700000)
+    @model_validator(mode='after')
+    def one_format(self):
+        if (self.csv is None)==(self.xlsx_base64 is None):raise ValueError('Provide exactly one CSV or XLSX payload.')
+        return self
 
 class ImportPreview(StrictSchema):
     rows: list[WorkItemCreate]
@@ -50,5 +55,10 @@ class ImportPreview(StrictSchema):
     fingerprint: str
 
 class ImportCommit(StrictSchema):
-    csv: str = Field(max_length=500000)
+    csv: str|None = Field(default=None,max_length=500000)
+    xlsx_base64: str|None = Field(default=None,max_length=700000)
     fingerprint: str = Field(min_length=64, max_length=64)
+    @model_validator(mode='after')
+    def one_format(self):
+        if (self.csv is None)==(self.xlsx_base64 is None):raise ValueError('Provide exactly one CSV or XLSX payload.')
+        return self

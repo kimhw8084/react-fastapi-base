@@ -1,4 +1,6 @@
 from __future__ import annotations
+import base64
+import binascii
 from typing import Annotated
 from fastapi import APIRouter, Depends, Header, Query, Request
 from fastapi.responses import Response
@@ -13,7 +15,7 @@ from app.platform.models import Attachment
 from app.platform.attachments import AttachmentUpload, attach
 from . import service
 from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, ImportPreviewRequest, ImportPreview, ImportCommit
-from .exchange import export_csv, preview_csv
+from .exchange import export_csv, export_xlsx, preview_csv, preview_xlsx
 
 router=APIRouter(prefix='/work-items',tags=['Work items'])
 A=Annotated[Actor,Depends(actor_for)]
@@ -43,15 +45,33 @@ def export(request: Request,actor: A, search: str=Query('',max_length=200),statu
             raise AppError(413,'export_too_large','Narrow the filters to at most 1000 records.')
         return Response(export_csv(result.items),media_type='text/csv; charset=utf-8',headers={'Content-Disposition':'attachment; filename="work-items-v1.csv"','X-Content-Type-Options':'nosniff'})
 
+@router.get('/export.xlsx',operation_id='exportWorkItemsXlsx')
+def export_xlsx_file(request: Request,actor: A, search: str=Query('',max_length=200),status: str='',priority: str='',archived: bool=False):
+    actor.require('export')
+    with request.app.state.database.session(actor.tenant_id) as db:
+        result=service.list_items(db,actor,search=search,status=status,priority=priority,archived=archived,limit=1000)
+        if result.total>1000:raise AppError(413,'export_too_large','Narrow the filters to at most 1000 records.')
+        return Response(export_xlsx(result.items),media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',headers={'Content-Disposition':'attachment; filename="work-items-v1.xlsx"','X-Content-Type-Options':'nosniff'})
+
+def _preview_exchange(data: ImportPreviewRequest):
+    if data.csv is not None:return preview_csv(data.csv)
+    try:content=base64.b64decode(data.xlsx_base64 or '',validate=True)
+    except (ValueError,binascii.Error):raise AppError(422,'invalid_file','XLSX encoding is invalid.') from None
+    return preview_xlsx(content)
+
 @router.post('/import/preview',response_model=ImportPreview,operation_id='previewWorkItemImport')
 def preview(request: Request,actor: A,data: ImportPreviewRequest):
     actor.require('import')
-    return preview_csv(data.csv)
+    return _preview_exchange(data)
 
 @router.post('/import/commit',response_model=list[WorkItemRead],operation_id='commitWorkItemImport')
 def commit_import(request: Request,actor: A,data: ImportCommit,idempotency_key: str=Header(...)):
     actor.require('import')
-    preview=preview_csv(data.csv)
+    if data.csv is not None:preview=preview_csv(data.csv)
+    else:
+        try:content=base64.b64decode(data.xlsx_base64 or '',validate=True)
+        except (ValueError,binascii.Error):raise AppError(422,'invalid_file','XLSX encoding is invalid.') from None
+        preview=preview_xlsx(content)
     if preview.errors or preview.fingerprint!=data.fingerprint or not preview.rows:
         raise AppError(422,'import_review_required','Correct errors and review a fresh preview before importing.',{'errors':preview.errors})
     with write_transaction(request.app.state.database,actor.tenant_id) as db:

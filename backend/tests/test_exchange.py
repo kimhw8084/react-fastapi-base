@@ -1,6 +1,7 @@
 from uuid import uuid4
+import base64
 import pytest
-from app.features.work_items.exchange import export_csv,preview_csv,safe_cell
+from app.features.work_items.exchange import export_csv,export_xlsx,preview_csv,preview_xlsx,safe_cell
 from app.features.work_items.schemas import WorkItemCreate
 from app.platform.errors import AppError
 
@@ -11,6 +12,16 @@ def test_csv_roundtrip_and_formula_safety(value):
     assert preview.errors==[]
     assert preview.rows[0].description==value
     if value.lstrip().startswith(('=','+','-','@')):assert safe_cell(value).startswith("'")
+
+def test_xlsx_roundtrip_and_api_commit(client):
+    row=WorkItemCreate(title='Spreadsheet item',description='=not-a-formula')
+    content=export_xlsx([row]);preview=preview_xlsx(content)
+    assert preview.errors==[] and preview.rows[0].description=='=not-a-formula'
+    encoded=base64.b64encode(content).decode()
+    checked=client.post('/api/v1/work-items/import/preview',json={'xlsx_base64':encoded})
+    assert checked.status_code==200 and checked.json()['rows'][0]['title']=='Spreadsheet item'
+    committed=client.post('/api/v1/work-items/import/commit',json={'xlsx_base64':encoded,'fingerprint':checked.json()['fingerprint']},headers={'Idempotency-Key':str(uuid4())})
+    assert committed.status_code==200 and committed.json()[0]['title']=='Spreadsheet item'
 
 def test_preview_invalid_row(client):
     result=client.post('/api/v1/work-items/import/preview',json={'csv':'title,description,status,priority\nBad,,wrong,high\n'})
