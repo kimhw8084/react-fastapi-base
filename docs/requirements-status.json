@@ -121,9 +121,9 @@
       "id": "G14",
       "domain": "Saved workspace state",
       "status": "PARTIAL",
-      "decision": "Personal and tenant-shared views, exact deep links, schema sanitization, optimistic revisions and conflict errors.",
-      "owner": "backend/app/platform/views.py; frontend/src/platform/workspace/SavedViews.tsx",
-      "acceptance": "Add true directory-team scopes, favorites/defaults, explicit conflict-resolution UI and offline reconciliation; tenant-wide shared is not corporate team membership."
+      "decision": "Personal, default-workspace-team and explicit membership-scoped views, exact deep links, schema sanitization, optimistic revisions and server-version conflict reconciliation.",
+      "owner": "backend/app/platform/views.py; backend/app/platform/teams.py; frontend/src/platform/workspace/SavedViews.tsx",
+      "acceptance": "Add true directory-team scopes, favorites/defaults and offline reconciliation; tenant-wide shared is not corporate team membership."
     },
     {
       "id": "G15",

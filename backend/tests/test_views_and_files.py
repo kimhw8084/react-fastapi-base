@@ -17,6 +17,15 @@ def test_shared_views_readable_but_not_editable_by_others(env,client):
     assert bob.get(V).json()[0]['id']==row['id']
     assert bob.put(V+'/'+row['id'],json={'name':'Changed','scope':'team','revision':1,'definition':{}}).status_code==403
 
+def test_explicit_team_views_require_membership(env,client):
+    team=client.post('/api/v1/teams',json={'name':'Architecture','slug':'architecture'});assert team.status_code==201,team.text
+    team_id=team.json()['id']
+    row=client.post(V,json={'name':'Architecture view','scope':'team','team_id':team_id,'definition':{}});assert row.status_code==201,row.text
+    bob=env['client']('bob')
+    assert bob.get(V).json()==[]
+    added=client.post(f'/api/v1/teams/{team_id}/members',json={'user_id':'bob','role':'member'});assert added.status_code==200,added.text
+    assert bob.get(V).json()[0]['team_id']==team_id
+
 def test_viewer_can_save_personal_not_team(env):
     c=env['client']('victor')
     assert c.post(V,json={'name':'Private','definition':{}}).status_code==201

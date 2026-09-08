@@ -141,8 +141,20 @@ def relationship_history(request: Request,actor: A,relationship_id: str):
 
 # Generic platform services. These endpoints expose bounded administration/read
 # surfaces; feature code enqueues jobs/emits events through the platform services.
-from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookEndpointRead, WebhookEndpointWrite
-from app.platform import jobs as platform_jobs, events as platform_events, notifications as platform_notifications, feature_flags as platform_flags, webhooks as platform_webhooks
+from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookEndpointRead, WebhookEndpointWrite, TeamCreate, TeamRead, TeamMemberWrite, TeamMemberRead
+from app.platform import jobs as platform_jobs, events as platform_events, notifications as platform_notifications, feature_flags as platform_flags, webhooks as platform_webhooks, teams as platform_teams
+
+@router.get('/teams',response_model=list[TeamRead],operation_id='listWorkspaceTeams')
+def list_workspace_teams(request:Request,actor:A):
+    with request.app.state.database.session(actor.tenant_id) as db:return platform_teams.list_teams(db,actor)
+
+@router.post('/teams',response_model=TeamRead,status_code=201,operation_id='createWorkspaceTeam')
+def create_workspace_team(request:Request,actor:A,data:TeamCreate):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_teams.create_team(db,actor,data)
+
+@router.post('/teams/{team_id}/members',response_model=TeamMemberRead,operation_id='addWorkspaceTeamMember')
+def add_workspace_team_member(request:Request,actor:A,team_id:str,data:TeamMemberWrite):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_teams.add_member(db,actor,team_id,data)
 
 @router.get('/jobs',response_model=list[JobRead],operation_id='listDurableJobs')
 def list_durable_jobs(request:Request,actor:A,status:str|None=Query(default=None,max_length=20),limit:int=Query(100,ge=1,le=200)):

@@ -195,6 +195,7 @@ class ViewDefinition(StrictSchema):
 class ViewCreate(StrictSchema):
     name: str = Field(min_length=1, max_length=120)
     scope: Literal['personal','team'] = 'personal'
+    team_id: str | None = Field(default=None, max_length=36)
     definition: ViewDefinition
     @field_validator('name')
     @classmethod
@@ -214,6 +215,29 @@ class ViewRead(ViewCreate):
     revision: int
     schema_version: int
     updated_at: datetime
+
+class TeamCreate(StrictSchema):
+    name: str = Field(min_length=1, max_length=120)
+    slug: str = Field(pattern=r'^[a-z][a-z0-9-]{1,79}$')
+
+class TeamRead(StrictSchema):
+    id: str
+    name: str
+    slug: str
+    owner: str
+    is_default: bool
+    revision: int
+    member_count: int = 0
+    updated_at: datetime
+
+class TeamMemberWrite(StrictSchema):
+    user_id: str = Field(min_length=1, max_length=200)
+    role: Literal['member','manager'] = 'member'
+
+class TeamMemberRead(StrictSchema):
+    team_id: str
+    user_id: str
+    role: Literal['member','manager']
 
 class RevisionInput(StrictSchema):
     revision: int = Field(ge=1)

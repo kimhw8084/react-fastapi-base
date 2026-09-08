@@ -45,11 +45,30 @@ class SavedView(TenantBase):
     workspace: Mapped[str] = mapped_column(String(40), index=True)
     owner: Mapped[str] = mapped_column(String(200))
     scope: Mapped[str] = mapped_column(String(20))
+    team_id: Mapped[str | None] = mapped_column(String(36), nullable=True, index=True)
     name: Mapped[str] = mapped_column(String(120))
     definition: Mapped[dict[str, Any]] = mapped_column(JSON)
     revision: Mapped[int] = mapped_column(Integer, default=1)
     schema_version: Mapped[int] = mapped_column(Integer, default=1)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+class WorkspaceTeam(TenantBase):
+    __tablename__ = 'workspace_teams'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    name: Mapped[str] = mapped_column(String(120))
+    slug: Mapped[str] = mapped_column(String(80), unique=True)
+    owner: Mapped[str] = mapped_column(String(200))
+    is_default: Mapped[bool] = mapped_column(Boolean, default=False)
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+class WorkspaceTeamMember(TenantBase):
+    __tablename__ = 'workspace_team_members'
+    team_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    user_id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    role: Mapped[str] = mapped_column(String(20), default='member')
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 class IdempotencyEntry(TenantBase):
     __tablename__ = 'idempotency_entries'

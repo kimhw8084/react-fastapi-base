@@ -128,14 +128,18 @@ export type SoftwareServiceCreate = { "name": string; "status"?: "healthy" | "de
 export type SoftwareServicePage = { "items": Array<SoftwareServiceRead>; "total": number; "limit": number; "offset": number }
 export type SoftwareServiceRead = { "name": string; "status": "healthy" | "degraded" | "maintenance" | "retired"; "tier": "tier_0" | "tier_1" | "tier_2" | "tier_3"; "owner": (string | null); "repository": (string | null); "runtime": (string | null); "environment": "development" | "test" | "staging" | "production"; "config": { [key: string]: unknown }; "description": (string | null); "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
 export type SoftwareServiceUpdate = { "name": string; "status"?: "healthy" | "degraded" | "maintenance" | "retired"; "tier"?: "tier_0" | "tier_1" | "tier_2" | "tier_3"; "owner"?: (string | null); "repository"?: (string | null); "runtime"?: (string | null); "environment"?: "development" | "test" | "staging" | "production"; "config"?: { [key: string]: unknown }; "description"?: (string | null); "revision": number }
+export type TeamCreate = { "name": string; "slug": string }
+export type TeamMemberRead = { "team_id": string; "user_id": string; "role": "member" | "manager" }
+export type TeamMemberWrite = { "user_id": string; "role"?: "member" | "manager" }
+export type TeamRead = { "id": string; "name": string; "slug": string; "owner": string; "is_default": boolean; "revision": number; "member_count": number; "updated_at": string }
 export type TenantInfo = { "id": string; "name": string; "role": string; "permissions": Array<string> }
 export type ViewColumnInput = { "colId": string; "width"?: number; "hide"?: boolean; "sort"?: ("asc" | "desc" | null); "sortIndex"?: (number | null); "pinned"?: ("left" | "right" | null) }
 export type ViewColumnOutput = { "colId": string; "width": number; "hide": boolean; "sort": ("asc" | "desc" | null); "sortIndex": (number | null); "pinned": ("left" | "right" | null) }
-export type ViewCreate = { "name": string; "scope"?: "personal" | "team"; "definition": ViewDefinitionInput }
+export type ViewCreate = { "name": string; "scope"?: "personal" | "team"; "team_id"?: (string | null); "definition": ViewDefinitionInput }
 export type ViewDefinitionInput = { "search"?: string; "filters"?: { [key: string]: string }; "archived"?: boolean; "group_by"?: string; "sort"?: string; "direction"?: "asc" | "desc"; "density"?: "comfortable" | "compact"; "visualization"?: string; "columns"?: Array<ViewColumnInput> }
 export type ViewDefinitionOutput = { "search": string; "filters": { [key: string]: string }; "archived": boolean; "group_by": string; "sort": string; "direction": "asc" | "desc"; "density": "comfortable" | "compact"; "visualization": string; "columns": Array<ViewColumnOutput> }
-export type ViewRead = { "name": string; "scope": "personal" | "team"; "definition": ViewDefinitionOutput; "id": string; "workspace": string; "owner": string; "revision": number; "schema_version": number; "updated_at": string }
-export type ViewUpdate = { "name": string; "scope"?: "personal" | "team"; "definition": ViewDefinitionInput; "revision": number }
+export type ViewRead = { "name": string; "scope": "personal" | "team"; "team_id": (string | null); "definition": ViewDefinitionOutput; "id": string; "workspace": string; "owner": string; "revision": number; "schema_version": number; "updated_at": string }
+export type ViewUpdate = { "name": string; "scope"?: "personal" | "team"; "team_id"?: (string | null); "definition": ViewDefinitionInput; "revision": number }
 export type WaferRunBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type WaferRunCreate = { "wafer_id": string; "lot_id": string; "process_step": string; "status"?: "queued" | "processing" | "complete" | "hold" | "scrapped"; "die_rows": number; "die_cols": number; "bin_map"?: { [key: string]: unknown }; "total_die"?: number; "good_die"?: number; "defect_count"?: number; "yield_percent"?: number; "completed_at"?: (string | null); "notes"?: (string | null) }
 export type WaferRunPage = { "items": Array<WaferRunRead>; "total": number; "limit": number; "offset": number }
@@ -331,6 +335,9 @@ export interface OperationInputs {
   "history_api_v1_software_services__record_id__history_get": { path: { "record_id": string } }
   "lifecycle_api_v1_software_services__record_id__lifecycle__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "revert_api_v1_software_services__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
+  "listWorkspaceTeams": {  }
+  "createWorkspaceTeam": { body: TeamCreate }
+  "addWorkspaceTeamMember": { path: { "team_id": string }; body: TeamMemberWrite }
   "list_records_api_v1_wafer_runs_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string } }
   "create_api_v1_wafer_runs_post": { body: WaferRunCreate }
   "bulk_api_v1_wafer_runs_bulk_post": { body: WaferRunBulkRequest }
@@ -541,6 +548,9 @@ export interface OperationOutputs {
   "history_api_v1_software_services__record_id__history_get": Array<AuditRead>
   "lifecycle_api_v1_software_services__record_id__lifecycle__action__post": SoftwareServiceRead
   "revert_api_v1_software_services__record_id__revert_post": SoftwareServiceRead
+  "listWorkspaceTeams": Array<TeamRead>
+  "createWorkspaceTeam": TeamRead
+  "addWorkspaceTeamMember": TeamMemberRead
   "list_records_api_v1_wafer_runs_get": WaferRunPage
   "create_api_v1_wafer_runs_post": WaferRunRead
   "bulk_api_v1_wafer_runs_bulk_post": Array<WaferRunRead>
@@ -1281,6 +1291,18 @@ export const operationRoutes = {
   "revert_api_v1_software_services__record_id__revert_post": {
     "method": "POST",
     "path": "/api/v1/software-services/{record_id}/revert"
+  },
+  "listWorkspaceTeams": {
+    "method": "GET",
+    "path": "/api/v1/teams"
+  },
+  "createWorkspaceTeam": {
+    "method": "POST",
+    "path": "/api/v1/teams"
+  },
+  "addWorkspaceTeamMember": {
+    "method": "POST",
+    "path": "/api/v1/teams/{team_id}/members"
   },
   "list_records_api_v1_wafer_runs_get": {
     "method": "GET",
