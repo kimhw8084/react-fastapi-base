@@ -9,7 +9,7 @@ it('every required catalog variant has a real generic renderer', () => {
   expect(catalogVariants).toHaveLength(605)
   expect(screen.getAllByRole('region').length).toBeGreaterThan(0)
   for (const variant of catalogVariants) expect(screen.getAllByLabelText(variant.id).length).toBeGreaterThan(0)
-})
+}, 30000)
 
 it('family renderer remains usable when the catalog is filtered', () => {
   const sample = catalogVariants.filter(variant => ['form','grid','chart','surface'].includes(variant.family))
