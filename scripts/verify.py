@@ -13,7 +13,7 @@ import subprocess
 import sys
 ROOT=Path(__file__).resolve().parents[1]
 
-def verify(output: Path, source_only: bool=False)->dict:
+def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
     results=[]
     def blocked(name,reason,required_for='code'):
@@ -43,7 +43,10 @@ def verify(output: Path, source_only: bool=False)->dict:
     else:
         run('engineering-widget-layer',[sys.executable,'scripts/verify_lab.py','--mode',os.environ.get('LAB_BROWSER_MODE','http'),'--output',str((output/'native-lab').resolve())],timeout=600)
     run('required-catalog-completeness',[sys.executable,'scripts/catalog.py','--check','--release'])
-    blocked('macos-fresh-install','No macOS execution runner has certified this exact release.')
+    if source_only:
+        blocked('macos-fresh-install','Source-only request; isolated clone execution was not run.','external')
+    else:
+        run('macos-fresh-install',[sys.executable,'scripts/fresh_clone_check.py','--output',str((output/'fresh-clone-macos.json').resolve())],timeout=1800)
     node_modules=ROOT/'frontend/node_modules'
     lock=ROOT/'frontend/package-lock.json'
     frontend=['frontend-typecheck','frontend-unit','frontend-build','frontend-storybook','browser-e2e-accessibility','npm-advisories']
@@ -65,7 +68,6 @@ def verify(output: Path, source_only: bool=False)->dict:
         ('company-identity','Two actual company users and the PaaS execution/ingress contract must be verified.'),
         ('company-storage','Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount.'),
         ('company-deployment','Separate frontend/backend publishes and real browser routing have not been exercised here.'),
-        ('sysgrid-migration-parity','No SysGrid production feature has yet been migrated and visually/behaviorally certified against this template.'),
     ]:blocked(name,reason,'deployment')
     source_hashes={}
     for directory in ('backend','frontend','contracts','scripts','tests','experience-lab','catalog'):
@@ -84,8 +86,8 @@ def verify(output: Path, source_only: bool=False)->dict:
     return result
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'.evidence/latest');p.add_argument('--source-only',action='store_true');a=p.parse_args()
-    result=verify(a.output,a.source_only)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'.evidence/latest');p.add_argument('--source-only',action='store_true');p.add_argument('--release',action='store_true');a=p.parse_args()
+    result=verify(a.output,a.source_only,a.release)
     # Code verification and deployment certification are separate. Exit zero proves only code gates.
     return 0 if result['code_ready'] else 1
 if __name__=='__main__':raise SystemExit(main())

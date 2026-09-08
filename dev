@@ -49,7 +49,7 @@ def start():
 def main():
     p=argparse.ArgumentParser(description='react-fastapi-base developer tools')
     sub=p.add_subparsers(dest='command',required=True)
-    for name in ('setup','start','seed-demo','contracts','architecture','verify','test-backend','preflight'):sub.add_parser(name)
+    for name in ('setup','start','seed-demo','contracts','architecture','verify','verify-release','test-backend','preflight'):sub.add_parser(name)
     c=sub.add_parser('create');c.add_argument('target');c.add_argument('--id',required=True);c.add_argument('--name',required=True);c.add_argument('--theme',default='operations')
     g=sub.add_parser('generate-entity');g.add_argument('spec');g.add_argument('--apply',action='store_true')
     g=sub.add_parser('generate-relationship');g.add_argument('spec');g.add_argument('--apply',action='store_true')
@@ -85,7 +85,8 @@ def main():
     if a.command=='seed-demo':return run([PYTHON,'-m','app.cli','seed-demo'],ROOT/'backend',local_env())
     if a.command=='contracts':return run([PYTHON,'scripts/generate_contracts.py'])
     if a.command=='architecture':return run([PYTHON,'scripts/check_architecture.py'])
-    if a.command=='verify':return run([PYTHON,'scripts/verify.py'])
+    if a.command in ('verify','verify-release'):
+        return run([PYTHON,'scripts/verify.py','--output',str(ROOT/'evidence/current/full-stack'),*(['--release'] if a.command=='verify-release' else [])])
     if a.command=='test-backend':return run([PYTHON,'-m','pytest','-q'],ROOT/'backend')
     if a.command=='preflight':return run([PYTHON,'-m','app.cli','preflight'],ROOT/'backend')
     if a.command=='operator':return run([PYTHON,'-m','app.cli',*a.args],ROOT/'backend')

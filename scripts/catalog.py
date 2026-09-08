@@ -3,6 +3,7 @@
 import argparse,hashlib,json,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+from generate_catalog_registry import render as render_registry
 def outputs():
     result=subprocess.run(['node','--input-type=module','-e',"import {catalog} from './experience-lab/public/lib/registry.js'; console.log(JSON.stringify(catalog))"],cwd=ROOT,text=True,capture_output=True,check=True)
     entries=json.loads(result.stdout)
@@ -17,7 +18,11 @@ def outputs():
     for row in entries:text.append(f"| {row['title']} | {'; '.join(row['capabilities'])} | {'; '.join(row['limits'])} |")
     text+=['','## Full retained scope','','All entries remain required until explicitly approved otherwise. `partial` means a demonstration covers part of the contract, not a certified reusable implementation.','','| Required item | Category | Status | Related examples |','|---|---|---|---|']
     for row in roadmap['entries']:text.append(f"| {row['id']} | {row['category']} | {row['maturity']} | {', '.join(row['demo_families']) or '—'} |")
-    return {ROOT/'catalog/components.json':json.dumps(obj,indent=2)+'\n',ROOT/'docs/COMPONENT_COVERAGE.md':'\n'.join(text)+'\n'}
+    return {
+        ROOT/'catalog/components.json':json.dumps(obj,indent=2)+'\n',
+        ROOT/'docs/COMPONENT_COVERAGE.md':'\n'.join(text)+'\n',
+        ROOT/'frontend/src/platform/catalog/generatedVariants.ts':render_registry(),
+    }
 def main():
     p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');p.add_argument('--release',action='store_true');a=p.parse_args()
     for path,text in outputs().items():
