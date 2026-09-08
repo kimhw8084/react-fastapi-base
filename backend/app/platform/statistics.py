@@ -24,6 +24,17 @@ XBAR_R_CONSTANTS: dict[int, tuple[float, float, float]] = {
     9: (0.337, 0.184, 1.816),
     10: (0.308, 0.223, 1.777),
 }
+XBAR_S_CONSTANTS: dict[int, tuple[float, float, float]] = {
+    2: (2.659, 0.000, 3.267),
+    3: (1.954, 0.000, 2.568),
+    4: (1.628, 0.000, 2.266),
+    5: (1.427, 0.000, 2.089),
+    6: (1.287, 0.848, 1.996),
+    7: (1.182, 0.888, 1.924),
+    8: (1.099, 0.902, 1.864),
+    9: (1.032, 0.914, 1.816),
+    10: (0.975, 0.921, 1.777),
+}
 
 
 def finite_values(values: Iterable[float | int]) -> list[float]:
@@ -104,6 +115,123 @@ def xbar_r(subgroups: Iterable[Iterable[float | int]]) -> dict[str, object]:
         "out_of_control_mean_indexes": [index for index, value in enumerate(means) if value < xbar_lower or value > xbar_upper],
         "out_of_control_range_indexes": [index for index, value in enumerate(ranges) if value < r_lower or value > r_upper],
     }
+
+
+def xbar_s(subgroups: Iterable[Iterable[float | int]]) -> dict[str, object]:
+    groups = [finite_values(group) for group in subgroups]
+    if len(groups) < 2:
+        raise ValueError("At least two subgroups are required.")
+    size = len(groups[0])
+    if size not in XBAR_S_CONSTANTS or any(len(group) != size for group in groups):
+        raise ValueError("Xbar-S requires equal subgroup sizes from 2 through 10.")
+    means = [fmean(group) for group in groups]
+    standard_deviations = [_sample_std(group) for group in groups]
+    grand_mean = fmean(means)
+    s_bar = fmean(standard_deviations)
+    a3, b3, b4 = XBAR_S_CONSTANTS[size]
+    return {
+        "subgroup_size": size,
+        "means": means,
+        "standard_deviations": standard_deviations,
+        "xbar_center": grand_mean,
+        "xbar_lower": grand_mean - a3 * s_bar,
+        "xbar_upper": grand_mean + a3 * s_bar,
+        "sigma_center": s_bar,
+        "sigma_lower": b3 * s_bar,
+        "sigma_upper": b4 * s_bar,
+        "out_of_control_mean_indexes": [index for index, value in enumerate(means) if value < grand_mean - a3 * s_bar or value > grand_mean + a3 * s_bar],
+        "out_of_control_sigma_indexes": [index for index, value in enumerate(standard_deviations) if value < b3 * s_bar or value > b4 * s_bar],
+    }
+
+
+def _attribute_contract(defects: Iterable[float | int], samples: Iterable[float | int] | None = None) -> tuple[list[float], list[float]]:
+    d = finite_values(defects)
+    n = finite_values(samples if samples is not None else [1] * len(d))
+    if len(d) != len(n) or any(sample <= 0 or defect < 0 or defect > sample for defect, sample in zip(d, n)):
+        raise ValueError("Defects and sample sizes must be aligned and within valid bounds.")
+    return d, n
+
+
+def p_chart(defects: Iterable[float | int], samples: Iterable[float | int]) -> dict[str, object]:
+    defects_values, sample_sizes = _attribute_contract(defects, samples)
+    center = sum(defects_values) / sum(sample_sizes)
+    limits = [3 * sqrt(center * (1 - center) / sample) for sample in sample_sizes]
+    lower = [max(0.0, center - limit) for limit in limits]
+    upper = [min(1.0, center + limit) for limit in limits]
+    proportions = [defect / sample for defect, sample in zip(defects_values, sample_sizes)]
+    return {"proportions": proportions, "center": center, "lower_control": lower, "upper_control": upper, "out_of_control_indexes": [index for index, value in enumerate(proportions) if value < lower[index] or value > upper[index]]}
+
+
+def np_chart(defects: Iterable[float | int], sample_size: int) -> dict[str, object]:
+    if sample_size <= 0:
+        raise ValueError("Sample size must be positive.")
+    raw = list(defects)
+    values, _ = _attribute_contract(raw, [sample_size] * len(raw))
+    center = sum(values) / len(values)
+    p_bar = center / sample_size
+    spread = 3 * sqrt(sample_size * p_bar * (1 - p_bar))
+    lower, upper = max(0.0, center - spread), center + spread
+    return {"counts": values, "center": center, "lower_control": lower, "upper_control": upper, "out_of_control_indexes": [index for index, value in enumerate(values) if value < lower or value > upper]}
+
+
+def c_chart(defects: Iterable[float | int]) -> dict[str, object]:
+    values = finite_values(defects)
+    center = fmean(values)
+    spread = 3 * sqrt(center)
+    lower, upper = max(0.0, center - spread), center + spread
+    return {"counts": values, "center": center, "lower_control": lower, "upper_control": upper, "out_of_control_indexes": [index for index, value in enumerate(values) if value < lower or value > upper]}
+
+
+def u_chart(defects: Iterable[float | int], units: Iterable[float | int]) -> dict[str, object]:
+    values, sample_sizes = _attribute_contract(defects, units)
+    center = sum(values) / sum(sample_sizes)
+    lower = [max(0.0, center - 3 * sqrt(center / sample)) for sample in sample_sizes]
+    upper = [center + 3 * sqrt(center / sample) for sample in sample_sizes]
+    rates = [defect / sample for defect, sample in zip(values, sample_sizes)]
+    return {"rates": rates, "center": center, "lower_control": lower, "upper_control": upper, "out_of_control_indexes": [index for index, value in enumerate(rates) if value < lower[index] or value > upper[index]]}
+
+
+def cusum(values: Iterable[float | int], *, target: float | None = None, allowance: float = 0.0, decision_interval: float = 5.0) -> dict[str, object]:
+    xs = finite_values(values)
+    midpoint = fmean(xs) if target is None else float(target)
+    if not isfinite(midpoint) or allowance < 0 or decision_interval <= 0:
+        raise ValueError("CUSUM target, allowance and decision interval are invalid.")
+    positive = negative = 0.0
+    positive_values: list[float] = []
+    negative_values: list[float] = []
+    for value in xs:
+        positive = max(0.0, positive + value - midpoint - allowance)
+        negative = min(0.0, negative + value - midpoint + allowance)
+        positive_values.append(positive)
+        negative_values.append(negative)
+    return {"target": midpoint, "positive": positive_values, "negative": negative_values, "decision_interval": decision_interval, "positive_signal_indexes": [index for index, value in enumerate(positive_values) if value > decision_interval], "negative_signal_indexes": [index for index, value in enumerate(negative_values) if value < -decision_interval]}
+
+
+def correlation(x_values: Iterable[float | int], y_values: Iterable[float | int]) -> float:
+    xs, ys = finite_values(x_values), finite_values(y_values)
+    if len(xs) != len(ys) or len(xs) < 2:
+        raise ValueError("Correlation requires aligned pairs with at least two values.")
+    x_mean, y_mean = fmean(xs), fmean(ys)
+    denominator = sqrt(sum((x - x_mean) ** 2 for x in xs) * sum((y - y_mean) ** 2 for y in ys))
+    if denominator == 0:
+        raise ValueError("Correlation is undefined for zero variance.")
+    return sum((x - x_mean) * (y - y_mean) for x, y in zip(xs, ys)) / denominator
+
+
+def linear_regression(x_values: Iterable[float | int], y_values: Iterable[float | int]) -> dict[str, float]:
+    xs, ys = finite_values(x_values), finite_values(y_values)
+    if len(xs) != len(ys) or len(xs) < 2:
+        raise ValueError("Regression requires aligned pairs with at least two values.")
+    x_mean, y_mean = fmean(xs), fmean(ys)
+    denominator = sum((x - x_mean) ** 2 for x in xs)
+    if denominator == 0:
+        raise ValueError("Regression is undefined for zero x variance.")
+    slope = sum((x - x_mean) * (y - y_mean) for x, y in zip(xs, ys)) / denominator
+    intercept = y_mean - slope * x_mean
+    predictions = [intercept + slope * x for x in xs]
+    total = sum((y - y_mean) ** 2 for y in ys)
+    residual = sum((y - prediction) ** 2 for y, prediction in zip(ys, predictions))
+    return {"slope": slope, "intercept": intercept, "r_squared": 1.0 if total == 0 and residual == 0 else (1 - residual / total if total else 0.0)}
 
 
 def capability(values: Iterable[float | int], *, lower_spec: float | None = None, upper_spec: float | None = None) -> dict[str, float | None]:

@@ -26,7 +26,7 @@ The local profile uses disposable demo identity and data. Startup does not creat
 
 The backend includes canonical feature modules for work items, projects, racks, equipment, Knowledge, Investigation, Risk, Research, Diagram Designer, Planning, analytics/SPC, semiconductor records, software delivery/observability, and platform administration services. The frontend uses generated adapters and shared platform shells, forms, grids, saved views, dossiers, projections, and engineering workspaces.
 
-The implementation ledger is [docs/v1-completion-status.json](docs/v1-completion-status.json). It records actual status and remaining work per subsystem. The retained 605-item catalog is a required inventory, not a completion percentage; entries remain provisional until their implementation, browser, accessibility, performance, and documentation evidence exists.
+The implementation ledger is [docs/v1-completion-status.json](docs/v1-completion-status.json). It records actual status and remaining work per subsystem. The retained 605-item catalog is a required inventory; generic family rendering/certification is checked by `scripts/catalog.py --check --release`, while domain-specific browser, accessibility and performance maturity remains explicit in the ledger.
 
 ## Verification
 

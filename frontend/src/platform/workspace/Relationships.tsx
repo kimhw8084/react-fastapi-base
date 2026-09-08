@@ -63,3 +63,36 @@ export function Relationships({api,entity,recordId,user,tenant,canWrite,readOnly
     </form>}
   </section>
 }
+
+export function RelationshipBadge({relationship, label}:{relationship:RelationshipRead;label?:string}){
+  return <span className="relationship-badge" title={`${relationship.source.label} → ${relationship.target.label}`}>{label??relationship.definition_key.replaceAll('_',' ')}</span>
+}
+
+export function RelationshipPreview({relationship}:{relationship:RelationshipRead}){
+  return <article className="relationship-preview"><RelationshipBadge relationship={relationship}/><strong>{relationship.source.label}</strong><span aria-hidden="true">→</span><strong>{relationship.target.label}</strong><small>Revision {relationship.revision}{relationship.archived?' · Archived':''}</small></article>
+}
+
+export function RelationshipTable({rows}:{rows:RelationshipRead[]}){
+  return <div className="relationship-table" role="table" aria-label="Relationships">{rows.map(row=><RelationshipPreview key={row.id} relationship={row}/>)}</div>
+}
+
+export function RelationshipPicker({candidates,value,onChange,label='Related record'}:{candidates:EntityReference[];value:EntityReference|null;onChange:(value:EntityReference)=>void;label?:string}){
+  return <div className="relationship-picker"><label>{label}<select value={value?.id??''} onChange={event=>{const next=candidates.find(candidate=>candidate.id===event.target.value);if(next)onChange(next)}}><option value="">Choose a canonical record…</option>{candidates.map(candidate=><option key={`${candidate.entity}:${candidate.id}`} value={candidate.id}>{candidate.label} · {candidate.entity.replaceAll('_',' ')}</option>)}</select></label></div>
+}
+
+type ExplorerProps=Pick<Props,'api'|'entity'|'recordId'|'user'|'tenant'>
+function Explorer({api,entity,recordId,user,tenant,filter,title}:{api:ApiClient;entity:string;recordId:string;user:string;tenant:string;filter:(definition?:RelationshipDefinition)=>boolean;title:string}){
+  const definitions=useQuery({queryKey:['relationship-definitions',user,tenant],queryFn:()=>api.request<RelationshipDefinition[]>('/api/v1/relationships/definitions')})
+  const relationships=useQuery({queryKey:['relationships',user,tenant,entity,recordId],queryFn:()=>api.request<RelationshipRead[]>(`/api/v1/relationships?${new URLSearchParams({entity,record_id:recordId})}`)})
+  const allowed=new Set((definitions.data??[]).filter(filter).map(definition=>definition.key))
+  const rows=(relationships.data??[]).filter(row=>allowed.has(row.definition_key))
+  return <section className="relationship-explorer" aria-label={title}><header><h3>{title}</h3><span>{rows.length}</span></header>{relationships.isPending?<p role="status">Loading relationships…</p>:rows.length?<RelationshipTable rows={rows}/>:<EmptyState title={`No ${title.toLowerCase()}`} description="The explorer reflects canonical typed relationships only."/>}</section>
+}
+
+export function RelatedRecords(props:ExplorerProps){return <Explorer {...props} filter={()=>true} title="Related records"/>}
+export function BacklinkPanel(props:ExplorerProps){return <Explorer {...props} filter={definition=>Boolean(definition)} title="Backlinks"/>}
+export function DependencyExplorer(props:ExplorerProps){return <Explorer {...props} filter={definition=>definition?.kind==='dependency'} title="Dependencies"/>}
+export function ImpactExplorer(props:ExplorerProps){return <Explorer {...props} filter={definition=>definition?.kind==='dependency'} title="Impact"/>}
+export function ConnectionExplorer(props:ExplorerProps){return <Explorer {...props} filter={definition=>definition?.kind==='connection'} title="Connections"/>}
+export const RelationshipPanel=Relationships
+export const RelationshipGraph=RelatedRecords

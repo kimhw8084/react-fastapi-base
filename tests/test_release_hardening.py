@@ -21,7 +21,19 @@ def test_performance_gate_writes_machine_readable_report(tmp_path):
     assert result.returncode==0,result.stdout+result.stderr
     report=json.loads((tmp_path/'performance.json').read_text())
     assert report['browser_render_budget_certified'] is False
-    assert len(report['checks'])==5
+    assert len(report['checks'])>=10
+    assert {check['name'] for check in report['checks']} >= {
+        'descriptive-100k',
+        'imr-100k',
+        'ewma-100k',
+        'run-rules-100k',
+        'pareto-100k',
+        'p-chart-100k',
+        'c-chart-100k',
+        'cusum-100k',
+        'correlation-100k',
+        'regression-100k',
+    }
     assert all(row['status']=='PASS' and row['seconds']<=row['budget_seconds'] for row in report['checks'])
 
 def test_implementation_evidence_only_references_real_roadmap_and_sources():

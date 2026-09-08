@@ -32,6 +32,9 @@ def test_notification_preferences_and_private_inbox(env,client):
     assert env['client']('bob').get('/api/v1/notifications').json()==[]
     marked=client.post('/api/v1/notifications/'+inbox[0]['id']+'/read');assert marked.status_code==200 and marked.json()['read_at']
     pref=client.put('/api/v1/notification-preferences/release.ready',json={'enabled':False});assert pref.status_code==200 and pref.json()['revision']==1
+    assert client.post('/api/v1/notifications/read-all').json()=={'updated':0}
+    dismissed=client.post('/api/v1/notifications/'+inbox[0]['id']+'/dismiss');assert dismissed.status_code==200 and dismissed.json()['dismissed_at']
+    assert client.get('/api/v1/notifications').json()==[]
     with env['db'].session(env['tenant']) as session:
         assert notifications.create(session,a,NotificationCreate(user_id='alice',kind='release.ready',title='Suppressed')) is None
 
@@ -61,6 +64,18 @@ def test_durable_job_leasing_retry_and_cancel(env,client):
         cancel=jobs.enqueue(session,a,'test.echo',{});session.commit();cancel_id=cancel.id
     cancelled=client.post(f'/api/v1/jobs/{cancel_id}/cancel');assert cancelled.status_code==200 and cancelled.json()['status']=='cancelled'
     assert env['client']('bob').get('/api/v1/jobs').status_code==403
+
+def test_job_heartbeat_and_fencing_reject_stale_worker(env):
+    a=actor(env)
+    with env['db'].session(env['tenant']) as session:
+        queued=jobs.enqueue(session,a,'test.fenced',{});session.commit()
+    with env['db'].session(env['tenant']) as session:
+        first=jobs.lease_next(session,'worker-a',lease_seconds=30);assert first and first.id==queued.id and first.fence_token
+        token=first.fence_token;jobs.heartbeat(session,first,'worker-a',token,lease_seconds=60);session.commit()
+    with env['db'].session(env['tenant']) as session:
+        row=session.get(type(first),queued.id)
+        with pytest.raises(AppError):jobs.finish(session,row,'worker-b',token,result={})
+        jobs.finish(session,row,'worker-a',token,result={'ok':True});session.commit()
 
 
 def test_webhook_definition_is_allowlisted_revision_safe_and_secret_ref_only(env,monkeypatch):

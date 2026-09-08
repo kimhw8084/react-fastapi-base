@@ -18,7 +18,7 @@ def create(session:Session,actor:Actor,data:NotificationCreate)->NotificationRea
     session.add(row);session.flush();return NotificationRead.model_validate(row)
 
 def list_mine(session:Session,actor:Actor,*,unread_only:bool=False,limit:int=100)->list[NotificationRead]:
-    query=select(Notification).where(Notification.user_id==actor.user_id).order_by(Notification.created_at.desc()).limit(limit)
+    query=select(Notification).where(Notification.user_id==actor.user_id,Notification.dismissed_at.is_(None)).order_by(Notification.created_at.desc()).limit(limit)
     if unread_only:query=query.where(Notification.read_at.is_(None))
     return [NotificationRead.model_validate(row) for row in session.scalars(query).all()]
 
@@ -26,6 +26,19 @@ def mark_read(session:Session,actor:Actor,notification_id:str)->NotificationRead
     row=session.get(Notification,notification_id)
     if not row or row.user_id!=actor.user_id:raise AppError(404,'notification_missing','Notification is not available.')
     if row.read_at is None:row.read_at=datetime.now(timezone.utc);session.flush()
+    return NotificationRead.model_validate(row)
+
+def mark_all_read(session:Session,actor:Actor)->int:
+    """Mark only the caller's visible notifications read; never cross a tenant/user boundary."""
+    now=datetime.now(timezone.utc)
+    rows=session.scalars(select(Notification).where(Notification.user_id==actor.user_id,Notification.dismissed_at.is_(None),Notification.read_at.is_(None))).all()
+    for row in rows:row.read_at=now
+    session.flush();return len(rows)
+
+def dismiss(session:Session,actor:Actor,notification_id:str)->NotificationRead:
+    row=session.get(Notification,notification_id)
+    if not row or row.user_id!=actor.user_id:raise AppError(404,'notification_missing','Notification is not available.')
+    row.dismissed_at=datetime.now(timezone.utc);row.read_at=row.read_at or row.dismissed_at;session.flush()
     return NotificationRead.model_validate(row)
 
 def set_preference(session:Session,actor:Actor,kind:str,enabled:bool,revision:int|None)->NotificationPreferenceRead:

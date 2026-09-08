@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'backend'))
-from app.platform.statistics import descriptive, imr, ewma, pareto, run_rule_flags
+from app.platform.statistics import correlation, c_chart, cusum, descriptive, imr, ewma, linear_regression, p_chart, pareto, run_rule_flags
 
 
 def timed(name, budget, fn):
@@ -28,12 +28,19 @@ def main()->int:
     # Deterministic finite workload: 100k observations exercises statistics without random noise.
     values=[100.0 + ((i%97)-48)*0.013 + ((i%7)-3)*0.002 for i in range(100_000)]
     categories=[f'DEFECT-{i%17:02d}' for i in range(100_000)]
+    defects=[i%8 for i in range(100_000)]
+    samples=[100]*100_000
     rows=[]
     rows.append(timed('descriptive-100k',1.50,lambda: descriptive(values)['count']))
     rows.append(timed('imr-100k',2.50,lambda: len(imr(values)['moving_ranges'])))
     rows.append(timed('ewma-100k',1.50,lambda: len(ewma(values))))
     rows.append(timed('run-rules-100k',2.50,lambda: sum(len(v) for v in run_rule_flags(values).values())))
     rows.append(timed('pareto-100k',1.50,lambda: len(pareto(categories))))
+    rows.append(timed('p-chart-100k',2.50,lambda: len(p_chart(defects,samples)['proportions'])))
+    rows.append(timed('c-chart-100k',1.50,lambda: len(c_chart(defects)['counts'])))
+    rows.append(timed('cusum-100k',2.50,lambda: len(cusum(values)['positive'])))
+    rows.append(timed('correlation-100k',1.50,lambda: correlation(values,values)))
+    rows.append(timed('regression-100k',2.50,lambda: linear_regression(values,values)['r_squared']))
     output=Path(os.environ.get('BASE_PERFORMANCE_REPORT',ROOT/'.evidence/performance.json'))
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps({'schema_version':1,'scope':'owned-pure-algorithms','browser_render_budget_certified':False,'checks':rows},indent=2)+'\n')
     print('Performance smoke passed. Browser rendering and target-Mac budgets still require the dependency-resolved application build.')

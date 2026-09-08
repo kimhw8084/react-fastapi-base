@@ -38,7 +38,7 @@ export type ErrorResponse = { "error": ErrorBody }
 export type EventRead = { "sequence": number; "event_id": string; "topic": string; "entity_type": (string | null); "entity_id": (string | null); "payload": { [key: string]: unknown }; "created_by": string; "created_at": string }
 export type FeatureFlagRead = { "key": string; "enabled": boolean; "description": string; "rules": { [key: string]: unknown }; "revision": number; "updated_by": string; "updated_at": string }
 export type FeatureFlagWrite = { "enabled"?: boolean; "description"?: string; "rules"?: { [key: string]: unknown }; "revision"?: (number | null) }
-export type FieldDefinition = { "key": string; "label": string; "kind": "text" | "textarea" | "select" | "integer" | "number" | "boolean" | "date" | "datetime" | "email" | "url" | "markdown" | "code" | "json" | "multiselect" | "percent" | "duration" | "scientific" | "unit_number"; "required": boolean; "nullable": boolean; "max_length": (number | null); "choices": Array<string>; "minimum": (number | null); "maximum": (number | null); "step": (number | null); "unit": (string | null); "read_only": boolean }
+export type FieldDefinition = { "key": string; "label": string; "kind": "text" | "textarea" | "long_text" | "select" | "integer" | "number" | "decimal" | "boolean" | "date" | "datetime" | "email" | "url" | "markdown" | "code" | "json" | "object" | "array" | "multiselect" | "multi_enum" | "percent" | "duration" | "scientific" | "unit_number" | "file" | "image" | "relationship" | "range" | "tolerance" | "coordinates" | "formula" | "computed"; "required": boolean; "nullable": boolean; "max_length": (number | null); "choices": Array<string>; "minimum": (number | null); "maximum": (number | null); "step": (number | null); "unit": (string | null); "precision": (number | null); "display_format": (string | null); "searchable": boolean; "filterable": boolean; "sortable": boolean; "exportable": boolean; "computed": boolean; "read_only": boolean }
 export type GlobalSearchResult = { "kind": "record" | "saved_view"; "id": string; "label": string; "description": string; "entity": (string | null); "workspace": string }
 export type ImportCommit = { "csv": string; "fingerprint": string }
 export type ImportPreview = { "rows": Array<WorkItemCreateOutput>; "errors": Array<string>; "fingerprint": string }
@@ -69,7 +69,7 @@ export type MemberWrite = { "user_id": string; "role": string }
 export type NavigationItem = { "workspace": string; "label": string }
 export type NotificationPreferenceRead = { "user_id": string; "kind": string; "enabled": boolean; "revision": number; "updated_at": string }
 export type NotificationPreferenceUpdate = { "enabled": boolean; "revision"?: (number | null) }
-export type NotificationRead = { "id": string; "user_id": string; "kind": string; "title": string; "body": string; "data": { [key: string]: unknown }; "read_at": (string | null); "created_at": string }
+export type NotificationRead = { "id": string; "user_id": string; "kind": string; "title": string; "body": string; "data": { [key: string]: unknown }; "read_at": (string | null); "dismissed_at": (string | null); "created_at": string }
 export type ObservabilityEventBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type ObservabilityEventCreate = { "event_id": string; "signal"?: "log" | "trace" | "metric"; "severity"?: "debug" | "info" | "warning" | "error" | "critical"; "timestamp": string; "duration_ms"?: (number | null); "trace_id"?: (string | null); "span_id"?: (string | null); "parent_span_id"?: (string | null); "operation"?: (string | null); "message"?: (string | null); "attributes"?: { [key: string]: unknown } }
 export type ObservabilityEventPage = { "items": Array<ObservabilityEventRead>; "total": number; "limit": number; "offset": number }
@@ -238,6 +238,8 @@ export interface OperationInputs {
   "revert_api_v1_manufacturing_lots__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
   "setNotificationPreference": { path: { "kind": string }; body: NotificationPreferenceUpdate }
   "listNotifications": { query?: { "unread_only"?: boolean; "limit"?: number } }
+  "markAllNotificationsRead": {  }
+  "dismissNotification": { path: { "notification_id": string } }
   "markNotificationRead": { path: { "notification_id": string } }
   "list_records_api_v1_observability_events_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "signal"?: string; "severity"?: string } }
   "create_api_v1_observability_events_post": { body: ObservabilityEventCreate }
@@ -446,6 +448,8 @@ export interface OperationOutputs {
   "revert_api_v1_manufacturing_lots__record_id__revert_post": ManufacturingLotRead
   "setNotificationPreference": NotificationPreferenceRead
   "listNotifications": Array<NotificationRead>
+  "markAllNotificationsRead": unknown
+  "dismissNotification": NotificationRead
   "markNotificationRead": NotificationRead
   "list_records_api_v1_observability_events_get": ObservabilityEventPage
   "create_api_v1_observability_events_post": ObservabilityEventRead
@@ -905,6 +909,14 @@ export const operationRoutes = {
   "listNotifications": {
     "method": "GET",
     "path": "/api/v1/notifications"
+  },
+  "markAllNotificationsRead": {
+    "method": "POST",
+    "path": "/api/v1/notifications/read-all"
+  },
+  "dismissNotification": {
+    "method": "POST",
+    "path": "/api/v1/notifications/{notification_id}/dismiss"
   },
   "markNotificationRead": {
     "method": "POST",

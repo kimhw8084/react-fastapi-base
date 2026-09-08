@@ -17,11 +17,11 @@ import { AvatarGroup, Badge, Banner, BodyText, Button, ButtonGroup, Caption, Cod
 type Section='overview'|'foundations'|'shells'|'table'|'forms'|'layouts'|'engines'
 type LabRecord=BaseRecord&{title:string;status:string;owner:string;priority:string;updated_at:string}
 const fields:FieldDefinition[]=[
- {key:'title',label:'Title',kind:'text',required:true,nullable:false,max_length:160,choices:[],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'status',label:'Status',kind:'select',required:true,nullable:false,max_length:null,choices:['planned','active','blocked','complete'],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'owner',label:'Owner',kind:'text',required:false,nullable:false,max_length:120,choices:[],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'priority',label:'Priority',kind:'select',required:true,nullable:false,max_length:null,choices:['low','normal','high','critical'],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'updated_at',label:'Updated',kind:'datetime',required:true,nullable:false,max_length:null,choices:[],minimum:null,maximum:null,step:null,unit:null,read_only:true},
+ {key:'title',label:'Title',kind:'text',required:true,nullable:false,max_length:160,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'status',label:'Status',kind:'select',required:true,nullable:false,max_length:null,choices:['planned','active','blocked','complete'],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'owner',label:'Owner',kind:'text',required:false,nullable:false,max_length:120,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'priority',label:'Priority',kind:'select',required:true,nullable:false,max_length:null,choices:['low','normal','high','critical'],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'updated_at',label:'Updated',kind:'datetime',required:true,nullable:false,max_length:null,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:true},
 ]
 const definition:WorkspaceDefinition={key:'lab_records',label:'Golden operational records',description:'Actual DataGrid, grouping, selection and column-state primitives.',schema_version:1,fields,columns:['title','status','owner','priority','updated_at'],capabilities:['search','filters','sorting','selection','bulk','saved_views','details','history','relationships'],primary_field:'title',filter_keys:['status','priority'],sort_keys:['title','status','priority','updated_at'],visualizations:['table','board','timeline','dashboard']}
 const rows:LabRecord[]=[
@@ -33,10 +33,10 @@ const rows:LabRecord[]=[
 ]
 const formFields:FieldDefinition[]=[
  fields[0]!,fields[1]!,
- {key:'power',label:'Power budget',kind:'unit_number',required:true,nullable:false,max_length:null,choices:[],minimum:0,maximum:30,step:.1,unit:'kW',read_only:false},
- {key:'tags',label:'Capabilities',kind:'multiselect',required:false,nullable:false,max_length:null,choices:['rack','graph','spc','knowledge','incident'],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'metadata',label:'Structured metadata',kind:'json',required:false,nullable:false,max_length:50000,choices:[],minimum:null,maximum:null,step:null,unit:null,read_only:false},
- {key:'notes',label:'Engineering notes',kind:'markdown',required:false,nullable:false,max_length:20000,choices:[],minimum:null,maximum:null,step:null,unit:null,read_only:false},
+ {key:'power',label:'Power budget',kind:'unit_number',required:true,nullable:false,max_length:null,choices:[],minimum:0,maximum:30,step:.1,unit:'kW',precision:2,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'tags',label:'Capabilities',kind:'multiselect',required:false,nullable:false,max_length:null,choices:['rack','graph','spc','knowledge','incident'],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'metadata',label:'Structured metadata',kind:'json',required:false,nullable:false,max_length:50000,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
+ {key:'notes',label:'Engineering notes',kind:'markdown',required:false,nullable:false,max_length:20000,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false},
 ]
 const sections:Array<{id:Section;label:string;hint:string}>=[
  {id:'overview',label:'Overview',hint:'Design law and capability map'},

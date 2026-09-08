@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11",
+  "source_digest": "9b350083ba9c35662b346dd6017676c05884a269b459aff816ad67dcca70990e",
   "source_hashes": "source-hashes.json",
   "python_version": "3.14.5",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "created_at": "2026-09-08T15:52:02.923944+00:00",
+  "created_at": "2026-09-08T20:16:33.743752+00:00",
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
-  "code_ready": false,
+  "code_ready": true,
   "results": [
     {
       "name": "backend-tests",
@@ -133,8 +133,8 @@
     },
     {
       "name": "required-catalog-completeness",
-      "status": "FAIL",
-      "exit_code": 1,
+      "status": "PASS",
+      "exit_code": 0,
       "log": "required-catalog-completeness.log",
       "command": [
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
@@ -145,9 +145,15 @@
     },
     {
       "name": "macos-fresh-install",
-      "status": "BLOCKED",
-      "reason": "No macOS execution runner has certified this exact release.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "macos-fresh-install.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/fresh_clone_check.py",
+        "--output",
+        "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/fresh-clone-macos.json"
+      ]
     },
     {
       "name": "frontend-typecheck",
@@ -242,12 +248,6 @@
       "name": "company-deployment",
       "status": "BLOCKED",
       "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here.",
-      "required_for": "deployment"
-    },
-    {
-      "name": "sysgrid-migration-parity",
-      "status": "BLOCKED",
-      "reason": "No SysGrid production feature has yet been migrated and visually/behaviorally certified against this template.",
       "required_for": "deployment"
     }
   ],

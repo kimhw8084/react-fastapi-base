@@ -7,9 +7,9 @@
 - Added security-driven Python dependency updates and a passing Python advisory scan.
 - Fixed generated rich-field enum typing, storage validation, overlay dialog labeling, grid pinning and strict TypeScript issues.
 - Centralized release metadata in `VERSION`, wired backend health/bootstrap/Lab/upgrade metadata to it, and added version consistency verification.
-- Added the current v1 completion matrix and refreshed release documentation without promoting provisional catalog entries.
+- Added the current v1 completion matrix, generic catalog-family registry/certification, isolated clean-clone Mac verification, and refreshed release documentation.
 
-This release remains NOT COMPLETE: advanced catalog scope, full accessibility/performance certification, fresh-clone proof, reference-app proofs, and company/macOS qualification are open.
+This release remains NOT COMPLETE: specialized domain qualification, full manual accessibility/performance evidence, reference-app/upgrade proofs, and company qualification are open. Mac clean-clone certification is complete.
 
 ## 0.7.0-rich-field-engine
 
@@ -26,7 +26,7 @@ This release remains NOT COMPLETE: advanced catalog scope, full accessibility/pe
 - Added light/dark/system themes, density, radius, high-contrast/reduced-motion controls, viewport preview and command navigation.
 - Added configurable scheduling/rack presentation, runtime model validation, keyboard alternatives, dirty dialogs and model tests.
 - Added carrier/traveler/floor-plan widgets and software workflow examples.
-- Added controlled React adapter and 23 Storybook stories (not executed in this environment).
+- Added controlled React adapter and 23 Storybook stories; current Storybook and React browser gates execute from the committed lockfile.
 - Preserved reference backend, generated API contracts and operator tools.
 - Added native static-server tests, strict artifact parity, browser evidence, catalog and atomic checkpoint packaging.
 - Fixed calendar portability, wizard drafts, modal keyboard focus, invalid trace summary, wafer coordinate labels and same-origin Lab embedding policy.

@@ -1,10 +1,10 @@
-{"tenant_id": "1b4ab2ec-3e95-46c5-a3e3-1361d9e881a3", "user": "demo.admin"}
-INFO:     Started server process [19743]
+{"tenant_id": "9ebeea09-d2ce-4d1c-bb0b-5d930dec9173", "user": "demo.admin"}
+INFO:     Started server process [38667]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:18081 (Press CTRL+C to quit)
-INFO:     127.0.0.1:62764 - "GET /api/v1/readiness HTTP/1.1" 200 OK
-Static frontend listening on 4183
+INFO:     Uvicorn running on http://127.0.0.1:60113 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60140 - "GET /api/v1/readiness HTTP/1.1" 200 OK
+Static frontend listening on 60114
 
 > react-fastapi-base-frontend@1.0.0-rc.1 test:e2e
 > playwright test
@@ -12,66 +12,66 @@ Static frontend listening on 4183
 
 Running 5 tests using 1 worker
 
-INFO:     127.0.0.1:62783 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62783 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62783 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/work-items HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "POST /api/v1/work-items HTTP/1.1" 201 Created
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62785 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62787 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62793 - "OPTIONS /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62788 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62794 - "GET /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62783 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62793 - "OPTIONS /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09/history HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62783 - "GET /api/v1/work-items/310cebda-bbc2-4dd2-b3ef-cc8a6c22de09/history HTTP/1.1" 200 OK
-  ✓  1 [chromium] › tests/e2e/workspace.spec.ts:4:1 › create, reload and retrieve revision-backed details (882ms)
-INFO:     127.0.0.1:62799 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62800 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62799 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62800 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62801 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62799 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62802 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-  ✓  2 [chromium] › tests/e2e/workspace.spec.ts:20:1 › dirty form close requires a decision (370ms)
-INFO:     127.0.0.1:62807 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62808 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62807 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62808 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62810 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62807 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62811 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-  ✓  3 [chromium] › tests/e2e/workspace.spec.ts:30:55 › theme Operations: no serious/critical automated accessibility violations (1.1s)
-INFO:     127.0.0.1:62825 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62826 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62825 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62826 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62827 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62825 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62828 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-  ✓  4 [chromium] › tests/e2e/workspace.spec.ts:30:55 › theme Clarity: no serious/critical automated accessibility violations (1.0s)
-INFO:     127.0.0.1:62839 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62840 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62839 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62840 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62843 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62839 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62844 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60155 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60155 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/work-items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "POST /api/v1/work-items HTTP/1.1" 201 Created
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60160 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60155 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60167 - "OPTIONS /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60161 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60168 - "GET /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60167 - "OPTIONS /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453/history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "GET /api/v1/work-items/42eebf23-b61e-4f31-a8fe-52e242b75453/history HTTP/1.1" 200 OK
+  ✓  1 [chromium] › tests/e2e/workspace.spec.ts:4:1 › create, reload and retrieve revision-backed details (744ms)
+INFO:     127.0.0.1:60176 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60177 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60176 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60177 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60181 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60176 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60182 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+  ✓  2 [chromium] › tests/e2e/workspace.spec.ts:20:1 › dirty form close requires a decision (381ms)
+INFO:     127.0.0.1:60194 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60195 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60194 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60195 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60202 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60203 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60194 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+  ✓  3 [chromium] › tests/e2e/workspace.spec.ts:30:55 › theme Operations: no serious/critical automated accessibility violations (1.2s)
+INFO:     127.0.0.1:60223 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60224 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60223 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60224 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60229 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60223 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60230 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+  ✓  4 [chromium] › tests/e2e/workspace.spec.ts:30:55 › theme Clarity: no serious/critical automated accessibility violations (1.1s)
+INFO:     127.0.0.1:60241 - "GET /api/v1/bootstrap HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60243 - "OPTIONS /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60241 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60243 - "OPTIONS /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60249 - "OPTIONS /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60241 - "GET /api/v1/workspaces/work_items/views HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60250 - "GET /api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0 HTTP/1.1" 200 OK
   ✓  5 [chromium] › tests/e2e/workspace.spec.ts:30:55 › theme Minimal: no serious/critical automated accessibility violations (1.1s)
 
   5 passed (5.1s)
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [19743]
+INFO:     Finished server process [38667]

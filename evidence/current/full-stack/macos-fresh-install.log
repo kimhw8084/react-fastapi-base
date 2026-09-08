@@ -1,0 +1,11 @@
+  0 git clone --branch main --single-branch https://github.com/kimhw8084/react-fastapi-base.git clone
+  0 python3 dev setup
+  0 python3 dev contracts
+  0 python3 dev architecture
+  0 python3 scripts/catalog.py --check --release
+  0 .venv/bin/python -m pytest -q
+  0 npm run typecheck
+  0 npm run build
+  0 npm run build:storybook
+  0 npx playwright install chromium
+  0 python3 scripts/e2e_runner.py

@@ -11,13 +11,37 @@ transforming...
 ✓ 185 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/index.html                     0.40 kB │ gzip:   0.28 kB
-dist/assets/index-C-9Tw7Ka.css    369.97 kB │ gzip:  68.70 kB
-dist/assets/index-DouGFBfg.js   1,595.18 kB │ gzip: 439.77 kB
+dist/index.html                              0.40 kB │ gzip:   0.28 kB
+dist/assets/index-C-9Tw7Ka.css             369.97 kB │ gzip:  68.70 kB
+dist/assets/WorkspaceShell-CXbQO3xF.js       1.01 kB │ gzip:   0.42 kB
+dist/assets/model-Dp3BhK-X.js                1.19 kB │ gzip:   0.60 kB
+dist/assets/model-DYk614PN.js                1.49 kB │ gzip:   0.61 kB
+dist/assets/Workspace-BrfcKMYs.js            1.56 kB │ gzip:   0.80 kB
+dist/assets/Workspace-tsMBeIrh.js            1.90 kB │ gzip:   0.91 kB
+dist/assets/Workspace-CR4_xCcv.js            1.95 kB │ gzip:   0.91 kB
+dist/assets/Workspace-mpqXWcUh.js            2.28 kB │ gzip:   1.02 kB
+dist/assets/useMutation-FwEZLymy.js          2.30 kB │ gzip:   0.95 kB
+dist/assets/Workspace-hmvYCfHJ.js            4.22 kB │ gzip:   1.59 kB
+dist/assets/Workspace-BVgF_84A.js            4.91 kB │ gzip:   1.90 kB
+dist/assets/Workspace-DzXB05Mg.js            4.95 kB │ gzip:   1.87 kB
+dist/assets/Workspace-CoBrrszc.js            5.30 kB │ gzip:   2.25 kB
+dist/assets/Workspace-DsQ0JYyo.js            5.37 kB │ gzip:   1.98 kB
+dist/assets/Workspace-BOC0EZeG.js            5.40 kB │ gzip:   1.97 kB
+dist/assets/Workspace-rPjlo4Qv.js            5.44 kB │ gzip:   1.89 kB
+dist/assets/Workspace-DfZgusbU.js            5.74 kB │ gzip:   2.06 kB
+dist/assets/Workspace-b8GXq_yO.js            5.87 kB │ gzip:   2.05 kB
+dist/assets/Workspace-D-04_gKw.js            6.05 kB │ gzip:   2.16 kB
+dist/assets/Workspace-BW3dzS4s.js            6.87 kB │ gzip:   2.36 kB
+dist/assets/Workspace-aWFHqDni.js            6.89 kB │ gzip:   2.46 kB
+dist/assets/Workspace-5nW5VGkh.js            7.43 kB │ gzip:   2.38 kB
+dist/assets/primitives-CJqCfiyw.js           8.02 kB │ gzip:   2.56 kB
+dist/assets/Workspace-BdYYn1rO.js            8.87 kB │ gzip:   2.82 kB
+dist/assets/Workspace-D6JSHyaT.js            8.96 kB │ gzip:   3.17 kB
+dist/assets/Workspace-LbitqVzM.js            9.92 kB │ gzip:   3.56 kB
+dist/assets/Workspace-CQ89Grlq.js           11.05 kB │ gzip:   3.97 kB
+dist/assets/ExperienceLab-Xm_q8pqH.js       21.58 kB │ gzip:   6.45 kB
+dist/assets/EntityWorkspace-DZhsvKUL.js     74.76 kB │ gzip:  19.34 kB
+dist/assets/index-C58CNvPI.js              255.18 kB │ gzip:  79.12 kB
+dist/assets/FieldInput-DY8rRitp.js       1,119.84 kB │ gzip: 311.73 kB
 
-✓ built in 595ms
-[plugin builtin:vite-reporter] 
-(!) Some chunks are larger than 1200 kB after minification. Consider:
-- Using dynamic import() to code-split the application
-- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
-- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 306ms

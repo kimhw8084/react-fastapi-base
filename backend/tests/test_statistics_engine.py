@@ -1,7 +1,7 @@
 from math import isclose
 import pytest
 
-from app.platform.statistics import capability, descriptive, ewma, imr, pareto, run_rule_flags, xbar_r
+from app.platform.statistics import c_chart, capability, correlation, cusum, descriptive, ewma, imr, linear_regression, np_chart, p_chart, pareto, run_rule_flags, u_chart, xbar_r, xbar_s
 
 
 def test_descriptive_and_imr_are_deterministic():
@@ -42,3 +42,20 @@ def test_ewma_pareto_and_run_rules():
     flags=run_rule_flags([1,2,3,4,5,6,7,8,9,10],center=0)
     assert 7 in flags['eight_on_one_side']
     assert 5 in flags['six_point_trend']
+
+
+def test_xbar_s_attribute_charts_and_cusum_are_deterministic():
+    result=xbar_s([[10,11,9,10],[10,10,11,9],[12,11,10,11],[9,10,9,10]])
+    assert result['subgroup_size']==4 and len(result['standard_deviations'])==4
+    p=p_chart([1,2,1,3],[10,10,10,10]);assert p['center']==.175 and len(p['proportions'])==4
+    assert np_chart([1,2,1],10)['center']==pytest.approx(4/3)
+    assert c_chart([1,2,1])['center']==pytest.approx(4/3)
+    assert len(u_chart([1,2,1],[10,20,10])['rates'])==3
+    assert cusum([10,10,12],target=10)['positive'][-1]==pytest.approx(2)
+
+
+def test_correlation_and_regression_have_known_values_and_zero_variance_guards():
+    assert correlation([1,2,3],[2,4,6])==pytest.approx(1)
+    fit=linear_regression([1,2,3],[2,4,6]);assert fit['slope']==pytest.approx(2) and fit['intercept']==pytest.approx(0) and fit['r_squared']==pytest.approx(1)
+    with pytest.raises(ValueError):correlation([1,1,1],[2,3,4])
+    with pytest.raises(ValueError):linear_regression([1,1,1],[2,3,4])

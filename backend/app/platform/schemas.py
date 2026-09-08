@@ -42,7 +42,7 @@ class Bootstrap(StrictSchema):
 class FieldDefinition(StrictSchema):
     key: str
     label: str
-    kind: Literal['text','textarea','select','integer','number','boolean','date','datetime','email','url','markdown','code','json','multiselect','percent','duration','scientific','unit_number']
+    kind: Literal['text','textarea','long_text','select','integer','number','decimal','boolean','date','datetime','email','url','markdown','code','json','object','array','multiselect','multi_enum','percent','duration','scientific','unit_number','file','image','relationship','range','tolerance','coordinates','formula','computed']
     required: bool = False
     nullable: bool = False
     max_length: int | None = None
@@ -51,14 +51,25 @@ class FieldDefinition(StrictSchema):
     maximum: float | None = None
     step: float | None = None
     unit: str | None = Field(default=None, max_length=24)
+    precision: int | None = Field(default=None, ge=0, le=12)
+    display_format: str | None = Field(default=None, max_length=80)
+    searchable: bool = True
+    filterable: bool = True
+    sortable: bool = True
+    exportable: bool = True
+    computed: bool = False
     read_only: bool = False
     @model_validator(mode='after')
     def unit_contract(self):
-        numeric={'integer','number','percent','duration','scientific','unit_number'}
+        numeric={'integer','number','decimal','percent','duration','scientific','unit_number','range','tolerance'}
         if self.unit is not None and self.kind not in numeric:
             raise ValueError('Units are only valid for numeric fields.')
         if self.kind == 'unit_number' and not self.unit:
             raise ValueError('unit_number fields require a unit.')
+        if self.kind in {'formula','computed'} and not (self.read_only or self.computed):
+            raise ValueError('Formula and computed fields must be read-only or explicitly computed.')
+        if self.computed and not self.read_only:
+            raise ValueError('Computed fields are server-owned and must be read-only.')
         return self
 
 class WorkspaceDefinition(StrictSchema):
@@ -240,7 +251,7 @@ class EventRead(StrictSchema):
 class NotificationCreate(StrictSchema):
     user_id:str=Field(min_length=1,max_length=200);kind:str=Field(pattern=r'^[a-z][a-z0-9_.-]{0,59}$');title:str=Field(min_length=1,max_length=180);body:str=Field(default='',max_length=2000);data:dict[str,Any]=Field(default_factory=dict)
 class NotificationRead(StrictSchema):
-    id:str;user_id:str;kind:str;title:str;body:str;data:dict[str,Any];read_at:datetime|None;created_at:datetime
+    id:str;user_id:str;kind:str;title:str;body:str;data:dict[str,Any];read_at:datetime|None;dismissed_at:datetime|None;created_at:datetime
 class NotificationPreferenceUpdate(StrictSchema):
     enabled:bool;revision:int|None=Field(default=None,ge=1)
 class NotificationPreferenceRead(StrictSchema):
