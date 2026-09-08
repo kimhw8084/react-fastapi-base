@@ -3,6 +3,7 @@
 
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--surface-page);color:var(--text-primary);font:var(--font-size)/1.5 var(--font-body)}
+.readonly-code-viewer{border:1px solid var(--border);border-radius:var(--radius-panel);background:var(--surface-panel);overflow:hidden}.readonly-code-viewer header{display:flex;justify-content:space-between;gap:12px;padding:9px 11px;border-bottom:1px solid var(--border)}.readonly-code-viewer header span{font-size:10px;color:var(--text-muted)}.readonly-code-viewer pre{margin:0;padding:10px;white-space:pre;overflow:auto;font:12px/1.55 var(--font-mono)}.code-line{display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px}.code-line i{font-style:normal;color:var(--text-muted);text-align:right;user-select:none}.code-line b{font-weight:400}.diff-group{display:contents}.diff-line{display:block}.diff-line.removed{color:var(--danger)}.diff-line.added{color:var(--success)}
 button,input,select,textarea{font:inherit;color:inherit}
 button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 button{min-height:var(--control-height);padding:8px 13px;border:1px solid var(--border);border-radius:var(--radius-control);background:var(--surface-control);cursor:pointer;font-weight:600}

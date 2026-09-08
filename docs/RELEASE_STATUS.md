@@ -7,7 +7,7 @@
 ## Verified in this checkout
 
 - Frontend lockfile, `npm ci`, TypeScript, unit tests, production build, Storybook build, and actual React browser workflows.
-- FastAPI backend suite: 185 tests passing on the security-updated dependency set, including typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views, webhook delivery history, reviewed XLSX exchange and storage adapter safety.
+- FastAPI backend suite: count is refreshed by the final release gate; it includes typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views, webhook delivery history, reviewed XLSX exchange, storage adapter safety, rack constraints, and engineering-pack parity fixtures.
 - Isolated clean-clone Mac certification: setup, contracts, architecture, catalog release check, backend tests, frontend typecheck/build, Storybook and React E2E all passed with cache isolation.
 - Generated contract check, architecture lint, source security checks, owned algorithm performance checks, Lab build, and Lab HTTP/browser tests.
 - Native and React surfaces use synthetic/disposable data only.
@@ -20,12 +20,13 @@
 - Full accessibility requires major-screen axe coverage plus manual keyboard, zoom, high-contrast, and VoiceOver evidence.
 - Full performance requires the specified 100k-row and large graph/rack/wafer/log/SPC stress runs.
 - Independent generator/reference-app proofs remain to be completed.
-- Saved views now support explicit tenant teams with server-enforced membership and a conflict-resolution recovery action; favorites/defaults and offline reconciliation remain open.
+- Saved views now support explicit tenant teams with server-enforced membership and a conflict-resolution recovery action; favorites/defaults are present, while offline/local reconciliation and broader browser conflict coverage remain open.
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
 - Work-item exchange now supports dependency-free XLSX export, preview and atomic reviewed import with formula-cell rejection; multi-entity relationship snapshots remain open.
-- A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations; attachment metadata wiring, malware/CDR scanning, and company-mounted qualification remain open.
+- A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations, and attachment metadata is object-key backed with a scanner/CDR hook; provider implementation and company-mounted qualification remain open.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
+- Rack optional PDU/power/thermal/weight constraints, graph editing history/layout actions, and semiconductor/software metric parity helpers are implemented and tested; their large-scale browser/stress proofs remain open.
 
 ## Evidence policy
 
