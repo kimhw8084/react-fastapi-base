@@ -13,7 +13,10 @@ ROOT=Path(__file__).resolve().parents[1]
 BACKEND_PYTHON=ROOT/'backend/.venv'/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
 
 def wait(url,process):
-    for _ in range(100):
+    # Cold-start migrations can exceed ten seconds when the full release gate is
+    # competing for CPU. Keep failing fast when the process exits, but allow a
+    # bounded 30-second readiness window for a healthy disposable server.
+    for _ in range(300):
         if process.poll() is not None:raise RuntimeError('A disposable server exited before readiness.')
         try:
             with urllib.request.urlopen(url,timeout=1) as response:
