@@ -1,10 +1,26 @@
 {
   "schema_version": 1,
-  "source_digest": "1f28e7e4f8397ba7504817300bbdb069b908d71ca22ee778eaabc6293715b8d1",
+  "source_digest": "cbcc1d4ce088b4042efe0c6eb212834b963e12c2f19e775b60e8d82f95f3e164",
   "source_hashes": "source-hashes.json",
   "python_version": "3.14.5",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "created_at": "2026-09-08T20:43:20.999648+00:00",
+  "created_at": "2026-09-08T20:56:54.660188+00:00",
+  "timestamp": "2026-09-08T20:56:54.660347+00:00",
+  "command": [
+    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+    "scripts/verify.py",
+    "--output",
+    "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack",
+    "--release"
+  ],
+  "exit_code": 0,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.5"
+  },
+  "hashes": {
+    "source_digest": "cbcc1d4ce088b4042efe0c6eb212834b963e12c2f19e775b60e8d82f95f3e164"
+  },
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
   "code_ready": true,
