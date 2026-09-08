@@ -181,13 +181,20 @@ class ViewColumn(StrictSchema):
     sortIndex: int | None = Field(default=None, ge=0, le=30)
     pinned: Literal['left','right'] | None = None
 
+class ViewSort(StrictSchema):
+    key: str = Field(min_length=1, max_length=40)
+    direction: Literal['asc', 'desc'] = 'desc'
+
 class ViewDefinition(StrictSchema):
+    schema_version: int = Field(default=2, ge=1, le=20)
     search: str = Field(default='', max_length=200)
     filters: dict[str, str] = Field(default_factory=dict, max_length=20)
+    advanced_filters: list[dict[str, Any]] = Field(default_factory=list, max_length=20)
     archived: bool = False
     group_by: str = Field(default='', max_length=40)
     sort: str = Field(default='updated_at', max_length=40)
     direction: Literal['asc', 'desc'] = 'desc'
+    sorts: list[ViewSort] = Field(default_factory=list, max_length=8)
     density: Literal['comfortable','compact'] = 'comfortable'
     visualization: str = Field(default='table', min_length=1, max_length=40)
     columns: list[ViewColumn] = Field(default_factory=list, max_length=30)
@@ -262,6 +269,25 @@ class AttachmentRead(StrictSchema):
     sha256: str
     created_by: str
     created_at: datetime
+
+class CommentCreate(StrictSchema):
+    body: str = Field(min_length=1, max_length=10000)
+    @field_validator('body')
+    @classmethod
+    def nonblank(cls, value):
+        value=value.strip()
+        if not value: raise ValueError('Comment cannot be blank.')
+        return value
+
+class CommentRead(StrictSchema):
+    id: str
+    workspace: str
+    entity: str
+    entity_id: str
+    author: str
+    body: str
+    created_at: datetime
+    updated_at: datetime
 
 class JobCreate(StrictSchema):
     job_type: str = Field(pattern=r'^[a-z][a-z0-9_.-]{0,79}$')

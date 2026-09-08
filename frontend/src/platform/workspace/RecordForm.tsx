@@ -3,7 +3,7 @@ import { Dialog } from '../ui/Dialog'
 import { ErrorNotice } from '../ui/Notice'
 import { ApiError } from '../api/client'
 import type { BaseRecord, Draft, WorkspaceAdapter } from './types'
-import { FieldInput } from './FieldInput'
+import { FormEngine } from './FormEngine'
 
 export function RecordForm<T extends BaseRecord>({ adapter, row, onClose, onSaved }: { adapter: WorkspaceAdapter<T>; row?: T; onClose: () => void; onSaved: (row: T) => void }) {
   const initial = useMemo(() => adapter.draft(row), [adapter, row])
@@ -24,14 +24,8 @@ export function RecordForm<T extends BaseRecord>({ adapter, row, onClose, onSave
     setBusy(true); setError(null)
     try { const result = row ? await adapter.update(row, draft) : await adapter.create(draft, operationKey.current); onSaved(result) } catch (e) { setError(e) } finally { setBusy(false) }
   }
-  return <Dialog title={row ? `Edit ${adapter.singular}` : `New ${adapter.singular}`} onClose={onClose} dirty={dirty} busy={busy} footer={<><span className="muted">{row ? `Editing revision ${row.revision}` : 'Saved changes are recorded in audit history.'}</span><button type="button" disabled={busy} onClick={event => event.currentTarget.closest('.overlay-surface')?.dispatchEvent(new Event('golden-request-close'))}>Cancel</button><button type="submit" form="record-form" className="primary" disabled={busy}>{busy ? 'Saving…' : 'Save changes'}</button></>}>
-    <form id="record-form" onSubmit={e => { e.preventDefault(); void save() }}>
-      {error !== null && <ErrorNotice error={error} />}
-      {adapter.renderForm ? adapter.renderForm(draft, setDraft) : <div className="form-grid">{adapter.definition.fields.map((field,index) => <label className={['textarea','markdown','code','json','multiselect'].includes(field.kind) ? 'full-width' : ''} key={field.key}>
-        <span>{field.label}{field.required && <span aria-label="required"> *</span>}{field.unit&&<small className="field-unit-hint"> · {field.unit}</small>}</span>
-        {field.read_only ? <output className="readonly-field">{String(draft[field.key]??'—')}</output> : <FieldInput field={field} draft={draft} onChange={setDraft} invalid={Boolean(fieldErrors[field.key])} autoFocus={index===0}/>}
-        {fieldErrors[field.key] && <small className="field-error">{fieldErrors[field.key]}</small>}
-      </label>)}</div>}
-    </form>
+  return <Dialog title={row ? `Edit ${adapter.singular}` : `New ${adapter.singular}`} onClose={onClose} dirty={dirty} busy={busy} footer={<><span className="muted">{row ? `Editing revision ${row.revision}` : 'Saved changes are recorded in audit history.'}</span><button type="button" disabled={busy} onClick={event => event.currentTarget.closest('.overlay-surface')?.dispatchEvent(new Event('golden-request-close'))}>Cancel</button>{!adapter.renderForm&&<button type="submit" form="record-form" className="primary" disabled={busy}>{busy ? 'Saving…' : 'Save changes'}</button>}</>}> 
+    {error !== null && <ErrorNotice error={error} />}
+    {adapter.renderForm ? <form id="record-form" onSubmit={e => { e.preventDefault(); void save() }}>{adapter.renderForm(draft,setDraft)}<button type="submit" className="primary" disabled={busy}>{busy?'Saving…':'Save changes'}</button></form> : <FormEngine formId="record-form" fields={adapter.definition.fields} draft={draft} initial={initial} onChange={setDraft} onSubmit={save} presentation="sectioned" busy={busy} serverErrors={fieldErrors} />}
   </Dialog>
 }

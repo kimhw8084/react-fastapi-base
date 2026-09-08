@@ -81,3 +81,14 @@ def test_saved_view_rejects_unsupported_visualization(client):
     response=client.post(V,json={'name':'Bad projection','definition':{'visualization':'rack'}})
     assert response.status_code==422
     assert response.json()['error']['code']=='invalid_saved_visualization'
+
+def test_record_comments_are_tenant_scoped_and_authorized(env,client,item):
+    path=f"/api/v1/records/work_items/{item['id']}/comments"
+    created=client.post(path,json={'body':'Check the backup runbook.'})
+    assert created.status_code==201,created.text
+    assert client.get(path).json()[0]['body']=='Check the backup runbook.'
+    bob=env['client']('bob')
+    assert bob.get(path).json()[0]['author']=='alice'
+    assert bob.delete('/api/v1/records/comments/'+created.json()['id']).status_code==403
+    other=env['client']('carol');other.headers['X-Tenant-Id']=env['other'];other.headers['X-CSRF-Token']=other.get('/api/v1/bootstrap').json()['csrf_token']
+    assert other.get(path).status_code==404

@@ -51,10 +51,14 @@ def delete_view(request: Request,actor: A,workspace: str,view_id: str,revision: 
     return Response(status_code=204)
 
 @router.get('/audit',response_model=list[AuditRead],operation_id='listAudit')
-def audit(request: Request,actor: A,limit: int=Query(50,ge=1,le=200)):
-    actor.require('admin')
+def audit(request: Request,actor: A,limit: int=Query(50,ge=1,le=200),workspace: str|None=Query(default=None,max_length=80),entity_id: str|None=Query(default=None,max_length=64)):
+    if not workspace and not entity_id: actor.require('admin')
+    else: actor.require('read')
     with request.app.state.database.session(actor.tenant_id) as db:
-        return [AuditRead.model_validate(row) for row in db.scalars(select(AuditEvent).order_by(AuditEvent.created_at.desc()).limit(limit)).all()]
+        query=select(AuditEvent).order_by(AuditEvent.created_at.desc()).limit(limit)
+        if workspace: query=query.where(AuditEvent.workspace==workspace)
+        if entity_id: query=query.where(AuditEvent.entity_id==entity_id)
+        return [AuditRead.model_validate(row) for row in db.scalars(query).all()]
 
 
 @router.get('/identity-proof',operation_id='identityProof')
@@ -119,6 +123,19 @@ def relationship_graph(request: Request,actor: A,entity: str=Query(...,max_lengt
     with request.app.state.database.session(actor.tenant_id) as db:
         return relationships.list_for_entity(db,actor,request.app.state.entities,entity,include_archived=include_archived,limit=limit)
 
+@router.get('/relationships/explore',response_model=list[RelationshipRead],operation_id='exploreRelationships')
+def explore_relationships(request:Request,actor:A,entity:str=Query(...,max_length=40),record_id:str=Query(...,max_length=64),kind:str|None=Query(default=None,max_length=20),direction:str=Query('both',pattern='^(both|incoming|outgoing)$'),depth:int=Query(1,ge=1,le=8),limit:int=Query(200,ge=1,le=1000)):
+    with request.app.state.database.session(actor.tenant_id) as db:
+        return relationships.explore(db,actor,request.app.state.entities,entity,record_id,kind=kind,direction=direction,depth=depth,limit=limit)
+
+@router.get('/relationships/{explorer}/explore',response_model=list[RelationshipRead],operation_id='namedRelationshipExplorer')
+def named_relationship_explorer(request:Request,actor:A,explorer:str,entity:str=Query(...,max_length=40),record_id:str=Query(...,max_length=64),depth:int=Query(2,ge=1,le=8),limit:int=Query(200,ge=1,le=1000)):
+    mapping={'related':(None,'both'),'backlinks':(None,'incoming'),'dependencies':('dependency','outgoing'),'impact':('dependency','incoming'),'connections':('connection','both')}
+    if explorer not in mapping: raise AppError(404,'explorer_missing','Relationship explorer is not available.')
+    kind,direction=mapping[explorer]
+    with request.app.state.database.session(actor.tenant_id) as db:
+        return relationships.explore(db,actor,request.app.state.entities,entity,record_id,kind=kind,direction=direction,depth=depth,limit=limit)
+
 @router.post('/relationships',response_model=RelationshipRead,status_code=201,operation_id='createRelationship')
 def create_relationship(request: Request,actor: A,data: RelationshipCreate):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
@@ -141,8 +158,21 @@ def relationship_history(request: Request,actor: A,relationship_id: str):
 
 # Generic platform services. These endpoints expose bounded administration/read
 # surfaces; feature code enqueues jobs/emits events through the platform services.
-from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookDeliveryRead, WebhookEndpointRead, WebhookEndpointWrite, TeamCreate, TeamRead, TeamMemberWrite, TeamMemberRead
-from app.platform import jobs as platform_jobs, events as platform_events, notifications as platform_notifications, feature_flags as platform_flags, webhooks as platform_webhooks, teams as platform_teams
+from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookDeliveryRead, WebhookEndpointRead, WebhookEndpointWrite, TeamCreate, TeamRead, TeamMemberWrite, TeamMemberRead, CommentCreate, CommentRead
+from app.platform import jobs as platform_jobs, events as platform_events, notifications as platform_notifications, feature_flags as platform_flags, webhooks as platform_webhooks, teams as platform_teams, comments as platform_comments
+
+@router.get('/records/{entity}/{record_id}/comments',response_model=list[CommentRead],operation_id='listRecordComments')
+def list_record_comments(request:Request,actor:A,entity:str,record_id:str):
+    with request.app.state.database.session(actor.tenant_id) as db:return platform_comments.list_comments(db,actor,entity,record_id,request.app.state.entities)
+
+@router.post('/records/{entity}/{record_id}/comments',response_model=CommentRead,status_code=201,operation_id='createRecordComment')
+def create_record_comment(request:Request,actor:A,entity:str,record_id:str,data:CommentCreate):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_comments.create_comment(db,actor,entity,record_id,data,request.app.state.entities)
+
+@router.delete('/records/comments/{comment_id}',status_code=204,operation_id='deleteRecordComment')
+def delete_record_comment(request:Request,actor:A,comment_id:str):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:platform_comments.delete_comment(db,actor,comment_id)
+    return Response(status_code=204)
 
 @router.get('/teams',response_model=list[TeamRead],operation_id='listWorkspaceTeams')
 def list_workspace_teams(request:Request,actor:A):

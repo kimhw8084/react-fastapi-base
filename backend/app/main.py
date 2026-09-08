@@ -25,6 +25,8 @@ from app.platform.middleware import RequestSafetyMiddleware
 from app.platform.models import Tenant
 from app.platform.router import router as platform_router
 from app.platform.version import VERSION
+from app.platform.storage import LocalFilesystemStorage
+from app.platform.attachments import NoopMalwareScanner
 from app.features.registry import DEFINITIONS, ENTITY_BINDINGS, ROUTERS
 from app.profiles.company.identity import CompanyIdentity, DevelopmentIdentity
 
@@ -58,6 +60,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.workspaces=workspaces
     app.state.entities=entities
     app.state.database=database
+    # The adapter is tenant-scoped and stores objects outside SQLite. Company
+    # deployments still fail closed through Settings qualification before use.
+    app.state.object_storage=LocalFilesystemStorage(settings.data_root/'objects')
+    app.state.malware_scanner=NoopMalwareScanner()
     app.state.identity=CompanyIdentity() if settings.profile=='company' else DevelopmentIdentity(settings.dev_user)
     app.state.csrf_secret=settings.csrf_secret or secrets.token_urlsafe(32)
     app.add_middleware(RequestSafetyMiddleware,settings=settings)

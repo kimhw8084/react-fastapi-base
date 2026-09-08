@@ -87,11 +87,23 @@ class Attachment(TenantBase):
     content_type: Mapped[str] = mapped_column(String(100))
     size: Mapped[int] = mapped_column(Integer)
     sha256: Mapped[str] = mapped_column(String(64))
-    # Small bounded attachments share the DB's atomicity and backup boundary.
-    # Larger object storage is an explicitly separate future adapter.
-    content: Mapped[bytes]
+    # Legacy rows may keep a bounded inline payload. New rows use object_key so
+    # configured object storage can keep content outside SQLite.
+    content: Mapped[bytes] = mapped_column(nullable=False, default=b'')
+    object_key: Mapped[str | None] = mapped_column(String(240), nullable=True, unique=True)
     created_by: Mapped[str] = mapped_column(String(200))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+class RecordComment(TenantBase):
+    __tablename__ = 'record_comments'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    workspace: Mapped[str] = mapped_column(String(80), index=True)
+    entity: Mapped[str] = mapped_column(String(80), index=True)
+    entity_id: Mapped[str] = mapped_column(String(64), index=True)
+    author: Mapped[str] = mapped_column(String(200), index=True)
+    body: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 class EntityRelationship(TenantBase):
     __tablename__ = 'entity_relationships'

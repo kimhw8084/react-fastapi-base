@@ -46,3 +46,14 @@ def test_relationship_graph_lists_entity_edges(client):
     edge=next(row for row in graph.json() if row['id']==created.json()['id'])
     assert edge['source']['label']=='Graph project'
     assert edge['target']['label']=='Graph item'
+
+def test_relationship_explorers_are_bounded_and_directional(client):
+    project=client.post('/api/v1/projects',json={'title':'Explorer project','summary':'','status':'planned','owner':'ops'}).json()
+    item=client.post('/api/v1/work-items',json={'title':'Explorer item','description':'','status':'open','priority':'normal'}).json()
+    created=client.post('/api/v1/relationships',json={'definition_key':'project_work_items','source_id':project['id'],'target_id':item['id'],'metadata':{}}).json()
+    related=client.get('/api/v1/relationships/related/explore',params={'entity':'projects','record_id':project['id']})
+    assert related.status_code==200 and related.json()[0]['id']==created['id']
+    backlinks=client.get('/api/v1/relationships/backlinks/explore',params={'entity':'work_items','record_id':item['id']})
+    assert backlinks.status_code==200 and backlinks.json()[0]['source']['id']==project['id']
+    invalid=client.get('/api/v1/relationships/explore',params={'entity':'projects','record_id':project['id'],'depth':9})
+    assert invalid.status_code==422

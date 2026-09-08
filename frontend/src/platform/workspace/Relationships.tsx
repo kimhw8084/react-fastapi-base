@@ -96,3 +96,14 @@ export function ImpactExplorer(props:ExplorerProps){return <Explorer {...props} 
 export function ConnectionExplorer(props:ExplorerProps){return <Explorer {...props} filter={definition=>definition?.kind==='connection'} title="Connections"/>}
 export const RelationshipPanel=Relationships
 export const RelationshipGraph=RelatedRecords
+
+function NamedExplorer({api,entity,recordId,user,tenant,name,title}:{api:ApiClient;entity:string;recordId:string;user:string;tenant:string;name:string;title:string}){
+ const query=useQuery({queryKey:['relationship-explorer',user,tenant,name,entity,recordId],queryFn:()=>api.request<RelationshipRead[]>(`/api/v1/relationships/${name}/explore?${new URLSearchParams({entity,record_id:recordId})}`)})
+ return <section className="relationship-explorer" aria-label={title}><header><h3>{title}</h3><span>{query.data?.length??0}</span></header>{query.isPending?<p role="status">Loading {title.toLowerCase()}…</p>:query.isError?<ErrorNotice error={query.error}/>:query.data?.length?<RelationshipTable rows={query.data}/>:<EmptyState title={`No ${title.toLowerCase()}`} description="The explorer reflects canonical typed relationships only."/>}</section>
+}
+
+export function RelatedRecordsExplorer(props:ExplorerProps){return <NamedExplorer {...props} name="related" title="Related records"/>}
+export function BacklinksExplorer(props:ExplorerProps){return <NamedExplorer {...props} name="backlinks" title="Backlinks"/>}
+export function DependencyExplorerPanel(props:ExplorerProps){return <NamedExplorer {...props} name="dependencies" title="Dependencies"/>}
+export function ImpactExplorerPanel(props:ExplorerProps){return <NamedExplorer {...props} name="impact" title="Impact"/>}
+export function ConnectionExplorerPanel(props:ExplorerProps){return <NamedExplorer {...props} name="connections" title="Connections"/>}

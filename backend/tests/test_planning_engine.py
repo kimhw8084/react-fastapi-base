@@ -31,3 +31,12 @@ def test_plan_task_can_belong_to_only_one_project(client):
     assert client.post('/api/v1/relationships',json={'definition_key':'project_plan_tasks','source_id':p1['id'],'target_id':task['id']}).status_code==201
     conflict=client.post('/api/v1/relationships',json={'definition_key':'project_plan_tasks','source_id':p2['id'],'target_id':task['id']})
     assert conflict.status_code==409 and conflict.json()['error']['code']=='relationship_cardinality'
+
+def test_plan_capacity_reports_overallocation_and_baseline_slip(client):
+    create_task(client,'Capacity A',start='2026-09-01',end='2026-09-03',baseline_start='2026-09-01',baseline_end='2026-09-02',resource_group='fab',effort_hours=14,capacity_hours=8)
+    create_task(client,'Capacity B',start='2026-09-02',end='2026-09-02',resource_group='fab',effort_hours=4,capacity_hours=8)
+    report=client.get('/api/v1/plan-tasks/capacity',params={'start':'2026-09-01','end':'2026-09-30'})
+    assert report.status_code==200,report.text
+    row=next(item for item in report.json() if item['resource_group']=='fab')
+    assert row['task_count']==2 and row['effort_hours']==18 and row['capacity_hours']==16
+    assert row['overallocated'] is True and row['baseline_slip_days']==1

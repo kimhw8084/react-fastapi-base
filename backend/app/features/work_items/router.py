@@ -118,7 +118,7 @@ def add_attachment(request: Request,actor: A,item_id: str,data: AttachmentUpload
         item=service.require_item(db,item_id)
         if item.archived:
             raise AppError(409,'archived_readonly','Restore the item before adding files.')
-        return attach(db,actor,'work_items',item_id,data)
+        return attach(db,actor,'work_items',item_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner)
 
 @router.get('/{item_id}/attachments/{attachment_id}',operation_id='downloadAttachment')
 def download_attachment(request: Request,actor: A,item_id: str,attachment_id: str):
@@ -128,4 +128,8 @@ def download_attachment(request: Request,actor: A,item_id: str,attachment_id: st
         row=db.get(Attachment,attachment_id)
         if row is None or row.entity_id!=item_id or row.workspace!='work_items':
             raise AppError(404,'attachment_missing','Attachment is not available.')
-        return Response(row.content,media_type='application/octet-stream',headers={'Content-Disposition':f"attachment; filename*=UTF-8''{quote(row.filename,safe='')}",'X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"})
+        try:
+            content=request.app.state.object_storage.get(actor.tenant_id,row.object_key) if row.object_key else row.content
+        except (FileNotFoundError,ValueError,OSError):
+            raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
+        return Response(content,media_type='application/octet-stream',headers={'Content-Disposition':f"attachment; filename*=UTF-8''{quote(row.filename,safe='')}",'X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"})

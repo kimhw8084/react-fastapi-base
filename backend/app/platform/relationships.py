@@ -175,6 +175,41 @@ def list_for_entity(session: Session, actor: Actor, registry: EntityRegistry, en
     rows=session.scalars(select(EntityRelationship).where(*where).order_by(EntityRelationship.updated_at.desc(),EntityRelationship.id).limit(limit)).all()
     return [_read(session,registry,row) for row in rows]
 
+def explore(session: Session, actor: Actor, registry: EntityRegistry, entity: str, record_id: str, *, kind: str|None=None, direction: str='both', depth: int=1, limit: int=200) -> list[RelationshipRead]:
+    """Bounded graph traversal over canonical relationship rows.
+
+    The traversal never follows a feature-owned shadow graph. It resolves every
+    endpoint through the registry and carries tenant authorization from the
+    request actor. ``incoming`` is useful for backlinks/upstream/impact and
+    ``outgoing`` is useful for dependencies/downstream/connections.
+    """
+    actor.require('read')
+    registry.resolve(session,entity,record_id)
+    if direction not in {'both','incoming','outgoing'} or depth<1 or depth>8 or not 1<=limit<=1000:
+        raise AppError(422,'invalid_relationship_explorer','Explorer bounds are invalid.')
+    if kind is not None and kind not in {'reference','hierarchy','dependency','placement','causal','temporal','logical','connection'}:
+        raise AppError(422,'invalid_relationship_explorer','Relationship kind is invalid.')
+    frontier={(entity,record_id)};visited=set();result=[]
+    for _level in range(depth):
+        if not frontier or len(result)>=limit: break
+        rows=session.scalars(select(EntityRelationship).where(EntityRelationship.archived.is_(False)).order_by(EntityRelationship.updated_at.desc(),EntityRelationship.id).limit(limit*4)).all()
+        next_frontier=set()
+        for row in rows:
+            definition=registry.relationship(row.definition_key)
+            if kind and definition.kind!=kind: continue
+            source=(row.source_entity,row.source_id);target=(row.target_entity,row.target_id)
+            matches=[]
+            if direction in {'both','outgoing'} and source in frontier: matches.append(target)
+            if direction in {'both','incoming'} and target in frontier: matches.append(source)
+            if not matches: continue
+            if row.id in visited: continue
+            visited.add(row.id)
+            result.append(_read(session,registry,row))
+            next_frontier.update(matches)
+            if len(result)>=limit: break
+        frontier=next_frontier
+    return result
+
 def update_metadata(session: Session, actor: Actor, registry: EntityRegistry, relationship_id: str, data: RelationshipUpdate) -> RelationshipRead:
     actor.require('write')
     row=_require(session,relationship_id)

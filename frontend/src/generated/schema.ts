@@ -8,6 +8,8 @@ export type AuditRead = { "id": string; "actor": string; "workspace": string; "e
 export type Bootstrap = { "user_id": string; "profile": string; "csrf_token": string; "tenants": Array<TenantInfo>; "application": ApplicationConfig; "build_version": string }
 export type BulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type BulkTarget = { "id": string; "revision": number }
+export type CommentCreate = { "body": string }
+export type CommentRead = { "id": string; "workspace": string; "entity": string; "entity_id": string; "author": string; "body": string; "created_at": string; "updated_at": string }
 export type DeliveryRunBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type DeliveryRunCreate = { "run_id": string; "status"?: "queued" | "running" | "passed" | "failed" | "cancelled"; "environment"?: "development" | "test" | "staging" | "production"; "commit_sha"?: (string | null); "branch"?: (string | null); "started_at": string; "completed_at"?: (string | null); "duration_minutes"?: number; "stages"?: { [key: string]: unknown }; "artifacts"?: { [key: string]: unknown }; "triggered_by"?: (string | null) }
 export type DeliveryRunPage = { "items": Array<DeliveryRunRead>; "total": number; "limit": number; "offset": number }
@@ -77,10 +79,10 @@ export type ObservabilityEventRead = { "event_id": string; "signal": "log" | "tr
 export type ObservabilityEventUpdate = { "event_id": string; "signal"?: "log" | "trace" | "metric"; "severity"?: "debug" | "info" | "warning" | "error" | "critical"; "timestamp": string; "duration_ms"?: (number | null); "trace_id"?: (string | null); "span_id"?: (string | null); "parent_span_id"?: (string | null); "operation"?: (string | null); "message"?: (string | null); "attributes"?: { [key: string]: unknown }; "revision": number }
 export type PermissionMatrixRead = { "roles": { [key: string]: Array<string> } }
 export type PlanTaskBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
-export type PlanTaskCreate = { "title": string; "status"?: "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start"?: (string | null); "baseline_end"?: (string | null); "progress"?: number; "milestone"?: boolean; "owner"?: (string | null); "duration_days"?: number; "notes"?: (string | null) }
+export type PlanTaskCreate = { "title": string; "status"?: "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start"?: (string | null); "baseline_end"?: (string | null); "progress"?: number; "milestone"?: boolean; "owner"?: (string | null); "resource_group"?: (string | null); "effort_hours"?: number; "capacity_hours"?: number; "duration_days"?: number; "notes"?: (string | null) }
 export type PlanTaskPage = { "items": Array<PlanTaskRead>; "total": number; "limit": number; "offset": number }
-export type PlanTaskRead = { "title": string; "status": "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start": (string | null); "baseline_end": (string | null); "progress": number; "milestone": boolean; "owner": (string | null); "duration_days": number; "notes": (string | null); "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
-export type PlanTaskUpdate = { "title": string; "status"?: "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start"?: (string | null); "baseline_end"?: (string | null); "progress"?: number; "milestone"?: boolean; "owner"?: (string | null); "duration_days"?: number; "notes"?: (string | null); "revision": number }
+export type PlanTaskRead = { "title": string; "status": "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start": (string | null); "baseline_end": (string | null); "progress": number; "milestone": boolean; "owner": (string | null); "resource_group": (string | null); "effort_hours": number; "capacity_hours": number; "duration_days": number; "notes": (string | null); "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
+export type PlanTaskUpdate = { "title": string; "status"?: "planned" | "ready" | "in_progress" | "blocked" | "done" | "cancelled"; "start_date": string; "end_date": string; "baseline_start"?: (string | null); "baseline_end"?: (string | null); "progress"?: number; "milestone"?: boolean; "owner"?: (string | null); "resource_group"?: (string | null); "effort_hours"?: number; "capacity_hours"?: number; "duration_days"?: number; "notes"?: (string | null); "revision": number }
 export type ProcessMeasurementBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type ProcessMeasurementCreate = { "sample_label": string; "process": string; "metric": string; "value": number; "unit"?: (string | null); "sampled_at": string; "subgroup"?: (string | null); "target"?: (number | null); "lower_spec"?: (number | null); "upper_spec"?: (number | null); "lot"?: (string | null); "category"?: "measurement" | "defect" | "alarm" | "quality"; "context"?: { [key: string]: unknown } }
 export type ProcessMeasurementPage = { "items": Array<ProcessMeasurementRead>; "total": number; "limit": number; "offset": number }
@@ -136,9 +138,11 @@ export type TenantInfo = { "id": string; "name": string; "role": string; "permis
 export type ViewColumnInput = { "colId": string; "width"?: number; "hide"?: boolean; "sort"?: ("asc" | "desc" | null); "sortIndex"?: (number | null); "pinned"?: ("left" | "right" | null) }
 export type ViewColumnOutput = { "colId": string; "width": number; "hide": boolean; "sort": ("asc" | "desc" | null); "sortIndex": (number | null); "pinned": ("left" | "right" | null) }
 export type ViewCreate = { "name": string; "scope"?: "personal" | "team"; "team_id"?: (string | null); "definition": ViewDefinitionInput }
-export type ViewDefinitionInput = { "search"?: string; "filters"?: { [key: string]: string }; "archived"?: boolean; "group_by"?: string; "sort"?: string; "direction"?: "asc" | "desc"; "density"?: "comfortable" | "compact"; "visualization"?: string; "columns"?: Array<ViewColumnInput> }
-export type ViewDefinitionOutput = { "search": string; "filters": { [key: string]: string }; "archived": boolean; "group_by": string; "sort": string; "direction": "asc" | "desc"; "density": "comfortable" | "compact"; "visualization": string; "columns": Array<ViewColumnOutput> }
+export type ViewDefinitionInput = { "schema_version"?: number; "search"?: string; "filters"?: { [key: string]: string }; "advanced_filters"?: Array<{ [key: string]: unknown }>; "archived"?: boolean; "group_by"?: string; "sort"?: string; "direction"?: "asc" | "desc"; "sorts"?: Array<ViewSortInput>; "density"?: "comfortable" | "compact"; "visualization"?: string; "columns"?: Array<ViewColumnInput> }
+export type ViewDefinitionOutput = { "schema_version": number; "search": string; "filters": { [key: string]: string }; "advanced_filters": Array<{ [key: string]: unknown }>; "archived": boolean; "group_by": string; "sort": string; "direction": "asc" | "desc"; "sorts": Array<ViewSortOutput>; "density": "comfortable" | "compact"; "visualization": string; "columns": Array<ViewColumnOutput> }
 export type ViewRead = { "name": string; "scope": "personal" | "team"; "team_id": (string | null); "definition": ViewDefinitionOutput; "id": string; "workspace": string; "owner": string; "revision": number; "schema_version": number; "updated_at": string }
+export type ViewSortInput = { "key": string; "direction"?: "asc" | "desc" }
+export type ViewSortOutput = { "key": string; "direction": "asc" | "desc" }
 export type ViewUpdate = { "name": string; "scope"?: "personal" | "team"; "team_id"?: (string | null); "definition": ViewDefinitionInput; "revision": number }
 export type WaferRunBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type WaferRunCreate = { "wafer_id": string; "lot_id": string; "process_step": string; "status"?: "queued" | "processing" | "complete" | "hold" | "scrapped"; "die_rows": number; "die_cols": number; "bin_map"?: { [key: string]: unknown }; "total_die"?: number; "good_die"?: number; "defect_count"?: number; "yield_percent"?: number; "completed_at"?: (string | null); "notes"?: (string | null) }
@@ -156,6 +160,7 @@ export type WorkItemUpdate = { "title": string; "description"?: string; "status"
 export type WorkspaceDefinition = { "key": string; "label": string; "description": string; "schema_version": number; "fields": Array<FieldDefinition>; "columns": Array<string>; "capabilities": Array<string>; "primary_field": string; "filter_keys": Array<string>; "sort_keys": Array<string>; "visualizations": Array<string> }
 export type ViewColumn = ViewColumnOutput
 export type ViewDefinition = ViewDefinitionOutput
+export type ViewSort = ViewSortOutput
 export type WorkItemCreate = WorkItemCreateOutput
 
 export interface OperationInputs {
@@ -164,7 +169,7 @@ export interface OperationInputs {
   "deleteMember": { path: { "user_id": string } }
   "updateMember": { path: { "user_id": string }; body: MemberWrite }
   "permissionMatrix": {  }
-  "listAudit": { query?: { "limit"?: number } }
+  "listAudit": { query?: { "limit"?: number; "workspace"?: (string | null); "entity_id"?: (string | null) } }
   "bootstrap": {  }
   "list_records_api_v1_delivery_runs_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string; "environment"?: string } }
   "create_api_v1_delivery_runs_post": { body: DeliveryRunCreate }
@@ -258,6 +263,7 @@ export interface OperationInputs {
   "list_records_api_v1_plan_tasks_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string; "milestone"?: string } }
   "create_api_v1_plan_tasks_post": { body: PlanTaskCreate }
   "bulk_api_v1_plan_tasks_bulk_post": { body: PlanTaskBulkRequest }
+  "planCapacity": { query?: { "start"?: (string | null); "end"?: (string | null) } }
   "get_record_api_v1_plan_tasks__record_id__get": { path: { "record_id": string } }
   "update_record_api_v1_plan_tasks__record_id__put": { path: { "record_id": string }; body: PlanTaskUpdate }
   "history_api_v1_plan_tasks__record_id__history_get": { path: { "record_id": string } }
@@ -296,10 +302,15 @@ export interface OperationInputs {
   "lifecycle_api_v1_racks__record_id__lifecycle__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "revert_api_v1_racks__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
   "readiness": {  }
+  "deleteRecordComment": { path: { "comment_id": string } }
+  "listRecordComments": { path: { "entity": string; "record_id": string } }
+  "createRecordComment": { path: { "entity": string; "record_id": string }; body: CommentCreate }
   "listRelationships": { query: { "entity": string; "record_id": string; "include_archived"?: boolean } }
   "createRelationship": { body: RelationshipCreate }
   "listRelationshipDefinitions": {  }
+  "exploreRelationships": { query: { "entity": string; "record_id": string; "kind"?: (string | null); "direction"?: string; "depth"?: number; "limit"?: number } }
   "listRelationshipGraph": { query: { "entity": string; "include_archived"?: boolean; "limit"?: number } }
+  "namedRelationshipExplorer": { path: { "explorer": string }; query: { "entity": string; "record_id": string; "depth"?: number; "limit"?: number } }
   "updateRelationship": { path: { "relationship_id": string }; body: RelationshipUpdate }
   "relationshipHistory": { path: { "relationship_id": string } }
   "relationshipLifecycle": { path: { "relationship_id": string; "action": string }; body: RevisionInput }
@@ -474,6 +485,7 @@ export interface OperationOutputs {
   "list_records_api_v1_plan_tasks_get": PlanTaskPage
   "create_api_v1_plan_tasks_post": PlanTaskRead
   "bulk_api_v1_plan_tasks_bulk_post": Array<PlanTaskRead>
+  "planCapacity": unknown
   "get_record_api_v1_plan_tasks__record_id__get": PlanTaskRead
   "update_record_api_v1_plan_tasks__record_id__put": PlanTaskRead
   "history_api_v1_plan_tasks__record_id__history_get": Array<AuditRead>
@@ -512,10 +524,15 @@ export interface OperationOutputs {
   "lifecycle_api_v1_racks__record_id__lifecycle__action__post": RackRead
   "revert_api_v1_racks__record_id__revert_post": RackRead
   "readiness": unknown
+  "deleteRecordComment": void
+  "listRecordComments": Array<CommentRead>
+  "createRecordComment": CommentRead
   "listRelationships": Array<RelationshipRead>
   "createRelationship": RelationshipRead
   "listRelationshipDefinitions": Array<RelationshipDefinition>
+  "exploreRelationships": Array<RelationshipRead>
   "listRelationshipGraph": Array<RelationshipRead>
+  "namedRelationshipExplorer": Array<RelationshipRead>
   "updateRelationship": RelationshipRead
   "relationshipHistory": Array<AuditRead>
   "relationshipLifecycle": RelationshipRead
@@ -987,6 +1004,10 @@ export const operationRoutes = {
     "method": "POST",
     "path": "/api/v1/plan-tasks/bulk"
   },
+  "planCapacity": {
+    "method": "GET",
+    "path": "/api/v1/plan-tasks/capacity"
+  },
   "get_record_api_v1_plan_tasks__record_id__get": {
     "method": "GET",
     "path": "/api/v1/plan-tasks/{record_id}"
@@ -1139,6 +1160,18 @@ export const operationRoutes = {
     "method": "GET",
     "path": "/api/v1/readiness"
   },
+  "deleteRecordComment": {
+    "method": "DELETE",
+    "path": "/api/v1/records/comments/{comment_id}"
+  },
+  "listRecordComments": {
+    "method": "GET",
+    "path": "/api/v1/records/{entity}/{record_id}/comments"
+  },
+  "createRecordComment": {
+    "method": "POST",
+    "path": "/api/v1/records/{entity}/{record_id}/comments"
+  },
   "listRelationships": {
     "method": "GET",
     "path": "/api/v1/relationships"
@@ -1151,9 +1184,17 @@ export const operationRoutes = {
     "method": "GET",
     "path": "/api/v1/relationships/definitions"
   },
+  "exploreRelationships": {
+    "method": "GET",
+    "path": "/api/v1/relationships/explore"
+  },
   "listRelationshipGraph": {
     "method": "GET",
     "path": "/api/v1/relationships/graph"
+  },
+  "namedRelationshipExplorer": {
+    "method": "GET",
+    "path": "/api/v1/relationships/{explorer}/explore"
   },
   "updateRelationship": {
     "method": "PUT",

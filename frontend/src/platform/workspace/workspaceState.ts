@@ -2,6 +2,7 @@ import type { ViewDefinition, WorkspaceDefinition } from '../../generated/schema
 import { DEFAULT_VIEW } from './types'
 
 export type WorkspaceVisualization = string
+export const CURRENT_WORKSPACE_SCHEMA = 2
 
 export function resolveWorkspaceVisualizations(definition: WorkspaceDefinition, requested?: readonly string[]): string[] {
   const declared = definition.visualizations?.length ? definition.visualizations : ['table']
@@ -40,6 +41,7 @@ export function sanitizeWorkspaceView(
     : fallbackVisualization
   return {
     ...DEFAULT_VIEW,
+    schema_version: CURRENT_WORKSPACE_SCHEMA,
     search: typeof source.search === 'string' ? source.search.slice(0, 200) : '',
     filters,
     archived: source.archived === true,
@@ -50,4 +52,24 @@ export function sanitizeWorkspaceView(
     visualization,
     columns,
   }
+}
+
+export function migrateWorkspaceView(definition: WorkspaceDefinition, available: readonly string[], value: unknown, defaultDensity: 'comfortable'|'compact' = 'comfortable'): ViewDefinition {
+  const source = value && typeof value === 'object' ? {...value as Record<string, unknown>} : {}
+  const legacySort = typeof source.sort === 'string' ? source.sort : 'updated_at'
+  const legacyDirection = source.direction === 'asc' ? 'asc' : 'desc'
+  if (!Array.isArray(source.sorts)) source.sorts = [{key: legacySort, direction: legacyDirection}]
+  if (!Array.isArray(source.advanced_filters)) source.advanced_filters = []
+  return sanitizeWorkspaceView(definition, available, source, defaultDensity)
+}
+
+export interface ViewReconciliation { view: ViewDefinition; conflict: boolean; winner: 'local'|'server'|'same' }
+
+export function reconcileWorkspaceView(definition: WorkspaceDefinition, available: readonly string[], local: unknown, server: ViewDefinition|null, defaultDensity: 'comfortable'|'compact' = 'comfortable'): ViewReconciliation {
+  const localView = migrateWorkspaceView(definition, available, local, defaultDensity)
+  if (!server) return {view: localView, conflict: false, winner: 'local'}
+  const serverView = migrateWorkspaceView(definition, available, server, defaultDensity)
+  const localJson = JSON.stringify(localView), serverJson = JSON.stringify(serverView)
+  if (localJson === serverJson) return {view: serverView, conflict: false, winner: 'same'}
+  return {view: serverView, conflict: true, winner: 'server'}
 }
