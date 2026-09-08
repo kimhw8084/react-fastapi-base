@@ -1,0 +1,123 @@
+{
+  "product": "react-fastapi-base",
+  "version": "0.2.0-lab",
+  "release_type": "development release",
+  "source_directory": "/mnt/data/react-fastapi-base",
+  "created_at": "2026-09-07T05:23:15.579423+00:00",
+  "production_certified": false,
+  "native_lab_checks_pass": true,
+  "native_lab_source_verified": true,
+  "full_react_build_verified": false,
+  "macos_executed": false,
+  "company_environment_executed": false,
+  "upstream_sysgrid_modified": false,
+  "widget_families": 23,
+  "required_inventory_entries": 605,
+  "inventory_maturity_counts": {
+    "planned": 523,
+    "partial": 82
+  },
+  "executed_test_counts": {
+    "backend_tests": 103,
+    "browser_widget_tests": 99,
+    "pure_widget_model_tests": 39,
+    "python_tooling_tests": 13,
+    "static_node_server_tests": 9,
+    "pure_client_tests": 10
+  },
+  "full_gate_status_counts": {
+    "PASS": 8,
+    "FAIL": 1,
+    "BLOCKED": 12
+  },
+  "tested_source_hashes_verified": 203,
+  "browser_test_mode": "in_memory",
+  "browser_test_scope": "Actual Chromium ran exact compiled widget modules and CSS. Managed browser blocked localhost navigation. HTTP serving and Uvicorn were exercised separately; this is not React/PaaS or complete accessibility certification.",
+  "what_runs_now": "The shipped standalone Lab starts with python3 dev lab and needs no npm, external assets, database or identity.",
+  "architecture": "Strict-TypeScript DOM/SVG widget implementation with controlled React adapter. Separate React/FastAPI host remains in the repository; its dependency installation/build is not certified.",
+  "screenshots": [
+    "evidence/current/browser/carrier-dark.png",
+    "evidence/current/browser/carrier-light.png",
+    "evidence/current/browser/floorplan-dark.png",
+    "evidence/current/browser/floorplan-light.png",
+    "evidence/current/browser/gantt-dark.png",
+    "evidence/current/browser/gantt-light.png",
+    "evidence/current/browser/overview-dark.png",
+    "evidence/current/browser/overview-light.png",
+    "evidence/current/browser/rack-dark.png",
+    "evidence/current/browser/rack-light.png",
+    "evidence/current/browser/themes-dark.png",
+    "evidence/current/browser/themes-light.png",
+    "evidence/current/browser/wafer-dark.png",
+    "evidence/current/browser/wafer-light.png",
+    "evidence/current/browser/windows-dark.png",
+    "evidence/current/browser/windows-light.png"
+  ],
+  "release_blockers": [
+    {
+      "name": "required-catalog-completeness",
+      "status": "FAIL",
+      "reason": "Required scope still incomplete; see linked command log."
+    },
+    {
+      "name": "react-engineering-adapter-storybook",
+      "status": "BLOCKED",
+      "reason": "The native widget Lab is tested separately; React integration and Storybook need installed dependencies and executed tests."
+    },
+    {
+      "name": "macos-fresh-install",
+      "status": "BLOCKED",
+      "reason": "No macOS execution runner has certified this exact release."
+    },
+    {
+      "name": "frontend-typecheck",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required."
+    },
+    {
+      "name": "frontend-unit",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required."
+    },
+    {
+      "name": "frontend-build",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required."
+    },
+    {
+      "name": "browser-e2e-accessibility",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required."
+    },
+    {
+      "name": "npm-advisories",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required."
+    },
+    {
+      "name": "python-advisories",
+      "status": "BLOCKED",
+      "reason": "Install the audit tooling and enable network access; a version pin is not a vulnerability scan."
+    },
+    {
+      "name": "company-identity",
+      "status": "BLOCKED",
+      "reason": "Two actual company users and the PaaS execution/ingress contract must be verified."
+    },
+    {
+      "name": "company-storage",
+      "status": "BLOCKED",
+      "reason": "Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount."
+    },
+    {
+      "name": "company-deployment",
+      "status": "BLOCKED",
+      "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here."
+    },
+    {
+      "name": "sysgrid-migration-parity",
+      "status": "BLOCKED",
+      "reason": "No SysGrid production feature has yet been migrated and visually/behaviorally certified against this template."
+    }
+  ]
+}

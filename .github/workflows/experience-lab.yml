@@ -1,0 +1,47 @@
+name: Experience Lab verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: experience-lab-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lab:
+    name: Native widget layer (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Install verified native-layer test toolchain
+        run: |
+          npm install --global typescript@5.8.3
+          python -m pip install -r experience-lab/requirements-test.txt
+          python -m playwright install --with-deps chromium
+      - name: Exercise actual localhost HTTP and widgets
+        run: python scripts/verify_lab.py --mode http --output .evidence/lab-ci
+      - name: Keep exact test and visual evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: lab-evidence-${{ matrix.os }}
+          path: |
+            .evidence/lab-ci/
+            evidence/current/browser/
+          include-hidden-files: true
+          retention-days: 14
+# A passing job certifies only the native widget layer on this runner.
+# Full React, required catalog coverage and company deployment remain separate gates.

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python",
+    "scripts/verify.py",
+    "--output",
+    "evidence/current/full-stack"
+  ],
+  "LAB_BROWSER_MODE": "in_memory",
+  "note": "Run in current response. A required incomplete catalog intentionally makes this gate nonzero."
+}

@@ -1,0 +1,20 @@
+PASS readiness
+PASS explicit-development-identity
+PASS missing-CSRF-rejected
+PASS create
+PASS idempotent-replay
+PASS request-correlation
+PASS revision-update
+PASS stale-write-rejected
+PASS untrusted-user-header-ignored
+PASS foreign-tenant-denied
+PASS history
+PASS saved-view-create
+PASS saved-view-exact-link
+PASS archive
+PASS archived-read-only
+PASS restore
+PASS schema-versioned-export
+PASS export-import-preview
+PASS error-envelope
+{"scope": "localhost-real-HTTP-only", "checks_passed": 19, "company_certified": false}

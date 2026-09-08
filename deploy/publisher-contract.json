@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "not_company_verified",
+  "services": [
+    {
+      "id": "backend",
+      "root": "backend",
+      "type": "FastAPI",
+      "asgi_target": "app.main:app",
+      "starting_file": "run.py",
+      "install": "python -m pip install -r requirements.lock",
+      "port_env": "PORT",
+      "health": "/api/v1/health",
+      "readiness": "/api/v1/readiness",
+      "migration": "explicit_operator_only"
+    },
+    {
+      "id": "frontend",
+      "root": "frontend",
+      "type": "React or Node static publisher",
+      "install": "npm ci",
+      "build": "npm run build",
+      "output": "dist",
+      "optional_starting_file": "server.mjs",
+      "start": "node server.mjs",
+      "port_env": "PORT",
+      "health": "/healthz",
+      "api_proxy_implemented": false
+    }
+  ],
+  "docker_required": false
+}

@@ -1,0 +1,71 @@
+TypeScript syntax only: 27 files parsed. This is NOT a full typecheck.
+TAP version 13
+# Subtest: runtime accepts each configured visual profile
+ok 1 - runtime accepts each configured visual profile
+  ---
+  duration_ms: 1.992492
+  type: 'test'
+  ...
+# Subtest: runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
+ok 2 - runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
+  ---
+  duration_ms: 1.007268
+  type: 'test'
+  ...
+# Subtest: storage keys isolate app, user, tenant and version
+ok 3 - storage keys isolate app, user, tenant and version
+  ---
+  duration_ms: 0.638255
+  type: 'test'
+  ...
+# Subtest: corrupted or unavailable local storage is harmless
+ok 4 - corrupted or unavailable local storage is harmless
+  ---
+  duration_ms: 0.692183
+  type: 'test'
+  ...
+# Subtest: API transport supplies tenant and CSRF but never an identity header
+ok 5 - API transport supplies tenant and CSRF but never an identity header
+  ---
+  duration_ms: 53.963378
+  type: 'test'
+  ...
+# Subtest: generated operation routes safely encode parameters
+ok 6 - generated operation routes safely encode parameters
+  ---
+  duration_ms: 5.016906
+  type: 'test'
+  ...
+# Subtest: API error retains safe code/request ID and conflict details
+ok 7 - API error retains safe code/request ID and conflict details
+  ---
+  duration_ms: 1.861526
+  type: 'test'
+  ...
+# Subtest: HTML API response is not treated as data
+ok 8 - HTML API response is not treated as data
+  ---
+  duration_ms: 0.764957
+  type: 'test'
+  ...
+# Subtest: transport failures produce an explicit error, not an empty dataset
+ok 9 - transport failures produce an explicit error, not an empty dataset
+  ---
+  duration_ms: 1.085591
+  type: 'test'
+  ...
+# Subtest: API refuses arbitrary external endpoints
+ok 10 - API refuses arbitrary external endpoints
+  ---
+  duration_ms: 0.784135
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 341.446356

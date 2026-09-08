@@ -1,0 +1,45 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import * as m from '../public/lib/model.js';
+import * as f from '../public/lib/fixtures.js';
+import {validateWidgetModel} from '../public/lib/validation.js';
+import {validateCarrier,reassignWafer,transitionStep,validateFloor} from '../public/lib/manufacturing-model.js';
+
+test('fixture identifiers and schedule are valid',()=>{m.assertUnique(f.records.map(r=>r.id));assert.deepEqual(m.validateTasks(f.tasks),[]);assert.deepEqual(m.validateRack(f.devices),[]);assert.deepEqual(m.validateGraph(f.graph),[]);});
+test('moveTask is immutable and retains unrelated task references',()=>{const before=structuredClone(f.tasks);const next=m.moveTask(f.tasks,'T6',24,5);assert.equal(next[5].start,24);assert.equal(next[0],f.tasks[0]);assert.deepEqual(f.tasks,before);});
+test('finish-to-start conflict is rejected',()=>assert.throws(()=>m.moveTask(f.tasks,'T3',6,8),/overlaps prerequisite/));
+test('September has 30 days and out-of-month tasks fail',()=>assert.throws(()=>m.moveTask(f.tasks,'T6',29,2),/outside the schedule/));
+test('unknown task cannot silently update nothing',()=>assert.throws(()=>m.moveTask(f.tasks,'missing',1,2),/not found/));
+test('cycles and missing dependencies are reported',()=>{const a=structuredClone(f.tasks);a[0].dependencies=['T6'];assert.match(m.validateTasks(a).join(' '),/Circular/);a[0].dependencies=['unknown'];assert.match(m.validateTasks(a).join(' '),/missing/);});
+test('duplicate tasks and invalid progress fail',()=>{assert.match(m.validateTasks([...f.tasks,f.tasks[0]]).join(' '),/unique/);assert.match(m.validateTasks([{...f.tasks[0],progress:Infinity}]).join(' '),/progress/);});
+test('rack move preserves original and respects occupied units',()=>{const before=structuredClone(f.devices);const next=m.moveDevice(f.devices,'D5',15);assert.equal(next[4].start,15);assert.deepEqual(f.devices,before);assert.throws(()=>m.moveDevice(f.devices,'D5',24),/Collision/);});
+test('rack overflow, invalid watts and missing devices fail',()=>{assert.throws(()=>m.moveDevice(f.devices,'D5',42),/outside/);assert.throws(()=>m.moveDevice(f.devices,'missing',15),/not found/);assert.match(m.validateRack([{...f.devices[0],watts:Infinity}]).join(' '),/invalid power/);});
+test('rack power budget is explicit',()=>assert.match(m.validateRack(f.devices,42,100).join(' '),/power budget/));
+test('wafer yield excludes edge and untested dies',()=>{const y=m.waferYield(f.dies);assert.equal(y.tested,f.dies.filter(d=>['pass','fail'].includes(d.bin)).length);assert.equal(y.passed,f.dies.filter(d=>d.bin==='pass').length);assert.equal(m.waferYield([]).percent,null);});
+test('sample statistics use sample n-1 convention',()=>{assert.deepEqual(m.sampleStats([1,2,3]),{mean:2,std:1,count:3});assert.equal(m.sampleStats([5]),null);assert.deepEqual(m.sampleStats([1,NaN,2,3]),{mean:2,std:1,count:3});});
+test('point-limit detection is not mislabeled SPC capability',()=>{assert.deepEqual(m.violations([1,2,5,NaN],{low:1,high:3}),[2]);assert.throws(()=>m.violations([1],{low:3,high:1}),/Invalid/);});
+test('pagination validates caller input',()=>{assert.equal(m.paginate(f.records,2,12)[0].id,'WK-0013');assert.deepEqual(m.paginate([],1,12),[]);assert.throws(()=>m.paginate([],0,12),/Invalid/);assert.throws(()=>m.paginate([],1,0),/Invalid/);});
+test('HTML escaped in text and attributes',()=>assert.equal(m.escapeHtml('<img src="x" onerror=\'a\'>&'),'&lt;img src=&quot;x&quot; onerror=&#39;a&#39;&gt;&amp;'));
+test('CSV guards formula cells and quotes embedded delimiters',()=>{for(const v of ['=1+1','+cmd','@SUM(1)','-1','  =1'])assert.ok(m.csvCell(v).startsWith('"\''));assert.equal(m.csvCell('a,"b"'),'"a,""b"""');assert.match(m.recordsCsv([{...f.records[0],title:'=DANGEROUS()'}]),/"'=DANGEROUS/);});
+test('positional diff compares both sides including additions',()=>{assert.deepEqual(m.diffLines('a\nb','a\nc\nd'),[{before:'a',after:'a',changed:false},{before:'b',after:'c',changed:true},{before:'',after:'d',changed:true}]);});
+test('graph bounds references validated',()=>{assert.match(m.validateGraph({...f.graph,edges:[{from:'missing',to:'a'}]}).join(' '),/missing node/);assert.match(m.validateGraph({...f.graph,nodes:[...f.graph.nodes,f.graph.nodes[0]]}).join(' '),/unique/);});
+const slots=[{slot:1,waferId:'W1',status:'ready'},{slot:2,waferId:null,status:'empty'},{slot:3,waferId:'W2',status:'hold'}];
+test('carrier reassigns atomically without duplicate occupancy',()=>{const next=reassignWafer(slots,1,2);assert.equal(next[0].waferId,null);assert.equal(next[1].waferId,'W1');assert.equal(slots[0].waferId,'W1');assert.deepEqual(validateCarrier(next),[]);});
+test('carrier rejects occupied target, empty source and invalid slots',()=>{assert.throws(()=>reassignWafer(slots,1,3),/occupied/);assert.throws(()=>reassignWafer(slots,2,1),/empty/);assert.throws(()=>reassignWafer(slots,1,26),/does not exist/);assert.ok(validateCarrier([...slots,{slot:26,waferId:null,status:'empty'}]).length);});
+test('carrier rejects duplicate wafer identity',()=>assert.match(validateCarrier([...slots,{slot:4,waferId:'W1',status:'ready'}]).join(' '),/two slots/));
+const steps=[{id:'A',name:'Prepare',equipment:'E1',duration:'1min',status:'running'},{id:'B',name:'Measure',equipment:'E2',duration:'2min',status:'queued'}];
+test('traveler protects prerequisites and terminal state',()=>{assert.throws(()=>transitionStep(steps,'B','running'),/prerequisite/);const completed=transitionStep(steps,'A','complete');assert.equal(transitionStep(completed,'B','running')[1].status,'running');assert.throws(()=>transitionStep(completed,'A','running'),/not allowed/);assert.equal(steps[0].status,'running');});
+test('traveler hold/resume does not skip completion rules',()=>{const held=transitionStep(steps,'A','hold');assert.equal(transitionStep(held,'A','running')[0].status,'running');assert.throws(()=>transitionStep(held,'A','complete'),/not allowed/);});
+test('floor layout rejects overlap and bounds but allows touching edges',()=>{const a={id:'a',name:'A',x:0,y:0,width:20,height:20,status:'healthy'};assert.deepEqual(validateFloor([a,{...a,id:'b',name:'B',x:20}]),[]);assert.match(validateFloor([a,{...a,id:'b',name:'B',x:19}]).join(' '),/overlaps/);assert.match(validateFloor([{...a,x:799}]).join(' '),/bounds/);});
+for(const [tag,model] of [['rf-record-table',f.records],['rf-work-board',f.records],['rf-gantt',f.tasks],['rf-rack',f.devices],['rf-wafer',f.dies],['rf-topology',f.graph],['rf-log-explorer',f.logs],['rf-trace-waterfall',f.trace],['rf-calendar',f.calendarEvents],['rf-state-timeline',f.stateRows]]){
+ test(`${tag}: valid fixture passes and malformed boundary fails`,()=>{assert.doesNotThrow(()=>validateWidgetModel(tag,model));assert.throws(()=>validateWidgetModel(tag,{payload:'not an array'}));});
+}
+test('runtime boundary rejects HTML injection in numeric and enum properties',()=>{assert.throws(()=>validateWidgetModel('rf-wafer',[{...f.dies[0],x:'0" onload="alert(1)'}]));assert.throws(()=>validateWidgetModel('rf-state-timeline',[{name:'E',segments:[{start:0,duration:2,label:'ok',tone:'info" onclick="bad'}]}]));assert.throws(()=>validateWidgetModel('rf-rack',[{...f.devices[0],status:'evil'}]));});
+test('missing localStorage safely returns fallback',()=>assert.equal(m.storageRead('x','fallback',v=>typeof v==='string'),'fallback'));
+import {validatePresentation} from '../public/lib/presentation.js';
+test('presentation configuration permits custom rack/date/locale values',()=>assert.doesNotThrow(()=>validatePresentation({locale:'en-US',rack:{label:'24U lab cabinet',units:24,maxWatts:3000},schedule:{startDate:'2027-01-01',days:31}})));
+test('presentation rejects impossible dates and rack budgets',()=>{assert.throws(()=>validatePresentation({schedule:{startDate:'2026-02-31',days:30}}),/valid ISO/);assert.throws(()=>validatePresentation({rack:{label:'A',units:0,maxWatts:1}}),/units/);assert.throws(()=>validatePresentation({schedule:{startDate:'2026-09-01',days:Infinity}}));});
+import {readFileSync} from 'node:fs';
+const examples=JSON.parse(readFileSync(new URL('../../catalog/examples.json',import.meta.url),'utf8'));
+const catalog=JSON.parse(readFileSync(new URL('../../catalog/components.json',import.meta.url),'utf8'));
+test('all generated React story fixtures satisfy widget runtime contracts',()=>{assert.equal(Object.keys(examples).length,catalog.entries.length);for(const entry of catalog.entries)assert.doesNotThrow(()=>validateWidgetModel(entry.tag,examples[entry.id]),entry.id);});

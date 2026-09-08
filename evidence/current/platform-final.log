@@ -1,0 +1,31 @@
+RUN     backend-tests
+PASS    backend-tests
+RUN     tooling-tests
+PASS    tooling-tests
+RUN     architecture
+PASS    architecture
+RUN     generated-contracts
+PASS    generated-contracts
+RUN     typescript-syntax-and-pure-client
+PASS    typescript-syntax-and-pure-client
+RUN     static-server
+PASS    static-server
+RUN     localhost-http
+PASS    localhost-http
+RUN     engineering-widget-layer
+PASS    engineering-widget-layer
+RUN     required-catalog-completeness
+FAIL    required-catalog-completeness
+BLOCKED react-engineering-adapter-storybook: The native widget Lab is tested separately; React integration and Storybook need installed dependencies and executed tests.
+BLOCKED macos-fresh-install: No macOS execution runner has certified this exact release.
+BLOCKED frontend-typecheck: Dependency-resolved frontend installation and committed package-lock.json are required.
+BLOCKED frontend-unit: Dependency-resolved frontend installation and committed package-lock.json are required.
+BLOCKED frontend-build: Dependency-resolved frontend installation and committed package-lock.json are required.
+BLOCKED browser-e2e-accessibility: Dependency-resolved frontend installation and committed package-lock.json are required.
+BLOCKED npm-advisories: Dependency-resolved frontend installation and committed package-lock.json are required.
+BLOCKED python-advisories: Install the audit tooling and enable network access; a version pin is not a vulnerability scan.
+BLOCKED company-identity: Two actual company users and the PaaS execution/ingress contract must be verified.
+BLOCKED company-storage: Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount.
+BLOCKED company-deployment: Separate frontend/backend publishes and real browser routing have not been exercised here.
+BLOCKED sysgrid-migration-parity: No SysGrid production feature has yet been migrated and visually/behaviorally certified against this template.
+NOT_CERTIFIED — report: evidence/current/full-stack/verification.json

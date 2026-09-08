@@ -1,0 +1,11 @@
+RUN strict-types-and-artifact-parity
+PASS strict-types-and-artifact-parity
+RUN pure-model-tests
+PASS pure-model-tests
+RUN static-http-server
+PASS static-http-server
+RUN catalog-drift
+PASS catalog-drift
+RUN browser-interactions
+PASS browser-interactions
+Report: /mnt/data/react-fastapi-base/evidence/current/full-stack/native-lab/verification.json

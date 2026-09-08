@@ -1,0 +1,57 @@
+import { EngineeringElement, register, badge } from './base.js';
+import { processValues } from './fixtures.js';
+import { escapeHtml as h, sampleStats, violations, clamp } from './model.js';
+export function linePath(points, width, height, bounds) {
+    if (points.length === 0)
+        return '';
+    const minX = Math.min(...points.map(p => p.x)), maxX = Math.max(...points.map(p => p.x));
+    return points.map((p, i) => `${i ? 'L' : 'M'}${((p.x - minX) / Math.max(1, maxX - minX) * width).toFixed(2)},${(height - (p.y - bounds.min) / Math.max(.0001, bounds.max - bounds.min) * height).toFixed(2)}`).join(' ');
+}
+export class ProcessChart extends EngineeringElement {
+    kind = 'line';
+    point = 31;
+    showLimits = true;
+    constructor() { super({ values: processValues, title: 'Process measurement', unit: 'nm', low: 50.2, high: 53.8 }); }
+    render() {
+        const values = this.value.values.filter(Number.isFinite), stats = sampleStats(values);
+        this.point = clamp(this.point, 0, Math.max(0, values.length - 1));
+        if (!stats) {
+            this.frame('<div class="widget-state">At least two finite observations are required.</div>');
+            return;
+        }
+        const invalid = violations(values, { low: this.value.low, high: this.value.high }), min = Math.min(this.value.low - 1, ...values), max = Math.max(this.value.high + 1, ...values), w = 840, ht = 250;
+        const sy = (v) => ht - (v - min) / (max - min) * ht;
+        const points = values.map((y, x) => ({ x, y }));
+        const path = linePath(points, w, ht, { min, max });
+        const marks = this.kind === 'bar' ? points.map((p, i) => `<rect data-point="${i}" class="chart-bar ${invalid.includes(i) ? 'outlier' : ''}" x="${i * w / values.length + 1}" y="${sy(p.y)}" width="${w / values.length - 3}" height="${ht - sy(p.y)}" rx="2"/>`).join('') : `${this.kind === 'area' ? `<path d="${path} L${w},${ht} L0,${ht} Z" class="chart-area"/>` : ''}${this.kind === 'scatter' ? '' : `<path d="${path}" class="chart-line"/>`}${points.map((p, i) => `<circle data-point="${i}" tabindex="${i === this.point ? '0' : '-1'}" role="button" aria-label="Observation ${i + 1}, ${p.y.toFixed(3)} ${h(this.value.unit)}${invalid.includes(i) ? ', outside configured limits' : ''}" cx="${i / Math.max(1, values.length - 1) * w}" cy="${sy(p.y)}" r="${i === this.point ? 6 : invalid.includes(i) ? 5 : 3}" class="chart-point ${invalid.includes(i) ? 'outlier' : ''} ${i === this.point ? 'selected' : ''}"/>`).join('')}`;
+        this.frame(`<div class="component-toolbar"><div class="segment-control">${['line', 'area', 'bar', 'scatter'].map(k => `<button data-kind="${k}" aria-pressed="${this.kind === k}" class="${k === this.kind ? 'active' : ''}">${k[0].toUpperCase() + k.slice(1)}</button>`).join('')}</div><div class="toolbar-spacer"></div><label class="check-label"><input data-limits type="checkbox" ${this.showLimits ? 'checked' : ''}> Configured limits</label></div><div class="chart-summary"><div><span>${h(this.value.title)}</span><strong>${stats.mean.toFixed(3)} <small>${h(this.value.unit)}</small></strong></div><div>${badge(`${invalid.length} outside limits`, invalid.length ? 'warning' : 'success')}<span class="subtle">${values.length} observations · synthetic data</span></div></div><div class="chart-wrap"><svg class="process-chart" viewBox="0 0 920 310" role="group" aria-label="${h(this.value.title)} ${this.kind} chart"><g transform="translate(58,18)">${Array.from({ length: 5 }, (_, i) => { const y = i * ht / 4; return `<line x1="0" x2="${w}" y1="${y}" y2="${y}" class="chart-grid"/><text x="-12" y="${y + 4}" text-anchor="end" class="svg-text">${(max - i * (max - min) / 4).toFixed(1)}</text>`; }).join('')}${this.showLimits ? [this.value.low, this.value.high].map((v, i) => `<line x1="0" x2="${w}" y1="${sy(v)}" y2="${sy(v)}" class="limit-line"/><text x="${w}" y="${sy(v) - 6}" text-anchor="end" class="limit-label">${i ? 'UCL' : 'LCL'} ${v}</text>`).join('') : ''}${marks}${[0, .25, .5, .75, 1].map(v => `<text x="${v * w}" y="${ht + 28}" text-anchor="middle" class="svg-text">${Math.round(v * (values.length - 1)) + 1}</text>`).join('')}</g></svg></div><div class="property-strip"><div><small>Sample mean</small><strong>${stats.mean.toFixed(3)} ${h(this.value.unit)}</strong></div><div><small>Sample standard deviation</small><strong>${stats.std.toFixed(3)}</strong></div><div><small>Selected observation</small><strong>#${this.point + 1} · ${(values[this.point] ?? values[0]).toFixed(3)}</strong></div><div><label>Inspect observation<input data-observation type="range" aria-label="Inspect observation" min="0" max="${values.length - 1}" value="${this.point}"></label></div></div><p class="component-note">Limits are explicitly configured—not inferred from this sample. This viewer implements single-point limit detection, not a validated SPC rules engine or capability study.</p>`);
+        this.on('[data-kind]', 'click', e => { this.kind = e.currentTarget.dataset.kind; this.render(); });
+        this.on('[data-limits]', 'change', e => { this.showLimits = e.target.checked; this.render(); });
+        this.on('[data-point]', 'click', e => { this.point = Number(e.currentTarget.dataset.point); this.render(); });
+        this.on('[data-observation]', 'input', e => { this.point = Number(e.target.value); this.render(); this.querySelector('[data-observation]')?.focus(); });
+        this.on('[data-point]', 'keydown', e => { const key = e.key; if (key === 'ArrowLeft' || key === 'ArrowRight') {
+            e.preventDefault();
+            this.point = clamp(this.point + (key === 'ArrowLeft' ? -1 : 1), 0, values.length - 1);
+            this.render();
+            this.querySelector(`[data-point="${this.point}"]`)?.focus();
+        } });
+    }
+}
+export class ChartCollection extends EngineeringElement {
+    selected = 2;
+    constructor() { super([142, 109, 76, 48, 31, 18]); }
+    render() {
+        const total = this.value.reduce((n, v) => n + v, 0);
+        if (total <= 0) {
+            this.frame('<div class="widget-state"><h3>No observations yet</h3><p>Provide at least one positive category value.</p></div>');
+            return;
+        }
+        let acc = 0;
+        this.frame(`<div class="charts-grid"><section class="inspector-card"><span class="eyebrow">CATEGORICAL ANALYSIS</span><h3>Category comparison</h3><div class="pareto-bars">${this.value.map((v, i) => `<button data-category="${i}" class="pareto-row ${i === this.selected ? 'selected' : ''}" aria-label="Category ${i + 1}, ${v} defects"><span>Category ${i + 1}</span><span class="pareto-track"><i style="width:${v / Math.max(...this.value) * 100}%"></i></span><strong>${v}</strong></button>`).join('')}</div><p class="subtle">${total} synthetic observations</p></section><section class="inspector-card"><span class="eyebrow">DISTRIBUTION</span><h3>Bin breakdown</h3><div class="donut-container"><svg viewBox="0 0 220 220" role="img" aria-label="Category breakdown donut"><circle cx="110" cy="110" r="78" fill="none" class="donut-base" stroke-width="24"/>${this.value.map((v, i) => { const size = v / total * 490.09; const offset = acc; acc += size; return `<circle class="donut-segment series-${i % 4}" cx="110" cy="110" r="78" fill="none" stroke-width="${i === this.selected ? 29 : 24}" stroke-dasharray="${Math.max(0, size - 3)} ${490.09 - size + 3}" stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)"/>`; }).join('')}<text x="110" y="106" text-anchor="middle" class="donut-total">${total}</text><text x="110" y="131" text-anchor="middle" class="svg-text">observations</text></svg></div><p class="subtle">Category ${this.selected + 1} · ${((this.value[this.selected] ?? 0) / total * 100).toFixed(1)}%</p></section><section class="inspector-card full-width"><span class="eyebrow">HEATMAP</span><h3>Equipment × shift intensity</h3><div class="heatmap" role="table" aria-label="Synthetic equipment intensity heatmap">${Array.from({ length: 7 }, (_, r) => `<div role="row"><strong role="rowheader">Tool ${String(r + 1).padStart(2, '0')}</strong>${Array.from({ length: 18 }, (_, c) => { const v = (r * 7 + c * 3 + r * c) % 10; return `<button class="heat-cell heat-${Math.floor(v / 2)}" role="cell" title="Tool ${r + 1}, interval ${c + 1}: ${v}" aria-label="Tool ${r + 1}, interval ${c + 1}, intensity ${v}" data-heat="${r + 1}|${c + 1}|${v}">${v}</button>`; }).join('')}</div>`).join('')}</div><div class="heat-detail subtle" role="status">Select a cell for details. Intensities are synthetic, not equipment measurements.</div></section></div>`);
+        this.on('[data-category]', 'click', e => { this.selected = Number(e.currentTarget.dataset.category); this.render(); });
+        this.on('[data-heat]', 'click', e => { const [r, c, v] = e.currentTarget.dataset.heat.split('|'); this.querySelector('.heat-detail').textContent = `Tool ${r}, interval ${c} · intensity ${v}`; });
+    }
+}
+register('rf-process-chart', ProcessChart);
+register('rf-chart-collection', ChartCollection);
+//# sourceMappingURL=charts.js.map

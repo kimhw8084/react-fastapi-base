@@ -1,0 +1,1812 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "Heading",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Subheading",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BodyText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SecondaryText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Caption",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Label",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MonoText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InlineCode",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CodeBlock",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Link",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ExternalLink",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TruncatedText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ExpandableText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CopyableText",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "KeyValue",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DefinitionList",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MetricValue",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MetricDelta",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Timestamp",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RelativeTime",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Duration",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UserIdentity",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EmptyValue",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Button",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IconButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SplitButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ButtonGroup",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ToggleButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ToggleGroup",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SegmentedControl",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Checkbox",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Radio",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Switch",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Slider",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RangeSlider",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "LinkButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CopyButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FavoriteButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PinButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RefreshButton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Badge",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "StatusBadge",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "StatusDot",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Chip",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Tag",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CountBadge",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Avatar",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AvatarGroup",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PresenceIndicator",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProgressBar",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProgressRing",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Spinner",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Skeleton",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HealthIndicator",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TrendIndicator",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SeverityIndicator",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SLAIndicator",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Modal",
+      "source": "frontend/src/platform/ui/Dialog.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AlertDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ConfirmDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DestructiveConfirmDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FormDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WizardDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DossierDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ComparisonDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FullScreenDialog",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DrawerLeft",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DrawerRight",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DrawerBottom",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InspectorDrawer",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DetailsDrawer",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Popover",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Dropdown",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ComboDropdown",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HoverCard",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ContextMenu",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ActionMenu",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AnchoredFlyout",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FloatingPanel",
+      "source": "frontend/src/platform/ui/FloatingPanelShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CommandPalette",
+      "source": "frontend/src/platform/commands/CommandPalette.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SearchPalette",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "QuickSwitcher",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NotificationDrawer",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Banner",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InlineAlert",
+      "source": "frontend/src/platform/ui/primitives.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BottomSheet",
+      "source": "frontend/src/platform/ui/OverlayShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SideSheet",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MasterDetailPane",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SplitPane",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ResizablePane",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SidecarPanel",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DockedPanel",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CollapsiblePanel",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FloatingInspector",
+      "source": "frontend/src/platform/ui/shellVariants.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TextInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Textarea",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IntegerInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DecimalInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ScientificNumberInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PercentInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UnitAwareNumberInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EmailInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "URLInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Select",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MultiSelect",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DatePicker",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DateTimePicker",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DurationInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FileInput",
+      "source": "frontend/src/features/work-items/Attachments.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "JSONEditor",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CodeEditor",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MarkdownEditor",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EngineeringUnitInput",
+      "source": "frontend/src/platform/workspace/FieldInput.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DynamicSchemaForm",
+      "source": "frontend/src/platform/workspace/RecordForm.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SectionedForm",
+      "source": "frontend/src/platform/workspace/RecordForm.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InlineEditableForm",
+      "source": "frontend/src/platform/workspace/RecordForm.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BulkEditForm",
+      "source": "frontend/src/platform/workspace/BulkEditDialog.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SimpleTable",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DataGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "VirtualizedGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EditableGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ServerSideGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GroupedGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SelectableGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BulkActionGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ContextMenuGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PinnedColumnGrid",
+      "source": "frontend/src/platform/grid/DataGrid.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TableWorkspace",
+      "source": "frontend/src/platform/workspace/TableWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BoardWorkspace",
+      "source": "frontend/src/platform/workspace/BoardWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DashboardWorkspace",
+      "source": "frontend/src/platform/workspace/DashboardWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FormWorkspace",
+      "source": "frontend/src/platform/workspace/RecordForm.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DetailWorkspace",
+      "source": "frontend/src/platform/workspace/TableWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MasterDetailWorkspace",
+      "source": "frontend/src/platform/workspace/TableWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SplitViewWorkspace",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TimelineWorkspace",
+      "source": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GanttWorkspace",
+      "source": "frontend/src/platform/workspace/GanttWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CalendarWorkspace",
+      "source": "frontend/src/platform/workspace/CalendarWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "KanbanWorkspace",
+      "source": "frontend/src/platform/workspace/BoardWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DiagramWorkspace",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TopologyWorkspace",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RackWorkspace",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AnalyticalWorkspace",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SPCWorkspace",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WaferWorkspace",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "LogWorkspace",
+      "source": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IncidentWorkspace",
+      "source": "frontend/src/packs/software-engineering/IncidentWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InvestigationWorkspace",
+      "source": "frontend/src/platform/workspace/InvestigationWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DocumentationWorkspace",
+      "source": "frontend/src/platform/workspace/KnowledgeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GraphChart",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NetworkGraph",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RunChart",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IndividualsMovingRange",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EWMAChart",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ControlLimitsChart",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CpCpkPanel",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PpPpkPanel",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ParetoDefects",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SimpleTimeline",
+      "source": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HorizontalTimeline",
+      "source": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EventTimeline",
+      "source": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MilestoneTimeline",
+      "source": "frontend/src/platform/workspace/PlanningWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GanttChart",
+      "source": "frontend/src/platform/workspace/GanttWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DependencyGantt",
+      "source": "frontend/src/platform/workspace/PlanningWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Roadmap",
+      "source": "frontend/src/platform/workspace/PlanningWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Calendar",
+      "source": "frontend/src/platform/workspace/CalendarWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FlowDiagram",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DependencyGraph",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ServiceTopology",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NetworkTopology",
+      "source": "frontend/src/platform/workspace/GraphWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ArchitectureDiagram",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProcessFlow",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DAG",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WorkflowGraph",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PortConnectionDiagram",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NodeEditor",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EdgeEditor",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ZoomControls",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FitView",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SelectionBox",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MultiSelectCanvas",
+      "source": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RackElevation",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CabinetView",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SlotView",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PortMap",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ConnectorMap",
+      "source": "frontend/src/platform/workspace/RackWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WaferMap",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WaferBinMap",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DefectMap",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DefectDensityMap",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WaferSelectionMap",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WaferZoneOverlay",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DieGrid",
+      "source": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "LotTraveler",
+      "source": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "LotHistory",
+      "source": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProcessRoute",
+      "source": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProcessStepTimeline",
+      "source": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WIPByStep",
+      "source": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RecipeEditor",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RecipeParameterGrid",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RecipeDiff",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RecipeVersionHistory",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ProcessWindow",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ParameterLimits",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GoldenRecipeComparison",
+      "source": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EquipmentStatePanel",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EquipmentStateTimeline",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ModuleStatePanel",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ChamberStatePanel",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AvailabilityPanel",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UtilizationPanel",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MTBF",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MTTR",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AlarmTimeline",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MaintenanceTimeline",
+      "source": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SPCDashboard",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ControlChartSuite",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ParameterTrend",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ParetoDefect",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CapabilityAnalysis",
+      "source": "frontend/src/platform/workspace/SpcWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "KanbanBoard",
+      "source": "frontend/src/platform/workspace/BoardWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Milestones",
+      "source": "frontend/src/platform/workspace/PlanningWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ReleasePlan",
+      "source": "frontend/src/platform/workspace/PlanningWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MarkdownViewer",
+      "source": "frontend/src/platform/workspace/KnowledgeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PipelineGraph",
+      "source": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "JobGraph",
+      "source": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BuildTimeline",
+      "source": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DeploymentTimeline",
+      "source": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ReleaseDashboard",
+      "source": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MetricsExplorer",
+      "source": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "LogExplorer",
+      "source": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TraceExplorer",
+      "source": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TraceWaterfall",
+      "source": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IncidentCommandCenter",
+      "source": "frontend/src/packs/software-engineering/IncidentWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AlertConsole",
+      "source": "frontend/src/packs/software-engineering/IncidentWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SLODashboard",
+      "source": "frontend/src/packs/software-engineering/SloWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ErrorBudget",
+      "source": "frontend/src/packs/software-engineering/SloWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RunbookViewer",
+      "source": "frontend/src/platform/workspace/KnowledgeWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AttachmentGallery",
+      "source": "frontend/src/features/work-items/Attachments.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NotificationPreferences",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UserDirectory",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MemberTable",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RoleManager",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PermissionMatrix",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TenantSelector",
+      "source": "frontend/src/app/Application.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FeatureFlagManager",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Preferences",
+      "source": "frontend/src/app/Application.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ThemeSettings",
+      "source": "frontend/src/app/Application.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AuditConsole",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HealthDashboard",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RuntimeDiagnostics",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "APIConnectivity",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "EnvironmentInfo",
+      "source": "frontend/src/features/system/Workspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AppShell",
+      "source": "frontend/src/platform/ui/AppShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SidebarShell",
+      "source": "frontend/src/platform/ui/AppShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HeaderContent",
+      "source": "frontend/src/platform/ui/AppShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "HeaderToolbarContent",
+      "source": "frontend/src/platform/ui/AppShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DashboardGrid",
+      "source": "frontend/src/platform/workspace/DashboardWorkspace.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MasterDetail",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SplitHorizontal",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SplitVertical",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ResizableSplit",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "InspectorLayout",
+      "source": "frontend/src/platform/ui/SplitPaneShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "FullHeightWorkspace",
+      "source": "frontend/src/platform/ui/WorkspaceShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CanvasWorkspace",
+      "source": "frontend/src/platform/ui/WorkspaceShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DenseOperationsWorkspace",
+      "source": "frontend/src/platform/ui/WorkspaceShell.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AccessKeyIdentity",
+      "source": "backend/app/profiles/company/identity.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "TenantIsolation",
+      "source": "backend/app/platform/security.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Authorization",
+      "source": "backend/app/platform/security.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "GeneratedAPIContracts",
+      "source": "scripts/generate_contracts.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Transactions",
+      "source": "backend/app/platform/database.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MigrationHistory",
+      "source": "backend/app/platform/migrations.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ConfigDatabaseMigrations",
+      "source": "backend/app/platform/migrations.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AttachmentsProtection",
+      "source": "backend/app/platform/attachments.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "Idempotency",
+      "source": "backend/app/platform/idempotency.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "AuditPersistence",
+      "source": "backend/app/platform/audit.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "BackupManifest",
+      "source": "backend/app/platform/backup.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IsolatedRestore",
+      "source": "backend/app/platform/backup.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "MigrationRehearsal",
+      "source": "backend/app/platform/migrations.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DirectDatabaseSDK",
+      "source": "backend/app/platform/database.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RevisionRevert",
+      "source": "backend/app/platform/audit.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SavedViewsPersistence",
+      "source": "backend/app/platform/views.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "DurableJobs",
+      "source": "backend/app/platform/jobs.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WebhooksOutbound",
+      "source": "backend/app/platform/webhooks.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RealtimeBus",
+      "source": "backend/app/platform/events.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "IntegrationCredentials",
+      "source": "backend/app/platform/webhooks.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "RateLimits",
+      "source": "backend/app/platform/security.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "StructuredLogging",
+      "source": "backend/app/platform/middleware.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "NotificationDelivery",
+      "source": "backend/app/platform/notifications.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ApplicationGenerator",
+      "source": "scripts/entity_generator.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "WorkspaceGenerator",
+      "source": "scripts/entity_generator.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UpgradePlanner",
+      "source": "scripts/template_tools.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UpgradeApply",
+      "source": "scripts/template_tools.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "UpgradeRollback",
+      "source": "scripts/template_tools.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ExperienceLab",
+      "source": "frontend/src/app/lab/ExperienceLab.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ThemeStudio",
+      "source": "frontend/src/app/lab/ExperienceLab.tsx",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "ArchitectureRules",
+      "source": "scripts/check_architecture.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SecretScanning",
+      "source": "scripts/security_source_check.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "PerformanceBudgets",
+      "source": "scripts/performance_check.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "SourceCheckpoints",
+      "source": "scripts/checkpoint.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "CatalogCompleteness",
+      "source": "scripts/catalog.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    },
+    {
+      "id": "APIContractDrift",
+      "source": "scripts/generate_contracts.py",
+      "implementation_status": "implemented-source",
+      "release_maturity": "partial"
+    }
+  ],
+  "stable_promotions_by_this_script": 0
+}

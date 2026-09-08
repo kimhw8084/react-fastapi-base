@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""Portable deterministic developer entrypoint. No autonomous agents; no implicit resets."""
+from pathlib import Path
+import argparse
+import json
+import os
+import signal
+import socket
+import subprocess
+import sys
+import time
+ROOT=Path(__file__).resolve().parent
+VENV=ROOT/'backend/.venv'
+PY=VENV/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
+PYTHON=str(PY) if PY.is_file() else sys.executable
+
+def run(args,cwd=ROOT,env=None):return subprocess.call(args,cwd=cwd,env=env)
+def local_env():
+    # These are explicitly LOCAL commands, not operator commands.
+    env={k:v for k,v in os.environ.items() if not k.startswith('BASE_') and k!='AccessKey'}
+    env.update(BASE_ENVIRONMENT='development',BASE_PROFILE='development',BASE_DEV_USER='demo.admin',BASE_DATA_ROOT=str(ROOT/'.local/development'))
+    return env
+
+def start():
+    if not (ROOT/'frontend/node_modules').is_dir():raise ValueError('Run ./dev setup first. Frontend dependencies are missing.')
+    if not (ROOT/'.local/development/registry.sqlite3').is_file():raise ValueError('Run ./dev seed-demo once. Start never creates or resets data.')
+    for port in (8000,5173):
+        with socket.socket() as probe:probe.bind(('127.0.0.1',port))
+    env=local_env();children=[]
+    try:
+        children.append(subprocess.Popen([PYTHON,'-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8000'],cwd=ROOT/'backend',env=env,start_new_session=(os.name!='nt')))
+        children.append(subprocess.Popen(['npm','run','dev'],cwd=ROOT/'frontend',env=env,start_new_session=(os.name!='nt')))
+        print('Local frontend http://127.0.0.1:5173 ; API http://127.0.0.1:8000. Ctrl+C stops only these processes.',flush=True)
+        while all(child.poll() is None for child in children):time.sleep(.5)
+        return next((child.returncode for child in children if child.returncode not in (None,0)),0)
+    except KeyboardInterrupt:return 0
+    finally:
+        for child in children:
+            if child.poll() is None:
+                if os.name=='nt':child.terminate()
+                else:os.killpg(child.pid,signal.SIGTERM)
+        for child in children:
+            try:child.wait(timeout=8)
+            except subprocess.TimeoutExpired:
+                if os.name=='nt':child.kill()
+                else:os.killpg(child.pid,signal.SIGKILL)
+                child.wait()
+
+def main():
+    p=argparse.ArgumentParser(description='react-fastapi-base developer tools')
+    sub=p.add_subparsers(dest='command',required=True)
+    for name in ('setup','start','seed-demo','contracts','architecture','verify','test-backend','preflight'):sub.add_parser(name)
+    c=sub.add_parser('create');c.add_argument('target');c.add_argument('--id',required=True);c.add_argument('--name',required=True);c.add_argument('--theme',default='operations')
+    g=sub.add_parser('generate-entity');g.add_argument('spec');g.add_argument('--apply',action='store_true')
+    g=sub.add_parser('generate-relationship');g.add_argument('spec');g.add_argument('--apply',action='store_true')
+    c=sub.add_parser('operator');c.add_argument('args',nargs=argparse.REMAINDER)
+    c=sub.add_parser('upgrade-plan');c.add_argument('--app',required=True);c.add_argument('--incoming',required=True)
+    c=sub.add_parser('upgrade-apply');c.add_argument('--app',required=True);c.add_argument('--incoming',required=True);c.add_argument('--plan-hash',required=True);c.add_argument('--maintenance',required=True)
+    c=sub.add_parser('upgrade-rollback');c.add_argument('--app',required=True);c.add_argument('--journal',required=True);c.add_argument('--maintenance',required=True)
+    l=sub.add_parser('lab');l.add_argument('--port',type=int,default=4173)
+    sub.add_parser('lab-build')
+    l=sub.add_parser('test-lab');l.add_argument('--mode',choices=['http','in_memory'],default='http')
+    sub.add_parser('catalog')
+    a=p.parse_args()
+    if a.command=='lab':return run([sys.executable,'scripts/lab_server.py','--port',str(a.port)])
+    if a.command=='lab-build':
+        import shutil
+        compiler=ROOT/'frontend/node_modules/.bin/tsc'
+        executable=str(compiler) if compiler.is_file() else shutil.which('tsc')
+        if not executable:raise ValueError('TypeScript compiler required to rebuild. The shipped compiled Lab runs without rebuilding.')
+        return run([executable,'-p','experience-lab/tsconfig.json'])
+    if a.command=='test-lab':return run([PYTHON,'scripts/verify_lab.py','--mode',a.mode])
+    if a.command=='catalog':return run([sys.executable,'scripts/catalog.py'])
+    if a.command=='setup':
+        if not PY.is_file():subprocess.check_call([sys.executable,'-m','venv',str(VENV)])
+        subprocess.check_call([str(PY),'-m','pip','install','-r','requirements.lock'],cwd=ROOT/'backend')
+        subprocess.check_call([str(PY),'-m','pip','install','-r','requirements-tools.txt'],cwd=ROOT/'backend')
+        subprocess.check_call([str(PY),'-m','pip','install','-r','../experience-lab/requirements-test.txt'],cwd=ROOT/'backend')
+        # First install resolves the lock; every later setup uses the reviewed lock.
+        command='ci' if (ROOT/'frontend/package-lock.json').is_file() else 'install'
+        code=run(['npm',command],cwd=ROOT/'frontend')
+        if code==0:print('Review/commit package-lock.json before release. Install browser binaries with: cd frontend && npx playwright install chromium')
+        return code
+    if a.command=='start':return start()
+    if a.command=='seed-demo':return run([PYTHON,'-m','app.cli','seed-demo'],ROOT/'backend',local_env())
+    if a.command=='contracts':return run([PYTHON,'scripts/generate_contracts.py'])
+    if a.command=='architecture':return run([PYTHON,'scripts/check_architecture.py'])
+    if a.command=='verify':return run([PYTHON,'scripts/verify.py'])
+    if a.command=='test-backend':return run([PYTHON,'-m','pytest','-q'],ROOT/'backend')
+    if a.command=='preflight':return run([PYTHON,'-m','app.cli','preflight'],ROOT/'backend')
+    if a.command=='operator':return run([PYTHON,'-m','app.cli',*a.args],ROOT/'backend')
+    if a.command=='create':return run([PYTHON,'scripts/template_tools.py','create',a.target,'--id',a.id,'--name',a.name,'--theme',a.theme])
+    if a.command=='generate-entity':return run([PYTHON,'scripts/entity_generator.py',a.spec,*(['--apply'] if a.apply else [])])
+    if a.command=='generate-relationship':return run([PYTHON,'scripts/relationship_generator.py',a.spec,*(['--apply'] if a.apply else [])])
+    if a.command=='upgrade-plan':return run([PYTHON,'scripts/template_tools.py','upgrade-plan','--app',a.app,'--incoming',a.incoming])
+    if a.command=='upgrade-apply':return run([PYTHON,'scripts/template_tools.py','upgrade-apply','--app',a.app,'--incoming',a.incoming,'--plan-hash',a.plan_hash,'--maintenance',a.maintenance])
+    if a.command=='upgrade-rollback':return run([PYTHON,'scripts/template_tools.py','upgrade-rollback','--app',a.app,'--journal',a.journal,'--maintenance',a.maintenance])
+    return 1
+if __name__=='__main__':
+    try:raise SystemExit(main())
+    except (ValueError,OSError,subprocess.CalledProcessError) as error:print(error,file=sys.stderr);raise SystemExit(1)

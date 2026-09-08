@@ -1,0 +1,46 @@
+{
+  "key": "systems",
+  "label": "Systems",
+  "singular": "system",
+  "description": "Example canonical entity specification for the generator.",
+  "primary_field": "name",
+  "fields": [
+    {
+      "key": "name",
+      "label": "Name",
+      "type": "text",
+      "required": true,
+      "max_length": 160,
+      "searchable": true,
+      "column": true,
+      "sortable": true
+    },
+    {
+      "key": "description",
+      "label": "Description",
+      "type": "textarea",
+      "max_length": 10000,
+      "searchable": true,
+      "column": false,
+      "sortable": false
+    },
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "select",
+      "choices": [
+        "active",
+        "planned",
+        "retired"
+      ],
+      "default": "active",
+      "filterable": true,
+      "column": true,
+      "sortable": true
+    }
+  ],
+  "visualizations": [
+    "table",
+    "board"
+  ]
+}

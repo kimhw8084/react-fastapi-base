@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "source_digest": "d64fe841bf6b7f1a0c678ae965b45712d02b7b23adf7133694c871a5576672d2",
+  "source_hashes": "source-hashes.json",
+  "python_version": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "created_at": "2026-09-06T22:31:07.679605+00:00",
+  "release_status": "NOT_CERTIFIED",
+  "production_ready": false,
+  "code_ready": false,
+  "results": [
+    {
+      "name": "backend-tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "backend-tests.log",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=/mnt/data/company-golden/evidence/verification/backend-junit.xml"
+      ]
+    },
+    {
+      "name": "tooling-tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "tooling-tests.log",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ]
+    },
+    {
+      "name": "architecture",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "architecture.log",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "scripts/check_architecture.py"
+      ]
+    },
+    {
+      "name": "generated-contracts",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "generated-contracts.log",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "scripts/generate_contracts.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "typescript-syntax-and-pure-client",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "typescript-syntax-and-pure-client.log",
+      "command": [
+        "node",
+        "scripts/source_smoke.mjs"
+      ]
+    },
+    {
+      "name": "static-server",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "static-server.log",
+      "command": [
+        "node",
+        "--test",
+        "frontend/tests/server.test.mjs"
+      ]
+    },
+    {
+      "name": "localhost-http",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "localhost-http.log",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "scripts/http_smoke.py"
+      ]
+    },
+    {
+      "name": "frontend-typecheck",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
+      "required_for": "code"
+    },
+    {
+      "name": "frontend-unit",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
+      "required_for": "code"
+    },
+    {
+      "name": "frontend-build",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
+      "required_for": "code"
+    },
+    {
+      "name": "browser-e2e-accessibility",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
+      "required_for": "code"
+    },
+    {
+      "name": "npm-advisories",
+      "status": "BLOCKED",
+      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
+      "required_for": "code"
+    },
+    {
+      "name": "python-advisories",
+      "status": "BLOCKED",
+      "reason": "Install the audit tooling and enable network access; a version pin is not a vulnerability scan.",
+      "required_for": "code"
+    },
+    {
+      "name": "company-identity",
+      "status": "BLOCKED",
+      "reason": "Two actual company users and the PaaS execution/ingress contract must be verified.",
+      "required_for": "deployment"
+    },
+    {
+      "name": "company-storage",
+      "status": "BLOCKED",
+      "reason": "Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount.",
+      "required_for": "deployment"
+    },
+    {
+      "name": "company-deployment",
+      "status": "BLOCKED",
+      "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here.",
+      "required_for": "deployment"
+    },
+    {
+      "name": "sysgrid-migration-parity",
+      "status": "BLOCKED",
+      "reason": "No SysGrid production feature has yet been migrated and visually/behaviorally certified against this template.",
+      "required_for": "deployment"
+    }
+  ],
+  "note": "Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success."
+}

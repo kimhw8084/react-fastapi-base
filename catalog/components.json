@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "unique_interactive_families": 23,
+  "entries": [
+    {
+      "id": "tables",
+      "title": "Data tables",
+      "category": "Workspaces",
+      "tag": "rf-record-table",
+      "description": "Search, sort, group, select and act on operational records.",
+      "source": "table.ts",
+      "capabilities": [
+        "search",
+        "sort",
+        "grouping",
+        "selection",
+        "pagination",
+        "CSV export"
+      ],
+      "limits": [
+        "Client-side reference grid; large data uses the separate AG Grid adapter.",
+        "No pivot or multi-range editing in this widget."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "9f551de5e8cd666e4a95b24d22453e962020ceceaa6a41d629c226789967799e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "boards",
+      "title": "Work boards",
+      "category": "Workspaces",
+      "tag": "rf-work-board",
+      "description": "A shared workflow model with drag and keyboard-accessible movement.",
+      "source": "table.ts",
+      "capabilities": [
+        "status lanes",
+        "drag & drop",
+        "keyboard selector",
+        "detail events"
+      ],
+      "limits": [
+        "Local fixture only; server transitions must enforce domain policy."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "9f551de5e8cd666e4a95b24d22453e962020ceceaa6a41d629c226789967799e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "gantt",
+      "title": "Gantt & planning",
+      "category": "Planning",
+      "tag": "rf-gantt",
+      "description": "Schedule tasks with explicit dependencies and validated date changes.",
+      "source": "scheduling.ts",
+      "capabilities": [
+        "task bars",
+        "dependency validation",
+        "zoom",
+        "date editing",
+        "progress"
+      ],
+      "limits": [
+        "Finish-to-start constraints only.",
+        "Critical path, baselines and automatic resource scheduling are not implemented."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "7a3551eb2c9a68dcdeecbff8ac927d9cf5249ebb1d6920913925d716323f3ebb",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "calendar",
+      "title": "Calendar",
+      "category": "Planning",
+      "tag": "rf-calendar",
+      "description": "A date-only calendar with month navigation and example event creation.",
+      "source": "scheduling.ts",
+      "capabilities": [
+        "month view",
+        "date selection",
+        "event creation",
+        "keyboard focus"
+      ],
+      "limits": [
+        "No recurrence or calendar-provider synchronization."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "7a3551eb2c9a68dcdeecbff8ac927d9cf5249ebb1d6920913925d716323f3ebb",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "timeline",
+      "title": "Equipment timeline",
+      "category": "Engineering",
+      "tag": "rf-state-timeline",
+      "description": "Inspect state, duration and operational history across equipment lanes.",
+      "source": "scheduling.ts",
+      "capabilities": [
+        "state intervals",
+        "legend",
+        "interval inspection"
+      ],
+      "limits": [
+        "Synthetic state labels; not SEMI E10/E116 compliance."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "7a3551eb2c9a68dcdeecbff8ac927d9cf5249ebb1d6920913925d716323f3ebb",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "rack",
+      "title": "Rack elevation",
+      "category": "Engineering",
+      "tag": "rf-rack",
+      "description": "Inspect capacity and place equipment without overlap.",
+      "source": "spatial.ts",
+      "capabilities": [
+        "42U elevation",
+        "front/rear presentation",
+        "placement validation",
+        "power summary"
+      ],
+      "limits": [
+        "No live electrical safety assessment, cables or port modeling."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "ac9dd4c15449f2d13a01d30d30b5c78d4c9a04274a9b38364cde50e438251c8e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "wafer",
+      "title": "Wafer & die maps",
+      "category": "Semiconductor",
+      "tag": "rf-wafer",
+      "description": "Explore die-level bins and measurements with explicit coordinates.",
+      "source": "spatial.ts",
+      "capabilities": [
+        "die inspection",
+        "bin filter",
+        "yield summary",
+        "arrow-key navigation"
+      ],
+      "limits": [
+        "Synthetic circular die grid; no proprietary wafer-format parser.",
+        "No SEMI format or manufacturing compliance claim."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "ac9dd4c15449f2d13a01d30d30b5c78d4c9a04274a9b38364cde50e438251c8e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "process",
+      "title": "Process analytics",
+      "category": "Semiconductor",
+      "tag": "rf-process-chart",
+      "description": "Compare measurements to explicit limits and investigate excursions.",
+      "source": "charts.ts",
+      "capabilities": [
+        "line",
+        "area",
+        "bar",
+        "scatter",
+        "sample statistics",
+        "point-limit detection"
+      ],
+      "limits": [
+        "Not a validated SPC rule engine.",
+        "No Cpk/Ppk, subgroup charts, or measurement-system analysis."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "d9091d88cd8417b3391c03195e0310f0cb450817d67083b512bff99b96ade41e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "charts",
+      "title": "Charts & matrices",
+      "category": "Visualization",
+      "tag": "rf-chart-collection",
+      "description": "Categorical comparison, distributions and equipment intensity.",
+      "source": "charts.ts",
+      "capabilities": [
+        "Pareto bars",
+        "donut",
+        "heatmap",
+        "selection"
+      ],
+      "limits": [
+        "Fixed synthetic fixture; adapters must provide real semantics."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "d9091d88cd8417b3391c03195e0310f0cb450817d67083b512bff99b96ade41e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "topology",
+      "title": "Service topology",
+      "category": "Software engineering",
+      "tag": "rf-topology",
+      "description": "Inspect service relationships and connected operational context.",
+      "source": "spatial.ts",
+      "capabilities": [
+        "node/edge viewer",
+        "selection",
+        "zoom",
+        "keyboard inspection"
+      ],
+      "limits": [
+        "No graph authoring, auto-layout or workflow execution."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "ac9dd4c15449f2d13a01d30d30b5c78d4c9a04274a9b38364cde50e438251c8e",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "traces",
+      "title": "Trace waterfall",
+      "category": "Software engineering",
+      "tag": "rf-trace-waterfall",
+      "description": "Navigate spans, latency and service ownership in one view.",
+      "source": "scheduling.ts",
+      "capabilities": [
+        "span timeline",
+        "depth",
+        "duration",
+        "span inspection"
+      ],
+      "limits": [
+        "No live OpenTelemetry ingestion adapter yet."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "7a3551eb2c9a68dcdeecbff8ac927d9cf5249ebb1d6920913925d716323f3ebb",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "logs",
+      "title": "Log explorer",
+      "category": "Software engineering",
+      "tag": "rf-log-explorer",
+      "description": "Search service events with bounded, safely rendered messages.",
+      "source": "editors.ts",
+      "capabilities": [
+        "search",
+        "severity filter",
+        "detail events",
+        "bounded viewport"
+      ],
+      "limits": [
+        "Not connected to a live stream or retention backend."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "1b3f13671a520c3a54f549799ec7eac85cab79875223a5548a30f199a55450d3",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "diff",
+      "title": "Revision comparison",
+      "category": "Software engineering",
+      "tag": "rf-config-diff",
+      "description": "Inspect configuration and recipe differences side by side.",
+      "source": "editors.ts",
+      "capabilities": [
+        "line comparison",
+        "editable inputs",
+        "safe rendering"
+      ],
+      "limits": [
+        "Positional line diff, not semantic merge or LCS alignment."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "1b3f13671a520c3a54f549799ec7eac85cab79875223a5548a30f199a55450d3",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "forms",
+      "title": "Engineering forms",
+      "category": "Foundations",
+      "tag": "rf-engineering-form",
+      "description": "Structured field groups, units, validation and read-only behavior.",
+      "source": "editors.ts",
+      "capabilities": [
+        "required fields",
+        "finite numeric values",
+        "unit selection",
+        "validation",
+        "readonly"
+      ],
+      "limits": [
+        "No automatic unit conversion or domain validation rules."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "1b3f13671a520c3a54f549799ec7eac85cab79875223a5548a30f199a55450d3",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "windows",
+      "title": "Windows & overlays",
+      "category": "Foundations",
+      "tag": "rf-windows",
+      "description": "Focused dialogs, inspectors, sheets, guided flows and feedback.",
+      "source": "windows.ts",
+      "capabilities": [
+        "modal",
+        "drawer",
+        "sheet",
+        "fullscreen",
+        "wizard",
+        "confirmation",
+        "popover",
+        "toast",
+        "dirty guard"
+      ],
+      "limits": [
+        "No docking engine or browser-window tear-out."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "2fbe0fce498ad8569f55154e9e9f64339c0620a119a91c323a764cdc6ce2a354",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "json",
+      "title": "Configuration editor",
+      "category": "Foundations",
+      "tag": "rf-json-inspector",
+      "description": "Validate and inspect JSON without executing it.",
+      "source": "editors.ts",
+      "capabilities": [
+        "object validation",
+        "formatting",
+        "size limit",
+        "change event"
+      ],
+      "limits": [
+        "JSON syntax only; app-specific schemas require an adapter."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "1b3f13671a520c3a54f549799ec7eac85cab79875223a5548a30f199a55450d3",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "carrier",
+      "title": "Carrier slot map",
+      "category": "Semiconductor",
+      "tag": "rf-carrier",
+      "description": "Inspect wafer occupancy and validate local slot reassignments.",
+      "source": "manufacturing.ts",
+      "capabilities": [
+        "25-slot map",
+        "slot inspection",
+        "occupancy validation",
+        "safe local reassignment"
+      ],
+      "limits": [
+        "Not an equipment controller or SEMI E87/E90 implementation."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "2f94d874ff550984b6dea7802bb87778f497c4e0fd64400e804a5e103a62e3ad",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "traveler",
+      "title": "Lot traveler",
+      "category": "Semiconductor",
+      "tag": "rf-lot-traveler",
+      "description": "A sequential process traveler with explicit transition guards.",
+      "source": "manufacturing.ts",
+      "capabilities": [
+        "process steps",
+        "prerequisite checks",
+        "hold/resume",
+        "completion"
+      ],
+      "limits": [
+        "Synthetic route and state machine only; no manufacturing authorization or equipment execution."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "2f94d874ff550984b6dea7802bb87778f497c4e0fd64400e804a5e103a62e3ad",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "floorplan",
+      "title": "Equipment floor plan",
+      "category": "Engineering",
+      "tag": "rf-floorplan",
+      "description": "Inspect equipment placement and reject overlapping positions.",
+      "source": "manufacturing.ts",
+      "capabilities": [
+        "logical coordinates",
+        "asset inspection",
+        "placement validation",
+        "keyboard selection"
+      ],
+      "limits": [
+        "Not a physical-clearance, facilities or safety design tool."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "2f94d874ff550984b6dea7802bb87778f497c4e0fd64400e804a5e103a62e3ad",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "permissions",
+      "title": "Permission matrix",
+      "category": "Foundations",
+      "tag": "rf-permission-matrix",
+      "description": "Make role and capability configuration easy to review.",
+      "source": "composition.ts",
+      "capabilities": [
+        "role/action matrix",
+        "grant toggles",
+        "read-only preview"
+      ],
+      "limits": [
+        "Preview changes never grant actual access; server policy remains authoritative."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "88ed34261a11f601ba66a1b35d4e14e8a230b3137be1097c47c114dbced6f997",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "split",
+      "title": "Split workspace",
+      "category": "Workspaces",
+      "tag": "rf-split-workspace",
+      "description": "A resizable master/detail layout with non-drag alternatives.",
+      "source": "composition.ts",
+      "capabilities": [
+        "file navigation",
+        "resizing",
+        "arrow-key resizing",
+        "range alternative"
+      ],
+      "limits": [
+        "No floating-window or docking engine."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "88ed34261a11f601ba66a1b35d4e14e8a230b3137be1097c47c114dbced6f997",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "pipeline",
+      "title": "CI/CD pipeline",
+      "category": "Software engineering",
+      "tag": "rf-pipeline",
+      "description": "Inspect a run and simulate reported stage states.",
+      "source": "composition.ts",
+      "capabilities": [
+        "stage status",
+        "stage inspection",
+        "status simulation"
+      ],
+      "limits": [
+        "No CI execution, credentials, remote provider or deployments."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "88ed34261a11f601ba66a1b35d4e14e8a230b3137be1097c47c114dbced6f997",
+      "react_host_verified": false,
+      "production_certified": false
+    },
+    {
+      "id": "notifications",
+      "title": "Notification center",
+      "category": "Foundations",
+      "tag": "rf-notifications",
+      "description": "A local notification model with read states and filtering.",
+      "source": "composition.ts",
+      "capabilities": [
+        "unread counts",
+        "filtering",
+        "mark read/unread",
+        "mark all read"
+      ],
+      "limits": [
+        "No notification-delivery backend or realtime connection."
+      ],
+      "maturity": "implemented-provisional",
+      "source_sha256": "88ed34261a11f601ba66a1b35d4e14e8a230b3137be1097c47c114dbced6f997",
+      "react_host_verified": false,
+      "production_certified": false
+    }
+  ],
+  "note": "These are local model-controlled widgets. Tests do not certify React integration, production data, or the complete roadmap."
+}

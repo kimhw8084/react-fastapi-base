@@ -1,0 +1,15 @@
+from app.platform.schemas import FieldDefinition,WorkspaceDefinition
+
+def definition()->WorkspaceDefinition:
+    return WorkspaceDefinition(key='knowledge_entries',label='Knowledge',description='Canonical engineering knowledge, procedures, runbooks and lessons linked to operational records.',primary_field='title',fields=[
+        FieldDefinition(key='title',label='Title',kind='text',required=True,nullable=False,max_length=200,choices=[],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='entry_type',label='Entry type',kind='select',required=False,nullable=False,max_length=80,choices=['runbook', 'procedure', 'troubleshooting', 'architecture_note', 'lesson', 'standard', 'faq'],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='status',label='Status',kind='select',required=False,nullable=False,max_length=80,choices=['draft', 'published', 'archived_reference'],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='criticality',label='Criticality',kind='select',required=False,nullable=False,max_length=80,choices=['standard', 'critical'],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='owner',label='Owner',kind='text',required=False,nullable=True,max_length=160,choices=[],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='review_state',label='Review state',kind='select',required=False,nullable=False,max_length=80,choices=['needs_review', 'verified', 'stale', 'deprecated', 'emergency_only'],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='next_review_at',label='Next review',kind='date',required=False,nullable=True,max_length=None,choices=[],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='content',label='Content',kind='markdown',required=False,nullable=True,max_length=100000,choices=[],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='procedures',label='Structured procedures',kind='json',required=False,nullable=False,max_length=50000,choices=[],minimum=None,maximum=None,step=None,unit=None),
+        FieldDefinition(key='tags',label='Tags',kind='multiselect',required=False,nullable=False,max_length=80,choices=['operations', 'recovery', 'maintenance', 'architecture', 'safety', 'quality', 'software', 'hardware', 'network'],minimum=None,maximum=None,step=None,unit=None)
+    ],filter_keys=['entry_type', 'status', 'criticality', 'review_state'],sort_keys=['title', 'entry_type', 'status', 'criticality', 'owner', 'review_state', 'next_review_at', 'updated_at', 'created_at', 'created_by', 'revision'],columns=['title', 'entry_type', 'status', 'criticality', 'owner', 'review_state', 'next_review_at', 'updated_at', 'revision'],capabilities=['search', 'filters', 'sorting', 'selection', 'bulk', 'saved_views', 'details', 'history', 'compare', 'archive', 'restore', 'relationships', 'timeline', 'dashboard', 'graph'],visualizations=['knowledge', 'table', 'timeline', 'dashboard', 'graph'])

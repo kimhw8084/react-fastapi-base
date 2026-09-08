@@ -1,0 +1,2 @@
+// Runs before paint. Only known appearance values are read; no identity lives here.
+try{const p=JSON.parse(localStorage.getItem('rfb:experience-lab:appearance:v1')||'{}');const mode=['light','dark','system'].includes(p.mode)?p.mode:'light';document.documentElement.dataset.theme=mode==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):mode;}catch{document.documentElement.dataset.theme='light';}

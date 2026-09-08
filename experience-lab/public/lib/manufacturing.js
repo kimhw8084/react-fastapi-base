@@ -1,0 +1,60 @@
+import { validateCarrier, reassignWafer, transitionStep, validateFloor } from './manufacturing-model.js';
+export { validateCarrier, reassignWafer, transitionStep, validateFloor } from './manufacturing-model.js';
+import { EngineeringElement, register, badge } from './base.js';
+import { escapeHtml as h } from './model.js';
+export class CarrierMap extends EngineeringElement {
+    selected = 8;
+    constructor() { super(Array.from({ length: 25 }, (_, i) => ({ slot: i + 1, waferId: i % 7 === 0 && i !== 7 ? null : `W-${String(100 + i).padStart(4, '0')}`, status: i % 7 === 0 && i !== 7 ? 'empty' : i === 7 ? 'hold' : 'ready' }))); }
+    render() {
+        const selected = this.value.find(v => v.slot === this.selected);
+        const occupied = this.value.filter(s => s.waferId).length;
+        this.frame(`<div class="carrier-layout"><section class="carrier-frame"><header><span class="mono">CARRIER C-028</span>${badge(`${occupied}/25 occupied`, 'info')}</header><div class="carrier-slots">${[...this.value].sort((a, b) => b.slot - a.slot).map(s => `<button class="carrier-slot ${s.slot === this.selected ? 'selected' : ''} slot-${s.status}" data-slot="${s.slot}" aria-label="Slot ${s.slot}, ${h(s.waferId ?? 'empty')}, ${s.status}"><span class="mono">${String(s.slot).padStart(2, '0')}</span><i aria-hidden="true"></i><span>${h(s.waferId ?? 'Empty slot')}</span><span class="slot-indicator"></span></button>`).join('')}</div><footer>Logical slot map · not equipment control</footer></section><aside>${selected ? `<div class="inspector-card"><span class="eyebrow">SELECTED SLOT</span><h3>Position ${selected.slot}</h3>${badge(selected.status, selected.status === 'ready' ? 'success' : selected.status === 'hold' ? 'warning' : 'neutral')}<dl><dt>Wafer</dt><dd class="mono">${h(selected.waferId ?? 'None')}</dd><dt>Carrier</dt><dd class="mono">C-028</dd></dl><form data-carrier-form><label>Reassign to an empty slot<select name="target" aria-label="Destination carrier slot" ${this.readonlyMode || !selected.waferId ? 'disabled' : ''}>${this.value.filter(s => !s.waferId).map(s => `<option value="${s.slot}">Slot ${s.slot}</option>`).join('')}</select></label><button class="button primary full" ${this.readonlyMode || !selected.waferId ? 'disabled' : ''}>Reassign example</button></form></div>` : ''}<div class="info-card" style="margin-top:18px"><strong>No physical movement</strong><p>This component changes a local demonstration model. Real substrate tracking and equipment control require validated manufacturing adapters.</p></div></aside></div>`);
+        this.on('[data-slot]', 'click', e => { this.selected = Number(e.currentTarget.dataset.slot); this.render(); });
+        this.on('[data-carrier-form]', 'submit', e => { e.preventDefault(); try {
+            const destination = Number(new FormData(e.currentTarget).get('target'));
+            this.change(reassignWafer(this.value, this.selected, destination), 'reassign-slot');
+            this.selected = destination;
+            this.render();
+        }
+        catch (error) {
+            this.fail(error.message);
+        } });
+    }
+    configure(value, options = {}) { const errors = validateCarrier(value); if (errors.length)
+        throw new Error(errors.join(' ')); super.configure(value, options); }
+}
+export class LotTraveler extends EngineeringElement {
+    selected = 'S3';
+    constructor() { super([{ id: 'S1', name: 'Incoming inspection', equipment: 'Metrology 01', status: 'complete', duration: '18 min' }, { id: 'S2', name: 'Surface preparation', equipment: 'Wet bench 02', status: 'complete', duration: '32 min' }, { id: 'S3', name: 'Thin-film deposition', equipment: 'Chamber 03', status: 'running', duration: '46 min' }, { id: 'S4', name: 'Critical dimension check', equipment: 'Metrology 02', status: 'queued', duration: '24 min' }, { id: 'S5', name: 'Engineering review', equipment: 'Quality desk', status: 'queued', duration: '15 min' }]); }
+    render() { const selected = this.value.find(s => s.id === this.selected); this.frame(`<div class="component-toolbar"><span class="mono">LOT DEMO-028</span>${badge('Synthetic traveler', 'info')}<span class="subtle">25 wafers · reference route</span></div><div class="traveler-layout"><div class="traveler-steps">${this.value.map((s, i) => `<button class="traveler-step ${s.id === this.selected ? 'selected' : ''}" data-step="${h(s.id)}"><span class="step-number ${s.status}">${s.status === 'complete' ? '✓' : i + 1}</span><span><strong>${h(s.name)}</strong><small>${h(s.equipment)} · ${h(s.duration)}</small></span>${badge(s.status, s.status === 'complete' ? 'success' : s.status === 'running' ? 'info' : s.status === 'hold' ? 'warning' : 'neutral')}</button>`).join('')}</div><aside class="inspector-card"><span class="eyebrow">PROCESS STEP</span>${selected ? `<h3>${h(selected.name)}</h3><dl><dt>Equipment</dt><dd>${h(selected.equipment)}</dd><dt>Planned duration</dt><dd>${h(selected.duration)}</dd></dl><div class="workflow-actions">${(selected.status === 'queued' ? ['running'] : selected.status === 'running' ? ['hold', 'complete'] : selected.status === 'hold' ? ['running'] : []).map(s => `<button class="button ${s === 'complete' ? 'primary' : ''}" data-transition="${s}" ${this.readonlyMode ? 'disabled' : ''}>${s === 'running' ? 'Start / resume' : s === 'hold' ? 'Put on hold' : 'Complete step'}</button>`).join('') || '<p class="subtle">This step is complete.</p>'}</div>` : ''}<p class="component-note" style="margin-top:20px">Demonstration state machine only. Manufacturing policy, recipe validity, approvals and equipment commands are not inferred.</p></aside></div>`); this.on('[data-step]', 'click', e => { this.selected = e.currentTarget.dataset.step; this.render(); }); this.on('[data-transition]', 'click', e => { try {
+        this.change(transitionStep(this.value, this.selected, e.currentTarget.dataset.transition), 'step-transition');
+    }
+    catch (error) {
+        this.fail(error.message);
+    } }); }
+}
+export class FloorPlan extends EngineeringElement {
+    selected = 'F3';
+    constructor() { super(Array.from({ length: 8 }, (_, i) => ({ id: `F${i + 1}`, name: `Equipment ${String(i + 1).padStart(2, '0')}`, x: 40 + i % 4 * 190, y: 35 + Math.floor(i / 4) * 210, width: 140, height: 90, status: i === 2 ? 'warning' : 'healthy' }))); }
+    render() {
+        const selected = this.value.find(a => a.id === this.selected);
+        this.frame(`<div class="component-toolbar"><span class="mono">ENGINEERING BAY · B-02</span><div class="toolbar-spacer"></div>${badge('Logical layout', 'info')}</div><div class="floor-canvas"><svg viewBox="0 0 800 400" role="group" aria-label="Equipment floor plan"><rect x="1" y="1" width="798" height="398" rx="8" class="floor-boundary"/><rect x="10" y="152" width="780" height="64" class="floor-aisle"/><text x="400" y="190" text-anchor="middle" class="svg-text">SERVICE AISLE</text>${this.value.map(a => `<g class="floor-asset ${a.id === this.selected ? 'selected' : ''}" data-asset="${h(a.id)}" tabindex="0" role="button" aria-label="${h(a.name)}, ${a.status}" transform="translate(${a.x},${a.y})"><rect width="${a.width}" height="${a.height}" rx="6"/><circle cx="15" cy="19" r="4" class="fill-${a.status === 'healthy' ? 'success' : 'warning'}"/><text x="28" y="23" class="node-kind">${h(a.status)}</text><text x="14" y="49" class="node-label">${h(a.name)}</text><text x="14" y="72" class="svg-text">${a.width} × ${a.height} units</text></g>`).join('')}</svg></div>${selected ? `<form class="inline-inspector" data-floor-form><div><strong>${h(selected.name)}</strong><span>Logical coordinates · not a physical clearance assessment</span></div><label>X position<input name="x" aria-label="Equipment X position" type="number" min="0" max="800" value="${selected.x}" required ${this.readonlyMode ? 'disabled' : ''}></label><label>Y position<input name="y" aria-label="Equipment Y position" type="number" min="0" max="400" value="${selected.y}" required ${this.readonlyMode ? 'disabled' : ''}></label><button class="button primary" ${this.readonlyMode ? 'disabled' : ''}>Move example</button></form>` : ''}`);
+        const select = (e) => { this.selected = e.currentTarget.dataset.asset; this.render(); };
+        this.on('[data-asset]', 'click', select);
+        this.on('[data-asset]', 'keydown', e => { if (['Enter', ' '].includes(e.key)) {
+            e.preventDefault();
+            select(e);
+            this.querySelector(`[data-asset="${this.selected}"]`)?.focus();
+        } });
+        this.on('[data-floor-form]', 'submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); const next = this.value.map(a => a.id === this.selected ? { ...a, x: Number(data.get('x')), y: Number(data.get('y')) } : a); const errors = validateFloor(next); if (errors.length)
+            this.fail(errors.join(' '));
+        else
+            this.change(next, 'move-equipment'); });
+    }
+    configure(value, options = {}) { const errors = validateFloor(value); if (errors.length)
+        throw new Error(errors.join(' ')); super.configure(value, options); }
+}
+register('rf-carrier', CarrierMap);
+register('rf-lot-traveler', LotTraveler);
+register('rf-floorplan', FloorPlan);
+//# sourceMappingURL=manufacturing.js.map

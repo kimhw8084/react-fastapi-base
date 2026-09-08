@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "reference_repository": "kimhw8084/system_grid",
+  "reference_commit": "66244b997a70b85e6e887870c96db958f3f0d22d",
+  "reference_tree": "0e736196233c7ee98ad91918ab09f07c01613bf0",
+  "source_access": "GitHub connector",
+  "sysgrid_modified": false,
+  "audit_exhaustive": false,
+  "current_execution_reads": [
+    "branch metadata",
+    "recursive tree",
+    "AGENTS.md",
+    "selected OperationalWorkspace.ts lines"
+  ],
+  "prior_conversation_source_samples": [
+    "frontend/src/components/shared/OperationalWorkspace.ts",
+    "frontend/src/components/shared/LayoutPrimitives.tsx",
+    "frontend/src/components/shared/OperationalWorkspaceShells.tsx",
+    "frontend/src/components/shared/OperationalDataGrid.tsx",
+    "frontend/src/components/shared/OperationalGridInteractions.ts",
+    "frontend/src/components/shared/CollaborativeWorkspaceViews.ts",
+    "frontend/src/components/shared/WorkspaceModal.tsx",
+    "frontend/src/components/MonitoringGrid.tsx",
+    "frontend/src/components/ServicesReal.tsx",
+    "frontend/src/components/External.tsx",
+    "frontend/src/components/AssetReal.tsx",
+    "frontend/src/components/FAR.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/index.css",
+    "frontend/src/api/apiClient.ts",
+    "backend/app/api/workspaces.py",
+    "backend/app/api/utils.py",
+    "backend/app/database.py",
+    "scripts/verify-app.sh",
+    "DEPLOYMENT.md",
+    ".github/workflows/ai-review-packet.yml",
+    "AGENTS.md"
+  ],
+  "copied_code_claim": "New implementation inspired by reviewed contracts; not a certified extraction of the complete existing application.",
+  "runtime_parity_verified": false,
+  "continuation": {
+    "product": "react-fastapi-base",
+    "version": "0.2.0-lab",
+    "input_archive": "company-golden-0.1.0-review.zip",
+    "source_preserved_in": "checkpoints",
+    "upstream_reference_read_only": true,
+    "upstream_exhaustive_audit_completed": false,
+    "actual_reference_reads": [
+      "frontend/src/components/shared/OperationalWorkspace.ts at pinned reference"
+    ],
+    "native_widget_strategy": "New strict-TypeScript DOM/SVG components with a controlled React adapter; not an exhaustive SysGrid code extraction."
+  }
+}

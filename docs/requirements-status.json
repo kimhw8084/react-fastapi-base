@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "version": "0.2.0-lab",
+  "reference_commit": "66244b997a70b85e6e887870c96db958f3f0d22d",
+  "production_ready": false,
+  "status_legend": {
+    "IMPLEMENTED": "Code or documentation exists; consult evidence for exact tested scope. Not whole-product certification.",
+    "PARTIAL": "Only a bounded subset is implemented.",
+    "EXTERNAL": "Requires company operator/provider evidence unavailable here.",
+    "DESIGNED": "Decision/contract direction documented; capability not implemented.",
+    "BLOCKED": "A required release gate could not pass or run.",
+    "INCOMPLETE": "Required source audit/migration work not done."
+  },
+  "requirements": [
+    {
+      "id": "G01",
+      "domain": "Mission and quality bar",
+      "status": "PARTIAL",
+      "decision": "A company-first, configurable operational-app foundation; no automatic production certification.",
+      "owner": "README.md; docs/MASTER_DESIGN.md",
+      "acceptance": "Deliver the complete declared feature and verification scope before v1; no critical open release issues."
+    },
+    {
+      "id": "G02",
+      "domain": "Company PaaS contract",
+      "status": "EXTERNAL",
+      "decision": "Independent backend/ and frontend/ roots; native FastAPI and static React/optional Node entrypoints; no Docker prerequisite.",
+      "owner": "deploy/; docs/DEPLOYMENT.md",
+      "acceptance": "Publish both projects on the real PaaS, test authenticated cross-origin routing, restarts and persistent state."
+    },
+    {
+      "id": "G03",
+      "domain": "Core architecture boundaries",
+      "status": "IMPLEMENTED",
+      "decision": "Application composition injects feature definitions and renderers into a feature-independent kernel.",
+      "owner": "backend/app/platform/; frontend/src/platform/; scripts/check_architecture.py",
+      "acceptance": "Architecture checks reject known inverse imports, raw transport, unscoped browser storage and identity adapter bypasses."
+    },
+    {
+      "id": "G04",
+      "domain": "Template and package architecture",
+      "status": "PARTIAL",
+      "decision": "Vendored source template with an explicit managed-core manifest; app-specific code remains outside core ownership.",
+      "owner": "scripts/template_tools.py",
+      "acceptance": "Test clean generation, independent native publishers, no accidental credential/evidence inheritance; package publication remains optional."
+    },
+    {
+      "id": "G05",
+      "domain": "Upgrade strategy",
+      "status": "PARTIAL",
+      "decision": "Three-way hash-based dry-run plan; never overwrite local divergence; no automatic merge or apply yet.",
+      "owner": "scripts/template_tools.py; docs/UPGRADING.md",
+      "acceptance": "Implement reviewed atomic apply, rollback, compatibility migration and a real v0-to-v1 upgrade fixture."
+    },
+    {
+      "id": "G06",
+      "domain": "Customization model",
+      "status": "PARTIAL",
+      "decision": "Typed configuration, injected adapters and custom React renderers; no universal generic database entity.",
+      "owner": "backend/app/config/; frontend/src/app/registry.tsx; frontend/src/platform/workspace/types.ts",
+      "acceptance": "Prove materially different complete applications, not just three theme JSON variants, without changing platform code."
+    },
+    {
+      "id": "G07",
+      "domain": "Runtime configuration",
+      "status": "IMPLEMENTED",
+      "decision": "Strict nonsecret JSON for API origin, title and theme; server-owned configuration and permissions are separate.",
+      "owner": "frontend/public/runtime-config.json; frontend/src/platform/api/runtime.ts; backend/app/platform/configuration.py",
+      "acceptance": "Unknown keys, unsafe origins and HTTPS-to-HTTP routing must fail; secrets never enter browser configuration."
+    },
+    {
+      "id": "G08",
+      "domain": "Branding and design system",
+      "status": "PARTIAL",
+      "decision": "Semantic CSS tokens with operations, clarity and minimal themes; no Tailwind dependency in this review build.",
+      "owner": "frontend/src/theme/",
+      "acceptance": "Run real visual/a11y tests, add logo/icon/i18n configuration, remove remaining fixed presentation decisions through named tokens."
+    },
+    {
+      "id": "G09",
+      "domain": "SysGrid visual DNA",
+      "status": "PARTIAL",
+      "decision": "Monitoring behavioral patterns inform shared table, modal, saved-view and dossier ownership; no pixel-parity claim.",
+      "owner": "docs/SYSGRID_EXTRACTION.md",
+      "acceptance": "Capture approved live SysGrid references by viewport/theme and compare the actual built template."
+    },
+    {
+      "id": "G10",
+      "domain": "Application shell",
+      "status": "PARTIAL",
+      "decision": "Registered workspaces, navigation labels, tenant selection, themes, identity display, bootstrap and error states.",
+      "owner": "frontend/src/app/Application.tsx",
+      "acceptance": "Add configurable shell variants, global search, notification surface and permission-aware multi-feature navigation proof."
+    },
+    {
+      "id": "G11",
+      "domain": "Workspace engine and DSL",
+      "status": "PARTIAL",
+      "decision": "Pydantic definitions provide fields, columns, filters, sort keys and capabilities; app-owned renderer registry allows custom bodies.",
+      "owner": "backend/app/platform/workspace_registry.py; frontend/src/app/registry.tsx",
+      "acceptance": "Implement and verify additional table, hybrid, analytical and topology archetypes without coercing domain behavior into CRUD."
+    },
+    {
+      "id": "G12",
+      "domain": "Contract ownership",
+      "status": "IMPLEMENTED",
+      "decision": "Pydantic/FastAPI owns API and workspace contracts; generate OpenAPI, TypeScript data shapes and operation metadata.",
+      "owner": "scripts/generate_contracts.py; contracts/openapi.json; frontend/src/generated/schema.ts",
+      "acceptance": "Generation is deterministic and --check fails on drift; qualify generator support before introducing new schema constructs."
+    },
+    {
+      "id": "G13",
+      "domain": "Operational grid",
+      "status": "PARTIAL",
+      "decision": "AG Grid Community adapter with selection, column persistence, server pagination, global sort/filter controls and local page sorting.",
+      "owner": "frontend/src/platform/grid/DataGrid.tsx; frontend/src/platform/workspace/TableWorkspace.tsx",
+      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; full browser proof required."
+    },
+    {
+      "id": "G14",
+      "domain": "Saved workspace state",
+      "status": "PARTIAL",
+      "decision": "Personal and tenant-shared views, exact deep links, schema sanitization, optimistic revisions and conflict errors.",
+      "owner": "backend/app/platform/views.py; frontend/src/platform/workspace/SavedViews.tsx",
+      "acceptance": "Add true directory-team scopes, favorites/defaults, explicit conflict-resolution UI and offline reconciliation; tenant-wide shared is not corporate team membership."
+    },
+    {
+      "id": "G15",
+      "domain": "Forms",
+      "status": "PARTIAL",
+      "decision": "Definition-driven basic fields, validation, custom field slots, native dialog dirty protection and pending-write disabling.",
+      "owner": "frontend/src/platform/workspace/RecordForm.tsx",
+      "acceptance": "Verify browser Back/Forward and all navigation paths preserve dirty drafts; add dependent selectors, tabs, async validation and field-level custom constraints."
+    },
+    {
+      "id": "G16",
+      "domain": "Modals and overlays",
+      "status": "PARTIAL",
+      "decision": "Native dialog with nested discard confirmation, focus return and busy lock.",
+      "owner": "frontend/src/platform/ui/Dialog.tsx",
+      "acceptance": "Qualify focus/keyboard behavior in real browsers and add anchored dropdown/context-menu overlay ownership and collision geometry."
+    },
+    {
+      "id": "G17",
+      "domain": "Details, history and compare",
+      "status": "PARTIAL",
+      "decision": "Deep-linked dossiers, structured audit deltas and revision-target reversion for the reference feature.",
+      "owner": "frontend/src/platform/workspace/Dossier.tsx; backend/app/features/work_items/service.py",
+      "acceptance": "Add arbitrary two-version comparison, linked-record panels and complex entity dossier slots; run permissions and stale-revert tests."
+    },
+    {
+      "id": "G18",
+      "domain": "Lifecycle",
+      "status": "PARTIAL",
+      "decision": "Work-item create/update/archive/restore/revert with explicit revision checks and atomic bulk operations.",
+      "owner": "backend/app/features/work_items/",
+      "acceptance": "Do not advertise purge/delete where no endpoint exists; add declared domain-specific lifecycle policies and irreversible-action acceptance."
+    },
+    {
+      "id": "G19",
+      "domain": "AccessKey identity",
+      "status": "EXTERNAL",
+      "decision": "Company adapter reads AccessKey only; no browser-supplied username fallback; production requires per-user process evidence.",
+      "owner": "backend/app/profiles/company/identity.py; backend/app/platform/settings.py",
+      "acceptance": "Two real simultaneous users must get their own username; if one shared process exposes one username, stop rollout and resolve topology."
+    },
+    {
+      "id": "G20",
+      "domain": "Authorization and users",
+      "status": "PARTIAL",
+      "decision": "Server-owned roles with editable permission sets and CLI membership provisioning; browser flags are never authority.",
+      "owner": "backend/app/platform/policy.py; backend/app/platform/security.py; backend/app/config/permissions.json",
+      "acceptance": "Complete membership revoke/role-change administration and review object-level policies for new domains; negative tests are mandatory."
+    },
+    {
+      "id": "G21",
+      "domain": "Tenancy",
+      "status": "PARTIAL",
+      "decision": "Registry plus UUID-addressed tenant databases, server-checked membership, tenant-scoped API clients and cache keys.",
+      "owner": "backend/app/platform/database.py; backend/app/platform/models.py",
+      "acceptance": "Add tenant disable/recovery management and a separately tested single-database profile; multi-host direct SQLite remains unsupported."
+    },
+    {
+      "id": "G22",
+      "domain": "Backend architecture",
+      "status": "IMPLEMENTED",
+      "decision": "Synchronous SQLAlchemy and synchronous FastAPI routes for short SQLite operations; domain services and transactions remain explicit.",
+      "owner": "backend/app/main.py; backend/app/platform/; backend/app/features/",
+      "acceptance": "Keep blocking I/O out of async handlers; introduce async only for a demonstrated adapter need with independent tests."
+    },
+    {
+      "id": "G23",
+      "domain": "API contract",
+      "status": "PARTIAL",
+      "decision": "Explicit operation IDs, generated typed calls, validation/error envelopes, request IDs, revisions and idempotency for replay-sensitive endpoints.",
+      "owner": "contracts/openapi.json; frontend/src/platform/api/client.ts",
+      "acceptance": "Add full compatibility checking and typed streaming/file response metadata; generated shapes do not runtime-validate arbitrary JSON."
+    },
+    {
+      "id": "G24",
+      "domain": "Frontend data architecture",
+      "status": "PARTIAL",
+      "decision": "TanStack Query with user/tenant/workspace keys; immutable tenant-scoped API client; explicit invalidation; mutations do not auto-retry.",
+      "owner": "frontend/src/platform/api/; frontend/src/platform/workspace/",
+      "acceptance": "Run actual React integration tests for tenant switches, expired CSRF, network races and cache cancellation."
+    },
+    {
+      "id": "G25",
+      "domain": "Database architecture",
+      "status": "IMPLEMENTED",
+      "decision": "Concrete domain tables, constraints, explicit registry/tenant Alembic heads, bounded engine cache, no request-time DDL.",
+      "owner": "backend/migrations/; backend/app/platform/database.py",
+      "acceptance": "Migrate and restore representative previous schemas; compare lock behavior under documented topology and production-like load."
+    },
+    {
+      "id": "G26",
+      "domain": "Mounted SQLite qualification",
+      "status": "EXTERNAL",
+      "decision": "Diagnostic probe never grants safety approval. DELETE journal is a conservative supported profile, not a cure for S3 semantics.",
+      "owner": "backend/app/profiles/company/storage_probe.py; deploy/company-qualification.template.json",
+      "acceptance": "Require provider SQLite support plus topology and durability evidence; unsupported object/FUSE mounts remain blocked."
+    },
+    {
+      "id": "G27",
+      "domain": "Direct DB tooling",
+      "status": "PARTIAL",
+      "decision": "Trusted same-host utilities reuse identity, permission, transaction and audit services rather than ad-hoc sqlite connections.",
+      "owner": "backend/app/tooling/work_items.py",
+      "acceptance": "Exercise real trusted job/API consumers and enforce filesystem access controls; raw DB access can bypass application authorization."
+    },
+    {
+      "id": "G28",
+      "domain": "File storage",
+      "status": "PARTIAL",
+      "decision": "Bounded attachments in tenant DB BLOBs for atomic metadata/content backup; safe names, MIME/magic validation and forced downloads.",
+      "owner": "backend/app/platform/attachments.py",
+      "acceptance": "Add malware/CDR policy before accepting untrusted enterprise documents; large-file filesystem/object adapter remains unimplemented."
+    },
+    {
+      "id": "G29",
+      "domain": "Migrations, backup and recovery",
+      "status": "PARTIAL",
+      "decision": "Explicit migration CLI, quiescent multi-database snapshots, hashes/integrity checks and isolated fresh-root restore.",
+      "owner": "backend/app/platform/backup.py; docs/RECOVERY.md",
+      "acceptance": "Perform company restore/redeploy drill, define RPO/RTO and encrypted off-host retention; APP-STOPPED token is operator acknowledgement, not a distributed lock."
+    },
+    {
+      "id": "G30",
+      "domain": "Import and export",
+      "status": "PARTIAL",
+      "decision": "Versioned CSV, reversible formula escaping, bounded preview, fingerprint review and atomic import.",
+      "owner": "backend/app/features/work_items/exchange.py",
+      "acceptance": "Add XLSX, relationship-aware multi-entity snapshots, background imports and export audit policy where required."
+    },
+    {
+      "id": "G31",
+      "domain": "External integrations",
+      "status": "DESIGNED",
+      "decision": "Adapter boundary with typed results, origin allowlists, scoped secrets, timeout/retry/idempotency rules.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Implement a real company-approved integration and replay/error tests; no integration provider is bundled."
+    },
+    {
+      "id": "G32",
+      "domain": "Background and scheduled work",
+      "status": "DESIGNED",
+      "decision": "Separate native worker publication when required; durable jobs, leases and fencing must match supported database semantics.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Choose and prove company-compatible job execution; no fake timer loop advertised as durable scheduling."
+    },
+    {
+      "id": "G33",
+      "domain": "Realtime",
+      "status": "DESIGNED",
+      "decision": "Optional authenticated tenant-scoped event transport; default baseline uses query refresh rather than global broadcasts.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Implement authorization on connect and each subscription, replay/reconnect policy and multi-instance delivery tests."
+    },
+    {
+      "id": "G34",
+      "domain": "Audit",
+      "status": "PARTIAL",
+      "decision": "Actor/tenant/request-correlated changes written transactionally; SQLite triggers reject update/delete of audit rows.",
+      "owner": "backend/app/platform/audit.py; backend/migrations/tenant/0001_tenant.py",
+      "acceptance": "Define retention, export logging and tamper-evident external evidence; database owners can alter schema, so this is not WORM storage."
+    },
+    {
+      "id": "G35",
+      "domain": "Errors and diagnostics",
+      "status": "IMPLEMENTED",
+      "decision": "Safe API error envelope, request IDs, bounded client response diagnostics, explicit configuration/bootstrap failures.",
+      "owner": "backend/app/platform/errors.py; frontend/src/platform/api/client.ts",
+      "acceptance": "Test failure kinds and prevent secrets in responses; full SysGrid support-bundle UX remains outside this implementation."
+    },
+    {
+      "id": "G36",
+      "domain": "Observability",
+      "status": "PARTIAL",
+      "decision": "Request admission/logging, correlation IDs, health/readiness and safe diagnostics.",
+      "owner": "backend/app/platform/middleware.py; backend/app/main.py",
+      "acceptance": "Add operational metrics, latency histograms, traces, alerts and target PaaS log collection; configure service-level objectives."
+    },
+    {
+      "id": "G37",
+      "domain": "Security model",
+      "status": "PARTIAL",
+      "decision": "Fail-closed production profile, server identity/membership, CSRF, explicit origins/hosts, bounded input, path constraints and revisions.",
+      "owner": "docs/SECURITY.md; backend/tests/test_security.py",
+      "acceptance": "Independent threat review and penetration tests; resolve actual identity/storage assumptions; no claim of ASVS conformance."
+    },
+    {
+      "id": "G38",
+      "domain": "Supply chain",
+      "status": "BLOCKED",
+      "decision": "Exact backend dependency snapshot and candidate frontend pins; CI requires locks and high-severity advisory gates.",
+      "owner": "backend/requirements.lock; frontend/package.json; .github/workflows/verify.yml",
+      "acceptance": "Resolve/review frontend lock, install/scan dependencies, add hash-locked Python artifacts, SBOM/provenance and licensing review."
+    },
+    {
+      "id": "G39",
+      "domain": "Accessibility",
+      "status": "BLOCKED",
+      "decision": "Native semantics, labels, keyboard/dialog source and Playwright axe test definitions exist.",
+      "owner": "frontend/tests/e2e/; frontend/src/platform/ui/",
+      "acceptance": "Run the built app plus manual keyboard/screen-reader/zoom testing; zero serious/critical axe findings alone does not certify WCAG."
+    },
+    {
+      "id": "G40",
+      "domain": "Performance",
+      "status": "DESIGNED",
+      "decision": "Bounded 50-row UI pages, 100-row bulk/import, 1 MB attachments and short serialized SQLite writes.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Measure production-like bundle size, p95 latency, render responsiveness and memory under expected load; no benchmark claims from design limits."
+    },
+    {
+      "id": "G41",
+      "domain": "Browser and devices",
+      "status": "BLOCKED",
+      "decision": "Desktop-first responsive CSS and Chromium test harness; browser support matrix is proposed, not certified.",
+      "owner": "frontend/playwright.config.ts; frontend/src/theme/",
+      "acceptance": "Qualify company-managed browser/version, Windows/macOS modifiers, 200% zoom and mobile layouts where required."
+    },
+    {
+      "id": "G42",
+      "domain": "Locale and time",
+      "status": "PARTIAL",
+      "decision": "UTC serialization and Unicode validation; labels in app/feature definitions, English reference UI.",
+      "owner": "backend/app/platform/schemas.py; frontend/src/generated/schema.ts",
+      "acceptance": "Centralize UI date/number formatting and localization catalogs; define display timezone and DST behavior."
+    },
+    {
+      "id": "G43",
+      "domain": "Notifications",
+      "status": "PARTIAL",
+      "decision": "Transient success/error status notices only; no email/push/in-app inbox provider.",
+      "owner": "frontend/src/platform/ui/Notice.tsx",
+      "acceptance": "Add accessible announcement timing/dismissal and optional provider-backed durable notifications with preferences."
+    },
+    {
+      "id": "G44",
+      "domain": "Flags and capabilities",
+      "status": "PARTIAL",
+      "decision": "Workspace metadata and server permission registry; visible capabilities must not replace backend enforcement.",
+      "owner": "backend/app/features/work_items/definition.py; backend/app/platform/policy.py",
+      "acceptance": "Add typed runtime flag policy and validate capabilities against installed handlers to prevent advertised but missing features."
+    },
+    {
+      "id": "G45",
+      "domain": "Developer commands",
+      "status": "IMPLEMENTED",
+      "decision": "One dev entrypoint: setup/start/seed/contracts/architecture/verify/create/upgrade-plan/operator.",
+      "owner": "dev; scripts/",
+      "acceptance": "Commands use explicit data roots, refuse destructive implicit resets and report missing prerequisites as blocked."
+    },
+    {
+      "id": "G46",
+      "domain": "Development environments",
+      "status": "PARTIAL",
+      "decision": "Explicit localhost profile, isolated smoke/E2E data and separate production env examples.",
+      "owner": "dev; scripts/e2e_runner.py; deploy/",
+      "acceptance": "Qualify forwarded company dev origins and platform publisher behavior; do not copy development identity into production."
+    },
+    {
+      "id": "G47",
+      "domain": "Test architecture",
+      "status": "PARTIAL",
+      "decision": "Executed backend/tooling/client/static-server/HTTP checks; React/Playwright tests authored but not executed here.",
+      "owner": "evidence/verification/; backend/tests/; frontend/tests/",
+      "acceptance": "Run complete clean-install UI/API/security/browser suites plus company recovery and performance tests."
+    },
+    {
+      "id": "G48",
+      "domain": "Golden behavioral contracts",
+      "status": "PARTIAL",
+      "decision": "Revision, CSV, authorization, storage, API and source-boundary tests protect several repeated failure classes.",
+      "owner": "backend/tests/; scripts/check_architecture.py",
+      "acceptance": "Add full SysGrid grid/overlay/lifecycle behavior suite and AST-based frontend rules; string checks are not exhaustive."
+    },
+    {
+      "id": "G49",
+      "domain": "Authoritative verification",
+      "status": "PARTIAL",
+      "decision": "Single command records exact commands, logs, PASS/FAIL/BLOCKED and separates code readiness from deployment certification.",
+      "owner": "scripts/verify.py",
+      "acceptance": "Clean installation passes every code gate; any missing lock/tool is blocked, never quietly skipped."
+    },
+    {
+      "id": "G50",
+      "domain": "CI/CD",
+      "status": "PARTIAL",
+      "decision": "Pinned-action CI executes backend/tools and exact frontend root with required lock and browser/security jobs.",
+      "owner": ".github/workflows/verify.yml",
+      "acceptance": "Run real PR CI, configure protected branches and artifact attestations; no remote workflow was executed in this delivery."
+    },
+    {
+      "id": "G51",
+      "domain": "Native PaaS adapters",
+      "status": "EXTERNAL",
+      "decision": "FastAPI app.main:app plus optional run.py; React dist or native Node server.mjs; explicit runtime JSON.",
+      "owner": "deploy/; frontend/server.mjs; backend/run.py",
+      "acceptance": "Verify actual PaaS starting-file/root/runtime conventions, domains and persistence before publication."
+    },
+    {
+      "id": "G52",
+      "domain": "Codex workflow",
+      "status": "IMPLEMENTED",
+      "decision": "Local repository instructions identify editing boundaries, proofs and no automatic destructive operations.",
+      "owner": "AGENTS.md; docs/CODEX.md",
+      "acceptance": "New agent follows the repository without claiming unrun tests; do not overwrite SysGrid control-room policy."
+    },
+    {
+      "id": "G53",
+      "domain": "Agent-friendly organization",
+      "status": "PARTIAL",
+      "decision": "Small feature modules, local recipes, generated types and limited platform ownership.",
+      "owner": "frontend/src/; backend/app/; docs/recipes/",
+      "acceptance": "Observe real agent implementation tasks and context use; do not claim token savings without measurement."
+    },
+    {
+      "id": "G54",
+      "domain": "Architecture linting",
+      "status": "PARTIAL",
+      "decision": "Python AST and targeted TypeScript source checks enforce known dependency/identity/transport/storage constraints.",
+      "owner": "scripts/check_architecture.py",
+      "acceptance": "Add full TypeScript AST rules and exception policy; test deliberate bypass attempts and false positives."
+    },
+    {
+      "id": "G55",
+      "domain": "Generators",
+      "status": "PARTIAL",
+      "decision": "Fresh application generator with configuration overrides, no source mutation and managed-core hashes.",
+      "owner": "scripts/template_tools.py",
+      "acceptance": "Add feature/workspace/schema/migration generators only after second-domain patterns are validated."
+    },
+    {
+      "id": "G56",
+      "domain": "Documentation",
+      "status": "IMPLEMENTED",
+      "decision": "Local startup, customization, security, deployment, recovery, architecture decisions, recipes, evidence and scope ledger.",
+      "owner": "docs/; README.md",
+      "acceptance": "Keep commands executable and add automated documentation-link/recipe tests as tooling matures."
+    },
+    {
+      "id": "G57",
+      "domain": "Neutral reference feature",
+      "status": "PARTIAL",
+      "decision": "Real work-items backend and React source with CRUD, revisions, saved views, history, bulk, CSV and attachments.",
+      "owner": "backend/app/features/work_items/; frontend/src/features/work-items/",
+      "acceptance": "Build and browse the feature; complete grouping/context/compare parity and permission-lifecycle UX acceptance."
+    },
+    {
+      "id": "G58",
+      "domain": "Reference variants",
+      "status": "PARTIAL",
+      "decision": "Three generated theme configurations retain identical core hashes.",
+      "owner": "tests/test_template_tools.py; frontend/src/theme/tokens.css",
+      "acceptance": "Implement a second domain and materially different shell; theme switches alone are not proof of radical product customizability."
+    },
+    {
+      "id": "G59",
+      "domain": "Exhaustive SysGrid file audit",
+      "status": "INCOMPLETE",
+      "decision": "Pinned branch/tree and selected high-value contracts were read; retained mapping records exactly this scope.",
+      "owner": "docs/SYSGRID_EXTRACTION.md; SOURCE_PROVENANCE.json",
+      "acceptance": "Inventory and inspect every relevant source/test/guard with hashes and evidence; do not label a sampled review exhaustive."
+    },
+    {
+      "id": "G60",
+      "domain": "SysGrid behavior inventory",
+      "status": "INCOMPLETE",
+      "decision": "Monitoring common patterns are recorded from source; no live screenshots or whole-product behavior catalogue.",
+      "owner": "docs/SYSGRID_EXTRACTION.md",
+      "acceptance": "Capture routed UX and tests against the pinned source for all target domains, including recent Project changes."
+    },
+    {
+      "id": "G61",
+      "domain": "SysGrid migration",
+      "status": "INCOMPLETE",
+      "decision": "No changes were made to SysGrid; staged compatibility plan is documented.",
+      "owner": "docs/SYSGRID_MIGRATION.md",
+      "acceptance": "Migrate one real domain behind a switch, prove parity, then two distinct domains before declaring generality."
+    },
+    {
+      "id": "G62",
+      "domain": "Technical-debt cleanup",
+      "status": "PARTIAL",
+      "decision": "New core avoids giant modules, dual API types, global CSS overrides and root-package CI confusion.",
+      "owner": "docs/ADRS.md",
+      "acceptance": "This does not repair current SysGrid in place; test actual migration and code ownership changes independently."
+    },
+    {
+      "id": "G63",
+      "domain": "Repository hygiene",
+      "status": "PARTIAL",
+      "decision": "Ignore data/secrets/caches; tracked examples only; reviewed source/evidence separated.",
+      "owner": ".gitignore; scripts/template_tools.py",
+      "acceptance": "Add clean-checkout scans, owner-selected licensing and codeowners/protected branches in the target repository."
+    },
+    {
+      "id": "G64",
+      "domain": "Platform governance",
+      "status": "DESIGNED",
+      "decision": "Promote only proven repeated behavior; application quirks remain in features; version breaking public contracts.",
+      "owner": "docs/MASTER_DESIGN.md; docs/UPGRADING.md",
+      "acceptance": "Assign maintainers and perform one reviewed upgrade/contribution cycle."
+    },
+    {
+      "id": "G65",
+      "domain": "Release certification",
+      "status": "BLOCKED",
+      "decision": "Review build is NOT_CERTIFIED; local evidence never authorizes company deployment.",
+      "owner": "docs/RELEASE_STATUS.md; evidence/verification/verification.json",
+      "acceptance": "Close scope gaps, code gates and company evidence; independent approval tied to exact artifact digest."
+    },
+    {
+      "id": "G66",
+      "domain": "Home/cloud extension points",
+      "status": "DESIGNED",
+      "decision": "Identity/database/storage/deployment can be replaced at composition boundaries; no home profile implementation bundled.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Implement and test OIDC/PostgreSQL/object storage only after company core proves itself; do not assume database dialect portability."
+    },
+    {
+      "id": "G67",
+      "domain": "Success metrics",
+      "status": "DESIGNED",
+      "decision": "Measure accepted-feature effort, context/usage, changed core files, regressions, build time and upgrade conflicts.",
+      "owner": "docs/MASTER_DESIGN.md",
+      "acceptance": "Run comparable real tasks and publish observed results, not invented productivity percentages."
+    },
+    {
+      "id": "G68",
+      "domain": "Decision records",
+      "status": "IMPLEMENTED",
+      "decision": "Key choices, alternatives, limitations and proof obligations are retained.",
+      "owner": "docs/ADRS.md",
+      "acceptance": "Keep decisions current when adapters, infrastructure or public contracts change."
+    }
+  ],
+  "continuation_note": "Native Experience Lab adds 23 provisional interactive families. Original 68-domain statuses are not automatically promoted; expanded scope is tracked in catalog/roadmap.json."
+}
