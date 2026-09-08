@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_commit": "a048fc6a9f29cdf2971984a58405d0e6ca77ab22",
+  "timestamp": "2026-09-08T15:52:06Z",
+  "command": ["python scripts/performance_check.py"],
+  "exit_code": 0,
+  "environment": "macOS arm64; Python 3.14.5",
+  "hashes": {"source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11"},
+  "result": "PASS — bounded owned algorithms only; browser/render and large-scale budgets remain uncertified"
+}

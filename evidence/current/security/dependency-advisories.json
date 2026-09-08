@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_commit": "a048fc6a9f29cdf2971984a58405d0e6ca77ab22",
+  "timestamp": "2026-09-08T15:52:06Z",
+  "command": ["npm audit --audit-level=high", "python -m pip_audit -r backend/requirements.lock"],
+  "exit_code": 0,
+  "environment": "macOS arm64; Python 3.14.5; Node 22.23.2",
+  "hashes": {"source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11", "VERSION": "8e3ccfbe492191dbb919be7b4ef3d93bd88f92b1d99532b25ba19c5ad9f1f722", "frontend/package-lock.json": "fe9551e67b3a9982dc0694932cca8430e445af5fc7056fadf3053d7e619709c0", "backend/requirements.lock": "510dab176f9446a8817bfcae88abb9032ef3852a2f1f79082b841887c085c444"},
+  "result": "PASS"
+}
