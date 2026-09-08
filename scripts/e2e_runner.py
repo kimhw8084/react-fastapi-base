@@ -10,6 +10,7 @@ import tempfile
 import time
 import urllib.request
 ROOT=Path(__file__).resolve().parents[1]
+BACKEND_PYTHON=ROOT/'backend/.venv'/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
 
 def wait(url,process):
     for _ in range(100):
@@ -23,6 +24,7 @@ def wait(url,process):
 
 def main():
     if not (ROOT/'frontend/dist/index.html').is_file():raise RuntimeError('Build the actual frontend before browser tests.')
+    if not BACKEND_PYTHON.is_file():raise RuntimeError('Create backend/.venv before running browser tests.')
     for port in (18081,4183):
         with socket.socket() as probe:probe.bind(('127.0.0.1',port))
     with tempfile.TemporaryDirectory(prefix='golden-e2e-') as temp:
@@ -32,10 +34,10 @@ def main():
         env.update(BASE_ENVIRONMENT='test',BASE_PROFILE='development',BASE_DEV_USER='demo.admin',BASE_DATA_ROOT=str(data),
             BASE_ALLOWED_ORIGINS='["http://127.0.0.1:4183"]',BASE_ALLOWED_HOSTS='["127.0.0.1","localhost"]',BASE_REQUEST_LIMIT_PER_MINUTE='1000',
             BASE_E2E_BASE='http://127.0.0.1:4183',BASE_FRONTEND_RUNTIME_CONFIG=str(runtime),PORT='4183',HOST='127.0.0.1')
-        subprocess.check_call([sys.executable,'-m','app.cli','seed-demo'],cwd=ROOT/'backend',env=env)
+        subprocess.check_call([str(BACKEND_PYTHON),'-m','app.cli','seed-demo'],cwd=ROOT/'backend',env=env)
         processes=[]
         try:
-            processes.append(subprocess.Popen([sys.executable,'-m','uvicorn','app.main:app','--host','127.0.0.1','--port','18081'],cwd=ROOT/'backend',env=env))
+            processes.append(subprocess.Popen([str(BACKEND_PYTHON),'-m','uvicorn','app.main:app','--host','127.0.0.1','--port','18081'],cwd=ROOT/'backend',env=env))
             wait('http://127.0.0.1:18081/api/v1/readiness',processes[0])
             processes.append(subprocess.Popen(['node','server.mjs'],cwd=ROOT/'frontend',env=env))
             wait('http://127.0.0.1:4183/healthz',processes[1])
