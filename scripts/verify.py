@@ -81,7 +81,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     for directory in ('backend','frontend','contracts','scripts','tests','experience-lab','catalog'):
         for file in sorted((ROOT/directory).rglob('*')):
             relative=file.relative_to(ROOT)
-            if file.is_file() and not set(relative.parts)&{'__pycache__','.pytest_cache','.venv','venv','node_modules','dist','test-results','playwright-report'} and file.suffix not in {'.pyc','.log','.sqlite3'}:
+            if file.is_file() and not set(relative.parts)&{'__pycache__','.pytest_cache','.venv','venv','node_modules','dist','coverage','test-results','playwright-report'} and file.name not in {'.coverage','coverage.xml'} and file.suffix not in {'.pyc','.log','.sqlite3'}:
                 source_hashes[relative.as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
     source_hashes['dev']=hashlib.sha256((ROOT/'dev').read_bytes()).hexdigest()
     source_digest=hashlib.sha256(json.dumps(source_hashes,sort_keys=True,separators=(',',':')).encode()).hexdigest()
