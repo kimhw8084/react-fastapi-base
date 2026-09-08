@@ -17,6 +17,9 @@ def create(request:Request,actor:A,data:KnowledgeEntrieCreate,idempotency_key:st
 def bulk(request:Request,actor:A,data:KnowledgeEntrieBulkRequest,idempotency_key:str=Header(...)):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         result=execute_once(db,actor,idempotency_key,'knowledge_entries.bulk',data.model_dump(),lambda:{'items':[row.model_dump(mode='json') for row in service.bulk(db,actor,data)]});return result['items']
+@router.post('/{record_id}/workflow/{action}',response_model=KnowledgeEntrieRead)
+def workflow(request:Request,actor:A,record_id:str,action:str,data:RevisionInput):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.workflow(db,actor,record_id,data.revision,action)
 @router.get('/{record_id}',response_model=KnowledgeEntrieRead)
 def get_record(request:Request,actor:A,record_id:str):
     actor.require('read')

@@ -5,7 +5,7 @@ from app.platform.schemas import AuditRead,RevisionInput
 from app.platform.security import Actor,actor_for
 from app.platform.transactions import write_transaction
 from . import service
-from .schemas import RiskCreate,RiskUpdate,RiskRead,RiskPage,RiskBulkRequest,RevertRequest
+from .schemas import RiskCreate,RiskUpdate,RiskRead,RiskPage,RiskBulkRequest,RevertRequest,RiskScoreTarget
 router=APIRouter(prefix='/risks',tags=['Risk analysis']);A=Annotated[Actor,Depends(actor_for)]
 @router.get('',response_model=RiskPage)
 def list_records(request:Request,actor:A,search:str=Query('',max_length=200),archived:bool=False,sort:str='updated_at',direction:str='desc',limit:int=Query(50,ge=1,le=1000),offset:int=Query(0,ge=0),status:str='',category:str=''):
@@ -17,6 +17,10 @@ def create(request:Request,actor:A,data:RiskCreate,idempotency_key:str|None=Head
 def bulk(request:Request,actor:A,data:RiskBulkRequest,idempotency_key:str=Header(...)):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         result=execute_once(db,actor,idempotency_key,'risks.bulk',data.model_dump(),lambda:{'items':[row.model_dump(mode='json') for row in service.bulk(db,actor,data)]});return result['items']
+@router.post('/score/bulk',response_model=list[RiskRead])
+def bulk_score(request:Request,actor:A,targets:list[RiskScoreTarget],idempotency_key:str=Header(...)):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:
+        result=execute_once(db,actor,idempotency_key,'risks.score',{'targets':[target.model_dump() for target in targets]},lambda:{'items':[row.model_dump(mode='json') for row in service.bulk_score(db,actor,targets)]});return result['items']
 @router.get('/{record_id}',response_model=RiskRead)
 def get_record(request:Request,actor:A,record_id:str):
     actor.require('read')

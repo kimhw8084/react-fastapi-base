@@ -119,6 +119,8 @@ export type RiskBulkRequest = { "action": "archive" | "restore"; "targets": Arra
 export type RiskCreate = { "title": string; "status"?: "identified" | "assessing" | "mitigating" | "monitoring" | "closed"; "category"?: "design" | "process" | "hardware" | "software" | "network" | "human" | "environment"; "severity"?: number; "occurrence"?: number; "detection"?: number; "rpn"?: number; "residual_severity"?: (number | null); "residual_occurrence"?: (number | null); "residual_detection"?: (number | null); "residual_rpn"?: (number | null); "effect"?: (string | null); "causes"?: { [key: string]: unknown }; "mitigations"?: { [key: string]: unknown }; "prevention"?: { [key: string]: unknown } }
 export type RiskPage = { "items": Array<RiskRead>; "total": number; "limit": number; "offset": number }
 export type RiskRead = { "title": string; "status": "identified" | "assessing" | "mitigating" | "monitoring" | "closed"; "category": "design" | "process" | "hardware" | "software" | "network" | "human" | "environment"; "severity": number; "occurrence": number; "detection": number; "rpn": number; "residual_severity": (number | null); "residual_occurrence": (number | null); "residual_detection": (number | null); "residual_rpn": (number | null); "effect": (string | null); "causes": { [key: string]: unknown }; "mitigations": { [key: string]: unknown }; "prevention": { [key: string]: unknown }; "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
+export type RiskScore = { "severity": number; "occurrence": number; "detection": number; "residual_severity"?: (number | null); "residual_occurrence"?: (number | null); "residual_detection"?: (number | null) }
+export type RiskScoreTarget = { "id": string; "revision": number; "score": RiskScore }
 export type RiskUpdate = { "title": string; "status"?: "identified" | "assessing" | "mitigating" | "monitoring" | "closed"; "category"?: "design" | "process" | "hardware" | "software" | "network" | "human" | "environment"; "severity"?: number; "occurrence"?: number; "detection"?: number; "rpn"?: number; "residual_severity"?: (number | null); "residual_occurrence"?: (number | null); "residual_detection"?: (number | null); "residual_rpn"?: (number | null); "effect"?: (string | null); "causes"?: { [key: string]: unknown }; "mitigations"?: { [key: string]: unknown }; "prevention"?: { [key: string]: unknown }; "revision": number }
 export type ServiceObjectiveBulkRequest = { "action": "archive" | "restore"; "targets": Array<BulkTarget> }
 export type ServiceObjectiveCreate = { "name": string; "window_days"?: number; "target_percent"?: number; "current_percent"?: number; "error_budget_remaining"?: number; "burn_rate"?: number; "status"?: "healthy" | "warning" | "exhausted"; "notes"?: (string | null) }
@@ -238,6 +240,7 @@ export interface OperationInputs {
   "history_api_v1_knowledge_entries__record_id__history_get": { path: { "record_id": string } }
   "lifecycle_api_v1_knowledge_entries__record_id__lifecycle__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "revert_api_v1_knowledge_entries__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
+  "workflow_api_v1_knowledge_entries__record_id__workflow__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "list_records_api_v1_manufacturing_lots_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string; "priority"?: string } }
   "create_api_v1_manufacturing_lots_post": { body: ManufacturingLotCreate }
   "bulk_api_v1_manufacturing_lots_bulk_post": { body: ManufacturingLotBulkRequest }
@@ -325,6 +328,7 @@ export interface OperationInputs {
   "list_records_api_v1_risks_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string; "category"?: string } }
   "create_api_v1_risks_post": { body: RiskCreate }
   "bulk_api_v1_risks_bulk_post": { body: RiskBulkRequest }
+  "bulk_score_api_v1_risks_score_bulk_post": { body: Array<RiskScoreTarget> }
   "get_record_api_v1_risks__record_id__get": { path: { "record_id": string } }
   "update_record_api_v1_risks__record_id__put": { path: { "record_id": string }; body: RiskUpdate }
   "history_api_v1_risks__record_id__history_get": { path: { "record_id": string } }
@@ -460,6 +464,7 @@ export interface OperationOutputs {
   "history_api_v1_knowledge_entries__record_id__history_get": Array<AuditRead>
   "lifecycle_api_v1_knowledge_entries__record_id__lifecycle__action__post": KnowledgeEntrieRead
   "revert_api_v1_knowledge_entries__record_id__revert_post": KnowledgeEntrieRead
+  "workflow_api_v1_knowledge_entries__record_id__workflow__action__post": KnowledgeEntrieRead
   "list_records_api_v1_manufacturing_lots_get": ManufacturingLotPage
   "create_api_v1_manufacturing_lots_post": ManufacturingLotRead
   "bulk_api_v1_manufacturing_lots_bulk_post": Array<ManufacturingLotRead>
@@ -547,6 +552,7 @@ export interface OperationOutputs {
   "list_records_api_v1_risks_get": RiskPage
   "create_api_v1_risks_post": RiskRead
   "bulk_api_v1_risks_bulk_post": Array<RiskRead>
+  "bulk_score_api_v1_risks_score_bulk_post": Array<RiskRead>
   "get_record_api_v1_risks__record_id__get": RiskRead
   "update_record_api_v1_risks__record_id__put": RiskRead
   "history_api_v1_risks__record_id__history_get": Array<AuditRead>
@@ -904,6 +910,10 @@ export const operationRoutes = {
     "method": "POST",
     "path": "/api/v1/knowledge-entries/{record_id}/revert"
   },
+  "workflow_api_v1_knowledge_entries__record_id__workflow__action__post": {
+    "method": "POST",
+    "path": "/api/v1/knowledge-entries/{record_id}/workflow/{action}"
+  },
   "list_records_api_v1_manufacturing_lots_get": {
     "method": "GET",
     "path": "/api/v1/manufacturing-lots"
@@ -1251,6 +1261,10 @@ export const operationRoutes = {
   "bulk_api_v1_risks_bulk_post": {
     "method": "POST",
     "path": "/api/v1/risks/bulk"
+  },
+  "bulk_score_api_v1_risks_score_bulk_post": {
+    "method": "POST",
+    "path": "/api/v1/risks/score/bulk"
   },
   "get_record_api_v1_risks__record_id__get": {
     "method": "GET",

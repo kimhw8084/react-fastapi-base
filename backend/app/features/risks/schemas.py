@@ -48,5 +48,10 @@ class BulkTarget(StrictSchema):
     id:str;revision:int=Field(ge=1)
 class RiskBulkRequest(StrictSchema):
     action:Literal['archive','restore'];targets:list[BulkTarget]=Field(min_length=1,max_length=100)
+class RiskScore(StrictSchema):
+    severity:int=Field(ge=1,le=10);occurrence:int=Field(ge=1,le=10);detection:int=Field(ge=1,le=10)
+    residual_severity:int|None=Field(default=None,ge=1,le=10);residual_occurrence:int|None=Field(default=None,ge=1,le=10);residual_detection:int|None=Field(default=None,ge=1,le=10)
+class RiskScoreTarget(StrictSchema):
+    id:str;revision:int=Field(ge=1);score:RiskScore
 class RevertRequest(StrictSchema):
     revision:int=Field(ge=1);target_revision:int=Field(ge=1)

@@ -51,6 +51,18 @@ def test_risk_links_to_investigation_and_equipment(client):
     duplicate_target=client.post('/api/v1/relationships',json={'definition_key':'risk_investigation','source_id':risk['id'],'target_id':investigation['id']})
     assert duplicate_target.status_code==409
 
+def test_knowledge_workflow_and_bulk_risk_scoring_are_server_owned(client):
+    knowledge=client.post('/api/v1/knowledge-entries',json={'title':'Controlled runbook','content':'Safe text'}).json()
+    submitted=client.post(f"/api/v1/knowledge-entries/{knowledge['id']}/workflow/submit_review",json={'revision':1});assert submitted.status_code==200,submitted.text
+    approved=client.post(f"/api/v1/knowledge-entries/{knowledge['id']}/workflow/approve",json={'revision':2});assert approved.status_code==200,approved.text
+    published=client.post(f"/api/v1/knowledge-entries/{knowledge['id']}/workflow/publish",json={'revision':3});assert published.status_code==200, published.text
+    assert published.json()['status']=='published' and published.json()['review_state']=='verified'
+    first=client.post('/api/v1/risks',json={'title':'Score one','severity':2,'occurrence':2,'detection':2}).json()
+    second=client.post('/api/v1/risks',json={'title':'Score two','severity':3,'occurrence':3,'detection':3}).json()
+    scored=client.post('/api/v1/risks/score/bulk',headers={'Idempotency-Key':'risk-score-1'},json=[{'id':first['id'],'revision':1,'score':{'severity':8,'occurrence':4,'detection':2,'residual_severity':3,'residual_occurrence':2,'residual_detection':2}},{'id':second['id'],'revision':1,'score':{'severity':5,'occurrence':4,'detection':3}}])
+    assert scored.status_code==200,scored.text
+    by_id={row['id']:row for row in scored.json()};assert by_id[first['id']]['rpn']==64 and by_id[first['id']]['residual_rpn']==12
+
 def test_workspace_definitions_expose_dense_custom_projections_and_readonly_scores(client):
     definitions={item['key']:item for item in client.get('/api/v1/workspaces').json()}
     assert definitions['knowledge_entries']['visualizations'][0]=='knowledge'
