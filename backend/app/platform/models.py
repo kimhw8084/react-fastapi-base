@@ -188,3 +188,17 @@ class WebhookReceipt(TenantBase):
     endpoint_id: Mapped[str] = mapped_column(String(36), primary_key=True)
     external_event_id: Mapped[str] = mapped_column(String(120), primary_key=True)
     received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+class WebhookDelivery(TenantBase):
+    __tablename__ = 'webhook_deliveries'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    endpoint_id: Mapped[str] = mapped_column(String(36), index=True)
+    event_id: Mapped[str] = mapped_column(String(36), index=True)
+    status: Mapped[str] = mapped_column(String(20), index=True, default='pending')
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    response_status: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    response_summary: Mapped[str | None] = mapped_column(String(240), nullable=True)
+    last_error: Mapped[str | None] = mapped_column(String(240), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    __table_args__ = (UniqueConstraint('endpoint_id', 'event_id', name='uq_webhook_deliveries_endpoint_event'),)

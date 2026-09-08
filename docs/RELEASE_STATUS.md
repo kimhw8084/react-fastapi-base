@@ -7,7 +7,7 @@
 ## Verified in this checkout
 
 - Frontend lockfile, `npm ci`, TypeScript, unit tests, production build, Storybook build, and actual React browser workflows.
-- FastAPI backend suite: 177 tests passing on the security-updated dependency set, including typed integrations, statistical parity, fenced durable jobs and membership-scoped saved views.
+- FastAPI backend suite: 179 tests passing on the security-updated dependency set, including typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views and webhook delivery history.
 - Isolated clean-clone Mac certification: setup, contracts, architecture, catalog release check, backend tests, frontend typecheck/build, Storybook and React E2E all passed with cache isolation.
 - Generated contract check, architecture lint, source security checks, owned algorithm performance checks, Lab build, and Lab HTTP/browser tests.
 - Native and React surfaces use synthetic/disposable data only.
@@ -22,6 +22,7 @@
 - Independent generator/reference-app proofs remain to be completed.
 - Saved views now support explicit tenant teams with server-enforced membership and a conflict-resolution recovery action; favorites/defaults and offline reconciliation remain open.
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
+- Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
 
 ## Evidence policy

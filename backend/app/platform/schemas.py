@@ -293,6 +293,8 @@ class WebhookEndpointWrite(StrictSchema):
         return value
 class WebhookEndpointRead(StrictSchema):
     id:str;name:str;url:str;topics:list[str];secret_ref:str;enabled:bool;revision:int;created_by:str;created_at:datetime;updated_at:datetime
+class WebhookDeliveryRead(StrictSchema):
+    id:str;endpoint_id:str;event_id:str;status:Literal['pending','delivering','retrying','delivered','failed'];attempts:int;response_status:int|None;response_summary:str|None;last_error:str|None;created_at:datetime;updated_at:datetime
 
 class MemberWrite(StrictSchema):
     user_id:str=Field(min_length=1,max_length=200)

@@ -8,8 +8,8 @@ from uuid import uuid4
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from app.platform.errors import AppError
-from app.platform.models import WebhookEndpoint, utcnow
-from app.platform.schemas import WebhookEndpointRead, WebhookEndpointWrite
+from app.platform.models import WebhookDelivery, WebhookEndpoint, utcnow
+from app.platform.schemas import WebhookDeliveryRead, WebhookEndpointRead, WebhookEndpointWrite
 from app.platform.security import Actor
 from app.platform.settings import Settings
 
@@ -33,6 +33,12 @@ def sign(secret:str,timestamp:int,body:bytes)->str:
 
 def list_endpoints(session:Session,actor:Actor)->list[WebhookEndpointRead]:
     actor.require('admin');return [WebhookEndpointRead.model_validate(row) for row in session.scalars(select(WebhookEndpoint).order_by(WebhookEndpoint.name)).all()]
+
+def list_deliveries(session:Session,actor:Actor,endpoint_id:str,limit:int=100)->list[WebhookDeliveryRead]:
+    actor.require('admin')
+    if session.get(WebhookEndpoint,endpoint_id) is None:raise AppError(404,'webhook_missing','Webhook endpoint is not available.')
+    rows=session.scalars(select(WebhookDelivery).where(WebhookDelivery.endpoint_id==endpoint_id).order_by(WebhookDelivery.created_at.desc()).limit(limit)).all()
+    return [WebhookDeliveryRead.model_validate(row) for row in rows]
 
 def upsert(session:Session,actor:Actor,settings:Settings,endpoint_id:str|None,data:WebhookEndpointWrite)->WebhookEndpointRead:
     actor.require('admin');validate_url(data.url,settings)
@@ -59,13 +65,27 @@ def deliver(session:Session,settings:Settings,endpoint_id:str,event_id:str,*,cli
     endpoint=session.get(WebhookEndpoint,endpoint_id);event=session.scalar(select(PlatformEvent).where(PlatformEvent.event_id==event_id))
     if not endpoint or not endpoint.enabled:raise RuntimeError('Webhook endpoint is unavailable or disabled.')
     if not event:raise RuntimeError('Platform event is unavailable.')
-    validate_url(endpoint.url,settings)
-    import time
-    timestamp=int(time.time());body,headers=delivery_request(endpoint,event.topic,{'event_id':event.event_id,'sequence':event.sequence,'entity_type':event.entity_type,'entity_id':event.entity_id,'payload':event.payload,'created_at':event.created_at.isoformat()},timestamp)
-    if client is None:
-        import httpx
-        with httpx.Client(timeout=10,follow_redirects=False,trust_env=False) as owned:
-            response=owned.post(endpoint.url,content=body,headers=headers)
-    else:response=client.post(endpoint.url,content=body,headers=headers)
-    if response.status_code<200 or response.status_code>=300:raise RuntimeError(f'Webhook delivery returned HTTP {response.status_code}.')
-    return {'status_code':response.status_code,'endpoint_id':endpoint.id,'event_id':event.event_id}
+    delivery=session.scalar(select(WebhookDelivery).where(WebhookDelivery.endpoint_id==endpoint_id,WebhookDelivery.event_id==event_id))
+    if delivery is None:
+        delivery=WebhookDelivery(id=str(uuid4()),endpoint_id=endpoint_id,event_id=event_id,status='pending',attempts=0,created_at=utcnow(),updated_at=utcnow());session.add(delivery)
+    delivery.status='delivering';delivery.attempts+=1;delivery.last_error=None;delivery.updated_at=utcnow();session.flush()
+    try:
+        validate_url(endpoint.url,settings)
+        import time
+        timestamp=int(time.time());body,headers=delivery_request(endpoint,event.topic,{'event_id':event.event_id,'sequence':event.sequence,'entity_type':event.entity_type,'entity_id':event.entity_id,'payload':event.payload,'created_at':event.created_at.isoformat()},timestamp)
+        if client is None:
+            import httpx
+            with httpx.Client(timeout=10,follow_redirects=False,trust_env=False) as owned:
+                response=owned.post(endpoint.url,content=body,headers=headers)
+        else:response=client.post(endpoint.url,content=body,headers=headers)
+        delivery.response_status=int(response.status_code)
+        if response.status_code<200 or response.status_code>=300:
+            delivery.status='retrying';delivery.response_summary=f'HTTP {response.status_code}';delivery.last_error='non_success_response';delivery.updated_at=utcnow();session.flush()
+            raise RuntimeError(f'Webhook delivery returned HTTP {response.status_code}.')
+        delivery.status='delivered';delivery.response_summary=f'HTTP {response.status_code}';delivery.updated_at=utcnow();session.flush()
+        return {'status_code':response.status_code,'endpoint_id':endpoint.id,'event_id':event.event_id,'delivery_id':delivery.id,'attempts':delivery.attempts}
+    except RuntimeError:
+        raise
+    except Exception:
+        delivery.status='retrying';delivery.last_error='delivery_failed';delivery.updated_at=utcnow();session.flush()
+        raise RuntimeError('Webhook delivery failed; the durable job may retry it.') from None

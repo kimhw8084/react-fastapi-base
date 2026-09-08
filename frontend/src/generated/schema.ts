@@ -145,6 +145,7 @@ export type WaferRunCreate = { "wafer_id": string; "lot_id": string; "process_st
 export type WaferRunPage = { "items": Array<WaferRunRead>; "total": number; "limit": number; "offset": number }
 export type WaferRunRead = { "wafer_id": string; "lot_id": string; "process_step": string; "status": "queued" | "processing" | "complete" | "hold" | "scrapped"; "die_rows": number; "die_cols": number; "bin_map": { [key: string]: unknown }; "total_die": number; "good_die": number; "defect_count": number; "yield_percent": number; "completed_at": (string | null); "notes": (string | null); "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
 export type WaferRunUpdate = { "wafer_id": string; "lot_id": string; "process_step": string; "status"?: "queued" | "processing" | "complete" | "hold" | "scrapped"; "die_rows": number; "die_cols": number; "bin_map"?: { [key: string]: unknown }; "total_die"?: number; "good_die"?: number; "defect_count"?: number; "yield_percent"?: number; "completed_at"?: (string | null); "notes"?: (string | null); "revision": number }
+export type WebhookDeliveryRead = { "id": string; "endpoint_id": string; "event_id": string; "status": "pending" | "delivering" | "retrying" | "delivered" | "failed"; "attempts": number; "response_status": (number | null); "response_summary": (string | null); "last_error": (string | null); "created_at": string; "updated_at": string }
 export type WebhookEndpointRead = { "id": string; "name": string; "url": string; "topics": Array<string>; "secret_ref": string; "enabled": boolean; "revision": number; "created_by": string; "created_at": string; "updated_at": string }
 export type WebhookEndpointWrite = { "name": string; "url": string; "topics": Array<string>; "secret_ref": string; "enabled"?: boolean; "revision"?: (number | null) }
 export type WorkItemCreateInput = { "title": string; "description"?: string; "status"?: "open" | "in_progress" | "done"; "priority"?: "low" | "normal" | "high" }
@@ -349,6 +350,7 @@ export interface OperationInputs {
   "listWebhookEndpoints": {  }
   "createWebhookEndpoint": { body: WebhookEndpointWrite }
   "updateWebhookEndpoint": { path: { "endpoint_id": string }; body: WebhookEndpointWrite }
+  "listWebhookDeliveries": { path: { "endpoint_id": string }; query?: { "limit"?: number } }
   "listWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number } }
   "createWorkItem": { body: WorkItemCreateInput }
   "bulkWorkItems": { body: BulkRequest }
@@ -562,6 +564,7 @@ export interface OperationOutputs {
   "listWebhookEndpoints": Array<WebhookEndpointRead>
   "createWebhookEndpoint": WebhookEndpointRead
   "updateWebhookEndpoint": WebhookEndpointRead
+  "listWebhookDeliveries": Array<WebhookDeliveryRead>
   "listWorkItems": WorkItemPage
   "createWorkItem": WorkItemRead
   "bulkWorkItems": Array<WorkItemRead>
@@ -1347,6 +1350,10 @@ export const operationRoutes = {
   "updateWebhookEndpoint": {
     "method": "PUT",
     "path": "/api/v1/webhooks/{endpoint_id}"
+  },
+  "listWebhookDeliveries": {
+    "method": "GET",
+    "path": "/api/v1/webhooks/{endpoint_id}/deliveries"
   },
   "listWorkItems": {
     "method": "GET",

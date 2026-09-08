@@ -117,9 +117,29 @@ def test_revision_events_enqueue_and_deliver_allowlisted_webhook(env,monkeypatch
     from app.platform import webhooks as webhook_service
     with env['db'].session(env['tenant']) as session:
         result=webhook_service.deliver(session,client.app.state.settings,hook.json()['id'],events_feed[0]['event_id'],client=fake)
+        session.commit()
     assert result['status_code']==204 and len(fake.calls)==1
     url,body,headers=fake.calls[0];assert url=='https://hooks.example.com/events' and b'Webhook fanout' not in body
     assert headers['X-Golden-Signature'].startswith('sha256=')
+    history=client.get('/api/v1/webhooks/'+hook.json()['id']+'/deliveries')
+    assert history.status_code==200 and history.json()[0]['status']=='delivered' and history.json()[0]['attempts']==1
+
+class _FailedWebhookResponse:
+    status_code=503
+
+def test_webhook_delivery_history_records_retryable_failure(env,monkeypatch):
+    client=env['client'](webhook_allowed_hosts=['hooks.example.com'])
+    hook=client.post('/api/v1/webhooks',json={'name':'Retry hook','url':'https://hooks.example.com/events','topics':['record.updated'],'secret_ref':'RETRY_HOOK','enabled':True})
+    monkeypatch.setenv('BASE_WEBHOOK_SECRET_RETRY_HOOK','r'*40)
+    from app.platform import webhooks as webhook_service
+    with env['db'].session(env['tenant']) as session:
+        event=events.emit(session,actor(env),'record.updated',{'id':'retry'})
+        session.commit();event_id=event.event_id
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(RuntimeError):webhook_service.deliver(session,client.app.state.settings,hook.json()['id'],event_id,client=type('FailingClient',(),{'post':lambda self,*args,**kwargs:_FailedWebhookResponse()})())
+        session.commit()
+    history=client.get('/api/v1/webhooks/'+hook.json()['id']+'/deliveries').json()
+    assert history[0]['status']=='retrying' and history[0]['response_status']==503 and history[0]['last_error']=='non_success_response'
 
 def test_process_one_releases_database_lock_before_handler(env):
     a=actor(env)

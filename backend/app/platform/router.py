@@ -141,7 +141,7 @@ def relationship_history(request: Request,actor: A,relationship_id: str):
 
 # Generic platform services. These endpoints expose bounded administration/read
 # surfaces; feature code enqueues jobs/emits events through the platform services.
-from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookEndpointRead, WebhookEndpointWrite, TeamCreate, TeamRead, TeamMemberWrite, TeamMemberRead
+from app.platform.schemas import JobRead, EventRead, NotificationRead, NotificationPreferenceRead, NotificationPreferenceUpdate, FeatureFlagRead, FeatureFlagWrite, WebhookDeliveryRead, WebhookEndpointRead, WebhookEndpointWrite, TeamCreate, TeamRead, TeamMemberWrite, TeamMemberRead
 from app.platform import jobs as platform_jobs, events as platform_events, notifications as platform_notifications, feature_flags as platform_flags, webhooks as platform_webhooks, teams as platform_teams
 
 @router.get('/teams',response_model=list[TeamRead],operation_id='listWorkspaceTeams')
@@ -207,6 +207,10 @@ def create_webhook_endpoint(request:Request,actor:A,data:WebhookEndpointWrite):
 @router.put('/webhooks/{endpoint_id}',response_model=WebhookEndpointRead,operation_id='updateWebhookEndpoint')
 def update_webhook_endpoint(request:Request,actor:A,endpoint_id:str,data:WebhookEndpointWrite):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:return platform_webhooks.upsert(db,actor,request.app.state.settings,endpoint_id,data)
+
+@router.get('/webhooks/{endpoint_id}/deliveries',response_model=list[WebhookDeliveryRead],operation_id='listWebhookDeliveries')
+def list_webhook_deliveries(request:Request,actor:A,endpoint_id:str,limit:int=Query(100,ge=1,le=200)):
+    with request.app.state.database.session(actor.tenant_id) as db:return platform_webhooks.list_deliveries(db,actor,endpoint_id,limit)
 
 @router.get('/runtime-diagnostics',operation_id='runtimeDiagnostics')
 def runtime_diagnostics(request:Request,actor:A):
