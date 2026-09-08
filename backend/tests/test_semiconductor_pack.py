@@ -1,6 +1,6 @@
 from datetime import datetime,timezone,timedelta
 import pytest
-from app.packs.semiconductor.models import normalize_equipment_state,normalize_lot,normalize_wafer,recipe_diff
+from app.packs.semiconductor.models import capacity_metrics,equipment_reliability,genealogy_graph,lot_route_metrics,normalize_equipment_state,normalize_lot,normalize_wafer,recipe_diff,wafer_defect_summary
 
 
 def test_wafer_summary_and_validation():
@@ -20,3 +20,14 @@ def test_lot_route_equipment_state_and_recipe_diff():
     assert state['duration_minutes']==90
     with pytest.raises(ValueError):normalize_equipment_state({'started_at':start,'ended_at':start-timedelta(minutes=1)})
     assert recipe_diff({'pressure':10,'temp':100},{'pressure':12,'temp':100,'gas':'Ar'})==[{'key':'gas','before':None,'after':'Ar'},{'key':'pressure','before':10,'after':12}]
+
+def test_derived_metrics_cover_yield_genealogy_route_reliability_and_capacity():
+    summary=wafer_defect_summary([{'x':0,'y':0,'bin':'1'},{'x':1,'y':1,'bin':'2'},{'x':2,'y':2,'bin':'1'}],rows=3,cols=3,good_bins=('1',),edge_exclusion=1)
+    assert summary['good_die']==2 and summary['defects_by_zone']=={'edge':0,'center':1}
+    route=lot_route_metrics({'steps':[{'name':'Etch','status':'done'},{'name':'Metrology','status':'hold','queue_minutes':12}]},started_at=datetime(2026,9,7,12,tzinfo=timezone.utc),now=datetime(2026,9,7,14,tzinfo=timezone.utc))
+    assert route['on_hold'] and route['queue_minutes']==12 and route['progress_percent']==50
+    graph=genealogy_graph([{'parent_ids':['L1'],'child_ids':['L2','L3']}])
+    assert graph['edges']==[{'parent_id':'L1','child_id':'L2'},{'parent_id':'L1','child_id':'L3'}]
+    reliability=equipment_reliability([{'state':'production','duration_minutes':90},{'state':'unscheduled_down','duration_minutes':30}],planned_minutes=120)
+    assert reliability['mtbf_minutes']==90 and reliability['mttr_minutes']==30
+    assert capacity_metrics(120,100,shifts=1)['bottleneck'] is True

@@ -1,6 +1,6 @@
 from datetime import datetime,timezone,timedelta
 import pytest
-from app.packs.software_engineering.models import normalize_delivery,normalize_incident,normalize_observability,normalize_slo
+from app.packs.software_engineering.models import artifact_rollback_context,correlate_logs,normalize_delivery,normalize_incident,normalize_observability,normalize_slo,slo_burn_windows,trace_summary
 
 def test_delivery_incident_slo_and_observability_normalizers():
     start=datetime(2026,9,7,12,tzinfo=timezone.utc)
@@ -14,3 +14,10 @@ def test_delivery_incident_slo_and_observability_normalizers():
     assert exhausted['status']=='exhausted' and exhausted['error_budget_remaining']==0
     assert normalize_observability({'duration_ms':12.4})['duration_ms']==12.4
     with pytest.raises(ValueError):normalize_observability({'duration_ms':-1})
+
+def test_derived_observability_and_delivery_context():
+    rows=[{'span_id':'s1','trace_id':'t1','timestamp':100.0,'duration_ms':10,'severity':'info'},{'span_id':'s2','trace_id':'t1','timestamp':108.0,'duration_ms':20,'severity':'error'}]
+    assert correlate_logs(rows,'t1')==rows
+    assert trace_summary(rows)=={'span_count':2,'start':100.0,'end':128.0,'duration_ms':28.0,'error_count':1}
+    assert slo_burn_windows([{'window_days':7,'current_percent':99.8}],99.9)[0]['burn_rate']==pytest.approx(2.0)
+    assert artifact_rollback_context({'ids':['a1']},{'revision':'r2','previous_revision':'r1','environment':'staging'})['rollback_available'] is True

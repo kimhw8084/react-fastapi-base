@@ -54,3 +54,25 @@ def normalize_observability(values:dict[str,Any])->dict[str,Any]:
         value=values.get(key)
         if value is not None and len(str(value))>160:raise ValueError(f'{key} is too long.')
     return values
+
+def correlate_logs(rows:list[dict[str,Any]],correlation_id:str)->list[dict[str,Any]]:
+    key=correlation_id.strip()
+    if not key:raise ValueError('Correlation ID is required.')
+    return [row for row in rows if key in {str(row.get('trace_id','')),str(row.get('span_id','')),str(row.get('request_id','')),str(row.get('correlation_id',''))}]
+
+def trace_summary(rows:list[dict[str,Any]])->dict[str,Any]:
+    spans=[row for row in rows if str(row.get('span_id','')).strip() and row.get('timestamp') is not None]
+    if not spans:return {'span_count':0,'start':None,'end':None,'duration_ms':0.0,'error_count':0}
+    timestamps=[row['timestamp'] for row in spans];durations=[max(0.0,float(row.get('duration_ms',0) or 0)) for row in spans];start=min(timestamps);end=max(timestamp+duration for timestamp,duration in zip(timestamps,durations))
+    return {'span_count':len(spans),'start':start,'end':end,'duration_ms':max(0.0,end-start),'error_count':sum(1 for row in spans if str(row.get('severity','')).lower() in {'error','critical'})}
+
+def slo_burn_windows(observations:list[dict[str,Any]],target_percent:float)->list[dict[str,float]]:
+    if not 0<target_percent<100:raise ValueError('SLO target must be between 0 and 100.')
+    allowed=100-target_percent;result=[]
+    for observation in observations:
+        current=float(observation.get('current_percent',0));error=max(0.0,100-current);burn=error/allowed
+        result.append({'window_days':float(observation.get('window_days',0)),'current_percent':current,'burn_rate':burn,'error_budget_remaining':max(0.0,min(100.0,(1-burn)*100))})
+    return result
+
+def artifact_rollback_context(artifacts:dict[str,Any],deployment:dict[str,Any])->dict[str,Any]:
+    return {'artifact_ids':[str(value) for value in artifacts.get('ids',[]) if str(value).strip()],'current_revision':str(deployment.get('revision','')),'previous_revision':str(deployment.get('previous_revision','')),'rollback_available':bool(deployment.get('previous_revision')),'environment':str(deployment.get('environment',''))}
