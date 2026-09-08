@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "source_commit": "0ec953e4cbbee237cb4ed9836ca30a734d92eca2",
-  "created_at": "2026-09-08T22:19:19Z",
-  "timestamp": "2026-09-08T22:19:19Z",
+  "source_commit": "63cc08826ba3d6822cd908141323e4f4733faa6e",
+  "created_at": "2026-09-08T22:30:13Z",
+  "timestamp": "2026-09-08T22:30:13Z",
   "command": [
     "python3",
     "scripts/upgrade_fixture.py"
@@ -13,10 +13,10 @@
     "machine": "arm64"
   },
   "hashes": {
-    "source_commit": "0ec953e4cbbee237cb4ed9836ca30a734d92eca2"
+    "source_commit": "63cc08826ba3d6822cd908141323e4f4733faa6e"
   },
   "result": "PASS",
-  "duration_seconds": 21.607,
+  "duration_seconds": 20.834,
   "steps": [
     {
       "name": "upgrade-plan",
@@ -28,18 +28,18 @@
     {
       "name": "upgrade-apply",
       "exit_code": 0,
-      "journal": "../../../../../../../private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/.template-upgrades/20260908T221859Z-dc98710fa718/journal.json"
+      "journal": "../../../../../../../private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/.template-upgrades/20260908T222954Z-dc98710fa718/journal.json"
     },
     {
       "name": "migration",
       "command": [
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "-c",
-        "from app.platform.settings import Settings; from app.platform.database import Database; from app.platform.migrations import migrate, assert_revision; s=Settings(environment=\"test\", profile=\"development\"); d=Database(s); migrate(d); migrate(d, \"4267b5af-c97a-440b-a6bf-daf15f20919d\"); assert_revision(d); assert_revision(d, \"4267b5af-c97a-440b-a6bf-daf15f20919d\")"
+        "from app.platform.settings import Settings; from app.platform.database import Database; from app.platform.migrations import migrate, assert_revision; s=Settings(environment=\"test\", profile=\"development\"); d=Database(s); migrate(d); migrate(d, \"30b75651-fed4-4beb-99e0-33db8bfc299a\"); assert_revision(d); assert_revision(d, \"30b75651-fed4-4beb-99e0-33db8bfc299a\")"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/backend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/backend",
       "exit_code": 0,
-      "duration_seconds": 0.535,
+      "duration_seconds": 0.507,
       "stdout_tail": "",
       "stderr_tail": ""
     },
@@ -50,9 +50,9 @@
         "ci",
         "--ignore-scripts"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 1.922,
+      "duration_seconds": 1.739,
       "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
       "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
     },
@@ -61,9 +61,9 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/generate_contracts.py"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app",
       "exit_code": 0,
-      "duration_seconds": 1.841,
+      "duration_seconds": 1.691,
       "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
       "stderr_tail": "",
       "name": "contracts"
@@ -74,9 +74,9 @@
         "run",
         "typecheck"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 3.658,
+      "duration_seconds": 3.753,
       "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
       "stderr_tail": "",
       "name": "frontend-typecheck"
@@ -86,10 +86,10 @@
         "npm",
         "test"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 6.582,
-      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/frontend\n\n\n Test Files  6 passed (6)\n      Tests  17 passed (17)\n   Start at  17:19:08\n   Duration  5.59s (transform 356ms, setup 757ms, import 392ms, tests 4.96s, environment 2.57s)\n\n",
+      "duration_seconds": 6.131,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/frontend\n\n\n Test Files  6 passed (6)\n      Tests  17 passed (17)\n   Start at  17:30:03\n   Duration  5.11s (transform 299ms, setup 736ms, import 344ms, tests 4.57s, environment 2.18s)\n\n",
       "stderr_tail": "",
       "name": "frontend-tests"
     },
@@ -99,10 +99,10 @@
         "run",
         "build"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-v8bkuyv3/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-2mo9hsb0/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 4.273,
-      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 prebuild\n> node scripts/prepare-lab.mjs\n\n\n> react-fastapi-base-frontend@1.0.0-rc.1 build\n> tsc --noEmit && vite build\n\nvite v8.2.2 building client environment for production...\ntransforming...\n\u2713 185 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.40 kB \u2502 gzip:   0.28 kB\ndist/assets/index-C-9Tw7Ka.css             369.97 kB \u2502 gzip:  68.70 kB\ndist/assets/WorkspaceShell-D3HPXAqe.js       1.01 kB \u2502 gzip:   0.42 kB\ndist/assets/model-Dp3BhK-X.js                1.19 kB \u2502 gzip:   0.60 kB\ndist/assets/model-DYk614PN.js                1.49 kB \u2502 gzip:   0.61 kB\ndist/assets/Workspace-C3tjA_iy.js            1.56 kB \u2502 gzip:   0.79 kB\ndist/assets/Workspace-DPuFlgLT.js            1.90 kB \u2502 gzip:   0.91 kB\ndist/assets/Workspace-B1pomM-6.js            1.95 kB \u2502 gzip:   0.90 kB\ndist/assets/Workspace-UQsyyex6.js            2.28 kB \u2502 gzip:   1.01 kB\ndist/assets/useMutation-Dyu2via0.js          2.30 kB \u2502 gzip:   0.94 kB\ndist/assets/Workspace-BC2iNjeK.js            4.22 kB \u2502 gzip:   1.59 kB\ndist/assets/Workspace-DwB4dIbT.js            4.91 kB \u2502 gzip:   1.90 kB\ndist/assets/Workspace-CUswccsE.js            4.95 kB \u2502 gzip:   1.86 kB\ndist/assets/Workspace-BfA3h_Es.js            5.30 kB \u2502 gzip:   2.25 kB\ndist/assets/Workspace-CLSCgNkR.js            5.37 kB \u2502 gzip:   1.97 kB\ndist/assets/Workspace-C19Fe2PI.js            5.40 kB \u2502 gzip:   1.97 kB\ndist/assets/Workspace-D3wdRpHD.js            5.44 kB \u2502 gzip:   1.89 kB\ndist/assets/Workspace-COf6FSMi.js            5.74 kB \u2502 gzip:   2.05 kB\ndist/assets/Workspace-D3MEhM3E.js            5.87 kB \u2502 gzip:   2.05 kB\ndist/assets/Workspace-CtZnRW_X.js            6.05 kB \u2502 gzip:   2.16 kB\ndist/assets/Workspace-DbZy4LNF.js            6.87 kB \u2502 gzip:   2.36 kB\ndist/assets/Workspace-DEt7f271.js            6.89 kB \u2502 gzip:   2.45 kB\ndist/assets/Workspace-D36JaB-b.js            7.43 kB \u2502 gzip:   2.38 kB\ndist/assets/primitives-BjsNMqXx.js           8.02 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-Ip1IbviA.js            8.96 kB \u2502 gzip:   3.16 kB\ndist/assets/Workspace-39m8UQpp.js            9.92 kB \u2502 gzip:   3.55 kB\ndist/assets/Workspace-DbJGr6yq.js           11.05 kB \u2502 gzip:   3.97 kB\ndist/assets/Workspace-CzrdcQ8r.js           12.12 kB \u2502 gzip:   3.55 kB\ndist/assets/ExperienceLab-DHKq9hgw.js       21.58 kB \u2502 gzip:   6.45 kB\ndist/assets/EntityWorkspace-bcBdlQKb.js     76.03 kB \u2502 gzip:  19.70 kB\ndist/assets/index-mXcWtRhI.js              255.78 kB \u2502 gzip:  79.21 kB\ndist/assets/FieldInput-wpx2H1E0.js       1,119.84 kB \u2502 gzip: 311.73 kB\n\n\u2713 built in 543ms\n",
+      "duration_seconds": 4.153,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 prebuild\n> node scripts/prepare-lab.mjs\n\n\n> react-fastapi-base-frontend@1.0.0-rc.1 build\n> tsc --noEmit && vite build\n\nvite v8.2.2 building client environment for production...\ntransforming...\n\u2713 185 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.40 kB \u2502 gzip:   0.28 kB\ndist/assets/index-C-9Tw7Ka.css             369.97 kB \u2502 gzip:  68.70 kB\ndist/assets/WorkspaceShell-D3HPXAqe.js       1.01 kB \u2502 gzip:   0.42 kB\ndist/assets/model-Dp3BhK-X.js                1.19 kB \u2502 gzip:   0.60 kB\ndist/assets/model-DYk614PN.js                1.49 kB \u2502 gzip:   0.61 kB\ndist/assets/Workspace-C3tjA_iy.js            1.56 kB \u2502 gzip:   0.79 kB\ndist/assets/Workspace-DPuFlgLT.js            1.90 kB \u2502 gzip:   0.91 kB\ndist/assets/Workspace-B1pomM-6.js            1.95 kB \u2502 gzip:   0.90 kB\ndist/assets/Workspace-UQsyyex6.js            2.28 kB \u2502 gzip:   1.01 kB\ndist/assets/useMutation-Dyu2via0.js          2.30 kB \u2502 gzip:   0.94 kB\ndist/assets/Workspace-BC2iNjeK.js            4.22 kB \u2502 gzip:   1.59 kB\ndist/assets/Workspace-DwB4dIbT.js            4.91 kB \u2502 gzip:   1.90 kB\ndist/assets/Workspace-CUswccsE.js            4.95 kB \u2502 gzip:   1.86 kB\ndist/assets/Workspace-BfA3h_Es.js            5.30 kB \u2502 gzip:   2.25 kB\ndist/assets/Workspace-CLSCgNkR.js            5.37 kB \u2502 gzip:   1.97 kB\ndist/assets/Workspace-C19Fe2PI.js            5.40 kB \u2502 gzip:   1.97 kB\ndist/assets/Workspace-D3wdRpHD.js            5.44 kB \u2502 gzip:   1.89 kB\ndist/assets/Workspace-COf6FSMi.js            5.74 kB \u2502 gzip:   2.05 kB\ndist/assets/Workspace-D3MEhM3E.js            5.87 kB \u2502 gzip:   2.05 kB\ndist/assets/Workspace-CtZnRW_X.js            6.05 kB \u2502 gzip:   2.16 kB\ndist/assets/Workspace-DbZy4LNF.js            6.87 kB \u2502 gzip:   2.36 kB\ndist/assets/Workspace-DEt7f271.js            6.89 kB \u2502 gzip:   2.45 kB\ndist/assets/Workspace-D36JaB-b.js            7.43 kB \u2502 gzip:   2.38 kB\ndist/assets/primitives-BjsNMqXx.js           8.02 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-Ip1IbviA.js            8.96 kB \u2502 gzip:   3.16 kB\ndist/assets/Workspace-39m8UQpp.js            9.92 kB \u2502 gzip:   3.55 kB\ndist/assets/Workspace-DbJGr6yq.js           11.05 kB \u2502 gzip:   3.97 kB\ndist/assets/Workspace-CzrdcQ8r.js           12.12 kB \u2502 gzip:   3.55 kB\ndist/assets/ExperienceLab-DHKq9hgw.js       21.58 kB \u2502 gzip:   6.45 kB\ndist/assets/EntityWorkspace-bcBdlQKb.js     76.03 kB \u2502 gzip:  19.70 kB\ndist/assets/index-mXcWtRhI.js              255.78 kB \u2502 gzip:  79.21 kB\ndist/assets/FieldInput-wpx2H1E0.js       1,119.84 kB \u2502 gzip: 311.73 kB\n\n\u2713 built in 557ms\n",
       "stderr_tail": "",
       "name": "frontend-build"
     },
