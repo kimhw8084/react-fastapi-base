@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_digest": "08f438bdfa9599393cfb145ef443352d2667c2b9d235cd1e0396c50e6d0e71d8",
+  "source_digest": "053b92a0b9020968fab3838f6499a35f8e0126b35be602487b48ea4b296c9e59",
   "source_hashes": "source-hashes.json",
-  "python_version": "3.13.5",
-  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
-  "created_at": "2026-09-07T05:21:35.897207+00:00",
+  "python_version": "3.14.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "created_at": "2026-09-08T15:45:42.045839+00:00",
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
   "code_ready": false,
@@ -15,11 +15,11 @@
       "exit_code": 0,
       "log": "backend-tests.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
-        "--junitxml=/mnt/data/react-fastapi-base/evidence/current/full-stack/backend-junit.xml"
+        "--junitxml=/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/backend-junit.xml"
       ]
     },
     {
@@ -28,7 +28,7 @@
       "exit_code": 0,
       "log": "tooling-tests.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
@@ -41,8 +41,38 @@
       "exit_code": 0,
       "log": "architecture.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/check_architecture.py"
+      ]
+    },
+    {
+      "name": "security-source",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "security-source.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/security_source_check.py"
+      ]
+    },
+    {
+      "name": "version-metadata",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "version-metadata.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/version_check.py"
+      ]
+    },
+    {
+      "name": "performance-owned-algorithms",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "performance-owned-algorithms.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/performance_check.py"
       ]
     },
     {
@@ -51,7 +81,7 @@
       "exit_code": 0,
       "log": "generated-contracts.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/generate_contracts.py",
         "--check"
       ]
@@ -83,7 +113,7 @@
       "exit_code": 0,
       "log": "localhost-http.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/http_smoke.py"
       ]
     },
@@ -93,12 +123,12 @@
       "exit_code": 0,
       "log": "engineering-widget-layer.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/verify_lab.py",
         "--mode",
-        "in_memory",
+        "http",
         "--output",
-        "/mnt/data/react-fastapi-base/evidence/current/full-stack/native-lab"
+        "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/native-lab"
       ]
     },
     {
@@ -107,17 +137,11 @@
       "exit_code": 1,
       "log": "required-catalog-completeness.log",
       "command": [
-        "/opt/pyvenv/bin/python",
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/catalog.py",
         "--check",
         "--release"
       ]
-    },
-    {
-      "name": "react-engineering-adapter-storybook",
-      "status": "BLOCKED",
-      "reason": "The native widget Lab is tested separately; React integration and Storybook need installed dependencies and executed tests.",
-      "required_for": "code"
     },
     {
       "name": "macos-fresh-install",
@@ -127,39 +151,80 @@
     },
     {
       "name": "frontend-typecheck",
-      "status": "BLOCKED",
-      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "frontend-typecheck.log",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ]
     },
     {
       "name": "frontend-unit",
-      "status": "BLOCKED",
-      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "frontend-unit.log",
+      "command": [
+        "npm",
+        "test"
+      ]
     },
     {
       "name": "frontend-build",
-      "status": "BLOCKED",
-      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "frontend-build.log",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ]
+    },
+    {
+      "name": "frontend-storybook",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "frontend-storybook.log",
+      "command": [
+        "npm",
+        "run",
+        "build:storybook"
+      ]
     },
     {
       "name": "browser-e2e-accessibility",
-      "status": "BLOCKED",
-      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "browser-e2e-accessibility.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/e2e_runner.py"
+      ]
     },
     {
       "name": "npm-advisories",
-      "status": "BLOCKED",
-      "reason": "Dependency-resolved frontend installation and committed package-lock.json are required.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "npm-advisories.log",
+      "command": [
+        "npm",
+        "audit",
+        "--audit-level=high"
+      ]
     },
     {
       "name": "python-advisories",
-      "status": "BLOCKED",
-      "reason": "Install the audit tooling and enable network access; a version pin is not a vulnerability scan.",
-      "required_for": "code"
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "python-advisories.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "-m",
+        "pip_audit",
+        "-r",
+        "backend/requirements.lock"
+      ]
     },
     {
       "name": "company-identity",

@@ -1,8 +1,8 @@
-> **0.2.0-lab update:** the original 68-domain ledger below remains a baseline. See COMPONENT_COVERAGE.md for the expanded 605-entry inventory and RELEASE_STATUS.md for current executed scope. No status is promoted by a screenshot or file count.
+> **1.0.0-rc.1 update:** this historical 68-domain ledger remains a traceable baseline. Current implementation status is maintained in [v1-completion-status.json](v1-completion-status.json), generated contracts, migrations, tests, and current evidence. No status is promoted by a screenshot or file count.
 
 # React-FastAPI Base — 68-domain scope ledger
 
-Version 0.1.0-review. **Not production certified.** No percentage-complete score is asserted. “Implemented” means the listed code/document exists, not that all upstream, browser or company checks passed.
+Version 1.0.0-rc.1. **Not production certified.** No percentage-complete score is asserted. “Implemented” means the bounded contract has source and executed evidence; it does not certify the full upstream, browser, OS, or company scope.
 
 | ID | Domain | Status | Owner |
 |---|---|---|---|

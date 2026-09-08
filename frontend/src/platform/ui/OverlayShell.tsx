@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import type { SurfaceKind } from './surface'
 import { SurfaceShell } from './SurfaceShell'
 import { useSurfaceRegistration } from './SurfaceManager'
@@ -25,6 +25,7 @@ export function OverlayShell({open,kind,title,subtitle,status,footer,onClose,chi
  const ref=useRef<HTMLDivElement>(null)
  const returnFocus=useRef<HTMLElement|null>(null)
  const [expanded,setExpanded]=useState(false)
+ const titleId=`surface-title-${useId().replaceAll(':','')}`
  const {layer,isTop}=useSurfaceRegistration(kind,open)
  const requestClose=useCallback(()=>{if(!busy)onClose()},[busy,onClose])
  useEffect(()=>{
@@ -45,9 +46,9 @@ export function OverlayShell({open,kind,title,subtitle,status,footer,onClose,chi
   else if(!event.shiftKey&&active===last){event.preventDefault();first.focus()}
  }
  return <div className={`overlay-layer ${className}`.trim()} data-surface-kind={kind} data-expanded={expanded||undefined} data-wide={wide||undefined} style={{zIndex:layer}}>
-  <button className="surface-backdrop" aria-label={`Close ${String(title)}`} onClick={requestClose} disabled={busy}/>
-  <div ref={ref} className="overlay-surface" role="dialog" aria-modal={modal||undefined} tabIndex={-1} onKeyDown={onKeyDown}>
-   <SurfaceShell title={title} subtitle={subtitle} status={status} controls={<>{expandable&&<button type="button" className="icon-button" onClick={()=>setExpanded(value=>!value)} disabled={busy} aria-label={expanded?`Restore ${String(title)}`:`Expand ${String(title)}`}>{expanded?'↙':'↗'}</button>}<button type="button" className="icon-button" onClick={requestClose} disabled={busy} aria-label={`Close ${String(title)}`}>×</button></>} footer={footer}>{children}</SurfaceShell>
+  <div className="surface-backdrop" aria-hidden="true" onClick={requestClose}/>
+  <div ref={ref} className="overlay-surface" role="dialog" aria-modal={modal||undefined} aria-labelledby={titleId} tabIndex={-1} onKeyDown={onKeyDown}>
+   <SurfaceShell title={title} titleId={titleId} subtitle={subtitle} status={status} controls={<>{expandable&&<button type="button" className="icon-button" onClick={()=>setExpanded(value=>!value)} disabled={busy} aria-label={expanded?`Restore ${String(title)}`:`Expand ${String(title)}`}>{expanded?'↙':'↗'}</button>}<button type="button" className="icon-button" onClick={requestClose} disabled={busy} aria-label={`Close ${String(title)}`}>×</button></>} footer={footer}>{children}</SurfaceShell>
   </div>
  </div>
 }

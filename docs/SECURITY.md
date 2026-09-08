@@ -16,7 +16,7 @@ A user with raw writable database access can bypass application authorization an
 
 S3-mounted path support, multi-user identity isolation, backups, network ingress and company secrets are unverified. Malicious documents are not scanned by an antivirus/CDR engine. The in-process rate limiter is not distributed. No full integration/webhook/SSRF stack is implemented. Session revocation depends on the corporate runtime plus registry membership management; no arbitrary multi-user session provider is bundled.
 
-The current Python dependency snapshot is exact but unhashed and only locally exercised. Frontend dependencies are unresolved candidates without a lock. Neither dependency set has a completed advisory scan in this environment. Do not use version numbers alone as evidence of security.
+The Python and frontend dependency snapshots are exact and locally exercised. The frontend lockfile is committed; `npm audit --audit-level=high` and `pip-audit -r backend/requirements.lock` must both pass for the current source. Dependency scans do not replace endpoint threat assessment, secret scanning, SBOM review, or company deployment qualification. Do not use version numbers alone as evidence of security.
 
 ## Acceptance
 

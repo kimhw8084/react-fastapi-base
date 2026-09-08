@@ -24,6 +24,7 @@ from app.platform.migrations import assert_revision
 from app.platform.middleware import RequestSafetyMiddleware
 from app.platform.models import Tenant
 from app.platform.router import router as platform_router
+from app.platform.version import VERSION
 from app.features.registry import DEFINITIONS, ENTITY_BINDINGS, ROUTERS
 from app.profiles.company.identity import CompanyIdentity, DevelopmentIdentity
 
@@ -46,7 +47,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             app.state.identity.current_user()
         yield
         database.close()
-    app=FastAPI(title=application.name,version='0.1.0',lifespan=lifespan,
+    app=FastAPI(title=application.name,version=VERSION,lifespan=lifespan,
         responses={code:{'model':ErrorResponse} for code in (400,401,403,404,409,413,415,422,429,500,503)},
         docs_url='/docs' if settings.environment!='production' and settings.enable_docs else None,
         redoc_url=None,openapi_url='/openapi.json' if settings.environment!='production' else None)
@@ -85,7 +86,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         logger.error('Unhandled exception type=%s request_id=%s',type(error).__name__,getattr(request.state,'request_id','unavailable'))
         return error_response(request,500,'internal_error','Unexpected server error. Contact support with the request ID.')
     @app.get('/api/v1/health',operation_id='health')
-    def health():return {'alive':True,'version':'0.1.0'}
+    def health():return {'alive':True,'version':VERSION}
     @app.get('/api/v1/readiness',operation_id='readiness')
     def readiness():
         try:
@@ -94,7 +95,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 tenants=db.scalars(select(Tenant).where(Tenant.active.is_(True))).all()
             if len(tenants)>64:raise RuntimeError('Too many tenants for synchronous readiness in this release.')
             for tenant in tenants:assert_revision(database,tenant.id)
-            return {'ready':True,'version':'0.1.0'}
+            return {'ready':True,'version':VERSION}
         except Exception:
             return JSONResponse(status_code=503,content={'ready':False,'code':'configuration_or_database_unready'})
     app.include_router(platform_router,prefix='/api/v1')

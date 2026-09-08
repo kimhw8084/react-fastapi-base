@@ -1,8 +1,9 @@
 {
   "schema_version": 1,
-  "version": "0.2.0-lab",
+  "version": "1.0.0-rc.1",
   "reference_commit": "66244b997a70b85e6e887870c96db958f3f0d22d",
   "production_ready": false,
+  "current_matrix": "docs/v1-completion-status.json",
   "status_legend": {
     "IMPLEMENTED": "Code or documentation exists; consult evidence for exact tested scope. Not whole-product certification.",
     "PARTIAL": "Only a bounded subset is implemented.",

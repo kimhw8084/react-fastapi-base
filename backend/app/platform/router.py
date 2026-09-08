@@ -4,11 +4,12 @@ from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import select
 from app.platform.security import Actor, actor_for, csrf_token
 from app.platform.models import Membership, Tenant, AuditEvent
-from app.platform.schemas import Bootstrap, TenantInfo, ViewCreate, ViewUpdate, ViewRead, WorkspaceDefinition, AuditRead, EntityDefinition, EntityReference, EntityBulkUpdateRequest, EntityBulkUpdateResult, RelationshipDefinition, RelationshipCreate, RelationshipRead, RelationshipUpdate, RevisionInput
+from app.platform.schemas import Bootstrap, TenantInfo, ViewCreate, ViewUpdate, ViewRead, WorkspaceDefinition, AuditRead, EntityDefinition, EntityReference, EntityBulkUpdateRequest, EntityBulkUpdateResult, RelationshipDefinition, RelationshipCreate, RelationshipRead, RelationshipUpdate, RevisionInput, GlobalSearchResult
 from app.platform.errors import AppError
 from app.platform.idempotency import execute_once
 from app.platform.transactions import write_transaction
-from app.platform import views, relationships
+from app.platform.version import VERSION
+from app.platform import views, relationships, search
 
 router=APIRouter(tags=['Platform'])
 A=Annotated[Actor,Depends(actor_for)]
@@ -21,7 +22,7 @@ def bootstrap(request: Request):
         return Bootstrap(user_id=user,profile=request.app.state.settings.profile,
             csrf_token=csrf_token(request.app.state.csrf_secret,user),
             tenants=[TenantInfo(id=tenant.id,name=tenant.name,role=membership.role,permissions=sorted(request.app.state.policy.permissions(membership.role))) for tenant,membership in rows],
-            application=request.app.state.application.model_dump(),build_version='0.1.0')
+            application=request.app.state.application.model_dump(),build_version=VERSION)
 
 @router.get('/workspaces',response_model=list[WorkspaceDefinition],operation_id='listWorkspaces')
 def workspaces(request: Request,actor: A):
@@ -75,6 +76,11 @@ def get_view(request: Request,actor: A,workspace: str,view_id: str):
 def entity_definitions(request: Request, actor: A):
     actor.require('read')
     return request.app.state.entities.definitions()
+
+@router.get('/search',response_model=list[GlobalSearchResult],operation_id='globalSearch')
+def global_search(request: Request, actor: A, q: str = Query(..., min_length=1, max_length=200), limit: int = Query(50, ge=1, le=100)):
+    with request.app.state.database.session(actor.tenant_id) as db:
+        return search.global_search(db, actor, request.app.state.entities, q, limit)
 
 @router.post('/entities/{entity_key}/bulk-update',response_model=EntityBulkUpdateResult,operation_id='bulkUpdateEntityRecords')
 def bulk_update_entity_records(request:Request,actor:A,entity_key:str,data:EntityBulkUpdateRequest,idempotency_key:str=Header(...)):

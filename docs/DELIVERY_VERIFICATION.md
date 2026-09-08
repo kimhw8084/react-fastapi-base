@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 0.2.0-lab
+# Delivery verification — react-fastapi-base 1.0.0-rc.1
 
 **The standalone Experience Lab is runnable. The complete production platform is not certified.**
 
@@ -17,7 +17,7 @@
 
 23 interactive widget families are implemented provisionally. 605 required scope entries are retained; these are components, variants and platform services, not an implemented-component count.
 
-The full platform gate recorded 8 PASS, 1 FAIL and 12 BLOCKED groups. Incomplete catalog coverage deliberately fails. React/Storybook, dependency/security/accessibility certification, fresh macOS installation, complete scope and company qualification remain mandatory.
+The current full platform gate records the executed local results in `evidence/current/full-stack/verification.json`. The catalog completeness check deliberately fails while required entries remain provisional. React/Storybook, dependency advisory scans, backend tests, Lab/browser checks and the bounded accessibility workflow now execute locally; full scope, manual accessibility, stress, fresh-clone, macOS and company qualification remain mandatory.
 
 The Chromium suite used an explicitly identified in-memory exact-artifact loader because managed browser policy blocks localhost navigation here. Separate tests exercised real HTTP static serving and Uvicorn. No browser security policy was changed. These results do not prove React integration, browser HTTP/CSP behavior, corporate identity, mounted storage or complete WCAG compliance.
 

@@ -290,9 +290,9 @@ def _draft_parse_expr(field:dict[str,Any])->str:
     key=field['key'];label=ts_string(field['label']);raw=f"String(draft.{key}??'')";kind=field['type']
     fallback='null' if field['nullable'] else json.dumps(field['default']) if field['default_present'] else 'undefined'
     if kind=='select':
-        valid=json.dumps(field['choices']);value=f"({raw}).trim()";message=ts_string('Choose a valid '+field['label'].lower()+'.')
-        if field['required']:return f"(()=>{{const value={value};if(!{valid}.includes(value))throw new Error({message});return value}})()"
-        return f"(()=>{{const value={value};if(!value)return {fallback};if(!{valid}.includes(value))throw new Error({message});return value}})()"
+        valid=json.dumps(field['choices'])
+        if field['required']:return f"parseEnumDraft({raw},{label},{valid} as const)"
+        return f"parseEnumDraft({raw},{label},{valid} as const,{fallback})"
     if kind in STRING_TYPES:
         if field['required']:return f"requiredStringDraft({raw},{label})"
         value=f"nullableStringDraft({raw})"
@@ -340,7 +340,19 @@ def frontend_adapter(spec:dict[str,Any])->str:
     cls=pascal(spec['key'].rstrip('s') or spec['key']);path=spec['key'].replace('_','-')
     pairs=','.join(f"{f['key']}:{_draft_parse_expr(f)}" for f in spec['fields'])
     draft=','.join(f"{f['key']}:{_draft_read_expr(f)}" for f in spec['fields'])
-    return f'''import type {{ AuditRead,{cls}Create,{cls}Page,{cls}Read,WorkspaceDefinition }} from '../../generated/schema'\nimport type {{ ApiClient }} from '../../platform/api/client'\nimport {{ datetimeInputToIso,datetimeToInput,nullableStringDraft,parseBooleanDraft,parseIntegerDraft,parseJsonObjectDraft,parseMultiSelectDraft,parseNumberDraft,readJsonDraft,readMultiSelectDraft,requiredStringDraft }} from '../../platform/workspace/fieldDraft'\nimport type {{ Draft,WorkspaceAdapter }} from '../../platform/workspace/types'\nfunction parseDraft(draft:Draft):{cls}Create{{return {{{pairs}}}}}\nexport function adapter(api:ApiClient,definition:WorkspaceDefinition):WorkspaceAdapter<{cls}Read>{{const base={('/api/v1/'+path)!r};return {{key:{spec['key']!r},entityKey:{spec['key']!r},singular:{spec['singular']!r},definition,list:(query,signal)=>api.request<{cls}Page>(`${{base}}?${{new URLSearchParams(Object.entries({{...query,...query.filters,filters:undefined}}).filter(([,value])=>value!==undefined).map(([key,value])=>[key,String(value)]))}}`,{{signal}}),get:id=>api.request<{cls}Read>(`${{base}}/${{encodeURIComponent(id)}}`),create:(draft,key)=>api.json<{cls}Read>(base,'POST',parseDraft(draft),key),update:(row,draft)=>api.json<{cls}Read>(`${{base}}/${{row.id}}`,'PUT',{{...parseDraft(draft),revision:row.revision}}),transition:(row,action)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/lifecycle/${{action}}`,'POST',{{revision:row.revision}}),bulk:(rows,action,key)=>api.json<{cls}Read[]>(`${{base}}/bulk`,'POST',{{action,targets:rows.map(row=>({{id:row.id,revision:row.revision}}))}},key),history:id=>api.request<AuditRead[]>(`${{base}}/${{encodeURIComponent(id)}}/history`),revert:(row,target)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/revert`,'POST',{{revision:row.revision,target_revision:target}}),draft:row=>({{{draft}}}),export:async()=>{{throw new Error('Export is not enabled for this generated workspace.')}}}}}}\n'''
+    imports={'parseEnumDraft'}
+    for field in spec['fields']:
+        kind=field['type']
+        if field['required'] and kind in STRING_TYPES:imports.add('requiredStringDraft')
+        if not field['required'] and kind in STRING_TYPES:imports.add('nullableStringDraft')
+        if kind=='integer':imports.add('parseIntegerDraft')
+        if kind in {'number','percent','duration','scientific','unit_number'}:imports.add('parseNumberDraft')
+        if kind=='boolean':imports.add('parseBooleanDraft')
+        if kind=='datetime':imports.update({'datetimeInputToIso','datetimeToInput'})
+        if kind=='json':imports.update({'parseJsonObjectDraft','readJsonDraft'})
+        if kind=='multiselect':imports.update({'parseMultiSelectDraft','readMultiSelectDraft'})
+    draft_import=','.join(sorted(imports))
+    return f'''import type {{ AuditRead,{cls}Create,{cls}Page,{cls}Read,WorkspaceDefinition }} from '../../generated/schema'\nimport type {{ ApiClient }} from '../../platform/api/client'\nimport {{ {draft_import} }} from '../../platform/workspace/fieldDraft'\nimport type {{ Draft,WorkspaceAdapter }} from '../../platform/workspace/types'\nfunction parseDraft(draft:Draft):{cls}Create{{return {{{pairs}}}}}\nexport function adapter(api:ApiClient,definition:WorkspaceDefinition):WorkspaceAdapter<{cls}Read>{{const base={('/api/v1/'+path)!r};return {{key:{spec['key']!r},entityKey:{spec['key']!r},singular:{spec['singular']!r},definition,list:(query,signal)=>api.request<{cls}Page>(`${{base}}?${{new URLSearchParams(Object.entries({{...query,...query.filters,filters:undefined}}).filter(([,value])=>value!==undefined).map(([key,value])=>[key,String(value)]))}}`,{{signal}}),get:id=>api.request<{cls}Read>(`${{base}}/${{encodeURIComponent(id)}}`),create:(draft,key)=>api.json<{cls}Read>(base,'POST',parseDraft(draft),key),update:(row,draft)=>api.json<{cls}Read>(`${{base}}/${{row.id}}`,'PUT',{{...parseDraft(draft),revision:row.revision}}),transition:(row,action)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/lifecycle/${{action}}`,'POST',{{revision:row.revision}}),bulk:(rows,action,key)=>api.json<{cls}Read[]>(`${{base}}/bulk`,'POST',{{action,targets:rows.map(row=>({{id:row.id,revision:row.revision}}))}},key),history:id=>api.request<AuditRead[]>(`${{base}}/${{encodeURIComponent(id)}}/history`),revert:(row,target)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/revert`,'POST',{{revision:row.revision,target_revision:target}}),draft:row=>({{{draft}}}),export:async()=>{{throw new Error('Export is not enabled for this generated workspace.')}}}}}}\n'''
 
 
 def frontend_workspace(spec:dict[str,Any])->str:
@@ -384,7 +396,15 @@ def generate(root:Path,spec:dict[str,Any],apply:bool=False)->dict[str,Any]:
 
 
 def main()->int:
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('spec',type=Path);parser.add_argument('--root',type=Path,default=ROOT);parser.add_argument('--apply',action='store_true');args=parser.parse_args()
-    plan=generate(args.root,json.loads(args.spec.read_text()),args.apply);print(json.dumps(plan,indent=2));return 0
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('spec',type=Path);parser.add_argument('--root',type=Path,default=ROOT);parser.add_argument('--apply',action='store_true');parser.add_argument('--refresh-adapter',action='store_true');args=parser.parse_args()
+    payload=json.loads(args.spec.read_text())
+    spec=payload if args.refresh_adapter else validate(payload)
+    if args.refresh_adapter:
+        target=args.root.resolve()/'frontend/src/features'/spec['key']/'adapter.tsx'
+        if not target.is_file():
+            print(json.dumps({'skipped':str(target.relative_to(args.root.resolve())),'reason':'custom feature has no generated adapter'},indent=2));return 0
+        if args.apply:atomic(target,frontend_adapter(spec))
+        print(json.dumps({'refreshed':str(target.relative_to(args.root.resolve()))},indent=2));return 0
+    plan=generate(args.root,spec,args.apply);print(json.dumps(plan,indent=2));return 0
 
 if __name__=='__main__':raise SystemExit(main())

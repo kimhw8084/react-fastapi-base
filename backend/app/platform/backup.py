@@ -1,4 +1,5 @@
 from __future__ import annotations
+from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -17,9 +18,14 @@ def sha256(path: Path) -> str:
         for block in iter(lambda:file.read(1024*1024),b''):h.update(block)
     return h.hexdigest()
 
+@contextmanager
 def readonly(path: Path):
     if path.is_symlink() or not path.is_file():raise ValueError('Source database is missing or a symbolic link.')
-    return sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True)
+    connection=sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True)
+    try:
+        yield connection
+    finally:
+        connection.close()
 
 def integrity(path: Path) -> None:
     with readonly(path) as connection:
@@ -48,7 +54,12 @@ def snapshot(root: Path, output: Path, *, maintenance: str) -> Path:
             source=root/relative
             if root not in source.resolve().parents:raise ValueError('Source path escaped the live root.')
             target=stage/relative;target.parent.mkdir(parents=True,exist_ok=True)
-            with readonly(source) as src,sqlite3.connect(target) as dst:src.backup(dst)
+            with readonly(source) as src:
+                dst=sqlite3.connect(target)
+                try:
+                    src.backup(dst)
+                finally:
+                    dst.close()
             target.chmod(0o600);integrity(target)
             files.append({'path':relative,'size':target.stat().st_size,'sha256':sha256(target)})
         manifest={'schema_version':VERSION,'created_at':datetime.now(timezone.utc).isoformat(),

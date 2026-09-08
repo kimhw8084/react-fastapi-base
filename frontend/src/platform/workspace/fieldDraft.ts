@@ -19,6 +19,16 @@ export function parseBooleanDraft(value:string):boolean{
  if(value==='false')return false
  throw new Error('Boolean value must be true or false.')
 }
+export function parseEnumDraft<const T extends readonly string[]>(value:string,label:string,choices:T):T[number]
+export function parseEnumDraft<const T extends readonly string[]>(value:string,label:string,choices:T,fallback:T[number]):T[number]
+export function parseEnumDraft<const T extends readonly string[]>(value:string,label:string,choices:T,fallback:null):T[number]|null
+export function parseEnumDraft<const T extends readonly string[]>(value:string,label:string,choices:T,fallback:undefined):T[number]|undefined
+export function parseEnumDraft<const T extends readonly string[]>(value:string,label:string,choices:T,fallback?:T[number]|null):T[number]|null|undefined{
+ const normalized=value.trim()
+ if(!normalized)return fallback
+ if(!choices.includes(normalized as T[number]))throw new Error(`Choose a valid ${label.toLowerCase()}.`)
+ return normalized as T[number]
+}
 export function datetimeToInput(value:unknown):string{
  if(value==null||value==='')return ''
  const date=new Date(String(value));if(Number.isNaN(date.getTime()))return ''
@@ -44,7 +54,7 @@ export function readJsonDraft(value:unknown):string{
  }
  return JSON.stringify(value,null,2)
 }
-export function parseMultiSelectDraft(value:string,label:string,choices:readonly string[],required=false):string[]{
+export function parseMultiSelectDraft<const T extends readonly string[]>(value:string,label:string,choices:T,required=false):T[number][]{
  let parsed:unknown
  try{parsed=JSON.parse(value)}catch{throw new Error(`${label} selection is invalid.`)}
  if(!Array.isArray(parsed)||parsed.some(item=>typeof item!=='string'))throw new Error(`${label} selection is invalid.`)
@@ -52,7 +62,7 @@ export function parseMultiSelectDraft(value:string,label:string,choices:readonly
  if(required&&items.length===0)throw new Error(`${label} requires at least one choice.`)
  if(new Set(items).size!==items.length)throw new Error(`${label} contains duplicate choices.`)
  if(items.some(item=>!choices.includes(item)))throw new Error(`${label} contains an unsupported choice.`)
- return items
+ return items as T[number][]
 }
 export function readMultiSelectDraft(value:unknown):string{
  if(value==null)return ''

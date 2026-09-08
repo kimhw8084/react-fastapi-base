@@ -36,16 +36,22 @@ def probe(parent: Path) -> dict:
         with raw.open('rb') as file:os.fsync(file.fileno())
         raw.rename(root/'renamed');checks['create_fsync_rename']=(root/'renamed').read_bytes()==b'test'
         path=root/'probe.sqlite3'
-        with sqlite3.connect(path) as connection:
+        connection=sqlite3.connect(path)
+        try:
             connection.execute('PRAGMA journal_mode=DELETE');connection.execute('CREATE TABLE sample(value INTEGER)');connection.commit()
             connection.execute('BEGIN IMMEDIATE')
             child=subprocess.run([sys.executable,'-c',LOCK_TEST,str(path)],capture_output=True,timeout=5)
             checks['same_host_writer_exclusion']=child.returncode==0
             connection.rollback()
+        finally:
+            connection.close()
         child=subprocess.run([sys.executable,'-c',CRASH_TEST,str(path)],capture_output=True,timeout=5)
-        with sqlite3.connect(path) as connection:
+        connection=sqlite3.connect(path)
+        try:
             checks['process_exit_rollback']=child.returncode==0 and connection.execute('SELECT COUNT(*) FROM sample').fetchone()[0]==0
             checks['integrity_check']=connection.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+        finally:
+            connection.close()
         return {'schema_version':1,'checks':checks,'diagnostic_pass':all(checks.values()),'production_approved':False,
                 'limitations':['No cross-host test','No power-loss test','No provider compatibility guarantee','No permission or identity qualification'],
                 'required_next_evidence':'Provider-supported SQLite semantics and deployment-specific company qualification.'}

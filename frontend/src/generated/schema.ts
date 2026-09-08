@@ -39,6 +39,7 @@ export type EventRead = { "sequence": number; "event_id": string; "topic": strin
 export type FeatureFlagRead = { "key": string; "enabled": boolean; "description": string; "rules": { [key: string]: unknown }; "revision": number; "updated_by": string; "updated_at": string }
 export type FeatureFlagWrite = { "enabled"?: boolean; "description"?: string; "rules"?: { [key: string]: unknown }; "revision"?: (number | null) }
 export type FieldDefinition = { "key": string; "label": string; "kind": "text" | "textarea" | "select" | "integer" | "number" | "boolean" | "date" | "datetime" | "email" | "url" | "markdown" | "code" | "json" | "multiselect" | "percent" | "duration" | "scientific" | "unit_number"; "required": boolean; "nullable": boolean; "max_length": (number | null); "choices": Array<string>; "minimum": (number | null); "maximum": (number | null); "step": (number | null); "unit": (string | null); "read_only": boolean }
+export type GlobalSearchResult = { "kind": "record" | "saved_view"; "id": string; "label": string; "description": string; "entity": (string | null); "workspace": string }
 export type ImportCommit = { "csv": string; "fingerprint": string }
 export type ImportPreview = { "rows": Array<WorkItemCreateOutput>; "errors": Array<string>; "fingerprint": string }
 export type ImportPreviewRequest = { "csv": string }
@@ -311,6 +312,7 @@ export interface OperationInputs {
   "lifecycle_api_v1_risks__record_id__lifecycle__action__post": { path: { "record_id": string; "action": string }; body: RevisionInput }
   "revert_api_v1_risks__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
   "runtimeDiagnostics": {  }
+  "globalSearch": { query: { "q": string; "limit"?: number } }
   "list_records_api_v1_service_objectives_get": { query?: { "search"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number; "status"?: string } }
   "create_api_v1_service_objectives_post": { body: ServiceObjectiveCreate }
   "bulk_api_v1_service_objectives_bulk_post": { body: ServiceObjectiveBulkRequest }
@@ -518,6 +520,7 @@ export interface OperationOutputs {
   "lifecycle_api_v1_risks__record_id__lifecycle__action__post": RiskRead
   "revert_api_v1_risks__record_id__revert_post": RiskRead
   "runtimeDiagnostics": unknown
+  "globalSearch": Array<GlobalSearchResult>
   "list_records_api_v1_service_objectives_get": ServiceObjectivePage
   "create_api_v1_service_objectives_post": ServiceObjectiveRead
   "bulk_api_v1_service_objectives_bulk_post": Array<ServiceObjectiveRead>
@@ -1198,6 +1201,10 @@ export const operationRoutes = {
   "runtimeDiagnostics": {
     "method": "GET",
     "path": "/api/v1/runtime-diagnostics"
+  },
+  "globalSearch": {
+    "method": "GET",
+    "path": "/api/v1/search"
   },
   "list_records_api_v1_service_objectives_get": {
     "method": "GET",

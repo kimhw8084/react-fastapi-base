@@ -1,6 +1,6 @@
 # Template upgrades
 
-This review build implements safe **planning**, not automatic application of upgrades.
+The review build implements a hash-bound, conflict-refusing upgrade apply and rollback for the managed platform core. It does not migrate application-owned schema or silently reconcile local divergence.
 
 `./dev create` records managed kernel hashes in template.lock.json. Config, theme, app composition and concrete features are application-owned. A subsequent plan compares original/current/incoming hashes:
 
@@ -10,6 +10,6 @@ This review build implements safe **planning**, not automatic application of upg
 
 Unchanged local core plus changed incoming core yields an update. A changed local file plus unchanged incoming file preserves local ownership. A two-sided difference yields a conflict. The command does not write any files and returns nonzero for conflicts. It never guesses an AI merge.
 
-Before a real upgrade: back up source and data, review the plan and public API/migration changes, apply a narrowly scoped reviewed patch, regenerate contracts, execute all gates, rehearse database upgrades and document rollback. Safe apply/rollback automation and codemods remain release scope. Do not claim applications automatically inherit template fixes after generation.
+Review the plan hash and resolve every conflict before applying. Apply requires the exact plan hash and `--maintenance APP-STOPPED`; it journals atomic file changes and preserves application-owned configuration. Regenerate contracts, run all gates, rehearse database migrations separately, and keep the journal for rollback. Rollback refuses to overwrite post-upgrade human edits. Codemods, application-owned migrations, and specialized reference-app generation remain release scope.
 
 Semantic version policy proposed for v1: patch preserves public APIs and behavior; minor adds compatible capability; major changes contracts or requires application adaptations. Database and saved-view schema changes get explicit migrations even when npm/Python package versioning would allow a minor update. A code-file three-way merge is not a data migration.

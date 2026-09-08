@@ -1,10 +1,10 @@
-# macOS quickstart — 0.2.0-lab
+# macOS quickstart — 1.0.0-rc.1
 
 This is a portable launch procedure, not a claim that this exact release has been run on a Mac.
 
 ## View the implemented application
 
-1. Unzip `react-fastapi-base-0.2.0-lab.zip` into a new folder, separate from SysGrid.
+1. Unzip `react-fastapi-base-1.0.0-rc.1.zip` into a new folder, separate from SysGrid.
 2. Open Terminal in the resulting `react-fastapi-base` folder.
 3. Check `python3 --version` (3.10+ for the standalone launcher).
 4. Run `python3 dev lab`.

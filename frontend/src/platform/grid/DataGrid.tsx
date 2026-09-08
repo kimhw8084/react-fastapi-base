@@ -72,7 +72,7 @@ function StandardDataGrid<T extends BaseRecord>({rows,definition,density,columns
   useEffect(()=>{grid.current?.api?.deselectAll();onSelection([])},[scope,onSelection])
   const changed=()=>{
     const api=apiRef.current;if(!api)return
-    const state:ViewColumn[]=api.getColumnState().filter(column=>definition.columns.includes(column.colId)).map(column=>({colId:column.colId,width:Math.max(60,Math.min(1200,Math.round(column.width??160))),hide:Boolean(column.hide),sort:column.sort??null,sortIndex:column.sortIndex??null,pinned:column.pinned??null}))
+    const state:ViewColumn[]=api.getColumnState().filter(column=>definition.columns.includes(column.colId)).map(column=>({colId:column.colId,width:Math.max(60,Math.min(1200,Math.round(column.width??160))),hide:Boolean(column.hide),sort:column.sort??null,sortIndex:column.sortIndex??null,pinned:column.pinned==='left'||column.pinned==='right'?column.pinned:null}))
     const serialized=JSON.stringify(state);if(applied.current!==serialized){applied.current=serialized;onColumns(state)}
   }
   const ready=(event:GridReadyEvent<T>)=>{apiRef.current=event.api;apply(event.api)}

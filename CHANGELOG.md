@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-rc.1 — reproducible React/FastAPI review build
+
+- Added the committed frontend lockfile and reproducible `npm ci` workflow.
+- Verified React typecheck, unit tests, production build, Storybook build and actual React browser workflows.
+- Added security-driven Python dependency updates and a passing Python advisory scan.
+- Fixed generated rich-field enum typing, storage validation, overlay dialog labeling, grid pinning and strict TypeScript issues.
+- Centralized release metadata in `VERSION`, wired backend health/bootstrap/Lab/upgrade metadata to it, and added version consistency verification.
+- Added the current v1 completion matrix and refreshed release documentation without promoting provisional catalog entries.
+
+This release remains NOT COMPLETE: advanced catalog scope, full accessibility/performance certification, fresh-clone proof, reference-app proofs, and company/macOS qualification are open.
+
 ## 0.7.0-rich-field-engine
 
 - Added end-to-end rich field semantics: Markdown, code, JSON object, multiselect, percent, duration, scientific and unit-aware numeric fields.

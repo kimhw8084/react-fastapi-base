@@ -1,6 +1,6 @@
 # ADR: reusable native widget layer with a React adapter
 
-Status: implemented provisionally in 0.2.0-lab; React hosting still unverified.
+Status: implemented provisionally in 1.0.0-rc.1; React hosting has local build and browser evidence, while full catalog certification remains open.
 
 The execution environment could not resolve npm packages. Rather than fabricate dependency locks or label source-only React a passing application, the engineering widget layer was implemented using strict TypeScript, standards-based custom elements and DOM/SVG. The exact compiled modules run in a zero-network standalone Lab and are hosted through a controlled React adapter.
 

@@ -26,7 +26,7 @@ export const DockedPanel=InspectorShell
 export const SidecarPanel=PanelShell
 export const CollapsiblePanel=PanelShell
 
-export function PopoverShell({open,anchor,onClose,title,children,width=260}:{open:boolean;anchor:{x:number;y:number}|null;onClose:()=>void;title?:ReactNode;children:ReactNode;width?:number}){return <FloatingPanelShell open={open} anchor={anchor} onClose={onClose} title={title} width={width}>{children}</FloatingPanelShell>}
+export function PopoverShell({open,anchor,onClose,title,children,width=260}:{open:boolean;anchor:{x:number;y:number}|null;onClose:()=>void;title?:ReactNode;children:ReactNode;width?:number}){return <FloatingPanelShell open={open} anchor={anchor??{x:16,y:16}} onClose={onClose} title={title} width={width}>{children}</FloatingPanelShell>}
 export const DropdownShell=PopoverShell
 export const ComboDropdownShell=PopoverShell
 export const HoverCardShell=PopoverShell

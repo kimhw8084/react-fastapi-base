@@ -14,6 +14,7 @@ import os
 from datetime import datetime, timezone
 
 ROOT=Path(__file__).resolve().parents[1]
+PLATFORM_VERSION=(ROOT/'VERSION').read_text(encoding='utf-8').strip()
 MANAGED=('backend/app/platform/','frontend/src/platform/','experience-lab/src/base.ts','experience-lab/src/dialog.ts','experience-lab/src/icons.ts','experience-lab/src/presentation.ts','experience-lab/src/model.ts','experience-lab/src/validation.ts','experience-lab/src/table.ts','experience-lab/src/scheduling.ts','experience-lab/src/spatial.ts','experience-lab/src/charts.ts','experience-lab/src/editors.ts','experience-lab/src/windows.ts','experience-lab/src/manufacturing','experience-lab/src/composition.ts')
 EXCLUDED={'.git','.local','.evidence','.template-upgrades','.venv','.lab-venv','venv','node_modules','dist','__pycache__','.pytest_cache','test-results','playwright-report','.generated-smoke','verification','checkpoints','evidence'}
 
@@ -49,7 +50,7 @@ def create_application(source: Path, target: Path, app_id: str, name: str, theme
         runtime_path=stage/'frontend/public/runtime-config.json'
         runtime=json.loads(runtime_path.read_text());runtime.update(defaultTheme=theme,titleOverride=name)
         runtime_path.write_text(json.dumps(runtime,indent=2)+'\n')
-        (stage/'template.lock.json').write_text(json.dumps({'schema_version':1,'platform_version':'0.2.0-lab','reference_source_commit':'66244b997a70b85e6e887870c96db958f3f0d22d','managed':core_manifest(stage)},indent=2)+'\n')
+        (stage/'template.lock.json').write_text(json.dumps({'schema_version':1,'platform_version':PLATFORM_VERSION,'reference_source_commit':'66244b997a70b85e6e887870c96db958f3f0d22d','managed':core_manifest(stage)},indent=2)+'\n')
         if target.exists():raise ValueError('Destination appeared while generating.')
         os.rename(stage,target)
     except BaseException:

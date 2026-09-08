@@ -92,6 +92,14 @@ class EntityReference(StrictSchema):
     archived: bool = False
     revision: int | None = None
 
+class GlobalSearchResult(StrictSchema):
+    kind: Literal['record', 'saved_view']
+    id: str
+    label: str
+    description: str = ''
+    entity: str | None = None
+    workspace: str
+
 class EntityBulkUpdateTarget(StrictSchema):
     id: str = Field(min_length=1, max_length=64)
     revision: int = Field(ge=1)
