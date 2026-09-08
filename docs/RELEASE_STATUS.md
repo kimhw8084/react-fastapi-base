@@ -21,6 +21,7 @@
 - Full performance requires the specified 100k-row and large graph/rack/wafer/log/SPC stress runs.
 - Independent generator/reference-app proofs remain to be completed.
 - Saved views now support explicit tenant teams with server-enforced membership and a conflict-resolution recovery action; favorites/defaults and offline reconciliation remain open.
+- The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
 
 ## Evidence policy

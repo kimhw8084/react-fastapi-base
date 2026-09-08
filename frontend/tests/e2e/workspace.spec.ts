@@ -27,6 +27,21 @@ test('dirty form close requires a decision',async({page})=>{
  await expect(dialog.getByRole('textbox',{name:/Title/})).toHaveValue('Do not lose this draft')
 })
 
+test('admin can manage membership-scoped workspace teams',async({page})=>{
+ await page.goto('/system')
+ await expect(page.getByRole('heading',{name:'System workspace',exact:true})).toBeVisible()
+ await page.getByRole('tab',{name:'Teams',exact:true}).click()
+ const teamName=`Browser team ${Date.now()}`,slug=`browser-team-${Date.now()}`
+ await page.getByRole('textbox',{name:'Team name'}).fill(teamName)
+ await page.getByRole('textbox',{name:'Team slug'}).fill(slug)
+ await page.getByRole('button',{name:'Create team'}).click()
+ const team=page.getByRole('article').filter({hasText:teamName})
+ await expect(team).toContainText('1 explicit members')
+ await team.getByRole('textbox',{name:`Add member to ${teamName}`}).fill('browser.member')
+ await team.getByRole('button',{name:'Add member'}).click()
+ await expect(team).toContainText('2 explicit members')
+})
+
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
  await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
  await page.getByLabel('Theme',{exact:true}).selectOption({label:theme})
