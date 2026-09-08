@@ -45,7 +45,7 @@ def main() -> int:
         node_path = shutil.which('node', path=environment.get('PATH'))
         if not node_path or not subprocess.check_output([node_path, '--version'], text=True).strip().startswith('v22.'):
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(json.dumps({'schema_version': 1, 'platform': platform.platform(), 'result': 'FAIL', 'reason': 'Node 22 is required for the locked frontend.'}, indent=2) + '\n')
+            args.output.write_text(json.dumps({'schema_version': 1, 'platform': platform.platform(), 'source_commit': None, 'timestamp': datetime.now(timezone.utc).isoformat(), 'command': commands, 'exit_code': 1, 'environment': {'platform': platform.platform()}, 'hashes': {}, 'result': 'FAIL', 'reason': 'Node 22 is required for the locked frontend.'}, indent=2) + '\n')
             return 1
         preinstall_clean = True
         for index, command in enumerate(commands):
@@ -66,9 +66,17 @@ def main() -> int:
             except (OSError, subprocess.TimeoutExpired) as error:
                 results.append({'command': command, 'exit_code': None, 'error': str(error)})
                 break
+        source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=clone, text=True).strip() if clone.is_dir() and (clone / '.git').is_dir() else None
+        exit_code = 0 if preinstall_clean and results and results[-1].get('exit_code') == 0 and len(results) == len(commands) and platform.system() == 'Darwin' else 1
         report = {
             'schema_version': 1,
             'platform': platform.platform(),
+            'source_commit': source_commit,
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'command': commands,
+            'exit_code': exit_code,
+            'environment': {'platform': platform.platform(), 'node': node_path, 'python': platform.python_version()},
+            'hashes': {'source_commit': source_commit} if source_commit else {},
             'macos': platform.system() == 'Darwin',
             'started_at': started.isoformat(),
             'finished_at': datetime.now(timezone.utc).isoformat(),
@@ -77,7 +85,7 @@ def main() -> int:
             'cache_isolated': True,
             'preinstall_clean': preinstall_clean,
             'commands': results,
-            'result': 'PASS' if preinstall_clean and results and results[-1].get('exit_code') == 0 and len(results) == len(commands) and platform.system() == 'Darwin' else 'FAIL',
+            'result': 'PASS' if exit_code == 0 else 'FAIL',
         }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + '\n')

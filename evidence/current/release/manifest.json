@@ -2,12 +2,12 @@
   "schema_version": 1,
   "product": "react-fastapi-base",
   "version": "1.0.0-rc.1",
-  "source_commit": "a048fc6a9f29cdf2971984a58405d0e6ca77ab22",
-  "timestamp": "2026-09-08T15:52:06Z",
-  "command": ["python scripts/verify.py --output evidence/current/full-stack"],
+  "source_commit": "a77bf9575e3da9871653d45fa02f80963a97e880",
+  "timestamp": "2026-09-08T20:49:45Z",
+  "command": ["python3 dev verify-release"],
   "exit_code": 1,
   "environment": "macOS arm64; Python 3.14.5; Node 22.23.2",
-  "hashes": {"source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11"},
-  "result": "NOT_COMPLETE",
-  "blocking_results": ["required-catalog-completeness", "macos-fresh-install", "company-identity", "company-storage", "company-deployment", "sysgrid-migration-parity"]
+  "hashes": {"source_digest": "b1509883bbbb49b67011008a2ef341960b3806aff8d9bdb6ba13a044fea726d5"},
+  "result": "NOT_CERTIFIED",
+  "blocking_results": ["company-identity", "company-storage", "company-deployment"]
 }

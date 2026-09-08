@@ -86,7 +86,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     source_hashes['dev']=hashlib.sha256((ROOT/'dev').read_bytes()).hexdigest()
     source_digest=hashlib.sha256(json.dumps(source_hashes,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     (output/'source-hashes.json').write_text(json.dumps(source_hashes,indent=2)+'\n')
-    result={'schema_version':1,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'release_status':'NOT_CERTIFIED',
+    result={'schema_version':1,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code') else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
       'production_ready':False,'code_ready':all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code'),'results':results,
       'note':'Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.'}
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')

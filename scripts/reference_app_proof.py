@@ -65,7 +65,8 @@ def main() -> int:
                 failed = next(step for step in steps if step['exit_code'] != 0)
                 raise RuntimeError(f'Reference app proof failed for {app_id}: {failed}')
             proof.append({'id': app_id, 'name': name, 'theme': theme, 'steps': steps, 'template_lock': json.loads((app / 'template.lock.json').read_text())['platform_version']})
-    report = {'schema_version': 1, 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(), 'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'result': 'PASS', 'duration_seconds': round(time.monotonic() - started, 3), 'apps': proof}
+    source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    report = {'schema_version': 1, 'source_commit': source_commit, 'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'command': ['python3', 'scripts/reference_app_proof.py'], 'exit_code': 0, 'environment': {'platform': os.uname().sysname, 'machine': os.uname().machine}, 'hashes': {'source_commit': source_commit}, 'result': 'PASS', 'duration_seconds': round(time.monotonic() - started, 3), 'apps': proof}
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))

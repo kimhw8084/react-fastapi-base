@@ -56,7 +56,9 @@ def main() -> int:
     widgets = [{'id': i, 'x': i % 12, 'y': i // 12, 'w': 1 + i % 4, 'h': 1 + i % 3} for i in range(1_000)]
     checks.append(measure('dashboard-1000-widgets-layout', 0.75, lambda: max(widget['y'] + widget['h'] for widget in widgets), 1_000))
 
-    report = {'schema_version': 1, 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(), 'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'environment': {'platform': platform.platform(), 'python': platform.python_version()}, 'checks': checks, 'result': 'PASS' if all(item['status'] == 'PASS' for item in checks) else 'FAIL'}
+    source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    result = 'PASS' if all(item['status'] == 'PASS' for item in checks) else 'FAIL'
+    report = {'schema_version': 1, 'source_commit': source_commit, 'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'command': ['python3', 'scripts/performance_stress.py'], 'exit_code': 0 if result == 'PASS' else 1, 'environment': {'platform': platform.platform(), 'python': platform.python_version()}, 'hashes': {'source_commit': source_commit}, 'checks': checks, 'result': result}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))
