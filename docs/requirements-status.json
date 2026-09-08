@@ -233,9 +233,9 @@
       "id": "G28",
       "domain": "File storage",
       "status": "PARTIAL",
-      "decision": "Bounded attachments in tenant DB BLOBs for atomic metadata/content backup; safe names, MIME/magic validation and forced downloads.",
-      "owner": "backend/app/platform/attachments.py",
-      "acceptance": "Add malware/CDR policy before accepting untrusted enterprise documents; large-file filesystem/object adapter remains unimplemented."
+      "decision": "Bounded attachments retain atomic metadata/content backup while a tenant-scoped object adapter boundary provides safe atomic local-filesystem and deterministic in-memory storage.",
+      "owner": "backend/app/platform/attachments.py; backend/app/platform/storage.py",
+      "acceptance": "Wire large-file/object references into attachments and add malware/CDR policy before accepting untrusted enterprise documents."
     },
     {
       "id": "G29",

@@ -7,7 +7,7 @@
 ## Verified in this checkout
 
 - Frontend lockfile, `npm ci`, TypeScript, unit tests, production build, Storybook build, and actual React browser workflows.
-- FastAPI backend suite: 179 tests passing on the security-updated dependency set, including typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views, webhook delivery history and reviewed XLSX exchange.
+- FastAPI backend suite: 185 tests passing on the security-updated dependency set, including typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views, webhook delivery history, reviewed XLSX exchange and storage adapter safety.
 - Isolated clean-clone Mac certification: setup, contracts, architecture, catalog release check, backend tests, frontend typecheck/build, Storybook and React E2E all passed with cache isolation.
 - Generated contract check, architecture lint, source security checks, owned algorithm performance checks, Lab build, and Lab HTTP/browser tests.
 - Native and React surfaces use synthetic/disposable data only.
@@ -24,6 +24,7 @@
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
 - Work-item exchange now supports dependency-free XLSX export, preview and atomic reviewed import with formula-cell rejection; multi-entity relationship snapshots remain open.
+- A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations; attachment metadata wiring, malware/CDR scanning, and company-mounted qualification remain open.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
 
 ## Evidence policy
