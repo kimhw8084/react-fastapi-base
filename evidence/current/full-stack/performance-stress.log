@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "source_commit": "313991476a0b7b03b9034a50504193ee51694e19",
+  "created_at": "2026-09-08T20:38:37Z",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.5"
+  },
+  "checks": [
+    {
+      "name": "table-100k-filter-sort",
+      "size": 100000,
+      "seconds": 0.018695,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "result": 100
+    },
+    {
+      "name": "planning-5000-dependencies",
+      "size": 5000,
+      "seconds": 0.00027,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "result": 4999
+    },
+    {
+      "name": "graph-10000-nodes-20000-edges",
+      "size": 30000,
+      "seconds": 0.001674,
+      "budget_seconds": 2.0,
+      "status": "PASS",
+      "result": 10000
+    },
+    {
+      "name": "rack-100-racks-20000-connections",
+      "size": 40000,
+      "seconds": 0.000507,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "result": 20000
+    },
+    {
+      "name": "wafer-100k-die-map",
+      "size": 100000,
+      "seconds": 0.003116,
+      "budget_seconds": 1.0,
+      "status": "PASS",
+      "result": 94117
+    },
+    {
+      "name": "observability-100k-events",
+      "size": 100000,
+      "seconds": 0.003686,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "result": 100
+    },
+    {
+      "name": "dashboard-1000-widgets-layout",
+      "size": 1000,
+      "seconds": 5.1e-05,
+      "budget_seconds": 0.75,
+      "status": "PASS",
+      "result": 86
+    }
+  ],
+  "result": "PASS"
+}

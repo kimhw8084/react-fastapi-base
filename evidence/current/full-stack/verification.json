@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "source_digest": "9b350083ba9c35662b346dd6017676c05884a269b459aff816ad67dcca70990e",
+  "source_digest": "1f28e7e4f8397ba7504817300bbdb069b908d71ca22ee778eaabc6293715b8d1",
   "source_hashes": "source-hashes.json",
   "python_version": "3.14.5",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "created_at": "2026-09-08T20:16:33.743752+00:00",
+  "created_at": "2026-09-08T20:43:20.999648+00:00",
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
   "code_ready": true,
@@ -76,6 +76,16 @@
       ]
     },
     {
+      "name": "performance-stress",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "performance-stress.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/performance_stress.py"
+      ]
+    },
+    {
       "name": "generated-contracts",
       "status": "PASS",
       "exit_code": 0,
@@ -141,6 +151,28 @@
         "scripts/catalog.py",
         "--check",
         "--release"
+      ]
+    },
+    {
+      "name": "upgrade-fixture",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "upgrade-fixture.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/upgrade_fixture.py",
+        "--output",
+        "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/upgrade-fixture.json"
+      ]
+    },
+    {
+      "name": "reference-apps",
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "reference-apps.log",
+      "command": [
+        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "scripts/reference_app_proof.py"
       ]
     },
     {
