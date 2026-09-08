@@ -39,7 +39,7 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
   const current=visibleSections[Math.min(active,visibleSections.length-1)]!
   const render=(field:FieldDefinition)=>{
     const invalid=Boolean(errors[field.key])
-    return <label htmlFor={`${formId}-${field.key}`} className={['textarea','markdown','code','json','object','array','multiselect','multi_enum'].includes(field.kind)?'full-width':''} key={field.key}>
+    return <label htmlFor={`record-field-${field.key}`} className={['textarea','markdown','code','json','object','array','multiselect','multi_enum'].includes(field.kind)?'full-width':''} key={field.key}>
       <span>{field.label}{field.required&&<span aria-label="required"> *</span>}{field.unit&&<small className="field-unit-hint"> · {field.unit}</small>}</span>
       {renderField?renderField(field,invalid):field.read_only?<output className="readonly-field">{String(draft[field.key]??'—')}</output>:<FieldInput field={field} draft={draft} onChange={onChange} invalid={invalid} autoFocus={false}/>} 
       {errors[field.key]&&<small className="field-error">{errors[field.key]}</small>}

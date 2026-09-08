@@ -23,7 +23,7 @@ console.log(`TypeScript syntax only: ${count} files parsed. This is NOT a full t
 const temp=await mkdtemp(join(tmpdir(),'golden-client-smoke-'))
 try{
  await writeFile(join(temp,'package.json'),'{"type":"module"}')
- for(const name of ['platform/api/runtime.ts','platform/api/client.ts','platform/state/storage.ts','platform/workspace/fieldDraft.ts','platform/workspace/types.ts','platform/workspace/workspaceState.ts','platform/ui/surface.ts','platform/ui/surfaceStack.ts','platform/ui/theme.ts','platform/commands/registry.ts','platform/layout/model.ts','platform/workspace/planningModel.ts','platform/workspace/rackModel.ts','platform/workspace/tableModel.ts','platform/engineering/spcModel.ts','packs/semiconductor/model.ts','packs/software-engineering/model.ts','generated/schema.ts']){
+ for(const name of ['platform/api/runtime.ts','platform/api/client.ts','platform/state/storage.ts','platform/workspace/fieldDraft.ts','platform/workspace/types.ts','platform/workspace/workspaceState.ts','platform/workspace/dashboardModel.ts','platform/workspace/riskModel.ts','platform/ui/surface.ts','platform/ui/surfaceStack.ts','platform/ui/theme.ts','platform/commands/registry.ts','platform/layout/model.ts','platform/workspace/planningModel.ts','platform/workspace/rackModel.ts','platform/workspace/tableModel.ts','platform/engineering/spcModel.ts','packs/semiconductor/model.ts','packs/software-engineering/model.ts','generated/schema.ts']){
   const source=await readFile(join(root,'frontend/src',name),'utf8')
   let output=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText
   output=output.replace(/(from\s+['"])(\.[^'"]+)(['"])/g,(_,a,b,c)=>a+b+(b.endsWith('.js')?'':'.js')+c)

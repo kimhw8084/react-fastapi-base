@@ -35,6 +35,20 @@ export function sanitizeWorkspaceView(
     seen.add(column.colId)
     return true
   }).slice(0, 30) : []
+  const sorts = Array.isArray(source.sorts) ? source.sorts.flatMap(item => {
+    if (!item || typeof item !== 'object') return []
+    const candidate = item as { key?: unknown; direction?: unknown }
+    return typeof candidate.key === 'string' && definition.sort_keys.includes(candidate.key)
+      ? [{ key: candidate.key, direction: candidate.direction === 'asc' ? 'asc' as const : 'desc' as const }]
+      : []
+  }).slice(0, 8) : []
+  const advanced_filters = Array.isArray(source.advanced_filters) ? source.advanced_filters.flatMap(item => {
+    if (!item || typeof item !== 'object') return []
+    const candidate = item as Record<string, unknown>
+    return typeof candidate.key === 'string' && definition.filter_keys.includes(candidate.key) && typeof candidate.value === 'string'
+      ? [{ key: candidate.key, operator: typeof candidate.operator === 'string' ? candidate.operator.slice(0, 20) : 'eq', value: candidate.value.slice(0, 200) }]
+      : []
+  }).slice(0, 20) : []
   const fallbackVisualization = available[0] ?? definition.visualizations?.[0] ?? 'table'
   const visualization = typeof source.visualization === 'string' && available.includes(source.visualization)
     ? source.visualization
@@ -44,10 +58,12 @@ export function sanitizeWorkspaceView(
     schema_version: CURRENT_WORKSPACE_SCHEMA,
     search: typeof source.search === 'string' ? source.search.slice(0, 200) : '',
     filters,
+    advanced_filters,
     archived: source.archived === true,
     group_by: typeof source.group_by === 'string' && definition.filter_keys.includes(source.group_by) ? source.group_by : '',
     sort: typeof source.sort === 'string' && definition.sort_keys.includes(source.sort) ? source.sort : (definition.sort_keys.includes('updated_at') ? 'updated_at' : definition.sort_keys[0] ?? 'updated_at'),
     direction: source.direction === 'asc' ? 'asc' : 'desc',
+    sorts,
     density: source.density === 'compact' ? 'compact' : source.density === 'comfortable' ? 'comfortable' : defaultDensity,
     visualization,
     columns,
