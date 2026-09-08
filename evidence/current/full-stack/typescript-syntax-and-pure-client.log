@@ -3,132 +3,132 @@ TAP version 13
 # Subtest: runtime accepts each configured visual profile
 ok 1 - runtime accepts each configured visual profile
   ---
-  duration_ms: 0.569375
+  duration_ms: 0.786708
   ...
 # Subtest: runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
 ok 2 - runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
   ---
-  duration_ms: 0.14825
+  duration_ms: 0.163375
   ...
 # Subtest: storage keys isolate app, user, tenant and version
 ok 3 - storage keys isolate app, user, tenant and version
   ---
-  duration_ms: 0.1055
+  duration_ms: 0.114667
   ...
 # Subtest: corrupted or unavailable local storage is harmless
 ok 4 - corrupted or unavailable local storage is harmless
   ---
-  duration_ms: 0.086958
+  duration_ms: 0.295833
   ...
 # Subtest: API transport supplies tenant and CSRF but never an identity header
 ok 5 - API transport supplies tenant and CSRF but never an identity header
   ---
-  duration_ms: 9.24575
+  duration_ms: 10.765709
   ...
 # Subtest: generated operation routes safely encode parameters
 ok 6 - generated operation routes safely encode parameters
   ---
-  duration_ms: 0.201625
+  duration_ms: 0.254792
   ...
 # Subtest: API error retains safe code/request ID and conflict details
 ok 7 - API error retains safe code/request ID and conflict details
   ---
-  duration_ms: 0.326292
+  duration_ms: 0.363708
   ...
 # Subtest: HTML API response is not treated as data
 ok 8 - HTML API response is not treated as data
   ---
-  duration_ms: 0.209917
+  duration_ms: 0.234875
   ...
 # Subtest: transport failures produce an explicit error, not an empty dataset
 ok 9 - transport failures produce an explicit error, not an empty dataset
   ---
-  duration_ms: 0.17775
+  duration_ms: 0.212208
   ...
 # Subtest: API refuses arbitrary external endpoints
 ok 10 - API refuses arbitrary external endpoints
   ---
-  duration_ms: 0.126292
+  duration_ms: 0.136291
   ...
 # Subtest: appearance mode is independent from visual personality
 ok 11 - appearance mode is independent from visual personality
   ---
-  duration_ms: 0.067458
+  duration_ms: 0.066292
   ...
 # Subtest: surface presentation converts dense side surfaces to mobile sheets
 ok 12 - surface presentation converts dense side surfaces to mobile sheets
   ---
-  duration_ms: 0.078458
+  duration_ms: 0.091667
   ...
 # Subtest: command registry exposes one action consistently by permission selection and mode
 ok 13 - command registry exposes one action consistently by permission selection and mode
   ---
-  duration_ms: 0.078125
+  duration_ms: 0.085542
   ...
 # Subtest: adaptive layout preserves complexity while changing presentation
 ok 14 - adaptive layout preserves complexity while changing presentation
   ---
-  duration_ms: 0.107541
+  duration_ms: 0.115333
   ...
 # Subtest: surface stack enforces top-most layering and closes descendants with parents
 ok 15 - surface stack enforces top-most layering and closes descendants with parents
   ---
-  duration_ms: 0.268791
+  duration_ms: 0.407375
   ...
 # Subtest: typed field draft helpers reject ambiguity and normalize values
 ok 16 - typed field draft helpers reject ambiguity and normalize values
   ---
-  duration_ms: 0.762583
+  duration_ms: 0.88775
   ...
 # Subtest: rich field draft helpers validate structured data and choices
 ok 17 - rich field draft helpers validate structured data and choices
   ---
-  duration_ms: 0.199334
+  duration_ms: 0.264
   ...
 # Subtest: generic workspace field parser enforces read-only and numeric bounds
 ok 18 - generic workspace field parser enforces read-only and numeric bounds
   ---
-  duration_ms: 0.196959
+  duration_ms: 0.234791
   ...
 # Subtest: workspace state sanitizes stale view data and preserves supported projection intent
 ok 19 - workspace state sanitizes stale view data and preserves supported projection intent
   ---
-  duration_ms: 0.160791
+  duration_ms: 0.201958
   ...
 # Subtest: workspace state rejects stale visualization by falling back deterministically
 ok 20 - workspace state rejects stale visualization by falling back deterministically
   ---
-  duration_ms: 0.090542
+  duration_ms: 0.106459
   ...
 # Subtest: operational table model groups rows and preserves at least the identity column
 ok 21 - operational table model groups rows and preserves at least the identity column
   ---
-  duration_ms: 11.408959
+  duration_ms: 12.887
   ...
 # Subtest: planning critical path follows longest dependency chain and date shift is deterministic
 ok 22 - planning critical path follows longest dependency chain and date shift is deterministic
   ---
-  duration_ms: 0.728375
+  duration_ms: 0.833084
   ...
 # Subtest: rack connection trace finds deterministic shortest multi-hop path
 ok 23 - rack connection trace finds deterministic shortest multi-hop path
   ---
-  duration_ms: 0.531209
+  duration_ms: 0.427875
   ...
 # Subtest: SPC model matches deterministic engineering fixtures
 ok 24 - SPC model matches deterministic engineering fixtures
   ---
-  duration_ms: 0.9935
+  duration_ms: 0.984833
   ...
 # Subtest: semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
 ok 25 - semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
   ---
-  duration_ms: 0.54075
+  duration_ms: 0.594625
   ...
 # Subtest: software engineering pack models parse pipeline, incident and trace data safely
 ok 26 - software engineering pack models parse pipeline, incident and trace data safely
   ---
-  duration_ms: 0.711667
+  duration_ms: 0.805334
   ...
 1..26
 # tests 26
@@ -138,4 +138,4 @@ ok 26 - software engineering pack models parse pipeline, incident and trace data
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 66.297791
+# duration_ms 75.509708
