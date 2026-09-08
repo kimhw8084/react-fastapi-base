@@ -1,47 +1,33 @@
-// Application-owned component registration. Custom workspaces may render any React UI.
-import type { ComponentType } from 'react'
+// Application-owned component registration. Feature bundles load only when a workspace route needs them.
+import { lazy, Suspense, type ComponentType } from 'react'
 import type { WorkspaceContext } from '../platform/workspace/context'
-import { Workspace as WorkItemsWorkspace } from '../features/work-items/Workspace'
-import { Workspace as ProjectsWorkspace } from '../features/projects/Workspace'
-import { Workspace as RackWorkspace } from '../features/racks/Workspace'
-import { Workspace as EquipmentWorkspace } from '../features/equipment/Workspace'
-import { Workspace as KnowledgeEntrieWorkspace } from '../features/knowledge_entries/Workspace'
-import { Workspace as InvestigationWorkspace } from '../features/investigations/Workspace'
-import { Workspace as ResearchWorkspace } from '../features/research/Workspace'
-import { Workspace as RiskWorkspace } from '../features/risks/Workspace'
-import { Workspace as PlanTaskWorkspace } from '../features/plan_tasks/Workspace'
-import { Workspace as DiagramDocumentWorkspace } from '../features/diagram_documents/Workspace'
-import { Workspace as ProcessMeasurementWorkspace } from '../features/process_measurements/Workspace'
-import { Workspace as WaferRunWorkspace } from '../features/wafer_runs/Workspace'
-import { Workspace as ManufacturingLotWorkspace } from '../features/manufacturing_lots/Workspace'
-import { Workspace as EquipmentStateWorkspace } from '../features/equipment_states/Workspace'
-import { Workspace as ProcessRecipeWorkspace } from '../features/process_recipes/Workspace'
-import { Workspace as SoftwareServiceWorkspace } from '../features/software_services/Workspace'
-import { Workspace as DeliveryRunWorkspace } from '../features/delivery_runs/Workspace'
-import { Workspace as ObservabilityEventWorkspace } from '../features/observability_events/Workspace'
-import { Workspace as IncidentWorkspace } from '../features/incidents/Workspace'
-import { Workspace as ServiceObjectiveWorkspace } from '../features/service_objectives/Workspace'
-import { Workspace as SystemWorkspace } from '../features/system/Workspace'
-export const workspaceRenderers: Record<string,ComponentType<WorkspaceContext>> = {
-  work_items: WorkItemsWorkspace,
-  projects: ProjectsWorkspace,
-  racks: RackWorkspace,
-  equipment: EquipmentWorkspace,
-  knowledge_entries: KnowledgeEntrieWorkspace,
-  investigations: InvestigationWorkspace,
-  research: ResearchWorkspace,
-  risks: RiskWorkspace,
-  plan_tasks: PlanTaskWorkspace,
-  diagram_documents: DiagramDocumentWorkspace,
-  process_measurements: ProcessMeasurementWorkspace,
-  wafer_runs: WaferRunWorkspace,
-  manufacturing_lots: ManufacturingLotWorkspace,
-  equipment_states: EquipmentStateWorkspace,
-  process_recipes: ProcessRecipeWorkspace,
-  software_services: SoftwareServiceWorkspace,
-  delivery_runs: DeliveryRunWorkspace,
-  observability_events: ObservabilityEventWorkspace,
-  incidents: IncidentWorkspace,
-  service_objectives: ServiceObjectiveWorkspace,
-  system: SystemWorkspace,
+
+type WorkspaceRenderer=ComponentType<WorkspaceContext>
+const feature=(loader:()=>Promise<{Workspace:ComponentType<WorkspaceContext>}>):WorkspaceRenderer=>{
+  const LazyWorkspace=lazy(()=>loader().then(module=>({default:module.Workspace})))
+  return function LazyWorkspaceRoute(props:WorkspaceContext){return <Suspense fallback={<p role="status">Loading workspace…</p>}><LazyWorkspace {...props}/></Suspense>}
+}
+
+export const workspaceRenderers: Record<string,WorkspaceRenderer> = {
+  work_items: feature(()=>import('../features/work-items/Workspace')),
+  projects: feature(()=>import('../features/projects/Workspace')),
+  racks: feature(()=>import('../features/racks/Workspace')),
+  equipment: feature(()=>import('../features/equipment/Workspace')),
+  knowledge_entries: feature(()=>import('../features/knowledge_entries/Workspace')),
+  investigations: feature(()=>import('../features/investigations/Workspace')),
+  research: feature(()=>import('../features/research/Workspace')),
+  risks: feature(()=>import('../features/risks/Workspace')),
+  plan_tasks: feature(()=>import('../features/plan_tasks/Workspace')),
+  diagram_documents: feature(()=>import('../features/diagram_documents/Workspace')),
+  process_measurements: feature(()=>import('../features/process_measurements/Workspace')),
+  wafer_runs: feature(()=>import('../features/wafer_runs/Workspace')),
+  manufacturing_lots: feature(()=>import('../features/manufacturing_lots/Workspace')),
+  equipment_states: feature(()=>import('../features/equipment_states/Workspace')),
+  process_recipes: feature(()=>import('../features/process_recipes/Workspace')),
+  software_services: feature(()=>import('../features/software_services/Workspace')),
+  delivery_runs: feature(()=>import('../features/delivery_runs/Workspace')),
+  observability_events: feature(()=>import('../features/observability_events/Workspace')),
+  incidents: feature(()=>import('../features/incidents/Workspace')),
+  service_objectives: feature(()=>import('../features/service_objectives/Workspace')),
+  system: feature(()=>import('../features/system/Workspace')),
 }

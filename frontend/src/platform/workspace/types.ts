@@ -21,6 +21,7 @@ export interface WorkspaceAdapter<T extends BaseRecord> {
   draft(row?: T): Draft
   renderDetails?: (row: T) => ReactNode
   renderAttachments?: (row: T) => ReactNode
+  renderDossierTab?: (tab:'activity'|'comments'|'files'|'audit'|'actions', row:T) => ReactNode
   renderForm?: (draft: Draft, onChange: (draft: Draft) => void) => ReactNode
   renderExchange?: (onClose: () => void, onDone: () => void) => ReactNode
   export(query: ListQuery): Promise<void>
