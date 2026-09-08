@@ -36,17 +36,17 @@ Version 1.0.0-rc.1. **Not production certified.** No percentage-complete score i
 | G28 | File storage | PARTIAL | backend/app/platform/attachments.py |
 | G29 | Migrations, backup and recovery | PARTIAL | backend/app/platform/backup.py; docs/RECOVERY.md |
 | G30 | Import and export | PARTIAL | backend/app/features/work_items/exchange.py |
-| G31 | External integrations | DESIGNED | docs/MASTER_DESIGN.md |
+| G31 | External integrations | PARTIAL | backend/app/platform/integrations.py; backend/tests/test_integrations.py |
 | G32 | Background and scheduled work | DESIGNED | docs/MASTER_DESIGN.md |
 | G33 | Realtime | DESIGNED | docs/MASTER_DESIGN.md |
 | G34 | Audit | PARTIAL | backend/app/platform/audit.py; backend/migrations/tenant/0001_tenant.py |
 | G35 | Errors and diagnostics | IMPLEMENTED | backend/app/platform/errors.py; frontend/src/platform/api/client.ts |
 | G36 | Observability | PARTIAL | backend/app/platform/middleware.py; backend/app/main.py |
 | G37 | Security model | PARTIAL | docs/SECURITY.md; backend/tests/test_security.py |
-| G38 | Supply chain | BLOCKED | backend/requirements.lock; frontend/package.json; .github/workflows/verify.yml |
-| G39 | Accessibility | BLOCKED | frontend/tests/e2e/; frontend/src/platform/ui/ |
-| G40 | Performance | DESIGNED | docs/MASTER_DESIGN.md |
-| G41 | Browser and devices | BLOCKED | frontend/playwright.config.ts; frontend/src/theme/ |
+| G38 | Supply chain | PARTIAL | backend/requirements.lock; frontend/package-lock.json; evidence/current/security/ |
+| G39 | Accessibility | PARTIAL | frontend/tests/e2e/; frontend/src/platform/ui/; evidence/current/accessibility/ |
+| G40 | Performance | PARTIAL | scripts/performance_check.py; evidence/current/performance/ |
+| G41 | Browser and devices | PARTIAL | frontend/playwright.config.ts; scripts/fresh_clone_check.py; evidence/current/release/ |
 | G42 | Locale and time | PARTIAL | backend/app/platform/schemas.py; frontend/src/generated/schema.ts |
 | G43 | Notifications | PARTIAL | frontend/src/platform/ui/Notice.tsx |
 | G44 | Flags and capabilities | PARTIAL | backend/app/features/work_items/definition.py; backend/app/platform/policy.py |
@@ -70,7 +70,7 @@ Version 1.0.0-rc.1. **Not production certified.** No percentage-complete score i
 | G62 | Technical-debt cleanup | PARTIAL | docs/ADRS.md |
 | G63 | Repository hygiene | PARTIAL | .gitignore; scripts/template_tools.py |
 | G64 | Platform governance | DESIGNED | docs/MASTER_DESIGN.md; docs/UPGRADING.md |
-| G65 | Release certification | BLOCKED | docs/RELEASE_STATUS.md; evidence/verification/verification.json |
+| G65 | Release certification | PARTIAL | docs/RELEASE_STATUS.md; evidence/current/full-stack/verification.json |
 | G66 | Home/cloud extension points | DESIGNED | docs/MASTER_DESIGN.md |
 | G67 | Success metrics | DESIGNED | docs/MASTER_DESIGN.md |
 | G68 | Decision records | IMPLEMENTED | docs/ADRS.md |

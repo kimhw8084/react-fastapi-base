@@ -256,10 +256,10 @@
     {
       "id": "G31",
       "domain": "External integrations",
-      "status": "DESIGNED",
-      "decision": "Adapter boundary with typed results, origin allowlists, scoped secrets, timeout/retry/idempotency rules.",
-      "owner": "docs/MASTER_DESIGN.md",
-      "acceptance": "Implement a real company-approved integration and replay/error tests; no integration provider is bundled."
+      "status": "PARTIAL",
+      "decision": "Typed tenant-scoped adapter executor with provider allowlists, secret handles, timeout/retry/idempotency/rate-limit rules and redacted results.",
+      "owner": "backend/app/platform/integrations.py; backend/tests/test_integrations.py",
+      "acceptance": "Add a durable production secret resolver and a company-approved provider contract; deterministic adapter tests are local proof."
     },
     {
       "id": "G32",
@@ -312,7 +312,7 @@
     {
       "id": "G38",
       "domain": "Supply chain",
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "decision": "Exact backend dependency snapshot and candidate frontend pins; CI requires locks and high-severity advisory gates.",
       "owner": "backend/requirements.lock; frontend/package.json; .github/workflows/verify.yml",
       "acceptance": "Resolve/review frontend lock, install/scan dependencies, add hash-locked Python artifacts, SBOM/provenance and licensing review."
@@ -320,7 +320,7 @@
     {
       "id": "G39",
       "domain": "Accessibility",
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "decision": "Native semantics, labels, keyboard/dialog source and Playwright axe test definitions exist.",
       "owner": "frontend/tests/e2e/; frontend/src/platform/ui/",
       "acceptance": "Run the built app plus manual keyboard/screen-reader/zoom testing; zero serious/critical axe findings alone does not certify WCAG."
@@ -328,7 +328,7 @@
     {
       "id": "G40",
       "domain": "Performance",
-      "status": "DESIGNED",
+      "status": "PARTIAL",
       "decision": "Bounded 50-row UI pages, 100-row bulk/import, 1 MB attachments and short serialized SQLite writes.",
       "owner": "docs/MASTER_DESIGN.md",
       "acceptance": "Measure production-like bundle size, p95 latency, render responsiveness and memory under expected load; no benchmark claims from design limits."
@@ -336,7 +336,7 @@
     {
       "id": "G41",
       "domain": "Browser and devices",
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "decision": "Desktop-first responsive CSS and Chromium test harness; browser support matrix is proposed, not certified.",
       "owner": "frontend/playwright.config.ts; frontend/src/theme/",
       "acceptance": "Qualify company-managed browser/version, Windows/macOS modifiers, 200% zoom and mobile layouts where required."
@@ -528,7 +528,7 @@
     {
       "id": "G65",
       "domain": "Release certification",
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "decision": "Review build is NOT_CERTIFIED; local evidence never authorizes company deployment.",
       "owner": "docs/RELEASE_STATUS.md; evidence/verification/verification.json",
       "acceptance": "Close scope gaps, code gates and company evidence; independent approval tied to exact artifact digest."
