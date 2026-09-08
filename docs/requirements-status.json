@@ -249,7 +249,7 @@
       "id": "G30",
       "domain": "Import and export",
       "status": "PARTIAL",
-      "decision": "Versioned CSV, reversible formula escaping, bounded preview, fingerprint review and atomic import.",
+      "decision": "Versioned CSV/XLSX, reversible formula escaping, bounded preview, fingerprint review and atomic import.",
       "owner": "backend/app/features/work_items/exchange.py",
       "acceptance": "Add XLSX, relationship-aware multi-entity snapshots, background imports and export audit policy where required."
     },
@@ -353,8 +353,8 @@
       "id": "G43",
       "domain": "Notifications",
       "status": "PARTIAL",
-      "decision": "Transient success/error status notices only; no email/push/in-app inbox provider.",
-      "owner": "frontend/src/platform/ui/Notice.tsx",
+      "decision": "Tenant-scoped durable in-app notifications with read/dismiss, mark-all-read and revision-safe per-kind preferences; external delivery remains adapter-driven.",
+      "owner": "backend/app/platform/notifications.py; frontend/src/features/system/Workspace.tsx",
       "acceptance": "Add accessible announcement timing/dismissal and optional provider-backed durable notifications with preferences."
     },
     {
