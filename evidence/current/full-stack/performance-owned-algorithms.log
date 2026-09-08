@@ -1,6 +1,6 @@
-PASS descriptive-100k: 0.040s <= 1.500s
-PASS imr-100k: 0.014s <= 2.500s
+PASS descriptive-100k: 0.039s <= 1.500s
+PASS imr-100k: 0.013s <= 2.500s
 PASS ewma-100k: 0.010s <= 1.500s
-PASS run-rules-100k: 0.102s <= 2.500s
+PASS run-rules-100k: 0.103s <= 2.500s
 PASS pareto-100k: 0.010s <= 1.500s
 Performance smoke passed. Browser rendering and target-Mac budgets still require the dependency-resolved application build.
