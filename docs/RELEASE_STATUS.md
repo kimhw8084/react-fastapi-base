@@ -7,7 +7,7 @@
 ## Verified in this checkout
 
 - Frontend lockfile, `npm ci`, TypeScript, unit tests, production build, Storybook build, and actual React browser workflows.
-- FastAPI backend suite: 173 tests passing on the security-updated dependency set, including the typed integration boundary.
+- FastAPI backend suite: 176 tests passing on the security-updated dependency set, including typed integrations, statistical parity and fenced durable jobs.
 - Isolated clean-clone Mac certification: setup, contracts, architecture, catalog release check, backend tests, frontend typecheck/build, Storybook and React E2E all passed with cache isolation.
 - Generated contract check, architecture lint, source security checks, owned algorithm performance checks, Lab build, and Lab HTTP/browser tests.
 - Native and React surfaces use synthetic/disposable data only.
@@ -15,7 +15,8 @@
 ## Remaining release blockers
 
 - The 605-entry catalog now passes its generic family-level certification contract; domain-specific production qualification remains tracked separately in the completion matrix.
-- Advanced grid/server-scale, graph, planning, dashboard, statistical, semiconductor, software, administration, and upgrade capabilities remain partial in the completion matrix.
+- Upgrade fixture and seven generated reference applications pass disposable migration/contract/frontend test/build proofs; feature-specific domain depth remains tracked separately in the completion matrix.
+- Deterministic stress proofs pass 100k table/wafer/observability/SPC-scale algorithms, 5k planning tasks, large graph/rack datasets and dashboard layout inputs; browser DOM/memory profiling remains open.
 - Full accessibility requires major-screen axe coverage plus manual keyboard, zoom, high-contrast, and VoiceOver evidence.
 - Full performance requires the specified 100k-row and large graph/rack/wafer/log/SPC stress runs.
 - Independent generator/reference-app proofs remain to be completed.

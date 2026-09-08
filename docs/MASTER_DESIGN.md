@@ -78,7 +78,7 @@ Forms use the authoritative field metadata and Pydantic validation. Custom React
 
 ## 7. Packaging, upgrades and workflow
 
-The current output is a source template rather than published npm/Python packages. `./dev create` writes a new destination only, changes app config/runtime values, excludes private/generated execution state and records managed-core hashes. `./dev upgrade-plan` compares the app's original core hashes, its current files and an incoming template. Conflicts are surfaced; no update is applied. A safe reviewed apply/rollback mechanism is still required for the full upgrade promise.
+The current output is a source template rather than published npm/Python packages. `./dev create` writes a new destination only, changes app config/runtime values, excludes private/generated execution state and records managed-core hashes. `./dev upgrade-plan` compares the app's original core hashes, its current files and an incoming template. Conflicts are surfaced; `./dev upgrade-apply` performs hash-bound atomic managed-core updates and `./dev upgrade-rollback` restores a journaled snapshot while refusing post-upgrade human edits. `./dev upgrade-fixture` exercises the generated-app migration/build/test/rollback path.
 
 The template's AGENTS.md applies only to this new repository. It does not supersede SysGrid's control-room workflow. No commit, push, production migration or publication is performed by the supplied verification/generation commands. Developers work in config, theme and feature directories first. Kernel changes need evidence of a cross-feature concern and associated regression tests.
 

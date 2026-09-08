@@ -34,6 +34,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('security-source',[sys.executable,'scripts/security_source_check.py'])
     run('version-metadata',[sys.executable,'scripts/version_check.py'])
     run('performance-owned-algorithms',[sys.executable,'scripts/performance_check.py'])
+    run('performance-stress',[sys.executable,'scripts/performance_stress.py'])
     run('generated-contracts',[sys.executable,'scripts/generate_contracts.py','--check'])
     run('typescript-syntax-and-pure-client',['node','scripts/source_smoke.mjs'])
     run('static-server',['node','--test','frontend/tests/server.test.mjs'])
@@ -43,6 +44,13 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     else:
         run('engineering-widget-layer',[sys.executable,'scripts/verify_lab.py','--mode',os.environ.get('LAB_BROWSER_MODE','http'),'--output',str((output/'native-lab').resolve())],timeout=600)
     run('required-catalog-completeness',[sys.executable,'scripts/catalog.py','--check','--release'])
+    if source_only:
+        blocked('upgrade-fixture','Source-only request: generated application upgrade proof was not executed.')
+    elif release:
+        run('upgrade-fixture',[sys.executable,'scripts/upgrade_fixture.py','--output',str((output/'upgrade-fixture.json').resolve())],timeout=600)
+        run('reference-apps',[sys.executable,'scripts/reference_app_proof.py'],timeout=1200)
+    else:
+        blocked('upgrade-fixture','Release verification only; run `python3 dev verify-release` for the generated-app upgrade proof.','release')
     if source_only:
         blocked('macos-fresh-install','Source-only request; isolated clone execution was not run.','external')
     else:

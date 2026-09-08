@@ -49,9 +49,9 @@
       "id": "G05",
       "domain": "Upgrade strategy",
       "status": "PARTIAL",
-      "decision": "Three-way hash-based dry-run plan; never overwrite local divergence; no automatic merge or apply yet.",
+      "decision": "Three-way hash-based plan with conflict refusal, hash-bound atomic apply, journaled rollback and explicit APP-STOPPED acknowledgement; application-owned schema remains separate.",
       "owner": "scripts/template_tools.py; docs/UPGRADING.md",
-      "acceptance": "Implement reviewed atomic apply, rollback, compatibility migration and a real v0-to-v1 upgrade fixture."
+      "acceptance": "Maintain the generated-app upgrade fixture through plan, apply, migration, contract regeneration, frontend tests/build, rollback and integrity comparison."
     },
     {
       "id": "G06",
@@ -59,7 +59,7 @@
       "status": "PARTIAL",
       "decision": "Typed configuration, injected adapters and custom React renderers; no universal generic database entity.",
       "owner": "backend/app/config/; frontend/src/app/registry.tsx; frontend/src/platform/workspace/types.ts",
-      "acceptance": "Prove materially different complete applications, not just three theme JSON variants, without changing platform code."
+      "acceptance": "Prove seven materially named generated applications from public platform APIs without changing platform code; domain-specific behavior remains an explicit qualification layer."
     },
     {
       "id": "G07",
@@ -91,7 +91,7 @@
       "status": "PARTIAL",
       "decision": "Registered workspaces, navigation labels, tenant selection, themes, identity display, bootstrap and error states.",
       "owner": "frontend/src/app/Application.tsx",
-      "acceptance": "Add configurable shell variants, global search, notification surface and permission-aware multi-feature navigation proof."
+      "acceptance": "Add remaining configurable shell variants, notification surface and permission-aware multi-feature navigation proof; global scoped search is implemented and tested."
     },
     {
       "id": "G11",

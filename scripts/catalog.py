@@ -14,7 +14,7 @@ def outputs():
         row.update(maturity='implemented-provisional',source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),react_host_verified=False,production_certified=False)
     obj={'schema_version':1,'unique_interactive_families':len(entries),'entries':entries,'note':'These are local model-controlled widgets. Tests do not certify React integration, production data, or the complete roadmap.'}
     roadmap=json.loads((ROOT/'catalog/roadmap.json').read_text())
-    text=['# Component and platform coverage','','This is an explicit delivery ledger, not a percentage-complete claim.','','## Interactive families','','| Family | Capabilities | Remaining limits |','|---|---|---|']
+    text=['# Component and platform coverage','','This is an explicit delivery ledger, not a percentage-complete claim. The first table describes the standalone Experience Lab native demonstration families. The retained catalog table below describes the generic React/platform family registry; a stable generic variant is not a claim that every specialized domain workflow is production-qualified.','','## Interactive families','','| Family | Capabilities | Remaining limits |','|---|---|---|']
     for row in entries:text.append(f"| {row['title']} | {'; '.join(row['capabilities'])} | {'; '.join(row['limits'])} |")
     text+=['','## Full retained scope','','All entries remain required until explicitly approved otherwise. `partial` means a demonstration covers part of the contract, not a certified reusable implementation.','','| Required item | Category | Status | Related examples |','|---|---|---|---|']
     for row in roadmap['entries']:text.append(f"| {row['id']} | {row['category']} | {row['maturity']} | {', '.join(row['demo_families']) or '—'} |")

@@ -1,6 +1,6 @@
 # Component and platform coverage
 
-This is an explicit delivery ledger, not a percentage-complete claim.
+This is an explicit delivery ledger, not a percentage-complete claim. The first table describes the standalone Experience Lab native demonstration families. The retained catalog table below describes the generic React/platform family registry; a stable generic variant is not a claim that every specialized domain workflow is production-qualified.
 
 ## Interactive families
 
