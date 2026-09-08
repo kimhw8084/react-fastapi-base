@@ -6845,6 +6845,30 @@
             "title": "Name",
             "type": "string"
           },
+          "pdu_a_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu A Capacity Kw"
+          },
+          "pdu_b_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu B Capacity Kw"
+          },
           "power_capacity_kw": {
             "default": 10.0,
             "minimum": 0.0,
@@ -6856,6 +6880,18 @@
             "maximum": 1000.0,
             "minimum": 1.0,
             "title": "Rack Units",
+            "type": "integer"
+          },
+          "reserved_power_kw": {
+            "default": 0.0,
+            "minimum": 0.0,
+            "title": "Reserved Power Kw",
+            "type": "number"
+          },
+          "reserved_units": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Reserved Units",
             "type": "integer"
           },
           "row_name": {
@@ -6886,6 +6922,30 @@
             "maxLength": 80,
             "title": "Status",
             "type": "string"
+          },
+          "thermal_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thermal Capacity Kw"
+          },
+          "weight_capacity_kg": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight Capacity Kg"
           }
         },
         "required": [
@@ -6953,6 +7013,30 @@
             "title": "Name",
             "type": "string"
           },
+          "pdu_a_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu A Capacity Kw"
+          },
+          "pdu_b_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu B Capacity Kw"
+          },
           "power_capacity_kw": {
             "default": 10.0,
             "minimum": 0.0,
@@ -6964,6 +7048,18 @@
             "maximum": 1000.0,
             "minimum": 1.0,
             "title": "Rack Units",
+            "type": "integer"
+          },
+          "reserved_power_kw": {
+            "default": 0.0,
+            "minimum": 0.0,
+            "title": "Reserved Power Kw",
+            "type": "number"
+          },
+          "reserved_units": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Reserved Units",
             "type": "integer"
           },
           "revision": {
@@ -6999,10 +7095,34 @@
             "title": "Status",
             "type": "string"
           },
+          "thermal_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thermal Capacity Kw"
+          },
           "updated_at": {
             "format": "date-time",
             "title": "Updated At",
             "type": "string"
+          },
+          "weight_capacity_kg": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight Capacity Kg"
           }
         },
         "required": [
@@ -7011,6 +7131,12 @@
           "row_name",
           "rack_units",
           "power_capacity_kw",
+          "pdu_a_capacity_kw",
+          "pdu_b_capacity_kw",
+          "weight_capacity_kg",
+          "thermal_capacity_kw",
+          "reserved_units",
+          "reserved_power_kw",
           "status",
           "id",
           "revision",
@@ -7031,6 +7157,30 @@
             "title": "Name",
             "type": "string"
           },
+          "pdu_a_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu A Capacity Kw"
+          },
+          "pdu_b_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pdu B Capacity Kw"
+          },
           "power_capacity_kw": {
             "default": 10.0,
             "minimum": 0.0,
@@ -7042,6 +7192,18 @@
             "maximum": 1000.0,
             "minimum": 1.0,
             "title": "Rack Units",
+            "type": "integer"
+          },
+          "reserved_power_kw": {
+            "default": 0.0,
+            "minimum": 0.0,
+            "title": "Reserved Power Kw",
+            "type": "number"
+          },
+          "reserved_units": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Reserved Units",
             "type": "integer"
           },
           "revision": {
@@ -7077,6 +7239,30 @@
             "maxLength": 80,
             "title": "Status",
             "type": "string"
+          },
+          "thermal_capacity_kw": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thermal Capacity Kw"
+          },
+          "weight_capacity_kg": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight Capacity Kg"
           }
         },
         "required": [

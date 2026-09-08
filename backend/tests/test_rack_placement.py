@@ -22,6 +22,13 @@ def test_rack_placement_bounds_collision_and_revision_safe_move(client):
     stale=client.put('/api/v1/relationships/'+first.json()['id'],json={'revision':1,'metadata':{'start_unit':22,'size_u':2,'face':'front'}})
     assert stale.status_code==409;assert stale.json()['error']['code']=='revision_conflict'
 
+def test_rack_optional_engineering_constraints_are_persisted_and_validated(client):
+    created=client.post('/api/v1/racks',json={'name':'R-Engineering','site':'Fab 1','rack_units':42,'power_capacity_kw':20,'pdu_a_capacity_kw':10,'pdu_b_capacity_kw':10,'weight_capacity_kg':800,'thermal_capacity_kw':18,'reserved_units':4,'reserved_power_kw':2})
+    assert created.status_code==201,created.text
+    assert created.json()['pdu_a_capacity_kw']==10 and created.json()['weight_capacity_kg']==800
+    invalid=client.post('/api/v1/racks',json={'name':'Invalid','site':'Fab 1','rack_units':4,'reserved_units':5})
+    assert invalid.status_code==422
+
 def test_equipment_can_have_only_one_active_rack_placement(client):
     rack_a=create_rack(client,'R01');rack_b=create_rack(client,'R02');equipment=create_equipment(client,'srv-a')
     assert place(client,rack_a,equipment,1).status_code==201
