@@ -116,6 +116,21 @@ test('representative mobile surfaces remain keyboard and axe clean',async({page}
  expect(consoleErrors).toEqual([])
 })
 
+test('100k logical table scope stays bounded to the server page',async({page},info)=>{
+ const items=Array.from({length:50},(_,index)=>({id:`logical-${index}`,title:`Logical record ${index}`,description:'',status:index%2?'open':'done',priority:'normal',revision:1,archived:false,created_by:'demo.admin',created_at:'2026-09-09T00:00:00Z',updated_at:'2026-09-09T00:00:00Z'}))
+ await page.route('**/api/v1/work-items*',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({items,total:100000,limit:50,offset:0})}))
+ const started=await page.evaluate(()=>performance.now())
+ await page.goto('/work-items')
+ await expect(page.getByText('Matching records').locator('..')).toContainText('100000')
+ await expect(page.getByLabel('Work items data grid')).toBeVisible()
+ const renderedRows=await page.locator('.ag-row').count()
+ const elapsed=await page.evaluate(start=>performance.now()-start,started)
+ const memory=await page.evaluate(()=>{const performanceWithMemory=performance as Performance&{memory?:{usedJSHeapSize:number}};return performanceWithMemory.memory?.usedJSHeapSize??null})
+ await info.attach('table-100k-browser-performance.json',{body:Buffer.from(JSON.stringify({logical_rows:100000,server_page:50,rendered_rows:renderedRows,elapsed_ms:Math.round(elapsed),used_js_heap_bytes:memory},null,2)),contentType:'application/json'})
+ expect(renderedRows).toBeLessThanOrEqual(55)
+ expect(elapsed).toBeLessThan(5000)
+})
+
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
  await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
  await page.getByLabel('Theme',{exact:true}).selectOption({label:theme})

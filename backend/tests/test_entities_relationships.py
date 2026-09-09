@@ -60,3 +60,13 @@ def test_relationship_explorers_are_bounded_and_directional(client):
     assert backlinks.status_code==200 and backlinks.json()[0]['source']['id']==project['id']
     invalid=client.get('/api/v1/relationships/explore',params={'entity':'projects','record_id':project['id'],'depth':9})
     assert invalid.status_code==422
+
+
+def test_relationship_explorer_stays_bounded_on_a_large_relationship_set(client):
+    project=client.post('/api/v1/projects',json={'title':'Large explorer project','summary':'','status':'planned','owner':'ops'}).json()
+    for index in range(120):
+        item=client.post('/api/v1/work-items',json={'title':f'Explorer item {index}','description':'','status':'open','priority':'normal'}).json()
+        linked=client.post('/api/v1/relationships',json={'definition_key':'project_work_items','source_id':project['id'],'target_id':item['id'],'metadata':{}})
+        assert linked.status_code==201,linked.text
+    result=client.get('/api/v1/relationships/related/explore',params={'entity':'projects','record_id':project['id'],'limit':25})
+    assert result.status_code==200 and len(result.json())==25
