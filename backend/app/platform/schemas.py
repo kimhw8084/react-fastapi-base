@@ -92,6 +92,10 @@ class EntityDefinition(StrictSchema):
     workspace: str = Field(pattern=r'^[a-z][a-z0-9_]{0,39}$')
     primary_field: str = Field(default='title', min_length=1, max_length=60)
     authority: Literal['canonical','reference','derived','external','transient'] = 'canonical'
+    schema_version: int = Field(default=1, ge=1)
+    fields: list[FieldDefinition] = Field(default_factory=list, max_length=200)
+    columns: list[str] = Field(default_factory=list, max_length=200)
+    visualizations: list[str] = Field(default_factory=lambda: ['table'], min_length=1, max_length=20)
     search_fields: list[str] = Field(default_factory=list, max_length=20)
     capabilities: list[str] = Field(default_factory=list, max_length=40)
 

@@ -38,7 +38,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     policy=load_policy(settings.policy_config)
     workspaces=WorkspaceRegistry(DEFINITIONS)
     relationships_path=Path(__file__).resolve().parent/'config'/'relationships.json'
-    entities=EntityRegistry(ENTITY_BINDINGS,load_relationship_definitions(relationships_path))
+    entities=EntityRegistry(ENTITY_BINDINGS,load_relationship_definitions(relationships_path),workspaces.definitions())
     unknown={n.workspace for n in application.navigation}-set(DEFINITIONS)
     if unknown:raise ValueError('Unknown workspace configuration: '+', '.join(sorted(unknown)))
     database=Database(settings)

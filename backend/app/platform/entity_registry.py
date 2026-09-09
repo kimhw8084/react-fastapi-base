@@ -5,7 +5,7 @@ import json
 from collections.abc import Callable, Mapping
 from sqlalchemy.orm import Session
 from app.platform.errors import AppError
-from app.platform.schemas import EntityDefinition, EntityReference, RelationshipDefinition, EntityBulkUpdateTarget
+from app.platform.schemas import EntityDefinition, EntityReference, RelationshipDefinition, EntityBulkUpdateTarget, WorkspaceDefinition
 
 Resolver = Callable[[Session, str], EntityReference | None]
 Searcher = Callable[[Session, str, int], list[EntityReference]]
@@ -19,8 +19,20 @@ class EntityBinding:
     bulk_update: BulkUpdater | None = None
 
 class EntityRegistry:
-    def __init__(self, bindings: Mapping[str, EntityBinding], relationship_definitions: list[RelationshipDefinition]):
-        self._bindings = dict(bindings)
+    def __init__(self, bindings: Mapping[str, EntityBinding], relationship_definitions: list[RelationshipDefinition], workspace_definitions: Mapping[str, WorkspaceDefinition] | None = None):
+        workspace_definitions = workspace_definitions or {}
+        self._bindings = {}
+        for key, binding in bindings.items():
+            workspace = workspace_definitions.get(binding.definition.workspace)
+            definition = binding.definition
+            if workspace is not None:
+                definition = definition.model_copy(update={
+                    'schema_version': workspace.schema_version,
+                    'fields': workspace.fields,
+                    'columns': workspace.columns,
+                    'visualizations': workspace.visualizations,
+                })
+            self._bindings[key] = EntityBinding(definition=definition,resolve=binding.resolve,search=binding.search,bulk_update=binding.bulk_update)
         for key, binding in self._bindings.items():
             if key != binding.definition.key:
                 raise ValueError('Entity key/binding mismatch.')

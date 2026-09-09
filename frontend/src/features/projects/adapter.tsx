@@ -1,5 +1,6 @@
 import type { AuditRead, ProjectCreate, ProjectPage, ProjectRead, WorkspaceDefinition } from '../../generated/schema'
 import type { ApiClient } from '../../platform/api/client'
+import { serializeListQuery } from '../../platform/workspace/query'
 import type { Draft, WorkspaceAdapter } from '../../platform/workspace/types'
 
 function parseDraft(draft:Draft):ProjectCreate{
@@ -11,7 +12,7 @@ export function projectsAdapter(api:ApiClient,definition:WorkspaceDefinition):Wo
  const base='/api/v1/projects'
  return {
   key:'projects',entityKey:'projects',singular:'project',definition,
-  list:(query,signal)=>api.request<ProjectPage>(`${base}?${new URLSearchParams(Object.entries({...query,...query.filters,filters:undefined}).filter(([,value])=>value!==undefined).map(([key,value])=>[key,String(value)]))}`,{signal}),
+  list:(query,signal)=>api.request<ProjectPage>(`${base}?${serializeListQuery(query)}`,{signal}),
   get:id=>api.request<ProjectRead>(`${base}/${encodeURIComponent(id)}`),
   create:(draft,key)=>api.json<ProjectRead>(base,'POST',parseDraft(draft),key),
   update:(row,draft)=>api.json<ProjectRead>(`${base}/${row.id}`,'PUT',{...parseDraft(draft),revision:row.revision}),

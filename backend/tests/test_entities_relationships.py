@@ -7,6 +7,9 @@ def test_entity_registry_exposes_canonical_work_items(client,item):
     entities={row['key']:row for row in response.json()}
     assert entities['work_items']['authority']=='canonical'
     assert entities['work_items']['workspace']=='work_items'
+    assert entities['work_items']['fields']
+    assert {field['key'] for field in entities['work_items']['fields']} >= {'title','status'}
+    assert 'table' in entities['work_items']['visualizations']
     search=client.get('/api/v1/entities/work_items/search',params={'q':'backup'})
     assert search.status_code==200
     assert search.json()[0]['id']==item['id']

@@ -19,13 +19,16 @@ from typing import Any
 ROOT=Path(__file__).resolve().parents[1]
 KEY=re.compile(r'^[a-z][a-z0-9_]{0,39}$')
 FIELD=re.compile(r'^[a-z][a-z0-9_]{0,39}$')
-STRING_TYPES={'text','textarea','select','email','url','markdown','code'}
-NUMERIC_TYPES={'integer','number','percent','duration','scientific','unit_number'}
-STRUCTURED_TYPES={'json','multiselect'}
+STRING_TYPES={'text','textarea','long_text','select','email','url','markdown','code','file','image','relationship'}
+NUMERIC_TYPES={'integer','number','decimal','percent','duration','scientific','unit_number','range','tolerance'}
+LIST_TYPES={'multiselect','multi_enum','array'}
+OBJECT_TYPES={'json','object','coordinates'}
+SERVER_COMPUTED_TYPES={'formula','computed'}
+STRUCTURED_TYPES=LIST_TYPES|OBJECT_TYPES|SERVER_COMPUTED_TYPES
 ALLOWED_TYPES=STRING_TYPES|NUMERIC_TYPES|STRUCTURED_TYPES|{'boolean','date','datetime'}
 ALLOWED_VISUALIZATIONS={'table','board','timeline','calendar','gantt','dashboard','graph','rack'}
 RESERVED={'id','revision','archived','created_by','created_at','updated_at','metadata','registry'}
-FIELD_KEYS={'key','label','type','required','max_length','choices','default','searchable','filterable','column','sortable','minimum','maximum','step','unit','read_only'}
+FIELD_KEYS={'key','label','type','required','max_length','choices','default','searchable','filterable','column','sortable','minimum','maximum','step','unit','precision','display_format','exportable','computed','read_only'}
 
 
 def pascal(value:str)->str:return ''.join(part[:1].upper()+part[1:] for part in value.split('_'))
@@ -51,14 +54,20 @@ def _validate_default(kind:str,value:Any,field:dict[str,Any])->Any:
         if len(value)>field['max_length']:raise ValueError(f'Default for {label} is too long.')
         if kind=='select' and value not in field['choices']:raise ValueError(f'Default for {label} must be one of its choices.')
         return value
-    if kind=='multiselect':
+    if kind in {'multiselect','multi_enum'}:
         if not isinstance(value,list) or any(not isinstance(item,str) for item in value) or len(set(value))!=len(value):raise ValueError(f'Default for {label} must be a unique list of choices.')
         if any(item not in field['choices'] for item in value):raise ValueError(f'Default for {label} contains an unsupported choice.')
         return value
-    if kind=='json':
+    if kind in {'json','object','coordinates'}:
         if not isinstance(value,dict):raise ValueError(f'Default for {label} must be a JSON object.')
         if len(json.dumps(value,separators=(',',':')).encode('utf-8'))>field['max_length']:raise ValueError(f'Default for {label} is too large.')
         return value
+    if kind=='array':
+        if not isinstance(value,list):raise ValueError(f'Default for {label} must be a JSON array.')
+        if len(json.dumps(value,separators=(',',':')).encode('utf-8'))>field['max_length']:raise ValueError(f'Default for {label} is too large.')
+        return value
+    if kind in SERVER_COMPUTED_TYPES:
+        raise ValueError(f'Server-owned {kind} field {label} cannot declare a client default.')
     if kind=='integer':
         if isinstance(value,bool) or not isinstance(value,int):raise ValueError(f'Default for {label} must be an integer.')
     elif kind in {'number','percent','duration','scientific','unit_number'}:
@@ -111,17 +120,18 @@ def validate(payload:dict[str,Any])->dict[str,Any]:
             default_max=100000 if kind=='code' else 50000 if kind=='markdown' else 10000 if kind=='textarea' else 80 if kind=='select' else 160
             max_length=raw.get('max_length',default_max)
             if not isinstance(max_length,int) or not 1<=max_length<=100000:raise ValueError(f'Invalid max_length for {fkey}.')
-        elif kind=='json':
+        elif kind in OBJECT_TYPES:
             max_length=raw.get('max_length',50000)
             if not isinstance(max_length,int) or not 2<=max_length<=500000:raise ValueError(f'Invalid max_length for {fkey}.')
-        elif kind=='multiselect':
-            max_length=raw.get('max_length',80)
-            if not isinstance(max_length,int) or not 1<=max_length<=500:raise ValueError(f'Invalid max_length for {fkey}.')
+        elif kind in LIST_TYPES:
+            max_length=raw.get('max_length',80 if kind in {'multiselect','multi_enum'} else 50000)
+            upper=500 if kind in {'multiselect','multi_enum'} else 500000
+            if not isinstance(max_length,int) or not 1<=max_length<=upper:raise ValueError(f'Invalid max_length for {fkey}.')
         else:
             if 'max_length' in raw:raise ValueError(f'max_length is only valid for string, JSON or multiselect fields ({fkey}).')
             max_length=None
         choices=raw.get('choices',[])
-        if kind in {'select','multiselect'}:
+        if kind in {'select','multiselect','multi_enum'}:
             if not isinstance(choices,list) or not 1<=len(choices)<=100 or any(not isinstance(x,str) or not x or len(x)>max_length for x in choices) or len(set(choices))!=len(choices):raise ValueError(f'{kind} field {fkey} needs unique string choices within max_length.')
         elif choices:raise ValueError(f'Choices are only valid for select/multiselect fields ({fkey}).')
         minimum=raw.get('minimum');maximum=raw.get('maximum');step=raw.get('step')
@@ -147,9 +157,19 @@ def validate(payload:dict[str,Any])->dict[str,Any]:
         if filterable and kind not in {'select','boolean'}:raise ValueError(f'Generated filters currently support select/boolean fields only ({fkey}).')
         default_present='default' in raw
         default=raw.get('default')
+        computed=bool(raw.get('computed',False)) or kind in SERVER_COMPUTED_TYPES
+        read_only=bool(raw.get('read_only',False)) or computed
+        if (computed or read_only) and required:raise ValueError(f'Server-owned/read-only field {fkey} cannot be required.')
+        if computed and default_present:raise ValueError(f'Computed field {fkey} cannot declare a default.')
         nullable=not required and not default_present
-        complex_kind=kind in {'textarea','markdown','code','json','multiselect'}
-        field={'key':fkey,'label':flabel.strip(),'type':kind,'required':required,'nullable':nullable,'max_length':max_length,'choices':choices,'minimum':minimum,'maximum':maximum,'step':step,'unit':unit,'read_only':bool(raw.get('read_only',False)),'searchable':searchable,'filterable':filterable,'column':bool(raw.get('column',not complex_kind)),'sortable':bool(raw.get('sortable',not complex_kind and kind!='multiselect')),'default_present':default_present,'default':None}
+        if read_only and not default_present:nullable=True
+        complex_kind=kind in {'textarea','long_text','markdown','code','json','object','array','coordinates','multiselect','multi_enum','formula','computed'}
+        precision=raw.get('precision')
+        if precision is not None and (isinstance(precision,bool) or not isinstance(precision,int) or not 0<=precision<=12):raise ValueError(f'Invalid precision for {fkey}.')
+        display_format=raw.get('display_format')
+        if display_format is not None and (not isinstance(display_format,str) or not 1<=len(display_format)<=80):raise ValueError(f'Invalid display_format for {fkey}.')
+        exportable=bool(raw.get('exportable',True))
+        field={'key':fkey,'label':flabel.strip(),'type':kind,'required':required,'nullable':nullable,'max_length':max_length,'choices':choices,'minimum':minimum,'maximum':maximum,'step':step,'unit':unit,'precision':precision,'display_format':display_format,'exportable':exportable,'computed':computed,'read_only':read_only,'searchable':searchable,'filterable':filterable,'column':bool(raw.get('column',not complex_kind)),'sortable':bool(raw.get('sortable',not complex_kind and kind not in {'multiselect','multi_enum','array'})),'default_present':default_present,'default':None}
         if default_present:field['default']=_validate_default(kind,default,field)
         normalized.append(field)
     primary=payload.get('primary_field',normalized[0]['key'])
@@ -163,10 +183,10 @@ def validate(payload:dict[str,Any])->dict[str,Any]:
 
 
 def _py_type(field:dict[str,Any])->str:
-    return {'text':'str','textarea':'str','select':'str','email':'str','url':'str','markdown':'str','code':'str','json':'dict[str,Any]','multiselect':'list[str]','integer':'int','number':'float','percent':'float','duration':'float','scientific':'float','unit_number':'float','boolean':'bool','date':'date','datetime':'datetime'}[field['type']]
+    return {'text':'str','textarea':'str','long_text':'str','select':'str','email':'str','url':'str','markdown':'str','code':'str','file':'str','image':'str','relationship':'str','json':'dict[str,Any]','object':'dict[str,Any]','coordinates':'dict[str,Any]','array':'list[Any]','multiselect':'list[str]','multi_enum':'list[str]','formula':'Any','computed':'Any','integer':'int','number':'float','decimal':'float','percent':'float','duration':'float','scientific':'float','unit_number':'float','range':'float','tolerance':'float','boolean':'bool','date':'date','datetime':'datetime'}[field['type']]
 
 def _sa_type(field:dict[str,Any],prefix='')->str:
-    name={'text':'String','textarea':'String','select':'String','email':'String','url':'String','markdown':'String','code':'String','json':'JSON','multiselect':'JSON','integer':'Integer','number':'Float','percent':'Float','duration':'Float','scientific':'Float','unit_number':'Float','boolean':'Boolean','date':'Date','datetime':'DateTime'}[field['type']]
+    name={'text':'String','textarea':'String','long_text':'String','select':'String','email':'String','url':'String','markdown':'String','code':'String','file':'String','image':'String','relationship':'String','json':'JSON','object':'JSON','coordinates':'JSON','array':'JSON','multiselect':'JSON','multi_enum':'JSON','formula':'JSON','computed':'JSON','integer':'Integer','number':'Float','decimal':'Float','percent':'Float','duration':'Float','scientific':'Float','unit_number':'Float','range':'Float','tolerance':'Float','boolean':'Boolean','date':'Date','datetime':'DateTime'}[field['type']]
     if name=='String':return f'{prefix}String({field["max_length"]})'
     if name=='DateTime':return f'{prefix}DateTime(timezone=True)'
     return f'{prefix}{name}'
@@ -183,8 +203,9 @@ def model_source(spec:dict[str,Any])->str:
     columns=[];constraints=[]
     for f in spec['fields']:
         pytype=_py_type(f)+(' | None' if f['nullable'] else '')
-        args=[_sa_type(f),f'nullable={f["nullable"]}']
-        if f['nullable']:args.append('default=None')
+        db_nullable=f['nullable'] or f['read_only'] or f['computed']
+        args=[_sa_type(f),f'nullable={db_nullable}']
+        if db_nullable:args.append('default=None')
         elif f['default_present']:args.append(f'default={_py_default(f)}')
         if f['sortable'] or f['filterable']:args.append('index=True')
         columns.append(f"    {f['key']}: Mapped[{pytype}]=mapped_column({','.join(args)})")
@@ -198,33 +219,40 @@ def model_source(spec:dict[str,Any])->str:
 
 def schemas_source(spec:dict[str,Any])->str:
     singular=pascal(spec['key'].rstrip('s') or spec['key'])
-    lines=[];validators=[]
-    for f in spec['fields']:
+    def field_line(f:dict[str,Any], *, read:bool=False)->str:
         if f['type']=='select':base='Literal['+','.join(repr(x) for x in f['choices'])+']'
-        elif f['type']=='multiselect':base='list[Literal['+','.join(repr(x) for x in f['choices'])+']]'
+        elif f['type'] in {'multiselect','multi_enum'} and f['choices']:base='list[Literal['+','.join(repr(x) for x in f['choices'])+']]'
         else:base=_py_type(f)
-        type_expr=base+(' | None' if f['nullable'] else '')
+        nullable=f['nullable'] or f['read_only'] or f['computed']
+        type_expr=base+(' | None' if nullable else '')
         args=[]
-        if f['nullable']:args.append('default=None')
+        if nullable:args.append('default=None')
         elif f['default_present']:args.append('default='+_py_default(f))
         if f['type'] in STRING_TYPES:
             if f['required']:args.append('min_length=1')
             args.append(f"max_length={f['max_length']}")
-        if f['type']=='multiselect':
+        if f['type'] in LIST_TYPES:
             if f['required']:args.append('min_length=1')
             args.append('max_length=100')
         if f['minimum'] is not None:args.append(f"ge={f['minimum']!r}")
         if f['maximum'] is not None:args.append(f"le={f['maximum']!r}")
-        lines.append(f"    {f['key']}: {type_expr}=Field({','.join(args)})")
-        if f['type']=='json':
+        return f"    {f['key']}: {type_expr}=Field({','.join(args)})"
+
+    editable=[f for f in spec['fields'] if not f.get('read_only',False) and not f.get('computed',False)]
+    lines=[field_line(f) for f in editable]
+    read_lines=[field_line(f,read=True) for f in spec['fields']]
+    validators=[]
+    for f in editable:
+        if f['type'] in OBJECT_TYPES|LIST_TYPES:
             validators.extend([
                 f"    @field_validator({f['key']!r})",
                 '    @classmethod',
                 f"    def validate_{f['key']}_size(cls,value):",
-                f"        if value is not None and len(json.dumps(value,separators=(',',':')).encode('utf-8'))>{f['max_length']}:raise ValueError('JSON object exceeds {f['max_length']} bytes.')",
+                f"        if value is not None and len(json.dumps(value,separators=(',',':')).encode('utf-8'))>{f['max_length']}:raise ValueError('Structured value exceeds {f['max_length']} bytes.')",
                 '        return value',
             ])
-    body='\n'.join(lines)
+    body='\n'.join(lines) or '    pass'
+    read_body='\n'.join(read_lines) or '    pass'
     validation='\n'.join(validators)
     if validation:validation+='\n'
     return f'''from datetime import date,datetime
@@ -240,7 +268,8 @@ class {singular}Create(StrictSchema):
     def trim_strings(cls,value):return value.strip() if isinstance(value,str) else value
 class {singular}Update({singular}Create):
     revision:int=Field(ge=1)
-class {singular}Read({singular}Create):
+class {singular}Read(StrictSchema):
+{read_body}
     id:str;revision:int;archived:bool;created_by:str;created_at:datetime;updated_at:datetime
 class {singular}Page(StrictSchema):
     items:list[{singular}Read];total:int;limit:int;offset:int
@@ -254,7 +283,7 @@ class RevertRequest(StrictSchema):
 
 
 def definition_source(spec:dict[str,Any])->str:
-    fields=",\n        ".join(f"FieldDefinition(key={f['key']!r},label={f['label']!r},kind={f['type']!r},required={f['required']},nullable={f['nullable']},max_length={f['max_length']!r},choices={f['choices']!r},minimum={f['minimum']!r},maximum={f['maximum']!r},step={f['step']!r},unit={f['unit']!r},read_only={f['read_only']})" for f in spec['fields'])
+    fields=",\n        ".join(f"FieldDefinition(key={f['key']!r},label={f['label']!r},kind={f['type']!r},required={f['required']},nullable={f['nullable']},max_length={f['max_length']!r},choices={f['choices']!r},minimum={f['minimum']!r},maximum={f['maximum']!r},step={f['step']!r},unit={f['unit']!r},precision={f['precision']!r},display_format={f['display_format']!r},exportable={f['exportable']},computed={f['computed']},read_only={f['read_only']})" for f in spec['fields'])
     filters=[f['key'] for f in spec['fields'] if f['filterable']]
     sorts=[f['key'] for f in spec['fields'] if f['sortable']]+['updated_at','created_at','created_by','revision']
     columns=[f['key'] for f in spec['fields'] if f['column']]+['updated_at','revision']
@@ -300,7 +329,7 @@ def _draft_parse_expr(field:dict[str,Any])->str:
     if kind=='integer':
         if field['required']:return f"parseIntegerDraft({raw},{label})"
         return f"{raw}.trim()?parseIntegerDraft({raw},{label}):{fallback}"
-    if kind in {'number','percent','duration','scientific','unit_number'}:
+    if kind in {'number','decimal','percent','duration','scientific','unit_number','range','tolerance'}:
         if field['required']:return f"parseNumberDraft({raw},{label})"
         return f"{raw}.trim()?parseNumberDraft({raw},{label}):{fallback}"
     if kind=='boolean':
@@ -312,12 +341,15 @@ def _draft_parse_expr(field:dict[str,Any])->str:
     if kind=='datetime':
         if field['required']:return f"datetimeInputToIso({raw},{label})"
         return f"{raw}.trim()?datetimeInputToIso({raw},{label}):{fallback}"
-    if kind=='json':
+    if kind in {'json','object','coordinates'}:
         if field['required']:return f"parseJsonObjectDraft({raw},{label})"
         return f"{raw}.trim()?parseJsonObjectDraft({raw},{label}):{fallback}"
-    if kind=='multiselect':
+    if kind in {'multiselect','multi_enum'}:
         if field['required']:return f"parseMultiSelectDraft({raw},{label},{json.dumps(field['choices'])},true)"
         return f"{raw}.trim()?parseMultiSelectDraft({raw},{label},{json.dumps(field['choices'])},false):{fallback}"
+    if kind=='array':
+        if field['required']:return f"parseJsonArrayDraft({raw},{label})"
+        return f"{raw}.trim()?parseJsonArrayDraft({raw},{label}):{fallback}"
     raise ValueError(kind)
 
 
@@ -326,33 +358,39 @@ def _draft_read_expr(field:dict[str,Any])->str:
     if kind=='datetime':
         default_value='undefined' if not field['default_present'] else ts_string(field['default'])
         return f"row?.{key}==null?datetimeToInput({default_value}):datetimeToInput(row.{key})"
-    if kind=='json':
+    if kind in {'json','object','coordinates'}:
         default_value='undefined' if not field['default_present'] else json.dumps(field['default'])
         return f"row?.{key}==null?readJsonDraft({default_value}):readJsonDraft(row.{key})"
-    if kind=='multiselect':
+    if kind in {'multiselect','multi_enum'}:
         default_value='undefined' if not field['default_present'] else json.dumps(field['default'])
         return f"row?.{key}==null?readMultiSelectDraft({default_value}):readMultiSelectDraft(row.{key})"
+    if kind=='array':
+        default_value='undefined' if not field['default_present'] else json.dumps(field['default'])
+        return f"row?.{key}==null?readJsonArrayDraft({default_value}):readJsonArrayDraft(row.{key})"
     new_default="''" if not field['default_present'] else ts_string(str(field['default']).lower() if isinstance(field['default'],bool) else str(field['default']))
     return f"row?.{key}==null?{new_default}:String(row.{key})"
 
 
 def frontend_adapter(spec:dict[str,Any])->str:
     cls=pascal(spec['key'].rstrip('s') or spec['key']);path=spec['key'].replace('_','-')
-    pairs=','.join(f"{f['key']}:{_draft_parse_expr(f)}" for f in spec['fields'])
+    editable=[f for f in spec['fields'] if not f.get('read_only',False) and not f.get('computed',False)]
+    pairs=','.join(f"{f['key']}:{_draft_parse_expr(f)}" for f in editable)
     draft=','.join(f"{f['key']}:{_draft_read_expr(f)}" for f in spec['fields'])
-    imports={'parseEnumDraft'}
-    for field in spec['fields']:
+    imports=set()
+    for field in editable:
         kind=field['type']
+        if kind=='select':imports.add('parseEnumDraft')
         if field['required'] and kind in STRING_TYPES:imports.add('requiredStringDraft')
         if not field['required'] and kind in STRING_TYPES:imports.add('nullableStringDraft')
         if kind=='integer':imports.add('parseIntegerDraft')
-        if kind in {'number','percent','duration','scientific','unit_number'}:imports.add('parseNumberDraft')
+        if kind in {'number','decimal','percent','duration','scientific','unit_number','range','tolerance'}:imports.add('parseNumberDraft')
         if kind=='boolean':imports.add('parseBooleanDraft')
         if kind=='datetime':imports.update({'datetimeInputToIso','datetimeToInput'})
-        if kind=='json':imports.update({'parseJsonObjectDraft','readJsonDraft'})
-        if kind=='multiselect':imports.update({'parseMultiSelectDraft','readMultiSelectDraft'})
+        if kind in {'json','object','coordinates'}:imports.update({'parseJsonObjectDraft','readJsonDraft'})
+        if kind in {'multiselect','multi_enum'}:imports.update({'parseMultiSelectDraft','readMultiSelectDraft'})
+        if kind=='array':imports.update({'parseJsonArrayDraft','readJsonArrayDraft'})
     draft_import=','.join(sorted(imports))
-    return f'''import type {{ AuditRead,{cls}Create,{cls}Page,{cls}Read,WorkspaceDefinition }} from '../../generated/schema'\nimport type {{ ApiClient }} from '../../platform/api/client'\nimport {{ {draft_import} }} from '../../platform/workspace/fieldDraft'\nimport type {{ Draft,WorkspaceAdapter }} from '../../platform/workspace/types'\nfunction parseDraft(draft:Draft):{cls}Create{{return {{{pairs}}}}}\nexport function adapter(api:ApiClient,definition:WorkspaceDefinition):WorkspaceAdapter<{cls}Read>{{const base={('/api/v1/'+path)!r};return {{key:{spec['key']!r},entityKey:{spec['key']!r},singular:{spec['singular']!r},definition,list:(query,signal)=>api.request<{cls}Page>(`${{base}}?${{new URLSearchParams(Object.entries({{...query,...query.filters,filters:undefined}}).filter(([,value])=>value!==undefined).map(([key,value])=>[key,String(value)]))}}`,{{signal}}),get:id=>api.request<{cls}Read>(`${{base}}/${{encodeURIComponent(id)}}`),create:(draft,key)=>api.json<{cls}Read>(base,'POST',parseDraft(draft),key),update:(row,draft)=>api.json<{cls}Read>(`${{base}}/${{row.id}}`,'PUT',{{...parseDraft(draft),revision:row.revision}}),transition:(row,action)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/lifecycle/${{action}}`,'POST',{{revision:row.revision}}),bulk:(rows,action,key)=>api.json<{cls}Read[]>(`${{base}}/bulk`,'POST',{{action,targets:rows.map(row=>({{id:row.id,revision:row.revision}}))}},key),history:id=>api.request<AuditRead[]>(`${{base}}/${{encodeURIComponent(id)}}/history`),revert:(row,target)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/revert`,'POST',{{revision:row.revision,target_revision:target}}),draft:row=>({{{draft}}}),export:async()=>{{throw new Error('Export is not enabled for this generated workspace.')}}}}}}\n'''
+    return f'''import type {{ AuditRead,{cls}Create,{cls}Page,{cls}Read,WorkspaceDefinition }} from '../../generated/schema'\nimport type {{ ApiClient }} from '../../platform/api/client'\nimport {{ serializeListQuery }} from '../../platform/workspace/query'\nimport {{ {draft_import} }} from '../../platform/workspace/fieldDraft'\nimport type {{ Draft,WorkspaceAdapter }} from '../../platform/workspace/types'\nfunction parseDraft(draft:Draft):{cls}Create{{return {{{pairs}}}}}\nexport function adapter(api:ApiClient,definition:WorkspaceDefinition):WorkspaceAdapter<{cls}Read>{{const base={('/api/v1/'+path)!r};return {{key:{spec['key']!r},entityKey:{spec['key']!r},singular:{spec['singular']!r},definition,list:(query,signal)=>api.request<{cls}Page>(`${{base}}?${{serializeListQuery(query)}}`,{{signal}}),get:id=>api.request<{cls}Read>(`${{base}}/${{encodeURIComponent(id)}}`),create:(draft,key)=>api.json<{cls}Read>(base,'POST',parseDraft(draft),key),update:(row,draft)=>api.json<{cls}Read>(`${{base}}/${{row.id}}`,'PUT',{{...parseDraft(draft),revision:row.revision}}),transition:(row,action)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/lifecycle/${{action}}`,'POST',{{revision:row.revision}}),bulk:(rows,action,key)=>api.json<{cls}Read[]>(`${{base}}/bulk`,'POST',{{action,targets:rows.map(row=>({{id:row.id,revision:row.revision}}))}},key),history:id=>api.request<AuditRead[]>(`${{base}}/${{encodeURIComponent(id)}}/history`),revert:(row,target)=>api.json<{cls}Read>(`${{base}}/${{row.id}}/revert`,'POST',{{revision:row.revision,target_revision:target}}),draft:row=>({{{draft}}}),export:async()=>{{throw new Error('Export is not enabled for this generated workspace.')}}}}}}\n'''
 
 
 def frontend_workspace(spec:dict[str,Any])->str:
@@ -363,7 +401,8 @@ def frontend_workspace(spec:dict[str,Any])->str:
 def migration_source(spec:dict[str,Any],index:int)->str:
     columns=[];constraints=[]
     for f in spec['fields']:
-        columns.append(f"sa.Column({f['key']!r},{_sa_type(f,'sa.')},nullable={f['nullable']})")
+        db_nullable=f['nullable'] or f['read_only'] or f['computed']
+        columns.append(f"sa.Column({f['key']!r},{_sa_type(f,'sa.')},nullable={db_nullable})")
         if f['type']=='select':constraints.append(f"sa.CheckConstraint({(f['key']+' IN ('+','.join(sql_string(x) for x in f['choices'])+')')!r},name={('ck_'+spec['key']+'_'+f['key'])!r})")
         if f['required'] and f['type'] in STRING_TYPES:constraints.append(f"sa.CheckConstraint({('length(trim('+f['key']+')) BETWEEN 1 AND '+str(f['max_length']))!r},name={('ck_'+spec['key']+'_'+f['key']+'_required')!r})")
         if f['minimum'] is not None:constraints.append(f"sa.CheckConstraint({(f['key']+' >= '+str(f['minimum']))!r},name={('ck_'+spec['key']+'_'+f['key']+'_minimum')!r})")

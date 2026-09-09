@@ -10,8 +10,8 @@ export function FieldInput({field,draft,onChange,invalid,autoFocus=false,choices
  const value=String(draft[field.key]??'')
  const update=(next:string)=>onChange({...draft,[field.key]:next})
  const availableChoices=choices??field.choices
- if(field.kind==='textarea'||field.kind==='long_text'||field.kind==='markdown'||field.kind==='code'||field.kind==='json'||field.kind==='object'||field.kind==='array'){
-  const rows=field.kind==='code'||field.kind==='json'||field.kind==='object'||field.kind==='array'?12:field.kind==='markdown'?9:5
+ if(field.kind==='textarea'||field.kind==='long_text'||field.kind==='markdown'||field.kind==='code'||field.kind==='json'||field.kind==='object'||field.kind==='array'||field.kind==='coordinates'){
+  const rows=field.kind==='code'||field.kind==='json'||field.kind==='object'||field.kind==='array'||field.kind==='coordinates'?12:field.kind==='markdown'?9:5
   return <textarea id={`record-field-${field.key}`} className={field.kind==='code'||field.kind==='json'?'code-input':field.kind==='markdown'?'markdown-input':undefined} rows={rows} value={value} maxLength={field.max_length??undefined} required={field.required} spellCheck={field.kind==='code'||field.kind==='json'?false:undefined} aria-invalid={invalid} autoFocus={autoFocus} onBlur={onBlur} onChange={event=>update(event.target.value)}/>
  }
  if(field.kind==='select')return <select id={`record-field-${field.key}`} value={value} required={field.required} aria-invalid={invalid} autoFocus={autoFocus} onBlur={onBlur} onChange={event=>update(event.target.value)}>{field.required&&<option value="" disabled>Choose…</option>}{field.nullable&&<option value="">— None —</option>}{availableChoices.map(choice=><option key={choice} value={choice}>{choice.replaceAll('_',' ')}</option>)}</select>

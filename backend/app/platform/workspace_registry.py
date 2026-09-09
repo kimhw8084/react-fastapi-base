@@ -15,3 +15,6 @@ class WorkspaceRegistry:
         return self._definitions[key].model_copy(deep=True)
     def keys(self) -> set[str]:
         return set(self._definitions)
+    def definitions(self) -> dict[str, WorkspaceDefinition]:
+        """Return an immutable-at-the-boundary snapshot for platform registries."""
+        return {key: value.model_copy(deep=True) for key, value in self._definitions.items()}

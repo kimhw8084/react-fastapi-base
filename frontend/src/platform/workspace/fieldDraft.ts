@@ -54,6 +54,19 @@ export function readJsonDraft(value:unknown):string{
  }
  return JSON.stringify(value,null,2)
 }
+export function parseJsonArrayDraft(value:string,label:string):unknown[]{
+ let parsed:unknown
+ try{parsed=JSON.parse(value)}catch{throw new Error(`${label} must contain valid JSON.`)}
+ if(!Array.isArray(parsed))throw new Error(`${label} must be a JSON array.`)
+ return parsed
+}
+export function readJsonArrayDraft(value:unknown):string{
+ if(value==null)return ''
+ if(typeof value==='string'){
+  try{return JSON.stringify(parseJsonArrayDraft(value,'JSON'),null,2)}catch{return value}
+ }
+ return JSON.stringify(Array.isArray(value)?value:[],null,2)
+}
 export function parseMultiSelectDraft<const T extends readonly string[]>(value:string,label:string,choices:T,required=false):T[number][]{
  let parsed:unknown
  try{parsed=JSON.parse(value)}catch{throw new Error(`${label} selection is invalid.`)}
@@ -80,17 +93,18 @@ export function parseWorkspaceFieldDraft(field:FieldDefinition,value:string):unk
   if(selected&&!field.choices.includes(selected))throw new Error(`Choose a valid ${field.label.toLowerCase()}.`)
   return selected
  }
- if(field.kind==='multiselect')return parseMultiSelectDraft(raw,field.label,field.choices,field.required)
+ if(field.kind==='multiselect'||field.kind==='multi_enum')return parseMultiSelectDraft(raw,field.label,field.choices,field.required)
  if(field.kind==='boolean')return parseBooleanDraft(raw)
  if(field.kind==='integer')return parseIntegerDraft(raw,field.label)
- if(['number','percent','duration','scientific','unit_number'].includes(field.kind)){
+ if(['number','decimal','percent','duration','scientific','unit_number','range','tolerance'].includes(field.kind)){
   const parsed=parseNumberDraft(raw,field.label)
   if(field.minimum!=null&&parsed<field.minimum)throw new Error(`${field.label} must be at least ${field.minimum}.`)
   if(field.maximum!=null&&parsed>field.maximum)throw new Error(`${field.label} must be at most ${field.maximum}.`)
   return parsed
  }
  if(field.kind==='datetime')return datetimeInputToIso(raw,field.label)
- if(field.kind==='json')return parseJsonObjectDraft(raw,field.label)
+ if(field.kind==='json'||field.kind==='object'||field.kind==='coordinates')return parseJsonObjectDraft(raw,field.label)
+ if(field.kind==='array')return parseJsonArrayDraft(raw,field.label)
  if(field.required)return requiredStringDraft(raw,field.label)
  return raw.trim()
 }

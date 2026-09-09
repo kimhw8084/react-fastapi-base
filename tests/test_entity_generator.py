@@ -144,6 +144,19 @@ def rich_sample():
         {'key':'retention','label':'Retention','type':'duration','unit':'h','default':24,'step':0.5},
         {'key':'threshold','label':'Threshold','type':'scientific','default':0.0001},
         {'key':'temperature','label':'Temperature','type':'unit_number','unit':'°C','default':25.0,'step':0.1},
+        {'key':'long_description','label':'Long description','type':'long_text','max_length':3000},
+        {'key':'ratio','label':'Ratio','type':'decimal','precision':4,'display_format':'0.0000'},
+        {'key':'range_limit','label':'Range limit','type':'range','minimum':0,'maximum':100},
+        {'key':'tolerance','label':'Tolerance','type':'tolerance','minimum':0,'maximum':10},
+        {'key':'attributes','label':'Attributes','type':'object','max_length':12000},
+        {'key':'points','label':'Points','type':'array','max_length':12000},
+        {'key':'modes','label':'Modes','type':'multi_enum','choices':['auto','manual']},
+        {'key':'coordinates','label':'Coordinates','type':'coordinates','max_length':4000},
+        {'key':'attachment','label':'Attachment','type':'file','max_length':500},
+        {'key':'image','label':'Image','type':'image','max_length':500},
+        {'key':'linked_record','label':'Linked record','type':'relationship','max_length':64},
+        {'key':'calculated_formula','label':'Calculated formula','type':'formula'},
+        {'key':'server_score','label':'Server score','type':'computed','read_only':True},
       ],
     }
 
@@ -186,3 +199,8 @@ def test_rich_generator_emits_json_multiselect_units_and_safe_frontend(tmp_path)
     assert 'parseJsonObjectDraft' in adapter and 'parseMultiSelectDraft' in adapter
     assert 'readJsonDraft' in adapter and 'readMultiSelectDraft' in adapter
     assert 'parseNumberDraft' in adapter
+    assert 'parseJsonArrayDraft' in adapter and 'readJsonArrayDraft' in adapter
+    assert 'calculated_formula' not in schemas.split('class KnowledgeItemRead',1)[0]
+    assert 'server_score: Any | None=Field(default=None)' in schemas
+    assert "precision=4" in definition and "display_format='0.0000'" in definition
+    assert "computed=True" in definition and "read_only=True" in definition
