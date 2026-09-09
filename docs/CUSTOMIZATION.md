@@ -20,7 +20,7 @@ Use the generated operation map through ApiClient.call when supported. Domain se
 
 ## State and isolation
 
-Client cache keys include user and tenant. Working preference keys include app, user, tenant and a schema version. Store presentation state only, not credentials or sensitive records. Server saved views use typed, bounded schemas and revisions. Shared views currently mean everyone in the tenant, not an LDAP group. A remote 409 requires reconciliation; never silently overwrite another user's change.
+Client cache keys include user and tenant. Working preference keys include app, user, tenant and a schema version. Store presentation state only, not credentials or sensitive records. Server saved views use typed, bounded schemas and revisions. Team views are membership-scoped through the server team directory; a remote 409 requires reconciliation and the client never silently overwrites another user's change.
 
 ## Proof obligations
 

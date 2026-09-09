@@ -37,7 +37,7 @@ Version 1.0.0-rc.1. **Not production certified.** No percentage-complete score i
 | G29 | Migrations, backup and recovery | PARTIAL | backend/app/platform/backup.py; docs/RECOVERY.md |
 | G30 | Import and export | PARTIAL | backend/app/features/work_items/exchange.py |
 | G31 | External integrations | PARTIAL | backend/app/platform/integrations.py; backend/tests/test_integrations.py |
-| G32 | Background and scheduled work | DESIGNED | docs/MASTER_DESIGN.md |
+| G32 | Background and scheduled work | PARTIAL | backend/app/platform/jobs.py; backend/tests/test_platform_services.py |
 | G33 | Realtime | DESIGNED | docs/MASTER_DESIGN.md |
 | G34 | Audit | PARTIAL | backend/app/platform/audit.py; backend/migrations/tenant/0001_tenant.py |
 | G35 | Errors and diagnostics | IMPLEMENTED | backend/app/platform/errors.py; frontend/src/platform/api/client.ts |

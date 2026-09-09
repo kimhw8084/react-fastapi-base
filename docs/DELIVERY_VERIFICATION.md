@@ -17,7 +17,7 @@
 
 23 interactive widget families and 605 generic catalog variants/platform entries are registered. Catalog certification proves reusable family contracts and rendering coverage; domain-specific maturity remains recorded in the completion matrix.
 
-The current full platform gate records executed results in `evidence/current/full-stack/verification.json`. All code-required gates pass. Company identity, mounted-storage semantics and real deployment remain external. Full manual accessibility, broad stress evidence, and specialized generated-app/upgrade proofs remain nonblocking code-quality work tracked in the completion matrix.
+The current full platform gate records executed results in `evidence/current/full-stack/verification.json`. All verifier-owned code gates pass. Company identity, mounted-storage semantics and real deployment remain external. Manual accessibility, broad browser stress, and specialized domain qualification remain tracked in the completion matrix; the generated-app and upgrade proofs are current release evidence.
 
 The React browser suite uses disposable local services and dynamically allocated loopback ports. The native Lab suite separately exercises exact compiled artifacts and HTTP serving. These results do not prove corporate identity, mounted storage or complete WCAG compliance.
 

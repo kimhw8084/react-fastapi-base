@@ -264,10 +264,10 @@
     {
       "id": "G32",
       "domain": "Background and scheduled work",
-      "status": "DESIGNED",
+      "status": "PARTIAL",
       "decision": "Separate native worker publication when required; durable jobs, leases and fencing must match supported database semantics.",
-      "owner": "docs/MASTER_DESIGN.md",
-      "acceptance": "Choose and prove company-compatible job execution; no fake timer loop advertised as durable scheduling."
+      "owner": "backend/app/platform/jobs.py; backend/tests/test_platform_services.py",
+      "acceptance": "Complete worker heartbeat/progress and company-compatible scheduler integration; process-local execution is not durable scheduling."
     },
     {
       "id": "G33",

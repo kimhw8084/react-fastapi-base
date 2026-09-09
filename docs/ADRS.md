@@ -18,7 +18,7 @@ Decision: synchronous SQLAlchemy in synchronous FastAPI endpoints and trusted to
 
 ## ADR-005 — Concrete domains, generic workspace UI
 
-Decision: shared presentation/state contracts, concrete feature models/services. Rejected: one untyped universal entity table or a giant no-code JSON application engine. Consequence: new domain rules still need code/tests, but do not require rewriting modals/grid/transport. Proof: reference work-items implemented; second-domain proof pending.
+Decision: shared presentation/state contracts, concrete feature models/services. Rejected: one untyped universal entity table or a giant no-code JSON application engine. Consequence: new domain rules still need code/tests, but do not require rewriting modals/grid/transport. Proof: reference work-items plus the seven generated reference-app fixtures pass; specialized domain qualification remains separate.
 
 ## ADR-006 — Pydantic/OpenAPI owns the wire contract
 
