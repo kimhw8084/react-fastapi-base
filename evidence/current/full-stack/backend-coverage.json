@@ -1,28 +1,18 @@
 {
   "schema_version": 1,
-  "source_commit": "d493eb5caacfb4ee9a67a17d250d965c8bfcb9b8",
-  "timestamp": "2026-09-09T07:31:16-05:00",
-  "command": [
-    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
-    "-m",
-    "pytest",
-    "--cov=app",
-    "--cov-report=term-missing:skip-covered"
-  ],
+  "source_commit": "852996dd89301166a3b61f5ce156f656c9138906",
+  "timestamp": "2026-09-09T15:41:24Z",
+  "command": "env PYTHONPATH=backend backend/.venv/bin/python -m pytest --cov=app --cov-report=term --cov-report=xml:/tmp/rc2-coverage.xml -q backend/tests",
   "exit_code": 0,
   "environment": {
-    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-    "python": "3.14.5"
+    "platform": "macOS Darwin",
+    "python": "3.14.5",
+    "test_count": 222
   },
   "hashes": {
-    "source_digest": "79888f65f76142aa7cfb3e909313ccf9fddf7dc4ca4c9fc64539a515cb320115"
+    "source_digest": "c8e71256c69ad1d60858aac0c07947807e92f503727d8af913c1551c176bb8c6"
   },
-  "result": {
-    "tests": 209,
-    "duration_seconds": 57.48,
-    "statements": 6215,
-    "missed": 556,
-    "coverage_percent": 91,
-    "files_skipped_complete": 104
-  }
+  "coverage_percent": 91,
+  "duration_seconds": 59.26,
+  "result": "PASS"
 }
