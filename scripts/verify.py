@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
 ROOT=Path(__file__).resolve().parents[1]
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
@@ -21,12 +22,13 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         print(f'BLOCKED {name}: {reason}',flush=True)
     def run(name,command,cwd=ROOT,timeout=300):
         print(f'RUN     {name}',flush=True)
+        started=time.monotonic()
         try:
             result=subprocess.run(command,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=timeout)
             (output/(name+'.log')).write_text(result.stdout)
-            row={'name':name,'status':'PASS' if result.returncode==0 else 'FAIL','exit_code':result.returncode,'log':name+'.log','command':command}
+            row={'name':name,'status':'PASS' if result.returncode==0 else 'FAIL','exit_code':result.returncode,'log':name+'.log','command':command,'duration_seconds':round(time.monotonic()-started,3)}
         except (OSError,subprocess.TimeoutExpired) as error:
-            row={'name':name,'status':'BLOCKED','reason':str(error)}
+            row={'name':name,'status':'BLOCKED','reason':str(error),'duration_seconds':round(time.monotonic()-started,3),'command':command}
         results.append(row);print(f"{row['status']:7} {name}",flush=True);return row['status']=='PASS'
     run('backend-tests',[sys.executable,'-m','pytest','-q',f'--junitxml={output.resolve()/"backend-junit.xml"}'],ROOT/'backend')
     run('tooling-tests',[sys.executable,'-m','pytest','-q','tests'],ROOT)
@@ -85,8 +87,10 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
                 source_hashes[relative.as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
     source_hashes['dev']=hashlib.sha256((ROOT/'dev').read_bytes()).hexdigest()
     source_digest=hashlib.sha256(json.dumps(source_hashes,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    commit_result=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,check=False)
+    source_commit=commit_result.stdout.strip() if commit_result.returncode==0 else None
     (output/'source-hashes.json').write_text(json.dumps(source_hashes,indent=2)+'\n')
-    result={'schema_version':1,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code') else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
+    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code') else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
       'production_ready':False,'code_ready':all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code'),'results':results,
       'note':'Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.'}
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
