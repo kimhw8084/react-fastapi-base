@@ -13,8 +13,14 @@ test('create, reload and retrieve revision-backed details',async({page})=>{
  await expect(page.getByRole('dialog',{name:title})).toBeVisible()
  await page.reload()
  await expect(page.getByRole('dialog',{name:title})).toBeVisible()
+ for(const tab of ['Relationships','Activity','History','Compare','Comments','Files','Audit','Actions']){
+  await page.getByRole('button',{name:tab,exact:true}).click()
+  await expect(page.getByRole('dialog',{name:title})).toBeVisible()
+ }
  await page.getByRole('button',{name:'History',exact:true}).click()
  await expect(page.getByRole('region',{name:'Version history'})).toContainText('Revision 1')
+ await page.getByRole('button',{name:'Compare',exact:true}).click()
+ await expect(page.getByRole('region',{name:'Compare revisions'})).toBeVisible()
 })
 
 test('dirty form close requires a decision',async({page})=>{
