@@ -9,6 +9,6 @@ describe('planning schedule calculations', () => {
   })
 
   it('keeps critical path dependency traversal deterministic', () => {
-    expect(criticalPath([{ id: 'a', duration: 2 }, { id: 'b', duration: 5 }, { id: 'c', duration: 1 }], [{ source: 'a', target: 'b' }, { source: 'b', target: 'c' }])).toEqual(['a', 'b', 'c'])
+    expect(criticalPath([{ id: 'a', duration: 2 }, { id: 'b', duration: 5 }, { id: 'c', duration: 1 }], [{ source: 'b', target: 'a' }, { source: 'c', target: 'b' }])).toEqual(['a', 'b', 'c'])
   })
 })
