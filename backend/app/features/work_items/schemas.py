@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal
 from pydantic import Field, field_validator, model_validator
-from app.platform.schemas import StrictSchema
+from app.platform.schemas import StrictSchema, ViewDefinition
 
 class WorkItemCreate(StrictSchema):
     title: str = Field(min_length=1, max_length=160)
@@ -40,6 +40,17 @@ class BulkTarget(StrictSchema):
 class BulkRequest(StrictSchema):
     action: Literal['archive','restore']
     targets: list[BulkTarget] = Field(min_length=1, max_length=100)
+
+class MatchingBulkRequest(StrictSchema):
+    action: Literal['archive','restore']
+    view: ViewDefinition
+    expected_total: int = Field(ge=0, le=10000)
+    fingerprint: str = Field(min_length=64, max_length=64)
+
+class MatchingBulkPreview(StrictSchema):
+    total: int = Field(ge=0, le=10000)
+    fingerprint: str = Field(min_length=64, max_length=64)
+    sample: list[WorkItemRead] = Field(max_length=20)
 
 class ImportPreviewRequest(StrictSchema):
     csv: str|None = Field(default=None,max_length=500000)

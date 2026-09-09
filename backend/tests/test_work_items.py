@@ -118,6 +118,23 @@ def test_rich_query_state_is_server_owned(client):
 def test_rich_query_state_rejects_unsafe_or_invalid_shapes(client,params):
     assert client.get(BASE,params=params).status_code==422
 
+def test_all_matching_bulk_requires_fresh_server_fingerprint(client,item):
+    assert client.put(f"{BASE}/{item['id']}",json=update_payload(item,priority='high')).status_code==200
+    second=client.post(BASE,json={'title':'Second matching','priority':'high'}).json()
+    view={'schema_version':2,'search':'','filters':{'priority':'high'},'advanced_filters':[],'archived':False,'group_by':'','sort':'title','direction':'asc','sorts':[],'density':'comfortable','visualization':'table','columns':[]}
+    preview=client.post(BASE+'/bulk/preview',json=view)
+    assert preview.status_code==200,preview.text
+    body=preview.json();assert body['total']==2 and {row['id'] for row in body['sample']}=={item['id'],second['id']}
+    stale={'action':'archive','view':view,'expected_total':body['total'],'fingerprint':body['fingerprint']}
+    changed=client.put(f"{BASE}/{second['id']}",json=update_payload(second,title='Changed matching'))
+    assert changed.status_code==200
+    conflict=client.post(BASE+'/bulk/matching',json=stale,headers={'Idempotency-Key':str(uuid4())})
+    assert conflict.status_code==409 and conflict.json()['error']['code']=='bulk_scope_changed'
+    fresh=client.post(BASE+'/bulk/preview',json=view).json()
+    applied=client.post(BASE+'/bulk/matching',json={'action':'archive','view':view,'expected_total':fresh['total'],'fingerprint':fresh['fingerprint']},headers={'Idempotency-Key':str(uuid4())})
+    assert applied.status_code==200 and len(applied.json())==2
+    assert client.get(BASE).json()['total']==0
+
 def test_audit_table_is_append_only(env,item):
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(Exception):session.execute(text('DELETE FROM audit_events'))

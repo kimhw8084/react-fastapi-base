@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import type { WorkspaceContext } from './context'
-import type { AuditRead, WorkspaceDefinition, ViewDefinition } from '../../generated/schema'
+import type { AuditRead, MatchingBulkPreview, WorkspaceDefinition, ViewDefinition } from '../../generated/schema'
 export interface BaseRecord { id: string; revision: number; archived: boolean }
 export type Draft = Record<string, string>
 export interface ListQuery {
@@ -26,6 +26,8 @@ export interface WorkspaceAdapter<T extends BaseRecord> {
   update(row: T, draft: Draft): Promise<T>
   transition(row: T, action: 'archive' | 'restore'): Promise<T>
   bulk(rows: T[], action: 'archive' | 'restore', key: string): Promise<T[]>
+  previewMatching?(view: ViewDefinition): Promise<MatchingBulkPreview>
+  bulkMatching?(view: ViewDefinition, action: 'archive' | 'restore', expectedTotal: number, fingerprint: string, key: string): Promise<T[]>
   history(id: string): Promise<AuditRead[]>
   revert(row: T, revision: number): Promise<T>
   draft(row?: T): Draft

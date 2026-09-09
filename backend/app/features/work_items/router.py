@@ -8,14 +8,14 @@ from pydantic import Field
 from sqlalchemy import select
 from app.platform.errors import AppError
 from app.platform.security import Actor, actor_for
-from app.platform.schemas import AuditRead, RevisionInput, StrictSchema, AttachmentRead
+from app.platform.schemas import AuditRead, RevisionInput, StrictSchema, AttachmentRead, ViewDefinition
 from app.platform.transactions import write_transaction
 from app.platform.idempotency import execute_once
 from app.platform.models import Attachment
 from app.platform.attachments import AttachmentUpload, attach
 from . import service
 from app.platform.query_service import decode_query_list
-from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, ImportPreviewRequest, ImportPreview, ImportCommit
+from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, MatchingBulkRequest, MatchingBulkPreview, ImportPreviewRequest, ImportPreview, ImportCommit
 from .exchange import export_csv, export_xlsx, preview_csv, preview_xlsx
 
 router=APIRouter(prefix='/work-items',tags=['Work items'])
@@ -35,6 +35,16 @@ def create(request: Request,actor: A,data: WorkItemCreate,idempotency_key: str|N
 def bulk(request: Request,actor: A,data: BulkRequest,idempotency_key: str=Header(...)):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         result=execute_once(db,actor,idempotency_key,'work_items.bulk',data.model_dump(),lambda:{'items':[row.model_dump(mode='json') for row in service.bulk_lifecycle(db,actor,data)]})
+        return result['items']
+
+@router.post('/bulk/preview',response_model=MatchingBulkPreview,operation_id='previewMatchingWorkItems')
+def preview_matching(request:Request,actor:A,view:ViewDefinition):
+    with request.app.state.database.session(actor.tenant_id) as db:return service.preview_matching_bulk(db,actor,view)
+
+@router.post('/bulk/matching',response_model=list[WorkItemRead],operation_id='bulkMatchingWorkItems')
+def bulk_matching(request:Request,actor:A,data:MatchingBulkRequest,idempotency_key:str=Header(...)):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:
+        result=execute_once(db,actor,idempotency_key,'work_items.bulk_matching',data.model_dump(),lambda:{'items':[row.model_dump(mode='json') for row in service.bulk_matching(db,actor,data)]})
         return result['items']
 
 @router.get('/export.csv',operation_id='exportWorkItems')

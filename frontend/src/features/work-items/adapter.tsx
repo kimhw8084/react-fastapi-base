@@ -1,4 +1,4 @@
-import type { WorkItemCreate, WorkItemPage, WorkItemRead, AuditRead, WorkspaceDefinition } from '../../generated/schema'
+import type { WorkItemCreate, WorkItemPage, WorkItemRead, AuditRead, MatchingBulkPreview, WorkspaceDefinition, ViewDefinition } from '../../generated/schema'
 import type { ApiClient } from '../../platform/api/client'
 import type { Draft, WorkspaceAdapter } from '../../platform/workspace/types'
 import { serializeListQuery } from '../../platform/workspace/query'
@@ -21,6 +21,8 @@ export function workItemsAdapter(api:ApiClient,definition:WorkspaceDefinition,ca
   update:(row,draft)=>api.json<WorkItemRead>(`${base}/${row.id}`,'PUT',{...parseDraft(draft),revision:row.revision}),
   transition:(row,action)=>api.json<WorkItemRead>(`${base}/${row.id}/lifecycle/${action}`,'POST',{revision:row.revision}),
   bulk:(rows,action,key)=>api.json<WorkItemRead[]>(`${base}/bulk`,'POST',{action,targets:rows.map(row=>({id:row.id,revision:row.revision}))},key),
+  previewMatching:(view:ViewDefinition)=>api.json<MatchingBulkPreview>(`${base}/bulk/preview`,'POST',view),
+  bulkMatching:(view:ViewDefinition,action,expectedTotal,fingerprint,key)=>api.json<WorkItemRead[]>(`${base}/bulk/matching`,'POST',{action,view,expected_total:expectedTotal,fingerprint},key),
   history:id=>api.request<AuditRead[]>(`${base}/${id}/history`),
   revert:(row,target)=>api.json<WorkItemRead>(`${base}/${row.id}/revert`,'POST',{revision:row.revision,target_revision:target}),
   draft:row=>({title:row?.title??'',description:row?.description??'',status:row?.status??'open',priority:row?.priority??'normal'}),

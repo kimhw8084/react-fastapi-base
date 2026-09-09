@@ -66,6 +66,8 @@ export type ManufacturingLotCreate = { "lot_id": string; "product": string; "sta
 export type ManufacturingLotPage = { "items": Array<ManufacturingLotRead>; "total": number; "limit": number; "offset": number }
 export type ManufacturingLotRead = { "lot_id": string; "product": string; "status": "queued" | "running" | "hold" | "complete" | "scrapped"; "current_step": (string | null); "priority": "low" | "normal" | "high" | "hot"; "quantity": number; "started_at": (string | null); "target_complete": (string | null); "route": { [key: string]: unknown }; "hold_reason": (string | null); "owner": (string | null); "id": string; "revision": number; "archived": boolean; "created_by": string; "created_at": string; "updated_at": string }
 export type ManufacturingLotUpdate = { "lot_id": string; "product": string; "status"?: "queued" | "running" | "hold" | "complete" | "scrapped"; "current_step"?: (string | null); "priority"?: "low" | "normal" | "high" | "hot"; "quantity"?: number; "started_at"?: (string | null); "target_complete"?: (string | null); "route"?: { [key: string]: unknown }; "hold_reason"?: (string | null); "owner"?: (string | null); "revision": number }
+export type MatchingBulkPreview = { "total": number; "fingerprint": string; "sample": Array<WorkItemRead> }
+export type MatchingBulkRequest = { "action": "archive" | "restore"; "view": ViewDefinitionInput; "expected_total": number; "fingerprint": string }
 export type MemberRead = { "user_id": string; "role": string }
 export type MemberWrite = { "user_id": string; "role": string }
 export type NavigationItem = { "workspace": string; "label": string }
@@ -370,6 +372,8 @@ export interface OperationInputs {
   "listWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "sorts"?: string; "advanced_filters"?: string; "limit"?: number; "offset"?: number } }
   "createWorkItem": { body: WorkItemCreateInput }
   "bulkWorkItems": { body: BulkRequest }
+  "bulkMatchingWorkItems": { body: MatchingBulkRequest }
+  "previewMatchingWorkItems": { body: ViewDefinitionInput }
   "exportWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean } }
   "exportWorkItemsXlsx": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean } }
   "commitWorkItemImport": { body: ImportCommit }
@@ -594,6 +598,8 @@ export interface OperationOutputs {
   "listWorkItems": WorkItemPage
   "createWorkItem": WorkItemRead
   "bulkWorkItems": Array<WorkItemRead>
+  "bulkMatchingWorkItems": Array<WorkItemRead>
+  "previewMatchingWorkItems": MatchingBulkPreview
   "exportWorkItems": unknown
   "exportWorkItemsXlsx": unknown
   "commitWorkItemImport": Array<WorkItemRead>
@@ -1429,6 +1435,14 @@ export const operationRoutes = {
   "bulkWorkItems": {
     "method": "POST",
     "path": "/api/v1/work-items/bulk"
+  },
+  "bulkMatchingWorkItems": {
+    "method": "POST",
+    "path": "/api/v1/work-items/bulk/matching"
+  },
+  "previewMatchingWorkItems": {
+    "method": "POST",
+    "path": "/api/v1/work-items/bulk/preview"
   },
   "exportWorkItems": {
     "method": "GET",

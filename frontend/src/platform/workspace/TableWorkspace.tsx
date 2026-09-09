@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-import type { ViewDefinition } from '../../generated/schema'
+import type { MatchingBulkPreview, ViewDefinition } from '../../generated/schema'
 import { ErrorNotice, EmptyState } from '../ui/Notice'
 import { Dialog } from '../ui/Dialog'
 import { WorkspaceShell } from '../ui/WorkspaceShell'
@@ -27,6 +27,7 @@ interface Props<T extends BaseRecord> extends WorkspaceContext {
   viewTools?:ReactNode
 }
 interface AnchoredRecord<T>{row:T;anchor:GridAnchor}
+interface MatchingScope { view:ViewDefinition; preview:MatchingBulkPreview }
 
 export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,permissions,view,onViewChange,searchInput,onSearchInput,viewTools}:Props<T>){
   const client=useQueryClient()
@@ -42,6 +43,7 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
   const [exchange,setExchange]=useState(false)
   const [confirm,setConfirm]=useState<'archive'|'restore'|null>(null)
   const [bulkEdit,setBulkEdit]=useState(false)
+  const [matchingScope,setMatchingScope]=useState<MatchingScope|null>(null)
   const [notice,setNotice]=useState('')
   const [params,setParams]=useSearchParams()
   const itemId=params.get('item')
@@ -67,6 +69,8 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
   const openRow=useCallback((row:T)=>{setParams(current=>{const next=new URLSearchParams(current);next.set('item',row.id);return next})},[setParams])
   const closeRow=()=>setParams(current=>{const next=new URLSearchParams(current);next.delete('item');return next})
   const bulk=useMutation({mutationFn:(action:'archive'|'restore')=>adapter.bulk(selection,action,crypto.randomUUID()),onSuccess:rows=>{setConfirm(null);setNotice(`${rows.length} records changed. The entire explicit selection was applied atomically.`);refresh()}})
+  const matchingPreview=useMutation({mutationFn:()=>{if(!adapter.previewMatching)return Promise.reject(new Error('Matching selection is unavailable for this workspace.'));return adapter.previewMatching(view)},onSuccess:preview=>setMatchingScope({view,preview})})
+  const matchingApply=useMutation({mutationFn:({scope,action}:{scope:MatchingScope;action:'archive'|'restore'})=>adapter.bulkMatching!(scope.view,action,scope.preview.total,scope.preview.fingerprint,crypto.randomUUID()),onSuccess:rows=>{setMatchingScope(null);setNotice(`${rows.length} records changed across the reviewed matching query.`);refresh()}})
   const transition=useMutation({mutationFn:({row,action}:{row:T;action:'archive'|'restore'})=>adapter.transition(row,action),onSuccess:(_,variables)=>{setNotice(`${recordLabel(variables.row)} ${variables.action==='archive'?'archived':'restored'}.`);refresh()}})
   const exportData=useMutation({mutationFn:()=>adapter.export(query)})
   const handleHover=useCallback((row:T,anchor:GridAnchor|null)=>{
@@ -86,6 +90,7 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
       <button aria-expanded={Boolean(displayAnchor)} onClick={displayButton}>▦ Display{view.group_by?` · ${adapter.definition.fields.find(field=>field.key===view.group_by)?.label??view.group_by}`:''}</button>
     </>} secondaryBar={<>{viewTools}<div className="toolbar-actions">{permissions.includes('export')&&adapter.definition.capabilities.includes('csv')&&<button onClick={()=>exportData.mutate()} disabled={exportData.isPending}>Export CSV</button>}{permissions.includes('import')&&adapter.definition.capabilities.includes('csv')&&adapter.renderExchange&&<button onClick={()=>setExchange(true)}>Import CSV</button>}</div></>} notice={notice?<div className="notice" role="status">{notice}<button aria-label="Dismiss notification" onClick={()=>setNotice('')}>×</button></div>:undefined} footer={<><span>{records.data?`${records.data.total===0?0:offset+1}–${offset+records.data.items.length} of ${records.data.total}`:'No result loaded'} · Search/filter/sort are server-scoped{view.group_by?' · grouping organizes this loaded page':''}.</span><div><button disabled={offset===0||records.isFetching} onClick={()=>setOffset(Math.max(0,offset-50))}>Previous</button><button disabled={!records.data||offset+50>=records.data.total||records.isFetching} onClick={()=>setOffset(offset+50)}>Next</button></div></>}>
     {selection.length>0&&<div className="selection-action-bar" role="region" aria-label="Selected record actions"><div><strong>{selection.length}</strong><span> selected on this page</span></div><div className="toolbar-actions"><RecordActionMenu adapter={adapter} row={selection[0]!} selectionCount={selection.length} permissions={[...(canWrite?['write']:[]),...(canRestore?['restore']:[]),'read']} placement="selection" callbacks={{open:()=>openRow(selection[0]!),peek:()=>setPeek(selection[0]!),edit:canWrite&&selection.length===1?()=>setForm(selection[0]!):undefined,bulkEdit:canWrite&&!view.archived&&adapter.entityKey?()=>setBulkEdit(true):undefined,transition:action=>{bulk.reset();setConfirm(action)}}}/></div></div>}
+    {adapter.previewMatching&&adapter.bulkMatching&&records.data&&records.data.total>records.data.items.length&&(!view.archived?canWrite:canRestore)&&<div className="matching-scope-bar" role="region" aria-label="All matching records"><span>{records.data.total.toLocaleString()} records match this server query; the current page contains {records.data.items.length}.</span><button onClick={()=>matchingPreview.mutate()} disabled={matchingPreview.isPending}>{matchingPreview.isPending?'Reviewing…':'Review all matching records'}</button></div>}
     {records.isError&&<ErrorNotice error={records.error} retry={()=>{void records.refetch()}}/>}
     {exportData.isError&&<ErrorNotice error={exportData.error}/>} {transition.isError&&<ErrorNotice error={transition.error}/>}
     {records.isPending?<div className="loading-state" role="status">Loading records…</div>:!records.isError&&records.data?.items.length===0?<EmptyState title="No matching records" description="Adjust the filters or create the first record. A failed request is never shown as an empty dataset."/>:!records.isError&&<DataGrid<T> rows={records.data?.items??[]} definition={adapter.definition} density={view.density??'comfortable'} columns={view.columns??[]} groupBy={view.group_by??''} scope={scope} onOpen={openRow} onPeek={setPeek} onHover={handleHover} onContext={(row,anchor)=>{setHover(null);setContext({row,anchor})}} onSelection={setSelection} onColumns={columns=>setView(current=>({...current,columns}))}/>}
@@ -98,6 +103,7 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
     {form!==null&&<RecordForm<T> adapter={adapter} row={form==='new'?undefined:form} onClose={()=>setForm(null)} onSaved={row=>{setForm(null);setNotice('Changes saved.');refresh();openRow(row)}}/>}
     {exchange&&adapter.renderExchange?.(()=>setExchange(false),()=>{setExchange(false);refresh();setNotice('Import completed.')})}
     {bulkEdit&&selection.length>0&&<BulkEditDialog api={api} adapter={adapter} rows={selection} onClose={()=>setBulkEdit(false)} onDone={count=>{setBulkEdit(false);setNotice(`${count} records updated atomically.`);refresh()}}/>}
+    {matchingScope&&<Dialog title={`${matchingScope.view.archived?'Restore':'Archive'} all ${matchingScope.preview.total.toLocaleString()} matching records?`} onClose={()=>setMatchingScope(null)} busy={matchingApply.isPending} footer={<><button disabled={matchingApply.isPending} onClick={()=>setMatchingScope(null)}>Cancel</button><button className="danger" disabled={matchingApply.isPending} onClick={()=>matchingApply.mutate({scope:matchingScope,action:matchingScope.view.archived?'restore':'archive'})}>{matchingApply.isPending?'Applying…':'Confirm matching scope'}</button></>}><p>This operation re-evaluates the saved server query and applies only if its count and ID/revision fingerprint are unchanged. Hidden rows matching the query are intentionally included.</p><div className="bulk-preview-list" aria-label="Matching records preview">{matchingScope.preview.sample.map(row=><span key={row.id}>{String((row as unknown as Record<string,unknown>)[adapter.definition.primary_field]??row.id)}</span>)}{matchingScope.preview.total>matchingScope.preview.sample.length&&<span>+ {matchingScope.preview.total-matchingScope.preview.sample.length} more</span>}</div>{(matchingPreview.isError||matchingApply.isError)&&<ErrorNotice error={matchingPreview.error??matchingApply.error}/>}</Dialog>}
     {confirm&&<Dialog title={`${confirm==='archive'?'Archive':'Restore'} ${selection.length} selected records?`} onClose={()=>setConfirm(null)} busy={bulk.isPending} footer={<><button disabled={bulk.isPending} onClick={()=>setConfirm(null)}>Cancel</button><button className="danger" disabled={bulk.isPending} onClick={()=>bulk.mutate(confirm)}>{bulk.isPending?'Applying…':'Confirm change'}</button></>}><p>Only the explicit selection on this page is included. If any selected record has changed, no record in this batch is modified.</p><div className="bulk-preview-list" aria-label="Selected records preview">{selectedLabels.map(label=><span key={label}>{label}</span>)}{selection.length>selectedLabels.length&&<span>+ {selection.length-selectedLabels.length} more</span>}</div>{bulk.isError&&<ErrorNotice error={bulk.error}/>}</Dialog>}
   </WorkspaceShell>
 }
