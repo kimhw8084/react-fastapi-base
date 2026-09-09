@@ -51,9 +51,11 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         blocked('upgrade-fixture','Source-only request: generated application upgrade proof was not executed.')
     elif release:
         run('upgrade-fixture',[sys.executable,'scripts/upgrade_fixture.py','--output',str((output/'upgrade-fixture.json').resolve())],timeout=600)
+        run('object-inclusive-backup-restore',[sys.executable,'scripts/recovery_fixture.py','--output',str((ROOT/'evidence/current/recovery/object-restore.json').resolve())],timeout=300)
         run('reference-apps',[sys.executable,'scripts/reference_app_proof.py'],timeout=1200)
     else:
         blocked('upgrade-fixture','Release verification only; run `python3 dev verify-release` for the generated-app upgrade proof.','release')
+        blocked('object-inclusive-backup-restore','Release verification only; run `python3 dev verify-release` for the object recovery proof.','release')
     if source_only:
         blocked('macos-fresh-install','Source-only request; isolated clone execution was not run.','external')
     else:

@@ -35,13 +35,17 @@ def main():
     args=parser.parse_args();settings=Settings();database=Database(settings)
     try:
         if args.command=='preflight':
-            errors=settings.production_errors()
+            # The operator CLI has no injected scanner provider.  Treat the
+            # scanner-required mode as no-op here so production preflight
+            # cannot accidentally approve a process that would fail closed at
+            # application startup.
+            errors=settings.production_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
             if settings.environment!='production':errors.append('Preflight must be run with BASE_ENVIRONMENT=production.')
             print(json.dumps({'ready':not errors,'errors':errors},indent=2));return 1 if errors else 0
         if args.command=='doctor-storage':
             result=probe(args.scratch_parent);print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
         if args.command=='run-jobs':
-            settings.assert_safe()
+            settings.assert_safe(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
             from app.platform.jobs import process_one
             from app.platform.webhooks import deliver as deliver_webhook
             processed=0
@@ -55,7 +59,7 @@ def main():
                     if args.once:break
             print(json.dumps({'processed':processed,'worker_id':args.worker_id}));return 0
         if args.command=='restore':print(restore(args.snapshot,args.target));return 0
-        settings.assert_safe()
+        settings.assert_safe(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
         if args.command=='provision':print(provision(database,args.tenant,args.admin))
         elif args.command=='add-member':add_member(database,args.tenant_id,args.user,args.role)
         elif args.command=='migrate':

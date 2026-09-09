@@ -85,8 +85,11 @@ def _renew_lease(database,tenant_id:str,job_id:str,worker_id:str,fence_token:str
 def process_one(database,tenant_id:str,worker_id:str,handlers:dict[str,JobHandler],*,lease_seconds:int=60,heartbeat_interval:float|None=None)->JobRead|None:
     """Claim transaction -> execute outside DB lock -> finish transaction.
 
-    A crashed worker leaves a bounded lease that can be reclaimed later. External
-    network calls therefore never hold SQLite's write lock.
+    A running handler is renewed at most once per third of the lease. A crashed
+    worker leaves a bounded lease that can be reclaimed later. External network
+    calls therefore never hold SQLite's write lock; handlers that cause external
+    side effects must also use provider idempotency, an event/idempotency key, or
+    a fencing-aware target because a lease fence cannot undo a completed call.
     """
     from app.platform.transactions import write_transaction
     if lease_seconds<1 or lease_seconds>3600:raise AppError(422,'invalid_lease','Lease duration is outside the supported range.')

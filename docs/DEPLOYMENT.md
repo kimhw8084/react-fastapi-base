@@ -48,3 +48,12 @@ If per-user PaaS replicas run on different hosts against one mounted database, t
 The application uses a tenant-scoped object adapter for runtime attachments. Local `LocalFilesystemStorage` objects are included in the application snapshot and restore contract. A provider-managed object store must declare its backup/retention boundary and provide independent qualification evidence; a database-only snapshot is never considered complete for object-backed rows.
 
 Production defaults to `BASE_ATTACHMENT_UPLOAD_MODE=scanner_required`. Startup/readiness fails closed while that policy is selected if the configured scanner is `NoopMalwareScanner`. `trusted_types` and `disabled` are explicit deployment choices; development and test use the deterministic scanner. The malware/CDR provider remains a company deployment adapter, but production must not silently present a no-op as malware protection.
+
+## Durable jobs
+
+Long-running handlers are executed outside the database write transaction and
+their lease is renewed no less often than once per third of the configured
+lease. Fencing prevents a stale worker from finalizing a reclaimed job. It
+does not reverse an external side effect that already happened, so webhook and
+other provider-facing handlers must supply provider idempotency, an event or
+idempotency key, or a fencing-aware destination.
