@@ -1,5 +1,5 @@
 from __future__ import annotations
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import os
 import pytest
 import time
@@ -77,7 +77,35 @@ def test_job_heartbeat_and_fencing_reject_stale_worker(env):
     with env['db'].session(env['tenant']) as session:
         row=session.get(type(first),queued.id)
         with pytest.raises(AppError):jobs.finish(session,row,'worker-b',token,result={})
+        with pytest.raises(AppError):jobs.heartbeat(session,row,'worker-a','wrong-fence',lease_seconds=60)
         jobs.finish(session,row,'worker-a',token,result={'ok':True});session.commit()
+
+
+def test_expired_job_lease_can_be_reclaimed_by_new_worker(env):
+    a=actor(env)
+    with env['db'].session(env['tenant']) as session:
+        queued=jobs.enqueue(session,a,'test.reclaim',{});session.commit()
+    with env['db'].session(env['tenant']) as session:
+        first=jobs.lease_next(session,'worker-a',lease_seconds=30);assert first and first.id==queued.id
+        first.lease_expires_at=datetime.now(timezone.utc)-timedelta(seconds=1);session.commit()
+    with env['db'].session(env['tenant']) as session:
+        replacement=jobs.lease_next(session,'worker-b',lease_seconds=30)
+        assert replacement and replacement.id==queued.id and replacement.lease_owner=='worker-b'
+
+
+def test_handler_exception_retries_then_final_fails(env):
+    a=actor(env)
+    with env['db'].session(env['tenant']) as session:
+        queued=jobs.enqueue(session,a,'test.always-fails',{},max_attempts=2);session.commit()
+    def fail(_payload):
+        raise RuntimeError('deterministic failure')
+    first=jobs.process_one(env['db'],env['tenant'],'worker-a',{'test.always-fails':fail},lease_seconds=5,heartbeat_interval=.05)
+    assert first and first.status=='retrying' and first.attempts==1
+    from app.platform.models import DurableJob
+    with env['db'].session(env['tenant']) as session:
+        row=session.get(DurableJob,queued.id);row.run_after=datetime.now(timezone.utc)-timedelta(seconds=1);session.commit()
+    second=jobs.process_one(env['db'],env['tenant'],'worker-a',{'test.always-fails':fail},lease_seconds=5,heartbeat_interval=.05)
+    assert second and second.status=='failed' and second.attempts==2
 
 
 def test_webhook_definition_is_allowlisted_revision_safe_and_secret_ref_only(env,monkeypatch):

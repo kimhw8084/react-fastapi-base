@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.1
+# Delivery verification — react-fastapi-base 1.0.0-rc.2
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -6,9 +6,9 @@
 
 | Check | Result |
 |---|---:|
-| FastAPI/backend | PASS; 206 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
+| FastAPI/backend | PASS; 219 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 10 Playwright cases |
+| React browser workflows | PASS; 12 Playwright cases |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/architecture/security/performance | PASS |
@@ -17,7 +17,7 @@
 
 23 interactive widget families and 605 generic catalog variants/platform entries are registered. Catalog certification proves reusable family contracts and rendering coverage; domain-specific maturity remains recorded in the completion matrix.
 
-The current full platform gate records executed results in `evidence/current/full-stack/verification.json`. All verifier-owned code gates pass. Company identity, mounted-storage semantics and real deployment remain external. Manual accessibility, broad browser stress, and specialized domain qualification remain tracked in the completion matrix; the generated-app and upgrade proofs are current release evidence.
+The current full platform gate records executed results in `evidence/current/full-stack/verification.json`. All verifier-owned code gates pass. The object-inclusive recovery fixture is recorded in `evidence/current/recovery/object-restore.json`. Company identity, mounted-storage semantics and real deployment remain external. The generated-app and upgrade proofs are current release evidence.
 
 The React browser suite uses disposable local services and dynamically allocated loopback ports. The native Lab suite separately exercises exact compiled artifacts and HTTP serving. These results do not prove corporate identity, mounted storage or complete WCAG compliance.
 

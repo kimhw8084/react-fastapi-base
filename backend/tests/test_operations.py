@@ -88,6 +88,18 @@ def test_corrupt_or_unsafe_object_snapshot_rejects_restore_without_target(env,cl
     assert not (tmp_path/'restored-traversal').exists()
 
 
+def test_restore_symlink_object_rejects_without_target(env,client,item,tmp_path):
+    response=client.post(f"/api/v1/work-items/{item['id']}/attachments",json={'filename':'restore-link.txt','content_type':'text/plain','content_base64':base64.b64encode(b'link').decode()})
+    assert response.status_code==201
+    out=snapshot(env['db'].root,tmp_path/'backup',maintenance='APP-STOPPED')
+    entry=json.loads((out/'manifest.json').read_text())['objects'][0]
+    object_path=out/entry['snapshot_path'];object_path.unlink();object_path.symlink_to(tmp_path/'outside')
+    (tmp_path/'outside').write_bytes(b'link')
+    with pytest.raises(ValueError):restore(out,tmp_path/'restored-symlink')
+    assert not (tmp_path/'restored-symlink').exists()
+    assert object_path.is_symlink()
+
+
 def test_symlink_object_is_rejected_and_snapshot_is_not_modified(env,client,item,tmp_path):
     response=client.post(f"/api/v1/work-items/{item['id']}/attachments",json={'filename':'link.txt','content_type':'text/plain','content_base64':base64.b64encode(b'link').decode()})
     assert response.status_code==201

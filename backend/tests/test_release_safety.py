@@ -28,6 +28,7 @@ def qualified_production_settings(tmp_path: Path, *, mode: str = 'scanner_requir
 def test_production_scanner_required_rejects_noop_at_startup(tmp_path,monkeypatch):
     monkeypatch.setenv('AccessKey','company.alice')
     settings=qualified_production_settings(tmp_path)
+    assert any('NoopMalwareScanner' in error for error in settings.production_errors(scanner_is_noop=True))
     app=create_app(settings)
     with pytest.raises(RuntimeError,match='NoopMalwareScanner'):
         with TestClient(app):

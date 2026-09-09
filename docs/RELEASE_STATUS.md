@@ -6,7 +6,7 @@
 
 ## Current local proof
 
-- Backend: 209 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
+- Backend: 219 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
 - Frontend: locked `npm ci`, TypeScript, 16 Vitest files / 40 tests, production build, Storybook build and 12 Playwright workflows passed.
 - Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
@@ -15,7 +15,7 @@
 - Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The isolated clean-clone macOS gate passes without reusing the working tree's virtualenv, node modules or caches.
 - RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 
-Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
+Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 
 ## External qualification only
 
