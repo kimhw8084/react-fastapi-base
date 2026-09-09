@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "source_commit": "6b7706ba194433dee32e524dc6f7ce7372f1e86b",
-  "created_at": "2026-09-09T02:56:30Z",
-  "timestamp": "2026-09-09T02:56:30Z",
+  "source_commit": "79d8407379d0305cae13b8a2051f0c7ebf5022a9",
+  "created_at": "2026-09-09T03:09:33Z",
+  "timestamp": "2026-09-09T03:09:33Z",
   "command": [
     "python3",
     "scripts/reference_app_proof.py"
@@ -13,10 +13,10 @@
     "machine": "arm64"
   },
   "hashes": {
-    "source_commit": "6b7706ba194433dee32e524dc6f7ce7372f1e86b"
+    "source_commit": "79d8407379d0305cae13b8a2051f0c7ebf5022a9"
   },
   "result": "PASS",
-  "duration_seconds": 170.721,
+  "duration_seconds": 159.737,
   "apps": [
     {
       "id": "operational-registry",
@@ -30,7 +30,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.9,
+          "duration_seconds": 2.09,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -42,7 +42,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.74,
+          "duration_seconds": 2.542,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -54,7 +54,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 3.636,
+          "duration_seconds": 4.332,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -65,8 +65,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 6.912,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/operational-registry/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:53:48\n   Duration  5.90s (transform 765ms, setup 3.17s, import 847ms, tests 5.04s, environment 6.61s)\n\n",
+          "duration_seconds": 8.974,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/operational-registry/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:07:05\n   Duration  7.75s (transform 993ms, setup 2.72s, import 1.15s, tests 7.08s, environment 6.71s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -77,8 +77,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.538,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 569ms\n",
+          "duration_seconds": 5.645,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 622ms\n",
           "stderr_tail": ""
         }
       ],
@@ -96,7 +96,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.335,
+          "duration_seconds": 2.074,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -108,7 +108,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.872,
+          "duration_seconds": 2.453,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -120,7 +120,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 3.685,
+          "duration_seconds": 4.246,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -131,8 +131,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 6.574,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/datacenter-estate/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:54:08\n   Duration  5.57s (transform 608ms, setup 1.98s, import 780ms, tests 4.93s, environment 6.33s)\n\n",
+          "duration_seconds": 6.73,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/datacenter-estate/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:07:29\n   Duration  5.60s (transform 685ms, setup 2.60s, import 739ms, tests 4.62s, environment 9.26s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -143,8 +143,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.989,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 542ms\n",
+          "duration_seconds": 4.68,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 552ms\n",
           "stderr_tail": ""
         }
       ],
@@ -162,7 +162,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.106,
+          "duration_seconds": 1.751,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -174,7 +174,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.734,
+          "duration_seconds": 1.819,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -186,7 +186,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 3.705,
+          "duration_seconds": 4.034,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -197,8 +197,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 7.183,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/system-architecture-studio/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:54:28\n   Duration  6.20s (transform 557ms, setup 2.30s, import 674ms, tests 5.52s, environment 6.61s)\n\n",
+          "duration_seconds": 7.271,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/system-architecture-studio/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:07:49\n   Duration  5.79s (transform 854ms, setup 2.44s, import 851ms, tests 5.06s, environment 7.20s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -209,8 +209,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.589,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 571ms\n",
+          "duration_seconds": 4.549,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 675ms\n",
           "stderr_tail": ""
         }
       ],
@@ -228,7 +228,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.956,
+          "duration_seconds": 2.041,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -240,8 +240,8 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.823,
-          "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
+          "duration_seconds": 1.558,
+          "stdout_tail": "\nadded 272 packages, and audited 273 packages in 1s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
         {
@@ -252,7 +252,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.812,
+          "duration_seconds": 4.017,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -263,8 +263,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 7.204,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/engineering-knowledge-center/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:54:50\n   Duration  6.19s (transform 729ms, setup 2.22s, import 1.00s, tests 5.48s, environment 6.37s)\n\n",
+          "duration_seconds": 6.741,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/engineering-knowledge-center/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:08:09\n   Duration  5.48s (transform 700ms, setup 2.85s, import 741ms, tests 4.74s, environment 7.51s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -275,8 +275,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.727,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 583ms\n",
+          "duration_seconds": 4.737,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 976ms\n",
           "stderr_tail": ""
         }
       ],
@@ -294,7 +294,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.116,
+          "duration_seconds": 1.815,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -306,7 +306,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 1.714,
+          "duration_seconds": 2.01,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -318,7 +318,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 3.999,
+          "duration_seconds": 5.41,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -329,8 +329,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 8.227,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/risk-analysis-workspace/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:55:11\n   Duration  6.98s (transform 859ms, setup 2.16s, import 1.18s, tests 6.21s, environment 7.69s)\n\n",
+          "duration_seconds": 7.55,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/risk-analysis-workspace/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:08:31\n   Duration  6.29s (transform 633ms, setup 3.32s, import 658ms, tests 5.41s, environment 8.12s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -341,8 +341,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 6.726,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 955ms\n",
+          "duration_seconds": 4.779,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 613ms\n",
           "stderr_tail": ""
         }
       ],
@@ -360,7 +360,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.509,
+          "duration_seconds": 2.029,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -372,7 +372,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.319,
+          "duration_seconds": 1.713,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -384,7 +384,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 6.37,
+          "duration_seconds": 4.519,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -395,8 +395,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 11.099,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/research-laboratory/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:55:38\n   Duration  9.52s (transform 684ms, setup 3.39s, import 906ms, tests 8.42s, environment 10.68s)\n\n",
+          "duration_seconds": 7.028,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/research-laboratory/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:08:52\n   Duration  5.90s (transform 879ms, setup 2.90s, import 898ms, tests 5.15s, environment 6.64s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -407,8 +407,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 5.406,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 559ms\n",
+          "duration_seconds": 4.778,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 575ms\n",
           "stderr_tail": ""
         }
       ],
@@ -426,7 +426,7 @@
             "scripts/generate_contracts.py"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.14,
+          "duration_seconds": 1.892,
           "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
           "stderr_tail": ""
         },
@@ -438,7 +438,7 @@
             "--ignore-scripts"
           ],
           "exit_code": 0,
-          "duration_seconds": 2.218,
+          "duration_seconds": 1.658,
           "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n2 moderate severity vulnerabilities\n\nTo address all issues, run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
           "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
         },
@@ -450,7 +450,7 @@
             "typecheck"
           ],
           "exit_code": 0,
-          "duration_seconds": 4.27,
+          "duration_seconds": 3.78,
           "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 typecheck\n> tsc --noEmit\n\n",
           "stderr_tail": ""
         },
@@ -461,8 +461,8 @@
             "test"
           ],
           "exit_code": 0,
-          "duration_seconds": 10.408,
-          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-n8c4mr5l/program-planning/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  21:56:04\n   Duration  9.33s (transform 707ms, setup 3.75s, import 1.10s, tests 8.46s, environment 9.02s)\n\n",
+          "duration_seconds": 8.464,
+          "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.1 test\n> vitest run\n\n\n RUN  v4.1.10 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-reference-apps-m0ttkjqs/program-planning/frontend\n\n\n Test Files  14 passed (14)\n      Tests  34 passed (34)\n   Start at  22:09:13\n   Duration  6.68s (transform 824ms, setup 2.60s, import 882ms, tests 5.48s, environment 12.50s)\n\n",
           "stderr_tail": ""
         },
         {
@@ -473,8 +473,8 @@
             "build"
           ],
           "exit_code": 0,
-          "duration_seconds": 6.391,
-          "stdout_tail": "4AJF7.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace--MXDgbSC.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-Dv891qOU.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-H7787kSO.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-BVzhySTU.js            6.22 kB \u2502 gzip:   2.55 kB\ndist/assets/Workspace-BGnU-eNT.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-ExE6o1GI.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-BKH77rTd.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-C6I53lnW.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BL4ng09V.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace--G0chMHz.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-S2oX-TXO.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-DyS_sasm.js           13.47 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-BvhxaDsa.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CErsvmaO.js    100.86 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Bo3OBWnG.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-C-EcKgiG.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 835ms\n",
+          "duration_seconds": 6.775,
+          "stdout_tail": "joG8J.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-BMD0Rkz2.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-DALDm1XQ.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-C10XBA78.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-8WjdLvjn.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BrpcjS2s.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DsRfpy5b.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-5drj_5P8.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-B2gykdl6.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-GPvIrNng.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-SFLuoJ_m.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-BR2fNmzy.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-CW2iXFI8.js           13.47 kB \u2502 gzip:   3.88 kB\ndist/assets/ExperienceLab-DzCoOZT_.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-GAXX69DR.js    100.87 kB \u2502 gzip:  26.34 kB\ndist/assets/index-Dy3p-kXt.js              258.60 kB \u2502 gzip:  79.98 kB\ndist/assets/FieldInput-BMA6NHZp.js       1,120.19 kB \u2502 gzip: 311.78 kB\n\n\u2713 built in 727ms\n",
           "stderr_tail": ""
         }
       ],
