@@ -12,8 +12,19 @@ def sanitize_view(definition: WorkspaceDefinition, value: ViewDefinition) -> dic
     fields = {field.key:field for field in definition.fields}
     data = value.model_dump()
     for key, selected in data['filters'].items():
-        if key not in definition.filter_keys or key not in fields or selected not in fields[key].choices:
+        field = fields.get(key)
+        if key not in definition.filter_keys or field is None or (field.choices and selected not in field.choices) or not isinstance(selected, str) or not selected or len(selected) > 200:
             raise AppError(422,'invalid_saved_filter','Saved filter is not supported.')
+    allowed_operators = {'eq','neq','contains','starts_with','gt','gte','lt','lte'}
+    sanitized_advanced = []
+    for item in data['advanced_filters']:
+        if not isinstance(item, dict) or item.get('key') not in definition.filter_keys or item.get('operator','eq') not in allowed_operators or not isinstance(item.get('value'), str) or not item['value'] or len(item['value']) > 200:
+            raise AppError(422,'invalid_saved_advanced_filter','Saved advanced filter is not supported.')
+        field = fields[item['key']]
+        if field.choices and item.get('operator','eq') in {'eq','neq'} and item['value'] not in field.choices:
+            raise AppError(422,'invalid_saved_advanced_filter','Saved advanced filter value is not supported.')
+        sanitized_advanced.append({'key':item['key'],'operator':item.get('operator','eq'),'value':item['value']})
+    data['advanced_filters'] = sanitized_advanced
     if data['group_by'] and data['group_by'] not in definition.filter_keys:
         raise AppError(422,'invalid_saved_group','Saved grouping is not supported.')
     if data['sort'] not in definition.sort_keys:

@@ -48,6 +48,11 @@ def test_view_columns_are_sanitized(client):
 def test_bad_view_state_rejected(client,definition):
     assert client.post(V,json={'name':'Bad','definition':definition}).status_code==422
 
+@pytest.mark.parametrize('advanced',[ [{'key':'invented','operator':'eq','value':'x'}], [{'key':'status','operator':'wat','value':'open'}], [{'key':'status','operator':'eq','value':''}], [{'key':'status','operator':'eq','value':'illegal'}] ])
+def test_bad_advanced_view_state_rejected(client,advanced):
+    response=client.post(V,json={'name':'Bad advanced','definition':{'advanced_filters':advanced}})
+    assert response.status_code==422
+
 def test_upload_download_and_tenant_boundary(env,client,item):
     base=f"/api/v1/work-items/{item['id']}/attachments"
     row=client.post(base,json={'filename':'notes.txt','content_type':'text/plain','content_base64':base64.b64encode(b'Private notes').decode()})
