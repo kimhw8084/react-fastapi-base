@@ -8,7 +8,8 @@ it('every required catalog variant has a real generic renderer', () => {
   render(<CatalogVariantGallery />)
   expect(catalogVariants).toHaveLength(605)
   expect(screen.getAllByRole('region').length).toBeGreaterThan(0)
-  for (const variant of catalogVariants) expect(screen.getAllByLabelText(variant.id).length).toBeGreaterThan(0)
+  const renderedLabels = new Set(Array.from(document.querySelectorAll<HTMLElement>('[aria-label]'), element => element.getAttribute('aria-label')))
+  for (const variant of catalogVariants) expect(renderedLabels.has(variant.id)).toBe(true)
 }, 30000)
 
 it('family renderer remains usable when the catalog is filtered', () => {
