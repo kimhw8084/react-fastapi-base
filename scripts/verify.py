@@ -30,7 +30,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         except (OSError,subprocess.TimeoutExpired) as error:
             row={'name':name,'status':'BLOCKED','reason':str(error),'duration_seconds':round(time.monotonic()-started,3),'command':command}
         results.append(row);print(f"{row['status']:7} {name}",flush=True);return row['status']=='PASS'
-    run('backend-tests',[sys.executable,'-m','pytest','-q',f'--junitxml={output.resolve()/"backend-junit.xml"}'],ROOT/'backend')
+    run('backend-tests',[sys.executable,'scripts/backend_test_runner.py','--output',str((output/'backend-junit.xml').resolve())],ROOT,timeout=300)
     run('tooling-tests',[sys.executable,'-m','pytest','-q','tests'],ROOT)
     run('architecture',[sys.executable,'scripts/check_architecture.py'])
     run('security-source',[sys.executable,'scripts/security_source_check.py'])

@@ -38,7 +38,11 @@ The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode b
 
 ## Backend test-client compatibility
 
-The test requirements pin `httpx2==2.12.0`, together with its exact transitive lock entries, for compatibility with the installed FastAPI/Starlette test client. The backend suite is executed with warnings promoted to errors during release verification; the current run completes without the former `StarletteDeprecationWarning`.
+The test requirements pin `httpx2==2.12.0`, together with its exact transitive lock entries, for compatibility with the installed FastAPI/Starlette test client. Use the project venv for backend checks; the release verifier runs `scripts/backend_test_runner.py`, which assigns the sorted backend test files to four deterministic parallel shards and merges their JUnit output. This keeps the complete 206-test suite inside the local gate budget without changing test selection or assertions. The venv run completes without the former `StarletteDeprecationWarning`; an unrelated system Python that lacks `httpx2` may still emit Starlette's upstream fallback warning.
+
+```bash
+backend/.venv/bin/python scripts/backend_test_runner.py --output evidence/current/full-stack/backend-junit.xml
+```
 
 ## Evidence durability
 
