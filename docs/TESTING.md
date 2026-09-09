@@ -26,7 +26,7 @@ Missing tooling is BLOCKED, never PASS. A missing required catalog implementatio
 
 ## Visual and accessibility evidence
 
-`evidence/current/browser` contains current browser evidence. Light/dark renderings, key interactions, focus guards and mobile overflow were exercised. Automated axe across every major screen, all contrast/zoom requirements, manual screen-reader review, complete keyboard coverage and non-Chromium engines are not yet certified.
+`evidence/current/browser` contains current browser evidence. Light/dark renderings, key interactions, focus guards, mobile overflow, axe checks across registered workspaces, keyboard smoke, 200%/400% zoom, reduced motion and high contrast were exercised. This is not a WCAG certification, independent screen-reader qualification or non-Chromium engine certification.
 
 ## Frontend bundle budget
 
@@ -38,7 +38,7 @@ The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode b
 
 ## Backend test-client compatibility
 
-The test requirements pin `httpx2==2.12.0`, together with its exact transitive lock entries, for compatibility with the installed FastAPI/Starlette test client. Use the project venv for backend checks; the release verifier runs `scripts/backend_test_runner.py`, which assigns the sorted backend test files to four deterministic parallel shards and merges their JUnit output. This keeps the complete 206-test suite inside the local gate budget without changing test selection or assertions. The venv run completes without the former `StarletteDeprecationWarning`; an unrelated system Python that lacks `httpx2` may still emit Starlette's upstream fallback warning.
+The test requirements pin `httpx2==2.12.0`, together with its exact transitive lock entries, for compatibility with the installed FastAPI/Starlette test client. Use the project venv for backend checks; the release verifier runs `scripts/backend_test_runner.py`, which assigns the sorted backend test files to four deterministic parallel shards and merges their JUnit output. This keeps the complete 209-test suite inside the local gate budget without changing test selection or assertions. The venv run completes without the former `StarletteDeprecationWarning`; an unrelated system Python that lacks `httpx2` may still emit Starlette's upstream fallback warning. This is a strictly upstream fallback warning, not a repository-actionable failure.
 
 ```bash
 backend/.venv/bin/python scripts/backend_test_runner.py --output evidence/current/full-stack/backend-junit.xml

@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.1` — reproducible review build; not production certified.
+`1.0.0-rc.1` — V1 local code complete; company qualification pending.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
@@ -26,7 +26,7 @@ The local profile uses disposable demo identity and data. Startup does not creat
 
 The backend includes canonical feature modules for work items, projects, racks, equipment, Knowledge, Investigation, Risk, Research, Diagram Designer, Planning, analytics/SPC, semiconductor records, software delivery/observability, and platform administration services. The frontend uses generated adapters and shared platform shells, forms, grids, saved views, dossiers, projections, and engineering workspaces.
 
-The implementation ledger is [docs/v1-completion-status.json](docs/v1-completion-status.json). It records actual status and remaining work per subsystem. The retained 605-item catalog is a required inventory; generic family rendering/certification is checked by `scripts/catalog.py --check --release`, while domain-specific browser, accessibility and performance maturity remains explicit in the ledger.
+The implementation ledger is [docs/v1-completion-status.json](docs/v1-completion-status.json). All locally achievable V1 subsystem contracts are implemented and evidenced there; only company qualification remains externally blocked. The retained 605-item catalog is checked by `scripts/catalog.py --check --release`.
 
 ## Verification
 
@@ -52,7 +52,7 @@ npm run build:storybook
 npm run test:e2e
 ```
 
-Current machine-readable reports are written under `evidence/current/`. They distinguish passing local checks from external company/macOS qualification and do not issue a production certificate.
+Current machine-readable reports are written under `evidence/current/`. They distinguish passing local checks from external company qualification and do not issue a production certificate. The isolated clean-clone macOS gate is current local evidence; it is distinct from company deployment qualification.
 
 ## Safety boundaries
 

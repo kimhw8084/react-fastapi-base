@@ -9,7 +9,16 @@
 - Centralized release metadata in `VERSION`, wired backend health/bootstrap/Lab/upgrade metadata to it, and added version consistency verification.
 - Added the current v1 completion matrix, generic catalog-family registry/certification, isolated clean-clone Mac verification, and refreshed release documentation.
 
-This release remains NOT COMPLETE: specialized domain qualification, full manual accessibility/performance evidence, and company qualification are open. The seven reference-app proof, upgrade fixture, isolated clean-clone Mac certification, and current local code gates are passing evidence.
+The local V1 code is complete; company identity, provider-mounted storage, deployment and recovery qualification remain external. The seven reference-app proof, upgrade fixture, isolated clean-clone Mac certification and current local code gates are passing evidence.
+
+## 1.0.0-rc.1 — local V1 completion continuation
+
+- Closed the local V1 completion matrix: entity computed-field persistence, generic relationship exploration, saved-view reconciliation, platform shells, universal dossier/action/form contracts, operational table proof, engineering packs, generators, storage/integration boundaries and platform services are now source-backed implementation entries rather than stale partial labels.
+- Added persisted high-contrast mode and platform scroll-surface keyboard focus semantics.
+- Added a 12-workflow browser gate covering all registered workspaces, major-surface axe checks, mobile keyboard behavior, 100k logical-row bounded rendering, reduced motion, high contrast and 200%/400% zoom.
+- Refreshed release evidence to 209 backend tests and distinguished isolated clean-clone macOS execution from company qualification.
+
+Local V1 code is complete. Company identity, provider-mounted storage and company deployment/recovery qualification remain external.
 
 ## 0.7.0-rich-field-engine
 

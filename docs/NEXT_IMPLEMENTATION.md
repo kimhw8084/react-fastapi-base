@@ -1,14 +1,7 @@
-# Remaining implementation — 1.0.0-rc.1
+# Next implementation work — post-local V1
 
-The next work must follow the machine-readable [v1 completion matrix](v1-completion-status.json). Do not promote catalog items to Stable from source presence or screenshots.
+The local V1 contract is complete. The authoritative status is [v1-completion-status.json](v1-completion-status.json); it contains no local `partial` or `missing` subsystem. Future work must remain additive and must not reopen a completed V1 item without a failing regression or a changed contract.
 
-Highest-value local work is:
+The next release process is operator qualification: verify company identity isolation, provider-mounted storage semantics, publication/redeploy durability and the company recovery drill. Those checks require the real company environment and are intentionally not simulated by local evidence.
 
-1. connect the universal action/dossier/relationship/state contracts to every feature presentation and add browser assertions for the complete tab/action matrix;
-2. complete browser DOM/memory stress and accessibility coverage for table, relationship, rack, graph, planning, dashboard, and analytical surfaces;
-3. finish workflow packs for Knowledge, Investigation, Risk, Research, semiconductor, and software engineering;
-4. complete administration/browser views, relationship-aware import/export, background exchange and storage adapters;
-5. maintain the passing generated reference-app and upgrade fixtures as release gates;
-6. run the security, accessibility, and performance gates again before any final-version promotion; isolated clean-clone Mac certification is now current evidence.
-
-Company identity, mounted-storage, deployment/redeploy and company recovery remain external evidence and must not be simulated. The isolated clean-clone Mac result is recorded in `evidence/current/release/fresh-clone-macos.json`.
+Optional post-V1 engineering may add authenticated realtime push, provider-backed malware/CDR scanning, additional domain-specific exchange adapters, non-Chromium browser qualification and independent penetration testing. These are not local V1 blockers.

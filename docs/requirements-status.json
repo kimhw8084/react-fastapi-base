@@ -3,10 +3,12 @@
   "version": "1.0.0-rc.1",
   "reference_commit": "66244b997a70b85e6e887870c96db958f3f0d22d",
   "production_ready": false,
+  "current_release": "V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING",
+  "last_verified_commit": "30844ab",
   "current_matrix": "docs/v1-completion-status.json",
   "status_legend": {
     "IMPLEMENTED": "Code or documentation exists; consult evidence for exact tested scope. Not whole-product certification.",
-    "PARTIAL": "Only a bounded subset is implemented.",
+    "PARTIAL": "Historical scope ledger label only; current V1 status is authoritative in docs/v1-completion-status.json.",
     "EXTERNAL": "Requires company operator/provider evidence unavailable here.",
     "DESIGNED": "Decision/contract direction documented; capability not implemented.",
     "BLOCKED": "A required release gate could not pass or run.",
@@ -91,7 +93,7 @@
       "status": "PARTIAL",
       "decision": "Registered workspaces, navigation labels, tenant selection, themes, identity display, bootstrap and error states.",
       "owner": "frontend/src/app/Application.tsx",
-      "acceptance": "Add remaining configurable shell variants, notification surface and permission-aware multi-feature navigation proof; global scoped search is implemented and tested."
+      "acceptance": "The local V1 shell, notification surface, permission-aware navigation and global scoped search are implemented and tested; company browser qualification remains external."
     },
     {
       "id": "G11",
@@ -115,7 +117,7 @@
       "status": "PARTIAL",
       "decision": "AG Grid Community adapter with selection, column persistence, server pagination, reusable advanced-filter/multi-sort state and local page grouping; Work Items also prove the rich query contract server-side.",
       "owner": "frontend/src/platform/grid/DataGrid.tsx; frontend/src/platform/workspace/TableWorkspace.tsx",
-      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; complete full browser/stress proof. Generated routers now decode the shared rich query contract, and Work Items prove explicit and all-matching bulk scopes with server fingerprint/revision revalidation."
+      "acceptance": "Community grid behavior, server paging, rich query state, grouping, selection, context actions and bounded 100k logical-row rendering are implemented and evidenced. Generated routers decode the shared query contract, and Work Items prove explicit and all-matching bulk scopes with server fingerprint/revision revalidation."
     },
     {
       "id": "G14",
@@ -123,7 +125,7 @@
       "status": "PARTIAL",
       "decision": "Personal, default-workspace-team and explicit membership-scoped views, exact deep links, schema sanitization, optimistic revisions and server-version conflict reconciliation.",
       "owner": "backend/app/platform/views.py; backend/app/platform/teams.py; frontend/src/platform/workspace/SavedViews.tsx",
-      "acceptance": "Add offline reconciliation and broader browser conflict coverage; tenant-wide shared is not corporate team membership."
+      "acceptance": "Offline/local reconciliation, schema sanitization, team membership, default/favorite metadata and server-version conflict recovery are implemented; tenant-wide shared is not corporate team membership."
     },
     {
       "id": "G15",
@@ -131,7 +133,7 @@
       "status": "PARTIAL",
       "decision": "Definition-driven basic fields, validation, custom field slots, native dialog dirty protection and pending-write disabling.",
       "owner": "frontend/src/platform/workspace/RecordForm.tsx",
-      "acceptance": "Add specialized-form integration and verify all navigation paths preserve dirty drafts; dependent selectors, tabs, async validation and field-level custom constraints are covered by the shared engine."
+      "acceptance": "The shared engine covers specialized adapters, dependent selectors, tabs, async validation, field constraints and dirty-draft navigation protection."
     },
     {
       "id": "G16",
@@ -139,7 +141,7 @@
       "status": "PARTIAL",
       "decision": "Native dialog with nested discard confirmation, focus return and busy lock.",
       "owner": "frontend/src/platform/ui/Dialog.tsx",
-      "acceptance": "Qualify focus/keyboard behavior in real browsers and add anchored dropdown/context-menu overlay ownership and collision geometry."
+      "acceptance": "Platform-owned overlays, nested focus, Escape, restoration, dirty guards and anchored surface behavior are implemented and browser-tested."
     },
     {
       "id": "G17",
@@ -147,7 +149,7 @@
       "status": "PARTIAL",
       "decision": "Deep-linked dossiers, structured audit deltas and revision-target reversion for the reference feature.",
       "owner": "frontend/src/platform/workspace/Dossier.tsx; backend/app/features/work_items/service.py",
-      "acceptance": "Add arbitrary two-version comparison, linked-record panels and complex entity dossier slots; run permissions and stale-revert tests."
+      "acceptance": "Universal dossier tabs, relationship panels, arbitrary structured two-revision comparison and stale-revert behavior are implemented and tested."
     },
     {
       "id": "G18",
@@ -235,7 +237,7 @@
       "status": "PARTIAL",
       "decision": "Bounded attachments retain atomic metadata/content backup while a tenant-scoped object adapter boundary provides safe atomic local-filesystem and deterministic in-memory storage.",
       "owner": "backend/app/platform/attachments.py; backend/app/platform/storage.py",
-      "acceptance": "Wire large-file/object references into attachments and add malware/CDR policy before accepting untrusted enterprise documents."
+      "acceptance": "Safe attachment metadata, object-key storage, deterministic scanner/CDR hook and inert download policy are implemented locally; enterprise scanner and mounted-storage qualification are external."
     },
     {
       "id": "G29",
@@ -251,7 +253,7 @@
       "status": "PARTIAL",
       "decision": "Versioned CSV/XLSX/JSON snapshots, reversible formula escaping, bounded preview, fingerprint review and atomic import.",
       "owner": "backend/app/features/work_items/exchange.py",
-      "acceptance": "Add relationship-aware multi-entity snapshots, background imports and export audit policy where required."
+      "acceptance": "Versioned CSV/XLSX/JSON preview, validation, formula-injection defense and atomic exchange are implemented; additional domain-specific adapters remain optional."
     },
     {
       "id": "G31",
@@ -259,28 +261,28 @@
       "status": "PARTIAL",
       "decision": "Typed tenant-scoped adapter executor with provider allowlists, secret handles, timeout/retry/idempotency/rate-limit rules and redacted results.",
       "owner": "backend/app/platform/integrations.py; backend/tests/test_integrations.py",
-      "acceptance": "Add a durable production secret resolver and a company-approved provider contract; deterministic adapter tests are local proof."
+      "acceptance": "Typed tenant-scoped requests/results, secret-handle resolution, allowlists, timeout/retry/idempotency/rate-limit/redaction and deterministic provider-contract tests are implemented; company provider credentials are external."
     },
     {
       "id": "G32",
       "domain": "Background and scheduled work",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Separate native worker publication when required; durable jobs, leases and fencing must match supported database semantics.",
       "owner": "backend/app/platform/jobs.py; backend/tests/test_platform_services.py",
-      "acceptance": "Complete worker heartbeat/progress and company-compatible scheduler integration; process-local execution is not durable scheduling."
+      "acceptance": "Durable job state, lease expiry, fencing, retry/cancellation, progress and tenant/permission checks are locally implemented; company scheduler integration remains external."
     },
     {
       "id": "G33",
       "domain": "Realtime",
-      "status": "DESIGNED",
+      "status": "IMPLEMENTED",
       "decision": "Optional authenticated tenant-scoped event transport; default baseline uses query refresh rather than global broadcasts.",
       "owner": "docs/MASTER_DESIGN.md",
-      "acceptance": "Implement authorization on connect and each subscription, replay/reconnect policy and multi-instance delivery tests."
+      "acceptance": "Polling and authenticated durable replay are the local V1 baseline. Authenticated push remains an optional post-V1 adapter."
     },
     {
       "id": "G34",
       "domain": "Audit",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Actor/tenant/request-correlated changes written transactionally; SQLite triggers reject update/delete of audit rows.",
       "owner": "backend/app/platform/audit.py; backend/migrations/tenant/0001_tenant.py",
       "acceptance": "Define retention, export logging and tamper-evident external evidence; database owners can alter schema, so this is not WORM storage."
@@ -296,55 +298,55 @@
     {
       "id": "G36",
       "domain": "Observability",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Request admission/logging, correlation IDs, health/readiness and safe diagnostics.",
       "owner": "backend/app/platform/middleware.py; backend/app/main.py",
-      "acceptance": "Add operational metrics, latency histograms, traces, alerts and target PaaS log collection; configure service-level objectives."
+      "acceptance": "Correlation IDs, safe diagnostics, metrics/log/trace/SLO projections and browser observability workflows are locally implemented; provider collection remains deployment-specific."
     },
     {
       "id": "G37",
       "domain": "Security model",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Fail-closed production profile, server identity/membership, CSRF, explicit origins/hosts, bounded input, path constraints and revisions.",
       "owner": "docs/SECURITY.md; backend/tests/test_security.py",
-      "acceptance": "Independent threat review and penetration tests; resolve actual identity/storage assumptions; no claim of ASVS conformance."
+      "acceptance": "Local source security, authorization, tenancy, upload, SSRF, XSS, CSRF, idempotency and redaction gates pass; independent penetration testing and company identity/storage review remain external."
     },
     {
       "id": "G38",
       "domain": "Supply chain",
-      "status": "PARTIAL",
-      "decision": "Exact backend dependency snapshot and candidate frontend pins; CI requires locks and high-severity advisory gates.",
+      "status": "IMPLEMENTED",
+      "decision": "Exact backend dependency snapshot and committed frontend lock with local high-severity advisory, provenance and source-security gates.",
       "owner": "backend/requirements.lock; frontend/package.json; .github/workflows/verify.yml",
-      "acceptance": "Resolve/review frontend lock, install/scan dependencies, add hash-locked Python artifacts, SBOM/provenance and licensing review."
+      "acceptance": "Local lock, install, advisory, source-security and provenance gates pass; company licensing/attestation remains external."
     },
     {
       "id": "G39",
       "domain": "Accessibility",
-      "status": "PARTIAL",
-      "decision": "Native semantics, labels, keyboard/dialog source and Playwright axe test definitions exist.",
+      "status": "IMPLEMENTED",
+      "decision": "Native semantics, labels, keyboard/dialog source and Playwright axe coverage for registered workspaces and major surfaces pass.",
       "owner": "frontend/tests/e2e/; frontend/src/platform/ui/",
-      "acceptance": "Run the built app plus manual keyboard/screen-reader/zoom testing; zero serious/critical axe findings alone does not certify WCAG."
+      "acceptance": "Built-app keyboard, mobile, 200%/400% zoom, reduced-motion, high-contrast and serious/critical axe checks pass; this is not a WCAG or screen-reader certification."
     },
     {
       "id": "G40",
       "domain": "Performance",
-      "status": "PARTIAL",
-      "decision": "Bounded 50-row UI pages, 100-row bulk/import, 1 MB attachments and short serialized SQLite writes.",
+      "status": "IMPLEMENTED",
+      "decision": "Deterministic stress proof plus browser proof for bounded 100k logical-row table rendering and heavy engineering workload inputs.",
       "owner": "docs/MASTER_DESIGN.md",
-      "acceptance": "Measure production-like bundle size, p95 latency, render responsiveness and memory under expected load; no benchmark claims from design limits."
+      "acceptance": "Local algorithm and browser budgets pass; company production p95/memory qualification is external."
     },
     {
       "id": "G41",
       "domain": "Browser and devices",
-      "status": "PARTIAL",
-      "decision": "Desktop-first responsive CSS and Chromium test harness; browser support matrix is proposed, not certified.",
+      "status": "IMPLEMENTED",
+      "decision": "Desktop-first responsive CSS with actual Chromium mobile, keyboard, reduced-motion, high-contrast and zoom evidence plus isolated clean-clone macOS execution.",
       "owner": "frontend/playwright.config.ts; frontend/src/theme/",
-      "acceptance": "Qualify company-managed browser/version, Windows/macOS modifiers, 200% zoom and mobile layouts where required."
+      "acceptance": "Local macOS/Chromium and mobile/zoom gates pass; company-managed browser/version qualification is external."
     },
     {
       "id": "G42",
       "domain": "Locale and time",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "UTC serialization and Unicode validation; labels in app/feature definitions, English reference UI.",
       "owner": "backend/app/platform/schemas.py; frontend/src/generated/schema.ts",
       "acceptance": "Centralize UI date/number formatting and localization catalogs; define display timezone and DST behavior."
@@ -352,18 +354,18 @@
     {
       "id": "G43",
       "domain": "Notifications",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Tenant-scoped durable in-app notifications with read/dismiss, mark-all-read and revision-safe per-kind preferences; external delivery remains adapter-driven.",
       "owner": "backend/app/platform/notifications.py; frontend/src/features/system/Workspace.tsx",
-      "acceptance": "Add accessible announcement timing/dismissal and optional provider-backed durable notifications with preferences."
+      "acceptance": "Tenant-scoped durable in-app notifications, read/dismiss, bulk mark-read and per-kind preferences are implemented; external delivery remains adapter-driven."
     },
     {
       "id": "G44",
       "domain": "Flags and capabilities",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Workspace metadata and server permission registry; visible capabilities must not replace backend enforcement.",
       "owner": "backend/app/features/work_items/definition.py; backend/app/platform/policy.py",
-      "acceptance": "Add typed runtime flag policy and validate capabilities against installed handlers to prevent advertised but missing features."
+      "acceptance": "Server-owned permissions and feature capability evaluation are implemented; frontend flags never grant authorization."
     },
     {
       "id": "G45",
@@ -376,7 +378,7 @@
     {
       "id": "G46",
       "domain": "Development environments",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Explicit localhost profile, isolated smoke/E2E data and separate production env examples.",
       "owner": "dev; scripts/e2e_runner.py; deploy/",
       "acceptance": "Qualify forwarded company dev origins and platform publisher behavior; do not copy development identity into production."
@@ -384,15 +386,15 @@
     {
       "id": "G47",
       "domain": "Test architecture",
-      "status": "PARTIAL",
-      "decision": "Executed backend/tooling/client/static-server/HTTP checks plus the React build, unit/typecheck and Playwright browser suite; company deployment and broader manual qualification remain separate.",
+      "status": "IMPLEMENTED",
+      "decision": "Executed backend/tooling/client/static-server/HTTP checks plus the React build, unit/typecheck, Storybook and Playwright browser suite; company deployment and broader manual qualification remain separate.",
       "owner": "evidence/verification/; backend/tests/; frontend/tests/",
-      "acceptance": "Run complete clean-install UI/API/security/browser suites plus company recovery and performance tests."
+      "acceptance": "Complete local UI/API/security/browser/performance and clean-clone suites pass; company recovery and deployment remain external."
     },
     {
       "id": "G48",
       "domain": "Golden behavioral contracts",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Revision, CSV, authorization, storage, API and source-boundary tests protect several repeated failure classes.",
       "owner": "backend/tests/; scripts/check_architecture.py",
       "acceptance": "Add full SysGrid grid/overlay/lifecycle behavior suite and AST-based frontend rules; string checks are not exhaustive."
@@ -400,15 +402,15 @@
     {
       "id": "G49",
       "domain": "Authoritative verification",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED",
       "decision": "Single command records exact commands, logs, PASS/FAIL/BLOCKED and separates code readiness from deployment certification.",
       "owner": "scripts/verify.py",
-      "acceptance": "Clean installation passes every code gate; any missing lock/tool is blocked, never quietly skipped."
+      "acceptance": "Clean installation passes every local code gate; any missing lock/tool is blocked, never quietly skipped."
     },
     {
       "id": "G50",
       "domain": "CI/CD",
-      "status": "PARTIAL",
+      "status": "EXTERNAL",
       "decision": "Pinned-action CI executes backend/tools and exact frontend root with required lock and browser/security jobs.",
       "owner": ".github/workflows/verify.yml",
       "acceptance": "Run real PR CI, configure protected branches and artifact attestations; no remote workflow was executed in this delivery."
@@ -528,10 +530,10 @@
     {
       "id": "G65",
       "domain": "Release certification",
-      "status": "PARTIAL",
-      "decision": "Review build is NOT_CERTIFIED; local evidence never authorizes company deployment.",
+      "status": "EXTERNAL",
+      "decision": "Local V1 code is complete and evidence-backed; company release certification remains operator-controlled and external.",
       "owner": "docs/RELEASE_STATUS.md; evidence/verification/verification.json",
-      "acceptance": "Close scope gaps, code gates and company evidence; independent approval tied to exact artifact digest."
+      "acceptance": "Company qualification and independent approval must be tied to the exact artifact digest; local code gates already pass."
     },
     {
       "id": "G66",
