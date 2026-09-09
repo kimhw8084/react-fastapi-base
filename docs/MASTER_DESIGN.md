@@ -480,7 +480,7 @@ Every domain below remains in scope. “Designed” and “partial” are intent
 
 **State:** PARTIAL. **Owner:** `evidence/verification/; backend/tests/; frontend/tests/`.
 
-**Decision:** Executed backend/tooling/client/static-server/HTTP checks; React/Playwright tests authored but not executed here.
+**Decision:** Executed backend/tooling/client/static-server/HTTP checks plus the React build, unit/typecheck and Playwright browser suite; company deployment and broader manual qualification remain separate.
 
 **Acceptance obligation:** Run complete clean-install UI/API/security/browser suites plus company recovery and performance tests.
 

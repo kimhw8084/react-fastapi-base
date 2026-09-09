@@ -6,9 +6,9 @@
 
 | Check | Result |
 |---|---:|
-| FastAPI/backend | Current count in `evidence/current/full-stack/backend-junit.xml` |
+| FastAPI/backend | PASS; 206 tests in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 5 Playwright cases |
+| React browser workflows | PASS; 8 Playwright cases |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/architecture/security/performance | PASS |

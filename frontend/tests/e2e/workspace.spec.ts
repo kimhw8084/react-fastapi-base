@@ -45,6 +45,35 @@ test('admin can manage membership-scoped workspace teams',async({page})=>{
  await expect(page.getByRole('region',{name:'Durable events'})).toBeVisible()
 })
 
+test('registered workspaces load without browser errors',async({page})=>{
+ const consoleErrors:string[]=[]
+ const pageErrors:string[]=[]
+ page.on('console',message=>{if(message.type()==='error')consoleErrors.push(message.text())})
+ page.on('pageerror',error=>pageErrors.push(error.message))
+ const routes=['work-items','projects','racks','equipment','knowledge-entries','investigations','research','risks','plan-tasks','diagram-documents','process-measurements','wafer-runs','manufacturing-lots','equipment-states','process-recipes','software-services','delivery-runs','observability-events','incidents','service-objectives','system']
+ for(const route of routes){
+  await page.goto(`/${route}`)
+  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
+  await expect(page.getByText('Page not found',{exact:true})).toHaveCount(0)
+ }
+ expect(pageErrors).toEqual([])
+ expect(consoleErrors).toEqual([])
+})
+
+test('representative mobile surfaces remain keyboard and axe clean',async({page})=>{
+ await page.setViewportSize({width:390,height:844})
+ const consoleErrors:string[]=[]
+ page.on('console',message=>{if(message.type()==='error')consoleErrors.push(message.text())})
+ for(const route of ['/work-items','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/system']){
+  await page.goto(route)
+  await page.keyboard.press('Tab')
+  expect(await page.evaluate(()=>document.activeElement?.tagName)).not.toBe('BODY')
+  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
+  expect(result.violations.filter(v=>v.impact==='serious'||v.impact==='critical')).toEqual([])
+ }
+ expect(consoleErrors).toEqual([])
+})
+
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
  await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
  await page.getByLabel('Theme',{exact:true}).selectOption({label:theme})

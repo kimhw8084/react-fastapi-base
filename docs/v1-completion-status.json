@@ -2,7 +2,7 @@
   "schema_version": 1,
   "version": "1.0.0-rc.1",
   "source_of_truth": "repository source, migrations, generated contracts and executed evidence",
-  "generated_at": "2026-09-08",
+  "generated_at": "2026-09-09",
   "subsystems": [
     {"key":"reproducibility","status":"implemented","tested":true,"browser_verified":true,"performance_verified":false,"security_verified":true,"a11y_verified":false,"evidence":["frontend/package-lock.json","evidence/current/full-stack/verification.json","evidence/current/release/fresh-clone-macos.json","evidence/current/lab/verification.json"],"remaining_work":["large-scale performance certification"]},
     {"key":"entity-registry","status":"partial","tested":true,"browser_verified":true,"performance_verified":false,"security_verified":true,"a11y_verified":false,"evidence":["backend/app/platform/entity_registry.py","backend/app/platform/schemas.py","frontend/src/platform/workspace/FieldInput.tsx","scripts/entity_generator.py","tests/test_entity_generator.py","contracts/openapi.json"],"remaining_work":["server-owned computed-field persistence integration fixture"]},

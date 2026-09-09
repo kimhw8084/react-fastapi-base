@@ -385,7 +385,7 @@
       "id": "G47",
       "domain": "Test architecture",
       "status": "PARTIAL",
-      "decision": "Executed backend/tooling/client/static-server/HTTP checks; React/Playwright tests authored but not executed here.",
+      "decision": "Executed backend/tooling/client/static-server/HTTP checks plus the React build, unit/typecheck and Playwright browser suite; company deployment and broader manual qualification remain separate.",
       "owner": "evidence/verification/; backend/tests/; frontend/tests/",
       "acceptance": "Run complete clean-install UI/API/security/browser suites plus company recovery and performance tests."
     },

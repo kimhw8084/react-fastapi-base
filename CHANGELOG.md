@@ -9,7 +9,7 @@
 - Centralized release metadata in `VERSION`, wired backend health/bootstrap/Lab/upgrade metadata to it, and added version consistency verification.
 - Added the current v1 completion matrix, generic catalog-family registry/certification, isolated clean-clone Mac verification, and refreshed release documentation.
 
-This release remains NOT COMPLETE: specialized domain qualification, full manual accessibility/performance evidence, reference-app/upgrade proofs, and company qualification are open. Mac clean-clone certification is complete.
+This release remains NOT COMPLETE: specialized domain qualification, full manual accessibility/performance evidence, and company qualification are open. The seven reference-app proof, upgrade fixture, isolated clean-clone Mac certification, and current local code gates are passing evidence.
 
 ## 0.7.0-rich-field-engine
 

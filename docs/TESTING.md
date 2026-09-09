@@ -32,9 +32,9 @@ Missing tooling is BLOCKED, never PASS. A missing required catalog implementatio
 
 The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode browser tests. It is supplied configuration, not an already completed CI run. Local release verification is authoritative for this task; a Lab-only green job does not certify the platform.
 
-## Reviewed upstream warning
+## Backend test-client compatibility
 
-The backend suite currently emits `StarletteDeprecationWarning` from the upstream `fastapi.testclient` compatibility import: the pinned FastAPI/Starlette test client still targets the pre-`httpx2` API while this repository pins the stable `httpx==0.28.1` test dependency. No application code calls the deprecated API directly. The warning is recorded as upstream compatibility debt; changing the test transport or upgrading to an unpinned prerelease would reduce reproducibility rather than fix repository code.
+The test requirements pin `httpx2==2.12.0`, together with its exact transitive lock entries, for compatibility with the installed FastAPI/Starlette test client. The backend suite is executed with warnings promoted to errors during release verification; the current run completes without the former `StarletteDeprecationWarning`.
 
 ## Evidence durability
 

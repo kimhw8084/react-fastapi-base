@@ -7,7 +7,7 @@ import { Application } from './app/Application'
 import { loadRuntime } from './platform/api/runtime'
 import { errorMessage } from './platform/api/client'
 import 'ag-grid-community/styles/ag-grid.css'
-import 'ag-grid-community/styles/ag-theme-alpine.css'
+import 'ag-grid-community/styles/ag-theme-alpine-no-font.css'
 import './theme/tokens.css'
 import './theme/application.css'
 
