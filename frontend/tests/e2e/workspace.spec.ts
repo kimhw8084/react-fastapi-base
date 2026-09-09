@@ -40,6 +40,9 @@ test('admin can manage membership-scoped workspace teams',async({page})=>{
  await team.getByRole('textbox',{name:`Add member to ${teamName}`}).fill('browser.member')
  await team.getByRole('button',{name:'Add member'}).click()
  await expect(team).toContainText('2 explicit members')
+ await page.getByRole('tab',{name:'Events',exact:true}).click()
+ await expect(page.getByRole('heading',{name:'Durable event stream',exact:true})).toBeVisible()
+ await expect(page.getByRole('region',{name:'Durable events'})).toBeVisible()
 })
 
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{

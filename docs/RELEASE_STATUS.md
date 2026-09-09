@@ -24,6 +24,7 @@
 - Saved views now support explicit tenant teams with server-enforced membership, favorites/defaults with scoped default arbitration, and a conflict-resolution recovery action; offline/local reconciliation and broader browser conflict coverage remain open.
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
+- The System workspace now exposes a bounded, tenant-scoped Events tab with replay-cursor controls; polling/replay is the V1 realtime baseline and authenticated push remains optional.
 - Work-item exchange now supports dependency-free XLSX and versioned JSON export, preview and atomic reviewed import with formula-cell rejection; multi-entity relationship snapshots and large background imports remain open.
 - A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations, and both feature and generic dossier attachment paths use object-key-backed metadata with a scanner/CDR hook; provider implementation and company-mounted qualification remain open.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
