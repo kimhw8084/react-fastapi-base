@@ -115,7 +115,7 @@
       "status": "PARTIAL",
       "decision": "AG Grid Community adapter with selection, column persistence, server pagination, reusable advanced-filter/multi-sort state and local page grouping; Work Items also prove the rich query contract server-side.",
       "owner": "frontend/src/platform/grid/DataGrid.tsx; frontend/src/platform/workspace/TableWorkspace.tsx",
-      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; propagate rich query handling to generated backend routers and complete full browser/stress proof. Work Items now prove explicit and all-matching bulk scopes with server fingerprint/revision revalidation."
+      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; complete full browser/stress proof. Generated routers now decode the shared rich query contract, and Work Items prove explicit and all-matching bulk scopes with server fingerprint/revision revalidation."
     },
     {
       "id": "G14",

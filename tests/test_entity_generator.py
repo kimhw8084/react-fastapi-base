@@ -18,7 +18,7 @@ def typed_sample():
         {'key':'name','label':'Name','type':'text','required':True,'max_length':120,'searchable':True},
         {'key':'notes','label':'Notes','type':'textarea','max_length':2000},
         {'key':'status','label':'Status','type':'select','choices':['planned','active','retired'],'default':'planned','filterable':True},
-        {'key':'capacity','label':'Capacity','type':'integer','minimum':0,'maximum':1000,'step':1},
+        {'key':'capacity','label':'Capacity','type':'integer','minimum':0,'maximum':1000,'step':1,'filterable':True},
         {'key':'load_factor','label':'Load factor','type':'number','minimum':0,'maximum':1,'step':0.01,'default':0.25},
         {'key':'critical','label':'Critical','type':'boolean','default':False,'filterable':True},
         {'key':'commissioned_on','label':'Commissioned on','type':'date'},
@@ -108,6 +108,7 @@ def test_typed_generator_emits_typed_backend_frontend_and_constraints(tmp_path):
     model=(root/'backend/app/features/systems/models.py').read_text()
     schemas=(root/'backend/app/features/systems/schemas.py').read_text()
     service=(root/'backend/app/features/systems/service.py').read_text()
+    router=(root/'backend/app/features/systems/router.py').read_text()
     definition=(root/'backend/app/features/systems/definition.py').read_text()
     migration=(root/'backend/migrations/tenant/0002_systems.py').read_text()
     adapter=(root/'frontend/src/features/systems/adapter.tsx').read_text()
@@ -119,6 +120,8 @@ def test_typed_generator_emits_typed_backend_frontend_and_constraints(tmp_path):
     assert 'capacity: int | None=Field(default=None,ge=0,le=1000)' in schemas
     assert 'load_factor: float=Field(default=0.25,ge=0,le=1)' in schemas
     assert "'critical':(System.critical,('true','false'),lambda value:value=='true')" in service
+    assert "'capacity':(System.capacity,(),int)" in service
+    assert 'decode_query_list(sorts' in router and 'advanced_filters' in router
     assert "kind='datetime'" in definition and "nullable=True" in definition
     assert "CheckConstraint('capacity >= 0'" in migration
     assert "CheckConstraint('load_factor <= 1'" in migration

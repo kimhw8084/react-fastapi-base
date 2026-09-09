@@ -154,7 +154,7 @@ def validate(payload:dict[str,Any])->dict[str,Any]:
         searchable=bool(raw.get('searchable',kind in {'text','textarea','email','url','markdown','code'}))
         if searchable and kind not in STRING_TYPES:raise ValueError(f'Only string fields can be searchable ({fkey}).')
         filterable=bool(raw.get('filterable',kind in {'select','boolean'}))
-        if filterable and kind not in {'select','boolean'}:raise ValueError(f'Generated filters currently support select/boolean fields only ({fkey}).')
+        if filterable and kind not in {'select','boolean'}|NUMERIC_TYPES|{'date','datetime'}:raise ValueError(f'Generated filters do not support this field type ({fkey}).')
         default_present='default' in raw
         default=raw.get('default')
         computed=bool(raw.get('computed',False)) or kind in SERVER_COMPUTED_TYPES
@@ -296,11 +296,15 @@ def service_source(spec:dict[str,Any])->str:
     for f in spec['fields']:
         if not f['filterable']:continue
         if f['type']=='boolean':filters.append(f"{f['key']!r}:({cls}.{f['key']},('true','false'),lambda value:value=='true')")
+        elif f['type']=='integer':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),int)")
+        elif f['type'] in NUMERIC_TYPES:filters.append(f"{f['key']!r}:({cls}.{f['key']},(),float)")
+        elif f['type']=='date':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),date.fromisoformat)")
+        elif f['type']=='datetime':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),lambda value:datetime.fromisoformat(value.replace('Z','+00:00')))")
         else:filters.append(f"{f['key']!r}:({cls}.{f['key']},{tuple(f['choices'])!r})")
     sorts=[f['key'] for f in spec['fields'] if f['sortable']]+['updated_at','created_at','created_by','revision']
     sort_src=','.join(f"{key!r}:{cls}.{key}" for key in sorts)
     search=[f"{cls}.{f['key']}" for f in spec['fields'] if f['searchable']] or [f"{cls}.{spec['primary_field']}"]
-    return f'''from app.platform.errors import AppError\nfrom app.platform.query_service import EntityQueryService\nfrom app.platform.revision_service import RevisionCrudService\nfrom .models import {cls}\nfrom .schemas import {cls}Create,{cls}Read,{cls}Page,{cls}BulkRequest\nWORKSPACE={spec['key']!r}\nSORTS={{{sort_src}}}\nCRUD=RevisionCrudService(model={cls},create_schema={cls}Create,read_schema={cls}Read,workspace=WORKSPACE,not_found_label={spec['singular'].title()!r})\nQUERY=EntityQueryService(model={cls},read_schema={cls}Read,sorts=SORTS,search_columns=({','.join(search)},),filters={{{','.join(filters)}}})\ndef list_records(session,actor,*,search='',filters=None,archived=False,sort='updated_at',direction='desc',limit=50,offset=0):return QUERY.list(session,actor,page_schema={cls}Page,search=search,filter_values=filters or {{}},archived=archived,sort=sort,direction=direction,limit=limit,offset=offset)\ndef bulk(session,actor,data:{cls}BulkRequest):\n    if len({{x.id for x in data.targets}})!=len(data.targets):raise AppError(422,'duplicate_target','Bulk selection contains duplicate records.')\n    return [CRUD.lifecycle(session,actor,x.id,x.revision,data.action) for x in data.targets]\n'''
+    return f'''from datetime import date,datetime\nfrom app.platform.errors import AppError\nfrom app.platform.query_service import EntityQueryService\nfrom app.platform.revision_service import RevisionCrudService\nfrom .models import {cls}\nfrom .schemas import {cls}Create,{cls}Read,{cls}Page,{cls}BulkRequest\nWORKSPACE={spec['key']!r}\nSORTS={{{sort_src}}}\nCRUD=RevisionCrudService(model={cls},create_schema={cls}Create,read_schema={cls}Read,workspace=WORKSPACE,not_found_label={spec['singular'].title()!r})\nQUERY=EntityQueryService(model={cls},read_schema={cls}Read,sorts=SORTS,search_columns=({','.join(search)},),filters={{{','.join(filters)}}})\ndef list_records(session,actor,*,search='',filters=None,archived=False,sort='updated_at',direction='desc',limit=50,offset=0,sorts=None,advanced_filters=None):return QUERY.list(session,actor,page_schema={cls}Page,search=search,filter_values=filters or {{}},archived=archived,sort=sort,direction=direction,limit=limit,offset=offset,sorts=sorts,advanced_filters=advanced_filters)\ndef bulk(session,actor,data:{cls}BulkRequest):\n    if len({{x.id for x in data.targets}})!=len(data.targets):raise AppError(422,'duplicate_target','Bulk selection contains duplicate records.')\n    return [CRUD.lifecycle(session,actor,x.id,x.revision,data.action) for x in data.targets]\n'''
 
 
 def entity_source(spec:dict[str,Any])->str:
@@ -309,10 +313,56 @@ def entity_source(spec:dict[str,Any])->str:
     return f'''from sqlalchemy import or_,select\nfrom app.platform.entity_registry import EntityBinding\nfrom app.platform.schemas import EntityDefinition,EntityReference\nfrom .models import {cls}\nfrom . import service\ndef _ref(row):return EntityReference(entity={spec['key']!r},id=row.id,label=str(getattr(row,{spec['primary_field']!r})),workspace={spec['key']!r},archived=row.archived,revision=row.revision)\ndef resolve(session,record_id):\n    row=session.get({cls},record_id);return _ref(row) if row else None\ndef search(session,query,limit):\n    where=[]\n    if query:\n        escaped=query.replace('\\\\','\\\\\\\\').replace('%','\\\\%').replace('_','\\\\_');where.append(or_({search_or}))\n    return [_ref(row) for row in session.scalars(select({cls}).where(*where).order_by({cls}.archived,{cls}.{spec['primary_field']},{cls}.id).limit(limit)).all()]\ndef bulk_update(session,actor,targets,patch):\n    rows=service.CRUD.bulk_update(session,actor,targets,patch);return [resolve(session,row.id) for row in rows]\ndef binding():return EntityBinding(EntityDefinition(key={spec['key']!r},label={spec['label']!r},description={spec['description']!r},workspace={spec['key']!r},primary_field={spec['primary_field']!r},authority='canonical',search_fields={[f['key'] for f in spec['fields'] if f['searchable']]!r},capabilities=['history','archive','saved_views','relationships']),resolve,search,bulk_update=bulk_update)\n'''
 
 
-def router_source(spec:dict[str,Any])->str:
+def _legacy_router_source(spec:dict[str,Any])->str:
     cls=pascal(spec['key'].rstrip('s') or spec['key']);path=spec['key'].replace('_','-');filters=[f for f in spec['fields'] if f['filterable']]
     params=''.join(f",{f['key']}:str=''" for f in filters);fd='{'+','.join(repr(f['key'])+':'+f['key'] for f in filters)+'}'
     return f'''from typing import Annotated\nfrom fastapi import APIRouter,Depends,Header,Query,Request\nfrom app.platform.idempotency import execute_once\nfrom app.platform.schemas import AuditRead,RevisionInput\nfrom app.platform.security import Actor,actor_for\nfrom app.platform.transactions import write_transaction\nfrom . import service\nfrom .schemas import {cls}Create,{cls}Update,{cls}Read,{cls}Page,{cls}BulkRequest,RevertRequest\nrouter=APIRouter(prefix={('/'+path)!r},tags=[{spec['label']!r}]);A=Annotated[Actor,Depends(actor_for)]\n@router.get('',response_model={cls}Page)\ndef list_records(request:Request,actor:A,search:str=Query('',max_length=200),archived:bool=False,sort:str='updated_at',direction:str='desc',limit:int=Query(50,ge=1,le=1000),offset:int=Query(0,ge=0){params}):\n    with request.app.state.database.session(actor.tenant_id) as db:return service.list_records(db,actor,search=search,filters={fd},archived=archived,sort=sort,direction=direction,limit=limit,offset=offset)\n@router.post('',response_model={cls}Read,status_code=201)\ndef create(request:Request,actor:A,data:{cls}Create,idempotency_key:str|None=Header(None)):\n    with write_transaction(request.app.state.database,actor.tenant_id) as db:return execute_once(db,actor,idempotency_key,{(spec['key']+'.create')!r},data.model_dump(),lambda:service.CRUD.create(db,actor,data).model_dump(mode='json'))\n@router.post('/bulk',response_model=list[{cls}Read])\ndef bulk(request:Request,actor:A,data:{cls}BulkRequest,idempotency_key:str=Header(...)):\n    with write_transaction(request.app.state.database,actor.tenant_id) as db:\n        result=execute_once(db,actor,idempotency_key,{(spec['key']+'.bulk')!r},data.model_dump(),lambda:{{'items':[row.model_dump(mode='json') for row in service.bulk(db,actor,data)]}});return result['items']\n@router.get('/{{record_id}}',response_model={cls}Read)\ndef get_record(request:Request,actor:A,record_id:str):\n    actor.require('read')\n    with request.app.state.database.session(actor.tenant_id) as db:return {cls}Read.model_validate(service.CRUD.require(db,record_id))\n@router.put('/{{record_id}}',response_model={cls}Read)\ndef update_record(request:Request,actor:A,record_id:str,data:{cls}Update):\n    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.update(db,actor,record_id,data.revision,data.model_dump(exclude={{'revision'}}))\n@router.post('/{{record_id}}/lifecycle/{{action}}',response_model={cls}Read)\ndef lifecycle(request:Request,actor:A,record_id:str,action:str,data:RevisionInput):\n    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.lifecycle(db,actor,record_id,data.revision,action)\n@router.get('/{{record_id}}/history',response_model=list[AuditRead])\ndef history(request:Request,actor:A,record_id:str):\n    with request.app.state.database.session(actor.tenant_id) as db:return service.CRUD.history(db,actor,record_id)\n@router.post('/{{record_id}}/revert',response_model={cls}Read)\ndef revert(request:Request,actor:A,record_id:str,data:RevertRequest):\n    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.revert(db,actor,record_id,data.revision,data.target_revision)\n'''
+
+
+def router_source(spec:dict[str,Any])->str:
+    cls=pascal(spec['key'].rstrip('s') or spec['key'])
+    path=spec['key'].replace('_','-')
+    filters=[f for f in spec['fields'] if f['filterable']]
+    params=''.join(f",{f['key']}:str=''" for f in filters)
+    filter_values='{'+','.join(repr(f['key'])+':'+f['key'] for f in filters)+'}'
+    return f'''from typing import Annotated
+from fastapi import APIRouter,Depends,Header,Query,Request
+from app.platform.idempotency import execute_once
+from app.platform.query_service import decode_query_list
+from app.platform.schemas import AuditRead,RevisionInput
+from app.platform.security import Actor,actor_for
+from app.platform.transactions import write_transaction
+from . import service
+from .schemas import {cls}Create,{cls}Update,{cls}Read,{cls}Page,{cls}BulkRequest,RevertRequest
+router=APIRouter(prefix={('/'+path)!r},tags=[{spec['label']!r}]);A=Annotated[Actor,Depends(actor_for)]
+@router.get('',response_model={cls}Page)
+def list_records(request:Request,actor:A,search:str=Query('',max_length=200),archived:bool=False,sort:str='updated_at',direction:str='desc',sorts:str='',advanced_filters:str='',limit:int=Query(50,ge=1,le=1000),offset:int=Query(0,ge=0){params}):
+    with request.app.state.database.session(actor.tenant_id) as db:
+        return service.list_records(db,actor,search=search,filters={filter_values},archived=archived,sort=sort,direction=direction,sorts=decode_query_list(sorts,name='sorts',limit=8),advanced_filters=decode_query_list(advanced_filters,name='advanced_filters',limit=20),limit=limit,offset=offset)
+@router.post('',response_model={cls}Read,status_code=201)
+def create(request:Request,actor:A,data:{cls}Create,idempotency_key:str|None=Header(None)):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return execute_once(db,actor,idempotency_key,{(spec['key']+'.create')!r},data.model_dump(),lambda:service.CRUD.create(db,actor,data).model_dump(mode='json'))
+@router.post('/bulk',response_model=list[{cls}Read])
+def bulk(request:Request,actor:A,data:{cls}BulkRequest,idempotency_key:str=Header(...)):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:
+        result=execute_once(db,actor,idempotency_key,{(spec['key']+'.bulk')!r},data.model_dump(),lambda:{{'items':[row.model_dump(mode='json') for row in service.bulk(db,actor,data)]}});return result['items']
+@router.get('/{{record_id}}',response_model={cls}Read)
+def get_record(request:Request,actor:A,record_id:str):
+    actor.require('read')
+    with request.app.state.database.session(actor.tenant_id) as db:return {cls}Read.model_validate(service.CRUD.require(db,record_id))
+@router.put('/{{record_id}}',response_model={cls}Read)
+def update_record(request:Request,actor:A,record_id:str,data:{cls}Update):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.update(db,actor,record_id,data.revision,data.model_dump(exclude={{'revision'}}))
+@router.post('/{{record_id}}/lifecycle/{{action}}',response_model={cls}Read)
+def lifecycle(request:Request,actor:A,record_id:str,action:str,data:RevisionInput):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.lifecycle(db,actor,record_id,data.revision,action)
+@router.get('/{{record_id}}/history',response_model=list[AuditRead])
+def history(request:Request,actor:A,record_id:str):
+    with request.app.state.database.session(actor.tenant_id) as db:return service.CRUD.history(db,actor,record_id)
+@router.post('/{{record_id}}/revert',response_model={cls}Read)
+def revert(request:Request,actor:A,record_id:str,data:RevertRequest):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:return service.CRUD.revert(db,actor,record_id,data.revision,data.target_revision)
+'''
 
 
 def _draft_parse_expr(field:dict[str,Any])->str:
