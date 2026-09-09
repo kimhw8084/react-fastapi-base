@@ -1,5 +1,6 @@
 from pathlib import Path
 import pytest
+from app.platform.attachments import DeterministicMalwareScanner
 from app.platform.storage import LocalFilesystemStorage, MemoryStorage
 
 
@@ -22,3 +23,10 @@ def test_memory_storage_matches_adapter_contract():
     storage=MemoryStorage();stored=storage.put('tenant-a','exports/result.json',b'{}','application/json')
     assert stored.size==2 and storage.get('tenant-a','exports/result.json')==b'{}'
     with pytest.raises(FileNotFoundError):storage.get('tenant-b','exports/result.json')
+
+
+def test_deterministic_attachment_scanner_rejects_active_content():
+    scanner=DeterministicMalwareScanner()
+    assert scanner.scan(b'plain text','text/plain','notes.txt')
+    assert not scanner.scan(scanner.EICAR_TOKEN,'text/plain','eicar.txt')
+    assert not scanner.scan(b'<svg><script>alert(1)</script></svg>','image/svg+xml','diagram.svg')

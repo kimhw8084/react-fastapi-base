@@ -41,6 +41,19 @@ def test_lot_route_state_duration_recipe_and_cross_links(client):
         assert linked.status_code==201,linked.text
 
 
+def test_server_owned_computed_duration_persists_through_update_and_revert(client):
+    start=datetime(2026,9,7,12,tzinfo=timezone.utc)
+    created=client.post('/api/v1/equipment-states',json={'label':'Computed duration fixture','state':'production','started_at':start.isoformat(),'ended_at':(start+timedelta(minutes=30)).isoformat(),'duration_minutes':999})
+    assert created.status_code==201,created.text
+    row=created.json();assert row['duration_minutes']==30
+    changed=client.put(f"/api/v1/equipment-states/{row['id']}",json={'label':row['label'],'state':row['state'],'started_at':start.isoformat(),'ended_at':(start+timedelta(minutes=45)).isoformat(),'duration_minutes':1,'revision':row['revision']})
+    assert changed.status_code==200,changed.text
+    updated=changed.json();assert updated['revision']==2 and updated['duration_minutes']==45
+    reverted=client.post(f"/api/v1/equipment-states/{row['id']}/revert",json={'revision':updated['revision'],'target_revision':1})
+    assert reverted.status_code==200,reverted.text
+    assert reverted.json()['revision']==3 and reverted.json()['duration_minutes']==30
+
+
 def test_semiconductor_workspace_definitions_expose_pack_projections(client):
     definitions={item['key']:item for item in client.get('/api/v1/workspaces').json()}
     assert definitions['process_measurements']['visualizations'][0]=='spc'

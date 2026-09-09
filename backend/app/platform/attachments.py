@@ -17,6 +17,24 @@ from app.platform.storage import ObjectStorageAdapter
 class MalwareScanner(Protocol):
     def scan(self, content: bytes, content_type: str, filename: str) -> bool: ...
 
+
+class DeterministicMalwareScanner:
+    """Local contract-test scanner.
+
+    It is deliberately conservative and deterministic: it rejects the standard
+    EICAR test token and active SVG content. Production deployments replace it
+    with a malware/CDR adapter before enabling unrestricted document uploads.
+    """
+
+    EICAR_TOKEN = b"X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*"
+
+    def scan(self, content: bytes, content_type: str, filename: str) -> bool:
+        if self.EICAR_TOKEN in content:
+            return False
+        if content_type == 'image/svg+xml' or filename.casefold().endswith('.svg'):
+            return False
+        return True
+
 class NoopMalwareScanner:
     """Development hook. Production may inject a malware/CDR adapter."""
     def scan(self, content: bytes, content_type: str, filename: str) -> bool:

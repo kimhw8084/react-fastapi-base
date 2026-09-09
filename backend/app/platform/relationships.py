@@ -192,7 +192,13 @@ def explore(session: Session, actor: Actor, registry: EntityRegistry, entity: st
     frontier={(entity,record_id)};visited=set();result=[]
     for _level in range(depth):
         if not frontier or len(result)>=limit: break
-        rows=session.scalars(select(EntityRelationship).where(EntityRelationship.archived.is_(False)).order_by(EntityRelationship.updated_at.desc(),EntityRelationship.id).limit(limit*4)).all()
+        outgoing=[and_(EntityRelationship.source_entity==source,EntityRelationship.source_id==record) for source,record in frontier]
+        incoming=[and_(EntityRelationship.target_entity==target,EntityRelationship.target_id==record) for target,record in frontier]
+        edge_filters=[]
+        if direction in {'both','outgoing'}: edge_filters.extend(outgoing)
+        if direction in {'both','incoming'}: edge_filters.extend(incoming)
+        if not edge_filters: break
+        rows=session.scalars(select(EntityRelationship).where(EntityRelationship.archived.is_(False),or_(*edge_filters)).order_by(EntityRelationship.updated_at.desc(),EntityRelationship.id).limit(limit*4)).all()
         next_frontier=set()
         for row in rows:
             definition=registry.relationship(row.definition_key)

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections.abc import Callable, Mapping
 from uuid import uuid4
 from sqlalchemy import select, update
 from sqlalchemy.orm import Session
@@ -14,20 +15,44 @@ class RevisionCrudService:
     Feature code owns schemas, list semantics and business rules; this class owns the
     invariant mechanics that should not be rewritten in every CRUD workspace.
     """
-    def __init__(self, *, model, create_schema, read_schema, workspace: str, not_found_label: str, normalize_values=None):
+    def __init__(self, *, model, create_schema, read_schema, workspace: str, not_found_label: str, normalize_values=None, computed_values: Callable[[dict], Mapping] | None = None, computed_fields: tuple[str, ...] = ()):
         self.model=model;self.create_schema=create_schema;self.read_schema=read_schema
         self.workspace=workspace;self.not_found_label=not_found_label;self.normalize_values=normalize_values
+        self.computed_values=computed_values;self.computed_fields=tuple(computed_fields)
 
     def normalized(self, values: dict) -> dict:
         data=dict(values)
         if not self.normalize_values:
-            return data
-        try:
-            return dict(self.normalize_values(data))
-        except AppError:
-            raise
-        except ValueError as error:
-            raise AppError(422,'domain_validation',str(error)) from error
+            normalized=data
+        else:
+            try:
+                normalized=dict(self.normalize_values(data))
+            except AppError:
+                raise
+            except ValueError as error:
+                raise AppError(422,'domain_validation',str(error)) from error
+        if self.computed_values:
+            try:
+                computed=dict(self.computed_values(dict(normalized)))
+            except AppError:
+                raise
+            except ValueError as error:
+                raise AppError(422,'computed_field_validation',str(error)) from error
+            # Only the declared server-owned fields can be added by this hook.
+            # A provider cannot smuggle arbitrary columns into a mutation.
+            unknown=set(computed)-set(normalized)-set(self.computed_fields)
+            if unknown:
+                raise AppError(500,'computed_field_contract','Computed field resolver returned an undeclared field.')
+            normalized.update({key:computed[key] for key in self.computed_fields if key in computed})
+        return normalized
+
+    def _computed_update(self, row, values: dict) -> dict:
+        if not self.computed_values:
+            return {}
+        current={field:getattr(row,field) for field in self.create_schema.model_fields if hasattr(row,field)}
+        merged={**current,**values}
+        normalized=self.normalized(merged)
+        return {key:normalized[key] for key in self.computed_fields if key in normalized}
 
     def require(self, session: Session, record_id: str):
         row=session.get(self.model,record_id)
@@ -40,7 +65,8 @@ class RevisionCrudService:
 
     def create(self,session: Session,actor: Actor,data):
         actor.require('write')
-        row=self.model(id=str(uuid4()),created_by=actor.user_id,**self.normalized(data.model_dump()))
+        values=self.normalized(data.model_dump())
+        row=self.model(id=str(uuid4()),created_by=actor.user_id,**values)
         session.add(row);session.flush()
         record_event(session,actor,workspace=self.workspace,entity_id=row.id,action='create',revision=1,before=None,after=self.snapshot(row))
         emit_platform_event(session,actor,f'{self.workspace}.create',{'revision':1,'archived':False},entity_type=self.workspace,entity_id=row.id)
@@ -50,6 +76,8 @@ class RevisionCrudService:
         if row.revision!=expected:
             raise AppError(409,'revision_conflict','This record changed. Review the current revision before saving.',{'current':self.snapshot(row)})
         before=self.snapshot(row)
+        computed=self._computed_update(row,values)
+        values={**values,**computed}
         result=session.execute(update(self.model).where(self.model.id==row.id,self.model.revision==expected).values(**values,revision=expected+1,updated_at=utcnow()),execution_options={'synchronize_session':False})
         if result.rowcount!=1:
             raise AppError(409,'revision_conflict','This record changed. Refresh before retrying.')

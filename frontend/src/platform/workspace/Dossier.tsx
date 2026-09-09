@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { Dialog } from '../ui/Dialog'
 import { ErrorNotice } from '../ui/Notice'
@@ -12,6 +12,20 @@ import { RecordActionMenu } from '../commands/RecordActionMenu'
 import { FilesPanel } from './FilesPanel'
 
 type DossierTab='overview'|'fields'|'relationships'|'activity'|'history'|'compare'|'comments'|'files'|'audit'|'actions'
+
+export function formatComparisonValue(value: unknown): { kind: 'empty'|'text'|'structured'; text: string } {
+  if (value === null || value === undefined || value === '') return { kind: 'empty', text: '—' }
+  if (typeof value === 'string') return { kind: 'text', text: value }
+  try { return { kind: 'structured', text: JSON.stringify(value, null, 2) } }
+  catch { return { kind: 'text', text: String(value) }
+  }
+}
+
+function ComparisonValue({ value, deleted = false }: { value: unknown; deleted?: boolean }): ReactNode {
+  const formatted = formatComparisonValue(value)
+  if (formatted.kind === 'structured') return <pre className={deleted ? 'comparison-value deleted' : 'comparison-value'}>{formatted.text}</pre>
+  return <span className={deleted ? 'comparison-value deleted' : 'comparison-value'}>{formatted.text}</span>
+}
 
 export function Dossier<T extends BaseRecord>({ adapter, api, row, tenant, user, canWrite, canRestore, onClose, onEdit, onChanged }: { adapter: WorkspaceAdapter<T>; api: ApiClient; row: T; tenant: string; user: string; canWrite: boolean; canRestore: boolean; onClose: () => void; onEdit?: () => void; onChanged: () => void }) {
   const tabs:readonly DossierTab[]=['overview','fields','relationships','activity','history','compare','comments','files','audit','actions']
@@ -46,7 +60,7 @@ export function Dossier<T extends BaseRecord>({ adapter, api, row, tenant, user,
     {tab==='relationships'&&<div className="dossier-relationships"><Relationships api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user} canWrite={canWrite} readOnly={row.archived}/><div className="relationship-explorer-grid"><RelatedRecordsExplorer api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user}/><BacklinksExplorer api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user}/><DependencyExplorerPanel api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user}/><ImpactExplorerPanel api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user}/><ConnectionExplorerPanel api={api} entity={adapter.entityKey??adapter.key} recordId={row.id} tenant={tenant} user={user}/></div></div>}
     {tab==='activity'&&<div><p className="muted">Activity is the record’s immutable lifecycle and revision stream.</p>{historyPanel}</div>}
     {tab==='history'&&historyPanel}
-    {tab==='compare'&&<section aria-label="Compare revisions" className="revision-compare"><div className="compare-controls"><label>Earlier revision<select value={leftRevision} onChange={event=>setLeftRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label><label>Later revision<select value={rightRevision??row.revision} onChange={event=>setRightRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label></div>{leftRevision===(rightRevision??row.revision)?<p className="muted">Choose two different revisions to compare.</p>:changedFields.length?<dl className="changes">{changedFields.map(key=><div key={key}><dt>{key.replaceAll('_',' ')}</dt><dd><del>{String(left[key]??'—')}</del> → <span>{String(right[key]??'—')}</span></dd></div>)}</dl>:<p>No field changes between these revisions.</p>}</section>}
+    {tab==='compare'&&<section aria-label="Compare revisions" className="revision-compare"><div className="compare-controls"><label>Earlier revision<select value={leftRevision} onChange={event=>setLeftRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label><label>Later revision<select value={rightRevision??row.revision} onChange={event=>setRightRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label></div>{leftRevision===(rightRevision??row.revision)?<p className="muted">Choose two different revisions to compare.</p>:changedFields.length?<dl className="changes">{changedFields.map(key=><div key={key}><dt>{key.replaceAll('_',' ')}</dt><dd><ComparisonValue value={left[key]} deleted/> <span aria-hidden="true">→</span> <ComparisonValue value={right[key]}/></dd></div>)}</dl>:<p>No field changes between these revisions.</p>}</section>}
     {tab==='comments'&&(adapter.entityKey?commentsPanel:customTab('comments'))}
     {tab==='files'&&(adapter.renderAttachments?.(row)??(adapter.entityKey?<FilesPanel api={api} entity={adapter.entityKey} recordId={row.id} canWrite={canWrite&&!row.archived} scope={`${user}:${tenant}`}/>:customTab('files')))}
     {tab==='audit'&&auditPanel}
