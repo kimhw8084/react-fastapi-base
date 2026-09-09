@@ -1,141 +1,156 @@
-TypeScript syntax only: 128 files parsed. This is NOT a full typecheck.
+TypeScript syntax only: 142 files parsed. This is NOT a full typecheck.
 TAP version 13
 # Subtest: runtime accepts each configured visual profile
 ok 1 - runtime accepts each configured visual profile
   ---
-  duration_ms: 0.611459
+  duration_ms: 0.808625
   ...
 # Subtest: runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
 ok 2 - runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
   ---
-  duration_ms: 0.160959
+  duration_ms: 0.1645
   ...
 # Subtest: storage keys isolate app, user, tenant and version
 ok 3 - storage keys isolate app, user, tenant and version
   ---
-  duration_ms: 0.126542
+  duration_ms: 0.108458
   ...
 # Subtest: corrupted or unavailable local storage is harmless
 ok 4 - corrupted or unavailable local storage is harmless
   ---
-  duration_ms: 0.101375
+  duration_ms: 0.122459
   ...
 # Subtest: API transport supplies tenant and CSRF but never an identity header
 ok 5 - API transport supplies tenant and CSRF but never an identity header
   ---
-  duration_ms: 11.507166
+  duration_ms: 13.617875
   ...
 # Subtest: generated operation routes safely encode parameters
 ok 6 - generated operation routes safely encode parameters
   ---
-  duration_ms: 0.2325
+  duration_ms: 0.199709
   ...
 # Subtest: API error retains safe code/request ID and conflict details
 ok 7 - API error retains safe code/request ID and conflict details
   ---
-  duration_ms: 0.360416
+  duration_ms: 0.274417
   ...
 # Subtest: HTML API response is not treated as data
 ok 8 - HTML API response is not treated as data
   ---
-  duration_ms: 0.23925
+  duration_ms: 0.1985
   ...
 # Subtest: transport failures produce an explicit error, not an empty dataset
 ok 9 - transport failures produce an explicit error, not an empty dataset
   ---
-  duration_ms: 0.194583
+  duration_ms: 0.178
   ...
 # Subtest: API refuses arbitrary external endpoints
 ok 10 - API refuses arbitrary external endpoints
   ---
-  duration_ms: 0.133584
+  duration_ms: 0.125709
   ...
 # Subtest: appearance mode is independent from visual personality
 ok 11 - appearance mode is independent from visual personality
   ---
-  duration_ms: 0.065958
+  duration_ms: 0.063584
   ...
 # Subtest: surface presentation converts dense side surfaces to mobile sheets
 ok 12 - surface presentation converts dense side surfaces to mobile sheets
   ---
-  duration_ms: 0.088541
+  duration_ms: 0.078166
   ...
 # Subtest: command registry exposes one action consistently by permission selection and mode
 ok 13 - command registry exposes one action consistently by permission selection and mode
   ---
-  duration_ms: 0.0835
+  duration_ms: 0.091875
   ...
 # Subtest: adaptive layout preserves complexity while changing presentation
 ok 14 - adaptive layout preserves complexity while changing presentation
   ---
-  duration_ms: 0.111
+  duration_ms: 0.178416
   ...
 # Subtest: surface stack enforces top-most layering and closes descendants with parents
 ok 15 - surface stack enforces top-most layering and closes descendants with parents
   ---
-  duration_ms: 0.408042
+  duration_ms: 0.314458
   ...
 # Subtest: typed field draft helpers reject ambiguity and normalize values
 ok 16 - typed field draft helpers reject ambiguity and normalize values
   ---
-  duration_ms: 0.85
+  duration_ms: 3.030667
   ...
 # Subtest: rich field draft helpers validate structured data and choices
 ok 17 - rich field draft helpers validate structured data and choices
   ---
-  duration_ms: 0.21025
+  duration_ms: 0.24225
   ...
 # Subtest: generic workspace field parser enforces read-only and numeric bounds
 ok 18 - generic workspace field parser enforces read-only and numeric bounds
   ---
-  duration_ms: 0.219834
+  duration_ms: 0.206208
   ...
 # Subtest: workspace state sanitizes stale view data and preserves supported projection intent
 ok 19 - workspace state sanitizes stale view data and preserves supported projection intent
   ---
-  duration_ms: 0.187667
+  duration_ms: 0.203167
   ...
 # Subtest: workspace state rejects stale visualization by falling back deterministically
 ok 20 - workspace state rejects stale visualization by falling back deterministically
   ---
-  duration_ms: 0.101625
+  duration_ms: 0.102166
+  ...
+# Subtest: dashboard composer sanitizes widgets, persists variables and responds to viewport
+ok 21 - dashboard composer sanitizes widgets, persists variables and responds to viewport
+  ---
+  duration_ms: 0.158875
+  ...
+# Subtest: risk model keeps scoring server-parity friendly and exposes heatmap/effect bands
+ok 22 - risk model keeps scoring server-parity friendly and exposes heatmap/effect bands
+  ---
+  duration_ms: 0.116125
+  ...
+# Subtest: workspace state migrates legacy views and exposes deterministic server conflict reconciliation
+ok 23 - workspace state migrates legacy views and exposes deterministic server conflict reconciliation
+  ---
+  duration_ms: 0.121
   ...
 # Subtest: operational table model groups rows and preserves at least the identity column
-ok 21 - operational table model groups rows and preserves at least the identity column
+ok 24 - operational table model groups rows and preserves at least the identity column
   ---
-  duration_ms: 12.134375
+  duration_ms: 17.61725
   ...
 # Subtest: planning critical path follows longest dependency chain and date shift is deterministic
-ok 22 - planning critical path follows longest dependency chain and date shift is deterministic
+ok 25 - planning critical path follows longest dependency chain and date shift is deterministic
   ---
-  duration_ms: 0.778041
+  duration_ms: 0.832125
   ...
 # Subtest: rack connection trace finds deterministic shortest multi-hop path
-ok 23 - rack connection trace finds deterministic shortest multi-hop path
+ok 26 - rack connection trace finds deterministic shortest multi-hop path
   ---
-  duration_ms: 0.4465
+  duration_ms: 0.615458
   ...
 # Subtest: SPC model matches deterministic engineering fixtures
-ok 24 - SPC model matches deterministic engineering fixtures
+ok 27 - SPC model matches deterministic engineering fixtures
   ---
-  duration_ms: 1.02375
+  duration_ms: 1.236333
   ...
 # Subtest: semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
-ok 25 - semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
+ok 28 - semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
   ---
-  duration_ms: 0.606209
+  duration_ms: 0.592208
   ...
 # Subtest: software engineering pack models parse pipeline, incident and trace data safely
-ok 26 - software engineering pack models parse pipeline, incident and trace data safely
+ok 29 - software engineering pack models parse pipeline, incident and trace data safely
   ---
-  duration_ms: 0.783042
+  duration_ms: 0.890916
   ...
-1..26
-# tests 26
+1..29
+# tests 29
 # suites 0
-# pass 26
+# pass 29
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 73.951708
+# duration_ms 84.340083
