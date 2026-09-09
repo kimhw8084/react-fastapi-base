@@ -2,47 +2,47 @@ TAP version 13
 # Subtest: static HTML has CSP and no-store
 ok 1 - static HTML has CSP and no-store
   ---
-  duration_ms: 28.909542
+  duration_ms: 28.82875
   ...
 # Subtest: SPA navigation works but API is never HTML fallback
 ok 2 - SPA navigation works but API is never HTML fallback
   ---
-  duration_ms: 7.064917
+  duration_ms: 4.906875
   ...
 # Subtest: hashed assets are immutable; missing asset is 404
 ok 3 - hashed assets are immutable; missing asset is 404
   ---
-  duration_ms: 5.4245
+  duration_ms: 4.869375
   ...
 # Subtest: invalid host and unsafe method fail
 ok 4 - invalid host and unsafe method fail
   ---
-  duration_ms: 7.314417
+  duration_ms: 7.186042
   ...
 # Subtest: symlink cannot disclose source outside dist
 ok 5 - symlink cannot disclose source outside dist
   ---
-  duration_ms: 3.529792
+  duration_ms: 3.555
   ...
 # Subtest: runtime config can change without rebuilding; corrupt config fails closed
 ok 6 - runtime config can change without rebuilding; corrupt config fails closed
   ---
-  duration_ms: 5.464708
+  duration_ms: 5.056
   ...
 # Subtest: hidden files and source maps are not served
 ok 7 - hidden files and source maps are not served
   ---
-  duration_ms: 5.208209
+  duration_ms: 4.6975
   ...
 # Subtest: runtime rejects credentials, scripts, unknown keys and bad version
 ok 8 - runtime rejects credentials, scripts, unknown keys and bad version
   ---
-  duration_ms: 0.2495
+  duration_ms: 0.266042
   ...
 # Subtest: embedded lab has a same-origin frame boundary; app remains non-frameable
 ok 9 - embedded lab has a same-origin frame boundary; app remains non-frameable
   ---
-  duration_ms: 5.380416
+  duration_ms: 4.6485
   ...
 1..9
 # tests 9
@@ -52,4 +52,4 @@ ok 9 - embedded lab has a same-origin frame boundary; app remains non-frameable
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 109.447333
+# duration_ms 103.508958

@@ -94,15 +94,7 @@ computing gzip size...
 │  storybook-static/assets/iframe-BZoEJ2jG.js
 │  1,128.38 kB │ gzip: 320.98 kB
 
-│
-▲  Vite [plugin builtin:vite-reporter]
-│  (!) Some chunks are larger than 500 kB after minification. Consider:
-│  - Using dynamic import() to code-split the application
-│  - Use build.rolldownOptions.output.codeSplitting to improve chunking:
-│  ]8;;https://rolldown.rs/reference/OutputOptions.codeSplittinghttps://rolldown.rs/reference/OutputOptions.codeSplitting]8;;
-│  - Adjust chunk size limit for this warning via
-│  build.chunkSizeWarningLimit.
-│  Vite ✓ built in 584ms
+│  Vite ✓ built in 725ms
 │
 ◇  Output directory:
 │  /Users/haewonkim/home/development/react-fastapi-base/frontend/storybook-static

@@ -1,11 +1,11 @@
-PASS descriptive-100k: 0.042s <= 1.500s
-PASS imr-100k: 0.016s <= 2.500s
-PASS ewma-100k: 0.011s <= 1.500s
-PASS run-rules-100k: 0.113s <= 2.500s
-PASS pareto-100k: 0.012s <= 1.500s
-PASS p-chart-100k: 0.045s <= 2.500s
-PASS c-chart-100k: 0.010s <= 1.500s
-PASS cusum-100k: 0.027s <= 2.500s
+PASS descriptive-100k: 0.043s <= 1.500s
+PASS imr-100k: 0.015s <= 2.500s
+PASS ewma-100k: 0.010s <= 1.500s
+PASS run-rules-100k: 0.106s <= 2.500s
+PASS pareto-100k: 0.011s <= 1.500s
+PASS p-chart-100k: 0.043s <= 2.500s
+PASS c-chart-100k: 0.009s <= 1.500s
+PASS cusum-100k: 0.025s <= 2.500s
 PASS correlation-100k: 0.027s <= 1.500s
 PASS regression-100k: 0.033s <= 2.500s
 Performance smoke passed. Browser rendering and target-Mac budgets still require the dependency-resolved application build.
