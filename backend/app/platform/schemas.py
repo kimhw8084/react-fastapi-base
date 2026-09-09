@@ -203,6 +203,8 @@ class ViewCreate(StrictSchema):
     name: str = Field(min_length=1, max_length=120)
     scope: Literal['personal','team'] = 'personal'
     team_id: str | None = Field(default=None, max_length=36)
+    is_favorite: bool = False
+    is_default: bool = False
     definition: ViewDefinition
     @field_validator('name')
     @classmethod

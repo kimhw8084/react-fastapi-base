@@ -38,7 +38,7 @@ def migrate_definition(value: dict) -> dict:
     return data
 
 def list_views(session: Session, actor: Actor, workspace: str) -> list[ViewRead]:
-    rows=session.scalars(select(SavedView).where(SavedView.workspace==workspace,or_(SavedView.scope=='team',SavedView.owner==actor.user_id)).order_by(SavedView.name).limit(200)).all()
+    rows=session.scalars(select(SavedView).where(SavedView.workspace==workspace,or_(SavedView.scope=='team',SavedView.owner==actor.user_id)).order_by(SavedView.is_default.desc(),SavedView.is_favorite.desc(),SavedView.name).limit(200)).all()
     rows=[row for row in rows if row.scope=='personal' or teams.can_access(session,actor,row.team_id)]
     return [ViewRead.model_validate(row).model_copy(update={'definition':ViewDefinition.model_validate(migrate_definition(row.definition))}) for row in rows]
 
@@ -56,9 +56,19 @@ def create_view(session: Session, actor: Actor, workspace: str, data: ViewCreate
         if team is None or not teams.can_access(session,actor,team.id):raise AppError(403,'team_forbidden','You are not a member of this team.')
         team_id=team.id
     row=SavedView(id=str(uuid4()),workspace=workspace,owner=actor.user_id,name=data.name,scope=data.scope,team_id=team_id,
-                  definition=sanitize_view(definition,data.definition),revision=1,schema_version=2)
+                  definition=sanitize_view(definition,data.definition),revision=1,schema_version=2,is_favorite=data.is_favorite,is_default=data.is_default)
     session.add(row);session.flush()
+    _arbitrate_default(session,row)
     return ViewRead.model_validate(row)
+
+def _arbitrate_default(session: Session, row: SavedView) -> None:
+    if not row.is_default:
+        return
+    query=select(SavedView).where(SavedView.workspace==row.workspace,SavedView.id!=row.id,SavedView.is_default.is_(True))
+    if row.scope=='personal': query=query.where(SavedView.owner==row.owner,SavedView.scope=='personal')
+    else: query=query.where(SavedView.scope=='team',SavedView.team_id==row.team_id)
+    for other in session.scalars(query).all():
+        other.is_default=False
 
 def update_view(session: Session, actor: Actor, workspace: str, view_id: str, data: ViewUpdate, definition: WorkspaceDefinition) -> ViewRead:
     row=get_view(session,actor,workspace,view_id)
@@ -73,7 +83,8 @@ def update_view(session: Session, actor: Actor, workspace: str, view_id: str, da
         team=teams.default_team(session,actor) if data.team_id is None else session.get(teams.WorkspaceTeam,data.team_id)
         if team is None or not teams.can_access(session,actor,team.id):raise AppError(403,'team_forbidden','You are not a member of this team.')
         team_id=team.id
-    row.name=data.name;row.scope=data.scope;row.team_id=team_id;row.definition=sanitize_view(definition,data.definition);row.schema_version=2
+    row.name=data.name;row.scope=data.scope;row.team_id=team_id;row.definition=sanitize_view(definition,data.definition);row.schema_version=2;row.is_favorite=data.is_favorite;row.is_default=data.is_default
+    _arbitrate_default(session,row)
     row.revision+=1;row.updated_at=utcnow()
     session.flush()
     return ViewRead.model_validate(row)

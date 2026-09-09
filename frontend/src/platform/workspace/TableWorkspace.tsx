@@ -13,7 +13,7 @@ import { TableDisplayControls } from './TableDisplayControls'
 import { TableContextMenu } from './TableContextMenu'
 import { HoverRecordPreview } from './HoverRecordPreview'
 import { BulkEditDialog } from './BulkEditDialog'
-import { normalizeAdvancedFilters } from './query'
+import { viewToListQuery } from './query'
 import { type BaseRecord, type WorkspaceAdapter, type ListQuery } from './types'
 import type { WorkspaceContext } from './context'
 
@@ -49,7 +49,7 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
   const recordLabel=useCallback((row:T)=>String(row[adapter.definition.primary_field as keyof T]??row.id),[adapter.definition])
   useEffect(()=>{setOffset(0)},[view.search])
   useEffect(()=>()=>{if(hoverTimer.current)clearTimeout(hoverTimer.current)},[])
-  const query=useMemo<ListQuery>(()=>({search:view.search,filters:view.filters,archived:view.archived,sort:view.sort,direction:view.direction,sorts:view.sorts,advanced_filters:normalizeAdvancedFilters(view.advanced_filters),limit:50,offset}),[view.search,view.filters,view.archived,view.sort,view.direction,view.sorts,view.advanced_filters,offset])
+  const query=useMemo<ListQuery>(()=>viewToListQuery(view,offset,50),[view,offset])
   const scope=JSON.stringify([tenant,adapter.key,query,view.group_by])
   const prefix=['records',user,tenant,adapter.key]
   const records=useQuery({queryKey:[...prefix,query],queryFn:({signal})=>adapter.list(query,signal)})

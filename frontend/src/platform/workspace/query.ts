@@ -23,17 +23,23 @@ export function serializeListQuery(query: ListQuery): string {
 }
 
 export function viewToListQuery(view: ViewDefinition, offset = 0, limit = 50): ListQuery {
-  return {
+  const query:ListQuery = {
     search: view.search,
     filters: view.filters,
     archived: view.archived,
     sort: view.sort,
     direction: view.direction,
-    sorts: view.sorts,
-    advanced_filters: normalizeAdvancedFilters(view.advanced_filters),
     limit,
     offset,
   }
+  // Older generated adapters spread ListQuery into URLSearchParams. Keep rich
+  // state available to upgraded adapters without leaking `[object Object]`
+  // into legacy endpoints during the compatibility window.
+  Object.defineProperties(query, {
+    sorts: {value:view.sorts, enumerable:false},
+    advanced_filters: {value:normalizeAdvancedFilters(view.advanced_filters), enumerable:false},
+  })
+  return query
 }
 
 export function normalizeAdvancedFilters(value: unknown): Array<{key:string;operator:string;value:string}> {

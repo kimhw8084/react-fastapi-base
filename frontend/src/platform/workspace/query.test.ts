@@ -15,5 +15,6 @@ describe('workspace query contract', () => {
     expect(params.get('sorts')).toContain('priority')
     expect(params.get('advanced_filters')).toContain('contains')
     expect(params.toString()).not.toContain('%5Bobject+Object%5D')
+    expect(Object.keys(query)).not.toContain('sorts')
   })
 })

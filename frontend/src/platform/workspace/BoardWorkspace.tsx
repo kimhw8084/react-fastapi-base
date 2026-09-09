@@ -11,6 +11,7 @@ import { Dossier } from './Dossier'
 import { RecordPeek } from './RecordPeek'
 import type { BaseRecord, Draft, WorkspaceAdapter } from './types'
 import type { WorkspaceContext } from './context'
+import { viewToListQuery } from './query'
 
 interface Props<T extends BaseRecord> extends WorkspaceContext {
  adapter:WorkspaceAdapter<T>
@@ -38,7 +39,7 @@ export function BoardWorkspace<T extends BaseRecord>({adapter,api,user,tenant,pe
  const defaultGroupKey=groupFields.find(field=>field.key==='status')?.key??groupFields[0]?.key??''
  const groupKey=view.group_by||defaultGroupKey
  const groupField=groupFields.find(field=>field.key===groupKey)
- const query=useMemo(()=>({search:view.search,filters:view.filters,archived:view.archived,sort:view.sort,direction:view.direction,limit:1000,offset:0}),[view.search,view.filters,view.archived,view.sort,view.direction])
+ const query=useMemo(()=>viewToListQuery(view,0,1000),[view])
  const records=useQuery({queryKey:['records',user,tenant,adapter.key,'board',query],queryFn:({signal})=>adapter.list(query,signal)})
  const detail=useQuery({queryKey:['detail',user,tenant,adapter.key,itemId],queryFn:()=>adapter.get(itemId??''),enabled:Boolean(itemId)})
  const refresh=useCallback(()=>{void client.invalidateQueries({queryKey:['records',user,tenant,adapter.key]});void client.invalidateQueries({queryKey:['detail',user,tenant,adapter.key]});void client.invalidateQueries({queryKey:['history',user,tenant,adapter.key]});setSelection([])},[client,user,tenant,adapter.key])

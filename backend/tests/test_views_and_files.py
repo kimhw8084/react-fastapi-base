@@ -82,6 +82,14 @@ def test_saved_view_rejects_unsupported_visualization(client):
     assert response.status_code==422
     assert response.json()['error']['code']=='invalid_saved_visualization'
 
+def test_saved_view_favorites_and_defaults_are_scoped(client):
+    first=client.post(V,json={'name':'First','is_favorite':True,'is_default':True,'definition':{}}).json()
+    second=client.post(V,json={'name':'Second','is_default':True,'definition':{}}).json()
+    views={row['name']:row for row in client.get(V).json()}
+    assert views['First']['is_favorite'] is True and views['First']['is_default'] is False
+    assert views['Second']['is_default'] is True
+    assert first['id']!=second['id']
+
 def test_record_comments_are_tenant_scoped_and_authorized(env,client,item):
     path=f"/api/v1/records/work_items/{item['id']}/comments"
     created=client.post(path,json={'body':'Check the backup runbook.'})

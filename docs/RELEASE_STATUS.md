@@ -21,7 +21,7 @@
 - Full accessibility requires major-screen axe coverage plus manual keyboard, zoom, high-contrast, and VoiceOver evidence.
 - Full performance requires the specified 100k-row and large graph/rack/wafer/log/SPC stress runs.
 - Independent generator/reference-app proofs remain to be completed.
-- Saved views now support explicit tenant teams with server-enforced membership and a conflict-resolution recovery action; favorites/defaults are present, while offline/local reconciliation and broader browser conflict coverage remain open.
+- Saved views now support explicit tenant teams with server-enforced membership, favorites/defaults with scoped default arbitration, and a conflict-resolution recovery action; offline/local reconciliation and broader browser conflict coverage remain open.
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
 - Work-item exchange now supports dependency-free XLSX export, preview and atomic reviewed import with formula-cell rejection; multi-entity relationship snapshots remain open.

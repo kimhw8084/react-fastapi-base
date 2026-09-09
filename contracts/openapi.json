@@ -9788,6 +9788,16 @@
           "definition": {
             "$ref": "#/components/schemas/ViewDefinition-Input"
           },
+          "is_default": {
+            "default": false,
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "is_favorite": {
+            "default": false,
+            "title": "Is Favorite",
+            "type": "boolean"
+          },
           "name": {
             "maxLength": 120,
             "minLength": 1,
@@ -10037,6 +10047,16 @@
             "title": "Id",
             "type": "string"
           },
+          "is_default": {
+            "default": false,
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "is_favorite": {
+            "default": false,
+            "title": "Is Favorite",
+            "type": "boolean"
+          },
           "name": {
             "maxLength": 120,
             "minLength": 1,
@@ -10090,6 +10110,8 @@
           "name",
           "scope",
           "team_id",
+          "is_favorite",
+          "is_default",
           "definition",
           "id",
           "workspace",
@@ -10157,6 +10179,16 @@
         "properties": {
           "definition": {
             "$ref": "#/components/schemas/ViewDefinition-Input"
+          },
+          "is_default": {
+            "default": false,
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "is_favorite": {
+            "default": false,
+            "title": "Is Favorite",
+            "type": "boolean"
           },
           "name": {
             "maxLength": 120,

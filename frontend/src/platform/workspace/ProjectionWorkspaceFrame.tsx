@@ -10,6 +10,7 @@ import { Dialog } from '../ui/Dialog'
 import { Dossier } from './Dossier'
 import { RecordForm } from './RecordForm'
 import { RecordPeek } from './RecordPeek'
+import { viewToListQuery } from './query'
 
 export interface ProjectionRenderContext<T extends BaseRecord> {
   openRow: (row:T)=>void
@@ -40,7 +41,7 @@ export function ProjectionWorkspaceFrame<T extends BaseRecord>({adapter,api,user
   const [params,setParams]=useSearchParams()
   const itemId=params.get('item')
   const canWrite=permissions.includes('write')
-  const query=useMemo(()=>({search:view.search,filters:view.filters,archived:view.archived,sort:view.sort,direction:view.direction,limit,offset:0}),[view.search,view.filters,view.archived,view.sort,view.direction,limit])
+  const query=useMemo(()=>viewToListQuery(view,0,limit),[view,limit])
   const records=useQuery({queryKey:['records',user,tenant,adapter.key,projectionKey,query],queryFn:({signal})=>adapter.list(query,signal)})
   const detail=useQuery({queryKey:['detail',user,tenant,adapter.key,itemId],queryFn:()=>adapter.get(itemId??''),enabled:Boolean(itemId)})
   const refresh=useCallback(()=>{void client.invalidateQueries({queryKey:['records',user,tenant,adapter.key]});void client.invalidateQueries({queryKey:['detail',user,tenant,adapter.key]});void client.invalidateQueries({queryKey:['history',user,tenant,adapter.key]})},[client,user,tenant,adapter.key])

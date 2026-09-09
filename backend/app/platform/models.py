@@ -50,6 +50,8 @@ class SavedView(TenantBase):
     definition: Mapped[dict[str, Any]] = mapped_column(JSON)
     revision: Mapped[int] = mapped_column(Integer, default=1)
     schema_version: Mapped[int] = mapped_column(Integer, default=1)
+    is_favorite: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    is_default: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 class WorkspaceTeam(TenantBase):
