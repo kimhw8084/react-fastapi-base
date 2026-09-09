@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.3 — release-safety hotfix
+
+- Centralized attachment upload-policy enforcement so generic and legacy Work Items uploads cannot bypass `disabled`, `trusted_types`, or `scanner_required` deployment policy.
+- Bound object export to the copied snapshot database, preserving database/object manifest consistency.
+- Enforced archived-record immutability for comment deletion on the server.
+- Reconciled supported Python runtime and current release-verification documentation.
+
 ## 1.0.0-rc.2 — release-safety hardening
 
 - Added schema-versioned object-inclusive backup and isolated restore for local object-backed attachments, including hash, size, path, tenant coverage and metadata consistency checks.

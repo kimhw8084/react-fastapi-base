@@ -1,8 +1,8 @@
-> **Implementation addendum (1.0.0-rc.2):** see decisions/0001-native-widget-layer.md, EXPERIENCE_LAB.md, COMPONENT_COVERAGE.md and v1-completion-status.json. The typed Lab and React host have executed local builds and browser workflows; the full retained inventory and release certification remain open. This design is not itself production evidence.
+> **Implementation addendum (1.0.0-rc.3):** see decisions/0001-native-widget-layer.md, EXPERIENCE_LAB.md, COMPONENT_COVERAGE.md and v1-completion-status.json. The typed Lab and React host have executed local builds and browser workflows; the full retained inventory and release certification remain open. This design is not itself production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
-**Version: 1.0.0-rc.2 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.3 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 This document is a design baseline with an executable initial implementation, not a claim that the previously requested entire platform is finished. The 68-domain ledger is authoritative about missing scope. Changes to SysGrid itself, complete visual parity, advanced workspace archetypes, actual corporate publication, dependency-resolved React verification and a production release are not included as completed work.
 
@@ -58,7 +58,7 @@ Writes require a CSRF token bound to the resolved username and accepted explicit
 
 SQLite writes use a short BEGIN IMMEDIATE transaction, then authorization-sensitive read, revision validation, conditional update, audit append and commit. A stale revision returns 409. Bulk actions apply only explicit ID/revision pairs and roll back the entire batch on any stale or invalid item. Create/import/bulk replay endpoints accept idempotency keys scoped to the user and operation. Reusing a key with a different payload is a conflict. Generic auto-retry of writes is prohibited; a UI retry of an uncertain request must preserve its original operation key.
 
-The implementation uses synchronous SQLAlchemy with synchronous FastAPI route functions. This is a deliberate bounded choice for short SQLite transactions and direct trusted Python tools; it is not a claim that async SQLAlchemy is bad. FastAPI runs synchronous route functions in its threadpool. [S5] External async I/O or another database may justify a separate adapter. Python support declared by the project is broader than the actually tested Python 3.13 runtime; certify the company's actual runtime separately.
+The implementation uses synchronous SQLAlchemy with synchronous FastAPI route functions. This is a deliberate bounded choice for short SQLite transactions and direct trusted Python tools; it is not a claim that async SQLAlchemy is bad. FastAPI runs synchronous route functions in its threadpool. [S5] External async I/O or another database may justify a separate adapter. The backend supports Python `>=3.11,<3.15`; the current RC.3 evidence was executed on Python 3.14.5, and the company's actual runtime must be exercised during qualification.
 
 ## 5. Files, import/export and recovery
 

@@ -6,7 +6,7 @@ No provided command publishes or changes a live company deployment. Code readine
 
 ## Backend project
 
-Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Python 3.13 is the measured runtime in this delivery; validate any other corporate runtime.
+Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.3 release verification environment is Python 3.14.5; the company PaaS runtime must fall within the supported range and be exercised during qualification.
 
 ```bash
 python -m pip install -r requirements.lock
@@ -47,7 +47,7 @@ If per-user PaaS replicas run on different hosts against one mounted database, t
 
 The application uses a tenant-scoped object adapter for runtime attachments. Local `LocalFilesystemStorage` objects are included in the application snapshot and restore contract. A provider-managed object store must declare its backup/retention boundary and provide independent qualification evidence; a database-only snapshot is never considered complete for object-backed rows.
 
-Production defaults to `BASE_ATTACHMENT_UPLOAD_MODE=scanner_required`. Startup/readiness fails closed while that policy is selected if the configured scanner is `NoopMalwareScanner`. `trusted_types` and `disabled` are explicit deployment choices; development and test use the deterministic scanner. The malware/CDR provider remains a company deployment adapter, but production must not silently present a no-op as malware protection.
+Production defaults to `BASE_ATTACHMENT_UPLOAD_MODE=scanner_required`. The shared attachment service enforces this policy for every upload caller. Startup/readiness and the service fail closed while that policy is selected if the configured scanner is missing or is `NoopMalwareScanner`. `trusted_types` is an explicit bounded MIME/signature/size policy only and provides no malware scanning; `disabled` rejects every upload. Development and test use the deterministic scanner. The malware/CDR provider remains a company deployment adapter, but production must not silently present a no-op as malware protection.
 
 ## Durable jobs
 

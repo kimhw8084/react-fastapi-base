@@ -1,4 +1,4 @@
-# macOS quickstart — 1.0.0-rc.1
+# macOS quickstart — 1.0.0-rc.3
 
 This is a portable launch procedure, not a claim that this exact release has been run on a Mac.
 
@@ -46,6 +46,6 @@ The default browser mode starts a real ephemeral localhost server. The test suit
 
 ## Full React/FastAPI host
 
-Python 3.13 and Node 22.12+ are the target toolchain. `python3 dev setup`, `python3 dev seed-demo`, `python3 dev start` are the implemented commands. Dependencies require registry access. The React dependency tree/lock and build have not been certified in this delivery. This is separate from the immediately runnable Lab.
+The backend contract is Python `>=3.11,<3.15`; the current RC.3 release evidence used Python 3.14.5. Node 22.12+ is the target frontend toolchain. `python3 dev setup`, `python3 dev seed-demo`, and `python3 dev start` are the implemented commands. Dependencies require registry access. The React dependency tree, build, and isolated macOS clean-clone flow are current evidence. This is separate from the immediately runnable Lab.
 
 There is no implemented `./dev doctor` or `./dev start --production` command in this release; previous conversation examples were targets, not delivered commands. See `python3 dev --help` for actual capabilities.

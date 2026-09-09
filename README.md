@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.2` — V1 local code complete; company qualification pending.
+`1.0.0-rc.3` — V1 local code complete; company qualification pending.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
@@ -12,7 +12,7 @@ The zero-install Experience Lab uses synthetic data:
 python3 dev lab
 ```
 
-Open `http://127.0.0.1:4173`. For the full React/FastAPI path, use a Python 3.13+ environment and Node 22.12+ in the Node 22 line:
+Open `http://127.0.0.1:4173`. For the full React/FastAPI path, use Python `>=3.11,<3.15` and Node 22.12+ in the Node 22 line:
 
 ```bash
 python3 dev setup
