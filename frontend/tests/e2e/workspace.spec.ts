@@ -121,7 +121,7 @@ test('100k logical table scope stays bounded to the server page',async({page},in
  await page.route('**/api/v1/work-items*',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({items,total:100000,limit:50,offset:0})}))
  const started=await page.evaluate(()=>performance.now())
  await page.goto('/work-items')
- await expect(page.getByText('Matching records').locator('..')).toContainText('100000')
+ await expect(page.locator('.workspace-summary > div').filter({hasText:'Matching records'}).getByRole('strong')).toHaveText('100000')
  await expect(page.getByLabel('Work items data grid')).toBeVisible()
  const renderedRows=await page.locator('.ag-row').count()
  const elapsed=await page.evaluate(start=>performance.now()-start,started)
