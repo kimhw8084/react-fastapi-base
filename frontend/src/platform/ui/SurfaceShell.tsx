@@ -20,7 +20,7 @@ export function SurfaceShell({ title, subtitle, status, controls, children, foot
       </div>
       {controls && <div className="surface-controls" aria-label="Window controls">{controls}</div>}
     </header>
-    <div className="surface-body">{children}</div>
+    <div className="surface-body" tabIndex={0}>{children}</div>
     {footer && <footer className="surface-footer">{footer}</footer>}
   </div>
 }
