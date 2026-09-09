@@ -28,6 +28,10 @@ Missing tooling is BLOCKED, never PASS. A missing required catalog implementatio
 
 `evidence/current/browser` contains current browser evidence. Light/dark renderings, key interactions, focus guards and mobile overflow were exercised. Automated axe across every major screen, all contrast/zoom requirements, manual screen-reader review, complete keyboard coverage and non-Chromium engines are not yet certified.
 
+## Frontend bundle budget
+
+The application uses route-level dynamic imports for registered workspaces and keeps the production Vite budget at 1.2 MB per minified chunk; the current application build emits no size warning. Storybook has a separate 1.2 MB tooling budget because its generated docs/a11y iframe is intentionally aggregated and is not shipped with the application.
+
 ## CI
 
 The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode browser tests. It is supplied configuration, not an already completed CI run. Local release verification is authoritative for this task; a Lab-only green job does not certify the platform.
