@@ -12,6 +12,8 @@ import { RecordPeek } from './RecordPeek'
 import { TableDisplayControls } from './TableDisplayControls'
 import { TableContextMenu } from './TableContextMenu'
 import { RecordActionMenu } from '../commands/RecordActionMenu'
+import { actionContext, createRecordActionRegistry } from '../commands/recordActions'
+import { useActiveActionSurface } from '../commands/ActionSurfaceContext'
 import { HoverRecordPreview } from './HoverRecordPreview'
 import { BulkEditDialog } from './BulkEditDialog'
 import { viewToListQuery } from './query'
@@ -81,6 +83,11 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
   const copyLink=useCallback(async(row:T)=>{try{const url=new URL(window.location.href);url.searchParams.set('item',row.id);await navigator.clipboard.writeText(url.toString());setNotice('Record link copied.')}catch{setNotice('Could not copy the record link in this browser.')}},[])
   const displayButton=(event:React.MouseEvent<HTMLButtonElement>)=>{const rect=event.currentTarget.getBoundingClientRect();setDisplayAnchor({x:rect.right-340,y:rect.bottom+8})}
   const selectedLabels=selection.slice(0,8).map(recordLabel)
+  const paletteRow=selection[0]??null
+  const paletteCallbacks=useMemo(()=>paletteRow?{open:()=>openRow(paletteRow),peek:()=>setPeek(paletteRow),edit:canWrite?()=>setForm(paletteRow):undefined,copyLink:()=>{void copyLink(paletteRow)},history:()=>openRow(paletteRow),transition:(action:'archive'|'restore')=>transition.mutate({row:paletteRow,action}),bulkEdit:canWrite&&adapter.entityKey?()=>setBulkEdit(true):undefined}:null,[adapter.entityKey,canWrite,copyLink,openRow,paletteRow,transition])
+  const paletteRegistry=useMemo(()=>paletteRow&&paletteCallbacks?createRecordActionRegistry(adapter,paletteRow,paletteCallbacks,[...(canWrite?['write']:[]),...(canRestore?['restore']:[]),'read'],selection.length):null,[adapter,canRestore,canWrite,paletteCallbacks,paletteRow,selection.length])
+  const paletteContext=useMemo(()=>paletteRegistry?actionContext(adapter as unknown as Pick<WorkspaceAdapter<BaseRecord>,'key'|'entityKey'>,[...(canWrite?['write']:[]),...(canRestore?['restore']:[]),'read'],selection.length,'palette'):null,[adapter,canRestore,canWrite,paletteRegistry,selection.length])
+  useActiveActionSurface(paletteRegistry,paletteContext)
   return <WorkspaceShell eyebrow="Company workspace" title={adapter.definition.label} description={adapter.definition.description} actions={<><button onClick={refresh} aria-label="Refresh workspace">↻ Refresh</button>{canWrite&&<button className="primary" onClick={()=>setForm('new')}>＋ New {adapter.singular}</button>}</>} metrics={[{label:'Matching records',value:records.data?.total??'—'},{label:'Selected on this page',value:selection.length},{label:'Dataset',value:view.archived?'Archived':'Active',className:'summary-word'},{label:'Access',value:canWrite?'Editor':'Read only',className:'summary-word'}]} commandBar={<>
       <label className="search-field"><span className="sr-only">Search records</span><span aria-hidden="true">⌕</span><input aria-label="Search records" value={searchInput} maxLength={200} placeholder={`Search ${adapter.definition.label.toLowerCase()}…`} onChange={event=>onSearchInput(event.target.value)}/></label>
       <div className="segmented" aria-label="Dataset"><button aria-pressed={!view.archived} onClick={()=>{setView({...view,archived:false});setOffset(0)}}>Active</button><button aria-pressed={view.archived} onClick={()=>{setView({...view,archived:true});setOffset(0)}}>Archived</button></div>
