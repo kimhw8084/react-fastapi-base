@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useMemo, useRef, useState, type ReactNode } from 'react'
 import type { FieldDefinition } from '../../generated/schema'
 import type { Draft } from './types'
 import { FieldInput } from './FieldInput'
+import { useDirtyGuard } from '../state/dirtyGuard'
 
 export type FormPresentation = 'simple'|'sectioned'|'tabbed'|'wizard'|'bulk'
 export interface FormSection { id:string; label:string; fieldKeys:string[]; description?:string }
@@ -34,10 +35,7 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
   const [clientErrors,setClientErrors]=useState<Record<string,string>>({})
   const [pendingFields,setPendingFields]=useState<Set<string>>(new Set())
   const validationTokens=useRef(new Map<string,number>())
-  useEffect(()=>{
-    const handler=(event:BeforeUnloadEvent)=>{if(dirty){event.preventDefault();event.returnValue=''}}
-    window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler)
-  },[dirty])
+  useDirtyGuard(dirty)
   const errors={...clientErrors,...serverErrors}
   const visibleSections=presentation==='simple'||presentation==='bulk'?[sections[0]??defaultSections(fields)[0]!]:sections
   const current=visibleSections[Math.min(active,visibleSections.length-1)]!

@@ -1,9 +1,10 @@
-import { useMemo, useRef, useState, useEffect } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { Dialog } from '../ui/Dialog'
 import { ErrorNotice } from '../ui/Notice'
 import { ApiError } from '../api/client'
 import type { BaseRecord, Draft, WorkspaceAdapter } from './types'
 import { FormEngine } from './FormEngine'
+import { useDirtyGuard } from '../state/dirtyGuard'
 
 export function RecordForm<T extends BaseRecord>({ adapter, row, onClose, onSaved }: { adapter: WorkspaceAdapter<T>; row?: T; onClose: () => void; onSaved: (row: T) => void }) {
   const initial = useMemo(() => adapter.draft(row), [adapter, row])
@@ -12,10 +13,7 @@ export function RecordForm<T extends BaseRecord>({ adapter, row, onClose, onSave
   const [error, setError] = useState<unknown>(null)
   const operationKey = useRef(crypto.randomUUID())
   const dirty = JSON.stringify(draft) !== JSON.stringify(initial)
-  useEffect(() => {
-    const handler = (event: BeforeUnloadEvent) => { if (dirty) { event.preventDefault(); event.returnValue = '' } }
-    window.addEventListener('beforeunload', handler); return () => window.removeEventListener('beforeunload', handler)
-  }, [dirty])
+  useDirtyGuard(Boolean(adapter.renderForm) && dirty)
   const fieldErrors: Record<string, string> = {}
   if (error instanceof ApiError && Array.isArray(error.details)) {
     for (const detail of error.details) if (detail && typeof detail === 'object' && 'field' in detail && 'message' in detail) fieldErrors[String(detail.field)] = String(detail.message)
