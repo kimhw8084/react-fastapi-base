@@ -22,8 +22,9 @@ class EntityQueryService:
         for key,value in filter_values.items():
             if not value:continue
             rule=self.filters[key]
-            if len(rule)==2:column,allowed=rule;coerce=lambda item:item
-            elif len(rule)==3:column,allowed,coerce=rule
+            if len(rule)==2:column,allowed=rule;coerce=lambda item:item;kind=None
+            elif len(rule)==3:column,allowed,coerce=rule;kind=None
+            elif len(rule)==4:column,allowed,coerce,kind=rule
             else:raise RuntimeError('Invalid filter rule configuration.')
             if allowed and value not in allowed:raise AppError(422,'invalid_filter','Invalid filter value.')
             try:normalized=coerce(value)
@@ -37,13 +38,16 @@ class EntityQueryService:
                 raise AppError(422,'invalid_advanced_filter','Advanced filter is not supported.')
             rule=self.filters[key]
             column,allowed = rule[0],rule[1]
-            coerce = rule[2] if len(rule)==3 else (lambda item:item)
+            coerce = rule[2] if len(rule) in (3,4) else (lambda item:item)
+            kind = rule[3] if len(rule)==4 else None
             if operator in {'eq','neq'}:
                 if allowed and value not in allowed: raise AppError(422,'invalid_advanced_filter','Advanced filter value is invalid.')
                 try: normalized=coerce(value)
                 except (TypeError,ValueError): raise AppError(422,'invalid_advanced_filter','Advanced filter value is invalid.')
                 where.append(column==normalized if operator=='eq' else column!=normalized)
             elif operator in {'contains','starts_with'}:
+                if kind not in (None,'text'):
+                    raise AppError(422,'invalid_advanced_filter','Text operators are not supported for this field.')
                 if not isinstance(value,str) or len(value)>200: raise AppError(422,'invalid_advanced_filter','Advanced filter value is invalid.')
                 escaped=value.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
                 where.append(column.ilike(f"%{escaped}%" if operator=='contains' else f"{escaped}%",escape='\\'))

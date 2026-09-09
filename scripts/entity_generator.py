@@ -295,12 +295,12 @@ def service_source(spec:dict[str,Any])->str:
     cls=pascal(spec['key'].rstrip('s') or spec['key']);filters=[]
     for f in spec['fields']:
         if not f['filterable']:continue
-        if f['type']=='boolean':filters.append(f"{f['key']!r}:({cls}.{f['key']},('true','false'),lambda value:value=='true')")
-        elif f['type']=='integer':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),int)")
-        elif f['type'] in NUMERIC_TYPES:filters.append(f"{f['key']!r}:({cls}.{f['key']},(),float)")
-        elif f['type']=='date':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),date.fromisoformat)")
-        elif f['type']=='datetime':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),lambda value:datetime.fromisoformat(value.replace('Z','+00:00')))")
-        else:filters.append(f"{f['key']!r}:({cls}.{f['key']},{tuple(f['choices'])!r})")
+        if f['type']=='boolean':filters.append(f"{f['key']!r}:({cls}.{f['key']},('true','false'),lambda value:value=='true','boolean')")
+        elif f['type']=='integer':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),int,'numeric')")
+        elif f['type'] in NUMERIC_TYPES:filters.append(f"{f['key']!r}:({cls}.{f['key']},(),float,'numeric')")
+        elif f['type']=='date':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),date.fromisoformat,'date')")
+        elif f['type']=='datetime':filters.append(f"{f['key']!r}:({cls}.{f['key']},(),lambda value:datetime.fromisoformat(value.replace('Z','+00:00')),'datetime')")
+        else:filters.append(f"{f['key']!r}:({cls}.{f['key']},{tuple(f['choices'])!r},lambda value:value,'text')")
     sorts=[f['key'] for f in spec['fields'] if f['sortable']]+['updated_at','created_at','created_by','revision']
     sort_src=','.join(f"{key!r}:{cls}.{key}" for key in sorts)
     search=[f"{cls}.{f['key']}" for f in spec['fields'] if f['searchable']] or [f"{cls}.{spec['primary_field']}"]

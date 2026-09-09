@@ -119,8 +119,8 @@ def test_typed_generator_emits_typed_backend_frontend_and_constraints(tmp_path):
     assert 'review_at: Mapped[datetime | None]' in model
     assert 'capacity: int | None=Field(default=None,ge=0,le=1000)' in schemas
     assert 'load_factor: float=Field(default=0.25,ge=0,le=1)' in schemas
-    assert "'critical':(System.critical,('true','false'),lambda value:value=='true')" in service
-    assert "'capacity':(System.capacity,(),int)" in service
+    assert "'critical':(System.critical,('true','false'),lambda value:value=='true','boolean')" in service
+    assert "'capacity':(System.capacity,(),int,'numeric')" in service
     assert 'decode_query_list(sorts' in router and 'advanced_filters' in router
     assert "kind='datetime'" in definition and "nullable=True" in definition
     assert "CheckConstraint('capacity >= 0'" in migration
