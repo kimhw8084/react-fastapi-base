@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "source_commit": "0bf495c5527ce757c8d2ecee019a6e660e8257fb",
-  "created_at": "2026-09-09T00:33:12Z",
-  "timestamp": "2026-09-09T00:33:12Z",
+  "source_commit": "aa74a1646f835a971d058f92e3abc13fc0f08dd5",
+  "created_at": "2026-09-09T01:02:19Z",
+  "timestamp": "2026-09-09T01:02:19Z",
   "command": [
     "python3",
     "scripts/performance_stress.py"
@@ -13,13 +13,13 @@
     "python": "3.14.5"
   },
   "hashes": {
-    "source_commit": "0bf495c5527ce757c8d2ecee019a6e660e8257fb"
+    "source_commit": "aa74a1646f835a971d058f92e3abc13fc0f08dd5"
   },
   "checks": [
     {
       "name": "table-100k-filter-sort",
       "size": 100000,
-      "seconds": 0.016824,
+      "seconds": 0.023486,
       "budget_seconds": 2.5,
       "status": "PASS",
       "result": 100
@@ -27,7 +27,7 @@
     {
       "name": "planning-5000-dependencies",
       "size": 5000,
-      "seconds": 0.000259,
+      "seconds": 0.000304,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 4999
@@ -35,7 +35,7 @@
     {
       "name": "graph-10000-nodes-20000-edges",
       "size": 30000,
-      "seconds": 0.00159,
+      "seconds": 0.001878,
       "budget_seconds": 2.0,
       "status": "PASS",
       "result": 10000
@@ -43,7 +43,7 @@
     {
       "name": "rack-100-racks-20000-connections",
       "size": 40000,
-      "seconds": 0.00061,
+      "seconds": 0.000605,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 20000
@@ -51,7 +51,7 @@
     {
       "name": "wafer-100k-die-map",
       "size": 100000,
-      "seconds": 0.003018,
+      "seconds": 0.003237,
       "budget_seconds": 1.0,
       "status": "PASS",
       "result": 94117
@@ -59,7 +59,7 @@
     {
       "name": "observability-100k-events",
       "size": 100000,
-      "seconds": 0.003315,
+      "seconds": 0.003638,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 100
@@ -67,7 +67,7 @@
     {
       "name": "dashboard-1000-widgets-layout",
       "size": 1000,
-      "seconds": 5.8e-05,
+      "seconds": 5.3e-05,
       "budget_seconds": 0.75,
       "status": "PASS",
       "result": 86
