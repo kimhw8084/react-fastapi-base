@@ -55,9 +55,10 @@ class MatchingBulkPreview(StrictSchema):
 class ImportPreviewRequest(StrictSchema):
     csv: str|None = Field(default=None,max_length=500000)
     xlsx_base64: str|None = Field(default=None,max_length=700000)
+    json_snapshot: str|None = Field(default=None,max_length=500000)
     @model_validator(mode='after')
     def one_format(self):
-        if (self.csv is None)==(self.xlsx_base64 is None):raise ValueError('Provide exactly one CSV or XLSX payload.')
+        if sum(value is not None for value in (self.csv,self.xlsx_base64,self.json_snapshot))!=1:raise ValueError('Provide exactly one CSV, XLSX or JSON snapshot payload.')
         return self
 
 class ImportPreview(StrictSchema):
@@ -68,8 +69,9 @@ class ImportPreview(StrictSchema):
 class ImportCommit(StrictSchema):
     csv: str|None = Field(default=None,max_length=500000)
     xlsx_base64: str|None = Field(default=None,max_length=700000)
+    json_snapshot: str|None = Field(default=None,max_length=500000)
     fingerprint: str = Field(min_length=64, max_length=64)
     @model_validator(mode='after')
     def one_format(self):
-        if (self.csv is None)==(self.xlsx_base64 is None):raise ValueError('Provide exactly one CSV or XLSX payload.')
+        if sum(value is not None for value in (self.csv,self.xlsx_base64,self.json_snapshot))!=1:raise ValueError('Provide exactly one CSV, XLSX or JSON snapshot payload.')
         return self

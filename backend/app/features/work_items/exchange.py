@@ -10,6 +10,7 @@ from app.platform.errors import AppError
 from .schemas import WorkItemCreate, ImportPreview
 
 HEADER = '# golden-work-items/1; formula-escape=apostrophe'
+SNAPSHOT_SCHEMA = 'golden-work-items/1'
 FIELDS = ['title','description','status','priority']
 
 def safe_cell(value: str) -> str:
@@ -83,6 +84,27 @@ def export_xlsx(rows) -> bytes:
     with zipfile.ZipFile(output,'w',compression=zipfile.ZIP_DEFLATED) as archive:
         archive.writestr('[Content_Types].xml',content_types);archive.writestr('_rels/.rels',rels);archive.writestr('xl/workbook.xml',workbook);archive.writestr('xl/_rels/workbook.xml.rels',workbook_rels);archive.writestr('xl/worksheets/sheet1.xml',worksheet)
     return output.getvalue()
+
+def export_json(rows) -> str:
+    """Export a bounded, versioned record snapshot without executable content."""
+    payload={'schema':SNAPSHOT_SCHEMA,'records':[{key:getattr(row,key) for key in FIELDS} for row in rows]}
+    return json.dumps(payload,sort_keys=True,separators=(',',':'))+'\n'
+
+def preview_json(content: str) -> ImportPreview:
+    if len(content.encode())>500000:raise AppError(413,'import_too_large','JSON snapshot exceeds the supported preview size.')
+    try:payload=json.loads(content)
+    except (TypeError,ValueError):raise AppError(422,'import_parse','JSON snapshot could not be parsed safely.') from None
+    if not isinstance(payload,dict) or payload.get('schema')!=SNAPSHOT_SCHEMA or not isinstance(payload.get('records'),list):
+        raise AppError(422,'import_schema','Unsupported JSON snapshot schema.')
+    rows=[];errors=[]
+    for index,raw in enumerate(payload['records'],2):
+        if index>101:raise AppError(413,'import_too_many_rows','Import at most 100 records per reviewed batch.')
+        if not isinstance(raw,dict):errors.append(f'Row {index}: record must be an object.');continue
+        try:rows.append(WorkItemCreate.model_validate({key:raw.get(key) for key in FIELDS}))
+        except ValidationError as error:
+            for item in error.errors():errors.append(f'Row {index}, {item["loc"][0]}: {item["msg"]}')
+    fingerprint=hashlib.sha256(json.dumps([row.model_dump() for row in rows],sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    return ImportPreview(rows=rows,errors=errors,fingerprint=fingerprint)
 
 def preview_xlsx(content: bytes) -> ImportPreview:
     if len(content)>500000:raise AppError(413,'import_too_large','XLSX exceeds the supported preview size.')

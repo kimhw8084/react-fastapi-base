@@ -16,7 +16,7 @@ from app.platform.attachments import AttachmentUpload, attach
 from . import service
 from app.platform.query_service import decode_query_list
 from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, MatchingBulkRequest, MatchingBulkPreview, ImportPreviewRequest, ImportPreview, ImportCommit
-from .exchange import export_csv, export_xlsx, preview_csv, preview_xlsx
+from .exchange import export_csv, export_xlsx, export_json, preview_csv, preview_xlsx, preview_json
 
 router=APIRouter(prefix='/work-items',tags=['Work items'])
 A=Annotated[Actor,Depends(actor_for)]
@@ -64,8 +64,17 @@ def export_xlsx_file(request: Request,actor: A, search: str=Query('',max_length=
         if result.total>1000:raise AppError(413,'export_too_large','Narrow the filters to at most 1000 records.')
         return Response(export_xlsx(result.items),media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',headers={'Content-Disposition':'attachment; filename="work-items-v1.xlsx"','X-Content-Type-Options':'nosniff'})
 
+@router.get('/export.json',operation_id='exportWorkItemsJson')
+def export_json_file(request: Request,actor: A, search: str=Query('',max_length=200),status: str='',priority: str='',archived: bool=False):
+    actor.require('export')
+    with request.app.state.database.session(actor.tenant_id) as db:
+        result=service.list_items(db,actor,search=search,status=status,priority=priority,archived=archived,limit=1000)
+        if result.total>1000:raise AppError(413,'export_too_large','Narrow the filters to at most 1000 records.')
+        return Response(export_json(result.items),media_type='application/json',headers={'Content-Disposition':'attachment; filename="work-items-v1.json"','X-Content-Type-Options':'nosniff'})
+
 def _preview_exchange(data: ImportPreviewRequest):
     if data.csv is not None:return preview_csv(data.csv)
+    if data.json_snapshot is not None:return preview_json(data.json_snapshot)
     try:content=base64.b64decode(data.xlsx_base64 or '',validate=True)
     except (ValueError,binascii.Error):raise AppError(422,'invalid_file','XLSX encoding is invalid.') from None
     return preview_xlsx(content)
@@ -79,6 +88,7 @@ def preview(request: Request,actor: A,data: ImportPreviewRequest):
 def commit_import(request: Request,actor: A,data: ImportCommit,idempotency_key: str=Header(...)):
     actor.require('import')
     if data.csv is not None:preview=preview_csv(data.csv)
+    elif data.json_snapshot is not None:preview=preview_json(data.json_snapshot)
     else:
         try:content=base64.b64decode(data.xlsx_base64 or '',validate=True)
         except (ValueError,binascii.Error):raise AppError(422,'invalid_file','XLSX encoding is invalid.') from None
