@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "source_commit": "79d8407379d0305cae13b8a2051f0c7ebf5022a9",
-  "source_digest": "e7083dea38069babf1c03293e6bd6c1273850d71b994d173ff71ddd3ccc2d8b9",
+  "source_commit": "f190881c62c58db7ae81c3cc5a89e6defa55fb31",
+  "source_digest": "fca51a0f4aa8d9e8d26aa7bb0fad8d3dc90c4c1d8275bf24758a9f62bf02e1a1",
   "source_hashes": "source-hashes.json",
   "python_version": "3.14.5",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "created_at": "2026-09-09T03:12:49.844709+00:00",
-  "timestamp": "2026-09-09T03:12:49.844895+00:00",
+  "created_at": "2026-09-09T04:47:44.422103+00:00",
+  "timestamp": "2026-09-09T04:47:44.424138+00:00",
   "command": [
     "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
     "scripts/verify.py",
@@ -20,7 +20,7 @@
     "python": "3.14.5"
   },
   "hashes": {
-    "source_digest": "e7083dea38069babf1c03293e6bd6c1273850d71b994d173ff71ddd3ccc2d8b9"
+    "source_digest": "fca51a0f4aa8d9e8d26aa7bb0fad8d3dc90c4c1d8275bf24758a9f62bf02e1a1"
   },
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
@@ -33,12 +33,11 @@
       "log": "backend-tests.log",
       "command": [
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
-        "-m",
-        "pytest",
-        "-q",
-        "--junitxml=/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/backend-junit.xml"
+        "scripts/backend_test_runner.py",
+        "--output",
+        "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/backend-junit.xml"
       ],
-      "duration_seconds": 75.813
+      "duration_seconds": 25.575
     },
     {
       "name": "tooling-tests",
@@ -52,7 +51,7 @@
         "-q",
         "tests"
       ],
-      "duration_seconds": 17.885
+      "duration_seconds": 16.124
     },
     {
       "name": "architecture",
@@ -63,7 +62,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/check_architecture.py"
       ],
-      "duration_seconds": 0.688
+      "duration_seconds": 0.656
     },
     {
       "name": "security-source",
@@ -74,7 +73,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/security_source_check.py"
       ],
-      "duration_seconds": 0.21
+      "duration_seconds": 0.182
     },
     {
       "name": "version-metadata",
@@ -96,7 +95,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/performance_check.py"
       ],
-      "duration_seconds": 0.393
+      "duration_seconds": 0.388
     },
     {
       "name": "performance-stress",
@@ -107,7 +106,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/performance_stress.py"
       ],
-      "duration_seconds": 0.214
+      "duration_seconds": 0.196
     },
     {
       "name": "generated-contracts",
@@ -119,7 +118,7 @@
         "scripts/generate_contracts.py",
         "--check"
       ],
-      "duration_seconds": 1.816
+      "duration_seconds": 1.777
     },
     {
       "name": "typescript-syntax-and-pure-client",
@@ -130,7 +129,7 @@
         "node",
         "scripts/source_smoke.mjs"
       ],
-      "duration_seconds": 0.619
+      "duration_seconds": 0.634
     },
     {
       "name": "static-server",
@@ -142,7 +141,7 @@
         "--test",
         "frontend/tests/server.test.mjs"
       ],
-      "duration_seconds": 0.136
+      "duration_seconds": 0.13
     },
     {
       "name": "localhost-http",
@@ -153,7 +152,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/http_smoke.py"
       ],
-      "duration_seconds": 2.307
+      "duration_seconds": 2.345
     },
     {
       "name": "engineering-widget-layer",
@@ -168,7 +167,7 @@
         "--output",
         "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/native-lab"
       ],
-      "duration_seconds": 28.318
+      "duration_seconds": 25.515
     },
     {
       "name": "required-catalog-completeness",
@@ -181,7 +180,7 @@
         "--check",
         "--release"
       ],
-      "duration_seconds": 0.133
+      "duration_seconds": 0.102
     },
     {
       "name": "upgrade-fixture",
@@ -194,7 +193,7 @@
         "--output",
         "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/upgrade-fixture.json"
       ],
-      "duration_seconds": 39.881
+      "duration_seconds": 18.225
     },
     {
       "name": "reference-apps",
@@ -205,7 +204,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/reference_app_proof.py"
       ],
-      "duration_seconds": 159.819
+      "duration_seconds": 116.175
     },
     {
       "name": "macos-fresh-install",
@@ -218,7 +217,7 @@
         "--output",
         "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/fresh-clone-macos.json"
       ],
-      "duration_seconds": 148.863
+      "duration_seconds": 127.364
     },
     {
       "name": "frontend-typecheck",
@@ -230,7 +229,7 @@
         "run",
         "typecheck"
       ],
-      "duration_seconds": 6.587
+      "duration_seconds": 4.483
     },
     {
       "name": "frontend-unit",
@@ -241,7 +240,7 @@
         "npm",
         "test"
       ],
-      "duration_seconds": 8.115
+      "duration_seconds": 1.863
     },
     {
       "name": "frontend-build",
@@ -253,7 +252,7 @@
         "run",
         "build"
       ],
-      "duration_seconds": 4.052
+      "duration_seconds": 4.446
     },
     {
       "name": "frontend-storybook",
@@ -265,7 +264,7 @@
         "run",
         "build:storybook"
       ],
-      "duration_seconds": 2.255
+      "duration_seconds": 1.897
     },
     {
       "name": "browser-e2e-accessibility",
@@ -276,7 +275,7 @@
         "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
         "scripts/e2e_runner.py"
       ],
-      "duration_seconds": 16.361
+      "duration_seconds": 14.107
     },
     {
       "name": "npm-advisories",
@@ -288,7 +287,7 @@
         "audit",
         "--audit-level=high"
       ],
-      "duration_seconds": 0.863
+      "duration_seconds": 0.745
     },
     {
       "name": "python-advisories",
@@ -302,7 +301,7 @@
         "-r",
         "backend/requirements.lock"
       ],
-      "duration_seconds": 8.341
+      "duration_seconds": 5.797
     },
     {
       "name": "company-identity",

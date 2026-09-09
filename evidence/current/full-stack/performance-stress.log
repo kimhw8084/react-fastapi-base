@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "source_commit": "79d8407379d0305cae13b8a2051f0c7ebf5022a9",
-  "created_at": "2026-09-09T03:05:40Z",
-  "timestamp": "2026-09-09T03:05:40Z",
+  "source_commit": "f190881c62c58db7ae81c3cc5a89e6defa55fb31",
+  "created_at": "2026-09-09T04:42:16Z",
+  "timestamp": "2026-09-09T04:42:16Z",
   "command": [
     "python3",
     "scripts/performance_stress.py"
@@ -13,13 +13,13 @@
     "python": "3.14.5"
   },
   "hashes": {
-    "source_commit": "79d8407379d0305cae13b8a2051f0c7ebf5022a9"
+    "source_commit": "f190881c62c58db7ae81c3cc5a89e6defa55fb31"
   },
   "checks": [
     {
       "name": "table-100k-filter-sort",
       "size": 100000,
-      "seconds": 0.024153,
+      "seconds": 0.018975,
       "budget_seconds": 2.5,
       "status": "PASS",
       "result": 100
@@ -27,7 +27,7 @@
     {
       "name": "planning-5000-dependencies",
       "size": 5000,
-      "seconds": 0.000292,
+      "seconds": 0.00027,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 4999
@@ -35,7 +35,7 @@
     {
       "name": "graph-10000-nodes-20000-edges",
       "size": 30000,
-      "seconds": 0.001637,
+      "seconds": 0.00165,
       "budget_seconds": 2.0,
       "status": "PASS",
       "result": 10000
@@ -43,7 +43,7 @@
     {
       "name": "rack-100-racks-20000-connections",
       "size": 40000,
-      "seconds": 0.000587,
+      "seconds": 0.000524,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 20000
@@ -51,7 +51,7 @@
     {
       "name": "wafer-100k-die-map",
       "size": 100000,
-      "seconds": 0.002943,
+      "seconds": 0.002984,
       "budget_seconds": 1.0,
       "status": "PASS",
       "result": 94117
@@ -59,7 +59,7 @@
     {
       "name": "observability-100k-events",
       "size": 100000,
-      "seconds": 0.00452,
+      "seconds": 0.004341,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 100

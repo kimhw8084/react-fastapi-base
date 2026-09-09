@@ -123,7 +123,7 @@
       "status": "PARTIAL",
       "decision": "Personal, default-workspace-team and explicit membership-scoped views, exact deep links, schema sanitization, optimistic revisions and server-version conflict reconciliation.",
       "owner": "backend/app/platform/views.py; backend/app/platform/teams.py; frontend/src/platform/workspace/SavedViews.tsx",
-      "acceptance": "Add true directory-team scopes, favorites/defaults and offline reconciliation; tenant-wide shared is not corporate team membership."
+      "acceptance": "Add offline reconciliation and broader browser conflict coverage; tenant-wide shared is not corporate team membership."
     },
     {
       "id": "G15",
@@ -131,7 +131,7 @@
       "status": "PARTIAL",
       "decision": "Definition-driven basic fields, validation, custom field slots, native dialog dirty protection and pending-write disabling.",
       "owner": "frontend/src/platform/workspace/RecordForm.tsx",
-      "acceptance": "Verify browser Back/Forward and all navigation paths preserve dirty drafts; add dependent selectors, tabs, async validation and field-level custom constraints."
+      "acceptance": "Add specialized-form integration and verify all navigation paths preserve dirty drafts; dependent selectors, tabs, async validation and field-level custom constraints are covered by the shared engine."
     },
     {
       "id": "G16",
