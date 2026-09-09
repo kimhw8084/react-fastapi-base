@@ -11,6 +11,7 @@ import { Dossier } from './Dossier'
 import { RecordPeek } from './RecordPeek'
 import { TableDisplayControls } from './TableDisplayControls'
 import { TableContextMenu } from './TableContextMenu'
+import { RecordActionMenu } from '../commands/RecordActionMenu'
 import { HoverRecordPreview } from './HoverRecordPreview'
 import { BulkEditDialog } from './BulkEditDialog'
 import { viewToListQuery } from './query'
@@ -48,6 +49,14 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
   const canRestore=permissions.includes('restore')
   const recordLabel=useCallback((row:T)=>String(row[adapter.definition.primary_field as keyof T]??row.id),[adapter.definition])
   useEffect(()=>{setOffset(0)},[view.search])
+  useEffect(()=>{
+    const handler=(event:KeyboardEvent)=>{
+      if(!selection.length||event.defaultPrevented||event.metaKey||event.ctrlKey||event.altKey)return
+      if(event.key.toLocaleLowerCase()==='e'&&selection.length===1&&canWrite){event.preventDefault();setForm(selection[0]!)}
+    }
+    window.addEventListener('keydown',handler)
+    return()=>window.removeEventListener('keydown',handler)
+  },[canWrite,selection])
   useEffect(()=>()=>{if(hoverTimer.current)clearTimeout(hoverTimer.current)},[])
   const query=useMemo<ListQuery>(()=>viewToListQuery(view,offset,50),[view,offset])
   const scope=JSON.stringify([tenant,adapter.key,query,view.group_by])
@@ -76,7 +85,7 @@ export function TableWorkspace<T extends BaseRecord>({adapter,api,tenant,user,pe
       <button aria-label="Toggle sort direction" onClick={()=>setView({...view,direction:view.direction==='asc'?'desc':'asc'})}>{view.direction==='asc'?'↑ Ascending':'↓ Descending'}</button>
       <button aria-expanded={Boolean(displayAnchor)} onClick={displayButton}>▦ Display{view.group_by?` · ${adapter.definition.fields.find(field=>field.key===view.group_by)?.label??view.group_by}`:''}</button>
     </>} secondaryBar={<>{viewTools}<div className="toolbar-actions">{permissions.includes('export')&&adapter.definition.capabilities.includes('csv')&&<button onClick={()=>exportData.mutate()} disabled={exportData.isPending}>Export CSV</button>}{permissions.includes('import')&&adapter.definition.capabilities.includes('csv')&&adapter.renderExchange&&<button onClick={()=>setExchange(true)}>Import CSV</button>}</div></>} notice={notice?<div className="notice" role="status">{notice}<button aria-label="Dismiss notification" onClick={()=>setNotice('')}>×</button></div>:undefined} footer={<><span>{records.data?`${records.data.total===0?0:offset+1}–${offset+records.data.items.length} of ${records.data.total}`:'No result loaded'} · Search/filter/sort are server-scoped{view.group_by?' · grouping organizes this loaded page':''}.</span><div><button disabled={offset===0||records.isFetching} onClick={()=>setOffset(Math.max(0,offset-50))}>Previous</button><button disabled={!records.data||offset+50>=records.data.total||records.isFetching} onClick={()=>setOffset(offset+50)}>Next</button></div></>}>
-    {selection.length>0&&<div className="selection-action-bar" role="region" aria-label="Selected record actions"><div><strong>{selection.length}</strong><span> selected on this page</span></div><div className="toolbar-actions">{selection.length===1&&<><button onClick={()=>setPeek(selection[0]??null)}>◫ Quick Look</button><button onClick={()=>openRow(selection[0]!)}>Open</button>{canWrite&&<button onClick={()=>setForm(selection[0]!)}>Edit</button>}</>}{canWrite&&!view.archived&&adapter.entityKey&&<button onClick={()=>setBulkEdit(true)}>Bulk edit…</button>}{canWrite&&(!view.archived||canRestore)&&<button className="danger" onClick={()=>{bulk.reset();setConfirm(view.archived?'restore':'archive')}}>{view.archived?'Restore':'Archive'} selected ({selection.length})</button>}</div></div>}
+    {selection.length>0&&<div className="selection-action-bar" role="region" aria-label="Selected record actions"><div><strong>{selection.length}</strong><span> selected on this page</span></div><div className="toolbar-actions"><RecordActionMenu adapter={adapter} row={selection[0]!} selectionCount={selection.length} permissions={[...(canWrite?['write']:[]),...(canRestore?['restore']:[]),'read']} placement="selection" callbacks={{open:()=>openRow(selection[0]!),peek:()=>setPeek(selection[0]!),edit:canWrite&&selection.length===1?()=>setForm(selection[0]!):undefined,bulkEdit:canWrite&&!view.archived&&adapter.entityKey?()=>setBulkEdit(true):undefined,transition:action=>{bulk.reset();setConfirm(action)}}}/></div></div>}
     {records.isError&&<ErrorNotice error={records.error} retry={()=>{void records.refetch()}}/>}
     {exportData.isError&&<ErrorNotice error={exportData.error}/>} {transition.isError&&<ErrorNotice error={transition.error}/>}
     {records.isPending?<div className="loading-state" role="status">Loading records…</div>:!records.isError&&records.data?.items.length===0?<EmptyState title="No matching records" description="Adjust the filters or create the first record. A failed request is never shown as an empty dataset."/>:!records.isError&&<DataGrid<T> rows={records.data?.items??[]} definition={adapter.definition} density={view.density??'comfortable'} columns={view.columns??[]} groupBy={view.group_by??''} scope={scope} onOpen={openRow} onPeek={setPeek} onHover={handleHover} onContext={(row,anchor)=>{setHover(null);setContext({row,anchor})}} onSelection={setSelection} onColumns={columns=>setView(current=>({...current,columns}))}/>}
