@@ -33,6 +33,22 @@ test('dirty form close requires a decision',async({page})=>{
  await expect(dialog.getByRole('textbox',{name:/Title/})).toHaveValue('Do not lose this draft')
 })
 
+test('dirty form protects browser Back navigation',async({page})=>{
+ await page.goto('/projects');await page.getByRole('link',{name:'Work items',exact:true}).click()
+ await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
+ await page.getByRole('button',{name:/New work item/}).click()
+ const dialog=page.getByRole('dialog',{name:'New work item'})
+ await dialog.getByRole('textbox',{name:/Title/}).fill('Keep this draft on Back')
+ const prompt=page.waitForEvent('dialog')
+ const back=page.goBack({waitUntil:'commit'})
+ const browserDialog=await prompt
+ expect(browserDialog.message()).toBe('You have unsaved changes. Leave this page and discard them?')
+ await browserDialog.dismiss()
+ await back
+ await expect(page).toHaveURL(/\/work-items/)
+ await expect(page.getByRole('dialog',{name:'New work item'})).toBeVisible()
+})
+
 test('team saved views persist scope, favorite and default metadata',async({page})=>{
  await page.goto('/work-items')
  await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()

@@ -26,4 +26,17 @@ describe('platform dirty navigation guard', () => {
     window.dispatchEvent(cleanEvent)
     expect(cleanEvent.defaultPrevented).toBe(false)
   })
+
+  it('restores the current URL when browser Back is cancelled', () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false)
+    window.history.pushState({}, '', '/current')
+    const { unmount } = render(<Fixture dirty />)
+    window.history.pushState({}, '', '/previous')
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    expect(confirm).toHaveBeenCalledWith('You have unsaved changes. Leave this page and discard them?')
+    expect(window.location.pathname).toBe('/current')
+    unmount()
+    window.history.pushState({}, '', '/')
+    confirm.mockRestore()
+  })
 })
