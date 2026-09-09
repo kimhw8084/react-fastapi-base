@@ -100,3 +100,11 @@ def test_record_comments_are_tenant_scoped_and_authorized(env,client,item):
     assert bob.delete('/api/v1/records/comments/'+created.json()['id']).status_code==403
     other=env['client']('carol');other.headers['X-Tenant-Id']=env['other'];other.headers['X-CSRF-Token']=other.get('/api/v1/bootstrap').json()['csrf_token']
     assert other.get(path).status_code==404
+
+def test_generic_record_files_cover_non_work_item_entities(client):
+    project=client.post('/api/v1/projects',json={'title':'File dossier','summary':'','status':'planned','owner':'ops'}).json()
+    path=f"/api/v1/records/projects/{project['id']}/attachments"
+    created=client.post(path,json={'filename':'project-notes.txt','content_type':'text/plain','content_base64':base64.b64encode(b'project file').decode()})
+    assert created.status_code==201,created.text
+    attachment=created.json();assert client.get(path).json()[0]['id']==attachment['id']
+    download=client.get(f"{path}/{attachment['id']}");assert download.status_code==200 and download.content==b'project file'

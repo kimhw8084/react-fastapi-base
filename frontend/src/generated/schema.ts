@@ -308,6 +308,9 @@ export interface OperationInputs {
   "revert_api_v1_racks__record_id__revert_post": { path: { "record_id": string }; body: RevertRequest }
   "readiness": {  }
   "deleteRecordComment": { path: { "comment_id": string } }
+  "listRecordAttachments": { path: { "entity": string; "record_id": string } }
+  "addRecordAttachment": { path: { "entity": string; "record_id": string }; body: AttachmentUpload }
+  "downloadRecordAttachment": { path: { "entity": string; "record_id": string; "attachment_id": string } }
   "listRecordComments": { path: { "entity": string; "record_id": string } }
   "createRecordComment": { path: { "entity": string; "record_id": string }; body: CommentCreate }
   "listRelationships": { query: { "entity": string; "record_id": string; "include_archived"?: boolean } }
@@ -534,6 +537,9 @@ export interface OperationOutputs {
   "revert_api_v1_racks__record_id__revert_post": RackRead
   "readiness": unknown
   "deleteRecordComment": void
+  "listRecordAttachments": Array<AttachmentRead>
+  "addRecordAttachment": AttachmentRead
+  "downloadRecordAttachment": unknown
   "listRecordComments": Array<CommentRead>
   "createRecordComment": CommentRead
   "listRelationships": Array<RelationshipRead>
@@ -1179,6 +1185,18 @@ export const operationRoutes = {
   "deleteRecordComment": {
     "method": "DELETE",
     "path": "/api/v1/records/comments/{comment_id}"
+  },
+  "listRecordAttachments": {
+    "method": "GET",
+    "path": "/api/v1/records/{entity}/{record_id}/attachments"
+  },
+  "addRecordAttachment": {
+    "method": "POST",
+    "path": "/api/v1/records/{entity}/{record_id}/attachments"
+  },
+  "downloadRecordAttachment": {
+    "method": "GET",
+    "path": "/api/v1/records/{entity}/{record_id}/attachments/{attachment_id}"
   },
   "listRecordComments": {
     "method": "GET",

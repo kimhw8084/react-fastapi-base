@@ -25,7 +25,7 @@
 - The System workspace now exposes team creation/member management and has an actual Playwright workflow covering the server-enforced team scope.
 - Webhook deliveries now persist attempt/status/response history and expose bounded admin history in the System workspace; external dispatch remains job-worker/provider infrastructure.
 - Work-item exchange now supports dependency-free XLSX export, preview and atomic reviewed import with formula-cell rejection; multi-entity relationship snapshots remain open.
-- A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations, and attachment metadata is object-key backed with a scanner/CDR hook; provider implementation and company-mounted qualification remain open.
+- A tenant-scoped storage adapter boundary now provides safe atomic local-filesystem and deterministic in-memory implementations, and both feature and generic dossier attachment paths use object-key-backed metadata with a scanner/CDR hook; provider implementation and company-mounted qualification remain open.
 - Company identity, mounted-storage, deployment/redeploy, and company backup/restore remain external execution gates; ordinary Mac execution and isolated clean-clone certification are now evidenced separately.
 - Rack optional PDU/power/thermal/weight constraints, graph editing history/layout actions, and semiconductor/software metric parity helpers are implemented and tested; their large-scale browser/stress proofs remain open.
 

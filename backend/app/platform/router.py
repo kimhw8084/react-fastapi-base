@@ -3,13 +3,14 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import select
 from app.platform.security import Actor, actor_for, csrf_token
-from app.platform.models import Membership, Tenant, AuditEvent
-from app.platform.schemas import Bootstrap, TenantInfo, ViewCreate, ViewUpdate, ViewRead, WorkspaceDefinition, AuditRead, EntityDefinition, EntityReference, EntityBulkUpdateRequest, EntityBulkUpdateResult, RelationshipDefinition, RelationshipCreate, RelationshipRead, RelationshipUpdate, RevisionInput, GlobalSearchResult
+from app.platform.models import Membership, Tenant, AuditEvent, Attachment
+from app.platform.schemas import Bootstrap, TenantInfo, ViewCreate, ViewUpdate, ViewRead, WorkspaceDefinition, AuditRead, EntityDefinition, EntityReference, EntityBulkUpdateRequest, EntityBulkUpdateResult, RelationshipDefinition, RelationshipCreate, RelationshipRead, RelationshipUpdate, RevisionInput, GlobalSearchResult, AttachmentRead
 from app.platform.errors import AppError
 from app.platform.idempotency import execute_once
 from app.platform.transactions import write_transaction
 from app.platform.version import VERSION
 from app.platform import views, relationships, search
+from app.platform.attachments import AttachmentUpload, attach
 
 router=APIRouter(tags=['Platform'])
 A=Annotated[Actor,Depends(actor_for)]
@@ -173,6 +174,31 @@ def create_record_comment(request:Request,actor:A,entity:str,record_id:str,data:
 def delete_record_comment(request:Request,actor:A,comment_id:str):
     with write_transaction(request.app.state.database,actor.tenant_id) as db:platform_comments.delete_comment(db,actor,comment_id)
     return Response(status_code=204)
+
+@router.get('/records/{entity}/{record_id}/attachments',response_model=list[AttachmentRead],operation_id='listRecordAttachments')
+def list_record_attachments(request:Request,actor:A,entity:str,record_id:str):
+    with request.app.state.database.session(actor.tenant_id) as db:
+        reference=request.app.state.entities.resolve(db,entity,record_id)
+        rows=db.scalars(select(Attachment).where(Attachment.workspace==reference.workspace,Attachment.entity_id==record_id).order_by(Attachment.created_at,Attachment.id)).all()
+        return [AttachmentRead.model_validate(row) for row in rows]
+
+@router.post('/records/{entity}/{record_id}/attachments',response_model=AttachmentRead,status_code=201,operation_id='addRecordAttachment')
+def add_record_attachment(request:Request,actor:A,entity:str,record_id:str,data:AttachmentUpload):
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:
+        reference=request.app.state.entities.resolve(db,entity,record_id)
+        if reference.archived:raise AppError(409,'archived_readonly','Restore this record before adding files.')
+        return attach(db,actor,reference.workspace,record_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner)
+
+@router.get('/records/{entity}/{record_id}/attachments/{attachment_id}',operation_id='downloadRecordAttachment')
+def download_record_attachment(request:Request,actor:A,entity:str,record_id:str,attachment_id:str):
+    from urllib.parse import quote
+    with request.app.state.database.session(actor.tenant_id) as db:
+        reference=request.app.state.entities.resolve(db,entity,record_id)
+        row=db.get(Attachment,attachment_id)
+        if row is None or row.workspace!=reference.workspace or row.entity_id!=record_id:raise AppError(404,'attachment_missing','Attachment is not available.')
+        try:content=request.app.state.object_storage.get(actor.tenant_id,row.object_key) if row.object_key else row.content
+        except (FileNotFoundError,ValueError,OSError):raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
+        return Response(content,media_type='application/octet-stream',headers={'Content-Disposition':f"attachment; filename*=UTF-8''{quote(row.filename,safe='')}",'X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"})
 
 @router.get('/teams',response_model=list[TeamRead],operation_id='listWorkspaceTeams')
 def list_workspace_teams(request:Request,actor:A):

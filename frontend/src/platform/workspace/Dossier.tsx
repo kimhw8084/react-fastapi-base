@@ -9,6 +9,7 @@ import { FieldValue } from './FieldValue'
 import { RelatedRecordsExplorer, BacklinksExplorer, DependencyExplorerPanel, ImpactExplorerPanel, ConnectionExplorerPanel } from './Relationships'
 import type { CommentRead } from '../../generated/schema'
 import { RecordActionMenu } from '../commands/RecordActionMenu'
+import { FilesPanel } from './FilesPanel'
 
 type DossierTab='overview'|'fields'|'relationships'|'activity'|'history'|'compare'|'comments'|'files'|'audit'|'actions'
 
@@ -47,7 +48,7 @@ export function Dossier<T extends BaseRecord>({ adapter, api, row, tenant, user,
     {tab==='history'&&historyPanel}
     {tab==='compare'&&<section aria-label="Compare revisions" className="revision-compare"><div className="compare-controls"><label>Earlier revision<select value={leftRevision} onChange={event=>setLeftRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label><label>Later revision<select value={rightRevision??row.revision} onChange={event=>setRightRevision(Number(event.target.value))}>{revisions.map(revision=><option key={revision} value={revision}>Revision {revision}</option>)}</select></label></div>{leftRevision===(rightRevision??row.revision)?<p className="muted">Choose two different revisions to compare.</p>:changedFields.length?<dl className="changes">{changedFields.map(key=><div key={key}><dt>{key.replaceAll('_',' ')}</dt><dd><del>{String(left[key]??'—')}</del> → <span>{String(right[key]??'—')}</span></dd></div>)}</dl>:<p>No field changes between these revisions.</p>}</section>}
     {tab==='comments'&&(adapter.entityKey?commentsPanel:customTab('comments'))}
-    {tab==='files'&&(adapter.renderAttachments?.(row)??customTab('files'))}
+    {tab==='files'&&(adapter.renderAttachments?.(row)??(adapter.entityKey?<FilesPanel api={api} entity={adapter.entityKey} recordId={row.id} canWrite={canWrite&&!row.archived} scope={`${user}:${tenant}`}/>:customTab('files')))}
     {tab==='audit'&&auditPanel}
     {tab==='actions'&&customTab('actions')}
   </Dialog>
