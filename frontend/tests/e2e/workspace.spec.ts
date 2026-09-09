@@ -66,6 +66,11 @@ test('representative mobile surfaces remain keyboard and axe clean',async({page}
  page.on('console',message=>{if(message.type()==='error')consoleErrors.push(message.text())})
  for(const route of ['/work-items','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/system']){
   await page.goto(route)
+  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
+  const firstFocusable=page.locator('button:visible, a:visible, input:visible, select:visible, textarea:visible, [tabindex="0"]:visible').first()
+  await expect(firstFocusable).toBeVisible()
+  await firstFocusable.focus()
+  expect(await page.evaluate(()=>document.activeElement?.tagName)).not.toBe('BODY')
   await page.keyboard.press('Tab')
   expect(await page.evaluate(()=>document.activeElement?.tagName)).not.toBe('BODY')
   const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
