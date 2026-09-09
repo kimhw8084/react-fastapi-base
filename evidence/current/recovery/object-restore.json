@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source_commit": "852996dd89301166a3b61f5ce156f656c9138906",
+  "timestamp": "2026-09-09T15:34:22.857983+00:00",
+  "command": [
+    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+    "scripts/recovery_fixture.py",
+    "--output",
+    "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/recovery/object-restore.json"
+  ],
+  "environment": {
+    "platform": "darwin",
+    "python": "3.14.5"
+  },
+  "result": "PASS",
+  "exit_code": 0,
+  "tenant": "28c67328-1add-4664-8fd4-5bbc6c24fdc4",
+  "record_type": "work_items",
+  "record_id": "2cedcc16-2b74-4607-8a3d-036b61bb4f71",
+  "object_key": "attachments/595b13a5-94b3-43ee-895a-baadf988b957/recovery.txt",
+  "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
+  "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
+  "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
+  "downloaded_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a"
+}

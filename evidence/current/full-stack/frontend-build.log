@@ -1,9 +1,9 @@
 
-> react-fastapi-base-frontend@1.0.0-rc.1 prebuild
+> react-fastapi-base-frontend@1.0.0-rc.2 prebuild
 > node scripts/prepare-lab.mjs
 
 
-> react-fastapi-base-frontend@1.0.0-rc.1 build
+> react-fastapi-base-frontend@1.0.0-rc.2 build
 > tsc --noEmit && vite build
 
 vite v8.2.2 building client environment for production...
@@ -13,35 +13,35 @@ rendering chunks...
 computing gzip size...
 dist/index.html                              0.40 kB │ gzip:   0.28 kB
 dist/assets/index-CU_nWEew.css             356.51 kB │ gzip:  53.59 kB
-dist/assets/WorkspaceShell-MMthvzBA.js       1.01 kB │ gzip:   0.42 kB
+dist/assets/WorkspaceShell-9tD9dKJL.js       1.01 kB │ gzip:   0.42 kB
 dist/assets/model-Dp3BhK-X.js                1.19 kB │ gzip:   0.60 kB
-dist/assets/Workspace-Ccl79BHI.js            1.45 kB │ gzip:   0.73 kB
+dist/assets/Workspace-D1cKGI_b.js            1.45 kB │ gzip:   0.73 kB
 dist/assets/model-DYk614PN.js                1.49 kB │ gzip:   0.61 kB
-dist/assets/Workspace-B1hVlKs_.js            1.79 kB │ gzip:   0.84 kB
-dist/assets/Workspace-DsK9Ic1Z.js            1.84 kB │ gzip:   0.84 kB
-dist/assets/Workspace-BLOArywj.js            2.16 kB │ gzip:   0.94 kB
-dist/assets/useMutation-DYWd2mmA.js          2.30 kB │ gzip:   0.95 kB
-dist/assets/Workspace-D5u11oYV.js            3.80 kB │ gzip:   1.46 kB
-dist/assets/Workspace-DBmXe_Em.js            4.72 kB │ gzip:   1.78 kB
-dist/assets/Workspace-Cnn5FSEh.js            5.26 kB │ gzip:   1.92 kB
-dist/assets/Workspace-De-9BN_I.js            5.29 kB │ gzip:   1.92 kB
-dist/assets/Workspace-D3P076sD.js            5.33 kB │ gzip:   1.83 kB
-dist/assets/Workspace-GP80CQzH.js            5.38 kB │ gzip:   2.08 kB
-dist/assets/Workspace-C_Y-OJYt.js            5.62 kB │ gzip:   1.99 kB
-dist/assets/Workspace-B6UdFHgf.js            5.64 kB │ gzip:   1.96 kB
-dist/assets/Workspace-6ZyPVOhz.js            5.93 kB │ gzip:   2.10 kB
-dist/assets/Workspace-QMK1fB99.js            6.22 kB │ gzip:   2.56 kB
-dist/assets/Workspace-CRWbIM1q.js            6.43 kB │ gzip:   2.32 kB
-dist/assets/Workspace-DnZdIDzH.js            6.76 kB │ gzip:   2.29 kB
-dist/assets/Workspace-DvwfRorm.js            7.31 kB │ gzip:   2.31 kB
-dist/assets/primitives-Cyghz4y_.js           8.02 kB │ gzip:   2.56 kB
-dist/assets/Workspace-BmtIP9L-.js            9.38 kB │ gzip:   3.23 kB
-dist/assets/Workspace-vxsS6MMP.js           10.94 kB │ gzip:   3.91 kB
-dist/assets/Workspace-CTfiJtIc.js           12.35 kB │ gzip:   4.28 kB
-dist/assets/Workspace-BIxRB-HA.js           13.47 kB │ gzip:   3.88 kB
-dist/assets/ExperienceLab-aJu11cAL.js       21.58 kB │ gzip:   6.46 kB
-dist/assets/EntityWorkspace-7DMPLato.js    103.35 kB │ gzip:  26.99 kB
-dist/assets/index-Cv3D9tEb.js              259.03 kB │ gzip:  80.07 kB
-dist/assets/FieldInput-JAQNvWTC.js       1,120.19 kB │ gzip: 311.78 kB
+dist/assets/Workspace-Cb4cx5sl.js            1.79 kB │ gzip:   0.84 kB
+dist/assets/Workspace-BHJy4ttA.js            1.84 kB │ gzip:   0.84 kB
+dist/assets/Workspace-DxWoFUI4.js            2.16 kB │ gzip:   0.94 kB
+dist/assets/useMutation-Dnokq8aG.js          2.30 kB │ gzip:   0.95 kB
+dist/assets/Workspace-Cn0yyVQz.js            3.80 kB │ gzip:   1.46 kB
+dist/assets/Workspace-Cz2170vG.js            4.72 kB │ gzip:   1.78 kB
+dist/assets/Workspace-BNCWLfZE.js            5.26 kB │ gzip:   1.92 kB
+dist/assets/Workspace-DClQOztS.js            5.29 kB │ gzip:   1.92 kB
+dist/assets/Workspace-B5hoKm6M.js            5.33 kB │ gzip:   1.84 kB
+dist/assets/Workspace-inJFptk_.js            5.38 kB │ gzip:   2.08 kB
+dist/assets/Workspace-rl453AWg.js            5.62 kB │ gzip:   2.00 kB
+dist/assets/Workspace-DSEMi7FB.js            5.64 kB │ gzip:   1.96 kB
+dist/assets/Workspace-OSEfGzZe.js            5.93 kB │ gzip:   2.10 kB
+dist/assets/Workspace-BsNxvErT.js            6.22 kB │ gzip:   2.56 kB
+dist/assets/Workspace-hU7Ebh5f.js            6.43 kB │ gzip:   2.32 kB
+dist/assets/Workspace-bwE1Ba7f.js            6.76 kB │ gzip:   2.30 kB
+dist/assets/Workspace-BVZPsXRa.js            7.31 kB │ gzip:   2.32 kB
+dist/assets/primitives-BdB2oDk4.js           8.02 kB │ gzip:   2.56 kB
+dist/assets/Workspace-BwHl4Dwl.js            9.38 kB │ gzip:   3.23 kB
+dist/assets/Workspace-C6mArHF9.js           10.94 kB │ gzip:   3.91 kB
+dist/assets/Workspace-CHsfjhyl.js           12.35 kB │ gzip:   4.28 kB
+dist/assets/Workspace-ionH_4OS.js           13.47 kB │ gzip:   3.89 kB
+dist/assets/ExperienceLab-CdDJI9N_.js       21.58 kB │ gzip:   6.46 kB
+dist/assets/EntityWorkspace-CwMXjSt6.js    103.46 kB │ gzip:  27.02 kB
+dist/assets/index-BANI6pjB.js              259.03 kB │ gzip:  80.07 kB
+dist/assets/FieldInput-CN-WKJMy.js       1,120.19 kB │ gzip: 311.78 kB
 
-✓ built in 291ms
+✓ built in 279ms
