@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "verified_source_commit": "852996dd89301166a3b61f5ce156f656c9138906",
+  "evidence_commit": "ae1d807fb3eac6900664df2d16ab6abaf523388e",
+  "verification": "evidence/current/full-stack/verification.json",
+  "recovery_fixture": "evidence/current/recovery/object-restore.json",
+  "command": "python3 dev verify-release",
+  "result": "PASS local code gates; company qualification remains NOT_CERTIFIED",
+  "note": "The evidence commit contains reports generated from the verified source commit; this binding file is added afterward to make that relationship explicit."
+}
