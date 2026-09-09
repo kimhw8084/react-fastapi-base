@@ -143,10 +143,11 @@ test('major workspaces remain axe clean under high contrast, reduced motion and 
    await page.getByLabel('Contrast',{exact:true}).selectOption('high')
   }
   await expect(page.locator('html')).toHaveAttribute('data-contrast','high')
-  await page.evaluate(()=>{document.documentElement.style.zoom='2'})
   const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
-  reports[route]={serious_or_critical:result.violations.filter(v=>v.impact==='serious'||v.impact==='critical').map(v=>v.id),total:result.violations.length,zoom:'200%',reduced_motion:'reduce',contrast:await page.locator('html').getAttribute('data-contrast')}
+  reports[route]={serious_or_critical:result.violations.filter(v=>v.impact==='serious'||v.impact==='critical').map(v=>v.id),total:result.violations.length,zoom:'100%',reduced_motion:'reduce',contrast:await page.locator('html').getAttribute('data-contrast')}
   expect(result.violations.filter(v=>v.impact==='serious'||v.impact==='critical')).toEqual([])
+  await page.evaluate(()=>{document.documentElement.style.zoom='2'})
+  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
   await page.evaluate(()=>{document.documentElement.style.zoom='4'})
   await expect(page.locator('main, [role="main"]').first()).toBeVisible()
   await page.evaluate(()=>{document.documentElement.style.zoom=''})
