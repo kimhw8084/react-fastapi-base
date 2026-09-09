@@ -23,6 +23,25 @@ test('create, reload and retrieve revision-backed details',async({page})=>{
  await expect(page.getByRole('region',{name:'Compare revisions'})).toBeVisible()
 })
 
+test('read-only viewer dossier comments do not expose a composer',async({page})=>{
+ await page.goto('/')
+ await page.getByRole('button',{name:/New work item/}).click()
+ const dialog=page.getByRole('dialog',{name:'New work item'})
+ const title=`Viewer comments ${Date.now()}`
+ await dialog.getByRole('textbox',{name:/Title/}).fill(title)
+ await dialog.getByRole('button',{name:'Save changes'}).click()
+ await expect(page.getByRole('dialog',{name:title})).toBeVisible()
+ await page.route('**/api/v1/bootstrap',async route=>{
+  const response=await route.fetch();const body=await response.json()
+  body.user_id='victor';body.tenants=body.tenants.map((tenant:{permissions:string[]})=>({...tenant,permissions:['read']}))
+  await route.fulfill({response,json:body})
+ })
+ await page.reload()
+ await page.getByRole('button',{name:'Comments',exact:true}).click()
+ await expect(page.getByText('Comments are read-only for this record.',{exact:true})).toBeVisible()
+ await expect(page.getByRole('textbox',{name:'Add comment'})).toHaveCount(0)
+})
+
 test('dirty form close requires a decision',async({page})=>{
  await page.goto('/');await page.getByRole('button',{name:/New work item/}).click()
  const dialog=page.getByRole('dialog',{name:'New work item'})

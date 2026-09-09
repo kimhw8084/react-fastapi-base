@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.1
+# Release status — react-fastapi-base 1.0.0-rc.2
 
 ## Decision
 
@@ -13,6 +13,7 @@
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
 - Seven generated reference applications pass their migration, contract, frontend test/build and source-integrity proofs. The upgrade fixture passes plan, conflict-safe apply, migration, build/tests, rollback and integrity comparison.
 - Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The isolated clean-clone macOS gate passes without reusing the working tree's virtualenv, node modules or caches.
+- RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

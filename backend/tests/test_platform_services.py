@@ -2,6 +2,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import os
 import pytest
+import time
 from app.platform.security import Actor
 from app.platform.schemas import NotificationCreate
 from app.platform import events, jobs, notifications, webhooks
@@ -155,6 +156,35 @@ def test_process_one_releases_database_lock_before_handler(env):
         return {'observed':observed[-1],**payload}
     result=jobs.process_one(env['db'],env['tenant'],'worker-reentrant',{'test.reentrant':handler})
     assert result and result.id==queued.id and result.status=='succeeded' and observed==[1]
+
+
+def test_process_one_renews_long_handler_lease(env):
+    a=actor(env)
+    with env['db'].session(env['tenant']) as session:
+        queued=jobs.enqueue(session,a,'test.long',{});session.commit();job_id=queued.id
+    def handler(_payload):
+        time.sleep(1.2)
+        with env['db'].session(env['tenant']) as session:
+            assert jobs.lease_next(session,'worker-b',lease_seconds=1) is None
+        return {'renewed':True}
+    result=jobs.process_one(env['db'],env['tenant'],'worker-a',{'test.long':handler},lease_seconds=1,heartbeat_interval=.05)
+    assert result and result.id==job_id and result.status=='succeeded' and result.result=={'renewed':True}, result
+
+
+def test_process_one_lost_fence_cannot_finalize_handler_result(env):
+    a=actor(env)
+    with env['db'].session(env['tenant']) as session:
+        queued=jobs.enqueue(session,a,'test.reclaimed',{});session.commit();job_id=queued.id
+    def handler(_payload):
+        from datetime import timedelta
+        from app.platform.models import DurableJob
+        with env['db'].session(env['tenant']) as session:
+            row=session.get(DurableJob,job_id);row.lease_expires_at=datetime.now(timezone.utc)-timedelta(seconds=1);session.commit()
+        with env['db'].session(env['tenant']) as session:
+            replacement=jobs.lease_next(session,'worker-b',lease_seconds=5);assert replacement and replacement.id==job_id;session.commit()
+        return {'stale':True}
+    result=jobs.process_one(env['db'],env['tenant'],'worker-a',{'test.reclaimed':handler},lease_seconds=5,heartbeat_interval=.03)
+    assert result and result.id==job_id and result.status=='running' and result.lease_owner=='worker-b',result
 
 def test_member_admin_api_and_last_admin_protection(env,client):
     members=client.get('/api/v1/admin/members');assert members.status_code==200 and {row['user_id'] for row in members.json()}=={'alice','bob','victor'}

@@ -184,6 +184,8 @@ def list_record_attachments(request:Request,actor:A,entity:str,record_id:str):
 
 @router.post('/records/{entity}/{record_id}/attachments',response_model=AttachmentRead,status_code=201,operation_id='addRecordAttachment')
 def add_record_attachment(request:Request,actor:A,entity:str,record_id:str,data:AttachmentUpload):
+    if not request.app.state.settings.attachment_upload_mode or request.app.state.settings.attachment_upload_mode == 'disabled':
+        raise AppError(503,'attachments_disabled','Attachment uploads are disabled by deployment policy.')
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         reference=request.app.state.entities.resolve(db,entity,record_id)
         if reference.archived:raise AppError(409,'archived_readonly','Restore this record before adding files.')

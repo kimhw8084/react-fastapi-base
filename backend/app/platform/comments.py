@@ -17,6 +17,8 @@ def list_comments(session: Session, actor: Actor, entity: str, entity_id: str, r
 def create_comment(session: Session, actor: Actor, entity: str, entity_id: str, data: CommentCreate, registry: EntityRegistry) -> CommentRead:
     actor.require('write')
     reference=registry.resolve(session,entity,entity_id)
+    if reference.archived:
+        raise AppError(409,'archived_readonly','Archived records are read-only, including comments.')
     row=RecordComment(id=str(uuid4()),workspace=reference.workspace,entity=entity,entity_id=entity_id,author=actor.user_id,body=data.body)
     session.add(row);session.flush()
     return CommentRead.model_validate(row)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from datetime import datetime, timedelta, timezone
+from threading import Event, Thread
 from typing import Callable, Any
 from uuid import uuid4
 from sqlalchemy import or_, select
@@ -31,7 +32,7 @@ def cancel(session:Session,actor:Actor,job_id:str)->JobRead:
 
 def lease_next(session:Session,worker_id:str,*,lease_seconds:int=60)->DurableJob|None:
     if not worker_id or len(worker_id)>120:raise AppError(422,'invalid_worker_id','Worker identity is invalid.')
-    if lease_seconds<5 or lease_seconds>3600:raise AppError(422,'invalid_lease','Lease duration is outside the supported range.')
+    if lease_seconds<1 or lease_seconds>3600:raise AppError(422,'invalid_lease','Lease duration is outside the supported range.')
     now=datetime.now(timezone.utc);expires=now+timedelta(seconds=lease_seconds)
     query=select(DurableJob).where(DurableJob.status.in_(('queued','retrying','running')),DurableJob.run_after<=now,or_(DurableJob.status.in_(('queued','retrying')),DurableJob.lease_expires_at.is_(None),DurableJob.lease_expires_at<now)).order_by(DurableJob.run_after,DurableJob.created_at).limit(1)
     row=session.scalars(query).first()
@@ -40,8 +41,10 @@ def lease_next(session:Session,worker_id:str,*,lease_seconds:int=60)->DurableJob
 
 def heartbeat(session:Session,row:DurableJob,worker_id:str,fence_token:str,*,lease_seconds:int=60)->JobRead:
     """Extend a live lease only when both worker and fencing token match."""
+    if lease_seconds<1 or lease_seconds>3600:raise AppError(422,'invalid_lease','Lease duration is outside the supported range.')
     now=datetime.now(timezone.utc)
-    if row.status!='running' or row.lease_owner!=worker_id or row.fence_token!=fence_token or not row.lease_expires_at or row.lease_expires_at<now:
+    expires=row.lease_expires_at.replace(tzinfo=timezone.utc) if row.lease_expires_at and row.lease_expires_at.tzinfo is None else row.lease_expires_at
+    if row.status!='running' or row.lease_owner!=worker_id or row.fence_token!=fence_token or not expires or expires<now:
         raise AppError(409,'job_lease_lost','Job lease is not owned by this worker.')
     row.lease_expires_at=now+timedelta(seconds=lease_seconds);row.updated_at=utcnow();session.flush();return JobRead.model_validate(row)
 
@@ -63,24 +66,56 @@ def run_once(session:Session,worker_id:str,handlers:dict[str,JobHandler])->JobRe
     except Exception as error:finish(session,row,worker_id,token,error=f'{type(error).__name__}: {error}')
     return JobRead.model_validate(row)
 
-def process_one(database,tenant_id:str,worker_id:str,handlers:dict[str,JobHandler])->JobRead|None:
+def _renew_lease(database,tenant_id:str,job_id:str,worker_id:str,fence_token:str,lease_seconds:int,interval:float,stop:Event,state:dict[str,bool])->None:
+    """Renew a lease in independent short transactions while a handler runs."""
+    while not stop.wait(interval):
+        try:
+            from app.platform.transactions import write_transaction
+            with write_transaction(database,tenant_id) as session:
+                current=session.get(DurableJob,job_id)
+                if current is None:
+                    raise AppError(409,'job_lease_lost','Job lease is not owned by this worker.')
+                heartbeat(session,current,worker_id,fence_token,lease_seconds=lease_seconds)
+        except Exception as error:
+            state['lost']=True
+            stop.set()
+            return
+
+
+def process_one(database,tenant_id:str,worker_id:str,handlers:dict[str,JobHandler],*,lease_seconds:int=60,heartbeat_interval:float|None=None)->JobRead|None:
     """Claim transaction -> execute outside DB lock -> finish transaction.
 
     A crashed worker leaves a bounded lease that can be reclaimed later. External
     network calls therefore never hold SQLite's write lock.
     """
     from app.platform.transactions import write_transaction
+    if lease_seconds<1 or lease_seconds>3600:raise AppError(422,'invalid_lease','Lease duration is outside the supported range.')
+    interval=heartbeat_interval if heartbeat_interval is not None else lease_seconds/3
+    if interval<=0 or interval>lease_seconds/3:raise AppError(422,'invalid_heartbeat_interval','Heartbeat interval must be no more than one third of the lease.')
     with write_transaction(database,tenant_id) as session:
-        row=lease_next(session,worker_id)
+        row=lease_next(session,worker_id,lease_seconds=lease_seconds)
         if row is None:return None
         job_id=row.id;job_type=row.job_type;payload=dict(row.payload or {});fence_token=row.fence_token
     handler=handlers.get(job_type);result=None;error=None
+    stop=Event();lease_state={'lost':False}
+    renewer=Thread(target=_renew_lease,args=(database,tenant_id,job_id,worker_id,fence_token,lease_seconds,interval,stop,lease_state),name=f'job-lease-{job_id}',daemon=True)
+    renewer.start()
     try:
         if handler is None:raise RuntimeError('No registered handler for job type.')
         result=handler(payload)
     except Exception as exc:error=f'{type(exc).__name__}: {exc}'
+    finally:
+        stop.set();renewer.join()
     with write_transaction(database,tenant_id) as session:
         current=session.get(DurableJob,job_id)
         if current is None:raise RuntimeError('Claimed job disappeared.')
-        finish(session,current,worker_id,fence_token,result=result,error=error)
+        if lease_state['lost']:
+            return JobRead.model_validate(current)
+        try:
+            finish(session,current,worker_id,fence_token,result=result,error=error)
+        except AppError as stale:
+            # A worker that lost its lease must never turn its handler result
+            # into a success/retry update after another worker reclaimed it.
+            if stale.code!='job_lease_lost':raise
+            return JobRead.model_validate(current)
         return JobRead.model_validate(current)

@@ -26,7 +26,7 @@ from app.platform.models import Tenant
 from app.platform.router import router as platform_router
 from app.platform.version import VERSION
 from app.platform.storage import LocalFilesystemStorage
-from app.platform.attachments import NoopMalwareScanner
+from app.platform.attachments import DeterministicMalwareScanner, NoopMalwareScanner
 from app.features.registry import DEFINITIONS, ENTITY_BINDINGS, ROUTERS
 from app.profiles.company.identity import CompanyIdentity, DevelopmentIdentity
 
@@ -44,7 +44,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     database=Database(settings)
     @asynccontextmanager
     async def lifespan(app):
-        settings.assert_safe()
+        settings.assert_safe(scanner_is_noop=isinstance(app.state.malware_scanner, NoopMalwareScanner))
         if settings.profile=='company':
             app.state.identity.current_user()
         yield
@@ -63,7 +63,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # The adapter is tenant-scoped and stores objects outside SQLite. Company
     # deployments still fail closed through Settings qualification before use.
     app.state.object_storage=LocalFilesystemStorage(settings.data_root/'objects')
-    app.state.malware_scanner=NoopMalwareScanner()
+    if settings.attachment_upload_mode == 'disabled':
+        app.state.malware_scanner = None
+    elif settings.environment in ('development', 'test'):
+        app.state.malware_scanner = DeterministicMalwareScanner()
+    else:
+        # Production must either inject a real scanner or fail closed in the
+        # lifespan preflight; the no-op is never accepted for scanner_required.
+        app.state.malware_scanner = NoopMalwareScanner()
     app.state.identity=CompanyIdentity() if settings.profile=='company' else DevelopmentIdentity(settings.dev_user)
     app.state.csrf_secret=settings.csrf_secret or secrets.token_urlsafe(32)
     app.add_middleware(RequestSafetyMiddleware,settings=settings)
@@ -96,7 +103,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get('/api/v1/readiness',operation_id='readiness')
     def readiness():
         try:
-            settings.assert_safe();assert_revision(database)
+            settings.assert_safe(scanner_is_noop=isinstance(app.state.malware_scanner, NoopMalwareScanner));assert_revision(database)
             with database.session() as db:
                 tenants=db.scalars(select(Tenant).where(Tenant.active.is_(True))).all()
             if len(tenants)>64:raise RuntimeError('Too many tenants for synchronous readiness in this release.')

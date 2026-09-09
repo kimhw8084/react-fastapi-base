@@ -34,6 +34,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('tooling-tests',[sys.executable,'-m','pytest','-q','tests'],ROOT)
     run('architecture',[sys.executable,'scripts/check_architecture.py'])
     run('security-source',[sys.executable,'scripts/security_source_check.py'])
+    run('checkpoint-manifest',[sys.executable,'scripts/generate_checkpoint_manifest.py','--check'])
     run('version-metadata',[sys.executable,'scripts/version_check.py'])
     run('performance-owned-algorithms',[sys.executable,'scripts/performance_check.py'])
     run('performance-stress',[sys.executable,'scripts/performance_stress.py'])

@@ -41,6 +41,7 @@ class Settings(BaseSettings):
     request_limit_per_minute: int = Field(default=180, ge=10, le=10000)
     enable_docs: bool = False
     webhook_allowed_hosts: list[str] = Field(default_factory=list)
+    attachment_upload_mode: Literal['disabled', 'trusted_types', 'scanner_required'] = 'scanner_required'
 
     @field_validator('allowed_origins')
     @classmethod
@@ -67,7 +68,7 @@ class Settings(BaseSettings):
         if len(set(clean))!=len(clean): raise ValueError('Webhook allowlist entries must be unique.')
         return clean
 
-    def production_errors(self) -> list[str]:
+    def production_errors(self, *, scanner_is_noop: bool = False) -> list[str]:
         if self.environment != 'production':
             return []
         errors: list[str] = []
@@ -81,6 +82,8 @@ class Settings(BaseSettings):
             errors.append('Production requires explicit deployment hostnames.')
         if len(self.csrf_secret) < 32:
             errors.append('Production requires a randomly generated CSRF secret of at least 32 characters.')
+        if self.attachment_upload_mode == 'scanner_required' and scanner_is_noop:
+            errors.append('Production attachment uploads require a configured malware scanner; NoopMalwareScanner is not accepted.')
         try:
             if self.qualification_file is None:
                 raise ValueError('missing qualification file')
@@ -93,7 +96,7 @@ class Settings(BaseSettings):
             errors.append('Company qualification is missing or invalid; do not infer safe storage or per-user identity.')
         return errors
 
-    def assert_safe(self) -> None:
-        errors = self.production_errors()
+    def assert_safe(self, *, scanner_is_noop: bool = False) -> None:
+        errors = self.production_errors(scanner_is_noop=scanner_is_noop)
         if errors:
             raise RuntimeError('Production refused: ' + ' '.join(errors))

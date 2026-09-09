@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-rc.2 — release-safety hardening
+
+- Added schema-versioned object-inclusive backup and isolated restore for local object-backed attachments, including hash, size, path, tenant coverage and metadata consistency checks.
+- Added fail-closed production attachment scanning policy, deterministic local scanner coverage, and cleanup of rejected or failed uploads.
+- Added automatic durable job lease renewal during long handlers with fence-loss protection.
+- Replaced the stale root checkpoint with a deterministic current-source manifest and release-gate check.
+- Clarified the historical requirements ledger and made viewer/archived Dossier comments read-only in both UI and API policy.
+- Promoted the release candidate to `1.0.0-rc.2`; company qualification remains external.
+
 ## 1.0.0-rc.1 — reproducible React/FastAPI review build
 
 - Added the committed frontend lockfile and reproducible `npm ci` workflow.

@@ -42,3 +42,9 @@ Node starting-file publisher: server.mjs, with PORT supplied by PaaS. Set NODE_E
 8. Require release approval for the precise artifact and environment. Do not describe this review archive as a certified release.
 
 If per-user PaaS replicas run on different hosts against one mounted database, the current conservative SQLite profile is not compatible. Resolve with a supported shared database service or an owner process/API; a journal-mode change or extra retry is not the fix.
+
+## Attachments and production upload policy
+
+The application uses a tenant-scoped object adapter for runtime attachments. Local `LocalFilesystemStorage` objects are included in the application snapshot and restore contract. A provider-managed object store must declare its backup/retention boundary and provide independent qualification evidence; a database-only snapshot is never considered complete for object-backed rows.
+
+Production defaults to `BASE_ATTACHMENT_UPLOAD_MODE=scanner_required`. Startup/readiness fails closed while that policy is selected if the configured scanner is `NoopMalwareScanner`. `trusted_types` and `disabled` are explicit deployment choices; development and test use the deterministic scanner. The malware/CDR provider remains a company deployment adapter, but production must not silently present a no-op as malware protection.

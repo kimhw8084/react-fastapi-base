@@ -67,8 +67,13 @@ def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUp
         magic={'image/png':b'\x89PNG\r\n\x1a\n','image/jpeg':b'\xff\xd8\xff','application/pdf':b'%PDF-'}
         if not content.startswith(magic[data.content_type]):
             raise AppError(422,'invalid_file','The file signature does not match its media type.')
-    if scanner is not None and not scanner.scan(content,data.content_type,name):
-        raise AppError(422,'malware_rejected','The attachment was rejected by the configured content scanner.')
+    if scanner is not None:
+        try:
+            accepted = scanner.scan(content,data.content_type,name)
+        except Exception:
+            raise AppError(503,'scanner_unavailable','The attachment scanner is unavailable.') from None
+        if not accepted:
+            raise AppError(422,'malware_rejected','The attachment was rejected by the configured content scanner.')
     attachment_id=str(uuid4())
     object_key=None
     stored_content=content
@@ -85,7 +90,15 @@ def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUp
     row=Attachment(id=attachment_id,workspace=workspace,entity_id=entity_id,filename=name,
         content_type=data.content_type,size=len(content),sha256=hashlib.sha256(content).hexdigest(),
         content=stored_content,object_key=object_key,created_by=actor.user_id)
-    session.add(row);session.flush()
+    try:
+        session.add(row);session.flush()
+    except Exception:
+        if storage is not None and tenant_id is not None and object_key is not None:
+            try:
+                storage.delete(tenant_id, object_key)
+            except Exception:
+                pass
+        raise
     result=AttachmentRead.model_validate(row)
     record_event(session,actor,workspace='attachments',entity_id=row.id,action='upload',revision=1,before=None,after=result.model_dump(mode='json'))
     return result
