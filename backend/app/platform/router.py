@@ -172,7 +172,7 @@ def create_record_comment(request:Request,actor:A,entity:str,record_id:str,data:
 
 @router.delete('/records/comments/{comment_id}',status_code=204,operation_id='deleteRecordComment')
 def delete_record_comment(request:Request,actor:A,comment_id:str):
-    with write_transaction(request.app.state.database,actor.tenant_id) as db:platform_comments.delete_comment(db,actor,comment_id)
+    with write_transaction(request.app.state.database,actor.tenant_id) as db:platform_comments.delete_comment(db,actor,comment_id,request.app.state.entities)
     return Response(status_code=204)
 
 @router.get('/records/{entity}/{record_id}/attachments',response_model=list[AttachmentRead],operation_id='listRecordAttachments')
@@ -189,7 +189,7 @@ def add_record_attachment(request:Request,actor:A,entity:str,record_id:str,data:
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         reference=request.app.state.entities.resolve(db,entity,record_id)
         if reference.archived:raise AppError(409,'archived_readonly','Restore this record before adding files.')
-        return attach(db,actor,reference.workspace,record_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner)
+        return attach(db,actor,reference.workspace,record_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner,upload_mode=request.app.state.settings.attachment_upload_mode)
 
 @router.get('/records/{entity}/{record_id}/attachments/{attachment_id}',operation_id='downloadRecordAttachment')
 def download_record_attachment(request:Request,actor:A,entity:str,record_id:str,attachment_id:str):

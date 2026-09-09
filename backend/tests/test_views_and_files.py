@@ -116,6 +116,26 @@ def test_record_comments_are_tenant_scoped_and_authorized(env,client,item):
     other=env['client']('carol');other.headers['X-Tenant-Id']=env['other'];other.headers['X-CSRF-Token']=other.get('/api/v1/bootstrap').json()['csrf_token']
     assert other.get(path).status_code==404
 
+def test_archived_record_comments_are_read_only_for_delete(env,client,item):
+    path=f"/api/v1/records/work_items/{item['id']}/comments"
+    bob=env['client']('bob')
+    created=bob.post(path,json={'body':'Archive review'});assert created.status_code==201,created.text
+    comment_id=created.json()['id']
+    assert client.post(f"/api/v1/work-items/{item['id']}/lifecycle/archive",json={'revision':1}).status_code==200
+    assert bob.delete('/api/v1/records/comments/'+comment_id).status_code==409
+    assert client.delete('/api/v1/records/comments/'+comment_id).status_code==409
+    viewer=env['client']('victor')
+    assert viewer.delete('/api/v1/records/comments/'+comment_id).status_code==403
+
+def test_active_comment_delete_keeps_author_admin_rule(env,client,item):
+    path=f"/api/v1/records/work_items/{item['id']}/comments"
+    created=client.post(path,json={'body':'Remove me'});assert created.status_code==201
+    comment_id=created.json()['id']
+    assert client.delete('/api/v1/records/comments/'+comment_id).status_code==204
+    created=client.post(path,json={'body':'Admin remove'});assert created.status_code==201
+    other=env['client']('bob')
+    assert other.delete('/api/v1/records/comments/'+created.json()['id']).status_code==403
+
 def test_generic_record_files_cover_non_work_item_entities(client):
     project=client.post('/api/v1/projects',json={'title':'File dossier','summary':'','status':'planned','owner':'ops'}).json()
     path=f"/api/v1/records/projects/{project['id']}/attachments"

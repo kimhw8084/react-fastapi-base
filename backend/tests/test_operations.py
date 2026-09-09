@@ -14,6 +14,7 @@ from app.tooling.work_items import create_work_item_direct
 from app.features.work_items.schemas import WorkItemCreate
 from app.main import create_app
 from app.platform.storage import LocalFilesystemStorage
+import app.platform.backup as backup_module
 
 
 def test_backup_restore_retains_data_and_source(env,client,item,tmp_path):
@@ -28,6 +29,18 @@ def test_backup_restore_retains_data_and_source(env,client,item,tmp_path):
     after={str(p.relative_to(root)):sha256(p) for p in root.rglob('*.sqlite3')}
     assert before==after
     restored.close()
+
+
+def test_snapshot_enumerates_attachment_references_from_staged_database(env,tmp_path,monkeypatch):
+    observed=[]
+    original=backup_module._attachment_references
+    def observe(path):
+        observed.append(path)
+        return original(path)
+    monkeypatch.setattr(backup_module,'_attachment_references',observe)
+    snapshot(env['db'].root,tmp_path/'backup',maintenance='APP-STOPPED')
+    assert observed
+    assert all(path.name=='data.sqlite3' and path.parent.parent.parent.name.startswith('.golden-snapshot-') for path in observed)
 
 
 def test_object_attachment_survives_backup_restore_and_download(env,client,item,tmp_path):

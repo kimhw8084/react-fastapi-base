@@ -155,7 +155,10 @@ def snapshot(
             databases.append({'path': relative, 'size': target.stat().st_size, 'sha256': sha256(target)})
             if relative != 'registry.sqlite3':
                 tenant_id = relative.split('/')[1]
-                for reference in _attachment_references(source):
+                # Enumerate the database that will actually be published. The
+                # live source remains untouched and cannot diverge from the
+                # object manifest after the SQLite backup has completed.
+                for reference in _attachment_references(target):
                     key = (tenant_id, str(reference['object_key']))
                     if key in references:
                         raise ValueError('Duplicate attachment object reference.')

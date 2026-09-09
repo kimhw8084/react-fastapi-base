@@ -23,9 +23,12 @@ def create_comment(session: Session, actor: Actor, entity: str, entity_id: str, 
     session.add(row);session.flush()
     return CommentRead.model_validate(row)
 
-def delete_comment(session: Session, actor: Actor, comment_id: str) -> None:
+def delete_comment(session: Session, actor: Actor, comment_id: str, registry: EntityRegistry) -> None:
     actor.require('write')
     row=session.get(RecordComment,comment_id)
     if row is None: raise AppError(404,'comment_missing','Comment is not available.')
+    reference=registry.resolve(session,row.entity,row.entity_id)
+    if reference.archived:
+        raise AppError(409,'archived_readonly','Archived records are read-only, including comments.')
     if row.author!=actor.user_id and 'admin' not in actor.permissions: raise AppError(403,'comment_forbidden','Only the author or an administrator can remove this comment.')
     session.delete(row)

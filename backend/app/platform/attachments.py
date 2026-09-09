@@ -3,7 +3,7 @@ import binascii
 import hashlib
 from pathlib import PurePath
 from uuid import uuid4
-from typing import Protocol
+from typing import Literal, Protocol
 from fastapi.responses import Response
 from pydantic import Field
 from sqlalchemy import select
@@ -36,7 +36,12 @@ class DeterministicMalwareScanner:
         return True
 
 class NoopMalwareScanner:
-    """Development hook. Production may inject a malware/CDR adapter."""
+    """Explicit no-op adapter; it provides no malware protection.
+
+    It is acceptable only for the bounded ``trusted_types`` policy and local
+    compatibility tests. ``scanner_required`` rejects it in this service, so
+    production cannot accidentally present it as malware scanning.
+    """
     def scan(self, content: bytes, content_type: str, filename: str) -> bool:
         return True
 
@@ -46,9 +51,14 @@ class AttachmentUpload(StrictSchema):
     content_base64: str = Field(max_length=1400000)
 
 ALLOWED = {'text/plain','image/png','image/jpeg','application/pdf'}
+AttachmentUploadMode = Literal['disabled', 'trusted_types', 'scanner_required']
 
-def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUpload, *, tenant_id: str|None=None, storage: ObjectStorageAdapter|None=None, scanner: MalwareScanner|None=None) -> AttachmentRead:
+def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUpload, *, tenant_id: str, storage: ObjectStorageAdapter, scanner: MalwareScanner|None, upload_mode: AttachmentUploadMode) -> AttachmentRead:
     actor.require('write')
+    if upload_mode == 'disabled':
+        raise AppError(503, 'attachments_disabled', 'Attachment uploads are disabled by deployment policy.')
+    if upload_mode == 'scanner_required' and (scanner is None or isinstance(scanner, NoopMalwareScanner)):
+        raise AppError(503, 'scanner_unavailable', 'The attachment scanner is unavailable.')
     name=data.filename
     if '/' in name or '\\' in name or any(ord(c)<32 for c in name) or name in ('.','..'):
         raise AppError(422,'unsafe_filename','Attachment filename is invalid.')
@@ -67,8 +77,9 @@ def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUp
         magic={'image/png':b'\x89PNG\r\n\x1a\n','image/jpeg':b'\xff\xd8\xff','application/pdf':b'%PDF-'}
         if not content.startswith(magic[data.content_type]):
             raise AppError(422,'invalid_file','The file signature does not match its media type.')
-    if scanner is not None:
+    if upload_mode == 'scanner_required':
         try:
+            assert scanner is not None
             accepted = scanner.scan(content,data.content_type,name)
         except Exception:
             raise AppError(503,'scanner_unavailable','The attachment scanner is unavailable.') from None
@@ -77,23 +88,22 @@ def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUp
     attachment_id=str(uuid4())
     object_key=None
     stored_content=content
-    if storage is not None:
-        if not tenant_id:
-            raise AppError(500,'storage_configuration','Attachment storage is missing a tenant boundary.')
-        object_key=f'attachments/{attachment_id}/{name}'
-        try:
-            storage.put(tenant_id,object_key,content,data.content_type)
-        except (OSError,ValueError):
-            raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
-        # Keep the database row small while preserving legacy inline rows.
-        stored_content=b''
+    if not tenant_id:
+        raise AppError(500,'storage_configuration','Attachment storage is missing a tenant boundary.')
+    object_key=f'attachments/{attachment_id}/{name}'
+    try:
+        storage.put(tenant_id,object_key,content,data.content_type)
+    except (OSError,ValueError):
+        raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
+    # Keep the database row small while preserving legacy inline rows.
+    stored_content=b''
     row=Attachment(id=attachment_id,workspace=workspace,entity_id=entity_id,filename=name,
         content_type=data.content_type,size=len(content),sha256=hashlib.sha256(content).hexdigest(),
         content=stored_content,object_key=object_key,created_by=actor.user_id)
     try:
         session.add(row);session.flush()
     except Exception:
-        if storage is not None and tenant_id is not None and object_key is not None:
+        if object_key is not None:
             try:
                 storage.delete(tenant_id, object_key)
             except Exception:
