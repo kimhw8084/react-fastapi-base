@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { FieldDefinition } from '../../generated/schema'
 import type { Draft } from './types'
 import { FieldInput } from './FieldInput'
@@ -13,6 +13,8 @@ export interface FormEngineProps {
   onChange:(draft:Draft)=>void
   onSubmit:(draft:Draft)=>Promise<void>|void
   validateAsync?:(draft:Draft)=>Promise<Record<string,string>>
+  validateFieldAsync?:(field:FieldDefinition,draft:Draft)=>Promise<string|undefined>
+  resolveChoices?:(field:FieldDefinition,draft:Draft)=>readonly string[]|undefined
   presentation?:FormPresentation
   sections?:readonly FormSection[]
   busy?:boolean
@@ -25,11 +27,13 @@ function defaultSections(fields:readonly FieldDefinition[]):FormSection[]{
   return [{id:'details',label:'Details',fieldKeys:fields.map(field=>field.key)}]
 }
 
-export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,validateAsync,presentation='simple',sections:declaredSections,busy=false,serverErrors={},renderField,footer}:FormEngineProps){
+export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,validateAsync,validateFieldAsync,resolveChoices,presentation='simple',sections:declaredSections,busy=false,serverErrors={},renderField,footer}:FormEngineProps){
   const sections=declaredSections?.length?declaredSections:defaultSections(fields)
   const [active,setActive]=useState(0)
   const dirty=useMemo(()=>JSON.stringify(draft)!==JSON.stringify(initial),[draft,initial])
   const [clientErrors,setClientErrors]=useState<Record<string,string>>({})
+  const [pendingFields,setPendingFields]=useState<Set<string>>(new Set())
+  const validationTokens=useRef(new Map<string,number>())
   useEffect(()=>{
     const handler=(event:BeforeUnloadEvent)=>{if(dirty){event.preventDefault();event.returnValue=''}}
     window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler)
@@ -41,11 +45,13 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
     const invalid=Boolean(errors[field.key])
     return <label htmlFor={`record-field-${field.key}`} className={['textarea','markdown','code','json','object','array','multiselect','multi_enum'].includes(field.kind)?'full-width':''} key={field.key}>
       <span>{field.label}{field.required&&<span aria-label="required"> *</span>}{field.unit&&<small className="field-unit-hint"> · {field.unit}</small>}</span>
-      {renderField?renderField(field,invalid):field.read_only?<output className="readonly-field">{String(draft[field.key]??'—')}</output>:<FieldInput field={field} draft={draft} onChange={onChange} invalid={invalid} autoFocus={false}/>} 
+      {renderField?renderField(field,invalid):field.read_only?<output className="readonly-field">{String(draft[field.key]??'—')}</output>:<FieldInput field={field} draft={draft} onChange={onChange} invalid={invalid} autoFocus={false} choices={resolveChoices?.(field,draft)} onBlur={()=>{if(!validateFieldAsync)return;const token=(validationTokens.current.get(field.key)??0)+1;validationTokens.current.set(field.key,token);setPendingFields(current=>new Set(current).add(field.key));void validateFieldAsync(field,draft).then(message=>{if(validationTokens.current.get(field.key)!==token)return;setClientErrors(current=>{const next={...current};if(message)next[field.key]=message;else delete next[field.key];return next})}).catch(()=>{if(validationTokens.current.get(field.key)===token)setClientErrors(current=>({...current,[field.key]:'Validation is temporarily unavailable; retry before saving.'}))}).finally(()=>{if(validationTokens.current.get(field.key)===token)setPendingFields(current=>{const next=new Set(current);next.delete(field.key);return next})})}}/>}
       {errors[field.key]&&<small className="field-error">{errors[field.key]}</small>}
+      {pendingFields.has(field.key)&&<small className="muted" role="status">Checking…</small>}
     </label>
   }
   const validate=async()=>{
+    if(pendingFields.size){setClientErrors(current=>({...current,__pending:'Wait for field validation to finish.'}));return false}
     const next:Record<string,string>={}
     for(const field of fields){if(field.required&&!field.read_only&&!String(draft[field.key]??'').trim())next[field.key]=`${field.label} is required.`}
     if(!Object.keys(next).length&&validateAsync){Object.assign(next,await validateAsync(draft))}
