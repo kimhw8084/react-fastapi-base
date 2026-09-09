@@ -32,7 +32,7 @@ This is an explicit delivery ledger, not a percentage-complete claim. The first 
 
 ## Full retained scope
 
-The retained catalog remains required inventory. Current V1 implementation status is authoritative in `docs/v1-completion-status.json`; catalog maturity is checked by `scripts/catalog.py --check --release`. Historical `partial` language in this document describes catalog review semantics, not a current V1 blocker.
+All entries remain required until explicitly approved otherwise. `partial` means a demonstration covers part of the contract, not a certified reusable implementation.
 
 | Required item | Category | Status | Related examples |
 |---|---|---|---|
