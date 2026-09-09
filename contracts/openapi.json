@@ -375,6 +375,227 @@
         "title": "CommentRead",
         "type": "object"
       },
+      "DashboardLayout-Input": {
+        "additionalProperties": false,
+        "properties": {
+          "columns": {
+            "default": 3,
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "title": "Columns",
+            "type": "integer"
+          },
+          "schema_version": {
+            "default": 2,
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "variables": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "maxProperties": 20,
+            "title": "Variables",
+            "type": "object"
+          },
+          "widgets": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardWidget-Input"
+            },
+            "maxItems": 32,
+            "title": "Widgets",
+            "type": "array"
+          }
+        },
+        "title": "DashboardLayout",
+        "type": "object"
+      },
+      "DashboardLayout-Output": {
+        "additionalProperties": false,
+        "properties": {
+          "columns": {
+            "default": 3,
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "title": "Columns",
+            "type": "integer"
+          },
+          "schema_version": {
+            "default": 2,
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "variables": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "maxProperties": 20,
+            "title": "Variables",
+            "type": "object"
+          },
+          "widgets": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardWidget-Output"
+            },
+            "maxItems": 32,
+            "title": "Widgets",
+            "type": "array"
+          }
+        },
+        "required": [
+          "schema_version",
+          "columns",
+          "widgets",
+          "variables"
+        ],
+        "title": "DashboardLayout",
+        "type": "object"
+      },
+      "DashboardWidget-Input": {
+        "additionalProperties": false,
+        "properties": {
+          "filter_key": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter Key"
+          },
+          "id": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "metric",
+              "chart",
+              "table",
+              "timeline",
+              "health",
+              "alert",
+              "markdown"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "span": {
+            "default": 3,
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "title": "Span",
+            "type": "integer"
+          },
+          "title": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "visible": {
+            "default": true,
+            "title": "Visible",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "title"
+        ],
+        "title": "DashboardWidget",
+        "type": "object"
+      },
+      "DashboardWidget-Output": {
+        "additionalProperties": false,
+        "properties": {
+          "filter_key": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter Key"
+          },
+          "id": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "metric",
+              "chart",
+              "table",
+              "timeline",
+              "health",
+              "alert",
+              "markdown"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "span": {
+            "default": 3,
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "title": "Span",
+            "type": "integer"
+          },
+          "title": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "visible": {
+            "default": true,
+            "title": "Visible",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "span",
+          "visible",
+          "filter_key"
+        ],
+        "title": "DashboardWidget",
+        "type": "object"
+      },
       "DeliveryRunBulkRequest": {
         "additionalProperties": false,
         "properties": {
@@ -9985,6 +10206,16 @@
             "title": "Columns",
             "type": "array"
           },
+          "dashboard": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DashboardLayout-Input"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "density": {
             "default": "comfortable",
             "enum": [
@@ -10080,6 +10311,16 @@
             "title": "Columns",
             "type": "array"
           },
+          "dashboard": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DashboardLayout-Output"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "density": {
             "default": "comfortable",
             "enum": [
@@ -10159,7 +10400,8 @@
           "sorts",
           "density",
           "visualization",
-          "columns"
+          "columns",
+          "dashboard"
         ],
         "title": "ViewDefinition",
         "type": "object"

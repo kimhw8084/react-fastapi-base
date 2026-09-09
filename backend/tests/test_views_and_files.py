@@ -82,6 +82,16 @@ def test_saved_view_persists_supported_visualization(client):
     assert data['visualization']=='board'
     assert data['group_by']=='status'
 
+def test_saved_view_persists_bounded_dashboard_layout(client):
+    row=client.post(V,json={'name':'Dashboard layout','definition':{'visualization':'dashboard','dashboard':{
+        'columns':4,'variables':{'timeRange':'7d'},'widgets':[{'id':'health','kind':'health','title':'Health','span':2,'visible':True,'filter_key':'status'}]
+    }}})
+    assert row.status_code==201,row.text
+    dashboard=row.json()['definition']['dashboard']
+    assert dashboard['columns']==4
+    assert dashboard['variables']=={'timeRange':'7d'}
+    assert dashboard['widgets'][0]['filter_key']=='status'
+
 def test_saved_view_rejects_unsupported_visualization(client):
     response=client.post(V,json={'name':'Bad projection','definition':{'visualization':'rack'}})
     assert response.status_code==422

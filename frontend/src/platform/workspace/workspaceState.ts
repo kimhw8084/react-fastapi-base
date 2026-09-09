@@ -1,5 +1,6 @@
 import type { ViewDefinition, WorkspaceDefinition } from '../../generated/schema'
 import { DEFAULT_VIEW } from './types'
+import { dashboardForView, dashboardFromView } from './dashboardModel'
 
 export type WorkspaceVisualization = string
 export const CURRENT_WORKSPACE_SCHEMA = 2
@@ -67,6 +68,7 @@ export function sanitizeWorkspaceView(
     density: source.density === 'compact' ? 'compact' : source.density === 'comfortable' ? 'comfortable' : defaultDensity,
     visualization,
     columns,
+    dashboard: (() => { const dashboard = dashboardFromView(source.dashboard); return dashboard ? dashboardForView(dashboard) : null })(),
   }
 }
 

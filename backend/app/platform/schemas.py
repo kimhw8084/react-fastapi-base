@@ -189,6 +189,20 @@ class ViewSort(StrictSchema):
     key: str = Field(min_length=1, max_length=40)
     direction: Literal['asc', 'desc'] = 'desc'
 
+class DashboardWidget(StrictSchema):
+    id: str = Field(min_length=1, max_length=60)
+    kind: Literal['metric','chart','table','timeline','health','alert','markdown']
+    title: str = Field(min_length=1, max_length=120)
+    span: Literal[1,2,3,4] = 3
+    visible: bool = True
+    filter_key: str | None = Field(default=None, max_length=40)
+
+class DashboardLayout(StrictSchema):
+    schema_version: int = Field(default=2, ge=1, le=20)
+    columns: Literal[1,2,3,4] = 3
+    widgets: list[DashboardWidget] = Field(default_factory=list, max_length=32)
+    variables: dict[str, str] = Field(default_factory=dict, max_length=20)
+
 class ViewDefinition(StrictSchema):
     schema_version: int = Field(default=2, ge=1, le=20)
     search: str = Field(default='', max_length=200)
@@ -202,6 +216,7 @@ class ViewDefinition(StrictSchema):
     density: Literal['comfortable','compact'] = 'comfortable'
     visualization: str = Field(default='table', min_length=1, max_length=40)
     columns: list[ViewColumn] = Field(default_factory=list, max_length=30)
+    dashboard: DashboardLayout | None = None
 
 class ViewCreate(StrictSchema):
     name: str = Field(min_length=1, max_length=120)

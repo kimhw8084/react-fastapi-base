@@ -48,4 +48,4 @@ export interface ProjectionProps<T extends BaseRecord> extends WorkspaceContext 
   viewTools?: ReactNode
 }
 
-export const DEFAULT_VIEW: ViewDefinition = { schema_version: 2, search: '', filters: {}, advanced_filters: [], archived: false, group_by: '', sort: 'updated_at', direction: 'desc', sorts: [], density: 'comfortable', visualization: 'table', columns: [] }
+export const DEFAULT_VIEW: ViewDefinition = { schema_version: 2, search: '', filters: {}, advanced_filters: [], archived: false, group_by: '', sort: 'updated_at', direction: 'desc', sorts: [], density: 'comfortable', visualization: 'table', columns: [], dashboard: null }
