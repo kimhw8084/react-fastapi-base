@@ -106,6 +106,18 @@ def test_filter_and_pagination(client):
     result=client.get(BASE,params={'sort':'title','direction':'asc','limit':1,'offset':1,'priority':'high'}).json()
     assert result['total']==3 and result['items'][0]['title']=='B'
 
+def test_rich_query_state_is_server_owned(client):
+    client.post(BASE,json={'title':'Alpha','status':'open','priority':'high'})
+    client.post(BASE,json={'title':'Beta','status':'open','priority':'low'})
+    client.post(BASE,json={'title':'Gamma','status':'done','priority':'high'})
+    response=client.get(BASE,params={'sorts':'[{"key":"priority","direction":"asc"},{"key":"title","direction":"desc"}]','advanced_filters':'[{"key":"status","operator":"eq","value":"open"}]'})
+    assert response.status_code==200
+    assert [row['title'] for row in response.json()['items']]==['Alpha','Beta']
+
+@pytest.mark.parametrize('params',[{'sorts':'not-json'},{'sorts':'[]'*9},{'advanced_filters':'[{"key":"unknown","operator":"eq","value":"x"}]'},{'advanced_filters':'[{"key":"status","operator":"wat","value":"open"}]'}])
+def test_rich_query_state_rejects_unsafe_or_invalid_shapes(client,params):
+    assert client.get(BASE,params=params).status_code==422
+
 def test_audit_table_is_append_only(env,item):
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(Exception):session.execute(text('DELETE FROM audit_events'))

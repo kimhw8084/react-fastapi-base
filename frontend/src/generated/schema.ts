@@ -367,7 +367,7 @@ export interface OperationInputs {
   "createWebhookEndpoint": { body: WebhookEndpointWrite }
   "updateWebhookEndpoint": { path: { "endpoint_id": string }; body: WebhookEndpointWrite }
   "listWebhookDeliveries": { path: { "endpoint_id": string }; query?: { "limit"?: number } }
-  "listWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "limit"?: number; "offset"?: number } }
+  "listWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean; "sort"?: string; "direction"?: string; "sorts"?: string; "advanced_filters"?: string; "limit"?: number; "offset"?: number } }
   "createWorkItem": { body: WorkItemCreateInput }
   "bulkWorkItems": { body: BulkRequest }
   "exportWorkItems": { query?: { "search"?: string; "status"?: string; "priority"?: string; "archived"?: boolean } }

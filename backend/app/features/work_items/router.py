@@ -14,6 +14,7 @@ from app.platform.idempotency import execute_once
 from app.platform.models import Attachment
 from app.platform.attachments import AttachmentUpload, attach
 from . import service
+from app.platform.query_service import decode_query_list
 from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, ImportPreviewRequest, ImportPreview, ImportCommit
 from .exchange import export_csv, export_xlsx, preview_csv, preview_xlsx
 
@@ -21,9 +22,9 @@ router=APIRouter(prefix='/work-items',tags=['Work items'])
 A=Annotated[Actor,Depends(actor_for)]
 
 @router.get('',response_model=WorkItemPage,operation_id='listWorkItems')
-def list_work_items(request: Request,actor: A, search: str=Query('',max_length=200),status: str='',priority: str='',archived: bool=False,sort: str='updated_at',direction: str='desc',limit: int=Query(50,ge=1,le=1000),offset: int=Query(0,ge=0)):
+def list_work_items(request: Request,actor: A, search: str=Query('',max_length=200),status: str='',priority: str='',archived: bool=False,sort: str='updated_at',direction: str='desc',sorts: str='',advanced_filters: str='',limit: int=Query(50,ge=1,le=1000),offset: int=Query(0,ge=0)):
     with request.app.state.database.session(actor.tenant_id) as db:
-        return service.list_items(db,actor,search=search,status=status,priority=priority,archived=archived,sort=sort,direction=direction,limit=limit,offset=offset)
+        return service.list_items(db,actor,search=search,status=status,priority=priority,archived=archived,sort=sort,direction=direction,sorts=decode_query_list(sorts,name='sorts',limit=8),advanced_filters=decode_query_list(advanced_filters,name='advanced_filters',limit=20),limit=limit,offset=offset)
 
 @router.post('',response_model=WorkItemRead,status_code=201,operation_id='createWorkItem')
 def create(request: Request,actor: A,data: WorkItemCreate,idempotency_key: str|None=Header(None)):

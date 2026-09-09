@@ -113,9 +113,9 @@
       "id": "G13",
       "domain": "Operational grid",
       "status": "PARTIAL",
-      "decision": "AG Grid Community adapter with selection, column persistence, server pagination, global sort/filter controls and local page sorting.",
+      "decision": "AG Grid Community adapter with selection, column persistence, server pagination, reusable advanced-filter/multi-sort state and local page grouping; Work Items also prove the rich query contract server-side.",
       "owner": "frontend/src/platform/grid/DataGrid.tsx; frontend/src/platform/workspace/TableWorkspace.tsx",
-      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; full browser proof required."
+      "acceptance": "Finish grouped/range selection, context menus, visibility UI, utility columns and SysGrid interaction parity; propagate rich query handling to generated adapters and complete full browser/stress proof."
     },
     {
       "id": "G14",

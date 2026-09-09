@@ -3,7 +3,17 @@ import type { WorkspaceContext } from './context'
 import type { AuditRead, WorkspaceDefinition, ViewDefinition } from '../../generated/schema'
 export interface BaseRecord { id: string; revision: number; archived: boolean }
 export type Draft = Record<string, string>
-export interface ListQuery { search: string; filters: Record<string,string>; archived: boolean; sort: string; direction: 'asc' | 'desc'; limit: number; offset: number }
+export interface ListQuery {
+  search: string
+  filters: Record<string,string>
+  archived: boolean
+  sort: string
+  direction: 'asc' | 'desc'
+  sorts?: Array<{key:string;direction:'asc'|'desc'}>
+  advanced_filters?: Array<{key:string;operator:string;value:string}>
+  limit: number
+  offset: number
+}
 export interface Page<T> { items: T[]; total: number; limit: number; offset: number }
 export interface WorkspaceAdapter<T extends BaseRecord> {
   key: string

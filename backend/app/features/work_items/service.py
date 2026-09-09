@@ -17,8 +17,8 @@ def snapshot(item:WorkItem)->dict:return CRUD.snapshot(item)
 
 QUERY=EntityQueryService(model=WorkItem,read_schema=WorkItemRead,sorts=SORTS,search_columns=(WorkItem.title,WorkItem.description),filters={'status':(WorkItem.status,('open','in_progress','done')),'priority':(WorkItem.priority,('low','normal','high'))})
 
-def list_items(session: Session, actor: Actor, *, search: str='', status: str='', priority: str='',archived: bool=False, sort: str='updated_at', direction: str='desc',limit: int=50, offset: int=0) -> WorkItemPage:
-    return QUERY.list(session,actor,page_schema=WorkItemPage,search=search,filter_values={'status':status,'priority':priority},archived=archived,sort=sort,direction=direction,limit=limit,offset=offset)
+def list_items(session: Session, actor: Actor, *, search: str='', status: str='', priority: str='',archived: bool=False, sort: str='updated_at', direction: str='desc',limit: int=50, offset: int=0, sorts=None, advanced_filters=None) -> WorkItemPage:
+    return QUERY.list(session,actor,page_schema=WorkItemPage,search=search,filter_values={'status':status,'priority':priority},archived=archived,sort=sort,direction=direction,limit=limit,offset=offset,sorts=sorts,advanced_filters=advanced_filters)
 
 def create_item(session:Session,actor:Actor,data:WorkItemCreate)->WorkItemRead:return CRUD.create(session,actor,data)
 def update_item(session:Session,actor:Actor,item_id:str,data:WorkItemUpdate)->WorkItemRead:return CRUD.update(session,actor,item_id,data.revision,data.model_dump(exclude={'revision'}))

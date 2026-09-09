@@ -42873,6 +42873,26 @@
           },
           {
             "in": "query",
+            "name": "sorts",
+            "required": false,
+            "schema": {
+              "default": "",
+              "title": "Sorts",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "advanced_filters",
+            "required": false,
+            "schema": {
+              "default": "",
+              "title": "Advanced Filters",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "required": false,
             "schema": {

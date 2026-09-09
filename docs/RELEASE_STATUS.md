@@ -7,6 +7,7 @@
 ## Verified in this checkout
 
 - Frontend lockfile, `npm ci`, TypeScript, unit tests, production build, Storybook build, and actual React browser workflows.
+- The operational table now has a reusable advanced-filter/multi-sort builder and a bounded server-owned rich-query contract proven end-to-end on Work Items; broader generated-adapter propagation and heavy browser stress remain open.
 - FastAPI backend suite: count is refreshed by the final release gate; it includes typed integrations, statistical parity, fenced durable jobs, membership-scoped saved views, webhook delivery history, reviewed XLSX exchange, storage adapter safety, rack constraints, and engineering-pack parity fixtures.
 - Isolated clean-clone Mac certification: setup, contracts, architecture, catalog release check, backend tests, frontend typecheck/build, Storybook and React E2E all passed with cache isolation.
 - Generated contract check, architecture lint, source security checks, owned algorithm performance checks, Lab build, and Lab HTTP/browser tests.

@@ -1,6 +1,7 @@
 import type { WorkItemCreate, WorkItemPage, WorkItemRead, AuditRead, WorkspaceDefinition } from '../../generated/schema'
 import type { ApiClient } from '../../platform/api/client'
 import type { Draft, WorkspaceAdapter } from '../../platform/workspace/types'
+import { serializeListQuery } from '../../platform/workspace/query'
 import { Attachments } from './Attachments'
 import { Exchange } from './Exchange'
 
@@ -14,7 +15,7 @@ export function workItemsAdapter(api:ApiClient,definition:WorkspaceDefinition,ca
  const base='/api/v1/work-items'
  return {
   key:'work_items',entityKey:'work_items',singular:'work item',definition,
-  list:(query,signal)=>api.request<WorkItemPage>(`${base}?${new URLSearchParams(Object.entries({...query,...query.filters,filters:undefined}).filter(([,value])=>value!==undefined).map(([k,v])=>[k,String(v)]))}`,{signal}),
+  list:(query,signal)=>api.request<WorkItemPage>(`${base}?${serializeListQuery(query)}`,{signal}),
   get:id=>api.request<WorkItemRead>(`${base}/${encodeURIComponent(id)}`),
   create:(draft,key)=>api.json<WorkItemRead>(base,'POST',parseDraft(draft),key),
   update:(row,draft)=>api.json<WorkItemRead>(`${base}/${row.id}`,'PUT',{...parseDraft(draft),revision:row.revision}),
