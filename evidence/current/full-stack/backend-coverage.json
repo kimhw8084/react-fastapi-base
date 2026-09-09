@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_commit": "b689cc61dadd367066efa631fd9e418c37a1e5fc",
+  "timestamp": "2026-09-09T07:15:12-05:00",
+  "command": [
+    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "--cov=app",
+    "--cov-report=term-missing:skip-covered"
+  ],
+  "exit_code": 0,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.5"
+  },
+  "hashes": {
+    "source_digest": "c0d86cdd16ab786326f6dee64fffed164d04580164c2f963b5217e377eafb7c3"
+  },
+  "result": {
+    "tests": 209,
+    "duration_seconds": 57.48,
+    "statements": 6215,
+    "missed": 556,
+    "coverage_percent": 91,
+    "files_skipped_complete": 104
+  }
+}
