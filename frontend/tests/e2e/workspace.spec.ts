@@ -33,6 +33,21 @@ test('dirty form close requires a decision',async({page})=>{
  await expect(dialog.getByRole('textbox',{name:/Title/})).toHaveValue('Do not lose this draft')
 })
 
+test('team saved views persist scope, favorite and default metadata',async({page})=>{
+ await page.goto('/work-items')
+ await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
+ await page.getByRole('button',{name:'Save view',exact:true}).click()
+ const dialog=page.getByRole('dialog',{name:'Save current view'})
+ const name=`Browser saved view ${Date.now()}`
+ await dialog.getByRole('textbox',{name:'Name'}).fill(name)
+ await dialog.getByLabel('Visibility').selectOption('team')
+ await dialog.getByRole('checkbox',{name:/Favorite/}).check()
+ await dialog.getByRole('checkbox',{name:/Default/}).check()
+ await dialog.getByRole('button',{name:'Save view',exact:true}).click()
+ await expect(page.getByLabel('Saved views')).toContainText(name)
+ await expect(page.getByLabel('Saved views')).toContainText('★')
+})
+
 test('admin can manage membership-scoped workspace teams',async({page})=>{
  await page.goto('/system')
  await expect(page.getByRole('heading',{name:'System workspace',exact:true})).toBeVisible()
