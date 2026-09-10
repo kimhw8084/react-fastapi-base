@@ -4,7 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import create_app
-from app.platform.attachments import AttachmentUpload, DeterministicMalwareScanner, attach
+from app.platform.attachments import AttachmentUpload, DeterministicMalwareScanner, NoopMalwareScanner, attach
 from app.platform.errors import AppError
 from app.platform.security import Actor
 from app.platform.settings import CompanyQualification, Settings
@@ -72,6 +72,16 @@ def test_trusted_types_uses_only_bounded_file_policy(env):
         assert accepted.size==4
         with pytest.raises(AppError,match='signature'):
             attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='image.png',content_type='image/png',content_base64=base64.b64encode(b'not png').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types')
+
+
+@pytest.mark.parametrize('scanner',[None,NoopMalwareScanner()])
+def test_scanner_required_rejects_missing_or_noop_service_scanner(env,scanner):
+    storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(AppError) as rejected:
+            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required')
+        assert rejected.value.code=='scanner_unavailable'
+    assert storage._objects=={}
 
 
 def test_deterministic_scanner_rejects_eicar_and_svg_without_residue(env):

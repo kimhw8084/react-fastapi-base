@@ -6,7 +6,7 @@
 
 | Check | Result |
 |---|---:|
-| FastAPI/backend | PASS; 222 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
+| FastAPI/backend | PASS; 229 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
 | React browser workflows | PASS; 12 Playwright cases |
 | Storybook build | PASS |
