@@ -6,7 +6,7 @@ No provided command publishes or changes a live company deployment. Code readine
 
 ## Backend project
 
-Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.3 release verification environment is Python 3.14.5; the company PaaS runtime must fall within the supported range and be exercised during qualification.
+Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.4 release verification environment is recorded in generated evidence (currently Python 3.14.5); the company PaaS runtime must fall within the supported range and be exercised during qualification.
 
 ```bash
 python -m pip install -r requirements.lock
@@ -16,6 +16,8 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8000}" --workers 1
 The file entrypoint runs that same ASGI application. Configure the publisher's own start/import mechanism when it owns Uvicorn. No implicit migration is performed at startup. Supply production env through the PaaS configuration service, not a committed .env. AccessKey must be injected by the platform for the actual caller's isolated execution; do not manually set it to the app owner for a shared service.
 
 Health is /api/v1/health; readiness is /api/v1/readiness. Readiness includes expected migration heads for active tenants and fails on invalid production configuration. A healthy endpoint is not proof of user identity or storage durability.
+
+Attachment policy is part of application readiness: ASGI startup and `preflight` fail closed when `scanner_required` has no real scanner. The offline `migrate`, `backup` and `run-jobs` operator commands do not accept uploads, so they validate the production qualification contract while explicitly omitting scanner availability; their success must never be treated as application readiness. Select `trusted_types` only when the deployment intentionally accepts the bounded MIME/signature/size policy without malware scanning, or select `disabled` to prohibit uploads.
 
 ## Frontend project
 

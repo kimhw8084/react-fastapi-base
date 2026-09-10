@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.3
+# Delivery verification — react-fastapi-base 1.0.0-rc.4
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 

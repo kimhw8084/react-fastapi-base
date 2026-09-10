@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.4 — qualification-readiness hardening
+
+- Hardened attachment metadata and download integrity, including authenticated-tenant binding and cleanup after partial storage failure.
+- Hardened qualification attestation validation and kept scanner-required application readiness distinct from offline maintenance commands.
+
 ## 1.0.0-rc.3 — release-safety hotfix
 
 - Centralized attachment upload-policy enforcement so generic and legacy Work Items uploads cannot bypass `disabled`, `trusted_types`, or `scanner_required` deployment policy.

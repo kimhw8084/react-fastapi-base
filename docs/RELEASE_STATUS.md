@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.3
+# Release status — react-fastapi-base 1.0.0-rc.4
 
 ## Decision
 
@@ -15,6 +15,7 @@
 - Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The isolated clean-clone macOS gate passes without reusing the working tree's virtualenv, node modules or caches.
 - RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 - RC.3 centrally enforces the attachment upload policy for every caller, binds object export to the copied snapshot database, rejects archived comment deletion server-side, and reconciles the supported Python runtime documentation.
+- RC.4 hardens attachment metadata and download integrity, binds direct service calls to the authenticated tenant, validates qualification attestations, and keeps upload-scanner readiness separate from offline maintenance safety checks.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 
