@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "source_commit": "86e5254aad17c47a116d1952ad99ef273f62588b",
-  "timestamp": "2026-09-10T03:40:38Z",
+  "source_commit": "2635bf08da58f594bbed69f852d569644b610731",
+  "timestamp": "2026-09-10T03:58:48Z",
   "command": "cd backend && .venv/bin/python -m pytest --cov=app --cov-report=term-missing",
   "exit_code": 0,
   "environment": {
@@ -10,9 +10,9 @@
     "test_count": 236
   },
   "hashes": {
-    "source_digest": "5edfdb0bcc7a652cfcacf41bf949516ceb38e76508335a5d896bfcb87f004a8c"
+    "source_digest": "99d6a7d16f64e41e3c5e370811298fa1ba759ed4905109fb5d5ae72229fcaa3b"
   },
   "coverage_percent": 91,
-  "duration_seconds": 92.24,
+  "duration_seconds": 77.48,
   "result": "PASS"
 }
