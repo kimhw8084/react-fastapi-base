@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.4
+# Delivery verification — react-fastapi-base 1.0.0-rc.5
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -6,7 +6,7 @@
 
 | Check | Result |
 |---|---:|
-| FastAPI/backend | PASS; 236 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
+| FastAPI/backend | PASS; 237 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
 | React browser workflows | PASS; 13 Playwright cases |
 | Storybook build | PASS |

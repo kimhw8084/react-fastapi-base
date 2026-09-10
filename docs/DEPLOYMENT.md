@@ -6,7 +6,7 @@ No provided command publishes or changes a live company deployment. Code readine
 
 ## Backend project
 
-Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.4 release verification environment is recorded in generated evidence (currently Python 3.14.5); the company PaaS runtime must fall within the supported range and be exercised during qualification.
+Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.5 release verification environment is recorded in generated evidence (currently Python 3.14.5); the company PaaS runtime must fall within the supported range and be exercised during qualification.
 
 ```bash
 python -m pip install -r requirements.lock

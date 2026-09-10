@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.5 — archived attachment lifecycle hardening
+
+- Made archived-record immutability authoritative in the shared attachment service, including direct service callers.
+
 ## 1.0.0-rc.4 — qualification-readiness hardening
 
 - Hardened attachment metadata and download integrity, including authenticated-tenant binding and cleanup after partial storage failure.

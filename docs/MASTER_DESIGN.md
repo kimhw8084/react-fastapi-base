@@ -1,8 +1,8 @@
-> **Implementation addendum (1.0.0-rc.4):** see decisions/0001-native-widget-layer.md, EXPERIENCE_LAB.md, COMPONENT_COVERAGE.md and v1-completion-status.json. The typed Lab and React host have executed local builds and browser workflows; the full retained inventory and release certification remain open. This design is not itself production evidence.
+> **Implementation addendum (1.0.0-rc.5):** see decisions/0001-native-widget-layer.md, EXPERIENCE_LAB.md, COMPONENT_COVERAGE.md and v1-completion-status.json. The typed Lab and React host have executed local builds and browser workflows; the full retained inventory and release certification remain open. This design is not itself production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
-**Version: 1.0.0-rc.4 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.5 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 This document is a design baseline with an executable initial implementation, not a claim that the previously requested entire platform is finished. The 68-domain ledger is authoritative about missing scope. Changes to SysGrid itself, complete visual parity, advanced workspace archetypes, actual corporate publication, dependency-resolved React verification and a production release are not included as completed work.
 

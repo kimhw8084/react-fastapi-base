@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.4
+# Release status — react-fastapi-base 1.0.0-rc.5
 
 ## Decision
 
@@ -6,7 +6,7 @@
 
 ## Current local proof
 
-- Backend: 236 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
+- Backend: 237 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
 - Frontend: locked `npm ci`, TypeScript, 16 Vitest files / 40 tests, production build, Storybook build and 13 Playwright workflows passed.
 - Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
@@ -16,6 +16,7 @@
 - RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 - RC.3 centrally enforces the attachment upload policy for every caller, binds object export to the copied snapshot database, rejects archived comment deletion server-side, and reconciles the supported Python runtime documentation.
 - RC.4 hardens attachment metadata and download integrity, binds direct service calls to the authenticated tenant, validates qualification attestations, and keeps upload-scanner readiness separate from offline maintenance safety checks.
+- RC.5 makes archived-record immutability authoritative in the shared attachment service, closing the direct-service bypass left outside route-level checks.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 
