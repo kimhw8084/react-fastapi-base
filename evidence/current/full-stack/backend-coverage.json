@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "source_commit": "2635bf08da58f594bbed69f852d569644b610731",
-  "timestamp": "2026-09-10T03:58:48Z",
+  "source_commit": "974fd69c3d715969faa4b19d19598f28d9265253",
+  "timestamp": "2026-09-10T05:19:25Z",
   "command": "cd backend && .venv/bin/python -m pytest --cov=app --cov-report=term-missing",
   "exit_code": 0,
   "environment": {
     "platform": "macOS Darwin",
     "python": "3.14.5",
-    "test_count": 236
+    "test_count": 254
   },
   "hashes": {
-    "source_digest": "99d6a7d16f64e41e3c5e370811298fa1ba759ed4905109fb5d5ae72229fcaa3b"
+    "source_digest": "e2bb3885bdc88209d842b164f509e9abb3aaba8debd6848579e58d9930fd47ea"
   },
   "coverage_percent": 91,
-  "duration_seconds": 77.48,
+  "duration_seconds": 67.92,
   "result": "PASS"
 }
