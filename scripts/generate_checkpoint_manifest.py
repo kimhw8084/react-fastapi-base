@@ -15,6 +15,7 @@ EXCLUDED_PARTS = {
     'playwright-report', 'storybook-static', 'checkpoints', 'evidence',
     '__pycache__', '.cache',
 }
+EXCLUDED_PATH_PREFIXES = {'frontend/public/experience-lab/'}
 EXCLUDED_SUFFIXES = {'.db', '.sqlite', '.sqlite3', '.pyc', '.pem', '.key', '.ttf', '.otf', '.woff', '.woff2'}
 EXCLUDED_NAMES = {'.coverage', 'coverage.xml'}
 
@@ -25,6 +26,8 @@ def source_files():
             continue
         relative = path.relative_to(ROOT)
         if relative.as_posix() == MANIFEST.name or any(part in EXCLUDED_PARTS for part in relative.parts):
+            continue
+        if any(relative.as_posix().startswith(prefix) for prefix in EXCLUDED_PATH_PREFIXES):
             continue
         if path.name in EXCLUDED_NAMES or path.suffix.lower() in EXCLUDED_SUFFIXES or path.name.endswith(('-wal', '-shm', '-journal', '.pid')):
             continue
