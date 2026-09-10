@@ -16,6 +16,7 @@ EXCLUDED_PARTS = {
     '__pycache__', '.cache',
 }
 EXCLUDED_SUFFIXES = {'.db', '.sqlite', '.sqlite3', '.pyc', '.pem', '.key', '.ttf', '.otf', '.woff', '.woff2'}
+EXCLUDED_NAMES = {'.coverage', 'coverage.xml'}
 
 
 def source_files():
@@ -25,7 +26,7 @@ def source_files():
         relative = path.relative_to(ROOT)
         if relative.as_posix() == MANIFEST.name or any(part in EXCLUDED_PARTS for part in relative.parts):
             continue
-        if path.suffix.lower() in EXCLUDED_SUFFIXES or path.name.endswith(('-wal', '-shm', '-journal', '.pid')):
+        if path.name in EXCLUDED_NAMES or path.suffix.lower() in EXCLUDED_SUFFIXES or path.name.endswith(('-wal', '-shm', '-journal', '.pid')):
             continue
         if path.name.startswith('.env') and not any(part in path.name for part in ('example', 'sample', 'template')):
             continue

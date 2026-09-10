@@ -1,7 +1,6 @@
 {
   "algorithm": "sha256",
   "files": {
-    ".coverage": "5f2e65e4eb24373ac63c54f8addc0cd16728b0281f7c4881ecf61971103c7602",
     ".github/dependabot.yml": "55081bdbf8f4b7fe2069d2b6d0d4ad662c5de3fdedc2bd15d62e5e33ae7e9dd2",
     ".github/pull_request_template.md": "5cc7764def0e62749ac3ca08a91bfcd25de825a7a38caf4d529f13f954d9d1d3",
     ".github/workflows/experience-lab.yml": "87835e835c55ca7b7cd7a749b72f74e8c4d4ee3e5b62a1a91486a321ca558cb3",
@@ -14,7 +13,6 @@
     "SECURITY.md": "a251a120424d8a8537114c6e7a96bd6bff5737613109f9f96c5b015ebb435595",
     "SOURCE_PROVENANCE.json": "cc06024533ce07be52446714d8f1f5eb399946944af57f8a4923f66412f5e2c4",
     "VERSION": "d458c8db8288a8a159c5b25dbea651430713bd1417c213dd83048058fe5fe228",
-    "backend/.coverage": "2976ffd88003c3de7bd30436445aec1a6fa3e758cac8d1a1ed42bbb3370368b3",
     "backend/alembic.ini": "5d7562fe770ab249cf355b8f1be4a2e09e291d13bf649652dbc0917d074fcd2d",
     "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "backend/app/cli.py": "48a47748527960113aafa166040cbf9eb7fe8f372c2b487e3d04676b551b6857",
@@ -659,7 +657,7 @@
     "scripts/export_lab_fixtures.py": "9bd18a5687887bc021c92ced56530b1db0e3b43f90438bb70daec0dcc16cd89c",
     "scripts/fresh_clone_check.py": "6a375fb051c0daeb5f98a930025285140cd2da61ca19e6f95d23b1a19bfd3b5f",
     "scripts/generate_catalog_registry.py": "0f2bbafd2264bc4517b36b668db0b656771538c7d04cf52dbbbda178f95fdc7b",
-    "scripts/generate_checkpoint_manifest.py": "ece0715cefd64ec1bc41f7ae75c5799e9b5b5fa569df7464598c514d50c7e1c2",
+    "scripts/generate_checkpoint_manifest.py": "e995b89ffccd67179d34be82e7336b86754a5b915093aaef43d2b02054c9ea4a",
     "scripts/generate_contracts.py": "db39e8e4b32fd029ff4ce3c9e796e5402c02970371269e95f56bc47d7de5c871",
     "scripts/http_smoke.py": "bdce648fb9d64b37a70353b0a996b52e2df1f1ef5d28c62584027b6855bcae31",
     "scripts/lab_server.py": "02fa6d00155f9583e44537ceacf3e3e3e5ce7e594b64d41a00fb162edae50b13",
