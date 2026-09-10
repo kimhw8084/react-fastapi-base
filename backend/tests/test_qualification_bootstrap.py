@@ -161,8 +161,9 @@ def test_qualification_requires_prerequisites_and_company_identity(tmp_path, mon
     monkeypatch.delenv('AccessKey', raising=False)
     prerequisites_path = tmp_path / 'prerequisites.json'
     prerequisites_path.write_text(_prerequisites(root).model_dump_json())
-    app = create_app(_qualification_settings(root, prerequisites_path))
+    app = create_app(_qualification_settings(root, prerequisites_path).model_copy(update={'enable_docs': True}))
     assert isinstance(app.state.identity, CompanyIdentity)
+    assert app.docs_url is None and app.openapi_url is None
     with pytest.raises(AppError):
         with TestClient(app):
             pass

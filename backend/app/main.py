@@ -51,8 +51,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         database.close()
     app=FastAPI(title=application.name,version=VERSION,lifespan=lifespan,
         responses={code:{'model':ErrorResponse} for code in (400,401,403,404,409,413,415,422,429,500,503)},
-        docs_url='/docs' if settings.environment!='production' and settings.enable_docs else None,
-        redoc_url=None,openapi_url='/openapi.json' if settings.environment!='production' else None)
+        docs_url='/docs' if settings.environment in ('development', 'test') and settings.enable_docs else None,
+        redoc_url=None,openapi_url='/openapi.json' if settings.environment in ('development', 'test') else None)
     app.state.instance_id=str(uuid4())
     app.state.settings=settings
     app.state.application=application
