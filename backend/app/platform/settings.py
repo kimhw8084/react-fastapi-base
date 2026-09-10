@@ -149,4 +149,4 @@ class Settings(BaseSettings):
     def assert_maintenance_safe(self) -> None:
         errors = self.maintenance_errors()
         if errors:
-            raise RuntimeError('Production maintenance refused: ' + ' '.join(errors))
+            raise RuntimeError('Production refused: ' + ' '.join(errors))
