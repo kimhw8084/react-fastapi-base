@@ -1,4 +1,5 @@
 import os
+import json
 from uuid import uuid4
 import pytest
 from app.platform.settings import Settings,CompanyQualification
@@ -70,6 +71,37 @@ def test_opaque_s3_mount_cannot_be_qualified():
     from pydantic import ValidationError
     with pytest.raises(ValidationError):
         CompanyQualification.model_validate({'schema_version':1,'storage_kind':'s3_fuse'})
+
+
+def test_qualification_template_and_placeholder_evidence_cannot_validate():
+    from pathlib import Path
+    from pydantic import ValidationError
+    template=json.loads(Path(__file__).resolve().parents[2].joinpath('deploy/company-qualification.template.json').read_text())
+    with pytest.raises(ValidationError):
+        CompanyQualification.model_validate(template)
+    template.update({
+        'deployment_id':'looks good',
+        'identity_topology':'per_user_process',
+        'simultaneous_identity_evidence':'looks good',
+        'storage_kind':'local_disk',
+        'provider_sqlite_support_reference':'looks good',
+        'all_database_clients_same_host':True,
+        'persistent_root':'relative-root',
+        'redeploy_persistence_evidence':'looks good',
+        'restore_drill_evidence':'looks good',
+        'ingress_authentication_evidence':'looks good',
+        'approved_by':'approved',
+        'approved_at':'not a timestamp',
+    })
+    with pytest.raises(ValidationError):
+        CompanyQualification.model_validate(template)
+
+
+def test_production_scanner_status_is_required_for_readiness():
+    settings=Settings(environment='production')
+    errors=settings.production_errors()
+    assert any('scanner status' in error for error in errors)
+    assert not any('scanner status' in error for error in settings.maintenance_errors())
 
 def test_shared_process_identity_cannot_be_qualified():
     from pydantic import ValidationError

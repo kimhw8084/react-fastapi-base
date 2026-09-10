@@ -1,5 +1,6 @@
 import base64
 from pathlib import Path
+from uuid import uuid4
 import pytest
 from fastapi.testclient import TestClient
 
@@ -107,4 +108,42 @@ def test_scanner_failure_is_safe_and_does_not_persist_object(env):
             attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=FailingScanner(),upload_mode='scanner_required')
         assert failure.value.status==503 and failure.value.code=='scanner_unavailable'
         session.rollback()
+    assert storage._objects=={}
+
+
+def test_storage_failure_after_write_is_cleaned_up_and_does_not_persist_row(env):
+    class PartialStorage(MemoryStorage):
+        def put(self, tenant_id, key, content, content_type):
+            super().put(tenant_id, key, content, content_type)
+            raise RuntimeError('provider failed after write')
+
+    storage=PartialStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(AppError) as failure:
+            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='partial.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types')
+        assert failure.value.code=='storage_unavailable'
+        from app.platform.models import Attachment
+        assert session.query(Attachment).count()==0
+    assert storage._objects=={}
+
+
+def test_attachment_storage_is_bound_to_authenticated_tenant(env):
+    storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(AppError) as failure:
+            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='cross-tenant.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=str(uuid4()),storage=storage,scanner=None,upload_mode='trusted_types')
+        assert failure.value.status==403 and failure.value.code=='tenant_forbidden'
+    assert storage._objects=={}
+
+
+def test_scanner_must_return_a_boolean_approval(env):
+    class InvalidScanner:
+        def scan(self, content, content_type, filename):
+            return 'approved'
+
+    storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(AppError) as failure:
+            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='invalid-result.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=InvalidScanner(),upload_mode='scanner_required')
+        assert failure.value.status==503 and failure.value.code=='scanner_unavailable'
     assert storage._objects=={}

@@ -20,6 +20,16 @@ def _deliver_webhook_job(database,settings,tenant_id,payload):
     with database.session(tenant_id) as session:
         return deliver(session,settings,str(payload.get('endpoint_id','')),str(payload.get('event_id','')))
 
+
+def _assert_operator_safe(settings: Settings) -> None:
+    """Validate production qualification without pretending maintenance has a scanner.
+
+    These commands do not accept uploads or start the ASGI request surface. The
+    application startup and ``preflight`` continue to require an actual scanner
+    whenever ``scanner_required`` is selected.
+    """
+    settings.assert_maintenance_safe()
+
 def main():
     parser=argparse.ArgumentParser(description='Golden operator tools. Never run against live data without the documented maintenance procedure.')
     commands=parser.add_subparsers(dest='command',required=True)
@@ -45,7 +55,7 @@ def main():
         if args.command=='doctor-storage':
             result=probe(args.scratch_parent);print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
         if args.command=='run-jobs':
-            settings.assert_safe(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
+            _assert_operator_safe(settings)
             from app.platform.jobs import process_one
             from app.platform.webhooks import deliver as deliver_webhook
             processed=0
@@ -59,7 +69,7 @@ def main():
                     if args.once:break
             print(json.dumps({'processed':processed,'worker_id':args.worker_id}));return 0
         if args.command=='restore':print(restore(args.snapshot,args.target));return 0
-        settings.assert_safe(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
+        _assert_operator_safe(settings)
         if args.command=='provision':print(provision(database,args.tenant,args.admin))
         elif args.command=='add-member':add_member(database,args.tenant_id,args.user,args.role)
         elif args.command=='migrate':

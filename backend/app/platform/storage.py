@@ -45,6 +45,18 @@ class StorageBackupAdapter(Protocol):
     def import_object(self, tenant_id: str, key: str, source: Path, content_type: str) -> StoredObject: ...
 
 
+def validate_content_type(content_type: str) -> str:
+    """Validate the bounded metadata carried beside an object.
+
+    MIME allowlisting belongs to the attachment service. Storage adapters still
+    reject malformed metadata so an adapter cannot persist response-splitting
+    characters or an unbounded content-type value.
+    """
+    if not isinstance(content_type, str) or not content_type or len(content_type) > 120 or any(char in content_type for char in ('\r', '\n')):
+        raise ValueError('Invalid object content type.')
+    return content_type
+
+
 def validate_object_key(key: str) -> PurePosixPath:
     """Validate a provider-neutral object key using the storage path rules."""
     return _safe_key(key)
@@ -85,7 +97,7 @@ class LocalFilesystemStorage:
 
     def put(self, tenant_id: str, key: str, content: bytes, content_type: str) -> StoredObject:
         if not isinstance(content, bytes) or len(content) > self.max_bytes: raise ValueError('Object exceeds the storage limit.')
-        if not content_type or len(content_type) > 120 or any(char in content_type for char in ('\r', '\n')): raise ValueError('Invalid object content type.')
+        validate_content_type(content_type)
         target = self._path(tenant_id, key); target.parent.mkdir(parents=True, exist_ok=True)
         descriptor, temporary = tempfile.mkstemp(prefix='.object-', dir=target.parent)
         try:
@@ -112,6 +124,7 @@ class LocalFilesystemStorage:
         return path.is_file() and not path.is_symlink()
 
     def export_object(self, tenant_id: str, key: str, destination: Path, content_type: str) -> StoredObject:
+        validate_content_type(content_type)
         source = self._path(tenant_id, key)
         if source.is_symlink() or not source.is_file():
             raise FileNotFoundError(key)
@@ -124,6 +137,7 @@ class LocalFilesystemStorage:
         return StoredObject(key=key, size=len(content), sha256=hashlib.sha256(content).hexdigest(), content_type=content_type)
 
     def import_object(self, tenant_id: str, key: str, source: Path, content_type: str) -> StoredObject:
+        validate_content_type(content_type)
         if source.is_symlink() or not source.is_file():
             raise ValueError('Snapshot object is missing or symbolic.')
         target = self._path(tenant_id, key)
@@ -168,6 +182,7 @@ class MemoryStorage:
     def put(self, tenant_id: str, key: str, content: bytes, content_type: str) -> StoredObject:
         _safe_segment(tenant_id, 'tenant identifier'); _safe_key(key)
         if not isinstance(content, bytes): raise ValueError('Objects must be bytes.')
+        validate_content_type(content_type)
         self._objects[(tenant_id, key)] = (content, content_type)
         return StoredObject(key, len(content), hashlib.sha256(content).hexdigest(), content_type)
 

@@ -12,7 +12,7 @@ from app.platform.schemas import AuditRead, RevisionInput, StrictSchema, Attachm
 from app.platform.transactions import write_transaction
 from app.platform.idempotency import execute_once
 from app.platform.models import Attachment
-from app.platform.attachments import AttachmentUpload, attach
+from app.platform.attachments import AttachmentUpload, attach, read_content
 from . import service
 from app.platform.query_service import decode_query_list
 from .schemas import WorkItemCreate, WorkItemUpdate, WorkItemRead, WorkItemPage, BulkRequest, MatchingBulkRequest, MatchingBulkPreview, ImportPreviewRequest, ImportPreview, ImportCommit
@@ -149,8 +149,5 @@ def download_attachment(request: Request,actor: A,item_id: str,attachment_id: st
         row=db.get(Attachment,attachment_id)
         if row is None or row.entity_id!=item_id or row.workspace!='work_items':
             raise AppError(404,'attachment_missing','Attachment is not available.')
-        try:
-            content=request.app.state.object_storage.get(actor.tenant_id,row.object_key) if row.object_key else row.content
-        except (FileNotFoundError,ValueError,OSError):
-            raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
+        content=read_content(row,tenant_id=actor.tenant_id,storage=request.app.state.object_storage)
         return Response(content,media_type='application/octet-stream',headers={'Content-Disposition':f"attachment; filename*=UTF-8''{quote(row.filename,safe='')}",'X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"})

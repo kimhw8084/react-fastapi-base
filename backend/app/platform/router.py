@@ -10,7 +10,7 @@ from app.platform.idempotency import execute_once
 from app.platform.transactions import write_transaction
 from app.platform.version import VERSION
 from app.platform import views, relationships, search
-from app.platform.attachments import AttachmentUpload, attach
+from app.platform.attachments import AttachmentUpload, attach, read_content
 
 router=APIRouter(tags=['Platform'])
 A=Annotated[Actor,Depends(actor_for)]
@@ -198,8 +198,7 @@ def download_record_attachment(request:Request,actor:A,entity:str,record_id:str,
         reference=request.app.state.entities.resolve(db,entity,record_id)
         row=db.get(Attachment,attachment_id)
         if row is None or row.workspace!=reference.workspace or row.entity_id!=record_id:raise AppError(404,'attachment_missing','Attachment is not available.')
-        try:content=request.app.state.object_storage.get(actor.tenant_id,row.object_key) if row.object_key else row.content
-        except (FileNotFoundError,ValueError,OSError):raise AppError(503,'storage_unavailable','The attachment storage is unavailable.') from None
+        content=read_content(row,tenant_id=actor.tenant_id,storage=request.app.state.object_storage)
         return Response(content,media_type='application/octet-stream',headers={'Content-Disposition':f"attachment; filename*=UTF-8''{quote(row.filename,safe='')}",'X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"})
 
 @router.get('/teams',response_model=list[TeamRead],operation_id='listWorkspaceTeams')

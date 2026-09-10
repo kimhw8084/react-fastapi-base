@@ -11,7 +11,7 @@ import sqlite3
 import tempfile
 from uuid import UUID
 
-from app.platform.storage import LocalFilesystemStorage, StorageBackupAdapter, validate_object_key
+from app.platform.storage import LocalFilesystemStorage, StorageBackupAdapter, validate_object_key, validate_content_type
 
 
 VERSION = 2
@@ -64,8 +64,12 @@ def _attachment_references(path: Path) -> list[dict[str, object]]:
             validate_object_key(object_key)
         except ValueError as error:
             raise ValueError('Attachment object key is unsafe.') from error
-        if not isinstance(size, int) or size < 0 or not isinstance(digest, str) or len(digest) != 64:
+        if isinstance(size, bool) or not isinstance(size, int) or size < 0 or not isinstance(digest, str) or len(digest) != 64:
             raise ValueError('Attachment object metadata is invalid.')
+        try:
+            validate_content_type(content_type)
+        except ValueError as error:
+            raise ValueError('Attachment object metadata is invalid.') from error
         references.append({'object_key': object_key, 'size': size, 'sha256': digest, 'content_type': content_type})
     return references
 
@@ -250,8 +254,12 @@ def restore(snapshot_root: Path, target_root: Path) -> Path:
             validate_object_key(object_key)
         except (ValueError, TypeError, AttributeError) as error:
             raise ValueError('Snapshot object tenant or key is invalid.') from error
-        if entry['snapshot_path'] != f'objects/{tenant_id}/{object_key}' or not isinstance(entry.get('size'), int) or entry['size'] < 0 or len(entry['sha256']) != 64:
+        if entry['snapshot_path'] != f'objects/{tenant_id}/{object_key}' or isinstance(entry.get('size'), bool) or not isinstance(entry.get('size'), int) or entry['size'] < 0 or len(entry['sha256']) != 64:
             raise ValueError('Snapshot object metadata is invalid.')
+        try:
+            validate_content_type(entry['content_type'])
+        except ValueError as error:
+            raise ValueError('Snapshot object metadata is invalid.') from error
         key = (tenant_id, object_key)
         if key in object_entries:
             raise ValueError('Duplicate snapshot object entry.')

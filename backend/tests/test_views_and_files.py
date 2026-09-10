@@ -65,6 +65,19 @@ def test_upload_download_and_tenant_boundary(env,client,item):
     carol=env['client']('carol');carol.headers['X-Tenant-Id']=env['other']
     assert carol.get(base+'/'+data['id']).status_code==404
 
+
+def test_download_rejects_object_bytes_that_do_not_match_canonical_metadata(env,client,item):
+    base=f"/api/v1/work-items/{item['id']}/attachments"
+    row=client.post(base,json={'filename':'integrity.txt','content_type':'text/plain','content_base64':base64.b64encode(b'original').decode()})
+    assert row.status_code==201,row.text
+    from app.platform.models import Attachment
+    with env['db'].session(env['tenant']) as session:
+        attachment=session.get(Attachment,row.json()['id'])
+        object_path=env['db'].root/'objects'/env['tenant']/attachment.object_key
+    object_path.write_bytes(b'tampered')
+    response=client.get(base+'/'+row.json()['id'])
+    assert response.status_code==503 and response.json()['error']['code']=='storage_integrity'
+
 @pytest.mark.parametrize('filename,kind,body',[
     ('../secret.txt','text/plain',b'test'),('a\\b.txt','text/plain',b'test'),
     ('a.svg','image/svg+xml',b'<svg/>'),('a.png','image/png',b'not png'),

@@ -11,7 +11,9 @@ from app.features.work_items.schemas import WorkItemCreate
 from app.features.work_items.service import create_item
 
 def trusted_actor(database: Database, tenant_id: str) -> Actor:
-    database.settings.assert_safe()
+    # This trusted tool only creates work items; it does not expose attachment
+    # uploads. Production ASGI startup/preflight still requires scanner status.
+    database.settings.assert_maintenance_safe()
     provider=CompanyIdentity() if database.settings.profile=='company' else DevelopmentIdentity(database.settings.dev_user)
     user=provider.current_user()
     with database.session() as session:

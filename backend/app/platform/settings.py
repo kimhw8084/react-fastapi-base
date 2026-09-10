@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
@@ -22,6 +23,34 @@ class CompanyQualification(BaseModel):
     ingress_authentication_evidence: str = Field(min_length=8)
     approved_by: str = Field(min_length=1)
     approved_at: str = Field(min_length=10)
+
+    @field_validator('deployment_id', 'simultaneous_identity_evidence', 'provider_sqlite_support_reference', 'persistent_root', 'redeploy_persistence_evidence', 'restore_drill_evidence', 'ingress_authentication_evidence', 'approved_by', 'approved_at')
+    @classmethod
+    def nonblank_attestation(cls, value: str) -> str:
+        value = value.strip()
+        if not value or any(ord(char) < 32 for char in value):
+            raise ValueError('Qualification values must be non-empty and printable.')
+        if value.casefold() in {'unqualified', 'placeholder', 'changeme', 'todo', 'tbd', 'n/a', 'none', 'approved', 'tested', 'looks good'}:
+            raise ValueError('Qualification placeholders are not valid evidence.')
+        return value
+
+    @field_validator('persistent_root')
+    @classmethod
+    def absolute_persistent_root(cls, value: str) -> str:
+        if not Path(value).is_absolute():
+            raise ValueError('Qualification persistent_root must be absolute.')
+        return value
+
+    @field_validator('approved_at')
+    @classmethod
+    def timestamped_approval(cls, value: str) -> str:
+        try:
+            parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        except ValueError as error:
+            raise ValueError('Qualification approved_at must be an ISO-8601 timestamp.') from error
+        if parsed.tzinfo is None:
+            raise ValueError('Qualification approved_at must include a timezone.')
+        return value
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix='BASE_', extra='ignore')
@@ -68,7 +97,7 @@ class Settings(BaseSettings):
         if len(set(clean))!=len(clean): raise ValueError('Webhook allowlist entries must be unique.')
         return clean
 
-    def production_errors(self, *, scanner_is_noop: bool = False) -> list[str]:
+    def _production_errors(self, *, scanner_is_noop: bool | None, check_attachment_policy: bool) -> list[str]:
         if self.environment != 'production':
             return []
         errors: list[str] = []
@@ -82,8 +111,11 @@ class Settings(BaseSettings):
             errors.append('Production requires explicit deployment hostnames.')
         if len(self.csrf_secret) < 32:
             errors.append('Production requires a randomly generated CSRF secret of at least 32 characters.')
-        if self.attachment_upload_mode == 'scanner_required' and scanner_is_noop:
-            errors.append('Production attachment uploads require a configured malware scanner; NoopMalwareScanner is not accepted.')
+        if check_attachment_policy and self.attachment_upload_mode == 'scanner_required':
+            if scanner_is_noop is True:
+                errors.append('Production attachment uploads require a configured malware scanner; NoopMalwareScanner is not accepted.')
+            elif scanner_is_noop is not False:
+                errors.append('Production attachment scanner status must be supplied before readiness can be approved.')
         try:
             if self.qualification_file is None:
                 raise ValueError('missing qualification file')
@@ -96,7 +128,25 @@ class Settings(BaseSettings):
             errors.append('Company qualification is missing or invalid; do not infer safe storage or per-user identity.')
         return errors
 
-    def assert_safe(self, *, scanner_is_noop: bool = False) -> None:
+    def production_errors(self, *, scanner_is_noop: bool | None = None) -> list[str]:
+        return self._production_errors(scanner_is_noop=scanner_is_noop, check_attachment_policy=True)
+
+    def maintenance_errors(self) -> list[str]:
+        """Validate an offline operator command without opening uploads.
+
+        This is deliberately a separate API instead of a bypass flag on the
+        application readiness check.  Maintenance commands still require the
+        production qualification contract, but scanner availability belongs to
+        the ASGI upload surface and is checked by ``production_errors``.
+        """
+        return self._production_errors(scanner_is_noop=False, check_attachment_policy=False)
+
+    def assert_safe(self, *, scanner_is_noop: bool | None = None) -> None:
         errors = self.production_errors(scanner_is_noop=scanner_is_noop)
         if errors:
             raise RuntimeError('Production refused: ' + ' '.join(errors))
+
+    def assert_maintenance_safe(self) -> None:
+        errors = self.maintenance_errors()
+        if errors:
+            raise RuntimeError('Production maintenance refused: ' + ' '.join(errors))
