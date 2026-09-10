@@ -213,8 +213,9 @@ class Settings(BaseSettings):
 
         This is deliberately a separate API instead of a bypass flag on the
         application readiness check.  Maintenance commands still require the
-        production qualification contract, but scanner availability belongs to
-        the ASGI upload surface and is checked by ``production_errors``.
+        qualification prerequisites or the final production qualification,
+        but scanner availability belongs to the ASGI upload surface and is
+        checked by the corresponding readiness method.
         """
         if self.environment == 'qualification':
             return self._qualification_errors(scanner_is_noop=False, check_attachment_policy=False)

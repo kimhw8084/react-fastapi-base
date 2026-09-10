@@ -112,6 +112,48 @@ def test_prerequisites_reject_unsafe_values(tmp_path, field, value):
         CompanyQualificationPrerequisites.model_validate(payload)
 
 
+def test_qualification_validation_covers_common_safety_and_binding_errors(tmp_path):
+    root = tmp_path / 'root'
+    prerequisites_path = tmp_path / 'prerequisites.json'
+    prerequisites_path.write_text(_prerequisites(root).model_dump_json())
+    unsafe = Settings(
+        environment='qualification', profile='development', data_root=Path('relative-root'),
+        allowed_origins=['http://frontend.example.com'], allowed_hosts=['localhost'],
+        qualification_prerequisites_file=prerequisites_path,
+        deployment_id='wrong-deployment', attachment_upload_mode='disabled',
+    )
+    errors = unsafe.qualification_errors(scanner_is_noop=False)
+    assert any('company identity profile' in error for error in errors)
+    assert any('data root' in error for error in errors)
+    assert any('HTTPS' in error for error in errors)
+    assert any('deployment hostnames' in error for error in errors)
+    assert any('CSRF' in error for error in errors)
+    assert any('different deployment' in error for error in errors)
+    assert any('different persistent root' in error for error in errors)
+    with pytest.raises(RuntimeError, match='Qualification refused'):
+        unsafe.assert_safe(scanner_is_noop=False)
+
+
+def test_qualification_scanner_required_status_is_checked_separately(tmp_path):
+    root = tmp_path / 'root'
+    prerequisites_path = tmp_path / 'prerequisites.json'
+    prerequisites_path.write_text(_prerequisites(root).model_dump_json())
+    settings = _qualification_settings(root, prerequisites_path).model_copy(update={'attachment_upload_mode': 'scanner_required'})
+    assert any('scanner status' in error for error in settings.qualification_errors())
+    assert any('NoopMalwareScanner' in error for error in settings.qualification_errors(scanner_is_noop=True))
+    assert settings.maintenance_errors() == []
+
+
+def test_settings_validates_dns_webhook_entries_and_origin_slashes():
+    assert Settings(webhook_allowed_hosts=['Hooks.Example.com.']).webhook_allowed_hosts == ['hooks.example.com']
+    with pytest.raises(ValueError):
+        Settings(webhook_allowed_hosts=['invalid_host.example'])
+    with pytest.raises(ValueError):
+        Settings(webhook_allowed_hosts=['hooks.example.com', 'hooks.example.com'])
+    with pytest.raises(ValueError):
+        Settings(allowed_origins=['https://frontend.example.com/'])
+
+
 def test_qualification_requires_prerequisites_and_company_identity(tmp_path, monkeypatch):
     root = tmp_path / 'root'
     settings = Settings(environment='qualification', profile='company', data_root=root)
