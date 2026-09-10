@@ -1,7 +1,7 @@
 {
   "product": "react-fastapi-base",
   "version": "1.0.0-rc.6",
-  "timestamp": "2026-09-10T05:21:02.380565+00:00",
+  "timestamp": "2026-09-10T05:44:17.280669+00:00",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
   "python_version": "3.14.5",
   "node_version": "v22.23.2",
@@ -63,7 +63,7 @@
         "pytest",
         "-q",
         "experience-lab/tests/test_browser.py",
-        "--junitxml=/Users/haewonkim/home/development/react-fastapi-base/evidence/current/full-stack/native-lab/browser-junit.xml"
+        "--junitxml=/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/native-lab/browser-junit.xml"
       ],
       "log": "browser-interactions.log"
     }

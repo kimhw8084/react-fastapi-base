@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "source_commit": "974fd69c3d715969faa4b19d19598f28d9265253",
-  "timestamp": "2026-09-10T05:12:46.943923+00:00",
+  "source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7",
+  "timestamp": "2026-09-10T05:44:35.270150+00:00",
   "command": [
     "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/home/development/react-fastapi-base/evidence/current/recovery/object-restore.json"
+    "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
@@ -14,10 +14,10 @@
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "2b4f8314-cc8d-4a15-bf8d-3d51fbbdd2d5",
+  "tenant": "84d6bc94-3b2c-4ca2-8d06-b44bd17b722d",
   "record_type": "work_items",
-  "record_id": "fccd84b1-229f-4e0d-8ff3-3bbe93438c07",
-  "object_key": "attachments/eaee741e-0d53-4a83-82c3-0dee671fe300/recovery.txt",
+  "record_id": "66719ad8-1763-4b72-9053-3c2540d0bd84",
+  "object_key": "attachments/d46467d0-b7f9-4079-958b-4d2c47891dab/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
