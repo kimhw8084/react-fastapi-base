@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "source_commit": "cd4bfc01c8ff858a6bb38754621e8effe0b65701",
-  "timestamp": "2026-09-09T19:22:47Z",
-  "command": "env PYTHONPATH=backend backend/.venv/bin/python -m pytest --cov=app --cov-report=term --cov-report=xml:/tmp/rc2-coverage-final.xml -q backend/tests",
+  "source_commit": "116fadeec26741b4cddbdd229aacda24fad71c53",
+  "timestamp": "2026-09-10T00:24:38Z",
+  "command": "cd backend && ../backend/.venv/bin/python -m pytest --cov=app --cov-report=term-missing -q",
   "exit_code": 0,
   "environment": {
     "platform": "macOS Darwin",
     "python": "3.14.5",
-    "test_count": 222
+    "test_count": 228
   },
   "hashes": {
-    "source_digest": "5b1a90ba57dcbb2da68c08908764dbfc317a217d41452a5cf949f2709e0876db"
+    "source_digest": "9f07092eaa647a9942be39a92b69d4276b26768b1551499384f3dd79af7d4bc4"
   },
   "coverage_percent": 91,
-  "duration_seconds": 64.89,
+  "duration_seconds": 276.34,
   "result": "PASS"
 }
