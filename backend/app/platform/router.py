@@ -189,7 +189,7 @@ def add_record_attachment(request:Request,actor:A,entity:str,record_id:str,data:
     with write_transaction(request.app.state.database,actor.tenant_id) as db:
         reference=request.app.state.entities.resolve(db,entity,record_id)
         if reference.archived:raise AppError(409,'archived_readonly','Restore this record before adding files.')
-        return attach(db,actor,reference.workspace,record_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner,upload_mode=request.app.state.settings.attachment_upload_mode)
+        return attach(db,actor,reference.workspace,record_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner,upload_mode=request.app.state.settings.attachment_upload_mode,registry=request.app.state.entities)
 
 @router.get('/records/{entity}/{record_id}/attachments/{attachment_id}',operation_id='downloadRecordAttachment')
 def download_record_attachment(request:Request,actor:A,entity:str,record_id:str,attachment_id:str):

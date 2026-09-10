@@ -44,11 +44,12 @@ def test_production_uploads_disabled_is_safe_with_noop(tmp_path,monkeypatch):
         assert client.get('/api/v1/health').json()['alive']
 
 
-def test_disabled_upload_policy_is_enforced_by_shared_service(env):
+def test_disabled_upload_policy_is_enforced_by_shared_service(env,item):
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as rejected:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='disabled')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='disabled',registry=registry)
         assert rejected.value.code=='attachments_disabled'
     assert storage._objects=={}
 
@@ -66,84 +67,102 @@ def test_disabled_upload_policy_blocks_generic_and_legacy_routes(env,item):
     assert not list((env['db'].root/'objects').rglob('*'))
 
 
-def test_trusted_types_uses_only_bounded_file_policy(env):
+def test_trusted_types_uses_only_bounded_file_policy(env,item):
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
-        accepted=attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types')
+        accepted=attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types',registry=registry)
         assert accepted.size==4
         with pytest.raises(AppError,match='signature'):
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='image.png',content_type='image/png',content_base64=base64.b64encode(b'not png').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='image.png',content_type='image/png',content_base64=base64.b64encode(b'not png').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types',registry=registry)
 
 
 @pytest.mark.parametrize('scanner',[None,NoopMalwareScanner()])
-def test_scanner_required_rejects_missing_or_noop_service_scanner(env,scanner):
+def test_scanner_required_rejects_missing_or_noop_service_scanner(env,item,scanner):
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as rejected:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required',registry=registry)
         assert rejected.value.code=='scanner_unavailable'
     assert storage._objects=={}
 
 
-def test_deterministic_scanner_rejects_eicar_and_svg_without_residue(env):
+def test_deterministic_scanner_rejects_eicar_and_svg_without_residue(env,item):
     scanner=DeterministicMalwareScanner();storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     token=base64.b64encode(scanner.EICAR_TOKEN).decode()
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as rejected:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='eicar.txt',content_type='text/plain',content_base64=token),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='eicar.txt',content_type='text/plain',content_base64=token),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required',registry=registry)
         assert rejected.value.code=='malware_rejected'
         with pytest.raises(AppError):
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='diagram.svg',content_type='image/svg+xml',content_base64=base64.b64encode(b'<svg/>').decode()),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='diagram.svg',content_type='image/svg+xml',content_base64=base64.b64encode(b'<svg/>').decode()),tenant_id=env['tenant'],storage=storage,scanner=scanner,upload_mode='scanner_required',registry=registry)
         session.rollback()
     assert storage._objects=={}
 
 
-def test_scanner_failure_is_safe_and_does_not_persist_object(env):
+def test_scanner_failure_is_safe_and_does_not_persist_object(env,item):
     class FailingScanner:
         def scan(self,content,content_type,filename):
             raise RuntimeError('provider unavailable')
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as failure:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=FailingScanner(),upload_mode='scanner_required')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='notes.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=FailingScanner(),upload_mode='scanner_required',registry=registry)
         assert failure.value.status==503 and failure.value.code=='scanner_unavailable'
         session.rollback()
     assert storage._objects=={}
 
 
-def test_storage_failure_after_write_is_cleaned_up_and_does_not_persist_row(env):
+def test_storage_failure_after_write_is_cleaned_up_and_does_not_persist_row(env,item):
     class PartialStorage(MemoryStorage):
         def put(self, tenant_id, key, content, content_type):
             super().put(tenant_id, key, content, content_type)
             raise RuntimeError('provider failed after write')
 
     storage=PartialStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as failure:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='partial.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='partial.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types',registry=registry)
         assert failure.value.code=='storage_unavailable'
         from app.platform.models import Attachment
         assert session.query(Attachment).count()==0
     assert storage._objects=={}
 
 
-def test_attachment_storage_is_bound_to_authenticated_tenant(env):
+def test_attachment_storage_is_bound_to_authenticated_tenant(env,item):
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as failure:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='cross-tenant.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=str(uuid4()),storage=storage,scanner=None,upload_mode='trusted_types')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='cross-tenant.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=str(uuid4()),storage=storage,scanner=None,upload_mode='trusted_types',registry=registry)
         assert failure.value.status==403 and failure.value.code=='tenant_forbidden'
     assert storage._objects=={}
 
 
-def test_scanner_must_return_a_boolean_approval(env):
+def test_scanner_must_return_a_boolean_approval(env,item):
     class InvalidScanner:
         def scan(self, content, content_type, filename):
             return 'approved'
 
     storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    app_client=env['client']();registry=app_client.app.state.entities
     with env['db'].session(env['tenant']) as session:
         with pytest.raises(AppError) as failure:
-            attach(session,actor,'work_items','not-a-real-record',AttachmentUpload(filename='invalid-result.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=InvalidScanner(),upload_mode='scanner_required')
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='invalid-result.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=InvalidScanner(),upload_mode='scanner_required',registry=registry)
         assert failure.value.status==503 and failure.value.code=='scanner_unavailable'
+    assert storage._objects=={}
+
+
+def test_shared_attachment_service_rejects_archived_record(env,item):
+    app_client=env['client']();registry=app_client.app.state.entities
+    assert app_client.post(f"/api/v1/work-items/{item['id']}/lifecycle/archive",json={'revision':1}).status_code==200
+    storage=MemoryStorage();actor=Actor('alice',env['tenant'],'admin','release-test',frozenset({'read','write'}))
+    with env['db'].session(env['tenant']) as session:
+        with pytest.raises(AppError) as rejected:
+            attach(session,actor,'work_items',item['id'],AttachmentUpload(filename='archived.txt',content_type='text/plain',content_base64=base64.b64encode(b'safe').decode()),tenant_id=env['tenant'],storage=storage,scanner=None,upload_mode='trusted_types',registry=registry)
+        assert rejected.value.status==409 and rejected.value.code=='archived_readonly'
     assert storage._objects=={}

@@ -10,6 +10,7 @@ from app.platform.errors import AppError
 from app.platform.audit import record_event
 from app.platform.security import Actor
 from app.platform.storage import ObjectStorageAdapter, validate_content_type
+from app.platform.entity_registry import EntityRegistry
 
 class MalwareScanner(Protocol):
     def scan(self, content: bytes, content_type: str, filename: str) -> bool: ...
@@ -63,13 +64,16 @@ def _validate_upload_boundary(actor: Actor, tenant_id: str, upload_mode: str) ->
         raise AppError(500, 'storage_configuration', 'Attachment storage has an invalid tenant boundary.') from None
 
 
-def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUpload, *, tenant_id: str, storage: ObjectStorageAdapter, scanner: MalwareScanner|None, upload_mode: AttachmentUploadMode) -> AttachmentRead:
+def attach(session,actor: Actor,workspace: str,entity_id: str,data: AttachmentUpload, *, tenant_id: str, storage: ObjectStorageAdapter, scanner: MalwareScanner|None, upload_mode: AttachmentUploadMode, registry: EntityRegistry) -> AttachmentRead:
     actor.require('write')
     _validate_upload_boundary(actor, tenant_id, upload_mode)
     if upload_mode == 'disabled':
         raise AppError(503, 'attachments_disabled', 'Attachment uploads are disabled by deployment policy.')
     if upload_mode == 'scanner_required' and (scanner is None or isinstance(scanner, NoopMalwareScanner)):
         raise AppError(503, 'scanner_unavailable', 'The attachment scanner is unavailable.')
+    reference = registry.resolve(session, workspace, entity_id)
+    if reference.archived:
+        raise AppError(409, 'archived_readonly', 'Archived records are read-only, including attachments.')
     name=data.filename
     if '/' in name or '\\' in name or any(ord(c)<32 for c in name) or name in ('.','..'):
         raise AppError(422,'unsafe_filename','Attachment filename is invalid.')

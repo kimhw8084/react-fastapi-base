@@ -139,7 +139,7 @@ def add_attachment(request: Request,actor: A,item_id: str,data: AttachmentUpload
         item=service.require_item(db,item_id)
         if item.archived:
             raise AppError(409,'archived_readonly','Restore the item before adding files.')
-        return attach(db,actor,'work_items',item_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner,upload_mode=request.app.state.settings.attachment_upload_mode)
+        return attach(db,actor,'work_items',item_id,data,tenant_id=actor.tenant_id,storage=request.app.state.object_storage,scanner=request.app.state.malware_scanner,upload_mode=request.app.state.settings.attachment_upload_mode,registry=request.app.state.entities)
 
 @router.get('/{item_id}/attachments/{attachment_id}',operation_id='downloadAttachment')
 def download_attachment(request: Request,actor: A,item_id: str,attachment_id: str):
