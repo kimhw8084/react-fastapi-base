@@ -6,7 +6,7 @@
 
 ## Current local proof
 
-- Backend: 229 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
+- Backend: 230 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
 - Frontend: locked `npm ci`, TypeScript, 16 Vitest files / 40 tests, production build, Storybook build and 12 Playwright workflows passed.
 - Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
