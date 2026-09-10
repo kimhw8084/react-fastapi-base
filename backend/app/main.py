@@ -108,7 +108,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 tenants=db.scalars(select(Tenant).where(Tenant.active.is_(True))).all()
             if len(tenants)>64:raise RuntimeError('Too many tenants for synchronous readiness in this release.')
             for tenant in tenants:assert_revision(database,tenant.id)
-            return {'ready':True,'version':VERSION}
+            return {'ready':True,'version':VERSION,'environment':settings.environment,'production_ready':settings.environment=='production'}
         except Exception:
             return JSONResponse(status_code=503,content={'ready':False,'code':'configuration_or_database_unready'})
     app.include_router(platform_router,prefix='/api/v1')

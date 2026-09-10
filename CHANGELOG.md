@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.6 — qualification bootstrap repair
+
+- Added a strict pre-certification qualification environment and prerequisite record so authorized company staging can provision, migrate and rehearse object-inclusive recovery without fabricated final evidence.
+- Kept production startup/preflight bound to the complete final `CompanyQualification`, real company identity, exact deployment/root and scanner policy.
+- Added qualification-state-machine coverage for company identity, readiness semantics, operator commands, seed prohibition and attachment recovery.
+
 ## 1.0.0-rc.5 — archived attachment lifecycle hardening
 
 - Made archived-record immutability authoritative in the shared attachment service, including direct service callers.

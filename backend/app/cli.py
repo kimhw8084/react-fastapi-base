@@ -5,12 +5,14 @@ from pathlib import Path
 from uuid import uuid4
 from sqlalchemy import select
 from app.platform.settings import Settings
+from app.platform.errors import AppError
 from app.platform.database import Database
 from app.platform.models import Tenant
 from app.platform.provision import provision,add_member
 from app.platform.migrations import migrate
 from app.platform.backup import snapshot,restore
 from app.profiles.company.storage_probe import probe
+from app.profiles.company.identity import CompanyIdentity
 from app.tooling.work_items import create_work_item_direct
 from app.features.work_items.schemas import WorkItemCreate
 
@@ -29,6 +31,11 @@ def _assert_operator_safe(settings: Settings) -> None:
     whenever ``scanner_required`` is selected.
     """
     settings.assert_maintenance_safe()
+    if settings.profile == 'company':
+        # Qualification and production tools must use the same process-scoped
+        # company identity boundary as the ASGI application.  This proves that
+        # AccessKey is present without exposing it or allowing a CLI override.
+        CompanyIdentity().current_user()
 
 def main():
     parser=argparse.ArgumentParser(description='Golden operator tools. Never run against live data without the documented maintenance procedure.')
@@ -45,14 +52,24 @@ def main():
     args=parser.parse_args();settings=Settings();database=Database(settings)
     try:
         if args.command=='preflight':
-            # The operator CLI has no injected scanner provider.  Treat the
-            # scanner-required mode as no-op here so production preflight
-            # cannot accidentally approve a process that would fail closed at
-            # application startup.
-            errors=settings.production_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
-            if settings.environment!='production':errors.append('Preflight must be run with BASE_ENVIRONMENT=production.')
-            print(json.dumps({'ready':not errors,'errors':errors},indent=2));return 1 if errors else 0
+            # The CLI has no injected scanner provider. Treat scanner-required
+            # as unavailable so preflight cannot approve an app that would
+            # fail closed at ASGI startup. Qualification has its own explicit
+            # prerequisite contract and is never reported production-ready.
+            if settings.environment == 'production':
+                errors=settings.production_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
+            elif settings.environment == 'qualification':
+                errors=settings.qualification_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
+            else:
+                errors=['Preflight must be run with BASE_ENVIRONMENT=qualification or production.']
+            if not errors and settings.profile == 'company':
+                try:
+                    CompanyIdentity().current_user()
+                except AppError:
+                    errors.append('Company identity is missing or invalid.')
+            print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':settings.environment=='production' and not errors,'errors':errors},indent=2));return 1 if errors else 0
         if args.command=='doctor-storage':
+            _assert_operator_safe(settings)
             result=probe(args.scratch_parent);print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
         if args.command=='run-jobs':
             _assert_operator_safe(settings)
@@ -68,7 +85,9 @@ def main():
                     processed+=1;print(json.dumps({'tenant_id':tenant_id,'job_id':row.id,'job_type':row.job_type,'status':row.status}))
                     if args.once:break
             print(json.dumps({'processed':processed,'worker_id':args.worker_id}));return 0
-        if args.command=='restore':print(restore(args.snapshot,args.target));return 0
+        if args.command=='restore':
+            _assert_operator_safe(settings)
+            print(restore(args.snapshot,args.target));return 0
         _assert_operator_safe(settings)
         if args.command=='provision':print(provision(database,args.tenant,args.admin))
         elif args.command=='add-member':add_member(database,args.tenant_id,args.user,args.role)

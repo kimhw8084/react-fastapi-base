@@ -1,4 +1,4 @@
-# macOS quickstart — 1.0.0-rc.5
+# macOS quickstart — 1.0.0-rc.6
 
 This is a portable launch procedure. The RC.3 isolated clean-clone macOS gate is current local evidence; this is not a company deployment certificate.
 

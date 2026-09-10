@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.5
+# Release status — react-fastapi-base 1.0.0-rc.6
 
 ## Decision
 
@@ -17,6 +17,7 @@
 - RC.3 centrally enforces the attachment upload policy for every caller, binds object export to the copied snapshot database, rejects archived comment deletion server-side, and reconciles the supported Python runtime documentation.
 - RC.4 hardens attachment metadata and download integrity, binds direct service calls to the authenticated tenant, validates qualification attestations, and keeps upload-scanner readiness separate from offline maintenance safety checks.
 - RC.5 makes archived-record immutability authoritative in the shared attachment service, closing the direct-service bypass left outside route-level checks.
+- RC.6 separates authorized company qualification staging from final production qualification. A strict prerequisite record enables provision, migration and object recovery drills without weakening the final `CompanyQualification` requirement; qualification readiness remains explicitly `production_ready: false`.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 
