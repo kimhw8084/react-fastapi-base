@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.7 — rendered UI remediation
+
+- Corrected shared dark accent and notification contrast semantics, restored AG Grid v36 token theming, fixed native Saved View checkbox geometry, and strengthened equipment/trace label rendering across light, dark and high-contrast Lab states.
+
 ## 1.0.0-rc.6 — qualification bootstrap repair
 
 - Added a strict pre-certification qualification environment and prerequisite record so authorized company staging can provision, migrate and rehearse object-inclusive recovery without fabricated final evidence.

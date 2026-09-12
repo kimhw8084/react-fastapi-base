@@ -56,6 +56,43 @@ def open_page(page,route,theme='light'):
 
 def model(page,tag):return page.locator(tag).evaluate('(el)=>el.model')
 
+def rendered_contrast(page,selector,index=None):
+    locator=page.locator(selector).nth(index) if index is not None else page.locator(selector)
+    return locator.evaluate('''element=>{
+      const rgb=value=>{const match=value.match(/rgba?\\(([^)]+)\\)/);if(!match)return null;const parts=match[1].split(',').map(Number);return parts.length<3?null:[parts[0],parts[1],parts[2],parts[3]??1]};
+      const linear=value=>{const channel=value/255;return channel<=.03928?channel/12.92:((channel+.055)/1.055)**2.4};
+      const luminance=value=>.2126*linear(value[0])+.7152*linear(value[1])+.0722*linear(value[2]);
+      const foreground=rgb(getComputedStyle(element).color)||[0,0,0,1];let node=element,background=[255,255,255,1];
+      while(node){const value=rgb(getComputedStyle(node).backgroundColor);if(value&&value[3]>0){background=value;break}node=node.parentElement}
+      const fg=luminance(foreground),bg=luminance(background);return (Math.max(fg,bg)+.05)/(Math.min(fg,bg)+.05);
+    }''')
+
+@pytest.mark.parametrize('theme',['light','dark'])
+@pytest.mark.parametrize('high_contrast',[False,True])
+def test_uiqa_shared_lab_semantic_contrast(page,theme,high_contrast):
+    open_page(page,'themes',theme)
+    if high_contrast:page.get_by_label('High contrast',exact=True).check()
+    expect(page.locator('html')).to_have_attribute('data-contrast','more' if high_contrast else 'normal')
+    page.goto(page.url.replace('/themes','/timeline'))
+    assert rendered_contrast(page,'.badge.tone-info')>=4.5
+    state_ratios=page.locator('.state-block').evaluate_all('''elements=>elements.map(element=>{
+      const rgb=value=>{const match=value.match(/rgba?\\(([^)]+)\\)/);if(!match)return null;const parts=match[1].split(',').map(Number);return parts.length<3?null:[parts[0],parts[1],parts[2],parts[3]??1]};
+      const linear=value=>{const channel=value/255;return channel<=.03928?channel/12.92:((channel+.055)/1.055)**2.4};
+      const lum=value=>.2126*linear(value[0])+.7152*linear(value[1])+.0722*linear(value[2]);const fg=rgb(getComputedStyle(element).color),bg=rgb(getComputedStyle(element).backgroundColor);const a=lum(fg),b=lum(bg);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+    })''')
+    assert min(state_ratios)>=4.5
+    assert page.locator('.state-block[aria-label]').count()==page.locator('.state-block').count()
+    page.goto(page.url.replace('/timeline','/traces'))
+    expect(page.locator('.trace-bar')).to_have_count(7)
+    trace_ratios=page.locator('.trace-bar').evaluate_all('''elements=>elements.map(element=>{
+      const rgb=value=>{const match=value.match(/rgba?\\(([^)]+)\\)/);if(!match)return null;const parts=match[1].split(',').map(Number);return parts.length<3?null:[parts[0],parts[1],parts[2],parts[3]??1]};
+      const linear=value=>{const channel=value/255;return channel<=.03928?channel/12.92:((channel+.055)/1.055)**2.4};
+      const lum=value=>.2126*linear(value[0])+.7152*linear(value[1])+.0722*linear(value[2]);const fg=rgb(getComputedStyle(element).color),bg=rgb(getComputedStyle(element).backgroundColor);const a=lum(fg),b=lum(bg);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+    })''')
+    assert min(trace_ratios)>=4.5
+    page.goto(page.url.replace('/traces','/notifications'))
+    assert min(rendered_contrast(page,'.notification-item small',index) for index in range(3))>=4.5
+
 @pytest.mark.parametrize('route',PAGES)
 @pytest.mark.parametrize('theme',['light','dark'])
 def test_each_registered_widget_renders(page,route,theme):

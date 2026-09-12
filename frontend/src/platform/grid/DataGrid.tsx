@@ -1,12 +1,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community'
+import { ModuleRegistry, AllCommunityModule, themeAlpine } from 'ag-grid-community'
 import type { ColDef, ColumnState, GridApi, GridReadyEvent } from 'ag-grid-community'
 import type { ViewColumn, WorkspaceDefinition } from '../../generated/schema'
 import type { BaseRecord } from '../workspace/types'
 import { groupRows, materializeColumns, visibleColumnIds } from '../workspace/tableModel'
 
 ModuleRegistry.registerModules([AllCommunityModule])
+
+const gridTheme = themeAlpine.withParams({
+  accentColor: 'var(--accent)',
+  backgroundColor: 'var(--surface-panel)',
+  borderColor: 'var(--border)',
+  browserColorScheme: 'inherit',
+  chromeBackgroundColor: 'var(--surface-control)',
+  foregroundColor: 'var(--text-primary)',
+  headerTextColor: 'var(--text-secondary)',
+  rowBorder: '1px solid var(--border)',
+  rowHoverColor: 'var(--surface-hover)',
+  selectedRowBackgroundColor: 'var(--notice-surface)',
+})
 
 export interface GridAnchor { x:number; y:number }
 interface Props<T extends BaseRecord> {
@@ -76,9 +89,9 @@ function StandardDataGrid<T extends BaseRecord>({rows,definition,density,columns
     const serialized=JSON.stringify(state);if(applied.current!==serialized){applied.current=serialized;onColumns(state)}
   }
   const ready=(event:GridReadyEvent<T>)=>{apiRef.current=event.api;apply(event.api)}
-  return <div className="ag-theme-alpine golden-grid" aria-label={`${definition.label} data grid`}>
+  return <div className="golden-grid" aria-label={`${definition.label} data grid`}>
     <AgGridReact<T> ref={grid} rowData={rows} columnDefs={defs} getRowId={params=>params.data.id}
-      theme="legacy" rowSelection={{mode:'multiRow',enableClickSelection:false}} selectionColumnDef={{width:64,pinned:'left',resizable:false,headerName:'Select'}} animateRows={false}
+      theme={gridTheme} rowSelection={{mode:'multiRow',enableClickSelection:false}} selectionColumnDef={{width:64,pinned:'left',resizable:false,headerName:'Select'}} animateRows={false}
       rowHeight={density==='compact'?40:52} headerHeight={44} suppressContextMenu
       onGridReady={ready} onSelectionChanged={event=>onSelection(event.api.getSelectedRows())}
       onRowDoubleClicked={event=>{if(event.data)onOpen(event.data)}}

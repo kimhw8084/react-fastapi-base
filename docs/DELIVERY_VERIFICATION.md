@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.6
+# Delivery verification — react-fastapi-base 1.0.0-rc.7
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -8,7 +8,7 @@
 |---|---:|
 | FastAPI/backend | PASS; 237 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 13 Playwright cases |
+| React browser workflows | PASS; 17 Playwright cases including CHG-6 UIQA coverage |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/architecture/security/performance | PASS |
@@ -22,6 +22,8 @@ The current full platform gate records executed results in `evidence/current/ful
 The React browser suite uses disposable local services and dynamically allocated loopback ports. The native Lab suite separately exercises exact compiled artifacts and HTTP serving. These results do not prove corporate identity, mounted storage or complete WCAG compliance.
 
 The current source and compiled Lab are delivered together, with a ZIP manifest and checksum. No SysGrid source modification, remote commit, company deployment or production database operation occurred.
+
+RC.7 UIQA evidence is recorded in the rendered app/Lab browser reports and the CHG-6 audit note. RC.6 evidence remains historical and is not reused as qualification for this changed executable source.
 
 ## Start the delivered Lab
 

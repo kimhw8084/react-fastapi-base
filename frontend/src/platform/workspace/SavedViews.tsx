@@ -40,8 +40,8 @@ export function SavedViews({ api, workspace, tenant, user, definition, canShare,
         <label>Name<input autoFocus required maxLength={120} value={name} onChange={event => setName(event.target.value)} /></label>
         <label>Visibility<select value={scope} onChange={event => { const next = event.target.value as 'personal' | 'team'; setScope(next); if (next === 'personal') setTeamId('') }}><option value="personal">Only me</option>{canShare && <option value="team">A team</option>}</select></label>
         {scope === 'team' && <label>Team<select value={teamId} onChange={event => setTeamId(event.target.value)}><option value="">Default workspace team</option>{teams.data?.filter(team => !team.is_default).map(team => <option value={team.id} key={team.id}>{team.name}</option>)}</select></label>}
-        <label><input type="checkbox" checked={isFavorite} onChange={event => setIsFavorite(event.target.checked)} /> Favorite</label>
-        <label><input type="checkbox" checked={isDefault} onChange={event => setIsDefault(event.target.checked)} /> Default for this {scope === 'team' ? 'team' : 'workspace'}</label>
+        <label className="check-label"><input type="checkbox" checked={isFavorite} onChange={event => setIsFavorite(event.target.checked)} /> Favorite</label>
+        <label className="check-label"><input type="checkbox" checked={isDefault} onChange={event => setIsDefault(event.target.checked)} /> Default for this {scope === 'team' ? 'team' : 'workspace'}</label>
         <p className="muted">Saves search, filters, layout and density—not record data. Team membership is enforced by the server.</p>
       </form>
     </Dialog>}

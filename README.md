@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.6` — V1 local code complete; qualification path ready; company qualification pending.
+`1.0.0-rc.7` — UI remediation candidate; V1 local code complete; qualification path ready; company qualification pending.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
