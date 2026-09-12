@@ -1,0 +1,2651 @@
+{
+  "project": "react-fastapi-base",
+  "change": "CHG-6",
+  "iteration": 1,
+  "base_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+  "version": "1.0.0-rc.7",
+  "generated_at": "2026-09-12T20:02:30.560Z",
+  "app": {
+    "darkOperationsAccent": {
+      "ratio": 7.23,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "background": [
+        37,
+        89,
+        143,
+        1
+      ]
+    },
+    "agGrid": {
+      "wrapperClass": "golden-grid",
+      "root": {
+        "background": "rgb(23, 31, 43)",
+        "color": "rgb(238, 243, 250)"
+      },
+      "header": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(183, 195, 211)"
+      },
+      "row": {
+        "background": "rgb(23, 31, 43)",
+        "color": "rgb(238, 243, 250)"
+      },
+      "renderedRows": 7
+    },
+    "savedViews": [
+      {
+        "name": "Favorite",
+        "display": "flex",
+        "flexDirection": "row",
+        "width": 16,
+        "height": 16,
+        "native": true
+      },
+      {
+        "name": "Default for this workspace",
+        "display": "flex",
+        "flexDirection": "row",
+        "width": 16,
+        "height": 16,
+        "native": true
+      }
+    ],
+    "notificationTimestamps": {
+      "light": [
+        {
+          "ratio": 5.02,
+          "foreground": [
+            88,
+            103,
+            123,
+            1
+          ],
+          "background": [
+            232,
+            240,
+            251,
+            1
+          ]
+        },
+        {
+          "ratio": 5.77,
+          "foreground": [
+            88,
+            103,
+            123,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        }
+      ],
+      "dark": [
+        {
+          "ratio": 4.54,
+          "foreground": [
+            147,
+            164,
+            186,
+            1
+          ],
+          "background": [
+            34,
+            58,
+            89,
+            1
+          ]
+        },
+        {
+          "ratio": 6.52,
+          "foreground": [
+            147,
+            164,
+            186,
+            1
+          ],
+          "background": [
+            23,
+            31,
+            43,
+            1
+          ]
+        }
+      ],
+      "high": [
+        {
+          "ratio": 12.53,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            0,
+            57,
+            71,
+            1
+          ]
+        },
+        {
+          "ratio": 21,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "experienceLab": {
+    "light-normal": {
+      "infoBadge": {
+        "ratio": 5.06,
+        "foreground": [
+          47,
+          102,
+          173,
+          1
+        ],
+        "background": [
+          233,
+          240,
+          252,
+          1
+        ]
+      },
+      "stateBlocks": [
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 9.81,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            197,
+            208,
+            202,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 9.81,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            197,
+            208,
+            202,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 9.81,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            197,
+            208,
+            202,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        }
+      ],
+      "traceBars": [
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        }
+      ],
+      "timestamps": [
+        {
+          "ratio": 5.3,
+          "foreground": [
+            95,
+            111,
+            104,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        },
+        {
+          "ratio": 5.3,
+          "foreground": [
+            95,
+            111,
+            104,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        },
+        {
+          "ratio": 5.3,
+          "foreground": [
+            95,
+            111,
+            104,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        }
+      ]
+    },
+    "light-high": {
+      "infoBadge": {
+        "ratio": 7.09,
+        "foreground": [
+          25,
+          78,
+          152,
+          1
+        ],
+        "background": [
+          233,
+          240,
+          252,
+          1
+        ]
+      },
+      "stateBlocks": [
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.8,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            104,
+            126,
+            110,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.8,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            104,
+            126,
+            110,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.8,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            104,
+            126,
+            110,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 6.39,
+          "foreground": [
+            23,
+            39,
+            35,
+            1
+          ],
+          "background": [
+            212,
+            156,
+            66,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 5.08,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            47,
+            123,
+            99,
+            1
+          ]
+        }
+      ],
+      "traceBars": [
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        },
+        {
+          "ratio": 4.95,
+          "foreground": [
+            16,
+            23,
+            21,
+            1
+          ],
+          "background": [
+            88,
+            134,
+            206,
+            1
+          ]
+        }
+      ],
+      "timestamps": [
+        {
+          "ratio": 7.44,
+          "foreground": [
+            69,
+            90,
+            77,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        },
+        {
+          "ratio": 7.44,
+          "foreground": [
+            69,
+            90,
+            77,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        },
+        {
+          "ratio": 7.44,
+          "foreground": [
+            69,
+            90,
+            77,
+            1
+          ],
+          "background": [
+            255,
+            255,
+            255,
+            1
+          ]
+        }
+      ]
+    },
+    "dark-normal": {
+      "infoBadge": {
+        "ratio": 6.72,
+        "foreground": [
+          141,
+          187,
+          255,
+          1
+        ],
+        "background": [
+          35,
+          48,
+          73,
+          1
+        ]
+      },
+      "stateBlocks": [
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 6.84,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            72,
+            96,
+            82,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 6.84,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            72,
+            96,
+            82,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 6.84,
+          "foreground": [
+            255,
+            255,
+            255,
+            1
+          ],
+          "background": [
+            72,
+            96,
+            82,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        }
+      ],
+      "traceBars": [
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        }
+      ],
+      "timestamps": [
+        {
+          "ratio": 6.37,
+          "foreground": [
+            144,
+            166,
+            154,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        },
+        {
+          "ratio": 6.37,
+          "foreground": [
+            144,
+            166,
+            154,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        },
+        {
+          "ratio": 6.37,
+          "foreground": [
+            144,
+            166,
+            154,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        }
+      ]
+    },
+    "dark-high": {
+      "infoBadge": {
+        "ratio": 8.38,
+        "foreground": [
+          177,
+          208,
+          255,
+          1
+        ],
+        "background": [
+          35,
+          48,
+          73,
+          1
+        ]
+      },
+      "stateBlocks": [
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.88,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            134,
+            166,
+            145,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.88,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            134,
+            166,
+            145,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.88,
+          "foreground": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "background": [
+            134,
+            166,
+            145,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 9.75,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            235,
+            190,
+            116,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 8.18,
+          "foreground": [
+            17,
+            39,
+            28,
+            1
+          ],
+          "background": [
+            120,
+            203,
+            165,
+            1
+          ]
+        }
+      ],
+      "traceBars": [
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        },
+        {
+          "ratio": 7.98,
+          "foreground": [
+            17,
+            32,
+            27,
+            1
+          ],
+          "background": [
+            137,
+            181,
+            241,
+            1
+          ]
+        }
+      ],
+      "timestamps": [
+        {
+          "ratio": 9.61,
+          "foreground": [
+            181,
+            203,
+            188,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        },
+        {
+          "ratio": 9.61,
+          "foreground": [
+            181,
+            203,
+            188,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        },
+        {
+          "ratio": 9.61,
+          "foreground": [
+            181,
+            203,
+            188,
+            1
+          ],
+          "background": [
+            23,
+            33,
+            30,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

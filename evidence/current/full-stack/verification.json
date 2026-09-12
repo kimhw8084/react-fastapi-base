@@ -1,26 +1,26 @@
 {
   "schema_version": 1,
-  "source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7",
-  "source_digest": "02c88ac88724279ce0b50d29bb22143be764ab9a943e3f122e44ef6437adda09",
+  "source_commit": "ef5c7e2d713d5ab424bf3a076764e0cd594b13bb",
+  "source_digest": "19a71a905708f9161d3f9cc85800e7c1b7c60d9e5fb1c27a4c788953867cb02a",
   "source_hashes": "source-hashes.json",
-  "python_version": "3.14.5",
-  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "created_at": "2026-09-10T05:50:06.308097+00:00",
-  "timestamp": "2026-09-10T05:50:06.308249+00:00",
+  "python_version": "3.11.7",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "created_at": "2026-09-12T20:02:05.802063+00:00",
+  "timestamp": "2026-09-12T20:02:05.802193+00:00",
   "command": [
-    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
     "scripts/verify.py",
     "--output",
-    "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/full-stack",
     "--release"
   ],
   "exit_code": 0,
   "environment": {
-    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-    "python": "3.14.5"
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.7"
   },
   "hashes": {
-    "source_digest": "02c88ac88724279ce0b50d29bb22143be764ab9a943e3f122e44ef6437adda09"
+    "source_digest": "19a71a905708f9161d3f9cc85800e7c1b7c60d9e5fb1c27a4c788953867cb02a"
   },
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
@@ -32,12 +32,12 @@
       "exit_code": 0,
       "log": "backend-tests.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/backend_test_runner.py",
         "--output",
-        "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/backend-junit.xml"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/full-stack/backend-junit.xml"
       ],
-      "duration_seconds": 43.938
+      "duration_seconds": 33.616
     },
     {
       "name": "tooling-tests",
@@ -45,13 +45,13 @@
       "exit_code": 0,
       "log": "tooling-tests.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
         "tests"
       ],
-      "duration_seconds": 6.472
+      "duration_seconds": 9.957
     },
     {
       "name": "architecture",
@@ -59,10 +59,10 @@
       "exit_code": 0,
       "log": "architecture.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/check_architecture.py"
       ],
-      "duration_seconds": 0.222
+      "duration_seconds": 0.359
     },
     {
       "name": "security-source",
@@ -70,10 +70,10 @@
       "exit_code": 0,
       "log": "security-source.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/security_source_check.py"
       ],
-      "duration_seconds": 0.193
+      "duration_seconds": 0.155
     },
     {
       "name": "checkpoint-manifest",
@@ -81,11 +81,11 @@
       "exit_code": 0,
       "log": "checkpoint-manifest.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/generate_checkpoint_manifest.py",
         "--check"
       ],
-      "duration_seconds": 0.086
+      "duration_seconds": 0.285
     },
     {
       "name": "version-metadata",
@@ -93,10 +93,10 @@
       "exit_code": 0,
       "log": "version-metadata.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/version_check.py"
       ],
-      "duration_seconds": 0.025
+      "duration_seconds": 0.016
     },
     {
       "name": "performance-owned-algorithms",
@@ -104,10 +104,10 @@
       "exit_code": 0,
       "log": "performance-owned-algorithms.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/performance_check.py"
       ],
-      "duration_seconds": 0.394
+      "duration_seconds": 0.295
     },
     {
       "name": "performance-stress",
@@ -115,10 +115,10 @@
       "exit_code": 0,
       "log": "performance-stress.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/performance_stress.py"
       ],
-      "duration_seconds": 0.188
+      "duration_seconds": 0.114
     },
     {
       "name": "generated-contracts",
@@ -126,11 +126,11 @@
       "exit_code": 0,
       "log": "generated-contracts.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/generate_contracts.py",
         "--check"
       ],
-      "duration_seconds": 2.021
+      "duration_seconds": 1.4
     },
     {
       "name": "typescript-syntax-and-pure-client",
@@ -141,7 +141,7 @@
         "node",
         "scripts/source_smoke.mjs"
       ],
-      "duration_seconds": 0.657
+      "duration_seconds": 0.474
     },
     {
       "name": "static-server",
@@ -153,7 +153,7 @@
         "--test",
         "frontend/tests/server.test.mjs"
       ],
-      "duration_seconds": 0.148
+      "duration_seconds": 0.124
     },
     {
       "name": "localhost-http",
@@ -161,10 +161,10 @@
       "exit_code": 0,
       "log": "localhost-http.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/http_smoke.py"
       ],
-      "duration_seconds": 3.064
+      "duration_seconds": 1.992
     },
     {
       "name": "engineering-widget-layer",
@@ -172,14 +172,14 @@
       "exit_code": 0,
       "log": "engineering-widget-layer.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/verify_lab.py",
         "--mode",
         "http",
         "--output",
-        "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/native-lab"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/full-stack/native-lab"
       ],
-      "duration_seconds": 22.99
+      "duration_seconds": 20.768
     },
     {
       "name": "required-catalog-completeness",
@@ -187,12 +187,12 @@
       "exit_code": 0,
       "log": "required-catalog-completeness.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/catalog.py",
         "--check",
         "--release"
       ],
-      "duration_seconds": 0.089
+      "duration_seconds": 0.06
     },
     {
       "name": "upgrade-fixture",
@@ -200,12 +200,12 @@
       "exit_code": 0,
       "log": "upgrade-fixture.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/upgrade_fixture.py",
         "--output",
-        "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/upgrade-fixture.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/full-stack/upgrade-fixture.json"
       ],
-      "duration_seconds": 16.871
+      "duration_seconds": 15.958
     },
     {
       "name": "object-inclusive-backup-restore",
@@ -213,12 +213,12 @@
       "exit_code": 0,
       "log": "object-inclusive-backup-restore.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/recovery_fixture.py",
         "--output",
-        "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/recovery/object-restore.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/recovery/object-restore.json"
       ],
-      "duration_seconds": 1.499
+      "duration_seconds": 1.217
     },
     {
       "name": "reference-apps",
@@ -226,10 +226,10 @@
       "exit_code": 0,
       "log": "reference-apps.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/reference_app_proof.py"
       ],
-      "duration_seconds": 119.218
+      "duration_seconds": 102.394
     },
     {
       "name": "macos-fresh-install",
@@ -237,12 +237,12 @@
       "exit_code": 0,
       "log": "macos-fresh-install.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/fresh_clone_check.py",
         "--output",
-        "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/fresh-clone-macos.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/evidence/current/full-stack/fresh-clone-macos.json"
       ],
-      "duration_seconds": 172.27
+      "duration_seconds": 169.991
     },
     {
       "name": "frontend-typecheck",
@@ -254,7 +254,7 @@
         "run",
         "typecheck"
       ],
-      "duration_seconds": 3.356
+      "duration_seconds": 3.288
     },
     {
       "name": "frontend-unit",
@@ -277,7 +277,7 @@
         "run",
         "build"
       ],
-      "duration_seconds": 3.382
+      "duration_seconds": 3.749
     },
     {
       "name": "frontend-storybook",
@@ -289,7 +289,7 @@
         "run",
         "build:storybook"
       ],
-      "duration_seconds": 1.475
+      "duration_seconds": 1.517
     },
     {
       "name": "browser-e2e-accessibility",
@@ -297,10 +297,10 @@
       "exit_code": 0,
       "log": "browser-e2e-accessibility.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "scripts/e2e_runner.py"
       ],
-      "duration_seconds": 21.419
+      "duration_seconds": 23.366
     },
     {
       "name": "npm-advisories",
@@ -312,7 +312,7 @@
         "audit",
         "--audit-level=high"
       ],
-      "duration_seconds": 0.606
+      "duration_seconds": 0.869
     },
     {
       "name": "python-advisories",
@@ -320,13 +320,13 @@
       "exit_code": 0,
       "log": "python-advisories.log",
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-abd319c21c5228abbbef5ea0/backend/.venv/bin/python",
         "-m",
         "pip_audit",
         "-r",
         "backend/requirements.lock"
       ],
-      "duration_seconds": 6.965
+      "duration_seconds": 7.342
     },
     {
       "name": "company-identity",

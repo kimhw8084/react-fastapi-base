@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7",
-  "created_at": "2026-09-10T05:43:48Z",
-  "timestamp": "2026-09-10T05:43:48Z",
+  "source_commit": "ef5c7e2d713d5ab424bf3a076764e0cd594b13bb",
+  "created_at": "2026-09-12T19:56:09Z",
+  "timestamp": "2026-09-12T19:56:09Z",
   "command": [
     "python3",
     "scripts/performance_stress.py"
   ],
   "exit_code": 0,
   "environment": {
-    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-    "python": "3.14.5"
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.7"
   },
   "hashes": {
-    "source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7"
+    "source_commit": "ef5c7e2d713d5ab424bf3a076764e0cd594b13bb"
   },
   "checks": [
     {
       "name": "table-100k-filter-sort",
       "size": 100000,
-      "seconds": 0.019742,
+      "seconds": 0.012023,
       "budget_seconds": 2.5,
       "status": "PASS",
       "result": 100
@@ -27,7 +27,7 @@
     {
       "name": "planning-5000-dependencies",
       "size": 5000,
-      "seconds": 0.00027,
+      "seconds": 0.000164,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 4999
@@ -35,7 +35,7 @@
     {
       "name": "graph-10000-nodes-20000-edges",
       "size": 30000,
-      "seconds": 0.001819,
+      "seconds": 0.001319,
       "budget_seconds": 2.0,
       "status": "PASS",
       "result": 10000
@@ -43,7 +43,7 @@
     {
       "name": "rack-100-racks-20000-connections",
       "size": 40000,
-      "seconds": 0.000515,
+      "seconds": 0.000344,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 20000
@@ -51,7 +51,7 @@
     {
       "name": "wafer-100k-die-map",
       "size": 100000,
-      "seconds": 0.003002,
+      "seconds": 0.001787,
       "budget_seconds": 1.0,
       "status": "PASS",
       "result": 94117
@@ -59,7 +59,7 @@
     {
       "name": "observability-100k-events",
       "size": 100000,
-      "seconds": 0.004527,
+      "seconds": 0.001578,
       "budget_seconds": 1.5,
       "status": "PASS",
       "result": 100
@@ -67,7 +67,7 @@
     {
       "name": "dashboard-1000-widgets-layout",
       "size": 1000,
-      "seconds": 5.7e-05,
+      "seconds": 3.1e-05,
       "budget_seconds": 0.75,
       "status": "PASS",
       "result": 86
