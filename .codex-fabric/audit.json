@@ -1,0 +1,133 @@
+{
+  "accepted_at": "2026-09-13T19:49:17Z",
+  "changed_files": [],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- RTK.md ---'; sed -n '1,240p' /Users/haewonkim/.codex/RTK.md; printf '%s\\\\n' '--- law.md ---'; sed -n '1,260p' /Users/haewonkim/.codex/law.md; printf '%s\\\\n' '--- repository guidance ---'; sed -n '1,240p' README.md; printf '%s\\\\n' '--- release status ---'; sed -n '1,240p' docs/RELEASE_STATUS.md; printf '%s\\\\n' '--- master design ---'; sed -n '1,240p' docs/MASTER_DESIGN.md; printf '%s\\\\n' '--- status ---'; git status --short --branch\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n --hidden --glob '\"'!.git/**'\"' --glob '\"'!node_modules/**'\"' --glob '\"'!frontend/dist/**'\"' --glob '\"'!experience-lab/public/lib/**'\"' '1\\\\.0\\\\.0-rc\\\\.6|\\\"version\\\"[[:space:]]*:' .; rtk rg --files -g 'package.json' -g 'pyproject.toml' -g 'setup.cfg' -g 'VERSION' -g '*version*' -g 'Cargo.toml' | sort\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,180p' VERSION; rtk sed -n '1,220p' backend/app/platform/version.py; rtk sed -n '1,100p' backend/pyproject.toml; rtk sed -n '1,80p' frontend/package.json; rtk sed -n '1,260p' scripts/version_check.py; rtk git diff --stat; rtk git status --porcelain=v1\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/version_check.py; rtk git status --short --branch; rtk git diff --exit-code --; rtk git diff --cached --exit-code --'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 14,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 79.56,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 120576,
+      "fresh_input_tokens": 30981,
+      "input_tokens": 151557,
+      "non_reasoning_output_tokens": 936,
+      "output_tokens": 1587,
+      "reasoning_output_tokens": 651,
+      "total_processed_tokens": 153144
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": {
+    "additions": 0,
+    "changed_files": 0,
+    "commit_count": 0,
+    "deletions": 0
+  },
+  "error_code": null,
+  "evidence_manifest": {
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.1-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.0-rc.1",
+  "failure_class": null,
+  "finished_at": "2026-09-13T19:50:01Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "branch": "codex/CHG-9-r1",
+    "head_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "remote_exact_head": true,
+    "remote_head_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "work_branch": "codex/CHG-9-r1",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-c2be554fed462c5a596cbffd",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/CHG-9-r1",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/CHG-9-r1"
+  },
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.0-rc.1",
+    "policy_sha256": "3778fba0755dd2f6b00268f73b7a589f93317203cc0603df2feff4e6d9c759f6",
+    "registry_sha256": "26e0365e08a0d6f8ba1d9f92d40fc3fec07ae0710d7a1d240a18c93232e91630"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": false
+  },
+  "request": "CHG-9-r1",
+  "schema_version": 1,
+  "started_at": "2026-09-13T19:49:17Z",
+  "status": "EXECUTED_NO_CHANGE",
+  "timing": {
+    "execution_seconds": 44,
+    "queue_seconds": 0,
+    "total_seconds": 44
+  },
+  "transport": {
+    "bytes": 446,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 164,
+    "prompt_sha256": "b6879f5fc4861ef4b1b198a098380c1d70c392f784158a7393512e548041e315",
+    "sha256": "c2be554fed462c5a596cbffd2fd7ff95718bffe887fc1cc4775d0aac5b750687"
+  }
+}
