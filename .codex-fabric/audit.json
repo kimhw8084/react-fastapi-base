@@ -1,0 +1,156 @@
+{
+  "accepted_at": "2026-09-13T19:57:49Z",
+  "changed_files": [
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "CODEX-FABRIC-RC1-ACCEPTANCE.md",
+      "status": "A"
+    }
+  ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' /Users/haewonkim/.codex/RTK.md && sed -n '1,240p' /Users/haewonkim/.codex/law.md && sed -n '1,200p' README.md && sed -n '1,200p' docs/RELEASE_STATUS.md && sed -n '1,200p' docs/MASTER_DESIGN.md && sed -n '1,160p' docs/requirements-status.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk test ! -e CODEX-FABRIC-RC1-ACCEPTANCE.md'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk proxy test ! -e CODEX-FABRIC-RC1-ACCEPTANCE.md'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short && rtk proxy wc -l CODEX-FABRIC-RC1-ACCEPTANCE.md && rtk proxy sed -n 'l' CODEX-FABRIC-RC1-ACCEPTANCE.md\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 16,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 86.94,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 119296,
+      "fresh_input_tokens": 17915,
+      "input_tokens": 137211,
+      "non_reasoning_output_tokens": 789,
+      "output_tokens": 1732,
+      "reasoning_output_tokens": 943,
+      "total_processed_tokens": 138943
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "2679725f3fb50c6d1de6f9442b24ecc8349bef4c",
+      "subject": "fabric: capture completed model changes [CF-169ac0b4e9b3b8fac548f2e2]"
+    }
+  ],
+  "diff": {
+    "additions": 1,
+    "changed_files": 1,
+    "commit_count": 1,
+    "deletions": 0
+  },
+  "error_code": null,
+  "evidence_manifest": {
+    "count": 1,
+    "items": [
+      {
+        "bytes": 49,
+        "path": "CODEX-FABRIC-RC1-ACCEPTANCE.md",
+        "sha256": "8ec350825e07ff9a818544bfc19a9476fc18d4366916bae517f25a8f5b22af32"
+      }
+    ],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.1-candidate",
+  "fabric_capture": {
+    "applied": true,
+    "commit_message": "fabric: capture completed model changes [CF-169ac0b4e9b3b8fac548f2e2]",
+    "commit_sha": "2679725f3fb50c6d1de6f9442b24ecc8349bef4c",
+    "paths_before": 1,
+    "status_before": [
+      "?? CODEX-FABRIC-RC1-ACCEPTANCE.md"
+    ],
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.0-rc.1",
+  "failure_class": null,
+  "finished_at": "2026-09-13T19:58:37Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "branch": "codex/CHG-9-r2",
+    "head_sha": "2679725f3fb50c6d1de6f9442b24ecc8349bef4c",
+    "remote_exact_head": true,
+    "remote_head_sha": "2679725f3fb50c6d1de6f9442b24ecc8349bef4c",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "work_branch": "codex/CHG-9-r2",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-169ac0b4e9b3b8fac548f2e2",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/CHG-9-r2",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/CHG-9-r2"
+  },
+  "operation": "BUILD",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.0-rc.1",
+    "policy_sha256": "3778fba0755dd2f6b00268f73b7a589f93317203cc0603df2feff4e6d9c759f6",
+    "registry_sha256": "26e0365e08a0d6f8ba1d9f92d40fc3fec07ae0710d7a1d240a18c93232e91630"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": false
+  },
+  "request": "CHG-9-r2",
+  "schema_version": 1,
+  "started_at": "2026-09-13T19:57:49Z",
+  "status": "EXECUTED_WITH_WARNINGS",
+  "timing": {
+    "execution_seconds": 48,
+    "queue_seconds": 0,
+    "total_seconds": 48
+  },
+  "transport": {
+    "bytes": 439,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 158,
+    "prompt_sha256": "77f3dacea3303562b49d9fae9298bfabac00120a6d27dc197c8d331a44f3475d",
+    "sha256": "169ac0b4e9b3b8fac548f2e2ae4030f0ad31a82fb414a7fd3e193653ace28e89"
+  }
+}
