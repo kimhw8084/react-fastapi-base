@@ -20,7 +20,7 @@ The last command is the release contract for the generated 605-entry generic fam
 
 ## React/FastAPI application
 
-`python3 dev verify` checks backend, tooling, architecture, generated API contracts, client transport logic, Node static publisher and real Uvicorn HTTP requests. It then requires the installed/locked React dependency tree, full TypeScript, unit tests, production build, browser/a11y, dependency advisories, catalog completion and isolated Mac certification. Company identity, mounted-storage and deployment checks remain explicitly external.
+`python3 dev setup` creates the repository-local `backend/.venv` from the reviewed locks and installs the frontend lock. Run it before `python3 dev verify` or `python3 dev verify-release`; backend gates refuse an ambient interpreter so local verification uses the same environment contract as CI. The verifier checks backend, tooling, architecture, generated API contracts, client transport logic, Node static publisher and real Uvicorn HTTP requests. It then requires the installed/locked React dependency tree, full TypeScript, unit tests, production build, browser/a11y, dependency advisories, catalog completion and an isolated exact-candidate clean-install proof. On Linux, that proof is a portable candidate gate and macOS-specific qualification is recorded as `BLOCKED`; on Darwin it can provide the macOS qualification. Company identity, mounted-storage and deployment checks remain explicitly external.
 
 Missing tooling is BLOCKED, never PASS. A missing required catalog implementation is FAIL. Its nonzero exit must not be weakened merely to get a green badge.
 
@@ -34,7 +34,7 @@ The application uses route-level dynamic imports for registered workspaces and k
 
 ## CI
 
-The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode browser tests. It is supplied configuration, not an already completed CI run. Local release verification is authoritative for this task; a Lab-only green job does not certify the platform.
+The independent Lab workflow runs on Linux and macOS and defaults to HTTP-mode browser tests. It is supplied configuration, not an already completed CI run. The full platform workflow creates `backend/.venv` and invokes the verifier through that interpreter. Its clean-install proof clones the current checkout's exact `HEAD`, never a stale remote `main`; a Lab-only green job does not certify the platform.
 
 ## Backend test-client compatibility
 

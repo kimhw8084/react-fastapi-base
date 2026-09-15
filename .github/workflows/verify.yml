@@ -26,10 +26,11 @@ jobs:
           test -f frontend/package-lock.json || { echo 'BLOCKED: resolve and review frontend/package-lock.json first'; exit 1; }
       - name: Install backend and audit tooling
         run: |
-          python -m pip install -r backend/requirements.lock
-          python -m pip install -r backend/requirements-tools.txt
-          python -m pip install -r experience-lab/requirements-test.txt
-          python -m playwright install --with-deps chromium
+          python -m venv backend/.venv
+          backend/.venv/bin/python -m pip install -r backend/requirements.lock
+          backend/.venv/bin/python -m pip install -r backend/requirements-tools.txt
+          backend/.venv/bin/python -m pip install -r experience-lab/requirements-test.txt
+          backend/.venv/bin/python -m playwright install --with-deps chromium
       - name: Install frontend exactly
         working-directory: frontend
         run: npm ci
@@ -37,7 +38,7 @@ jobs:
         working-directory: frontend
         run: npx playwright install --with-deps chromium
       - name: Authoritative code gate
-        run: python scripts/verify.py --output .evidence/ci
+        run: backend/.venv/bin/python scripts/verify.py --output .evidence/ci
       - name: Keep verification and browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

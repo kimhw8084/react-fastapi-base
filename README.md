@@ -52,7 +52,7 @@ npm run build:storybook
 npm run test:e2e
 ```
 
-Current machine-readable reports are written under `evidence/current/`. They distinguish passing local checks from external company qualification and do not issue a production certificate. The isolated clean-clone macOS gate is current local evidence; it is distinct from company deployment qualification.
+Current machine-readable reports are written under `evidence/current/`. They distinguish passing local checks from external company qualification and do not issue a production certificate. The clean-clone proof validates the exact candidate checkout on its supported runner; macOS-specific qualification is reported only on Darwin and remains distinct from company deployment qualification.
 
 ## Safety boundaries
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run a clean, cache-isolated Mac clone certification for local release gates."""
+"""Run a clean, cache-isolated exact-candidate install proof."""
 from __future__ import annotations
 
 import argparse
@@ -15,12 +15,10 @@ from datetime import datetime, timezone
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--output', type=Path, default=ROOT / 'evidence/current/release/fresh-clone-macos.json')
-    args = parser.parse_args()
-    commands = [
-        ['git', 'clone', '--branch', 'main', '--single-branch', 'https://github.com/kimhw8084/react-fastapi-base.git', 'clone'],
+def verification_commands(source_root: Path, source_commit: str) -> list[list[str]]:
+    return [
+        ['git', 'clone', '--no-local', str(source_root), 'clone'],
+        ['git', 'checkout', '--detach', source_commit],
         ['python3', 'dev', 'setup'],
         ['python3', 'dev', 'contracts'],
         ['python3', 'dev', 'architecture'],
@@ -32,6 +30,20 @@ def main() -> int:
         ['npx', 'playwright', 'install', 'chromium'],
         ['python3', 'scripts/e2e_runner.py'],
     ]
+
+
+def platform_qualification(portable_pass: bool, platform_name: str) -> str:
+    if not portable_pass:
+        return 'FAIL'
+    return 'PASS' if platform_name == 'Darwin' else 'BLOCKED'
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output', type=Path, default=ROOT / 'evidence/current/release/fresh-clone-macos.json')
+    args = parser.parse_args()
+    source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    commands = verification_commands(ROOT, source_commit)
     results = []
     started = datetime.now(timezone.utc)
     with tempfile.TemporaryDirectory(prefix='react-fastapi-base-macos-clean-') as temporary:
@@ -53,7 +65,7 @@ def main() -> int:
             if command[0] in {'npm', 'npx'}: cwd = clone / 'frontend'
             if command[0] == '.venv/bin/python': cwd = clone / 'backend'
             if command[0] == 'python3' and len(command) > 2 and command[1] == 'scripts/e2e_runner.py': cwd = clone
-            if index == 1 and ((clone / 'backend/.venv').exists() or (clone / 'frontend/node_modules').exists()):
+            if command == ['python3', 'dev', 'setup'] and ((clone / 'backend/.venv').exists() or (clone / 'frontend/node_modules').exists()):
                 preinstall_clean = False
                 break
             try:
@@ -66,21 +78,26 @@ def main() -> int:
             except (OSError, subprocess.TimeoutExpired) as error:
                 results.append({'command': command, 'exit_code': None, 'error': str(error)})
                 break
-        source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=clone, text=True).strip() if clone.is_dir() and (clone / '.git').is_dir() else None
-        exit_code = 0 if preinstall_clean and results and results[-1].get('exit_code') == 0 and len(results) == len(commands) and platform.system() == 'Darwin' else 1
+        cloned_source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=clone, text=True).strip() if clone.is_dir() and (clone / '.git').is_dir() else None
+        portable_pass = preinstall_clean and results and results[-1].get('exit_code') == 0 and len(results) == len(commands) and cloned_source_commit == source_commit
+        exit_code = 0 if portable_pass else 1
         report = {
-            'schema_version': 1,
+            'schema_version': 2,
             'platform': platform.platform(),
             'source_commit': source_commit,
+            'cloned_source_commit': cloned_source_commit,
             'timestamp': datetime.now(timezone.utc).isoformat(),
             'command': commands,
             'exit_code': exit_code,
             'environment': {'platform': platform.platform(), 'node': node_path, 'python': platform.python_version()},
             'hashes': {'source_commit': source_commit} if source_commit else {},
             'macos': platform.system() == 'Darwin',
+            'candidate_result': 'PASS' if portable_pass else 'FAIL',
+            'macos_qualification': platform_qualification(portable_pass, platform.system()),
+            'macos_qualification_reason': 'Executed on macOS.' if platform.system() == 'Darwin' else 'The portable exact-candidate proof ran; macOS-specific qualification requires a Darwin runner.',
             'started_at': started.isoformat(),
             'finished_at': datetime.now(timezone.utc).isoformat(),
-            'source': 'https://github.com/kimhw8084/react-fastapi-base.git',
+            'source': 'current repository checkout at HEAD',
             'isolated_temp_directory': True,
             'cache_isolated': True,
             'preinstall_clean': preinstall_clean,

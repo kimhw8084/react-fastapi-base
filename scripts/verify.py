@@ -57,9 +57,13 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         blocked('upgrade-fixture','Release verification only; run `python3 dev verify-release` for the generated-app upgrade proof.','release')
         blocked('object-inclusive-backup-restore','Release verification only; run `python3 dev verify-release` for the object recovery proof.','release')
     if source_only:
-        blocked('macos-fresh-install','Source-only request; isolated clone execution was not run.','external')
+        blocked('candidate-fresh-install','Source-only request; isolated clone execution was not run.')
+        blocked('macos-fresh-install','Source-only request; macOS qualification was not run.','external')
     else:
-        run('macos-fresh-install',[sys.executable,'scripts/fresh_clone_check.py','--output',str((output/'fresh-clone-macos.json').resolve())],timeout=1800)
+        fresh_name='macos-fresh-install' if platform.system()=='Darwin' else 'candidate-fresh-install'
+        run(fresh_name,[sys.executable,'scripts/fresh_clone_check.py','--output',str((output/'fresh-clone-macos.json').resolve())],timeout=1800)
+        if platform.system()!='Darwin':
+            blocked('macos-fresh-install','macOS-specific qualification is unavailable on this runner; the exact-candidate clean-install proof ran as candidate-fresh-install.','external')
     node_modules=ROOT/'frontend/node_modules'
     lock=ROOT/'frontend/package-lock.json'
     frontend=['frontend-typecheck','frontend-unit','frontend-build','frontend-storybook','browser-e2e-accessibility','npm-advisories']

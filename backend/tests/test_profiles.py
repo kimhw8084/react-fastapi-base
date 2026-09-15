@@ -86,3 +86,16 @@ def test_profile_runtime_is_not_serialized_by_bootstrap(tmp_path):
         assert 'profile_runtime' not in str(payload)
         assert 'data_root' not in str(payload)
         assert 'AccessKey' not in str(payload)
+
+
+def test_openapi_error_descriptions_are_stable_across_framework_versions():
+    app = create_app(Settings(environment='test', profile='development'))
+    responses = app.openapi()['paths']['/api/v1/health']['get']['responses']
+
+    assert {str(code): responses[str(code)]['description'] for code in (400, 413, 415, 422, 503)} == {
+        '400': 'Bad Request',
+        '413': 'Content Too Large',
+        '415': 'Unsupported Media Type',
+        '422': 'Unprocessable Content',
+        '503': 'Service Unavailable',
+    }

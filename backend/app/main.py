@@ -30,6 +30,20 @@ from app.profiles.loader import load_profile
 
 logger=logging.getLogger('golden')
 
+ERROR_RESPONSE_DESCRIPTIONS={
+    400:'Bad Request',
+    401:'Unauthorized',
+    403:'Forbidden',
+    404:'Not Found',
+    409:'Conflict',
+    413:'Content Too Large',
+    415:'Unsupported Media Type',
+    422:'Unprocessable Content',
+    429:'Too Many Requests',
+    500:'Internal Server Error',
+    503:'Service Unavailable',
+}
+
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings=settings or Settings()
     profile=load_profile(settings)
@@ -49,7 +63,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         yield
         runtime.database.close()
     app=FastAPI(title=application.name,version=VERSION,lifespan=lifespan,
-        responses={code:{'model':ErrorResponse} for code in (400,401,403,404,409,413,415,422,429,500,503)},
+        responses={code:{'model':ErrorResponse,'description':description} for code,description in ERROR_RESPONSE_DESCRIPTIONS.items()},
         docs_url='/docs' if settings.environment in ('development', 'test') and settings.enable_docs else None,
         redoc_url=None,openapi_url='/openapi.json' if settings.environment in ('development', 'test') else None)
     app.state.instance_id=str(uuid4())

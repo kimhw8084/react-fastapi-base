@@ -14,6 +14,10 @@ VENV=ROOT/'backend/.venv'
 PY=VENV/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
 PYTHON=str(PY) if PY.is_file() else sys.executable
 
+def backend_python():
+    if not PY.is_file():raise ValueError('Run ./dev setup first; backend gates require backend/.venv.')
+    return str(PY)
+
 def run(args,cwd=ROOT,env=None):return subprocess.call(args,cwd=cwd,env=env)
 def local_env():
     # These are explicitly LOCAL commands, not operator commands.
@@ -22,13 +26,14 @@ def local_env():
     return env
 
 def start():
+    backend=backend_python()
     if not (ROOT/'frontend/node_modules').is_dir():raise ValueError('Run ./dev setup first. Frontend dependencies are missing.')
     if not (ROOT/'.local/development/registry.sqlite3').is_file():raise ValueError('Run ./dev seed-demo once. Start never creates or resets data.')
     for port in (8000,5173):
         with socket.socket() as probe:probe.bind(('127.0.0.1',port))
     env=local_env();children=[]
     try:
-        children.append(subprocess.Popen([PYTHON,'-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8000'],cwd=ROOT/'backend',env=env,start_new_session=(os.name!='nt')))
+        children.append(subprocess.Popen([backend,'-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8000'],cwd=ROOT/'backend',env=env,start_new_session=(os.name!='nt')))
         children.append(subprocess.Popen(['npm','run','dev'],cwd=ROOT/'frontend',env=env,start_new_session=(os.name!='nt')))
         print('Local frontend http://127.0.0.1:5173 ; API http://127.0.0.1:8000. Ctrl+C stops only these processes.',flush=True)
         while all(child.poll() is None for child in children):time.sleep(.5)
@@ -69,7 +74,7 @@ def main():
         executable=str(compiler) if compiler.is_file() else shutil.which('tsc')
         if not executable:raise ValueError('TypeScript compiler required to rebuild. The shipped compiled Lab runs without rebuilding.')
         return run([executable,'-p','experience-lab/tsconfig.json'])
-    if a.command=='test-lab':return run([PYTHON,'scripts/verify_lab.py','--mode',a.mode])
+    if a.command=='test-lab':return run([backend_python(),'scripts/verify_lab.py','--mode',a.mode])
     if a.command=='catalog':return run([sys.executable,'scripts/catalog.py'])
     if a.command=='setup':
         if not PY.is_file():subprocess.check_call([sys.executable,'-m','venv',str(VENV)])
@@ -82,17 +87,17 @@ def main():
         if code==0:print('Review/commit package-lock.json before release. Install browser binaries with: cd frontend && npx playwright install chromium')
         return code
     if a.command=='start':return start()
-    if a.command=='seed-demo':return run([PYTHON,'-m','app.cli','seed-demo'],ROOT/'backend',local_env())
-    if a.command=='contracts':return run([PYTHON,'scripts/generate_contracts.py'])
-    if a.command=='architecture':return run([PYTHON,'scripts/check_architecture.py'])
+    if a.command=='seed-demo':return run([backend_python(),'-m','app.cli','seed-demo'],ROOT/'backend',local_env())
+    if a.command=='contracts':return run([backend_python(),'scripts/generate_contracts.py'])
+    if a.command=='architecture':return run([backend_python(),'scripts/check_architecture.py'])
     if a.command in ('verify','verify-release'):
-        return run([PYTHON,'scripts/verify.py','--output',str(ROOT/'evidence/current/full-stack'),*(['--release'] if a.command=='verify-release' else [])])
-    if a.command=='test-backend':return run([PYTHON,'-m','pytest','-q'],ROOT/'backend')
-    if a.command=='preflight':return run([PYTHON,'-m','app.cli','preflight'],ROOT/'backend')
-    if a.command=='upgrade-fixture':return run([PYTHON,'scripts/upgrade_fixture.py'])
-    if a.command=='reference-apps':return run([PYTHON,'scripts/reference_app_proof.py'])
-    if a.command=='performance-stress':return run([PYTHON,'scripts/performance_stress.py'])
-    if a.command=='operator':return run([PYTHON,'-m','app.cli',*a.args],ROOT/'backend')
+        return run([backend_python(),'scripts/verify.py','--output',str(ROOT/'evidence/current/full-stack'),*(['--release'] if a.command=='verify-release' else [])])
+    if a.command=='test-backend':return run([backend_python(),'-m','pytest','-q'],ROOT/'backend')
+    if a.command=='preflight':return run([backend_python(),'-m','app.cli','preflight'],ROOT/'backend')
+    if a.command=='upgrade-fixture':return run([backend_python(),'scripts/upgrade_fixture.py'])
+    if a.command=='reference-apps':return run([backend_python(),'scripts/reference_app_proof.py'])
+    if a.command=='performance-stress':return run([backend_python(),'scripts/performance_stress.py'])
+    if a.command=='operator':return run([backend_python(),'-m','app.cli',*a.args],ROOT/'backend')
     if a.command=='create':return run([PYTHON,'scripts/template_tools.py','create',a.target,'--id',a.id,'--name',a.name,'--theme',a.theme])
     if a.command=='generate-entity':return run([PYTHON,'scripts/entity_generator.py',a.spec,*(['--apply'] if a.apply else [])])
     if a.command=='generate-relationship':return run([PYTHON,'scripts/relationship_generator.py',a.spec,*(['--apply'] if a.apply else [])])
