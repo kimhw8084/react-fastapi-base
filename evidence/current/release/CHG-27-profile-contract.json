@@ -5,11 +5,11 @@
   "base_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
   "accepted_chg6_sha": "3c20bcf12259daefb4024745e4974ce349de22a4",
   "version": "1.0.0-rc.8",
-  "source_head": "6d01aef2c4a194772875cb2e3c297f33b81f1899",
-  "candidate_source_digest": "84dde129fbc560a3ca263bc519d86d9da4580e0df9086cf55632dde3c754c7b5",
+  "source_head": "d225098184893f629c4e2b4246e4594ece66405c",
+  "candidate_source_digest": "49181a0c813b1e6bcf59368d7ba9ec4c71c42d51faa9a41da2ff95426f7235ca",
   "source_files": {
     "VERSION": "dd96c718cbd6958790ab7db2dff849730b1b052adc81bd253e8a6995d6e85485",
-    "backend/app/main.py": "5aca9bd6f4497570f6ee4b83e345fb01a1c2dd0790d4bba34c0853bab673ee5e",
+    "backend/app/main.py": "7eb2c66c9d432fea5cfa85ac4b2ddc7378d6c33509ce43a471a657f4f757a186",
     "backend/app/platform/identity.py": "6becc922841e6e84bafd49474f6502869094b8757057efb7c34dfc070461b2aa",
     "backend/app/platform/profile.py": "3e22bb8874604cb51ae6a5eb89f0d500f3a0b77fb5e130c581ce4692f9999889",
     "backend/app/platform/provision.py": "37c278151369364897e15cd9921a360de001b8fe895e8c83fcd7b7270fcb94d2",
@@ -29,22 +29,22 @@
     "backend/app/profiles/development/identity.py": "32fd76f65b3c6fb8e356e4c43fc9e9e1ffae2f8d052b47186ae9e270d6ddabd4",
     "backend/app/profiles/development/profile.py": "cc2881f7ace86e90ae3ebc5083eb05a99c80bc467ac2aee2d0319b9ee427f3ad",
     "backend/app/profiles/development/storage.py": "95df5bd669f32d6c03eaec015bd32b3096eac5c5d65ece73402a57da71bef428",
-    "backend/tests/test_profiles.py": "bfeddc268b96d67ea84fd2b02acae144a8737ef3f2960f81d1d5af0d0bbda118",
+    "backend/tests/test_profiles.py": "c2eba1582aebaf2540c7b1b0bdee6866f65bffea7e8dfcd50308554b796c8f9f",
     "frontend/public/runtime-config.json": "9018d80daa03c9e3b3318d834f1b7b2422a7a39c0e379ea945b8cdd7b37a3ba1",
     "frontend/tests/server.test.mjs": "2c9cabcdd31413f92dac3d5b778e1d73d5edf9ada5f8a589fcaf6b0574ff14b3",
     "scripts/check_architecture.py": "8491761c219f432efb75754f797220797141e270a3688fae0bca34db8bdf51b7"
   },
-  "created_at": "2026-09-15T20:01:54.470458+00:00",
+  "created_at": "2026-09-15T23:28:15.209252+00:00",
   "environment": {
-    "platform": "macOS-26.6.2-arm64-arm-64bit",
-    "python": "3.11.7"
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.13"
   },
   "checks": [
     {
       "name": "profile-and-security-tests",
       "status": "PASS",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-ca2c0f082665e703b3561e14/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
@@ -53,13 +53,13 @@
       ],
       "cwd": "backend",
       "exit_code": 0,
-      "output_tail": "............................                                             [100%]\n28 passed in 4.44s\n"
+      "output_tail": ".............................                                            [100%]\n29 passed in 4.94s\n"
     },
     {
       "name": "architecture",
       "status": "PASS",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-ca2c0f082665e703b3561e14/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "scripts/check_architecture.py"
       ],
       "cwd": ".",
@@ -76,7 +76,7 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "output_tail": "TAP version 13\n# Subtest: static HTML has CSP and no-store\nok 1 - static HTML has CSP and no-store\n  ---\n  duration_ms: 22.834417\n  ...\n# Subtest: SPA navigation works but API is never HTML fallback\nok 2 - SPA navigation works but API is never HTML fallback\n  ---\n  duration_ms: 4.939833\n  ...\n# Subtest: hashed assets are immutable; missing asset is 404\nok 3 - hashed assets are immutable; missing asset is 404\n  ---\n  duration_ms: 4.661209\n  ...\n# Subtest: invalid host and unsafe method fail\nok 4 - invalid host and unsafe method fail\n  ---\n  duration_ms: 6.880917\n  ...\n# Subtest: symlink cannot disclose source outside dist\nok 5 - symlink cannot disclose source outside dist\n  ---\n  duration_ms: 3.281042\n  ...\n# Subtest: runtime config can change without rebuilding; corrupt config fails closed\nok 6 - runtime config can change without rebuilding; corrupt config fails closed\n  ---\n  duration_ms: 4.64575\n  ...\n# Subtest: hidden files and source maps are not served\nok 7 - hidden files and source maps are not served\n  ---\n  duration_ms: 4.596458\n  ...\n# Subtest: runtime rejects credentials, scripts, unknown keys and bad version\nok 8 - runtime rejects credentials, scripts, unknown keys and bad version\n  ---\n  duration_ms: 0.218917\n  ...\n# Subtest: public runtime rejects server profile, storage and identity fields\nok 9 - public runtime rejects server profile, storage and identity fields\n  ---\n  duration_ms: 0.140667\n  ...\n# Subtest: embedded lab has a same-origin frame boundary; app remains non-frameable\nok 10 - embedded lab has a same-origin frame boundary; app remains non-frameable\n  ---\n  duration_ms: 4.101417\n  ...\n1..10\n# tests 10\n# suites 0\n# pass 10\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 91.106584\n"
+      "output_tail": "TAP version 13\n# Subtest: static HTML has CSP and no-store\nok 1 - static HTML has CSP and no-store\n  ---\n  duration_ms: 38.3135\n  ...\n# Subtest: SPA navigation works but API is never HTML fallback\nok 2 - SPA navigation works but API is never HTML fallback\n  ---\n  duration_ms: 5.148459\n  ...\n# Subtest: hashed assets are immutable; missing asset is 404\nok 3 - hashed assets are immutable; missing asset is 404\n  ---\n  duration_ms: 5.571333\n  ...\n# Subtest: invalid host and unsafe method fail\nok 4 - invalid host and unsafe method fail\n  ---\n  duration_ms: 7.076792\n  ...\n# Subtest: symlink cannot disclose source outside dist\nok 5 - symlink cannot disclose source outside dist\n  ---\n  duration_ms: 3.532792\n  ...\n# Subtest: runtime config can change without rebuilding; corrupt config fails closed\nok 6 - runtime config can change without rebuilding; corrupt config fails closed\n  ---\n  duration_ms: 5.130459\n  ...\n# Subtest: hidden files and source maps are not served\nok 7 - hidden files and source maps are not served\n  ---\n  duration_ms: 4.550167\n  ...\n# Subtest: runtime rejects credentials, scripts, unknown keys and bad version\nok 8 - runtime rejects credentials, scripts, unknown keys and bad version\n  ---\n  duration_ms: 0.24525\n  ...\n# Subtest: public runtime rejects server profile, storage and identity fields\nok 9 - public runtime rejects server profile, storage and identity fields\n  ---\n  duration_ms: 0.149167\n  ...\n# Subtest: embedded lab has a same-origin frame boundary; app remains non-frameable\nok 10 - embedded lab has a same-origin frame boundary; app remains non-frameable\n  ---\n  duration_ms: 5.03975\n  ...\n1..10\n# tests 10\n# suites 0\n# pass 10\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 117.002541\n"
     }
   ],
   "result": "PASS",
