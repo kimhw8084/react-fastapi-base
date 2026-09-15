@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "codex-fabric-audit-evidence",
+  "operation": "RECOVERY_BUILD",
+  "status": "EXECUTED_WITH_WARNINGS",
+  "project_id": "react-fastapi-base",
+  "request": "CHG-27-r2",
+  "job_id": "CF-7a62e1a63fe2d796031bac44",
+  "recovery": {
+    "recovery_required": true,
+    "direct_r1_worktree_carry_forward": true,
+    "retained_worktree": "/Users/haewonkim/.codex-fabric/worktrees/CF-7a62e1a63fe2d796031bac44",
+    "retained_r1_base": "3c20bcf12259daefb4024745e4974ce349de22a4"
+  },
+  "git": {
+    "target_branch": "main",
+    "target_base_sha": "68b55ee1dd3fda00d8899682b4f8a09733f3dd0b",
+    "accepted_chg6_sha": "3c20bcf12259daefb4024745e4974ce349de22a4",
+    "implementation_head": "6d01aef2c4a194772875cb2e3c297f33b81f1899",
+    "evidence_head": "184b9af4d46eaede0069a32182a5b420f06041ab",
+    "branch": "codex/react-fastapi-base-company-profile-contract-recovery-r2",
+    "remote_exact_head": true,
+    "target_modified": false
+  },
+  "commits": [
+    {
+      "sha": "6d01aef2c4a194772875cb2e3c297f33b81f1899",
+      "subject": "recover CHG-27 profile contract"
+    },
+    {
+      "sha": "184b9af4d46eaede0069a32182a5b420f06041ab",
+      "subject": "record CHG-27 release evidence"
+    }
+  ],
+  "diff": {
+    "base": "3c20bcf12259daefb4024745e4974ce349de22a4",
+    "head": "184b9af4d46eaede0069a32182a5b420f06041ab",
+    "changed_files": 78,
+    "additions": 1731,
+    "deletions": 1050
+  },
+  "checks": [
+    {
+      "name": "contracts",
+      "command": "./dev contracts",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "architecture",
+      "command": "./dev architecture",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "backend",
+      "command": "./dev test-backend",
+      "exit_code": 0,
+      "status": "PASS",
+      "detail": "258 passed"
+    },
+    {
+      "name": "profile-contract",
+      "command": "backend/.venv/bin/python scripts/profile_contract_evidence.py",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "verify",
+      "command": "./dev verify",
+      "exit_code": 0,
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
+      "code_ready": true,
+      "release_status": "NOT_CERTIFIED"
+    },
+    {
+      "name": "verify-release",
+      "command": "./dev verify-release",
+      "exit_code": 0,
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
+      "code_ready": true,
+      "release_status": "NOT_CERTIFIED",
+      "external_blockers": [
+        "company identity topology",
+        "provider-mounted SQLite storage qualification",
+        "company deployment and routing qualification"
+      ]
+    }
+  ],
+  "evidence_manifest": {
+    "version": 1,
+    "items": [
+      {
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "02d1d3a33aaef1da1dce476387b798167eb75fdf448abf35a9260a447574fb29"
+      },
+      {
+        "path": "evidence/current/release/CHG-27-profile-contract.json",
+        "sha256": "c7c1ee8a3e92b8bcbb9892c81ace216fb98d8c14de0269a37197fbfce534ecbf"
+      },
+      {
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "21d17f044a99d2a6b357728f264f0fe728bf657652acc6580695ed42bb5b4859"
+      }
+    ]
+  },
+  "release": {
+    "version": "1.0.0-rc.8",
+    "code_ready": true,
+    "production_ready": false,
+    "project_os_go": false
+  },
+  "note": "This deterministic recovery audit records observed repository state and executable gate results. It does not certify company identity, storage, deployment, production readiness, or Project OS GO."
+}
