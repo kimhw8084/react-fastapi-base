@@ -1,8 +1,8 @@
-> **Implementation addendum (1.0.0-rc.7):** see decisions/0001-native-widget-layer.md, EXPERIENCE_LAB.md, COMPONENT_COVERAGE.md and v1-completion-status.json. The qualification environment and prerequisite contract are explicit; this candidate also carries the bounded shared UI remediation and rendered evidence. Final company qualification remains external. This design is not itself production evidence.
+> **Implementation addendum (1.0.0-rc.8):** this candidate adds the canonical server-side CompanyProfile/ProfileRuntime composition contract and typed identity, storage and deployment ports. The qualification environment and prerequisite contract remain explicit; final company qualification remains external. This design is not itself production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
-**Version: 1.0.0-rc.7 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.8 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 This document is a design baseline with an executable initial implementation, not a claim that the previously requested entire platform is finished. The 68-domain ledger is authoritative about missing scope. Changes to SysGrid itself, complete visual parity, advanced workspace archetypes, actual corporate publication, dependency-resolved React verification and a production release are not included as completed work.
 
@@ -28,6 +28,8 @@ frontend app composition + renderer registry
 ```
 
 A platform module must not import a product feature. The app composition root may import both. The backend registry lists trusted local module names; there is no user-uploaded code/plugin loader. The generic workspace has presentation metadata, not a generic entity database. Work-item invariants live in work-items services and schemas. A future reservations feature must enforce overlap rules in its own service/transaction, not in UI metadata.
+
+The backend composition root selects exactly one trusted `CompanyProfile` from `BASE_PROFILE` and builds one `ProfileRuntime`. The generic platform consumes its typed identity, storage and deployment ports through application state; concrete implementations live under `backend/app/profiles/`. The profile runtime is server-only. The browser receives only the existing versioned, nonsecret `RuntimeConfig` plus intentionally safe API responses; it never receives profile objects, persistent roots, qualification evidence or credentials.
 
 ## 3. Configuration and customization contract
 
@@ -254,9 +256,9 @@ Every domain below remains in scope. “Designed” and “partial” are intent
 
 ### G19 — AccessKey identity
 
-**State:** EXTERNAL. **Owner:** `backend/app/profiles/company/identity.py; backend/app/platform/settings.py`.
+**State:** EXTERNAL. **Owner:** `backend/app/platform/identity.py; backend/app/platform/profile.py; backend/app/profiles/company/identity.py; backend/app/platform/settings.py`.
 
-**Decision:** Company adapter reads AccessKey only; no browser-supplied username fallback; production requires per-user process evidence.
+**Decision:** The platform identity port resolves from request context; the company adapter reads process-scoped AccessKey only, with no browser-supplied username fallback. Production still requires per-user process evidence.
 
 **Acceptance obligation:** Two real simultaneous users must get their own username; if one shared process exposes one username, stop rollout and resolve topology.
 

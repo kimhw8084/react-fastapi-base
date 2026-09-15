@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.7
+# Release status — react-fastapi-base 1.0.0-rc.8
 
 ## Decision
 
@@ -19,6 +19,7 @@
 - RC.5 makes archived-record immutability authoritative in the shared attachment service, closing the direct-service bypass left outside route-level checks.
 - RC.6 separates authorized company qualification staging from final production qualification. A strict prerequisite record enables provision, migration and object recovery drills without weakening the final `CompanyQualification` requirement; qualification readiness remains explicitly `production_ready: false`.
 - RC.7 is the bounded UI remediation candidate: shared semantic tokens, the v36 AG Grid theme API, native checkbox control geometry and Experience Lab label renderers were corrected against rendered evidence. RC.6 remains immutable historical certification for its exact source and does not qualify this changed executable source.
+- RC.8 adds the canonical server-side CompanyProfile/ProfileRuntime composition seam, typed identity/storage/deployment ports, profile-owned local adapter construction, request-aware identity resolution and dependency/public-runtime regression coverage. CHG-6 RC.7 evidence remains immutable historical evidence for its exact source.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

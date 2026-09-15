@@ -17,7 +17,7 @@ A=Annotated[Actor,Depends(actor_for)]
 
 @router.get('/bootstrap',response_model=Bootstrap,operation_id='bootstrap')
 def bootstrap(request: Request):
-    user=request.app.state.identity.current_user()
+    user=request.app.state.profile_runtime.resolve_identity(request)
     with request.app.state.database.session() as db:
         rows=db.execute(select(Tenant,Membership).join(Membership,Membership.tenant_id==Tenant.id).where(Membership.user_id==user,Tenant.active.is_(True)).order_by(Tenant.name)).all()
         return Bootstrap(user_id=user,profile=request.app.state.settings.profile,

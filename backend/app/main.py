@@ -18,22 +18,22 @@ from app.platform.policy import load_policy
 from app.platform.workspace_registry import WorkspaceRegistry
 from app.platform.entity_registry import EntityRegistry, load_relationship_definitions
 from app.platform.configuration import load_config
-from app.platform.database import Database
 from app.platform.errors import AppError
 from app.platform.migrations import assert_revision
 from app.platform.middleware import RequestSafetyMiddleware
 from app.platform.models import Tenant
 from app.platform.router import router as platform_router
 from app.platform.version import VERSION
-from app.platform.storage import LocalFilesystemStorage
-from app.platform.attachments import DeterministicMalwareScanner, NoopMalwareScanner
+from app.platform.profile import ProfileRuntime
 from app.features.registry import DEFINITIONS, ENTITY_BINDINGS, ROUTERS
-from app.profiles.company.identity import CompanyIdentity, DevelopmentIdentity
+from app.profiles.loader import load_profile
 
 logger=logging.getLogger('golden')
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings=settings or Settings()
+    profile=load_profile(settings)
+    runtime: ProfileRuntime=profile.build_runtime(settings)
     application=load_config(settings.app_config)
     policy=load_policy(settings.policy_config)
     workspaces=WorkspaceRegistry(DEFINITIONS)
@@ -41,14 +41,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     entities=EntityRegistry(ENTITY_BINDINGS,load_relationship_definitions(relationships_path),workspaces.definitions())
     unknown={n.workspace for n in application.navigation}-set(DEFINITIONS)
     if unknown:raise ValueError('Unknown workspace configuration: '+', '.join(sorted(unknown)))
-    database=Database(settings)
     @asynccontextmanager
     async def lifespan(app):
-        settings.assert_safe(scanner_is_noop=isinstance(app.state.malware_scanner, NoopMalwareScanner))
-        if settings.profile=='company':
-            app.state.identity.current_user()
+        runtime.assert_safe()
+        if profile.require_startup_identity:
+            runtime.identity.current_user()
         yield
-        database.close()
+        runtime.database.close()
     app=FastAPI(title=application.name,version=VERSION,lifespan=lifespan,
         responses={code:{'model':ErrorResponse} for code in (400,401,403,404,409,413,415,422,429,500,503)},
         docs_url='/docs' if settings.environment in ('development', 'test') and settings.enable_docs else None,
@@ -59,19 +58,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.policy=policy
     app.state.workspaces=workspaces
     app.state.entities=entities
-    app.state.database=database
-    # The adapter is tenant-scoped and stores objects outside SQLite. Company
-    # deployments still fail closed through Settings qualification before use.
-    app.state.object_storage=LocalFilesystemStorage(settings.data_root/'objects')
-    if settings.attachment_upload_mode == 'disabled':
-        app.state.malware_scanner = None
-    elif settings.environment in ('development', 'test'):
-        app.state.malware_scanner = DeterministicMalwareScanner()
-    else:
-        # Production must either inject a real scanner or fail closed in the
-        # lifespan preflight; the no-op is never accepted for scanner_required.
-        app.state.malware_scanner = NoopMalwareScanner()
-    app.state.identity=CompanyIdentity() if settings.profile=='company' else DevelopmentIdentity(settings.dev_user)
+    app.state.profile=profile
+    app.state.profile_runtime=runtime
+    app.state.deployment=runtime.deployment
+    app.state.database=runtime.database
+    app.state.storage=runtime.storage
+    app.state.object_storage=runtime.object_storage
+    app.state.malware_scanner=runtime.malware_scanner
+    app.state.identity=runtime.identity
     app.state.csrf_secret=settings.csrf_secret or secrets.token_urlsafe(32)
     app.add_middleware(RequestSafetyMiddleware,settings=settings)
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=settings.allowed_hosts)
@@ -103,11 +97,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get('/api/v1/readiness',operation_id='readiness')
     def readiness():
         try:
-            settings.assert_safe(scanner_is_noop=isinstance(app.state.malware_scanner, NoopMalwareScanner));assert_revision(database)
-            with database.session() as db:
+            runtime.assert_safe();assert_revision(runtime.database)
+            with runtime.database.session() as db:
                 tenants=db.scalars(select(Tenant).where(Tenant.active.is_(True))).all()
             if len(tenants)>64:raise RuntimeError('Too many tenants for synchronous readiness in this release.')
-            for tenant in tenants:assert_revision(database,tenant.id)
+            for tenant in tenants:assert_revision(runtime.database,tenant.id)
             return {'ready':True,'version':VERSION,'environment':settings.environment,'production_ready':settings.environment=='production'}
         except Exception:
             return JSONResponse(status_code=503,content={'ready':False,'code':'configuration_or_database_unready'})

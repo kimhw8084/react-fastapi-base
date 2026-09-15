@@ -47,3 +47,7 @@ Decision: scope values personal/team, where team presently means tenant membersh
 ## ADR-012 — Mutation/recovery operations never rewrite audit history
 
 Decision: revision preconditions, atomic bulk, new audit revisions for revert, no hard delete/purge API in the reference domain. Rejected: silent overwrite and destructive restoration to live root. Consequence: purge/retention need a separate explicit policy and implementation. Proof: stale-write, atomic rollback, immutable audit and isolated restore tests.
+
+## ADR-013 — Profiles are the server composition boundary
+
+Decision: select one trusted `CompanyProfile` from server settings and build one `ProfileRuntime` containing typed identity, storage and deployment ports. Rejected: platform imports of company adapters, feature-level provider selection, and a server profile payload in browser runtime configuration. Consequence: identity/storage/deployment providers can evolve behind explicit ports while current local behavior and qualification limits remain intact. Proof: profile, request-identity, dependency-direction and public-runtime tests; company topology, provider selection and deployment qualification remain external.

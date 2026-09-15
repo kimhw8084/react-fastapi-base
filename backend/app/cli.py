@@ -12,7 +12,7 @@ from app.platform.provision import provision,add_member
 from app.platform.migrations import migrate
 from app.platform.backup import snapshot,restore
 from app.profiles.company.storage_probe import probe
-from app.profiles.company.identity import CompanyIdentity
+from app.profiles.loader import load_profile
 from app.tooling.work_items import create_work_item_direct
 from app.features.work_items.schemas import WorkItemCreate
 
@@ -30,12 +30,13 @@ def _assert_operator_safe(settings: Settings) -> None:
     application startup and ``preflight`` continue to require an actual scanner
     whenever ``scanner_required`` is selected.
     """
-    settings.assert_maintenance_safe()
-    if settings.profile == 'company':
+    profile=load_profile(settings)
+    profile.deployment.assert_maintenance_safe(settings)
+    if profile.require_startup_identity:
         # Qualification and production tools must use the same process-scoped
         # company identity boundary as the ASGI application.  This proves that
         # AccessKey is present without exposing it or allowing a CLI override.
-        CompanyIdentity().current_user()
+        profile.identity.current_user()
 
 def main():
     parser=argparse.ArgumentParser(description='Golden operator tools. Never run against live data without the documented maintenance procedure.')
@@ -62,9 +63,10 @@ def main():
                 errors=settings.qualification_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
             else:
                 errors=['Preflight must be run with BASE_ENVIRONMENT=qualification or production.']
-            if not errors and settings.profile == 'company':
+            profile=load_profile(settings)
+            if not errors and profile.require_startup_identity:
                 try:
-                    CompanyIdentity().current_user()
+                    profile.identity.current_user()
                 except AppError:
                     errors.append('Company identity is missing or invalid.')
             print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':settings.environment=='production' and not errors,'errors':errors},indent=2));return 1 if errors else 0

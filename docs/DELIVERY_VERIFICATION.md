@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.7
+# Delivery verification — react-fastapi-base 1.0.0-rc.8
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -23,7 +23,7 @@ The React browser suite uses disposable local services and dynamically allocated
 
 The current source and compiled Lab are delivered together, with a ZIP manifest and checksum. No SysGrid source modification, remote commit, company deployment or production database operation occurred.
 
-RC.7 UIQA evidence is recorded in the rendered app/Lab browser reports and the CHG-6 audit note. RC.6 evidence remains historical and is not reused as qualification for this changed executable source.
+RC.8 CHG-27 profile-contract evidence is bound to the resulting source commit in `evidence/current/release/CHG-27-profile-contract.json`. RC.7 UIQA evidence remains historical and is not reused as qualification for this changed executable source. RC.6 evidence remains historical as well.
 
 ## Start the delivered Lab
 
