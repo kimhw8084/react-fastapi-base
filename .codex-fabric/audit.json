@@ -1,0 +1,78 @@
+{
+  "accepted_at": "2026-09-15T14:38:03Z",
+  "changed_files": [],
+  "checks": [],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": null,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": null,
+    "usage": {},
+    "warnings": []
+  },
+  "commits": [],
+  "diff": null,
+  "error_code": "CODEX_EXIT_NONZERO",
+  "evidence_manifest": {
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.2",
+  "fabric_capture": null,
+  "fabric_release": "1.2.2",
+  "failure_class": "CODEX_EXECUTION",
+  "finished_at": "2026-09-15T15:14:13Z",
+  "git": {},
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-7a62e1a63fe2d796031bac44",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/company-profile-contract-v1",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/company-profile-contract-v1"
+  },
+  "operation": "BUILD",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.2",
+    "policy_sha256": "3778fba0755dd2f6b00268f73b7a589f93317203cc0603df2feff4e6d9c759f6",
+    "registry_sha256": "17d7db01a654a693b57af2b6fce2f676b1f883ea97564a690894b5f96df49aaa"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": true,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "company-profile-contract-v1",
+  "schema_version": 1,
+  "started_at": "2026-09-15T14:43:33Z",
+  "status": "FAILED_MODEL",
+  "timing": {
+    "execution_seconds": 1840,
+    "queue_seconds": 330,
+    "total_seconds": 2170
+  },
+  "transport": {
+    "bytes": 7642,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 7303,
+    "prompt_sha256": "9e700b8a5cf556b54a0f61cfbbbd95e0e08dbce9a8053dc29ef3cba4c1a40a36",
+    "sha256": "7a62e1a63fe2d796031bac449bb0265f8b81d34eec264b622b17508ba8e60329"
+  }
+}
