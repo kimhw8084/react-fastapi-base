@@ -1,0 +1,1152 @@
+{
+  "accepted_at": "2026-09-16T13:23:57Z",
+  "changed_files": [
+    {
+      "additions": 6,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
+    },
+    {
+      "additions": 36,
+      "deletions": 30,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "README.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
+    },
+    {
+      "additions": 21,
+      "deletions": 19,
+      "path": "backend/app/cli.py",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 5,
+      "path": "backend/app/main.py",
+      "status": "M"
+    },
+    {
+      "additions": 120,
+      "deletions": 0,
+      "path": "backend/app/platform/configuration_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 80,
+      "deletions": 4,
+      "path": "backend/app/platform/settings.py",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "backend/app/platform/webhooks.py",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "backend/app/profiles/company/identity.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 114,
+      "deletions": 0,
+      "path": "backend/tests/test_configuration_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 2,
+      "path": "deploy/backend.env.example",
+      "status": "M"
+    },
+    {
+      "additions": 418,
+      "deletions": 0,
+      "path": "deploy/configuration-contract.json",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "deploy/publisher-contract.json",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 80,
+      "deletions": 0,
+      "path": "docs/CONFIGURATION_CONTRACT.md",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 4,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 0,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 34,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 12,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 511,
+      "deletions": 528,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/configuration-contract.log",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 19,
+      "deletions": 19,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 79,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 83,
+      "deletions": 83,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 18,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 59,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 70,
+      "deletions": 59,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 77,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-32-configuration-contract.json",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "evidence/current/release/evidence-binding.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 6,
+      "path": "evidence/current/release/manifest.json",
+      "status": "M"
+    },
+    {
+      "additions": 83,
+      "deletions": 83,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 41,
+      "deletions": 3,
+      "path": "frontend/server.mjs",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/src/platform/api/compatibility.test.ts",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 2,
+      "path": "frontend/src/platform/api/runtime.ts",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/tests/pure-client.test.mjs",
+      "status": "M"
+    },
+    {
+      "additions": 35,
+      "deletions": 1,
+      "path": "frontend/tests/server.test.mjs",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 4,
+      "path": "scripts/check_architecture.py",
+      "status": "M"
+    },
+    {
+      "additions": 115,
+      "deletions": 0,
+      "path": "scripts/check_configuration_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 114,
+      "deletions": 0,
+      "path": "scripts/configuration_contract_evidence.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "scripts/verify.py",
+      "status": "M"
+    }
+  ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.tests,.failures,.errors,.skipped' evidence/current/full-stack/backend-junit.xml 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/configuration_contract_evidence.py --base-sha f52fb02df980b06ce4b1a0ff741d626304381a23'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n '\\\"(value|runtime_value|secret_value|fingerprint|qualification_payload)\\\"|CHG32-SENTINEL|test-secret-[0-9a-f]{64}' evidence/current/release evidence/current/full-stack deploy/configuration-contract.json || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' evidence/current/release/CHG-32-configuration-contract.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,base_sha,version,contract,precedence,validation,secret_boundary,api_contract_impact,local_checks,external_qualification}' evidence/current/release/CHG-32-configuration-contract.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,result,release_status,production_ready}' evidence/current/full-stack/fresh-clone-macos.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,result,diagnostic_pass}' evidence/current/recovery/object-restore.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' evidence/current/release/evidence-binding.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,generated_at,files:(.files|length)}' evidence/current/release/manifest.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,result,apps:(.apps|length)}' evidence/current/release/reference-apps.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,220p' evidence/current/release/manifest.json; rtk sed -n '1,180p' evidence/current/release/evidence-binding.json; rtk rg -n \\\"release/manifest|evidence-binding|manifest.json\\\" scripts docs | head -160\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{schema_version,source_commit,version,created_at,command,exit_code,result,source_digest,tests}' evidence/current/release/fresh-clone-macos.json; rtk jq '{schema_version,source_commit,version,created_at,command,exit_code,result,source_digest}' evidence/current/release/reference-apps.json; rtk jq '{schema_version,source_commit,version,created_at,command,exit_code,result,source_digest}' evidence/current/release/CHG-31-api-compatibility.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short evidence/current/full-stack evidence/current/recovery evidence/current/release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,created_at,command,exit_code,platform,python_version,release_status,production_ready,code_ready}' evidence/current/full-stack/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python --version; rtk node --version; rtk uname -a'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"CHG32-SENTINEL|test-secret-[0-9a-f]{64}\" evidence/current deploy/configuration-contract.json || true'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/check_configuration_contract.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/checkpoint.py chg32-rc10-final'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add CHECKPOINT_MANIFEST.json evidence/current'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.results[] | select(.status \"'!= \"PASS\") | [.name,.status] | @tsv'\"' evidence/current/full-stack/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,base_ref,resolved_base_sha,api_major,contract_revision,base_api_major,base_contract_revision,breaking_changes,compatible_changes,changes,result}' evidence/current/full-stack/api-compatibility.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --cached --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --cached --text | rtk rg -n \"CHG32-SENTINEL|test-secret-[0-9a-f]{64}\" || true'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git commit -m \"Record CHG-32 RC.10 verification evidence\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' evidence/current/release/evidence-binding.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"CHG32-SENTINEL|test-secret-[0-9a-f]{64}\" evidence/current deploy/configuration-contract.json || true'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor f52fb02df980b06ce4b1a0ff741d626304381a23 HEAD; rtk git log --oneline --decorate -4'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add evidence/current/release/evidence-binding.json && rtk git diff --cached --check && rtk git commit -m \"Bind CHG-32 evidence to verified source\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor f52fb02df980b06ce4b1a0ff741d626304381a23 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git log --oneline --decorate -4'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{verified_source_commit,evidence_commit,api_compatibility_base_sha,result}' evidence/current/release/evidence-binding.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,release_status,production_ready,code_ready}' evidence/current/full-stack/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor f52fb02df980b06ce4b1a0ff741d626304381a23 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{verified_source_commit,evidence_commit,api_compatibility_base_sha,result}' evidence/current/release/evidence-binding.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,release_status,production_ready,code_ready,nonpass:[.results[]|select(.status \"'!= \"PASS\")|{name,status,reason}]}'\"' evidence/current/full-stack/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,base_ref,resolved_base_sha,api_major,contract_revision,base_api_major,base_contract_revision,breaking_changes,compatible_changes,changes,result}' evidence/current/full-stack/api-compatibility.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"CHG32-SENTINEL|test-secret-[0-9a-f]{64}\" evidence/current deploy/configuration-contract.json || true'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/codex/react-fastapi-base-config-secrets-contract-v1'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 676,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.43,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 29898496,
+      "fresh_input_tokens": 475770,
+      "input_tokens": 30374266,
+      "non_reasoning_output_tokens": 55912,
+      "output_tokens": 108350,
+      "reasoning_output_tokens": 52438,
+      "total_processed_tokens": 30482616
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "a208fb021ac229d34e65b5ed4afd38a79e8d2829",
+      "subject": "Bind CHG-32 evidence to verified source"
+    },
+    {
+      "sha": "618248c5a71e452478ff208394fcadf19ef0442a",
+      "subject": "Record CHG-32 RC.10 verification evidence"
+    },
+    {
+      "sha": "352d609a793790defe3788eaaa109c9841cd6e27",
+      "subject": "Implement CHG-32 configuration and secrets contract"
+    }
+  ],
+  "diff": {
+    "additions": 2458,
+    "changed_files": 79,
+    "commit_count": 3,
+    "deletions": 1267
+  },
+  "error_code": null,
+  "evidence_manifest": {
+    "count": 60,
+    "items": [
+      {
+        "bytes": 9762,
+        "path": "CHANGELOG.md",
+        "sha256": "c84589b3c6da47b60c5d13447ce17ddead5e188ee0c4356715144e3e05fcf503"
+      },
+      {
+        "bytes": 75495,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "0f8ea069326c7beba1b2402fd27c222350137dbaf7d492c6d8a7bfadf8969a05"
+      },
+      {
+        "bytes": 3406,
+        "path": "README.md",
+        "sha256": "d82dec9470f2ea997479467eae56622a53c90d220d5958c04676e7ec67d39654"
+      },
+      {
+        "bytes": 2204,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "0d071c3a7e44df8bcc52037a18e8f7924a181d8aabff26c735548289f1fadeb2"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "3bc432182c0dc305dc83bcbdc3bd24c83b2b5d99d794a1f6a7331c31dcf56f1f"
+      },
+      {
+        "bytes": 22599,
+        "path": "deploy/configuration-contract.json",
+        "sha256": "7569ddcffa28570a95b9e3b86039d04ee4445c19ba6b3a0b98570796e5bc702c"
+      },
+      {
+        "bytes": 1011,
+        "path": "deploy/publisher-contract.json",
+        "sha256": "89059cb68779f072d5daa4f64180c8564c2fe7bcb314250cc2dabdc976312847"
+      },
+      {
+        "bytes": 4507,
+        "path": "docs/CONFIGURATION_CONTRACT.md",
+        "sha256": "ec4e45128ea240ab5e9b861cdafde53523a8b566d09427f12fcb9ce4b77a2ac7"
+      },
+      {
+        "bytes": 3284,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "a7904c59771f33748f80cfd3c1d265249248f7c40ce8aeb2f064a5184f4a449b"
+      },
+      {
+        "bytes": 7895,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "e2cea80b38c174a99ba605f8257e0171b1636486670f9b8b62a60cf8d6b6e055"
+      },
+      {
+        "bytes": 2937,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "fe766dacb7553925d22b82282142b3d04fbd70e9150b39336858165c4abe83e8"
+      },
+      {
+        "bytes": 44958,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "ff5adea3d6807003cd4371bc6286d67ac449eb11ec8e8e684d39ece3ca2a6f13"
+      },
+      {
+        "bytes": 6122,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "160cd2f35ae44281852d548a98b1b780c3a91a9ec76523fb8ae1dde95d05355b"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "db99cf9fb854d4786c348f35bc6316ffc2579d8237e5219e71254c3710e4b8b9"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "9e763fa4e2f898959a42f244db97da58f85101506917e0c3af5d6f461448dca9"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "f1a090675ffa8b047a93b845e8a5419fcd77b55be3f38d04070c1b51d0c483c7"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "29d745fbb5c25b6cd1d1e7618788dc4694fa2e20f485c071ff6f6d0792309c6c"
+      },
+      {
+        "bytes": 7932,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "204951601c4ea48dcc6b1903cee9b3c08fcf7ed7b8babccaacbe202b17cebd51"
+      },
+      {
+        "bytes": 4505,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "76bc352b6f30be83c87b2d8650be8a897ff3f3ba1a2760edd28ea6d0350d7185"
+      },
+      {
+        "bytes": 9784,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "5e428fff6d72776a67fdccc5ff6eb8b8491d33322fb314f5bfb7d8746f1c96f0"
+      },
+      {
+        "bytes": 11434,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "1fba28410c4ecb6e3bbe7b86d1939e3fffe4a184000d777228fa6d0a8bbad1f3"
+      },
+      {
+        "bytes": 32771,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "a1bc08bad10eb184cb6c7fa94873b5250ab1e6a281671a2bbbf40a4297f545c7"
+      },
+      {
+        "bytes": 779,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "00c460713134197ed4053e26997057cb475cf3540f61ea0527db0b654e33f236"
+      },
+      {
+        "bytes": 46318,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "1b7ab3746aab5345af72a9d2ae130fc85cdfb320ead81348b2983dab34a86593"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "aa2732fdbcf82cb1d59ebbbf1485cad0e36eabce91eadba88ecf85de141dcec2"
+      },
+      {
+        "bytes": 137,
+        "path": "evidence/current/full-stack/configuration-contract.log",
+        "sha256": "1721fb8642b61dffd6889c6a65c6c2bac6ecddef7718374dfec2fa4063d30ac1"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "e5a64910c7f5be1123b6b822adac9ee06f22ae037f7bee148e06a958c8f56c28"
+      },
+      {
+        "bytes": 50203,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "35593cba3d7ffe528c078324f2b34436ddfd7675344f2d26f00511320905f2a2"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "b39e93045ea6043470dfcaa95d9a729f7bbcb91ac4df5b8aa74151ebc314b7a1"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "696f67130309b550b723f46fdcf275eb0536a840958d14b3c277ba1dac7d2c19"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "11e52efba82c61891c6231be2dd11b1d5f4d204d9ee6aedcb30a0988f5f55e27"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "22f36e363155bb097755f7ed06f2370e475b4a28a5147db70d6efecc00399305"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "6ac83d97d36164ecfe9dd35f9d291125c62664024c9e5563fdabb9ae52b984b3"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "27466753a73f3eda31b0a89a03cbb3417e8c489feb886d0c77e8161d06404e61"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "e27096da44f74bf039dbe942455df2891629b3548da26983a47d1a417fac6345"
+      },
+      {
+        "bytes": 6453,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "edf984b467d2a24e203a74a409e84715d9fbe2497457e3e66c271d33b20d3e40"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "16dbabc2fbdcd830161227eee5250ff76a01255ce508e11fb80964728233a752"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "81ccbca2abef73b022b7ba09bb61b10278faa3d9687d1d9c5ede752028460faa"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "2926b24afdf58afd309f70c38097b49db0977d562ee286ccee5b59cf8d518217"
+      },
+      {
+        "bytes": 487,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "92e4a1d825b073dcf042bae99f94548b2963cf182493aaafac07357e4457bb29"
+      },
+      {
+        "bytes": 1725,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "a35bd3250a74d48fef22a8f09f7a6d8955c392865e151cd7dc0bc74eaad670d7"
+      },
+      {
+        "bytes": 27205,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "090b1f60f9f869eee9f5a278ed5b654da91758d0c3ce0d4a79e800b45f591a4e"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "f2dfaf25b5388c875d55e3ba56a993f1e815bc40fffd3ec3f52799fcf4f99e39"
+      },
+      {
+        "bytes": 91264,
+        "path": "evidence/current/full-stack/source-hashes.json",
+        "sha256": "74e3807c9e43a8e96ab3d36ba348783dadff3439824037b56698d0e67dae45f1"
+      },
+      {
+        "bytes": 2730,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "323c9b6ba0a5bed0ef569c0bb78d559f5d2f97842ba437d711a410844ea8dc0c"
+      },
+      {
+        "bytes": 99,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "aaa5b8b9f87ec98dcbe114f477f0cf3fcd06db19fa84c774958ec5372c140753"
+      },
+      {
+        "bytes": 5731,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "57a3a983373ffa789b1614c718d1f771cf78ac3deafc71df03999ba6009e827c"
+      },
+      {
+        "bytes": 7346,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "49c42dbaa4126de95c879a4b20437762ae03c7b3b15146d3612f261475ecbc9c"
+      },
+      {
+        "bytes": 7346,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "49c42dbaa4126de95c879a4b20437762ae03c7b3b15146d3612f261475ecbc9c"
+      },
+      {
+        "bytes": 11500,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "6d86a86d6f9842291bac03e0aafde45d76c60aee76ee37bd67360890cc407241"
+      },
+      {
+        "bytes": 49,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "5509e3da04658b4bd5a4e4c68c8611e2fa80e30725b027edef15edca2289d87f"
+      },
+      {
+        "bytes": 1725,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "a35bd3250a74d48fef22a8f09f7a6d8955c392865e151cd7dc0bc74eaad670d7"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "2926b24afdf58afd309f70c38097b49db0977d562ee286ccee5b59cf8d518217"
+      },
+      {
+        "bytes": 2328,
+        "path": "evidence/current/release/CHG-32-configuration-contract.json",
+        "sha256": "5517395d0018efd1ac503835314aa69e4913b1b5a2de7e315010334218162697"
+      },
+      {
+        "bytes": 738,
+        "path": "evidence/current/release/evidence-binding.json",
+        "sha256": "98f75733cb7cb4fb5a960428d7f7ff5240baa83e0cb8ffc31e0db4793df24918"
+      },
+      {
+        "bytes": 715,
+        "path": "evidence/current/release/manifest.json",
+        "sha256": "1fa046ae0df357f2f116b387f9309098d8d5beb8b2fae61b55e2f961ebbcea76"
+      },
+      {
+        "bytes": 27205,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "090b1f60f9f869eee9f5a278ed5b654da91758d0c3ce0d4a79e800b45f591a4e"
+      },
+      {
+        "bytes": 186039,
+        "path": "frontend/package-lock.json",
+        "sha256": "0170a523f71107fe4d8d81867bf2bc65e41b5cd2e9022db8c7c691c0842f1365"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "2ef7b9eda00fac1632dc385d754c9fabf72ef52c33516ee6785da74af53fdfec"
+      },
+      {
+        "bytes": 5076,
+        "path": "scripts/configuration_contract_evidence.py",
+        "sha256": "b5d9bf07f64cec039f1aaed403e259c594aee9b10c3ac9903a30c063c8484b46"
+      }
+    ],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.2",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.2",
+  "failure_class": null,
+  "finished_at": "2026-09-16T14:27:06Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "f52fb02df980b06ce4b1a0ff741d626304381a23",
+    "branch": "codex/react-fastapi-base-config-secrets-contract-v1",
+    "head_sha": "a208fb021ac229d34e65b5ed4afd38a79e8d2829",
+    "remote_exact_head": true,
+    "remote_head_sha": "a208fb021ac229d34e65b5ed4afd38a79e8d2829",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "f52fb02df980b06ce4b1a0ff741d626304381a23",
+    "work_branch": "codex/react-fastapi-base-config-secrets-contract-v1",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-fb9ff8571f0a73e38905ccb7",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/config-secrets-contract-v1",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/config-secrets-contract-v1"
+  },
+  "operation": "BUILD",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.2",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "6316fd785c456db605cb8cd3f359ac0b65cfd957f2546ebe5d596f3115bd2a61"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "config-secrets-contract-v1",
+  "schema_version": 1,
+  "started_at": "2026-09-16T13:23:57Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 3789,
+    "queue_seconds": 0,
+    "total_seconds": 3789
+  },
+  "transport": {
+    "bytes": 10214,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 9877,
+    "prompt_sha256": "900a97f26dcecd6eef80ebec765b6ab04c0cbcfd2bf130eeb1c6c112dcd8dfa8",
+    "sha256": "fb9ff8571f0a73e38905ccb7d0e055d9423849df8667fc257e1f791bd66942e7"
+  }
+}
