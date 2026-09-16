@@ -30,7 +30,7 @@ class ObjectStorageAdapter(Protocol):
     def exists(self, tenant_id: str, key: str) -> bool: ...
 
 
-class StorageBackupAdapter(Protocol):
+class StorageBackupAdapter(ObjectStorageAdapter, Protocol):
     """Explicit boundary for object backup and restore.
 
     An object provider that owns retention and backup outside this application

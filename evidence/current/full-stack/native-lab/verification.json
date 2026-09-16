@@ -1,9 +1,9 @@
 {
   "product": "react-fastapi-base",
-  "version": "1.0.0-rc.6",
-  "timestamp": "2026-09-10T05:44:17.280669+00:00",
+  "version": "1.0.0-rc.8",
+  "timestamp": "2026-09-15T23:29:31.769069+00:00",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
-  "python_version": "3.14.5",
+  "python_version": "3.13.13",
   "node_version": "v22.23.2",
   "typescript_version": "Version 5.9.3",
   "browser_mode": "http",
@@ -13,7 +13,7 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "scripts/check_lab_build.py"
       ],
       "log": "strict-types-and-artifact-parity.log"
@@ -34,7 +34,7 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
@@ -47,7 +47,7 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "scripts/catalog.py",
         "--check"
       ],
@@ -58,12 +58,12 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
         "experience-lab/tests/test_browser.py",
-        "--junitxml=/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/full-stack/native-lab/browser-junit.xml"
+        "--junitxml=/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/evidence/current/full-stack/native-lab/browser-junit.xml"
       ],
       "log": "browser-interactions.log"
     }
@@ -72,10 +72,10 @@
     "experience-lab/requirements-test.txt": "710023884149c117a9e80aaa47d96d6a331550bd0ed0c129db4f174b93a42cd2",
     "experience-lab/tsconfig.json": "7893f361dbccd1cd16ad19ef63da874b57267bf598e1e34090b6b8350f0c57bd",
     "experience-lab/tests/model.test.mjs": "0fa9e18ec2a70123523a1b9a3e7230838e4fd9fe44839d6168db7230a091aafe",
-    "experience-lab/tests/test_browser.py": "b009f483426bb831d2c39a607eff573ac02e8df31503c6d955b91a58a7bba22f",
+    "experience-lab/tests/test_browser.py": "2e50dc1e109373ae50f5ae66998685e4459b5d43a261ff061f535c8b7b5411f7",
     "experience-lab/tests/browser_loader.py": "4d186730bbd63187e93564de3187844101058f61b0893a7c01cff316bb12720d",
     "experience-lab/public/index.html": "1519ff6082b31cd3e87958a0de4ed861ffa1bfc2f7016395328a7ffef72b29bc",
-    "experience-lab/public/styles.css": "2491f225f7d8a52c5d107e0ff14afc3c6b13a58a6a1814a5431f1319baf72f3d",
+    "experience-lab/public/styles.css": "5006ffda99d031298ab88ef59e54c709ddac185715de08519b69af7e9fd99df6",
     "experience-lab/public/theme-init.js": "53b491f94b288ab3a027addb1ea8f4a1e0503d1480eb2dd7f01173a2f5990b56",
     "experience-lab/src/validation.ts": "b0ee043a204233f997e2ea2a142a69671423a87697896737c4c9bade8809c4f6",
     "experience-lab/src/fixtures.ts": "849f407098c26acbe5c959e4318876b1f85b59f7fa6c6f420a02ef441a7fdeb0",

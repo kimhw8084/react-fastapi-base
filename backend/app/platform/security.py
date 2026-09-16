@@ -32,7 +32,7 @@ def valid_csrf(secret: str, user_id: str, token: str) -> bool:
     return any(hmac.compare_digest(token, csrf_token(secret, user_id, hour)) for hour in (now, now-1))
 
 def actor_for(request: Request) -> Actor:
-    user_id = request.app.state.identity.current_user()
+    user_id = request.app.state.profile_runtime.resolve_identity(request)
     tenant_id = request.headers.get('X-Tenant-Id', '')
     if not tenant_id:
         raise AppError(400, 'tenant_required', 'Select a tenant before opening a workspace.')

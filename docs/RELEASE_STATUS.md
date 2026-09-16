@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.6
+# Release status — react-fastapi-base 1.0.0-rc.8
 
 ## Decision
 
@@ -12,12 +12,14 @@
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
 - Seven generated reference applications pass their migration, contract, frontend test/build and source-integrity proofs. The upgrade fixture passes plan, conflict-safe apply, migration, build/tests, rollback and integrity comparison.
-- Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The isolated clean-clone macOS gate passes without reusing the working tree's virtualenv, node modules or caches.
+- Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The exact-candidate clean-install proof passes without reusing the working tree's virtualenv, node modules or caches; on Linux it is the portable code gate and macOS-specific qualification is recorded as BLOCKED, while the current Darwin evidence also passes macOS qualification.
 - RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 - RC.3 centrally enforces the attachment upload policy for every caller, binds object export to the copied snapshot database, rejects archived comment deletion server-side, and reconciles the supported Python runtime documentation.
 - RC.4 hardens attachment metadata and download integrity, binds direct service calls to the authenticated tenant, validates qualification attestations, and keeps upload-scanner readiness separate from offline maintenance safety checks.
 - RC.5 makes archived-record immutability authoritative in the shared attachment service, closing the direct-service bypass left outside route-level checks.
 - RC.6 separates authorized company qualification staging from final production qualification. A strict prerequisite record enables provision, migration and object recovery drills without weakening the final `CompanyQualification` requirement; qualification readiness remains explicitly `production_ready: false`.
+- RC.7 is the bounded UI remediation candidate: shared semantic tokens, the v36 AG Grid theme API, native checkbox control geometry and Experience Lab label renderers were corrected against rendered evidence. RC.6 remains immutable historical certification for its exact source and does not qualify this changed executable source.
+- RC.8 adds the canonical server-side CompanyProfile/ProfileRuntime composition seam, typed identity/storage/deployment ports, profile-owned local adapter construction, request-aware identity resolution and dependency/public-runtime regression coverage. CHG-6 RC.7 evidence remains immutable historical evidence for its exact source.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

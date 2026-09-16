@@ -6,16 +6,16 @@ from app.platform.errors import AppError
 from app.platform.models import Membership, Tenant
 from app.platform.security import Actor
 from app.platform.transactions import write_transaction
-from app.profiles.company.identity import CompanyIdentity, DevelopmentIdentity
+from app.profiles.loader import load_profile
 from app.features.work_items.schemas import WorkItemCreate
 from app.features.work_items.service import create_item
 
 def trusted_actor(database: Database, tenant_id: str) -> Actor:
     # This trusted tool only creates work items; it does not expose attachment
     # uploads. Production ASGI startup/preflight still requires scanner status.
-    database.settings.assert_maintenance_safe()
-    provider=CompanyIdentity() if database.settings.profile=='company' else DevelopmentIdentity(database.settings.dev_user)
-    user=provider.current_user()
+    profile=load_profile(database.settings)
+    profile.deployment.assert_maintenance_safe(database.settings)
+    user=profile.identity.current_user()
     with database.session() as session:
         member=session.get(Membership,(tenant_id,user));tenant=session.get(Tenant,tenant_id)
         if not member or not tenant or not tenant.active:

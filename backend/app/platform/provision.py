@@ -4,7 +4,7 @@ from app.platform.database import Database
 from app.platform.migrations import migrate
 from app.platform.models import Tenant, Membership
 from app.platform.policy import load_policy
-from app.profiles.company.identity import normalize_username
+from app.platform.identity import normalize_username
 
 def provision(database: Database, name: str, admin_user: str) -> str:
     admin_user=normalize_username(admin_user)

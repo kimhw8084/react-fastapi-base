@@ -1,23 +1,23 @@
 {
   "schema_version": 1,
-  "source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7",
-  "timestamp": "2026-09-10T05:44:35.270150+00:00",
+  "source_commit": "d225098184893f629c4e2b4246e4594ece66405c",
+  "timestamp": "2026-09-15T23:30:03.835080+00:00",
   "command": [
-    "/Users/haewonkim/home/development/react-fastapi-base/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-base-rc6-final.XXXXXX.jfNMK9aPwP/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-ddacbef23e85994ac8901481/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
-    "python": "3.14.5"
+    "python": "3.13.13"
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "84d6bc94-3b2c-4ca2-8d06-b44bd17b722d",
+  "tenant": "9c9394d4-39e0-4a95-8a19-0605e2652cd7",
   "record_type": "work_items",
-  "record_id": "66719ad8-1763-4b72-9053-3c2540d0bd84",
-  "object_key": "attachments/d46467d0-b7f9-4079-958b-4d2c47891dab/recovery.txt",
+  "record_id": "15dbc17d-d45e-4a55-8601-e514c23bf443",
+  "object_key": "attachments/3ab633a7-4c15-4278-8e7f-1c4aa0598317/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",

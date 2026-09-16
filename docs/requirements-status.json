@@ -2,7 +2,7 @@
   "schema_version": 1,
   "ledger_type": "historical-requirements-decisions",
   "authoritative_v1_status": "docs/v1-completion-status.json",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "reference_commit": "66244b997a70b85e6e887870c96db958f3f0d22d",
   "production_ready": false,
   "current_release": "V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING",
@@ -164,8 +164,8 @@
       "id": "G19",
       "domain": "AccessKey identity",
       "status": "EXTERNAL",
-      "decision": "Company adapter reads AccessKey only; no browser-supplied username fallback; production requires per-user process evidence.",
-      "owner": "backend/app/profiles/company/identity.py; backend/app/platform/settings.py",
+      "decision": "The platform identity port resolves from request context; the company adapter reads process-scoped AccessKey only, with no browser-supplied username fallback. Production still requires per-user process evidence.",
+      "owner": "backend/app/platform/identity.py; backend/app/platform/profile.py; backend/app/profiles/company/identity.py; backend/app/platform/settings.py",
       "acceptance": "Two real simultaneous users must get their own username; if one shared process exposes one username, stop rollout and resolve topology."
     },
     {

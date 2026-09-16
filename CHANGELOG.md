@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-rc.8 — canonical CompanyProfile and adapter architecture
+
+- Added a trusted server-side CompanyProfile/ProfileRuntime composition contract with typed identity, storage and deployment ports.
+- Made identity request-aware without adding browser identity headers; retained deterministic development identity and the process-scoped company AccessKey limitation.
+- Moved local persistence/object-storage construction behind the selected profile while preserving existing database, attachment, qualification and recovery behavior.
+- Added architecture and public-runtime regression coverage; company qualification, provider selection and production readiness remain external.
+
+## 1.0.0-rc.7 — rendered UI remediation
+
+- Corrected shared dark accent and notification contrast semantics, restored AG Grid v36 token theming, fixed native Saved View checkbox geometry, and strengthened equipment/trace label rendering across light, dark and high-contrast Lab states.
+
 ## 1.0.0-rc.6 — qualification bootstrap repair
 
 - Added a strict pre-certification qualification environment and prerequisite record so authorized company staging can provision, migrate and rehearse object-inclusive recovery without fabricated final evidence.

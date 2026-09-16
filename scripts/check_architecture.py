@@ -12,6 +12,8 @@ for path in (ROOT/'backend/app').rglob('*.py'):
         if isinstance(node,(ast.Import,ast.ImportFrom)):
             imports=[a.name for a in node.names] if isinstance(node,ast.Import) else [node.module or '']
             if '/platform/' in relative and any(name.startswith('app.features') for name in imports):errors.append(f'{relative}: platform imports a feature')
+            if relative.startswith('backend/app/platform/') and any(name.startswith('app.profiles') for name in imports):errors.append(f'{relative}: generic platform imports a concrete profile')
+            if relative.startswith('backend/app/features/') and any(name.startswith('app.profiles') for name in imports):errors.append(f'{relative}: business feature imports a concrete profile')
     if "os.environ.get('AccessKey')" in source and relative!='backend/app/profiles/company/identity.py':errors.append(f'{relative}: identity adapter bypass')
     if re.search(r'\b(?:eval|exec)\(',source):errors.append(f'{relative}: dynamic code execution')
 for path in (ROOT/'frontend/src').rglob('*'):
@@ -23,6 +25,11 @@ for path in (ROOT/'frontend/src').rglob('*'):
     if re.search(r'\blocalStorage\.',source) and relative!='frontend/src/platform/state/storage.ts':errors.append(f'{relative}: unscoped local storage')
     if '/features/' in relative and re.search(r'#[0-9a-fA-F]{6}\b',source):errors.append(f'{relative}: raw feature color; use semantic tokens')
     if re.search(r'\b(?:eval|new Function)\(',source):errors.append(f'{relative}: dynamic code execution')
+    if re.search(r'\b(?:AccessKey|CompanyProfile|data_root|csrf_secret|qualification_file|persistent_root)\b',source):errors.append(f'{relative}: server-only profile or credential material in frontend source')
+runtime=ROOT/'frontend/public/runtime-config.json'
+if runtime.is_file():
+    runtime_keys=set(json.loads(runtime.read_text()))
+    if runtime_keys != {'schemaVersion','apiBase','defaultTheme','titleOverride'}:errors.append('frontend/public/runtime-config.json: server-only profile data or unknown runtime key')
 for path in ROOT.rglob('*'):
     if not path.is_file() or set(path.relative_to(ROOT).parts)&{'.venv','.local','.evidence','node_modules','__pycache__','.git'}:continue
     if path.name in {'.env','.env.local'}:errors.append(f'{path.relative_to(ROOT)}: real environment file must not ship')
