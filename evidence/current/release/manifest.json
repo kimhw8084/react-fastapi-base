@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
   "product": "react-fastapi-base",
-  "version": "1.0.0-rc.1",
-  "source_commit": "d493eb5caacfb4ee9a67a17d250d965c8bfcb9b8",
-  "timestamp": "2026-09-09T07:31:16-05:00",
-  "command": ["python3 dev verify-release"],
+  "version": "1.0.0-rc.10",
+  "source_commit": "352d609a793790defe3788eaaa109c9841cd6e27",
+  "timestamp": "2026-09-16T14:22:22.658828+00:00",
+  "command": ["rtk", "env", "API_COMPATIBILITY_BASE_SHA=f52fb02df980b06ce4b1a0ff741d626304381a23", "./dev", "verify-release"],
   "exit_code": 0,
-  "environment": "macOS arm64; Python 3.14.5; Node 22.23.2",
-  "hashes": {"source_digest": "79888f65f76142aa7cfb3e909313ccf9fddf7dc4ca4c9fc64539a515cb320115"},
+  "environment": "macOS-26.6.2-arm64-arm-64bit; Python 3.11.7; Node 20.19.4",
+  "hashes": {"source_digest": "88f3c59362f011d6a7dfb54f7177816305acbbdcb3fad3601e086dbe3544c67d"},
+  "api_compatibility_base_sha": "f52fb02df980b06ce4b1a0ff741d626304381a23",
   "result": "NOT_CERTIFIED",
   "blocking_results": ["company-identity", "company-storage", "company-deployment"]
 }

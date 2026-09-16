@@ -1,44 +1,19 @@
 {
   "api_major": 1,
   "base_api_major": 1,
-  "base_contract_revision": 0,
-  "base_metadata_source": "legacy API path prefix; revision 0",
-  "base_ref": "8308b9367ea2131c4b25569958d837e42e733a17",
+  "base_contract_revision": 1,
+  "base_metadata_source": "explicit OpenAPI metadata",
+  "base_ref": "f52fb02df980b06ce4b1a0ff741d626304381a23",
   "breaking_changes": 0,
   "candidate_contract": "contracts/openapi.json",
-  "candidate_contract_sha256": "7d4660d2b264d480f1bbd2eda1584e3a0698da99b02a211b7f50f9972b864fdb",
+  "candidate_contract_sha256": "3bc432182c0dc305dc83bcbdc3bd24c83b2b5d99d794a1f6a7331c31dcf56f1f",
   "candidate_metadata_source": "explicit OpenAPI metadata",
-  "changes": [
-    {
-      "classification": "compatible_additive",
-      "kind": "optional-field-addition",
-      "location": "GET /api/v1/bootstrap response 200 application/json.api_major",
-      "message": "An optional request/response field was added."
-    },
-    {
-      "classification": "compatible_additive",
-      "kind": "optional-field-addition",
-      "location": "GET /api/v1/bootstrap response 200 application/json.api_revision",
-      "message": "An optional request/response field was added."
-    },
-    {
-      "classification": "compatible_additive",
-      "kind": "optional-field-addition",
-      "location": "components.schemas.Bootstrap.api_major",
-      "message": "An optional request/response field was added."
-    },
-    {
-      "classification": "compatible_additive",
-      "kind": "optional-field-addition",
-      "location": "components.schemas.Bootstrap.api_revision",
-      "message": "An optional request/response field was added."
-    }
-  ],
-  "compatible_changes": 4,
+  "changes": [],
+  "compatible_changes": 0,
   "contract_revision": 1,
-  "created_at": "2026-09-16T03:18:58.614751+00:00",
-  "resolved_base_sha": "8308b9367ea2131c4b25569958d837e42e733a17",
+  "created_at": "2026-09-16T14:17:22.730697+00:00",
+  "resolved_base_sha": "f52fb02df980b06ce4b1a0ff741d626304381a23",
   "result": "PASS",
   "schema_version": 1,
-  "source_commit": "76f5e541710144278b1cfdb41b7a172f27baa2ca"
+  "source_commit": "352d609a793790defe3788eaaa109c9841cd6e27"
 }
