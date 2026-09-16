@@ -1,15 +1,14 @@
-Collected 26 backend test files into 4 deterministic shards.
---- backend shard 1 (22.7s, exit 0) ---
-........................................................................ [ 97%]
-..                                                                       [100%]
-74 passed in 21.44s
---- backend shard 2 (23.4s, exit 0) ---
+Collected 27 backend test files into 4 deterministic shards.
+--- backend shard 1 (20.1s, exit 0) ---
+.....................................                                    [100%]
+37 passed in 16.15s
+--- backend shard 2 (43.7s, exit 0) ---
+.......................................................................  [100%]
+71 passed in 40.39s
+--- backend shard 3 (47.2s, exit 0) ---
 ........................................................................ [ 76%]
 ......................                                                   [100%]
-94 passed in 22.37s
---- backend shard 3 (15.5s, exit 0) ---
+94 passed in 44.15s
+--- backend shard 4 (29.9s, exit 0) ---
 ...........................................................              [100%]
-59 passed in 14.25s
---- backend shard 4 (7.8s, exit 0) ---
-................................                                         [100%]
-32 passed in 5.69s
+59 passed in 26.83s
