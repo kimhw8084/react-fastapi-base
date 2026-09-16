@@ -1,0 +1,1143 @@
+{
+  "accepted_at": "2026-09-16T02:39:56Z",
+  "changed_files": [
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": ".github/workflows/verify.yml",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 27,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "README.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 1,
+      "path": "backend/app/main.py",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "backend/app/platform/router.py",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 0,
+      "path": "backend/app/platform/schemas.py",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 0,
+      "path": "backend/app/platform/version.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "backend/tests/test_api_compatibility.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_profiles.py",
+      "status": "M"
+    },
+    {
+      "additions": 14,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "docs/API_COMPATIBILITY.md",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 44,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 12,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 526,
+      "deletions": 527,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 21,
+      "deletions": 21,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 28,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 82,
+      "deletions": 82,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 20,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 73,
+      "deletions": 58,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 44,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-31-api-compatibility.json",
+      "status": "A"
+    },
+    {
+      "additions": 82,
+      "deletions": 82,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/src/app/Application.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "frontend/src/generated/schema.ts",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 1,
+      "path": "frontend/src/platform/api/client.ts",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 0,
+      "path": "frontend/src/platform/api/compatibility.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 517,
+      "deletions": 0,
+      "path": "scripts/check_api_compatibility.py",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 1,
+      "path": "scripts/generate_contracts.py",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 2,
+      "path": "scripts/verify.py",
+      "status": "M"
+    },
+    {
+      "additions": 134,
+      "deletions": 0,
+      "path": "tests/test_api_compatibility.py",
+      "status": "A"
+    },
+    {
+      "additions": 10,
+      "deletions": 0,
+      "path": "tests/test_verification_contract.py",
+      "status": "M"
+    }
+  ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm test -- --run src/platform/api/compatibility.test.ts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm run typecheck'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python -m pytest -q tests/test_api_compatibility.py'",
+      "exit_code": 127,
+      "test_result": {
+        "exit_code": 127,
+        "framework": "pytest",
+        "outcome": "nonzero",
+        "output_bytes": 46,
+        "output_sha256": "6c090b183e1e990e6df7b8391fba17d728ce6bd899c7c9c109979cdbb96b1c9d",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/check_api_compatibility.py --base-ref 8308b9367ea2131c4b25569958d837e42e733a17 --output /tmp/chg31-api-compatibility-exact.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python -m pytest -q tests/test_api_compatibility.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 7
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 98,
+        "output_sha256": "33ceaa0d737d4006ec8ba3fe8bdb5c94696ba33d8c2c6ca14092b20570b1c688",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm test -- --run src/platform/api/compatibility.test.ts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm run typecheck'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk .venv/bin/python -m pytest -q tests/test_api_compatibility.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 2
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 98,
+        "output_sha256": "f63ed36e155f51d176a24bf99a26b78f86aa6146b75b84adcff92d4ad1c40a97",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n \\\"rc\\\\.8|RC\\\\.8|RC8\\\" README.md CHANGELOG.md SOURCE_PROVENANCE.json docs --glob '\"'!docs/recipes/**'\"' | head -180; rtk sed -n '1,60p' README.md; rtk sed -n '1,45p' docs/DELIVERY_VERIFICATION.md; rtk git diff --stat; rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff -- contracts/openapi.json frontend/src/generated/schema.ts | head -260; rtk git diff -- frontend/package-lock.json VERSION backend/pyproject.toml | head -140; rtk git diff -- docs/API_COMPATIBILITY.md scripts/check_api_compatibility.py | head -320'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk wc -l scripts/check_api_compatibility.py tests/test_api_compatibility.py docs/API_COMPATIBILITY.md; rtk sed -n '1,260p' scripts/check_api_compatibility.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/check_api_compatibility.py --base-ref 8308b9367ea2131c4b25569958d837e42e733a17 --output /tmp/chg31-api-compatibility-final.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm test'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm run build:storybook'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm run build'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python -m pytest -q tests'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 43
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 100,
+        "output_sha256": "2c31a633efc2fe3c6ec183391aa433ba1ed384915909ed094fef9c24092ae9e3",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk .venv/bin/python -m pytest -q'",
+      "exit_code": 1,
+      "test_result": {
+        "counts": {
+          "failed": 1,
+          "passed": 260
+        },
+        "exit_code": 1,
+        "failing_test_ids": [
+          "tests/test_profiles.py::test_profile_runtime_is_not_serialized_by_bootstrap"
+        ],
+        "framework": "pytest",
+        "outcome": "test_failures",
+        "output_bytes": 1772,
+        "output_sha256": "d4f5c4c1d0e2e1c6a70342fc84be487b007d8d3547dc8364e3e426b12425fc7c",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/check_api_compatibility.py --base-ref 8308b9367ea2131c4b25569958d837e42e733a17 --output /tmp/chg31-api-compatibility-exact.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev architecture'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk .venv/bin/python -m pytest -q tests/test_profiles.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 5
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 98,
+        "output_sha256": "6149f77691adbb83ea978ea83ee7cf59c8fd3ef770118de4224682c76200cb7f",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=8308b9367ea2131c4b25569958d837e42e733a17 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH ./dev verify'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 scripts/generate_checkpoint_manifest.py; rtk git status --short | head -180; rtk git diff --stat | tail -40; rtk cat evidence/current/full-stack/verification.json | rtk sed -n '1,180p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=8308b9367ea2131c4b25569958d837e42e733a17 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH ./dev verify'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json\np=json.load(open('evidence/current/full-stack/verification.json'))\nprint('exit_code',p['exit_code'],'code_ready',p['code_ready'],'source_commit',p['source_commit'])\nprint([(x['name'],x['status']) for x in p['results'] if x['status']\"'!='\"'PASS'])\nprint('api',json.load(open('evidence/current/full-stack/api-compatibility.json')))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '45,95p' README.md; rtk sed -n '1,120p' docs/RELEASE_STATUS.md; rtk git diff --check; rtk git status --short | tail -100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json,xml.etree.ElementTree as ET\nfor path in ['evidence/current/full-stack/backend-junit.xml','evidence/current/full-stack/native-lab/verification.json','evidence/current/full-stack/verification.json','evidence/current/full-stack/fresh-clone-macos.json']:\n try:\n  if path.endswith('.xml'):\n   x=ET.parse(path).getroot(); print(path, {k:x.attrib.get(k) for k in ['tests','failures','errors','skipped']})\n  else:\n   x=json.load(open(path)); print(path, {k:x.get(k) for k in ['source_commit','result','candidate_result','macos_qualification','lab_checks_pass','code_ready','exit_code']})\n except Exception as e: print(e)\nPY\nrtk rg -n \\\"passed|Test Files|Tests|Playwright|cases\\\" evidence/current/full-stack/backend-tests.log evidence/current/full-stack/frontend-unit.log evidence/current/full-stack/browser-e2e-accessibility.log | tail -40\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/checkpoint.py chg-31-rc9'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk /Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm run typecheck'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add -A -- . ':\"'!evidence'\"' && rtk git status --short && rtk git diff --cached --stat\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git commit -m \"feat: add API compatibility versioning policy\" && rtk git log -1 --oneline --decorate && rtk git status --short | head -120 && rtk git merge-base HEAD 8308b9367ea2131c4b25569958d837e42e733a17'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=8308b9367ea2131c4b25569958d837e42e733a17 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH ./dev verify'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json\np=json.load(open('evidence/current/full-stack/verification.json'))\nprint('verify',p['exit_code'],p['code_ready'],p['source_commit'])\nprint('non-pass',[(x['name'],x['status']) for x in p['results'] if x['status']\"'!='\"'PASS'])\nfc=json.load(open('evidence/current/full-stack/fresh-clone-macos.json'))\nprint('fresh',fc['source_commit'],fc['cloned_source_commit'],fc['result'],fc['macos_qualification'])\napi=json.load(open('evidence/current/full-stack/api-compatibility.json'))\nprint('api',api['source_commit'],api['resolved_base_sha'],api['result'],api['breaking_changes'])\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=8308b9367ea2131c4b25569958d837e42e733a17 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH ./dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json\np=json.load(open('evidence/current/full-stack/verification.json'))\nprint('verify_release',p['exit_code'],p['code_ready'],p['source_commit'])\nprint('non_pass',[(x['name'],x['status']) for x in p['results'] if x['status']\"'!='\"'PASS'])\nfor name in ['upgrade-fixture','object-inclusive-backup-restore','reference-apps','api-compatibility','macos-fresh-install']:\n print(name,next(x['status'] for x in p['results'] if x['name']==name))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk unzip -t checkpoints/react-fastapi-base-chg-31-rc9.zip; rtk shasum -a 256 checkpoints/react-fastapi-base-chg-31-rc9.zip; rtk cat checkpoints/react-fastapi-base-chg-31-rc9.zip.sha256'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/check_api_compatibility.py --base-ref 8308b9367ea2131c4b25569958d837e42e733a17 --output evidence/current/release/CHG-31-api-compatibility.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short | head -160; rtk python3 - <<'PY'\nimport json\nfor path in ['evidence/current/full-stack/verification.json','evidence/current/full-stack/api-compatibility.json','evidence/current/release/CHG-31-api-compatibility.json','evidence/current/release/upgrade-fixture.json','evidence/current/release/reference-apps.json','evidence/current/recovery/object-restore.json']:\n try:\n  x=json.load(open(path));print(path, 'source_commit=',x.get('source_commit'),'result=',x.get('result'),'candidate=',x.get('candidate_result'))\n except Exception as e: print(path,e)\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add -A -- evidence/current/full-stack evidence/current/performance/stress.json evidence/current/recovery/object-restore.json evidence/current/release/reference-apps.json evidence/current/release/CHG-31-api-compatibility.json && rtk git status --short | head -180 && rtk git diff --cached --stat | tail -60'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --cached --check && rtk python3 - <<'PY'\nimport json\npaths=['evidence/current/full-stack/verification.json','evidence/current/full-stack/api-compatibility.json','evidence/current/release/CHG-31-api-compatibility.json','evidence/current/recovery/object-restore.json','evidence/current/release/reference-apps.json']\nfor path in paths:\n data=json.load(open(path));print(path, data.get('source_commit'), data.get('result'), data.get('code_ready'))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git commit -m \"chore: publish RC.9 verification evidence\" && rtk git log --oneline --decorate -3 && rtk git status --short && rtk git merge-base HEAD 8308b9367ea2131c4b25569958d837e42e733a17'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git branch --show-current; rtk git branch -vv; rtk git ls-remote --heads origin codex/react-fastapi-base-api-compatibility-v1; rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push -u origin HEAD:codex/react-fastapi-base-api-compatibility-v1'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short --branch; rtk git rev-parse HEAD; rtk git rev-parse origin/codex/react-fastapi-base-api-compatibility-v1; rtk git merge-base HEAD 8308b9367ea2131c4b25569958d837e42e733a17; rtk git log --oneline --decorate --max-count=4; rtk backend/.venv/bin/python scripts/version_check.py; rtk backend/.venv/bin/python scripts/generate_contracts.py --check; rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py --check; rtk python3 - <<'PY'\nimport json\np=json.load(open('evidence/current/full-stack/verification.json'))\na=json.load(open('evidence/current/release/CHG-31-api-compatibility.json'))\nprint({'release_gate_exit_code':p['exit_code'],'code_ready':p['code_ready'],'source_commit':p['source_commit'],'api_result':a['result'],'api_base':a['resolved_base_sha'],'api_breaking':a['breaking_changes'],'api_revision':a['contract_revision']})\nprint({'blocked':[(x['name'],x['reason']) for x in p['results'] if x['status']=='BLOCKED']})\nprint('version',open('VERSION').read().strip())\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --name-status 8308b9367ea2131c4b25569958d837e42e733a17..HEAD | sed -n '1,220p'; rtk git show --stat --oneline HEAD; rtk git show --stat --oneline HEAD~1\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 286,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.81,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 27333888,
+      "fresh_input_tokens": 330083,
+      "input_tokens": 27663971,
+      "non_reasoning_output_tokens": 34074,
+      "output_tokens": 63665,
+      "reasoning_output_tokens": 29591,
+      "total_processed_tokens": 27727636
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "ef0041fb14b4a01e77becc74cfe54ca359347cc7",
+      "subject": "chore: publish RC.9 verification evidence"
+    },
+    {
+      "sha": "76f5e541710144278b1cfdb41b7a172f27baa2ca",
+      "subject": "feat: add API compatibility versioning policy"
+    }
+  ],
+  "diff": {
+    "additions": 2056,
+    "changed_files": 72,
+    "commit_count": 2,
+    "deletions": 1121
+  },
+  "error_code": null,
+  "evidence_manifest": {
+    "count": 54,
+    "items": [
+      {
+        "bytes": 9190,
+        "path": "CHANGELOG.md",
+        "sha256": "594ff7d702cfb165f86d9ec2aa720f01a017269be36b459f655b7d5ad1fc1b63"
+      },
+      {
+        "bytes": 74804,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "a07ed7aeacdf0b2251d198cd07ce9ee5076d0df1cee98865d77708162b0dce09"
+      },
+      {
+        "bytes": 3335,
+        "path": "README.md",
+        "sha256": "572bd33ef61c7274ce3f8785ade14cd9e88e79089a53755667b8236099ff777e"
+      },
+      {
+        "bytes": 2203,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "dadb5b8c002b396181d95e6e70161c29aa658b5aa28df31bc7ac7c780e8d0540"
+      },
+      {
+        "bytes": 1251429,
+        "path": "contracts/openapi.json",
+        "sha256": "7d4660d2b264d480f1bbd2eda1584e3a0698da99b02a211b7f50f9972b864fdb"
+      },
+      {
+        "bytes": 3223,
+        "path": "docs/API_COMPATIBILITY.md",
+        "sha256": "562e06f764390e936d5cc558bf7c761e76523f919e3640ffb4385e7924adc0d3"
+      },
+      {
+        "bytes": 2951,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "69452a92ca57d0f98b4f32815ca7e3b312ddf9186225ae50b8a380574a030bea"
+      },
+      {
+        "bytes": 7417,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "fc16799c72a96b3dc29be9f5672a5f0b9dc10f685b333bcb863432444d34c896"
+      },
+      {
+        "bytes": 2936,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "ef9d0cc1a94f3038e47f28498a72f3c7b24f52c1ae787e9d47de9cf2b63a98df"
+      },
+      {
+        "bytes": 44685,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "84ffbcf02b19ab8f2f3a358056ce24e83ed75f8b21aa034b51e50455f184b80b"
+      },
+      {
+        "bytes": 5816,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "f50f41e8a3c05e54783b25bc63e35d6a112b6da5ec12dfc3710550a8cc846a79"
+      },
+      {
+        "bytes": 32864,
+        "path": "docs/requirements-status.json",
+        "sha256": "c603b098e53f44dcb765175d6a5779219dbc6e47894bbb8af4120fd1551ab3fa"
+      },
+      {
+        "bytes": 13729,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "37c79c6410cb5fedb26b997d7575a318b88fa0de66a20da5995743ffd55a038b"
+      },
+      {
+        "bytes": 1684,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "8652e7c00e0fe524288d996009f8194f587411bc0e8c0585970b94fff80c7803"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "f30e2e835dc3fcdddd8c8d532a9bc2f4ac3808885f69653697ceba4a30bd85dd"
+      },
+      {
+        "bytes": 4927,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "928e4630233633b3a87908708a7a34a56da30b8eefbb6df32fe7656bda6c79eb"
+      },
+      {
+        "bytes": 8781,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "5da9f511a3d689593cb33009382451505e14f2e6953ce8fadfc02280ca86171a"
+      },
+      {
+        "bytes": 11434,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "936d3bb96152eea0c7e265b509e16efbe8bb815049ab4c1aa3ab15e6278159ea"
+      },
+      {
+        "bytes": 7233,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "40944dfca0ecd77164709cd787bacc2372a371d428264d46e38c9632cfdcf3cf"
+      },
+      {
+        "bytes": 31491,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "e8166a6d0bfa0467c9e9b3962e3657aa3e3a2b6ca594d86bb938892e56c0e826"
+      },
+      {
+        "bytes": 701,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "7a529654322e5edb38b4178f0b88624e0e59f512aed95612a30235d6cd20ff8d"
+      },
+      {
+        "bytes": 48667,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "db765ff05e84e1fd2e610082bd78362d1ce7eb05af5a71df1fcf77b89dbd19b6"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "cdde6a6f7196da77db633644e17ffbbab10e17ac61a7b108c8bd367fe533978d"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "fd624aafed3181ed434dcc0654d5a7766ada09ccfd4620b43cbe77d3966fb886"
+      },
+      {
+        "bytes": 50179,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "bf73b44df01533cdb6699cae288b1715fa7b5a2f182ac30b4cd6960780aa97cd"
+      },
+      {
+        "bytes": 2663,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "cbce3cffb7c2fd4a146492171946e3dc6f3f0996c0843dd1d02361b5c4ebc08e"
+      },
+      {
+        "bytes": 3828,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "3efe1b06a63d557aea905b27460824a959f429e7cd912cd93f9450be52243c0c"
+      },
+      {
+        "bytes": 68,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "dc2a8f21817eb434e7c66fac7b2c2ad9ef1bee16a20c22d7d487bd1530e15a9d"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "7e62857da14af85e8356bc8f378d961a322fde50c326bb2a82f06f7881252d52"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "9fd1bfa1c7e6a230cf4152562fa2dc30a516fcb31db1d35d53e262843370bf6a"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "13747de2735c250ef08287d961ba280294a72f836a9c96c7af994afb3b77a2fb"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "c2cbf5d7e11da4fc12eb5056fc58019ea34128bbb45e6eff98c95dfc18b4a1f3"
+      },
+      {
+        "bytes": 7033,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "29f7965c97be3054923da4ac4217b14b05ef5f50ce557693d677065ee34ac430"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "67e894996d0856f71090a2e0b4d05fd364ea6cfa7b52bf5a0d6c6a6fc28b6828"
+      },
+      {
+        "bytes": 11427,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "cdd217e68b64b837a6c509d673b9fdc9a4ea5d2e8ce9a124e9a9ebe35655e4b3"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "55813da91641cd06b49a1ea8a21241bf4d930d18a6d243d13db88b33884a7909"
+      },
+      {
+        "bytes": 487,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "53e94352125fbb12b09ff0c5895ac0e62ce6f37dd7aacd27541050b0abd5bb78"
+      },
+      {
+        "bytes": 1724,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "bb746a174e1f21bb2ba0b0c575ed4d2b50e67fab782b768391a1143cc30b9bc4"
+      },
+      {
+        "bytes": 27815,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "029eda5d26172e75f62d8dd5ff59e385464a9c624cbe9138fe1d93a75b5661dd"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "0c958fcb59206810a8e90f61211f56d70192aa61cb471e7fe49d1c0f48a04eb2"
+      },
+      {
+        "bytes": 90797,
+        "path": "evidence/current/full-stack/source-hashes.json",
+        "sha256": "4788f352bdad94a5ee239dfefa86e0d41a34884a9001ebd0c9ebe3c98e14655d"
+      },
+      {
+        "bytes": 1894,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "34c1207fb7a5e0622ce41fea29912f3c7ebcbf7b71fa007d810eef531b5f33f6"
+      },
+      {
+        "bytes": 100,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "6b35c37bac7b241781e82a8efc462f46da40a99af4525ca8fcb26ee39bb9be96"
+      },
+      {
+        "bytes": 6167,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "1aa5f3faba63805167a39f484b7da830930ba93b1fd07cd01790894cf0250295"
+      },
+      {
+        "bytes": 7594,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "919f4a43e41079944d425e4847cac6a56288458dcfc82f88e95304ee22f0b573"
+      },
+      {
+        "bytes": 7594,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "919f4a43e41079944d425e4847cac6a56288458dcfc82f88e95304ee22f0b573"
+      },
+      {
+        "bytes": 11140,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "f5052b1a284fcc51a3ec8199b755cdacf1cc2bd9c1b792b7b693a5e63eaad244"
+      },
+      {
+        "bytes": 48,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "f48c07ae0a4dd40519aefbdccf61731838f1fe6fc61aff414acab2891494d96e"
+      },
+      {
+        "bytes": 1724,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "bb746a174e1f21bb2ba0b0c575ed4d2b50e67fab782b768391a1143cc30b9bc4"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "55813da91641cd06b49a1ea8a21241bf4d930d18a6d243d13db88b33884a7909"
+      },
+      {
+        "bytes": 1684,
+        "path": "evidence/current/release/CHG-31-api-compatibility.json",
+        "sha256": "9e74a38258b13283e2c008207748f6de863d9e14cbcfbac59b92f3c217509f9c"
+      },
+      {
+        "bytes": 27815,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "029eda5d26172e75f62d8dd5ff59e385464a9c624cbe9138fe1d93a75b5661dd"
+      },
+      {
+        "bytes": 186037,
+        "path": "frontend/package-lock.json",
+        "sha256": "1dbec65ec8e3fe57756938be9692e4350f8ce23123a6b3d89c95d0f728c4adf9"
+      },
+      {
+        "bytes": 1657,
+        "path": "frontend/package.json",
+        "sha256": "19574439f41ea5f630f536bf07ef1e58329062fbeb208b1da74378bcf10b99bf"
+      }
+    ],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.2",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.2",
+  "failure_class": null,
+  "finished_at": "2026-09-16T03:32:14Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "8308b9367ea2131c4b25569958d837e42e733a17",
+    "branch": "codex/react-fastapi-base-api-compatibility-v1",
+    "head_sha": "ef0041fb14b4a01e77becc74cfe54ca359347cc7",
+    "remote_exact_head": true,
+    "remote_head_sha": "ef0041fb14b4a01e77becc74cfe54ca359347cc7",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "8308b9367ea2131c4b25569958d837e42e733a17",
+    "work_branch": "codex/react-fastapi-base-api-compatibility-v1",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-bd4cb7850bc5d5b9c71fdaa3",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/api-compatibility-v1",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/api-compatibility-v1"
+  },
+  "operation": "BUILD",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.2",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "ac9bd8dedb364d22fc9c0fc6a50334cbf5b7f53a5a0602aa17553d680a87690e"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "api-compatibility-v1",
+  "schema_version": 1,
+  "started_at": "2026-09-16T02:39:56Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 3138,
+    "queue_seconds": 0,
+    "total_seconds": 3138
+  },
+  "transport": {
+    "bytes": 7372,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 7047,
+    "prompt_sha256": "875b8bcb7954fb9a85f9cb6cbf14241614e3dc3bf147dba01be505e555718c96",
+    "sha256": "bd4cb7850bc5d5b9c71fdaa3024be19c468892980c5359350aa5d6009f784481"
+  }
+}
