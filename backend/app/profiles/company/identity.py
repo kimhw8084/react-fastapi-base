@@ -15,6 +15,11 @@ class CompanyIdentity:
 
     def current_user(self, request: Request | None = None) -> str:
         del request
+        variants = [name for name in os.environ if name.casefold() == 'accesskey' and name != 'AccessKey']
+        if variants:
+            # POSIX permits case-distinct names; never silently choose one
+            # spelling for a platform-owned identity secret.
+            raise RuntimeError('Company identity configuration is ambiguous.')
         return normalize_username(os.environ.get('AccessKey'))
 
 

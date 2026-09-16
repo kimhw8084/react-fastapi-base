@@ -4,7 +4,7 @@ import { ApiError, validateApiCompatibility } from './client'
 
 const bootstrap = (overrides: Partial<Bootstrap> = {}): Bootstrap => ({
   user_id: 'alice', profile: 'development', csrf_token: 'token', tenants: [],
-  application: {} as Bootstrap['application'], build_version: '1.0.0-rc.9',
+  application: {} as Bootstrap['application'], build_version: '1.0.0-rc.10',
   api_major: API_MAJOR, api_revision: API_CONTRACT_REVISION, ...overrides,
 })
 

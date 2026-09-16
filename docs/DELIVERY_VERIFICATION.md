@@ -1,8 +1,13 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.9
+# Delivery verification — react-fastapi-base 1.0.0-rc.10
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
 ## Actual executed tests
+
+CHG-32 configuration-contract evidence is recorded in
+`evidence/current/release/CHG-32-configuration-contract.json`. The exact
+base for API compatibility is the integrated main commit supplied for this
+branch: `f52fb02df980b06ce4b1a0ff741d626304381a23`.
 
 | Check | Result |
 |---|---:|
@@ -11,8 +16,8 @@
 | React browser workflows | PASS; 17 Playwright cases including CHG-6 UIQA coverage |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
-| Contracts/architecture/security/performance | PASS |
-| API compatibility | PASS; Git-resolved base `8308b9367ea2131c4b25569958d837e42e733a17` |
+| Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
+| API compatibility | PASS; Git-resolved base `f52fb02df980b06ce4b1a0ff741d626304381a23`; API major/revision unchanged |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 
@@ -24,7 +29,9 @@ The React browser suite uses disposable local services and dynamically allocated
 
 The current source and compiled Lab are delivered together, with a ZIP manifest and checksum. No SysGrid source modification, remote commit, company deployment or production database operation occurred.
 
-RC.9 CHG-31 API compatibility evidence is bound to the resulting source commit in `evidence/current/release/CHG-31-api-compatibility.json`. RC.8 CHG-27 profile-contract evidence remains historical for its exact source, as do RC.7 UIQA and RC.6 evidence.
+RC.10 contains CHG-32 configuration/secrets evidence. RC.9 CHG-31 API
+compatibility evidence and RC.8 CHG-27 profile-contract evidence remain
+historical for their exact sources, as do RC.7 UIQA and RC.6 evidence.
 
 ## Start the delivered Lab
 

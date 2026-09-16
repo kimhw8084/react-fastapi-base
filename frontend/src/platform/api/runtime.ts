@@ -1,15 +1,18 @@
 export type ThemeName = 'operations' | 'clarity' | 'minimal'
 export interface RuntimeConfig { schemaVersion: 1; apiBase: string; defaultTheme: ThemeName; titleOverride: string }
 const THEMES: readonly string[] = ['operations', 'clarity', 'minimal']
+export const RUNTIME_CONFIG_KEYS = ['schemaVersion', 'apiBase', 'defaultTheme', 'titleOverride'] as const
 
 export function parseRuntime(value: unknown): RuntimeConfig {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('Runtime configuration must be an object.')
   const v = value as Record<string, unknown>
-  if (Object.keys(v).some(k => !['schemaVersion','apiBase','defaultTheme','titleOverride'].includes(k))) throw new Error('Unknown runtime configuration property.')
+  if (Object.keys(v).some(k => !(RUNTIME_CONFIG_KEYS as readonly string[]).includes(k))) throw new Error('Unknown runtime configuration property.')
   if (v.schemaVersion !== 1 || typeof v.apiBase !== 'string' || typeof v.titleOverride !== 'string' || !THEMES.includes(String(v.defaultTheme))) throw new Error('Runtime configuration is invalid.')
   if (v.titleOverride.length > 80) throw new Error('Application title is too long.')
   if (v.apiBase) {
-    const url = new URL(v.apiBase)
+    if (/[;'"\s]/.test(v.apiBase)) throw new Error('API base must be an HTTP(S) origin without a trailing slash.')
+    let url: URL
+    try { url = new URL(v.apiBase) } catch { throw new Error('API base must be an HTTP(S) origin without a trailing slash.') }
     if (!['https:','http:'].includes(url.protocol) || url.username || url.password || url.pathname !== '/' || url.search || url.hash || v.apiBase.endsWith('/')) throw new Error('API base must be an HTTP(S) origin without a trailing slash.')
     if (window.location.protocol === 'https:' && url.protocol !== 'https:') throw new Error('An HTTPS frontend requires an HTTPS API.')
   }

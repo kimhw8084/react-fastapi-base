@@ -2,7 +2,6 @@ from __future__ import annotations
 import hashlib
 import hmac
 import json
-import os
 from urllib.parse import urlsplit
 from uuid import uuid4
 from sqlalchemy import select
@@ -23,10 +22,11 @@ def validate_url(url:str,settings:Settings)->str:
     if parsed.port not in (None,443):raise AppError(422,'unsafe_webhook_url','Webhook URL may only use the default HTTPS port.')
     return url
 
-def secret_for(ref:str)->str:
-    value=os.environ.get('BASE_WEBHOOK_SECRET_'+ref,'')
-    if len(value)<32:raise AppError(503,'webhook_secret_unavailable','Webhook signing secret is unavailable or too short.')
-    return value
+def secret_for(ref:str, settings: Settings | None = None)->str:
+    try:
+        return (settings or Settings()).webhook_secret(ref)
+    except ValueError:
+        raise AppError(503,'webhook_secret_unavailable','Webhook signing secret is unavailable or too short.') from None
 
 def sign(secret:str,timestamp:int,body:bytes)->str:
     return hmac.new(secret.encode(),str(timestamp).encode()+b'.'+body,hashlib.sha256).hexdigest()
@@ -52,11 +52,11 @@ def upsert(session:Session,actor:Actor,settings:Settings,endpoint_id:str|None,da
         row.name=data.name;row.url=data.url;row.topics=data.topics;row.secret_ref=data.secret_ref;row.enabled=data.enabled;row.revision+=1;row.updated_at=utcnow()
     session.flush();return WebhookEndpointRead.model_validate(row)
 
-def delivery_request(row:WebhookEndpoint,topic:str,payload:dict,timestamp:int)->tuple[bytes,dict[str,str]]:
+def delivery_request(row:WebhookEndpoint,topic:str,payload:dict,timestamp:int,*,settings: Settings | None = None)->tuple[bytes,dict[str,str]]:
     if topic not in row.topics:raise AppError(422,'webhook_topic_not_subscribed','Webhook endpoint is not subscribed to this topic.')
     body=json.dumps({'topic':topic,'event':payload},sort_keys=True,separators=(',',':')).encode()
     if len(body)>256_000:raise AppError(413,'webhook_payload_too_large','Webhook payload is too large.')
-    secret=secret_for(row.secret_ref);signature=sign(secret,timestamp,body)
+    secret=secret_for(row.secret_ref, settings);signature=sign(secret,timestamp,body)
     return body,{'Content-Type':'application/json','X-Golden-Timestamp':str(timestamp),'X-Golden-Signature':'sha256='+signature}
 
 def deliver(session:Session,settings:Settings,endpoint_id:str,event_id:str,*,client=None)->dict:
@@ -72,7 +72,7 @@ def deliver(session:Session,settings:Settings,endpoint_id:str,event_id:str,*,cli
     try:
         validate_url(endpoint.url,settings)
         import time
-        timestamp=int(time.time());body,headers=delivery_request(endpoint,event.topic,{'event_id':event.event_id,'sequence':event.sequence,'entity_type':event.entity_type,'entity_id':event.entity_id,'payload':event.payload,'created_at':event.created_at.isoformat()},timestamp)
+        timestamp=int(time.time());body,headers=delivery_request(endpoint,event.topic,{'event_id':event.event_id,'sequence':event.sequence,'entity_type':event.entity_type,'entity_id':event.entity_id,'payload':event.payload,'created_at':event.created_at.isoformat()},timestamp,settings=settings)
         if client is None:
             import httpx
             with httpx.Client(timeout=10,follow_redirects=False,trust_env=False) as owned:

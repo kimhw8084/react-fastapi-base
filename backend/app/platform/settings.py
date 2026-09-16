@@ -1,11 +1,17 @@
 from __future__ import annotations
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, ValidationError, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from app.platform.configuration_contract import (
+    ConfigurationContractError,
+    collect_webhook_secrets,
+    validate_environment_namespace,
+)
 
 _QUALIFICATION_PLACEHOLDERS = {
     'unqualified', 'placeholder', 'changeme', 'todo', 'tbd', 'n/a', 'none',
@@ -100,7 +106,7 @@ class CompanyQualification(BaseModel):
         return _validate_timezone_timestamp(value)
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix='BASE_', extra='ignore')
+    model_config = SettingsConfigDict(env_prefix='BASE_', extra='forbid')
     environment: Literal['development', 'test', 'qualification', 'production'] = 'production'
     profile: Literal['development', 'company'] = 'company'
     data_root: Path = Path('.local/data')
@@ -112,13 +118,32 @@ class Settings(BaseSettings):
     qualification_file: Path | None = None
     qualification_prerequisites_file: Path | None = None
     deployment_id: str = 'local'
-    csrf_secret: str = ''
+    csrf_secret: SecretStr = Field(default=SecretStr(''), repr=False)
     max_request_bytes: int = Field(default=2_000_000, ge=1024, le=20_000_000)
     busy_timeout_ms: int = Field(default=5000, ge=100, le=30000)
     request_limit_per_minute: int = Field(default=180, ge=10, le=10000)
     enable_docs: bool = False
     webhook_allowed_hosts: list[str] = Field(default_factory=list)
     attachment_upload_mode: Literal['disabled', 'trusted_types', 'scanner_required'] = 'scanner_required'
+    webhook_secrets: dict[str, SecretStr] = Field(default_factory=dict, repr=False, exclude=True)
+
+    def __init__(self, **values):
+        try:
+            validate_environment_namespace(os.environ)
+            explicit_webhook_secrets = values.get('webhook_secrets')
+            if explicit_webhook_secrets is None:
+                environment_secrets = collect_webhook_secrets(os.environ)
+                if environment_secrets:
+                    values['webhook_secrets'] = environment_secrets
+            super().__init__(**values)
+        except ConfigurationContractError:
+            raise
+        except ValidationError as error:
+            # Pydantic's detailed errors can echo an invalid secret input.
+            # Preserve the typed loader while returning only field names/types.
+            locations = sorted({'.'.join(str(part) for part in item.get('loc', ())) for item in error.errors()})
+            fields = ', '.join(location or 'configuration' for location in locations)
+            raise ConfigurationContractError(f'Invalid configuration for {fields}.') from error
 
     @field_validator('allowed_origins')
     @classmethod
@@ -145,6 +170,57 @@ class Settings(BaseSettings):
         if len(set(clean))!=len(clean): raise ValueError('Webhook allowlist entries must be unique.')
         return clean
 
+    def configuration_errors(self) -> list[str]:
+        """Pure profile/environment/key/format/requiredness validation.
+
+        This method never reads qualification files or probes storage/scanners.
+        Those runtime-dependent checks remain owned by the selected deployment
+        adapter and are intentionally reported separately.
+        """
+        errors: list[str] = []
+        production_like = self.environment in ('qualification', 'production')
+        if production_like and self.profile != 'company':
+            errors.append('Qualification/production requires the company profile.')
+        if production_like and not self.data_root.is_absolute():
+            errors.append('Qualification/production data root must be absolute.')
+        if production_like and (not self.deployment_id.strip() or self.deployment_id.strip().casefold() == 'local'):
+            errors.append('Qualification/production requires an explicit deployment binding.')
+        if production_like and (not self.allowed_origins or any(not origin.startswith('https://') for origin in self.allowed_origins)):
+            errors.append('Qualification/production requires explicit HTTPS origins.')
+        if production_like and (not self.allowed_hosts or any(host in ('*', 'localhost', '127.0.0.1', 'testserver') for host in self.allowed_hosts)):
+            errors.append('Qualification/production requires explicit deployment hosts.')
+        if production_like and len(self.csrf_secret.get_secret_value()) < 32:
+            errors.append('Qualification/production requires BASE_CSRF_SECRET with at least 32 characters.')
+        if production_like and not self.app_config.is_absolute():
+            errors.append('Qualification/production app configuration path must be absolute.')
+        if production_like and not self.policy_config.is_absolute():
+            errors.append('Qualification/production policy configuration path must be absolute.')
+        if self.environment == 'qualification' and self.qualification_prerequisites_file is None:
+            errors.append('Qualification requires an explicit prerequisites file reference.')
+        if self.environment == 'production' and self.qualification_file is None:
+            errors.append('Production requires an explicit final qualification file reference.')
+        return errors
+
+    def assert_configuration(self) -> None:
+        errors = self.configuration_errors()
+        if errors:
+            raise ConfigurationContractError('Configuration refused: ' + ' '.join(errors))
+
+    def webhook_secret(self, reference: str) -> str:
+        if not reference or not reference.isascii() or not reference[0].isalpha() or reference != reference.upper() or any(char not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_' for char in reference):
+            raise ConfigurationContractError('Webhook secret reference is invalid.')
+        secret = self.webhook_secrets.get(reference)
+        # Operator/test processes may inject a handle after a long-lived
+        # Settings instance was created.  Keep the lookup typed and redacted
+        # at this boundary; webhook code never reads the environment directly.
+        if secret is None:
+            current = collect_webhook_secrets(os.environ).get(reference)
+            if current is not None:
+                secret = SecretStr(current)
+        if secret is None or len(secret.get_secret_value()) < 32:
+            raise ConfigurationContractError('Webhook signing secret is unavailable or too short.')
+        return secret.get_secret_value()
+
     def _common_company_errors(self, label: str) -> list[str]:
         errors: list[str] = []
         if self.profile != 'company':
@@ -155,7 +231,7 @@ class Settings(BaseSettings):
             errors.append(f'{label} requires explicit HTTPS frontend origins.')
         if not self.allowed_hosts or any(x in ('*', 'localhost', '127.0.0.1', 'testserver') for x in self.allowed_hosts):
             errors.append(f'{label} requires explicit deployment hostnames.')
-        if len(self.csrf_secret) < 32:
+        if len(self.csrf_secret.get_secret_value()) < 32:
             errors.append(f'{label} requires a randomly generated CSRF secret of at least 32 characters.')
         return errors
 

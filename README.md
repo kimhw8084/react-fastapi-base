@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.9` — API compatibility/versioning candidate; V1 local code complete; qualification path ready; company qualification pending.
+`1.0.0-rc.10` — configuration/secrets contract candidate; V1 local code complete; qualification path ready; company qualification pending.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
@@ -60,4 +60,4 @@ Do not use the local profile with company data. Do not treat UI flags as authori
 
 ## Documentation
 
-[Release status](docs/RELEASE_STATUS.md) · [API compatibility/versioning](docs/API_COMPATIBILITY.md) · [Completion matrix](docs/v1-completion-status.json) · [Component coverage](docs/COMPONENT_COVERAGE.md) · [Master design](docs/MASTER_DESIGN.md) · [Testing](docs/TESTING.md) · [Company qualification](docs/COMPANY_QUALIFICATION.md) · [Recovery](docs/RECOVERY.md) · [Upgrade process](docs/UPGRADING.md)
+[Release status](docs/RELEASE_STATUS.md) · [Configuration/secrets contract](docs/CONFIGURATION_CONTRACT.md) · [API compatibility/versioning](docs/API_COMPATIBILITY.md) · [Completion matrix](docs/v1-completion-status.json) · [Component coverage](docs/COMPONENT_COVERAGE.md) · [Master design](docs/MASTER_DESIGN.md) · [Testing](docs/TESTING.md) · [Company qualification](docs/COMPANY_QUALIFICATION.md) · [Recovery](docs/RECOVERY.md) · [Upgrade process](docs/UPGRADING.md)
