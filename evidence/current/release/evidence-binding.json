@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "verified_source_commit": "2ce416739b392723fb8df049b4e9470bb86b77f7",
-  "evidence_commit": "98a6a0f12d0dc23587ece9f5cb2aade658ce55f1",
+  "verified_source_commit": "352d609a793790defe3788eaaa109c9841cd6e27",
+  "evidence_commit": "618248c5a71e452478ff208394fcadf19ef0442a",
   "verification": "evidence/current/full-stack/verification.json",
   "recovery_fixture": "evidence/current/recovery/object-restore.json",
-  "command": "python3 dev verify-release",
+  "command": "rtk env API_COMPATIBILITY_BASE_SHA=f52fb02df980b06ce4b1a0ff741d626304381a23 ./dev verify-release",
+  "api_compatibility_base_sha": "f52fb02df980b06ce4b1a0ff741d626304381a23",
   "result": "PASS local code gates; company qualification remains NOT_CERTIFIED",
   "note": "The evidence commit contains reports generated from the verified source commit; this binding file is added afterward to make that relationship explicit."
 }
