@@ -8,7 +8,7 @@ from app.platform.schemas import Bootstrap, TenantInfo, ViewCreate, ViewUpdate, 
 from app.platform.errors import AppError
 from app.platform.idempotency import execute_once
 from app.platform.transactions import write_transaction
-from app.platform.version import VERSION
+from app.platform.version import API_CONTRACT_REVISION, API_MAJOR, VERSION
 from app.platform import views, relationships, search
 from app.platform.attachments import AttachmentUpload, attach, read_content
 
@@ -23,7 +23,8 @@ def bootstrap(request: Request):
         return Bootstrap(user_id=user,profile=request.app.state.settings.profile,
             csrf_token=csrf_token(request.app.state.csrf_secret,user),
             tenants=[TenantInfo(id=tenant.id,name=tenant.name,role=membership.role,permissions=sorted(request.app.state.policy.permissions(membership.role))) for tenant,membership in rows],
-            application=request.app.state.application.model_dump(),build_version=VERSION)
+            application=request.app.state.application.model_dump(),build_version=VERSION,
+            api_major=API_MAJOR,api_revision=API_CONTRACT_REVISION)
 
 @router.get('/workspaces',response_model=list[WorkspaceDefinition],operation_id='listWorkspaces')
 def workspaces(request: Request,actor: A):

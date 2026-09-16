@@ -14,7 +14,7 @@ import { ActionSurfaceProvider, useActionPaletteCommands } from '../platform/com
 
 export function Application({runtime}:{runtime:RuntimeConfig}){
  const api=useMemo(()=>new ApiClient(runtime),[runtime])
- const boot=useQuery({queryKey:['bootstrap'],queryFn:()=>api.request<Bootstrap>('/api/v1/bootstrap'),retry:1,refetchInterval:900000,refetchOnWindowFocus:true})
+ const boot=useQuery({queryKey:['bootstrap'],queryFn:()=>api.bootstrap(),retry:1,refetchInterval:900000,refetchOnWindowFocus:true})
  if(boot.isPending)return <main className="startup"><h1>Opening your workspace</h1><p role="status">Checking identity, configuration and tenant access…</p></main>
  if(boot.isError)return <main className="startup"><h1>Workspace unavailable</h1><ErrorNotice error={boot.error} retry={()=>{void boot.refetch()}}/><p>Confirm that the FastAPI service is reachable from this browser and company sign-in is complete.</p></main>
  if(!boot.data.tenants.length)return <main className="startup"><EmptyState title="Access has not been assigned" description="The company identity was resolved, but an operator must explicitly grant tenant membership."/></main>

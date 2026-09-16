@@ -29,3 +29,13 @@ def test_ci_creates_and_uses_repository_backend_environment():
     assert 'python -m venv backend/.venv' in workflow
     assert 'backend/.venv/bin/python scripts/verify.py' in workflow
     assert 'backend/.venv/bin/python -m playwright install --with-deps chromium' in workflow
+
+
+def test_ci_resolves_the_real_pull_request_base_for_api_compatibility():
+    workflow = (ROOT / '.github/workflows/verify.yml').read_text()
+
+    assert 'fetch-depth: 0' in workflow
+    assert 'API_COMPATIBILITY_BASE_SHA' in workflow
+    assert 'github.event.pull_request.base.sha' in workflow
+    assert 'github.event.before' in workflow
+    assert 'api-compatibility' in workflow or 'scripts/verify.py' in workflow

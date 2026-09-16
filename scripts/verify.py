@@ -20,13 +20,14 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     def blocked(name,reason,required_for='code'):
         results.append({'name':name,'status':'BLOCKED','reason':reason,'required_for':required_for})
         print(f'BLOCKED {name}: {reason}',flush=True)
-    def run(name,command,cwd=ROOT,timeout=300):
+    def run(name,command,cwd=ROOT,timeout=300,blocked_exit_codes=()):
         print(f'RUN     {name}',flush=True)
         started=time.monotonic()
         try:
             result=subprocess.run(command,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=timeout)
             (output/(name+'.log')).write_text(result.stdout)
-            row={'name':name,'status':'PASS' if result.returncode==0 else 'FAIL','exit_code':result.returncode,'log':name+'.log','command':command,'duration_seconds':round(time.monotonic()-started,3)}
+            status='PASS' if result.returncode==0 else ('BLOCKED' if result.returncode in blocked_exit_codes else 'FAIL')
+            row={'name':name,'status':status,'exit_code':result.returncode,'log':name+'.log','command':command,'duration_seconds':round(time.monotonic()-started,3)}
         except (OSError,subprocess.TimeoutExpired) as error:
             row={'name':name,'status':'BLOCKED','reason':str(error),'duration_seconds':round(time.monotonic()-started,3),'command':command}
         results.append(row);print(f"{row['status']:7} {name}",flush=True);return row['status']=='PASS'
@@ -39,6 +40,8 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('performance-owned-algorithms',[sys.executable,'scripts/performance_check.py'])
     run('performance-stress',[sys.executable,'scripts/performance_stress.py'])
     run('generated-contracts',[sys.executable,'scripts/generate_contracts.py','--check'])
+    api_base=os.environ.get('API_COMPATIBILITY_BASE_SHA') or 'origin/main'
+    run('api-compatibility',[sys.executable,'scripts/check_api_compatibility.py','--base-ref',api_base,'--output',str((output/'api-compatibility.json').resolve())],blocked_exit_codes=(2,))
     run('typescript-syntax-and-pure-client',['node','scripts/source_smoke.mjs'])
     run('static-server',['node','--test','frontend/tests/server.test.mjs'])
     run('localhost-http',[sys.executable,'scripts/http_smoke.py'])

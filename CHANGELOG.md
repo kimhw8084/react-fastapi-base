@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.9 — API compatibility and versioning policy
+
+- Added repository-owned API major 1 and monotonic v1 contract revision metadata, safe bootstrap negotiation, and generated frontend compatibility constants.
+- Added staged frontend/backend handshake failures for missing metadata, major mismatch and an older backend revision without changing identity, storage or deployment behavior.
+- Added a deterministic Git-base OpenAPI compatibility gate with machine-readable evidence, conservative additive/breaking classifications and real PR-base CI wiring.
+- Company qualification and production readiness remain external; this candidate does not promote to 1.0.0.
+
 ## 1.0.0-rc.8 — canonical CompanyProfile and adapter architecture
 
 - Added a trusted server-side CompanyProfile/ProfileRuntime composition contract with typed identity, storage and deployment ports.

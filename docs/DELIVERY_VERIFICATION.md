@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.8
+# Delivery verification — react-fastapi-base 1.0.0-rc.9
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -6,12 +6,13 @@
 
 | Check | Result |
 |---|---:|
-| FastAPI/backend | PASS; 237 tests across four deterministic shards in `evidence/current/full-stack/backend-junit.xml` |
+| FastAPI/backend | PASS; current deterministic backend suite in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
 | React browser workflows | PASS; 17 Playwright cases including CHG-6 UIQA coverage |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/architecture/security/performance | PASS |
+| API compatibility | PASS; Git-resolved base `8308b9367ea2131c4b25569958d837e42e733a17` |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 
@@ -23,7 +24,7 @@ The React browser suite uses disposable local services and dynamically allocated
 
 The current source and compiled Lab are delivered together, with a ZIP manifest and checksum. No SysGrid source modification, remote commit, company deployment or production database operation occurred.
 
-RC.8 CHG-27 profile-contract evidence is bound to the resulting source commit in `evidence/current/release/CHG-27-profile-contract.json`. RC.7 UIQA evidence remains historical and is not reused as qualification for this changed executable source. RC.6 evidence remains historical as well.
+RC.9 CHG-31 API compatibility evidence is bound to the resulting source commit in `evidence/current/release/CHG-31-api-compatibility.json`. RC.8 CHG-27 profile-contract evidence remains historical for its exact source, as do RC.7 UIQA and RC.6 evidence.
 
 ## Start the delivered Lab
 
