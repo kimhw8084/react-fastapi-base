@@ -1,4 +1,4 @@
-# Release status — react-fastapi-base 1.0.0-rc.8
+# Release status — react-fastapi-base 1.0.0-rc.9
 
 ## Decision
 
@@ -6,8 +6,8 @@
 
 ## Current local proof
 
-- Backend: 237 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
-- Frontend: locked `npm ci`, TypeScript, 16 Vitest files / 40 tests, production build, Storybook build and 13 Playwright workflows passed.
+- Backend: 261 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
+- Frontend: locked `npm ci`, TypeScript, 17 Vitest files / 44 tests, production build, Storybook build and 17 Playwright workflows passed.
 - Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
@@ -20,6 +20,7 @@
 - RC.6 separates authorized company qualification staging from final production qualification. A strict prerequisite record enables provision, migration and object recovery drills without weakening the final `CompanyQualification` requirement; qualification readiness remains explicitly `production_ready: false`.
 - RC.7 is the bounded UI remediation candidate: shared semantic tokens, the v36 AG Grid theme API, native checkbox control geometry and Experience Lab label renderers were corrected against rendered evidence. RC.6 remains immutable historical certification for its exact source and does not qualify this changed executable source.
 - RC.8 adds the canonical server-side CompanyProfile/ProfileRuntime composition seam, typed identity/storage/deployment ports, profile-owned local adapter construction, request-aware identity resolution and dependency/public-runtime regression coverage. CHG-6 RC.7 evidence remains immutable historical evidence for its exact source.
+- RC.9 adds the API major 1/revision 1 policy, safe bootstrap negotiation, generated frontend metadata, and a Git-native deterministic OpenAPI compatibility gate for the actual review base. It remains independently deployable and does not alter company identity, storage, deployment semantics or production readiness.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

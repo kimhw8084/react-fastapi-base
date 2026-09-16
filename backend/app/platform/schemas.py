@@ -30,14 +30,22 @@ class TenantInfo(StrictSchema):
     permissions: list[str]
 
 from app.platform.configuration import ApplicationConfig
+from app.platform.version import API_CONTRACT_REVISION, API_MAJOR
 
 class Bootstrap(StrictSchema):
+    # Compatibility metadata is always emitted by this backend, but remains
+    # optional in the wire schema so older v1 clients can ignore its addition.
+    model_config = ConfigDict(extra='forbid', from_attributes=True, json_schema_serialization_defaults_required=False)
     user_id: str
     profile: str
     csrf_token: str
     tenants: list[TenantInfo]
     application: ApplicationConfig
     build_version: str
+    # Defaults keep the field additive for existing v1 clients; the frontend
+    # still requires and validates these values before feature queries begin.
+    api_major: int = API_MAJOR
+    api_revision: int = API_CONTRACT_REVISION
 
 class FieldDefinition(StrictSchema):
     key: str

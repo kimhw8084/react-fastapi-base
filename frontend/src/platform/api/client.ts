@@ -1,16 +1,32 @@
 import type { RuntimeConfig } from './runtime'
-import { operationRoutes, type OperationInputs, type OperationOutputs } from '../../generated/schema'
+import { API_CONTRACT_REVISION, API_MAJOR, operationRoutes, type Bootstrap, type OperationInputs, type OperationOutputs } from '../../generated/schema'
 
 export class ApiError extends Error {
   constructor(public readonly status: number, public readonly code: string, message: string, public readonly requestId: string, public readonly details: unknown = null) { super(message) }
 }
 export const errorMessage = (error: unknown): string => error instanceof Error ? error.message : 'Unexpected error.'
 
+export function validateApiCompatibility(bootstrap: Bootstrap): Bootstrap {
+  if (typeof bootstrap.api_major !== 'number' || !Number.isInteger(bootstrap.api_major) || typeof bootstrap.api_revision !== 'number' || !Number.isInteger(bootstrap.api_revision)) {
+    throw new ApiError(0, 'api_contract_metadata_missing', 'The API bootstrap response is missing compatibility metadata. Reload after the frontend and backend are aligned.', '')
+  }
+  const backendMajor = bootstrap.api_major
+  const backendRevision = bootstrap.api_revision
+  if (backendMajor !== API_MAJOR) {
+    throw new ApiError(0, 'api_major_mismatch', `The backend API major (${backendMajor}) is incompatible with this frontend (API major ${API_MAJOR}).`, '')
+  }
+  if (backendRevision < API_CONTRACT_REVISION) {
+    throw new ApiError(0, 'api_revision_too_old', `The backend API contract revision (${backendRevision}) is older than this frontend requires (revision ${API_CONTRACT_REVISION}).`, '')
+  }
+  return bootstrap
+}
+
 export class ApiClient {
   private tenantId = ''
   private csrfToken = ''
   constructor(private readonly runtime: RuntimeConfig) {}
   setScope(tenantId: string, csrfToken: string): void { this.tenantId = tenantId; this.csrfToken = csrfToken }
+  bootstrap(): Promise<Bootstrap> { return this.call('bootstrap', {}).then(validateApiCompatibility) }
 
   private async response(path: string, init: RequestInit = {}): Promise<Response> {
     if (!path.startsWith('/api/v1/') || path.includes('://')) throw new Error('API paths must be scoped to /api/v1/.')

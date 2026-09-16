@@ -1,8 +1,8 @@
-> **Implementation addendum (1.0.0-rc.8):** this candidate adds the canonical server-side CompanyProfile/ProfileRuntime composition contract and typed identity, storage and deployment ports. The qualification environment and prerequisite contract remain explicit; final company qualification remains external. This design is not itself production evidence.
+> **Implementation addendum (1.0.0-rc.9):** this candidate adds the API major/revision compatibility policy and staged frontend/backend bootstrap negotiation. The qualification environment and prerequisite contract remain explicit; final company qualification remains external. This design is not itself production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
-**Version: 1.0.0-rc.8 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.9 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 This document is a design baseline with an executable initial implementation, not a claim that the previously requested entire platform is finished. The 68-domain ledger is authoritative about missing scope. Changes to SysGrid itself, complete visual parity, advanced workspace archetypes, actual corporate publication, dependency-resolved React verification and a production release are not included as completed work.
 
@@ -75,6 +75,8 @@ Each database is snapshotted with SQLite's backup API. Whole-application consist
 Pydantic/FastAPI owns the wire schema. Generated OpenAPI and TypeScript types plus operation metadata are committed, and drift fails verification. This review build includes a limited deterministic schema emitter, not a general replacement for mature OpenAPI tooling. New schema forms require emitter tests or migration to a qualified standard generator. [S6]
 
 Errors have code/message/details/request_id. The browser renders errors as failures, never as empty successful lists. The reference list uses server filtering/global sort/pagination. AG Grid local column sorting is explicitly described as loaded-page-only. This distinction must survive future grouping/export changes. Grouping and full SysGrid context-menu/shift-range semantics are not implemented in this review build.
+
+The public API family is major 1 at `/api/v1/`, independent of application semver. `backend/app/platform/version.py` owns the API major and monotonic contract revision; FastAPI/Pydantic remains the executable wire-schema source, and `scripts/generate_contracts.py` owns committed OpenAPI/TypeScript outputs. Bootstrap publishes only the safe API major/revision pair. The frontend requires a matching major and a backend revision at least as new as its compiled requirement before feature queries begin. See [API compatibility and versioning](API_COMPATIBILITY.md) for the additive v1 policy, staged rollout and v2 migration requirements.
 
 Forms use the authoritative field metadata and Pydantic validation. Custom React slots remain available for complex domain fields. The native dialog owns Escape/close/dirty confirmation, instead of every feature inventing listeners and z-index rules. Native dialog semantics are a useful baseline, not accessibility certification. [S7] Browser Back/Forward, zoom, nested overlays and screen-reader behavior require actual tests. Reversion creates a new revision with a new audit event; it never rewrites history.
 

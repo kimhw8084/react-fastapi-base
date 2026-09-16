@@ -23,7 +23,7 @@ from app.platform.migrations import assert_revision
 from app.platform.middleware import RequestSafetyMiddleware
 from app.platform.models import Tenant
 from app.platform.router import router as platform_router
-from app.platform.version import VERSION
+from app.platform.version import API_CONTRACT_REVISION, API_MAJOR, API_PREFIX, VERSION
 from app.platform.profile import ProfileRuntime
 from app.features.registry import DEFINITIONS, ENTITY_BINDINGS, ROUTERS
 from app.profiles.loader import load_profile
@@ -66,6 +66,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         responses={code:{'model':ErrorResponse,'description':description} for code,description in ERROR_RESPONSE_DESCRIPTIONS.items()},
         docs_url='/docs' if settings.environment in ('development', 'test') and settings.enable_docs else None,
         redoc_url=None,openapi_url='/openapi.json' if settings.environment in ('development', 'test') else None)
+    generated_openapi=app.openapi
+    def openapi_with_contract_metadata():
+        document=generated_openapi()
+        document['info']['x-api-major']=API_MAJOR
+        document['info']['x-api-contract-revision']=API_CONTRACT_REVISION
+        document['info']['x-api-prefix']=API_PREFIX
+        return document
+    app.openapi=openapi_with_contract_metadata
     app.state.instance_id=str(uuid4())
     app.state.settings=settings
     app.state.application=application

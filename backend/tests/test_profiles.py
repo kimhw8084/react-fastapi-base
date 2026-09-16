@@ -82,7 +82,7 @@ def test_profile_runtime_is_not_serialized_by_bootstrap(tmp_path):
     app = create_app(settings)
     with TestClient(app) as client:
         payload = client.get('/api/v1/bootstrap').json()
-        assert set(payload) == {'user_id', 'profile', 'csrf_token', 'tenants', 'application', 'build_version'}
+        assert set(payload) == {'user_id', 'profile', 'csrf_token', 'tenants', 'application', 'build_version', 'api_major', 'api_revision'}
         assert 'profile_runtime' not in str(payload)
         assert 'data_root' not in str(payload)
         assert 'AccessKey' not in str(payload)

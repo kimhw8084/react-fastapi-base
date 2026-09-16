@@ -56,6 +56,10 @@ Node starting-file publisher: server.mjs, with PORT supplied by PaaS. Set NODE_E
 7. Create the final `CompanyQualification` with those evidence references and authorized approval; switch the exact candidate/root/deployment to `BASE_ENVIRONMENT=production` and `BASE_QUALIFICATION_FILE`.
 8. Run production preflight/readiness and final two-user smoke, then require release approval for the precise artifact and environment. Do not describe this review archive as a certified release.
 
+## API compatibility during independent rollout
+
+The supported public API family is major 1 at `/api/v1/`; application semver does not change that contract. Backend bootstrap exposes the safe API major and contract revision. A frontend accepts only the same major and a backend revision greater than or equal to its compiled requirement, so publish a backend first, allow the overlap window, then publish the frontend. A missing, mismatched or older backend fails at bootstrap before workspace data is requested. Breaking changes require a deliberate `/api/v2/` family and an explicit migration/overlap plan; never silently repurpose `/api/v1/`.
+
 If per-user PaaS replicas run on different hosts against one mounted database, the current conservative SQLite profile is not compatible. Resolve with a supported shared database service or an owner process/API; a journal-mode change or extra retry is not the fix.
 
 ## Attachments and production upload policy
