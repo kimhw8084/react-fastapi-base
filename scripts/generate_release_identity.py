@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the immutable repository-owned RC.11 release identity artifact."""
+"""Generate the immutable repository-owned RC.12 release identity artifact."""
 from __future__ import annotations
 
 import argparse
@@ -10,7 +10,7 @@ from pathlib import Path
 
 from source_manifest import ROOT, source_digest, source_hashes
 
-IDENTITY_PATH = ROOT / 'deploy/rc11-release-identity.json'
+IDENTITY_PATH = ROOT / 'deploy/rc12-release-identity.json'
 VERSION_PATH = ROOT / 'VERSION'
 
 
@@ -55,7 +55,7 @@ def generate(verification_path: Path) -> dict[str, object]:
     version = VERSION_PATH.read_text(encoding='utf-8').strip()
     return {
         'schema_version': 1,
-        'identity_type': 'repository_rc11_release',
+        'identity_type': 'repository_rc12_release',
         'project': 'react-fastapi-base',
         'profile': 'company',
         'candidate_version': version,

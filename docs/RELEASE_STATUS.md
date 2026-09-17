@@ -1,15 +1,17 @@
-# Release status — react-fastapi-base 1.0.0-rc.11
+# Release status — react-fastapi-base 1.0.0-rc.12
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.11 adds the final schema-v2 composite CompanyQualification contract and independently anchored source-bound readiness evidence. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.12 adds the canonical UI state matrix and accessibility regression gate on top of the schema-v2 CompanyQualification contract. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
+
+RC.12 preserves RC.11 evidence as historical for its exact source and binds the new UIQA matrix/results to the verified RC.12 source. The local browser gate does not prove the final company/profile `ui_accessibility` qualification.
 
 ## Current local proof
 
 - Backend: 270 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
-- Frontend: locked `npm ci`, TypeScript, 17 Vitest files / 44 tests, production build, Storybook build and 17 Playwright workflows passed.
+- Frontend: locked `npm ci`, TypeScript, 17 Vitest files / 44 tests, production build, Storybook build and 26 Playwright workflows passed, including the 13-row canonical UI state matrix.
 - Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
@@ -43,5 +45,5 @@ Optional authenticated realtime push, enterprise malware/CDR provider selection,
 
 Reports under `evidence/current/` are generated from the current source and carry commit, timestamp, command, exit code, environment and hashes. Historical reports remain under historical directories and are not release proof. Local success does not certify company infrastructure, SEMI compliance, WCAG conformance, or production safety.
 
-The deterministic RC.11 repository readiness report is `evidence/current/release/rc11-readiness-matrix.json`; its companion manifest and binding are `rc11-manifest.json` and `rc11-evidence-binding.json`. The matrix is repository evidence, not an operator-approved qualification file.
+The deterministic RC.12 repository readiness report is `evidence/current/release/rc12-readiness-matrix.json`; its companion manifest and binding are `rc12-manifest.json` and `rc12-evidence-binding.json`. The UI matrix/result evidence is under `evidence/current/uiqa/`; all are repository evidence, not an operator-approved qualification file.
 The repository identity is generated from the passing current source verification report by `scripts/generate_release_identity.py` and is intentionally outside the executable-source hash set to avoid a digest cycle. Its `source_commit` is the verified executable-source commit; the later evidence and Fabric branch heads do not replace it.

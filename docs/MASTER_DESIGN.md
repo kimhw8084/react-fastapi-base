@@ -1,8 +1,10 @@
-> **Implementation addendum (1.0.0-rc.11):** this candidate adds the schema-v2 composite CompanyQualification contract, exact mandatory gates, derived readiness, source-bound readiness matrix and secret-safe evidence binding. RC.10 configuration/secrets and earlier evidence remain historical for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
+> **Implementation addendum (1.0.0-rc.12):** this candidate adds the canonical UI state matrix and browser accessibility regression gate on top of RC.11's schema-v2 composite CompanyQualification contract, exact mandatory gates, derived readiness, source-bound readiness matrix and secret-safe evidence binding. RC.11, RC.10 and earlier evidence remain historical for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
-**Version: 1.0.0-rc.11 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+> CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
+
+**Version: 1.0.0-rc.12 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.

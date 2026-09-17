@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "matrix_id": "project-os-ui-state-matrix",
+  "change": "CHG-34",
+  "source_of_truth": "frontend/tests/e2e/ui-state-matrix.json",
+  "material_state_classes": [
+    "empty",
+    "error",
+    "loading",
+    "normal",
+    "permission",
+    "selection"
+  ],
+  "required_dimensions": [
+    "theme.light",
+    "theme.dark",
+    "contrast.high",
+    "forced-colors.active",
+    "viewport.desktop",
+    "viewport.narrow",
+    "reflow.320-css-px",
+    "motion.reduced",
+    "keyboard.tab-shift-tab",
+    "keyboard.enter-space-escape",
+    "semantics.role-name-state",
+    "focus.visible-recovery",
+    "browser-computed",
+    "axe.serious-critical"
+  ],
+  "rows": [
+    {
+      "state_id": "chg34-theme-operations-primary-action",
+      "surface_component_family": "shared-theme/action",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "runtime-controls: /work-items with Appearance=dark and Theme=operations",
+      "required_dimensions": ["theme.dark", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["primary action retains an accessible name", "dark accent text has at least 4.5:1 computed contrast"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json", "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png"],
+        "claims": ["browser-computed contrast", "rendered dark-theme action"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-001",
+      "legacy_uiqa_ids": ["UIQA-001"]
+    },
+    {
+      "state_id": "chg34-grid-semantic-theme-modes",
+      "surface_component_family": "AG Grid/shared workspace",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "seed-demo /work-items page with 50-row server page and runtime theme controls",
+      "required_dimensions": ["theme.light", "theme.dark", "contrast.high", "viewport.desktop", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["grid has an accessible label", "virtualized rendering remains bounded", "row text remains visible in light, dark and high contrast"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json", "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png"],
+        "claims": ["browser-computed grid colors", "bounded rendered rows", "rendered high-contrast grid"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-002",
+      "legacy_uiqa_ids": ["UIQA-002"]
+    },
+    {
+      "state_id": "chg34-saved-view-checkbox-selection",
+      "surface_component_family": "Saved Views/native checkbox",
+      "material_state_class": "selection",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "open Save current view dialog from /work-items",
+      "required_dimensions": ["keyboard.enter-space-escape", "semantics.role-name-state", "focus.visible-recovery", "axe.serious-critical"],
+      "semantic_expectations": ["Favorite and Default controls are native checkboxes", "Space toggles checked state", "checkboxes expose stable accessible names"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json"],
+        "claims": ["native checkbox semantics", "computed control geometry", "keyboard selection"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-003",
+      "legacy_uiqa_ids": ["UIQA-003"]
+    },
+    {
+      "state_id": "chg34-notification-timestamp-contrast",
+      "surface_component_family": "System/notification list",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "route-intercept notification and preference endpoints with fixed UTC records",
+      "required_dimensions": ["theme.light", "theme.dark", "contrast.high", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["notification timestamp text remains visible on every supported color mode", "notification list remains a named tab surface"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json"],
+        "claims": ["browser-computed timestamp contrast"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-007",
+      "legacy_uiqa_ids": ["UIQA-007"]
+    },
+    {
+      "state_id": "chg34-work-items-loading",
+      "surface_component_family": "shared workspace data query",
+      "material_state_class": "loading",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "hold GET /api/v1/work-items until the loading assertion completes",
+      "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["loading status is intentional and named", "essential workspace shell remains available while records are pending"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-loading.json"],
+        "claims": ["deterministic loading status", "semantic status role"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-008"
+    },
+    {
+      "state_id": "chg34-work-items-empty",
+      "surface_component_family": "shared workspace data query",
+      "material_state_class": "empty",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "fulfill GET /api/v1/work-items with an empty WorkItemPage",
+      "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["empty result is distinguished from loading and error", "empty message explains the next action without exposing a fake record"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-empty.json"],
+        "claims": ["deterministic empty state", "semantic empty heading"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-009"
+    },
+    {
+      "state_id": "chg34-work-items-error",
+      "surface_component_family": "shared workspace data query",
+      "material_state_class": "error",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "fulfill GET /api/v1/work-items with a stable 503 error envelope",
+      "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["error is exposed through an alert", "error state is not rendered as an empty dataset", "retry action is named"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-error.json"],
+        "claims": ["deterministic error alert", "named retry action"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-010"
+    },
+    {
+      "state_id": "chg34-work-items-permission-readonly",
+      "surface_component_family": "shared workspace permission boundary",
+      "material_state_class": "permission",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "route-intercept bootstrap with a tenant that has no write or restore permission",
+      "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["Access is announced as Read only", "write actions are absent rather than misleadingly interactive", "records remain readable"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json"],
+        "claims": ["read-only action visibility", "computed visibility of primary write action"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-011"
+    },
+    {
+      "state_id": "chg34-grid-row-selection",
+      "surface_component_family": "AG Grid/shared workspace selection",
+      "material_state_class": "selection",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "seed-demo /work-items page and activate the first row selection checkbox",
+      "required_dimensions": ["viewport.desktop", "keyboard.tab-shift-tab", "semantics.role-name-state", "focus.visible-recovery", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["selection uses the platform checkbox semantics", "selected action region appears only after actual selection", "focus remains visible on the active control"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-row-selection.json"],
+        "claims": ["actual selection state", "selected action region", "computed focus outline"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-012"
+    },
+    {
+      "state_id": "chg34-dialog-focus-recovery",
+      "surface_component_family": "platform dialog/overlay",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "open Save current view dialog from its stable invoking button",
+      "required_dimensions": ["keyboard.tab-shift-tab", "keyboard.enter-space-escape", "semantics.role-name-state", "focus.visible-recovery", "axe.serious-critical"],
+      "semantic_expectations": ["dialog has a stable accessible name", "Escape closes the overlay", "focus returns to the logical Save view invoker"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json"],
+        "claims": ["visible focus", "Escape close", "focus restoration"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-013"
+    },
+    {
+      "state_id": "chg34-reflow-320-css-px",
+      "surface_component_family": "shared workspace layout",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "set viewport to exactly 320 CSS px wide and open /work-items",
+      "required_dimensions": ["viewport.narrow", "reflow.320-css-px", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["essential heading, search and workspace action remain available", "page does not require inappropriate two-dimensional scrolling"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json", "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png"],
+        "claims": ["320 CSS px reflow", "horizontal and vertical overflow dimensions", "rendered narrow layout"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-014"
+    },
+    {
+      "state_id": "chg34-reduced-motion",
+      "surface_component_family": "shared motion/token platform",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "Playwright emulateMedia prefers-reduced-motion=reduce before loading /work-items",
+      "required_dimensions": ["motion.reduced", "browser-computed", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["reduced-motion media query is active", "shared transitions are effectively disabled", "essential content is present without waiting for animation"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-reduced-motion.json"],
+        "claims": ["reduced-motion media emulation", "computed transition duration"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-015"
+    },
+    {
+      "state_id": "chg34-forced-colors",
+      "surface_component_family": "shared theme/high-contrast platform",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "Playwright emulateMedia forced-colors=active with a visible workspace action",
+      "required_dimensions": ["forced-colors.active", "browser-computed", "focus.visible-recovery", "semantics.role-name-state", "axe.serious-critical"],
+      "semantic_expectations": ["forced-colors media query is active", "named action remains visible and focusable", "computed foreground/background are not transparent"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-forced-colors.json", "evidence/current/uiqa/rendered/chg34-forced-colors.png"],
+        "claims": ["forced-colors media emulation", "browser-computed rendered action"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-016"
+    }
+  ]
+}

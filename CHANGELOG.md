@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.12 — canonical UI state matrix and accessibility regression gate
+
+- Added one repository-owned machine-readable UI state matrix with explicit normal, loading, empty, error, permission and selection coverage, deterministic fixtures, semantic expectations and required evidence.
+- Added bidirectional matrix-to-Playwright/axe coverage and result-manifest contract checks, including browser-computed rendered evidence, light/dark/high-contrast/forced-colors, 320 CSS px reflow, reduced motion, keyboard semantics and focus recovery.
+- Preserved the CHG-33 eight-gate CompanyQualification contract: local/Fabric UIQA evidence strengthens code readiness but does not qualify the external company/profile `ui_accessibility` gate or production readiness.
+- Prepared RC.12 metadata without changing API major 1 or contract revision 1.
+
 ## 1.0.0-rc.11 — final CompanyQualification readiness contract
 
 - Added the schema-versioned composite CompanyQualification contract with exactly eight independently evaluated production gates, derived readiness and secret-safe evidence references.

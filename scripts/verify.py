@@ -43,6 +43,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('performance-owned-algorithms',[sys.executable,'scripts/performance_check.py'])
     run('performance-stress',[sys.executable,'scripts/performance_stress.py'])
     run('generated-contracts',[sys.executable,'scripts/generate_contracts.py','--check'])
+    run('ui-state-matrix-contract',[sys.executable,'scripts/check_ui_state_matrix.py'])
     api_base=os.environ.get('API_COMPATIBILITY_BASE_SHA') or 'origin/main'
     run('api-compatibility',[sys.executable,'scripts/check_api_compatibility.py','--base-ref',api_base,'--output',str((output/'api-compatibility.json').resolve())],blocked_exit_codes=(2,))
     run('typescript-syntax-and-pure-client',['node','scripts/source_smoke.mjs'])
@@ -76,13 +77,21 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     if source_only or not node_modules.is_dir() or not lock.is_file():
         reason='Source-only request.' if source_only else 'Dependency-resolved frontend installation and committed package-lock.json are required.'
         for name in frontend:blocked(name,reason)
+        blocked('ui-state-matrix-results',reason)
     else:
         type_ok=run('frontend-typecheck',['npm','run','typecheck'],ROOT/'frontend')
         unit_ok=run('frontend-unit',['npm','test'],ROOT/'frontend')
         build_ok=run('frontend-build',['npm','run','build'],ROOT/'frontend')
         run('frontend-storybook',['npm','run','build:storybook'],ROOT/'frontend')
-        if type_ok and unit_ok and build_ok:run('browser-e2e-accessibility',[sys.executable,'scripts/e2e_runner.py'],timeout=600)
-        else:blocked('browser-e2e-accessibility','Frontend checks must pass first.')
+        if type_ok and unit_ok and build_ok:
+            browser_ok=run('browser-e2e-accessibility',[sys.executable,'scripts/e2e_runner.py'],timeout=600)
+            if browser_ok:
+                run('ui-state-matrix-results',[sys.executable,'scripts/check_ui_state_matrix.py','--results',str((ROOT/'evidence/current/uiqa/ui-state-matrix-results.json').resolve())])
+            else:
+                blocked('ui-state-matrix-results','Browser UIQA/accessibility execution must pass before its result manifest can be accepted.')
+        else:
+            blocked('browser-e2e-accessibility','Frontend checks must pass first.')
+            blocked('ui-state-matrix-results','Frontend checks must pass before browser UIQA/accessibility execution.')
         run('npm-advisories',['npm','audit','--audit-level=high'],ROOT/'frontend',120)
     if not source_only and importlib.util.find_spec('pip_audit'):
         run('python-advisories',[sys.executable,'-m','pip_audit','-r','backend/requirements.lock'],timeout=120)

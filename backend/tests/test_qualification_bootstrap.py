@@ -54,7 +54,7 @@ def _repository_identity() -> RepositoryReleaseIdentity:
         return load_repository_release_identity()
     except ValueError:
         return RepositoryReleaseIdentity(
-            identity_type='repository_rc11_release',
+            identity_type='repository_rc12_release',
             project='react-fastapi-base',
             profile='company',
             candidate_version=VERSION,
@@ -311,7 +311,7 @@ def test_production_rejects_self_consistent_fake_source_binding(tmp_path, monkey
         deployment_id='qualification-fixture', attachment_upload_mode='disabled',
     )
     errors = settings.production_errors(scanner_is_noop=False)
-    assert any('repository RC.11 release identity' in error for error in errors)
+    assert any('repository RC.12 release identity' in error for error in errors)
 
 
 @pytest.mark.parametrize('gate_id,field_name', [
@@ -334,7 +334,7 @@ def test_production_rejects_release_fact_mismatch_against_repository_anchor(tmp_
         deployment_id='qualification-fixture', attachment_upload_mode='disabled',
     )
     errors = settings.production_errors(scanner_is_noop=False)
-    assert any(gate_id.replace('_', ' ') in error.casefold() or 'repository RC.11 release identity' in error for error in errors)
+    assert any(gate_id.replace('_', ' ') in error.casefold() or 'repository RC.12 release identity' in error for error in errors)
 
 
 def test_production_missing_or_unreadable_repository_identity_fails_closed(tmp_path, monkeypatch):
@@ -350,9 +350,9 @@ def test_production_missing_or_unreadable_repository_identity_fails_closed(tmp_p
         csrf_secret='s' * 40, qualification_file=final_path,
         deployment_id='qualification-fixture', attachment_upload_mode='disabled',
     )
-    assert any('repository rc.11 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
+    assert any('repository rc.12 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
     identity_path.mkdir()
-    assert any('repository rc.11 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
+    assert any('repository rc.12 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
 
 
 def test_qualification_operator_flow_does_not_require_final_evidence(tmp_path, monkeypatch):

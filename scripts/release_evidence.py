@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build source-bound RC.11 readiness and release evidence metadata."""
+"""Build source-bound RC.12 readiness and release evidence metadata."""
 from __future__ import annotations
 
 import hashlib
@@ -10,10 +10,11 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE_DIR = ROOT / 'evidence/current/release'
-READINESS_PATH = RELEASE_DIR / 'rc11-readiness-matrix.json'
-MANIFEST_PATH = RELEASE_DIR / 'rc11-manifest.json'
-BINDING_PATH = RELEASE_DIR / 'rc11-evidence-binding.json'
-CHG33_PATH = RELEASE_DIR / 'CHG-33-company-qualification.json'
+READINESS_PATH = RELEASE_DIR / 'rc12-readiness-matrix.json'
+MANIFEST_PATH = RELEASE_DIR / 'rc12-manifest.json'
+BINDING_PATH = RELEASE_DIR / 'rc12-evidence-binding.json'
+CHG34_PATH = RELEASE_DIR / 'CHG-34-ui-accessibility.json'
+UIQA_MATRIX_PATH = ROOT / 'evidence/current/uiqa/ui-state-matrix-results.json'
 MANDATORY_GATE_IDS = (
     'technical_release',
     'identity',
@@ -106,6 +107,11 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
     matrix_digest = sha256_file(READINESS_PATH)
     code_ready, _, _ = _code_status(results)
     blocking_gates = [row['id'] for row in matrix['gates'] if row['status'] != 'PASS']
+    uiqa_evidence = {
+        'locator': str(UIQA_MATRIX_PATH.relative_to(ROOT)),
+        'sha256': sha256_file(UIQA_MATRIX_PATH) if UIQA_MATRIX_PATH.is_file() else None,
+        'required_for': 'code',
+    }
     manifest = {
         'schema_version': 2,
         'product': 'react-fastapi-base',
@@ -115,6 +121,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'source_digest': source_digest,
         'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
         'verification': {'locator': verification_path, 'source_commit': source_commit, 'source_digest': source_digest},
+        'uiqa_matrix': uiqa_evidence,
         'api_compatibility_base_sha': api_compatibility_base_sha,
         'target_base_sha': api_compatibility_base_sha,
         'evidence_commit': None,
@@ -136,6 +143,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'target_base_sha': api_compatibility_base_sha,
         'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
         'manifest': {'locator': str(MANIFEST_PATH.relative_to(ROOT)), 'sha256': manifest_digest},
+        'uiqa_matrix': uiqa_evidence,
         'binding_status': 'PENDING_EVIDENCE_COMMIT',
         'result': 'NOT_CERTIFIED',
         'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',
@@ -144,7 +152,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
     contract = {
         'schema_version': 2,
         'project': 'react-fastapi-base',
-        'change': 'CHG-33',
+        'change': 'CHG-34',
         'version': version,
         'verified_source_commit': source_commit,
         'source_digest': source_digest,
@@ -155,18 +163,19 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
         'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
         'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
+        'uiqa_matrix': uiqa_evidence,
         'production_ready': False,
         'release_status': 'NOT_CERTIFIED',
         'external_blockers': ['identity', 'storage', 'deployment', 'ui_accessibility', 'performance', 'operations'],
         'api_contract_impact': {'observable_change': False, 'api_major': 1, 'contract_revision': 1, 'base_sha': api_compatibility_base_sha},
         'evidence_policy': 'No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.',
     }
-    CHG33_PATH.write_text(json.dumps(contract, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    CHG34_PATH.write_text(json.dumps(contract, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     return {
         'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
         'readiness_matrix_sha256': matrix_digest,
         'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
         'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
-        'chg33_contract': str(CHG33_PATH.relative_to(ROOT)),
+        'chg34_evidence': str(CHG34_PATH.relative_to(ROOT)),
         'matrix': matrix,
     }

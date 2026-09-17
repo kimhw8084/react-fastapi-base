@@ -30,7 +30,7 @@ Examples:
 
 ```bash
 python3 scripts/check_api_compatibility.py \
-  --base-ref 8308b9367ea2131c4b25569958d837e42e733a17 \
+  --base-ref 1de9cfae29450990d201785f35992c72ff0d0684 \
   --output evidence/current/release/CHG-31-api-compatibility.json
 ```
 
