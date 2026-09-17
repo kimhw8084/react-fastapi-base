@@ -1,0 +1,591 @@
+{
+  "$defs": {
+    "CompanyQualificationGate": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "facts": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "deployment": "#/$defs/DeploymentFacts",
+                  "identity": "#/$defs/IdentityFacts",
+                  "operations": "#/$defs/OperationsFacts",
+                  "performance": "#/$defs/PerformanceFacts",
+                  "release_evidence": "#/$defs/ReleaseEvidenceFacts",
+                  "storage": "#/$defs/StorageFacts",
+                  "technical_release": "#/$defs/TechnicalReleaseFacts",
+                  "ui_accessibility": "#/$defs/UiAccessibilityFacts"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/TechnicalReleaseFacts"
+                },
+                {
+                  "$ref": "#/$defs/IdentityFacts"
+                },
+                {
+                  "$ref": "#/$defs/StorageFacts"
+                },
+                {
+                  "$ref": "#/$defs/DeploymentFacts"
+                },
+                {
+                  "$ref": "#/$defs/UiAccessibilityFacts"
+                },
+                {
+                  "$ref": "#/$defs/PerformanceFacts"
+                },
+                {
+                  "$ref": "#/$defs/OperationsFacts"
+                },
+                {
+                  "$ref": "#/$defs/ReleaseEvidenceFacts"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Facts"
+        },
+        "id": {
+          "enum": [
+            "technical_release",
+            "identity",
+            "storage",
+            "deployment",
+            "ui_accessibility",
+            "performance",
+            "operations",
+            "release_evidence"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "BLOCKED",
+            "FAIL"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "status"
+      ],
+      "title": "CompanyQualificationGate",
+      "type": "object"
+    },
+    "DeploymentFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "deployment_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Deployment Id",
+          "type": "string"
+        },
+        "ingress_authentication_evidence": {
+          "const": true,
+          "title": "Ingress Authentication Evidence",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "deployment",
+          "default": "deployment",
+          "title": "Kind",
+          "type": "string"
+        },
+        "redeploy_persistence_evidence": {
+          "$ref": "#/$defs/EvidenceReference"
+        },
+        "restore_drill_evidence": {
+          "$ref": "#/$defs/EvidenceReference"
+        }
+      },
+      "required": [
+        "deployment_id",
+        "ingress_authentication_evidence",
+        "redeploy_persistence_evidence",
+        "restore_drill_evidence"
+      ],
+      "title": "DeploymentFacts",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "additionalProperties": false,
+      "description": "Durable locator and identity metadata, never an evidence payload.",
+      "properties": {
+        "evidence_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "issuer": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Issuer",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "release_manifest",
+            "readiness_matrix",
+            "verification_report",
+            "identity_proof",
+            "storage_proof",
+            "deployment_proof",
+            "accessibility_report",
+            "performance_report",
+            "operations_report",
+            "approval_record"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "locator": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "locator",
+        "evidence_id",
+        "issuer"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "IdentityFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "identity_topology": {
+          "const": "per_user_process",
+          "title": "Identity Topology",
+          "type": "string"
+        },
+        "kind": {
+          "const": "identity",
+          "default": "identity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "simultaneous_real_user_evidence": {
+          "const": true,
+          "title": "Simultaneous Real User Evidence",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "identity_topology",
+        "simultaneous_real_user_evidence"
+      ],
+      "title": "IdentityFacts",
+      "type": "object"
+    },
+    "OperationsFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "company_profile_evidence": {
+          "const": true,
+          "title": "Company Profile Evidence",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "operations",
+          "default": "operations",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_profile_evidence"
+      ],
+      "title": "OperationsFacts",
+      "type": "object"
+    },
+    "PerformanceFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "company_profile_evidence": {
+          "const": true,
+          "title": "Company Profile Evidence",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "performance",
+          "default": "performance",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_profile_evidence"
+      ],
+      "title": "PerformanceFacts",
+      "type": "object"
+    },
+    "ReleaseEvidenceFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "accepted_head": {
+          "title": "Accepted Head",
+          "type": "string"
+        },
+        "candidate_version": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Candidate Version",
+          "type": "string"
+        },
+        "evidence_commit": {
+          "title": "Evidence Commit",
+          "type": "string"
+        },
+        "kind": {
+          "const": "release_evidence",
+          "default": "release_evidence",
+          "title": "Kind",
+          "type": "string"
+        },
+        "profile": {
+          "title": "Profile",
+          "type": "string"
+        },
+        "project": {
+          "title": "Project",
+          "type": "string"
+        },
+        "readiness_matrix_sha256": {
+          "title": "Readiness Matrix Sha256",
+          "type": "string"
+        },
+        "repository_merge_sha": {
+          "title": "Repository Merge Sha",
+          "type": "string"
+        },
+        "source_digest": {
+          "title": "Source Digest",
+          "type": "string"
+        },
+        "verified_source_commit": {
+          "title": "Verified Source Commit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "project",
+        "profile",
+        "candidate_version",
+        "verified_source_commit",
+        "source_digest",
+        "evidence_commit",
+        "accepted_head",
+        "repository_merge_sha",
+        "readiness_matrix_sha256"
+      ],
+      "title": "ReleaseEvidenceFacts",
+      "type": "object"
+    },
+    "StorageFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "all_database_clients_same_host": {
+          "const": true,
+          "title": "All Database Clients Same Host",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "storage",
+          "default": "storage",
+          "title": "Kind",
+          "type": "string"
+        },
+        "persistent_root": {
+          "title": "Persistent Root",
+          "type": "string"
+        },
+        "provider_sqlite_support_reference": {
+          "maxLength": 512,
+          "minLength": 8,
+          "title": "Provider Sqlite Support Reference",
+          "type": "string"
+        },
+        "storage_kind": {
+          "enum": [
+            "local_disk",
+            "provider_supported_posix"
+          ],
+          "title": "Storage Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "storage_kind",
+        "provider_sqlite_support_reference",
+        "all_database_clients_same_host",
+        "persistent_root"
+      ],
+      "title": "StorageFacts",
+      "type": "object"
+    },
+    "TechnicalReleaseFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_version": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Candidate Version",
+          "type": "string"
+        },
+        "code_ready": {
+          "const": true,
+          "title": "Code Ready",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "technical_release",
+          "default": "technical_release",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_digest": {
+          "title": "Source Digest",
+          "type": "string"
+        },
+        "verified_source_commit": {
+          "title": "Verified Source Commit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code_ready",
+        "candidate_version",
+        "verified_source_commit",
+        "source_digest"
+      ],
+      "title": "TechnicalReleaseFacts",
+      "type": "object"
+    },
+    "UiAccessibilityFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "company_profile_evidence": {
+          "const": true,
+          "title": "Company Profile Evidence",
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "ui_accessibility",
+          "default": "ui_accessibility",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_profile_evidence"
+      ],
+      "title": "UiAccessibilityFacts",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Final composite production qualification, not an operator assertion.",
+  "properties": {
+    "all_database_clients_same_host": {
+      "anyOf": [
+        {
+          "const": true,
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "All Database Clients Same Host"
+    },
+    "approved_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approved At"
+    },
+    "approved_by": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approved By"
+    },
+    "candidate_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Candidate Version"
+    },
+    "deployment_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Deployment Id"
+    },
+    "gates": {
+      "items": {
+        "$ref": "#/$defs/CompanyQualificationGate"
+      },
+      "title": "Gates",
+      "type": "array"
+    },
+    "identity_topology": {
+      "anyOf": [
+        {
+          "const": "per_user_process",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Identity Topology"
+    },
+    "persistent_root": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Persistent Root"
+    },
+    "profile": {
+      "default": "company",
+      "title": "Profile",
+      "type": "string"
+    },
+    "project": {
+      "default": "react-fastapi-base",
+      "title": "Project",
+      "type": "string"
+    },
+    "provider_sqlite_support_reference": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Provider Sqlite Support Reference"
+    },
+    "schema_version": {
+      "const": 2,
+      "default": 2,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "source_digest": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Digest"
+    },
+    "storage_kind": {
+      "anyOf": [
+        {
+          "enum": [
+            "local_disk",
+            "provider_supported_posix"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Storage Kind"
+    },
+    "verified_source_commit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Verified Source Commit"
+    }
+  },
+  "title": "CompanyQualification",
+  "type": "object"
+}

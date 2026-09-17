@@ -12,7 +12,22 @@ from pydantic import ValidationError
 
 from app.main import create_app
 from app.platform.errors import AppError
-from app.platform.settings import CompanyQualification, CompanyQualificationPrerequisites, Settings
+from app.platform.settings import (
+    CompanyQualification,
+    CompanyQualificationGate,
+    CompanyQualificationPrerequisites,
+    DeploymentFacts,
+    EvidenceReference,
+    IdentityFacts,
+    OperationsFacts,
+    PerformanceFacts,
+    ReleaseEvidenceFacts,
+    Settings,
+    StorageFacts,
+    TechnicalReleaseFacts,
+    UiAccessibilityFacts,
+)
+from app.platform.version import VERSION
 from app.profiles.company.identity import CompanyIdentity
 
 
@@ -30,19 +45,33 @@ def _prerequisites(root: Path, *, deployment_id: str = 'qualification-fixture') 
 
 
 def _final_qualification(root: Path, *, deployment_id: str = 'qualification-fixture') -> CompanyQualification:
+    def evidence(kind: str, number: str) -> EvidenceReference:
+        return EvidenceReference(kind=kind, locator=f'evidence/company/{number}.json', evidence_id=f'fixture-{number}', issuer='fixture-operator')
+
+    source_commit = '1' * 40
+    source_digest = '2' * 64
     return CompanyQualification(
+        candidate_version=VERSION,
+        verified_source_commit=source_commit,
+        source_digest=source_digest,
         deployment_id=deployment_id,
         identity_topology='per_user_process',
-        simultaneous_identity_evidence='fixture-identity-evidence',
         storage_kind='local_disk',
         provider_sqlite_support_reference='fixture-provider-reference',
         all_database_clients_same_host=True,
         persistent_root=str(root.resolve()),
-        redeploy_persistence_evidence='fixture-redeploy-evidence',
-        restore_drill_evidence='fixture-restore-evidence',
-        ingress_authentication_evidence='fixture-ingress-evidence',
         approved_by='fixture-release-operator',
         approved_at='2026-09-10T00:00:00Z',
+        gates=[
+            CompanyQualificationGate(id='technical_release', status='PASS', evidence=[evidence('verification_report', 'technical')], facts=TechnicalReleaseFacts(code_ready=True, candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest)),
+            CompanyQualificationGate(id='identity', status='PASS', evidence=[evidence('identity_proof', 'identity')], facts=IdentityFacts(identity_topology='per_user_process', simultaneous_real_user_evidence=True)),
+            CompanyQualificationGate(id='storage', status='PASS', evidence=[evidence('storage_proof', 'storage')], facts=StorageFacts(storage_kind='local_disk', provider_sqlite_support_reference='fixture-provider-reference', all_database_clients_same_host=True, persistent_root=str(root.resolve()))),
+            CompanyQualificationGate(id='deployment', status='PASS', evidence=[evidence('deployment_proof', 'deployment')], facts=DeploymentFacts(deployment_id=deployment_id, ingress_authentication_evidence=True, redeploy_persistence_evidence=evidence('deployment_proof', 'redeploy'), restore_drill_evidence=evidence('deployment_proof', 'restore'))),
+            CompanyQualificationGate(id='ui_accessibility', status='PASS', evidence=[evidence('accessibility_report', 'accessibility')], facts=UiAccessibilityFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='performance', status='PASS', evidence=[evidence('performance_report', 'performance')], facts=PerformanceFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=OperationsFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, accepted_head='4' * 40, repository_merge_sha='5' * 40, readiness_matrix_sha256='6' * 64)),
+        ],
     )
 
 

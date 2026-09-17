@@ -27,10 +27,11 @@ identity, demo seeding, implicit migration and automatic database creation
 remain unavailable in qualification mode.
 
 After the drills, the operator creates the separate final
-`BASE_QUALIFICATION_FILE` with actual evidence references and approval. A
+`BASE_QUALIFICATION_FILE` with schema-v2 composite gates, actual safe evidence
+references, exact candidate/source/version/digest bindings and approval. A
 prerequisite file cannot be renamed into a final qualification: production
 startup/preflight still validates the complete `CompanyQualification`, exact
-deployment/root binding and the selected scanner policy.
+project/profile/source/version/deployment/root/storage binding and the selected scanner policy.
 
 ## Identity
 
@@ -54,10 +55,26 @@ It exercises local mechanics and reports diagnostic_pass. It always leaves produ
 
 Test clean stop/start, republish, host replacement, application-version rollback and power/kill behavior in approved disposable environments. Establish whether temporary disks, object caches or network mounts are involved. Stop all writers for multi-file snapshots. Restore into a new root and rehearse migrations. Set real retention, encryption and access policies for backups.
 
+## Final composite evidence file
+
+The final `CompanyQualification` uses schema version 2. It is a composite
+contract with exactly these gates, in addition to the typed infrastructure
+bindings: `technical_release`, `identity`, `storage`, `deployment`,
+`ui_accessibility`, `performance`, `operations` and `release_evidence`.
+Statuses are exactly `PASS`, `BLOCKED` or `FAIL`; `NOT_APPLICABLE` is not a
+production status. Every PASS gate needs durable evidence metadata and typed
+facts. The `production_ready` value is derived by code and is forbidden in the
+qualification file.
+
+The shipped template is intentionally complete but unproven: every gate is
+`BLOCKED`, bindings and approval are null, and it cannot certify production.
+Schema-v1 records are parsed only to return a migration diagnostic and never
+certify schema v2.
+
 ## Evidence file
 
 Copy deploy/company-qualification.template.json to an operator-managed, nonpublic location only after the qualification drills and replace invalid placeholders with actual approved evidence references. Its schema intentionally refuses the template defaults. Pin deployment_id and persistent_root to the actual environment. An evidence string is an attestation, not cryptographic or independent certification. Only authorized release operators may approve it. A later environment/topology change invalidates the approval.
 
-The app's preflight checks configuration and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization.
+The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes `evidence/current/release/rc11-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file.
 
 Before qualification, verify the deployment uses an explicit attachment upload policy. The default `scanner_required` mode must have a real scanner/CDR adapter; otherwise startup/readiness is rejected. The local deterministic scanner proves only the adapter contract and rejects EICAR/SVG test content. During the company recovery drill, upload an object-backed attachment, stop all writers, run the schema-versioned object-inclusive backup, restore into a second root, and verify the original bytes and SHA-256 after download.

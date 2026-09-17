@@ -1,4 +1,4 @@
-# Company PaaS deployment contract — not yet exercised on company infrastructure
+# Company PaaS deployment contract — 1.0.0-rc.11, not yet exercised on company infrastructure
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
@@ -35,7 +35,8 @@ Qualification operator commands (`provision`, `add-member`, `migrate`,
 the drills can generate final evidence. `backup` still requires the literal
 `--maintenance APP-STOPPED`; `restore` still requires a new target root. These
 commands do not issue a production certificate. Production commands continue
-to require the final `CompanyQualification`.
+to require the final schema-v2 composite `CompanyQualification`; schema-v1
+infrastructure-only records fail closed with a migration diagnostic.
 
 ## Frontend project
 
@@ -62,7 +63,7 @@ path override. It publishes only the strictly parsed four-field runtime JSON.
 4. Publish the qualification backend/frontend independently, then provision and explicitly migrate the disposable staging root. Never seed demo data into a company root.
 5. Use two real company users to exercise role/tenant differences, ingress and routing in the actual browser path.
 6. Test restart, redeploy, rolling overlap policy, persistent data and recovery. Stop all relevant writers before snapshot/restore and record actual evidence in operator-controlled storage.
-7. Create the final `CompanyQualification` with those evidence references and authorized approval; switch the exact candidate/root/deployment to `BASE_ENVIRONMENT=production` and `BASE_QUALIFICATION_FILE`.
+7. Create the final schema-v2 `CompanyQualification` with all eight gates, safe evidence references, exact source/version/digest/root/deployment bindings and authorized approval; switch the exact candidate/root/deployment to `BASE_ENVIRONMENT=production` and `BASE_QUALIFICATION_FILE`.
 8. Run production preflight/readiness and final two-user smoke, then require release approval for the precise artifact and environment. Do not describe this review archive as a certified release.
 
 ## API compatibility during independent rollout

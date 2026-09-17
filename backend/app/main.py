@@ -13,6 +13,7 @@ from app.platform.schemas import ErrorResponse
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from sqlalchemy import select, text
 from sqlalchemy.exc import OperationalError
+from app.platform.attachments import NoopMalwareScanner
 from app.platform.settings import Settings
 from app.platform.configuration_contract import ConfigurationContractError
 from app.platform.policy import load_policy
@@ -129,7 +130,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 tenants=db.scalars(select(Tenant).where(Tenant.active.is_(True))).all()
             if len(tenants)>64:raise RuntimeError('Too many tenants for synchronous readiness in this release.')
             for tenant in tenants:assert_revision(runtime.database,tenant.id)
-            return {'ready':True,'version':VERSION,'environment':settings.environment,'production_ready':settings.environment=='production'}
+            scanner_is_noop = None if runtime.malware_scanner is None else isinstance(runtime.malware_scanner, NoopMalwareScanner)
+            return {
+                'ready': True,
+                'version': VERSION,
+                'environment': settings.environment,
+                'production_ready': settings.derived_production_ready(scanner_is_noop=scanner_is_noop),
+            }
         except Exception:
             return JSONResponse(status_code=503,content={'ready':False,'code':'configuration_or_database_unready'})
     app.include_router(platform_router,prefix='/api/v1')

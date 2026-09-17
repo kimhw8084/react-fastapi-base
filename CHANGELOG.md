@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.11 — final CompanyQualification readiness contract
+
+- Added the schema-versioned composite CompanyQualification contract with exactly eight independently evaluated production gates, derived readiness and secret-safe evidence references.
+- Preserved qualification prerequisites and identity/storage/deployment facts while rejecting legacy schema-v1 certification and keeping qualification mode non-production.
+- Added deterministic source-bound readiness matrix, RC.11 release manifest/evidence binding, and exact-candidate evidence sequencing without changing API major 1/revision 1.
+
 ## 1.0.0-rc.10 — configuration and secrets contract
 
 - Added one metadata-only configuration contract covering backend settings, publisher configuration, browser runtime fields, development/test tooling and platform exceptions.

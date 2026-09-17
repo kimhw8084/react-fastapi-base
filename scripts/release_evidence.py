@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Build source-bound RC.11 readiness and release evidence metadata."""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+RELEASE_DIR = ROOT / 'evidence/current/release'
+READINESS_PATH = RELEASE_DIR / 'rc11-readiness-matrix.json'
+MANIFEST_PATH = RELEASE_DIR / 'rc11-manifest.json'
+BINDING_PATH = RELEASE_DIR / 'rc11-evidence-binding.json'
+CHG33_PATH = RELEASE_DIR / 'CHG-33-company-qualification.json'
+MANDATORY_GATE_IDS = (
+    'technical_release',
+    'identity',
+    'storage',
+    'deployment',
+    'ui_accessibility',
+    'performance',
+    'operations',
+    'release_evidence',
+)
+
+
+def sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def sha256_file(path: Path) -> str:
+    return sha256_bytes(path.read_bytes())
+
+
+def _commit(value: str) -> bool:
+    return bool(re.fullmatch(r'[0-9a-fA-F]{40}', value))
+
+
+def _digest(value: str) -> bool:
+    return bool(re.fullmatch(r'[0-9a-fA-F]{64}', value))
+
+
+def _code_status(results: list[dict[str, Any]]) -> tuple[bool, list[str], list[str]]:
+    failures = sorted(row['name'] for row in results if row.get('required_for', 'code') == 'code' and row.get('status') == 'FAIL')
+    blocked = sorted(row['name'] for row in results if row.get('required_for', 'code') == 'code' and row.get('status') == 'BLOCKED')
+    return not failures and not blocked, failures, blocked
+
+
+def build_readiness_matrix(*, source_commit: str, source_digest: str, version: str, results: list[dict[str, Any]], deployment_id: str | None = None, persistent_root: str | None = None) -> dict[str, Any]:
+    code_ready, failures, blocked = _code_status(results)
+    if failures:
+        technical_status = 'FAIL'
+        technical_reason = 'Repository-owned code checks failed: ' + ', '.join(failures) + '.'
+    elif blocked:
+        technical_status = 'BLOCKED'
+        technical_reason = 'Repository-owned code checks are unavailable: ' + ', '.join(blocked) + '.'
+    else:
+        technical_status = 'PASS'
+        technical_reason = 'Repository-owned code and release checks passed for the exact candidate.'
+    release_status = 'PASS' if code_ready and _commit(source_commit) and _digest(source_digest) else 'BLOCKED'
+    release_reason = (
+        'Immutable source/version/digest binding metadata and this matrix are repository-bound.'
+        if release_status == 'PASS' else
+        'Source-bound release evidence cannot be established until the exact code candidate is verified.'
+    )
+    gate_rows = [
+        {'id': 'technical_release', 'status': technical_status, 'reason': technical_reason, 'evidence_state': 'repository_verification'},
+        {'id': 'identity', 'status': 'BLOCKED', 'reason': 'Authentic company per-user identity and simultaneous real-user evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'storage', 'status': 'BLOCKED', 'reason': 'Provider-supported SQLite locking, durability, persistence and restore evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'deployment', 'status': 'BLOCKED', 'reason': 'Company publication, ingress, restart, redeploy and recovery evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'ui_accessibility', 'status': 'BLOCKED', 'reason': 'Local browser and axe checks do not establish applicable company/profile accessibility evidence.', 'evidence_state': 'external_unproven'},
+        {'id': 'performance', 'status': 'BLOCKED', 'reason': 'Local stress checks do not establish applicable company/profile performance evidence.', 'evidence_state': 'external_unproven'},
+        {'id': 'operations', 'status': 'BLOCKED', 'reason': 'Applicable company/profile operational readiness evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'release_evidence', 'status': release_status, 'reason': release_reason, 'evidence_state': 'repository_verification'},
+    ]
+    return {
+        'schema_version': 1,
+        'report_type': 'repository-readiness-matrix',
+        'project': 'react-fastapi-base',
+        'profile': 'company',
+        'candidate_version': version,
+        'verified_source_commit': source_commit,
+        'source_digest': source_digest,
+        'deployment_id': deployment_id,
+        'persistent_root': persistent_root,
+        'mandatory_gate_ids': list(MANDATORY_GATE_IDS),
+        'gates': gate_rows,
+        'code_ready': code_ready,
+        'production_ready': False,
+        'release_status': 'NOT_CERTIFIED',
+        'note': 'Repository evidence is not an operator-approved CompanyQualification and does not certify company infrastructure.',
+    }
+
+
+def write_repository_release_evidence(*, source_commit: str, source_digest: str, version: str, results: list[dict[str, Any]], verification_path: str = 'evidence/current/full-stack/verification.json', api_compatibility_base_sha: str | None = None) -> dict[str, Any]:
+    RELEASE_DIR.mkdir(parents=True, exist_ok=True)
+    matrix = build_readiness_matrix(
+        source_commit=source_commit,
+        source_digest=source_digest,
+        version=version,
+        results=results,
+    )
+    READINESS_PATH.write_text(json.dumps(matrix, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    matrix_digest = sha256_file(READINESS_PATH)
+    code_ready, _, _ = _code_status(results)
+    blocking_gates = [row['id'] for row in matrix['gates'] if row['status'] != 'PASS']
+    manifest = {
+        'schema_version': 2,
+        'product': 'react-fastapi-base',
+        'profile': 'company',
+        'version': version,
+        'verified_source_commit': source_commit,
+        'source_digest': source_digest,
+        'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
+        'verification': {'locator': verification_path, 'source_commit': source_commit, 'source_digest': source_digest},
+        'api_compatibility_base_sha': api_compatibility_base_sha,
+        'code_ready': code_ready,
+        'production_ready': False,
+        'release_status': 'NOT_CERTIFIED',
+        'blocking_gates': blocking_gates,
+    }
+    MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    manifest_digest = sha256_file(MANIFEST_PATH)
+    binding = {
+        'schema_version': 2,
+        'project': 'react-fastapi-base',
+        'profile': 'company',
+        'version': version,
+        'verified_source_commit': source_commit,
+        'source_digest': source_digest,
+        'evidence_commit': None,
+        'accepted_head': None,
+        'repository_merge_sha': None,
+        'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
+        'manifest': {'locator': str(MANIFEST_PATH.relative_to(ROOT)), 'sha256': manifest_digest},
+        'binding_status': 'PENDING_EVIDENCE_COMMIT',
+        'result': 'NOT_CERTIFIED',
+        'note': 'Bind evidence_commit, Accepted Head and repository merge SHA only after the exact verified source evidence is committed; this file never certifies production.',
+    }
+    BINDING_PATH.write_text(json.dumps(binding, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    contract = {
+        'schema_version': 2,
+        'project': 'react-fastapi-base',
+        'change': 'CHG-33',
+        'version': version,
+        'verified_source_commit': source_commit,
+        'source_digest': source_digest,
+        'final_company_qualification_schema_version': 2,
+        'mandatory_gate_ids': list(MANDATORY_GATE_IDS),
+        'template': 'deploy/company-qualification.template.json',
+        'typed_schema': 'deploy/company-qualification.schema.json',
+        'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
+        'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
+        'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
+        'production_ready': False,
+        'release_status': 'NOT_CERTIFIED',
+        'external_blockers': ['identity', 'storage', 'deployment', 'ui_accessibility', 'performance', 'operations'],
+        'api_contract_impact': {'observable_change': False, 'api_major': 1, 'contract_revision': 1, 'base_sha': api_compatibility_base_sha},
+        'evidence_policy': 'No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.',
+    }
+    CHG33_PATH.write_text(json.dumps(contract, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    return {
+        'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
+        'readiness_matrix_sha256': matrix_digest,
+        'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
+        'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
+        'chg33_contract': str(CHG33_PATH.relative_to(ROOT)),
+        'matrix': matrix,
+    }

@@ -13,6 +13,8 @@ import subprocess
 import sys
 import time
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from scripts.release_evidence import write_repository_release_evidence
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -101,8 +103,22 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     commit_result=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,check=False)
     source_commit=commit_result.stdout.strip() if commit_result.returncode==0 else None
     (output/'source-hashes.json').write_text(json.dumps(source_hashes,indent=2)+'\n')
-    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code') else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
-      'production_ready':False,'code_ready':all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code'),'results':results,
+    code_ready=all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code')
+    api_base_sha=None
+    api_report=output/'api-compatibility.json'
+    if api_report.is_file():
+        try:api_base_sha=json.loads(api_report.read_text()).get('resolved_base_sha')
+        except (OSError,json.JSONDecodeError):api_base_sha=None
+    release_evidence=write_repository_release_evidence(
+        source_commit=source_commit or '',
+        source_digest=source_digest,
+        version=(ROOT/'VERSION').read_text(encoding='utf-8').strip(),
+        results=results,
+        verification_path='evidence/current/full-stack/verification.json',
+        api_compatibility_base_sha=api_base_sha,
+    )
+    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if code_ready else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
+      'production_ready':False,'code_ready':code_ready,'readiness_matrix':release_evidence['readiness_matrix'],'readiness_matrix_sha256':release_evidence['readiness_matrix_sha256'],'results':results,
       'note':'Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.'}
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
     print(f"NOT_CERTIFIED — report: {output/'verification.json'}")
