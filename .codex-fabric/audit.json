@@ -1,132 +1,1238 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-17T13:15:06Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 132,
+      "deletions": 0,
+      "path": ".codex-fabric/audit.json",
+      "status": "A"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 7,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 35,
+      "deletions": 25,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 4,
+      "deletions": 1,
+      "path": "backend/app/cli.py",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 1,
+      "path": "backend/app/main.py",
+      "status": "M"
+    },
+    {
+      "additions": 576,
+      "deletions": 29,
+      "path": "backend/app/platform/settings.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 212,
+      "deletions": 0,
+      "path": "backend/tests/test_company_qualification_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 139,
+      "deletions": 9,
+      "path": "backend/tests/test_qualification_bootstrap.py",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 8,
+      "path": "backend/tests/test_release_safety.py",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "backend/tests/test_security.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 617,
+      "deletions": 0,
+      "path": "deploy/company-qualification.schema.json",
+      "status": "A"
+    },
+    {
+      "additions": 24,
+      "deletions": 13,
+      "path": "deploy/company-qualification.template.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc11-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 35,
+      "deletions": 3,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 5,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 2,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 539,
+      "deletions": 509,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 19,
+      "deletions": 19,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 80,
+      "deletions": 80,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 19,
+      "deletions": 186,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 63,
+      "deletions": 61,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 41,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-33-company-qualification.json",
+      "status": "A"
+    },
+    {
+      "additions": 21,
+      "deletions": 0,
+      "path": "evidence/current/release/rc11-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 32,
+      "deletions": 0,
+      "path": "evidence/current/release/rc11-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 81,
+      "deletions": 0,
+      "path": "evidence/current/release/rc11-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 80,
+      "deletions": 80,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 82,
+      "deletions": 0,
+      "path": "scripts/bind_release_evidence.py",
+      "status": "A"
+    },
+    {
+      "additions": 52,
+      "deletions": 0,
+      "path": "scripts/check_qualification_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 8,
+      "deletions": 3,
+      "path": "scripts/generate_contracts.py",
+      "status": "M"
+    },
+    {
+      "additions": 93,
+      "deletions": 0,
+      "path": "scripts/generate_release_identity.py",
+      "status": "A"
+    },
+    {
+      "additions": 172,
+      "deletions": 0,
+      "path": "scripts/release_evidence.py",
+      "status": "A"
+    },
+    {
+      "additions": 35,
+      "deletions": 0,
+      "path": "scripts/source_manifest.py",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 12,
+      "path": "scripts/verify.py",
+      "status": "M"
+    },
+    {
+      "additions": 82,
+      "deletions": 0,
+      "path": "tests/test_release_evidence.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --check && rtk git diff -- scripts/source_manifest.py tests/test_release_evidence.py && rtk git log --oneline --decorate -8'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add scripts/source_manifest.py tests/test_release_evidence.py && rtk git commit -m \"Stabilize executable source digest boundaries\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 53,
+          "skipped": 1
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 110,
+        "output_sha256": "16e894b6bc453018cca659d512e376cd2c90133ff509afe29e3ed29ecbbf4bc6",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps -axo pid,etime,command | rg 'dev verify|macos|pytest|npm|node|python' | tail -n 20\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py && rtk python3 dev verify'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0, '.'); from scripts.source_manifest import source_digest; report=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); print('source_commit_report=', report['source_commit']); print('source_digest_report=', report['source_digest']); print('source_digest_live=', source_digest()); print('code_ready=', report['code_ready'], 'production_ready=', report['production_ready'])\\\" && rtk backend/.venv/bin/python scripts/generate_release_identity.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 dev contracts && rtk python3 dev architecture && rtk python3 scripts/generate_checkpoint_manifest.py && rtk python3 scripts/checkpoint.py --check'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,220p' scripts/checkpoint.py && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/checkpoint.py rc11-r2 && rtk env API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf python3 dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0, '.'); from scripts.source_manifest import source_digest; report=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); identity=json.loads(pathlib.Path('deploy/rc11-release-identity.json').read_text()); print(json.dumps({'report_source_commit': report['source_commit'], 'identity_source_commit': identity['verified_source_commit'], 'report_source_digest': report['source_digest'], 'identity_source_digest': identity['source_digest'], 'live_source_digest': source_digest(), 'code_ready': report['code_ready'], 'production_ready': report['production_ready'], 'release_status': identity['release_status']}, indent=2)); assert report['source_commit'] == identity['verified_source_commit'] == '161d5c6fc89db553ba6401db80db14a58567cc22'; assert report['source_digest'] == identity['source_digest'] == source_digest(); assert report['code_ready'] is True and report['production_ready'] is False\\\" && rtk git diff --check && rtk git status --short\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, subprocess, sys; from pathlib import Path; sys.path.insert(0,'.'); from scripts.source_manifest import source_hashes; old=json.loads(subprocess.check_output(['git','show','HEAD:evidence/current/full-stack/source-hashes.json'])); new=source_hashes(); print('old',len(old),'new',len(new)); print('added',sorted(set(new)-set(old))); print('removed',sorted(set(old)-set(new))); print('changed',[(k,old[k],new[k]) for k in sorted(set(old)&set(new)) if old[k]\"'!=new[k]])\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"storybook-static|public/experience-lab|generated\" .gitignore frontend/.gitignore scripts docs | head -n 80 && rtk git check-ignore -v frontend/storybook-static/project.json frontend/public/experience-lab/index.html 2>/dev/null || true && rtk find frontend -maxdepth 2 -type d | sort | head -n 80'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --check && rtk sed -n '7,28p' scripts/source_manifest.py && rtk tail -n 14 tests/test_release_evidence.py && if [ -e deploy/rc11-release-identity.json ]; then rtk echo 'identity still present'; else rtk echo 'identity removed'; fi\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add scripts/source_manifest.py tests/test_release_evidence.py && rtk git commit -m \"Exclude generated frontend artifacts from source identity\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py && rtk python3 dev verify'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0,'.'); from scripts.source_manifest import source_digest; report=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); print('report',report['source_commit'],report['source_digest']); print('live',source_digest()); assert report['source_commit']=='95751b3'; assert report['source_digest']==source_digest(); assert report['code_ready'] is True and report['production_ready'] is False\\\" && rtk backend/.venv/bin/python scripts/generate_release_identity.py && rtk python3 -c \\\"import json; i=json.load(open('deploy/rc11-release-identity.json')); print('identity',i['verified_source_commit'],i['source_digest'],i['release_status'])\\\"\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python scripts/generate_release_identity.py && rtk python3 -c \\\"import json; i=json.load(open('deploy/rc11-release-identity.json')); print('identity',i['verified_source_commit'],i['source_digest'],i['release_status'])\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 dev contracts && rtk python3 dev architecture && rtk python3 scripts/generate_checkpoint_manifest.py && rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short && rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0,'.'); from scripts.source_manifest import source_digest; r=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); i=json.loads(pathlib.Path('deploy/rc11-release-identity.json').read_text()); print(r['source_commit']); print(r['source_digest']); print(source_digest()); print(i['source_digest']); assert r['source_digest']==source_digest()==i['source_digest']\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf python3 dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0,'.'); from scripts.source_manifest import source_digest; report=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); identity=json.loads(pathlib.Path('deploy/rc11-release-identity.json').read_text()); print(json.dumps({'source_commit': report['source_commit'], 'source_digest_report': report['source_digest'], 'source_digest_identity': identity['source_digest'], 'source_digest_live': source_digest(), 'code_ready': report['code_ready'], 'production_ready': report['production_ready'], 'release_status': identity['release_status']}, indent=2)); assert report['source_commit']==identity['verified_source_commit']=='95751b3bef22f85dc9827c6e56b74073e0cffe25'; assert report['source_digest']==identity['source_digest']==source_digest(); assert report['code_ready'] is True and report['production_ready'] is False\\\" && rtk git diff --check\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short && rtk python3 -c \\\"import json, pathlib; paths=['evidence/current/release/rc11-manifest.json','evidence/current/release/rc11-evidence-binding.json','evidence/current/release/rc11-readiness-matrix.json']; base='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf';\nfor name in paths:\n d=json.loads(pathlib.Path(name).read_text()); print(name, 'keys=', sorted(d), 'source=', d.get('verified_source_commit') or d.get('source_commit'), 'target_base=',d.get('target_base_sha'), 'accepted=', 'accepted_head' in d, 'merge=', 'repository_merge_sha' in d); assert 'accepted_head' not in d and 'repository_merge_sha' not in d; assert d.get('target_base_sha') in (None,base)\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add CHECKPOINT_MANIFEST.json deploy/rc11-release-identity.json evidence/current/full-stack evidence/current/performance/stress.json evidence/current/recovery/object-restore.json evidence/current/release && rtk git diff --cached --check && rtk git diff --cached --stat && rtk git commit -m \"Record CHG-33 R2 verification evidence\" && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf && rtk git diff --check && rtk git diff -- evidence/current/release/rc11-manifest.json evidence/current/release/rc11-evidence-binding.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,240p' scripts/bind_release_evidence.py && rtk git diff --stat && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add evidence/current/release/rc11-manifest.json evidence/current/release/rc11-evidence-binding.json && rtk git diff --cached --check && rtk git commit -m \"Bind CHG-33 R2 evidence commit\" && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short && rtk find .codex-fabric -maxdepth 2 -type f -print && rtk sed -n '1,180p' .codex-fabric/audit.json && rtk tail -n 120 .codex-fabric/audit.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git branch -avv && rtk git log --all --oneline --decorate -- .codex-fabric/audit.json && rtk git ls-tree -r --name-only HEAD .codex-fabric && rtk git show --stat --oneline 21e153a062b69f14cb87f36689a1a9362aff9ffc'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show --format=fuller --stat 9cee012 && rtk git show 9cee012:.codex-fabric/audit.json | rtk sed -n '1,60p' && rtk git show 9cee012:.codex-fabric/audit.json | rtk rg -n 'head_sha|source_commit|source_digest|evidence|accepted_head|repository_merge|target_base|status|request|operation' | head -n 100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show 9cee012:.codex-fabric/audit.json | rtk sed -n '55,150p' && rtk git show origin/codex-fabric/evidence/react-fastapi-base/CHG-9-r2:.codex-fabric/audit.json | rtk sed -n '1,130p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n \\\"codex-fabric|audit.json|Fabric evidence|evidence_head|accepted_head|repository_merge_sha\\\" . --glob '\"'!backend/.venv/**'\"' --glob '\"'!frontend/node_modules/**'\"' --glob '\"'!checkpoints/**'\"' | head -n 160\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import hashlib, json, pathlib, subprocess; names=['CHECKPOINT_MANIFEST.json','deploy/rc11-release-identity.json','evidence/current/full-stack/verification.json','evidence/current/full-stack/source-hashes.json','evidence/current/release/CHG-33-company-qualification.json','evidence/current/release/rc11-readiness-matrix.json','evidence/current/release/rc11-manifest.json','evidence/current/release/rc11-evidence-binding.json'];\nfor n in names:\n p=pathlib.Path(n); print(n, p.stat().st_size, hashlib.sha256(p.read_bytes()).hexdigest())\nprint('branch',subprocess.check_output(['git','branch','--show-current'],text=True).strip()); print('head',subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()); print('base_files',len(subprocess.check_output(['git','diff','--name-only','6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf...HEAD'],text=True).splitlines()))\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,120p' deploy/rc11-release-identity.json && rtk sed -n '1,160p' evidence/current/release/rc11-evidence-binding.json && rtk sed -n '1,120p' evidence/current/release/rc11-manifest.json && rtk sed -n '1,130p' evidence/current/release/CHG-33-company-qualification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json; json.load(open('.codex-fabric/audit.json')); print('audit JSON valid')\\\" && rtk python3 scripts/generate_checkpoint_manifest.py && rtk git diff --check && rtk git status --short && rtk git add .codex-fabric/audit.json CHECKPOINT_MANIFEST.json && rtk git diff --cached --check && rtk git commit -m \\\"Publish CHG-33 R2 Fabric audit evidence\\\" && rtk git rev-parse HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/checkpoint.py rc11-r2-final && rtk unzip -t checkpoints/react-fastapi-base-rc11-r2-final.zip && rtk git status --short --branch && rtk git log --oneline --decorate -10 && rtk git merge-base --is-ancestor cbcbac3a4f1ade81612852252f85d7d53a30615a HEAD && rtk git merge-base --is-ancestor 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf HEAD && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git remote -v && rtk git push origin HEAD:codex/react-fastapi-base-company-qualification-source-binding-r2'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c \\\"import json, pathlib, sys; sys.path.insert(0,'.'); from scripts.source_manifest import source_digest; base='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf'; source='95751b3bef22f85dc9827c6e56b74073e0cffe25'; evidence='9da6387d9c14e11b44f9b6c7019beae72e143029'; report=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text()); identity=json.loads(pathlib.Path('deploy/rc11-release-identity.json').read_text()); matrix=json.loads(pathlib.Path('evidence/current/release/rc11-readiness-matrix.json').read_text()); binding=json.loads(pathlib.Path('evidence/current/release/rc11-evidence-binding.json').read_text()); print(json.dumps({'source_commit':report['source_commit'],'source_digest':source_digest(),'identity_commit':identity['verified_source_commit'],'identity_digest':identity['source_digest'],'evidence_commit':binding['evidence_commit'],'binding_result':binding['result'],'mandatory_gate_ids':matrix['mandatory_gate_ids'],'gate_statuses':{row['id']:row['status'] for row in matrix['gates']},'code_ready':report['code_ready'],'production_ready':report['production_ready'],'release_status':matrix['release_status']},indent=2)); assert report['source_commit']==identity['verified_source_commit']==source; assert report['source_digest']==identity['source_digest']==source_digest(); assert binding['evidence_commit']==evidence; assert matrix['mandatory_gate_ids']==['technical_release','identity','storage','deployment','ui_accessibility','performance','operations','release_evidence']; assert report['code_ready'] is True and report['production_ready'] is False; assert matrix['release_status']=='NOT_CERTIFIED'; assert 'accepted_head' not in pathlib.Path('evidence/current/release/rc11-manifest.json').read_text(); assert 'repository_merge_sha' not in pathlib.Path('evidence/current/release/rc11-manifest.json').read_text()\\\" && rtk git status --short --branch && rtk git diff --quiet origin/codex/react-fastapi-base-company-qualification-source-binding-r2 HEAD && rtk git merge-base --is-ancestor cbcbac3a4f1ade81612852252f85d7d53a30615a HEAD && rtk git merge-base --is-ancestor 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf HEAD && rtk git ls-remote origin refs/heads/codex/react-fastapi-base-company-qualification-source-binding-r2\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"''^def test_\" backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py | rtk rg \"fake|mismatch|missing|legacy|preflight|maintenance|scanner|qualification|executable|written|gate|approval|safe|non\" | head -n 100'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py -k \"self_consistent_fake_source_identity or self_consistent_fake_source_binding or release_fact_mismatch_against_repository_anchor or missing_or_unreadable_repository_identity or positive_fixture_uses_repository_owned_expected_identity or legacy_schema_cannot_certify or qualification_startup_and_readiness_are_not_production_ready or qualification_operator_flow_does_not_require_final_evidence or valid_final_qualification_passes_production_preflight or scanner_required\"'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "deselected": 35,
+          "passed": 14
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 114,
+        "output_sha256": "4f59e52e652454bd779a2acf2bef81c496454a16d820c7801fca08cbb824e5a7",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"REPOSITORY_RELEASE_IDENTITY_PATH|RepositoryReleaseIdentity|load_repository_release_identity|repository_release_identity_errors|def _production_errors|def derived_production_ready|target_base_sha|PENDING_EVIDENCE_COMMIT|evidence_commit\" backend/app/platform/settings.py scripts/release_evidence.py scripts/bind_release_evidence.py scripts/generate_release_identity.py scripts/source_manifest.py docs/COMPANY_QUALIFICATION.md docs/RELEASE_STATUS.md | head -n 180'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk nl -ba backend/app/platform/settings.py | rtk sed -n '760,875p' && rtk nl -ba backend/app/platform/settings.py | rtk sed -n '510,635p' && rtk nl -ba scripts/generate_release_identity.py | rtk sed -n '1,130p' && rtk nl -ba scripts/source_manifest.py | rtk sed -n '1,80p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk nl -ba backend/tests/test_qualification_bootstrap.py | rtk sed -n '260,370p' && rtk nl -ba backend/tests/test_qualification_bootstrap.py | rtk sed -n '370,455p' && rtk nl -ba backend/tests/test_company_qualification_contract.py | rtk sed -n '145,205p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"maintenance_errors|assert_maintenance_safe|--maintenance|maintenance\" backend/tests/test_qualification_bootstrap.py backend/tests/test_company_qualification_contract.py backend/tests/test_release_safety.py | head -n 120 && rtk rg -n \"def .*maintenance|maintenance\" backend/app/cli.py backend/app/main.py backend/app/platform | head -n 100'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk nl -ba backend/tests/test_qualification_bootstrap.py | rtk sed -n '190,225p' && rtk nl -ba backend/app/cli.py | rtk sed -n '1,75p' && rtk nl -ba backend/app/platform/profile.py | rtk sed -n '80,110p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk nl -ba backend/tests/test_qualification_bootstrap.py | rtk sed -n '1,160p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env PYTHONPATH=backend:backend/tests backend/.venv/bin/python - <<'PY'\nimport tempfile\nfrom pathlib import Path\nfrom app.platform.settings import Settings, load_repository_release_identity\nfrom test_qualification_bootstrap import _final_qualification\n\nidentity = load_repository_release_identity()\nwith tempfile.TemporaryDirectory() as temp:\n    root = Path(temp) / 'root'\n    root.mkdir()\n    qualification = _final_qualification(root, identity=identity)\n    path = Path(temp) / 'qualification.json'\n    path.write_text(qualification.model_dump_json())\n    settings = Settings(\n        environment='production', profile='company', data_root=root,\n        allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],\n        csrf_secret='s' * 40, qualification_file=path,\n        deployment_id='qualification-fixture', attachment_upload_mode='disabled',\n    )\n    assert settings.production_errors(scanner_is_noop=False) == []\n    assert settings.maintenance_errors() == []\n    payload = qualification.model_dump()\n    payload['verified_source_commit'] = '1' * 40\n    payload['source_digest'] = '2' * 64\n    for gate in payload['gates']:\n        if gate['id'] in {'technical_release', 'release_evidence'}:\n            gate['facts']['verified_source_commit'] = '1' * 40\n            gate['facts']['source_digest'] = '2' * 64\n    mismatch = Path(temp) / 'mismatch.json'\n    from app.platform.settings import CompanyQualification\n    mismatch.write_text(CompanyQualification.model_validate(payload).model_dump_json())\n    mismatched = settings.model_copy(update={'qualification_file': mismatch})\n    assert any('repository RC.11 release identity' in error for error in mismatched.production_errors(scanner_is_noop=False))\n    assert any('repository RC.11 release identity' in error for error in mismatched.maintenance_errors())\nprint('production preflight/startup binding: matching PASS; fake 111.../222... rejected')\nprint('production maintenance binding: matching PASS; fake 111.../222... rejected')\nPY\nrtk git status --short --branch\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-company-qualification-source-binding-r2 && rtk git status --porcelain=v1 --branch && rtk git show -s --format='%H%n%P%n%s' HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n \\\"verify-release|sys.exit|return 0|return 1|code_ready|production_ready\\\" dev scripts/verify.py | head -n 120 && rtk python3 -c \\\"import json; r=json.load(open('evidence/current/full-stack/verification.json')); print('overall_result_keys', sorted(r.keys())); print('results', len(r.get('results',[]))); print('code_ready',r['code_ready'],'production_ready',r['production_ready'])\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 54
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 99,
+        "output_sha256": "b6d6844e2cecd305a72250701a654b99b8b7d0a5ed54512c2ec39bc40d891226",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch && rtk git diff --quiet origin/codex/react-fastapi-base-company-qualification-source-binding-r2 HEAD && rtk git merge-base --is-ancestor cbcbac3a4f1ade81612852252f85d7d53a30615a HEAD && rtk git ls-remote origin refs/heads/codex/react-fastapi-base-company-qualification-source-binding-r2 refs/heads/main && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 323,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.6,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 37245184,
+      "fresh_input_tokens": 527498,
+      "input_tokens": 37772682,
+      "non_reasoning_output_tokens": 51257,
+      "output_tokens": 95914,
+      "reasoning_output_tokens": 44657,
+      "total_processed_tokens": 37868596
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "e767ee912341f80000ab6b0dd0cc16d6e00914a5",
+      "subject": "Publish CHG-33 R2 Fabric audit evidence"
+    },
+    {
+      "sha": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
+      "subject": "Bind CHG-33 R2 evidence commit"
+    },
+    {
+      "sha": "9da6387d9c14e11b44f9b6c7019beae72e143029",
+      "subject": "Record CHG-33 R2 verification evidence"
+    },
+    {
+      "sha": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+      "subject": "Exclude generated frontend artifacts from source identity"
+    },
+    {
+      "sha": "161d5c6fc89db553ba6401db80db14a58567cc22",
+      "subject": "Stabilize executable source digest boundaries"
+    },
+    {
+      "sha": "3dcc1fbf5307af7b5d53b339c47366d5134d44c5",
+      "subject": "Stabilize CHG-33 repository release identity"
+    },
+    {
+      "sha": "f8867456e0121e580fd6a2a844fe90f4b1d099d4",
+      "subject": "Test CHG-33 R2 source binding paths"
+    },
+    {
+      "sha": "cdbe4f4ffeaecd2019970c5291dca2a1d25715fc",
+      "subject": "Repair CHG-33 R2 source anchor and evidence semantics"
+    },
+    {
+      "sha": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
+      "subject": "chore(fabric): publish audit evidence CF-8c7452071a72439af10a3212"
+    },
+    {
+      "sha": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
+      "subject": "Bind CHG-33 evidence to verified source"
+    },
+    {
+      "sha": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
+      "subject": "Record CHG-33 RC.11 verification evidence"
+    },
+    {
+      "sha": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
+      "subject": "Implement CHG-33 CompanyQualification readiness contract"
+    }
+  ],
+  "diff": {
+    "additions": 3648,
+    "changed_files": 78,
+    "commit_count": 12,
+    "deletions": 1293
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 63,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
+        "bytes": 5250,
+        "path": ".codex-fabric/audit.json",
+        "sha256": "7f41cf7a67cc442d6a6e95d5bcf817636561eeed77fc6457ff4f91ad0dc3e8c9"
+      },
+      {
+        "bytes": 10610,
+        "path": "CHANGELOG.md",
+        "sha256": "49ccdb31215d83764c6280798e411671eee1c66cdfa4c44f44697e403e586ff7"
+      },
+      {
+        "bytes": 76594,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "c9d84ba2b693e3b02e028c5007428d095363ab665b742fd2e7d28ec60bfa6d53"
+      },
+      {
+        "bytes": 3421,
+        "path": "README.md",
+        "sha256": "68b9bbe2340db2f07e280ace8a6071a59e75eb7c4adc55e47d21981a22a28728"
+      },
+      {
+        "bytes": 2204,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "4dbf0031f38f225d5642e451db409c1c4c0c6015c4e275d8a12d5d3d1cffcdf2"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "7ce81e9abeaf52827f2a6be4e5a4e9deaf915c08230e6582ff7a5ff51370c96e"
+      },
+      {
+        "bytes": 14703,
+        "path": "deploy/company-qualification.schema.json",
+        "sha256": "61fcabff989734f97af0d2dabd216c4cdc89881008c65ad78682dc5eae0a23d0"
+      },
+      {
+        "bytes": 1640,
+        "path": "deploy/company-qualification.template.json",
+        "sha256": "98b67cc1c59f8b64d211ea202e1ce64f9a512ad9931f2840d1a599e8522f8af4"
+      },
+      {
         "bytes": 648,
+        "path": "deploy/rc11-release-identity.json",
         "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 7455,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "ef9cab450a35634d6f5597f9050f2615498b2e52ec761a65d8b3c9466d97f3ba"
       },
       {
-        "path": "evidence/current/full-stack/source-hashes.json",
+        "bytes": 3611,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "fafdd8dcd1c58323ebb1e1fbff5a69f22d1fca2d280250624b711cab70e405db"
+      },
+      {
+        "bytes": 8087,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "03299e88038661b2f937156f2f30fbfbb14aaa2a9af8eeaf48c35debb111e9ba"
+      },
+      {
+        "bytes": 2937,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "847a57694849cc6ad162313f8cf5ca50d4a538866c9758b27140d8c46fe07ce4"
+      },
+      {
+        "bytes": 45010,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "3f3dc69a2038c8a55162c7a61654667c3d8a847b3408c7879ed1c57d25fff873"
+      },
+      {
+        "bytes": 7923,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "43b0f34acfeb986ad33191412fe914b85f3dee1ebd5cc9942cc9eea627558163"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "3f65cf1a8ce731fc49e006de68d55c1eaa5cd7ded644b3ae1a2aaa8f7f249c43"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "a7f3232dd8b42027382f34cf98a7aea3e195cef2cd6102aa37e4cf861408a4b2"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "f61781cbaf120661480cdddfb9ef8f42b03e97f837ecb4fe7d85790921f584d6"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "33fecbe31acd684c0f983a9cd022465f8657e0b8204d6d11aac9305855462ece"
+      },
+      {
+        "bytes": 12799,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "0eac593f1b2ec1442cc5eec6817fbad4f702f8f8fd737825d5ad562f327dce34"
+      },
+      {
+        "bytes": 7511,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "0c120536dd05ebf0bcaf5e46f9f681e938a72a3ec52da2404487f3a300bbac86"
+      },
+      {
+        "bytes": 6630,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "5e2b26133b947a709640cb39f4dc6e350846fdaf75e87929a83b26e96c31a629"
+      },
+      {
+        "bytes": 9784,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "646959aa7e4c112264c1b28fc6723e7f84679edf0b9100d7d56d63e4cccdc523"
+      },
+      {
+        "bytes": 35839,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "55143fd1786a365115f32818d88fb8e9ea735a5d7d0decedcab7750f43f567d9"
+      },
+      {
+        "bytes": 782,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "10b6219840eed8d33f12114030cf0be6a8ccd672b1fb52667c34fb7a5803799c"
+      },
+      {
+        "bytes": 49517,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "b6cdad02e68786ef28092269a54e540faddadd54eff569ca1a16e1a946ef0830"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "640052a5ed95619d2f7515720dc1425980d0ef52cca4be736e995dc290b1066e"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "7ba439cf5b82e5a58be76ca05ed529d10ef32d3a90c4154aecd07771bb442ffc"
+      },
+      {
+        "bytes": 50646,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "15dc16152724095b763d9706197e024bd47d2b2296c565027d43f0af3c10b73a"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "2d035b166e3017e6e93f2ab25dc51e9a68d0eb8612ceebe7a9ae3b89540744a4"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "d2f0589f112ae059b6591861a56b9e78209d768613d7753da0643c4d8861ae85"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "1cf994bfde02e049626e28bd130d861c0bdb50497b4db8c1b6027182efbe1f8c"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "c24ae6bea1870ee1c992427f4266d80f5422715403b1200b50f3f2a94f6cbc6d"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "478153341628887648b2a42855e47fb54fc9dfd03ea464a54ea0b7c8523cb239"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "1b1414e1b4a6283fc7a72efffe323ed596cb8ed0fcb205a4be9d1e7230e47dd9"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "18ee28a5e96ab81283ee7bd827ec8ff853bbb0a554c85c81e02ab24d6de776ff"
+      },
+      {
+        "bytes": 6441,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "16bb77aa76a8183156e861b3ce141e1fdc5a23d9527b2b12b22fcbf95a4a4829"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "9330d6b7bc86d9806c387d479668de86af2a0be0d9e8761df5a82ab42cee3592"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "aac8421c61765ae24c6b5384ac453ab5f86e8ef0641525ae660126b9037ddcac"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "4016a12e42287a216c02af269680b7e2c31907b52e210250be92dd6f3acac684"
+      },
+      {
+        "bytes": 487,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "0849d04de33b8428c8da24b1016f019e2b1ad10bc71d05933d7e1f0990661ced"
+      },
+      {
+        "bytes": 1723,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "6a0987a7ee78454000822ed482fcfaba3caf707776af251597d7c0565045fb91"
+      },
+      {
+        "bytes": 27199,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "522b61df77fb882edffb6d8d53fdf4be57df4b361440d9f9a5a2f672294b9b21"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "97fd7d81ad778af93cf19b7fe605c37e2c21a757da2cc469ed7825b48f500eab"
+      },
+      {
         "bytes": 69828,
+        "path": "evidence/current/full-stack/source-hashes.json",
         "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
+        "bytes": 2733,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "cfa3899f5d6d9600303865f3bf37aaf06bdad9df2b74bfd60d9eca4d503b0140"
+      },
+      {
+        "bytes": 100,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "7ba6dd161df7551dc9707fa3d88a62d08ad248139989ab30715c27f8c2cd80ab"
+      },
+      {
+        "bytes": 5727,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "b08d0f2e671b8179cdb857e7a54c517c3df3139fd9cd728b2a62f97c32aca51a"
+      },
+      {
+        "bytes": 7345,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "300607a08d0838d1de3c69999313977b53cd3ee62136f59c1c9009f062d617a1"
+      },
+      {
+        "bytes": 7345,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "300607a08d0838d1de3c69999313977b53cd3ee62136f59c1c9009f062d617a1"
+      },
+      {
+        "bytes": 11674,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+      },
+      {
+        "bytes": 49,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "683171c16fecccc0a97981f8ba4e200342fb662924890e5e2d23c7ca15c8580e"
+      },
+      {
+        "bytes": 1723,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "6a0987a7ee78454000822ed482fcfaba3caf707776af251597d7c0565045fb91"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "4016a12e42287a216c02af269680b7e2c31907b52e210250be92dd6f3acac684"
+      },
+      {
         "bytes": 1345,
+        "path": "evidence/current/release/CHG-33-company-qualification.json",
         "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 1009,
+        "path": "evidence/current/release/rc11-evidence-binding.json",
+        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
         "bytes": 1201,
+        "path": "evidence/current/release/rc11-manifest.json",
         "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2843,
+        "path": "evidence/current/release/rc11-readiness-matrix.json",
+        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+      },
+      {
+        "bytes": 27199,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "522b61df77fb882edffb6d8d53fdf4be57df4b361440d9f9a5a2f672294b9b21"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "cdb792376b4038924782df4eb8d6958bfa21c364804bbe0f16d65771990d56c2"
+      },
+      {
+        "bytes": 3727,
+        "path": "scripts/bind_release_evidence.py",
+        "sha256": "ad51d888255b04a41a66e829e7598fdbb2b2d16cbb200c04b706dd587d46208a"
+      },
+      {
+        "bytes": 9193,
+        "path": "scripts/release_evidence.py",
+        "sha256": "ccb9b089b8199802185c1368e4b4a657dc2abc924917fa09826b9d9b585867cc"
+      },
+      {
+        "bytes": 4361,
+        "path": "tests/test_release_evidence.py",
+        "sha256": "07720f39ef2060ea88b0326f3ffdb1b3c14a9d20688ff53e3b4fcf53cfd0d413"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-17T14:32:06Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
+    "head_sha": "e767ee912341f80000ab6b0dd0cc16d6e00914a5",
+    "remote_exact_head": true,
+    "remote_head_sha": "e767ee912341f80000ab6b0dd0cc16d6e00914a5",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+    "work_branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-a22269b25328d1ce42bd0c35",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/company-qualification-source-binding-r2",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/company-qualification-source-binding-r2"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "company-qualification-source-binding-r2",
+  "schema_version": 1,
+  "started_at": "2026-09-17T13:15:06Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 4620,
+    "queue_seconds": 0,
+    "total_seconds": 4620
+  },
+  "transport": {
+    "bytes": 10696,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 10334,
+    "prompt_sha256": "9deb8996550c778690cba40f0261dcef407815b5512bab68f3533756941fb7e4",
+    "sha256": "a22269b25328d1ce42bd0c35fcb36555379177478ed54c822d54570db3b220a8"
+  }
 }
