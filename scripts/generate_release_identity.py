@@ -14,10 +14,6 @@ IDENTITY_PATH = ROOT / 'deploy/rc11-release-identity.json'
 VERSION_PATH = ROOT / 'VERSION'
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def current_commit() -> str:
     result = subprocess.run(
         ['git', 'rev-parse', 'HEAD'],
@@ -67,11 +63,7 @@ def generate(verification_path: Path) -> dict[str, object]:
         'source_digest': digest,
         'source_evidence': {
             'locator': str(source_hashes_path.relative_to(ROOT)),
-            'sha256': sha256(source_hashes_path),
-        },
-        'verification': {
-            'locator': str(verification_path.relative_to(ROOT)),
-            'sha256': sha256(verification_path),
+            'sha256': hashlib.sha256(source_hashes_path.read_bytes()).hexdigest(),
         },
         'generated_by': 'scripts/generate_release_identity.py',
         'code_ready': True,

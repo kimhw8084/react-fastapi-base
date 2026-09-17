@@ -61,7 +61,6 @@ def _repository_identity() -> RepositoryReleaseIdentity:
             verified_source_commit='a' * 40,
             source_digest='b' * 64,
             source_evidence=RepositorySourceEvidence(locator='evidence/test/source-hashes.json', sha256='c' * 64),
-            verification=RepositorySourceEvidence(locator='evidence/test/verification.json', sha256='d' * 64),
             generated_by='scripts/generate_release_identity.py',
             code_ready=True,
             production_ready=False,

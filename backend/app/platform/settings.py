@@ -300,7 +300,6 @@ class RepositoryReleaseIdentity(BaseModel):
     verified_source_commit: str
     source_digest: str
     source_evidence: RepositorySourceEvidence
-    verification: RepositorySourceEvidence
     generated_by: Literal['scripts/generate_release_identity.py']
     code_ready: Literal[True]
     production_ready: Literal[False]
