@@ -1,0 +1,29 @@
+{
+  "api_compatibility_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc11-readiness-matrix.json",
+    "sha256": "02b4bc510cd6f09b95b6cd8716736e780ec689c0aba68366911cb1d6d818cd0d"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "schema_version": 2,
+  "source_digest": "b84877cc372eed3090ce87f095fe8b57e66219bdcbc5c03c5b14e2654bc92a95",
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
+    "source_digest": "b84877cc372eed3090ce87f095fe8b57e66219bdcbc5c03c5b14e2654bc92a95"
+  },
+  "verified_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
+  "version": "1.0.0-rc.11"
+}
