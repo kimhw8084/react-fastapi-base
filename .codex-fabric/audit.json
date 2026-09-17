@@ -1,132 +1,1462 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-17T23:07:56Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 7,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 37,
+      "deletions": 33,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 15,
+      "deletions": 15,
+      "path": "backend/app/platform/settings.py",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "backend/tests/test_company_qualification_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "backend/tests/test_qualification_bootstrap.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_release_safety.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_security.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc12-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/API_COMPATIBILITY.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 4,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "docs/TESTING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 9,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 631,
+      "deletions": 542,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 18,
+      "deletions": 18,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 32,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 80,
+      "deletions": 80,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 19,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+      "status": "A"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 87,
+      "deletions": 63,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-34-ui-accessibility.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 81,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 80,
+      "deletions": 80,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 199,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 3,
+      "path": "frontend/src/platform/ui/OverlayShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/src/theme/application.css",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "frontend/stories/Engineering.stories.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 231,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/ui-state-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 178,
+      "deletions": 35,
+      "path": "frontend/tests/e2e/uiqa.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "scripts/bind_release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 204,
+      "deletions": 0,
+      "path": "scripts/check_ui_state_matrix.py",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 1,
+      "path": "scripts/e2e_runner.py",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "scripts/generate_release_identity.py",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 8,
+      "path": "scripts/release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 2,
+      "path": "scripts/verify.py",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 11,
+      "path": "tests/test_release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 73,
+      "deletions": 0,
+      "path": "tests/test_ui_state_matrix.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk proxy sh -c 'env | cut -d= -f1 | rg -i \\\"notion|projectos|artifact|codex\\\" | sort -u'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8190-bd06-00b298c32416/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-forced-colors.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --silent --show-error --request GET 'https://api.notion.com/v1/file_uploads/3dec564c-8d04-8190-bd06-00b298c32416' -H 'authorization: Bearer [REDACTED_SECRET]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --silent --show-error --request GET 'https://api.notion.com/v1/files/3dec564c-8d04-8190-bd06-00b298c32416' -H 'authorization: Bearer [REDACTED_SECRET]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --silent --show-error --request GET 'https://api.notion.com/v1/file_uploads/3dec564c-8d04-8190-bd06-00b298c32416/download' -H 'authorization: Bearer [REDACTED_SECRET]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-814f-80c9-00b2bfd7bb35/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-forced-colors.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --silent --show-error --request GET 'https://api.notion.com/v1/file_uploads/3dec564c-8d04-814f-80c9-00b2bfd7bb35' -H 'authorization: Bearer [REDACTED_SECRET]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import json; m=json.load(open(\\\"artifact-manifest.json\\\")); print(json.dumps({\\\"inventory\\\":m[\\\"retainedInventory\\\"][\\\"artifacts\\\"],\\\"bundle\\\":m[\\\"completeBundle\\\"]}, separators=(\\\",\\\",\\\":\\\")))'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8199-83a1-00b244a74a2d/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/artifact-manifest.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-817f-8d8a-00b27aafb235/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/chg34-rc12-evidence-bundle.tar.gz;type=application/gzip'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8129-b5ce-00b28bf3f484/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/deploy/rc12-release-identity.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8184-b3c1-00b245dea44c/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/full-stack/verification.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81ec-ac8a-00b25d17297c/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/release/CHG-34-ui-accessibility.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-814b-80df-00b2b2922302/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/release/rc12-evidence-binding.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81a7-9d47-00b2ef05db69/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81d0-8c54-00b24dae7349/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-forced-colors.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-818b-8e0f-00b2c857c17e/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-forced-colors.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-815f-9d00-00b21fedd215/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-grid-row-selection.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81ee-a286-00b272312860/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81b4-bc0c-00b24caf3553/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-814c-885c-00b2f37095c0/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-812b-b924-00b2c2d1157a/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-reduced-motion.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81ac-a109-00b22959675f/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8153-a648-00b271ae031d/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8148-8ab6-00b20ce84bf9/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81d1-b60b-00b2c77840a7/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-810b-bc2b-00b244d89f1f/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png;type=image/png'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-814e-a655-00b233cf2517/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-work-items-empty.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81e9-9210-00b29ef31edf/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-work-items-error.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-815b-8bee-00b2a3d3544f/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-work-items-loading.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-8102-ad9e-00b203117acc/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81b3-9ba8-00b27aadd544/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/evidence/current/uiqa/ui-state-matrix-results.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy curl --fail --silent --show-error --request POST 'https://api.notion.com/v1/mcp/file_uploads/3dec564c-8d04-81aa-b148-00b205438f62/send' -H 'authorization: Bearer [REDACTED_SECRET]' --form 'file=@/Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/artifact-bridge/retained/frontend/tests/e2e/ui-state-matrix.json;type=application/json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"binding\\\": {\n    \\\"fabricJob\\\": \\\"CF-339b8d9b51744cc551c8886c\\\",\n    \\\"operation\\\": \\\"VERIFY\\\",\n    \\\"project\\\": \\\"react-fastapi-base\\\",\n    \\\"request\\\": \\\"ui-state-accessibility-matrix-v1-artifact-direct-r3\\\",\n    \\\"sourceSha\\\": \\\"09e300de562230dd4e11d8ecc8bc52979b2e5405\\\",\n    \\\"sourceTree\\\": \\\"43b3e15c3acefbd8e959018d0f0d1f7efe78feee\\\",\n    \\\"targetBranch\\\": \\\"main\\\"\n  },\n  \\\"completeBundle\\\": {\n    \\\"bytes\\\": 653425,\n    \\\"label\\\": \\\"Complete deterministic CHG-34 RC.12 retained evidence bundle\\\",\n    \\\"memberCount\\\": 23,\n    \\\"mimeType\\\": \\\"application/gzip\\\",\n    \\\"path\\\": \\\"chg34-rc12-evidence-bundle.tar.gz\\\",\n    \\\"sha256\\\": \\\"c6bbb65d5290dc9c79ad7f9a0f374018794594c0e7a488c6c4094bae8e921ad4\\\"\n  },\n  \\\"kind\\\": \\\"artifact-bridge-manifest\\\",\n  \\\"manifestFile\\\": \\\"artifact-manifest.json\\\",\n  \\\"purposes\\\": [\n    \\\"audit\\\",\n    \\\"visual\\\",\n    \\\"report\\\",\n    \\\"data\\\",\n    \\\"release\\\"\n  ],\n  \\\"retainedInventory\\\": {\n    \\\"artifactCount\\\": 23,\n    \\\"artifacts\\\": [\n      {\n        \\\"bytes\\\": 648,\n        \\\"kind\\\": \\\"release-identity\\\",\n        \\\"label\\\": \\\"RC.12 release identity\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"deploy/rc12-release-identity.json\\\",\n        \\\"role\\\": \\\"RC.12 release identity\\\",\n        \\\"sha256\\\": \\\"3f170cf32f04a6fd031f29062ece845d84bc751ba518f87de70132ed89fbe662\\\"\n      },\n      {\n        \\\"bytes\\\": 12529,\n        \\\"kind\\\": \\\"verification-report\\\",\n        \\\"label\\\": \\\"Full-stack verification report\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/full-stack/verification.json\\\",\n        \\\"role\\\": \\\"full-stack verification\\\",\n        \\\"sha256\\\": \\\"50d604ba94b9a7b1c5ff1b172bf2fb81f0d21f7d0456cb9bd467f4a65406c403\\\"\n      },\n      {\n        \\\"bytes\\\": 1547,\n        \\\"kind\\\": \\\"release-evidence\\\",\n        \\\"label\\\": \\\"CHG-34 release accessibility evidence\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/release/CHG-34-ui-accessibility.json\\\",\n        \\\"role\\\": \\\"CHG-34 release evidence\\\",\n        \\\"sha256\\\": \\\"acbbddfe10a70d31d203ce4b2725c8266f8fcd9b7371b50ca0f1b32f2f5d24bf\\\"\n      },\n      {\n        \\\"bytes\\\": 1211,\n        \\\"kind\\\": \\\"release-binding\\\",\n        \\\"label\\\": \\\"RC.12 source/evidence binding\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/release/rc12-evidence-binding.json\\\",\n        \\\"role\\\": \\\"RC.12 evidence binding\\\",\n        \\\"sha256\\\": \\\"b657403db69473ba491d85f1aa13b3da456d53e0c5c40b2890d2ffa6cb99cd2a\\\"\n      },\n      {\n        \\\"bytes\\\": 908,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-dialog-focus-recovery.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"baa8abd008ddf52f4445ac7bccb470f60bea47e2c66c0f2885e82622eb1f9872\\\"\n      },\n      {\n        \\\"bytes\\\": 425,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-forced-colors.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-forced-colors.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"bb368af1edbf90b7d868ecc8bb475ff0203c4beab715a2ae68169a0245ebe8c4\\\"\n      },\n      {\n        \\\"bytes\\\": 178611,\n        \\\"kind\\\": \\\"rendered-image\\\",\n        \\\"label\\\": \\\"Forced-colors rendered evidence\\\",\n        \\\"mimeType\\\": \\\"image/png\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-forced-colors.png\\\",\n        \\\"role\\\": \\\"decisive visual evidence\\\",\n        \\\"sha256\\\": \\\"6065454ddb9d05db231adbabead95edfab6b51a2996d08f42de66fbef48f4b93\\\"\n      },\n      {\n        \\\"bytes\\\": 395,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-grid-row-selection.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-grid-row-selection.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"933cc4c621bdf7b985dd5008f97cc8690ecb37a22f6b6162a25b44178e14d418\\\"\n      },\n      {\n        \\\"bytes\\\": 1051,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-grid-semantic-theme-modes.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"520d141d05b8cedde03d2c770c6a0b542695302bf75dc015b2e12d5af777ebce\\\"\n      },\n      {\n        \\\"bytes\\\": 161984,\n        \\\"kind\\\": \\\"rendered-image\\\",\n        \\\"label\\\": \\\"Grid semantic theme modes rendered evidence\\\",\n        \\\"mimeType\\\": \\\"image/png\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png\\\",\n        \\\"role\\\": \\\"decisive visual evidence\\\",\n        \\\"sha256\\\": \\\"53ac401319db1493bea9d46b009448f897c2bcf1c088b34cdfd5ed73bf791211\\\"\n      },\n      {\n        \\\"bytes\\\": 1589,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-notification-timestamp-contrast.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63\\\"\n      },\n      {\n        \\\"bytes\\\": 573,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-reduced-motion.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-reduced-motion.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca\\\"\n      },\n      {\n        \\\"bytes\\\": 411,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-reflow-320-css-px.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"316e1e9fe0238ff9fd366c0f21f748d2bb76c72264271abae9877e71ad8e58d4\\\"\n      },\n      {\n        \\\"bytes\\\": 152602,\n        \\\"kind\\\": \\\"rendered-image\\\",\n        \\\"label\\\": \\\"320 CSS px reflow rendered evidence\\\",\n        \\\"mimeType\\\": \\\"image/png\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png\\\",\n        \\\"role\\\": \\\"decisive visual evidence\\\",\n        \\\"sha256\\\": \\\"53941791974ad83571ad986a94513d1821c82f757d037c30f0115086b3cd03d5\\\"\n      },\n      {\n        \\\"bytes\\\": 718,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-saved-view-checkbox-selection.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813\\\"\n      },\n      {\n        \\\"bytes\\\": 477,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-theme-operations-primary-action.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498\\\"\n      },\n      {\n        \\\"bytes\\\": 195430,\n        \\\"kind\\\": \\\"rendered-image\\\",\n        \\\"label\\\": \\\"Operations theme primary action rendered evidence\\\",\n        \\\"mimeType\\\": \\\"image/png\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png\\\",\n        \\\"role\\\": \\\"decisive visual evidence\\\",\n        \\\"sha256\\\": \\\"d28ce2bce45402a38c72f5d1f2ba8503df850221f8aa7281bd7d93f6be902550\\\"\n      },\n      {\n        \\\"bytes\\\": 248,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-work-items-empty.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-work-items-empty.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"7dcb272a3abdc4ba87008fc191c04dabd611e58bc41665950bfec280ee39c9b1\\\"\n      },\n      {\n        \\\"bytes\\\": 263,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-work-items-error.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-work-items-error.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499\\\"\n      },\n      {\n        \\\"bytes\\\": 246,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-work-items-loading.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-work-items-loading.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a\\\"\n      },\n      {\n        \\\"bytes\\\": 281,\n        \\\"kind\\\": \\\"structured-evidence\\\",\n        \\\"label\\\": \\\"chg34-work-items-permission-readonly.json\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json\\\",\n        \\\"role\\\": \\\"structured UI/release evidence\\\",\n        \\\"sha256\\\": \\\"a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d\\\"\n      },\n      {\n        \\\"bytes\\\": 5890,\n        \\\"kind\\\": \\\"matrix-results\\\",\n        \\\"label\\\": \\\"UI state matrix result manifest\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"evidence/current/uiqa/ui-state-matrix-results.json\\\",\n        \\\"role\\\": \\\"matrix execution result\\\",\n        \\\"sha256\\\": \\\"b78ba3c86f0c2c54de0d80b7f8cc3978416ce24528ad893e2698dabaf9a641f6\\\"\n      },\n      {\n        \\\"bytes\\\": 12822,\n        \\\"kind\\\": \\\"matrix-definition\\\",\n        \\\"label\\\": \\\"Canonical UI state matrix registry\\\",\n        \\\"mimeType\\\": \\\"application/json\\\",\n        \\\"path\\\": \\\"frontend/tests/e2e/ui-state-matrix.json\\\",\n        \\\"role\\\": \\\"canonical matrix contract\\\",\n        \\\"sha256\\\": \\\"a3efb74bd029edf695a891fb3084611f51b177b3196d8e520d17a04dfde9a631\\\"\n      }\n    ],\n    \\\"totalBytes\\\": 730859\n  },\n  \\\"schemaVersion\\\": \\\"project-os.artifact-bundle/1\\\",\n  \\\"source\\\": {\n    \\\"repository\\\": \\\"kimhw8084/react-fastapi-base\\\",\n    \\\"sha\\\": \\\"09e300de562230dd4e11d8ecc8bc52979b2e5405\\\",\n    \\\"targetBranch\\\": \\\"main\\\",\n    \\\"tree\\\": \\\"43b3e15c3acefbd8e959018d0f0d1f7efe78feee\\\",\n    \\\"verifiedExecutableSource\\\": {\n      \\\"commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\",\n      \\\"digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\"\n    }\n  }\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"candidate_version\\\": \\\"1.0.0-rc.12\\\",\n  \\\"code_ready\\\": true,\n  \\\"generated_by\\\": \\\"scripts/generate_release_identity.py\\\",\n  \\\"identity_type\\\": \\\"repository_rc12_release\\\",\n  \\\"production_ready\\\": false,\n  \\\"profile\\\": \\\"company\\\",\n  \\\"project\\\": \\\"react-fastapi-base\\\",\n  \\\"release_status\\\": \\\"NOT_CERTIFIED\\\",\n  \\\"schema_version\\\": 1,\n  \\\"source_digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\",\n  \\\"source_evidence\\\": {\n    \\\"locator\\\": \\\"evidence/current/full-stack/source-hashes.json\\\",\n    \\\"sha256\\\": \\\"8ee41b73a30b8ae4f1e8a62618463b1f54e0e305b38e97dd02e2796228d95e15\\\"\n  },\n  \\\"verified_source_commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\"\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"schema_version\\\": 1,\n  \\\"source_commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\",\n  \\\"source_digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\",\n  \\\"source_hashes\\\": \\\"source-hashes.json\\\",\n  \\\"python_version\\\": \\\"3.11.7\\\",\n  \\\"platform\\\": \\\"macOS-26.6.2-arm64-arm-64bit\\\",\n  \\\"created_at\\\": \\\"2026-09-17T19:26:51.405860+00:00\\\",\n  \\\"timestamp\\\": \\\"2026-09-17T19:26:51.406183+00:00\\\",\n  \\\"command\\\": [\n    \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n    \\\"scripts/verify.py\\\",\n    \\\"--output\\\",\n    \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack\\\",\n    \\\"--release\\\"\n  ],\n  \\\"exit_code\\\": 0,\n  \\\"environment\\\": {\n    \\\"platform\\\": \\\"macOS-26.6.2-arm64-arm-64bit\\\",\n    \\\"python\\\": \\\"3.11.7\\\"\n  },\n  \\\"hashes\\\": {\n    \\\"source_digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\"\n  },\n  \\\"release_status\\\": \\\"NOT_CERTIFIED\\\",\n  \\\"production_ready\\\": false,\n  \\\"code_ready\\\": true,\n  \\\"readiness_matrix\\\": \\\"evidence/current/release/rc12-readiness-matrix.json\\\",\n  \\\"readiness_matrix_sha256\\\": \\\"ab611b5aed80065b1a25cea6b6c07ffbebb34e0f27360adb03973cb1573c04e1\\\",\n  \\\"results\\\": [\n    {\n      \\\"name\\\": \\\"backend-tests\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"backend-tests.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/backend_test_runner.py\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack/backend-junit.xml\\\"\n      ],\n      \\\"duration_seconds\\\": 28.914\n    },\n    {\n      \\\"name\\\": \\\"tooling-tests\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"tooling-tests.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"-m\\\",\n        \\\"pytest\\\",\n        \\\"-q\\\",\n        \\\"tests\\\"\n      ],\n      \\\"duration_seconds\\\": 10.488\n    },\n    {\n      \\\"name\\\": \\\"architecture\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"architecture.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/check_architecture.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.386\n    },\n    {\n      \\\"name\\\": \\\"security-source\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"security-source.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/security_source_check.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.162\n    },\n    {\n      \\\"name\\\": \\\"configuration-contract\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"configuration-contract.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/check_configuration_contract.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.116\n    },\n    {\n      \\\"name\\\": \\\"checkpoint-manifest\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"checkpoint-manifest.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/generate_checkpoint_manifest.py\\\",\n        \\\"--check\\\"\n      ],\n      \\\"duration_seconds\\\": 0.362\n    },\n    {\n      \\\"name\\\": \\\"version-metadata\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"version-metadata.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/version_check.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.016\n    },\n    {\n      \\\"name\\\": \\\"performance-owned-algorithms\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"performance-owned-algorithms.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/performance_check.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.31\n    },\n    {\n      \\\"name\\\": \\\"performance-stress\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"performance-stress.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/performance_stress.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.123\n    },\n    {\n      \\\"name\\\": \\\"generated-contracts\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"generated-contracts.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/generate_contracts.py\\\",\n        \\\"--check\\\"\n      ],\n      \\\"duration_seconds\\\": 1.381\n    },\n    {\n      \\\"name\\\": \\\"ui-state-matrix-contract\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"ui-state-matrix-contract.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/check_ui_state_matrix.py\\\"\n      ],\n      \\\"duration_seconds\\\": 0.026\n    },\n    {\n      \\\"name\\\": \\\"api-compatibility\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"api-compatibility.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/check_api_compatibility.py\\\",\n        \\\"--base-ref\\\",\n        \\\"1de9cfae29450990d201785f35992c72ff0d0684\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack/api-compatibility.json\\\"\n      ],\n      \\\"duration_seconds\\\": 0.148\n    },\n    {\n      \\\"name\\\": \\\"typescript-syntax-and-pure-client\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"typescript-syntax-and-pure-client.log\\\",\n      \\\"command\\\": [\n        \\\"node\\\",\n        \\\"scripts/source_smoke.mjs\\\"\n      ],\n      \\\"duration_seconds\\\": 0.45\n    },\n    {\n      \\\"name\\\": \\\"static-server\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"static-server.log\\\",\n      \\\"command\\\": [\n        \\\"node\\\",\n        \\\"--test\\\",\n        \\\"frontend/tests/server.test.mjs\\\"\n      ],\n      \\\"duration_seconds\\\": 0.122\n    },\n    {\n      \\\"name\\\": \\\"localhost-http\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"localhost-http.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/http_smoke.py\\\"\n      ],\n      \\\"duration_seconds\\\": 2.027\n    },\n    {\n      \\\"name\\\": \\\"engineering-widget-layer\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"engineering-widget-layer.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/verify_lab.py\\\",\n        \\\"--mode\\\",\n        \\\"http\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack/native-lab\\\"\n      ],\n      \\\"duration_seconds\\\": 21.5\n    },\n    {\n      \\\"name\\\": \\\"required-catalog-completeness\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"required-catalog-completeness.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/catalog.py\\\",\n        \\\"--check\\\",\n        \\\"--release\\\"\n      ],\n      \\\"duration_seconds\\\": 0.062\n    },\n    {\n      \\\"name\\\": \\\"upgrade-fixture\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"upgrade-fixture.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/upgrade_fixture.py\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack/upgrade-fixture.json\\\"\n      ],\n      \\\"duration_seconds\\\": 16.48\n    },\n    {\n      \\\"name\\\": \\\"object-inclusive-backup-restore\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"object-inclusive-backup-restore.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/recovery_fixture.py\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/recovery/object-restore.json\\\"\n      ],\n      \\\"duration_seconds\\\": 1.104\n    },\n    {\n      \\\"name\\\": \\\"reference-apps\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"reference-apps.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/reference_app_proof.py\\\"\n      ],\n      \\\"duration_seconds\\\": 101.913\n    },\n    {\n      \\\"name\\\": \\\"macos-fresh-install\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"macos-fresh-install.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/fresh_clone_check.py\\\",\n        \\\"--output\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/full-stack/fresh-clone-macos.json\\\"\n      ],\n      \\\"duration_seconds\\\": 157.552\n    },\n    {\n      \\\"name\\\": \\\"frontend-typecheck\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"frontend-typecheck.log\\\",\n      \\\"command\\\": [\n        \\\"npm\\\",\n        \\\"run\\\",\n        \\\"typecheck\\\"\n      ],\n      \\\"duration_seconds\\\": 3.715\n    },\n    {\n      \\\"name\\\": \\\"frontend-unit\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"frontend-unit.log\\\",\n      \\\"command\\\": [\n        \\\"npm\\\",\n        \\\"test\\\"\n      ],\n      \\\"duration_seconds\\\": 1.744\n    },\n    {\n      \\\"name\\\": \\\"frontend-build\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"frontend-build.log\\\",\n      \\\"command\\\": [\n        \\\"npm\\\",\n        \\\"run\\\",\n        \\\"build\\\"\n      ],\n      \\\"duration_seconds\\\": 3.8\n    },\n    {\n      \\\"name\\\": \\\"frontend-storybook\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"frontend-storybook.log\\\",\n      \\\"command\\\": [\n        \\\"npm\\\",\n        \\\"run\\\",\n        \\\"build:storybook\\\"\n      ],\n      \\\"duration_seconds\\\": 1.625\n    },\n    {\n      \\\"name\\\": \\\"browser-e2e-accessibility\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"browser-e2e-accessibility.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/e2e_runner.py\\\"\n      ],\n      \\\"duration_seconds\\\": 35.004\n    },\n    {\n      \\\"name\\\": \\\"ui-state-matrix-results\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"ui-state-matrix-results.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"scripts/check_ui_state_matrix.py\\\",\n        \\\"--results\\\",\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/uiqa/ui-state-matrix-results.json\\\"\n      ],\n      \\\"duration_seconds\\\": 0.039\n    },\n    {\n      \\\"name\\\": \\\"npm-advisories\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"npm-advisories.log\\\",\n      \\\"command\\\": [\n        \\\"npm\\\",\n        \\\"audit\\\",\n        \\\"--audit-level=high\\\"\n      ],\n      \\\"duration_seconds\\\": 0.774\n    },\n    {\n      \\\"name\\\": \\\"python-advisories\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exit_code\\\": 0,\n      \\\"log\\\": \\\"python-advisories.log\\\",\n      \\\"command\\\": [\n        \\\"/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python\\\",\n        \\\"-m\\\",\n        \\\"pip_audit\\\",\n        \\\"-r\\\",\n        \\\"backend/requirements.lock\\\"\n      ],\n      \\\"duration_seconds\\\": 6.067\n    },\n    {\n      \\\"name\\\": \\\"company-identity\\\",\n      \\\"status\\\": \\\"BLOCKED\\\",\n      \\\"reason\\\": \\\"Two actual company users and the PaaS execution/ingress contract must be verified.\\\",\n      \\\"required_for\\\": \\\"deployment\\\"\n    },\n    {\n      \\\"name\\\": \\\"company-storage\\\",\n      \\\"status\\\": \\\"BLOCKED\\\",\n      \\\"reason\\\": \\\"Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount.\\\",\n      \\\"required_for\\\": \\\"deployment\\\"\n    },\n    {\n      \\\"name\\\": \\\"company-deployment\\\",\n      \\\"status\\\": \\\"BLOCKED\\\",\n      \\\"reason\\\": \\\"Separate frontend/backend publishes and real browser routing have not been exercised here.\\\",\n      \\\"required_for\\\": \\\"deployment\\\"\n    }\n  ],\n  \\\"note\\\": \\\"Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.\\\"\n}\n'\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 65,
+        "output_sha256": "23cd1e914394993268da45d510e80ab17a9da7e4b6f6d95dd526f168ffd0a086",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"api_contract_impact\\\": {\n    \\\"api_major\\\": 1,\n    \\\"base_sha\\\": \\\"1de9cfae29450990d201785f35992c72ff0d0684\\\",\n    \\\"contract_revision\\\": 1,\n    \\\"observable_change\\\": false\n  },\n  \\\"change\\\": \\\"CHG-34\\\",\n  \\\"evidence_binding\\\": \\\"evidence/current/release/rc12-evidence-binding.json\\\",\n  \\\"evidence_policy\\\": \\\"No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.\\\",\n  \\\"external_blockers\\\": [\n    \\\"identity\\\",\n    \\\"storage\\\",\n    \\\"deployment\\\",\n    \\\"ui_accessibility\\\",\n    \\\"performance\\\",\n    \\\"operations\\\"\n  ],\n  \\\"final_company_qualification_schema_version\\\": 2,\n  \\\"mandatory_gate_ids\\\": [\n    \\\"technical_release\\\",\n    \\\"identity\\\",\n    \\\"storage\\\",\n    \\\"deployment\\\",\n    \\\"ui_accessibility\\\",\n    \\\"performance\\\",\n    \\\"operations\\\",\n    \\\"release_evidence\\\"\n  ],\n  \\\"manifest\\\": \\\"evidence/current/release/rc12-manifest.json\\\",\n  \\\"production_ready\\\": false,\n  \\\"project\\\": \\\"react-fastapi-base\\\",\n  \\\"readiness_matrix\\\": \\\"evidence/current/release/rc12-readiness-matrix.json\\\",\n  \\\"release_status\\\": \\\"NOT_CERTIFIED\\\",\n  \\\"schema_version\\\": 2,\n  \\\"source_digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\",\n  \\\"template\\\": \\\"deploy/company-qualification.template.json\\\",\n  \\\"typed_schema\\\": \\\"deploy/company-qualification.schema.json\\\",\n  \\\"uiqa_matrix\\\": {\n    \\\"locator\\\": \\\"evidence/current/uiqa/ui-state-matrix-results.json\\\",\n    \\\"required_for\\\": \\\"code\\\",\n    \\\"sha256\\\": \\\"b78ba3c86f0c2c54de0d80b7f8cc3978416ce24528ad893e2698dabaf9a641f6\\\"\n  },\n  \\\"verified_source_commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\",\n  \\\"version\\\": \\\"1.0.0-rc.12\\\"\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"binding_status\\\": \\\"PASS\\\",\n  \\\"evidence_commit\\\": \\\"9f767485db5d3e7fd9b1fc593fca9f3ce8c274d4\\\",\n  \\\"manifest\\\": {\n    \\\"locator\\\": \\\"evidence/current/release/rc12-manifest.json\\\",\n    \\\"sha256\\\": \\\"4586b1442c9607258535286a138b1fa7abece326fbe6db7efef01c7a18f34458\\\"\n  },\n  \\\"note\\\": \\\"Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.\\\",\n  \\\"profile\\\": \\\"company\\\",\n  \\\"project\\\": \\\"react-fastapi-base\\\",\n  \\\"readiness_matrix\\\": {\n    \\\"locator\\\": \\\"evidence/current/release/rc12-readiness-matrix.json\\\",\n    \\\"sha256\\\": \\\"ab611b5aed80065b1a25cea6b6c07ffbebb34e0f27360adb03973cb1573c04e1\\\"\n  },\n  \\\"result\\\": \\\"PASS_SOURCE_BOUND_NOT_CERTIFIED\\\",\n  \\\"schema_version\\\": 2,\n  \\\"source_digest\\\": \\\"6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8\\\",\n  \\\"target_base_sha\\\": \\\"1de9cfae29450990d201785f35992c72ff0d0684\\\",\n  \\\"uiqa_matrix\\\": {\n    \\\"locator\\\": \\\"evidence/current/uiqa/ui-state-matrix-results.json\\\",\n    \\\"required_for\\\": \\\"code\\\",\n    \\\"sha256\\\": \\\"b78ba3c86f0c2c54de0d80b7f8cc3978416ce24528ad893e2698dabaf9a641f6\\\"\n  },\n  \\\"verified_source_commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\",\n  \\\"version\\\": \\\"1.0.0-rc.12\\\"\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"schema_version\\\": 1,\n  \\\"result_kind\\\": \\\"browser-computed-uiqa\\\",\n  \\\"matrix_id\\\": \\\"project-os-ui-state-matrix\\\",\n  \\\"matrix_sha256\\\": \\\"a3efb74bd029edf695a891fb3084611f51b177b3196d8e520d17a04dfde9a631\\\",\n  \\\"source_commit\\\": \\\"32d1cc0d3bfb6bc76413103566162c304f2843f1\\\",\n  \\\"overall_status\\\": \\\"PASS\\\",\n  \\\"results\\\": [\n    {\n      \\\"state_id\\\": \\\"chg34-dialog-focus-recovery\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-013\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"focus.visible-recovery\\\",\n        \\\"keyboard.enter-space-escape\\\",\n        \\\"keyboard.tab-shift-tab\\\",\n        \\\"semantics.role-name-state\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-forced-colors\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-016\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"focus.visible-recovery\\\",\n        \\\"forced-colors.active\\\",\n        \\\"semantics.role-name-state\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-forced-colors.json\\\",\n        \\\"evidence/current/uiqa/rendered/chg34-forced-colors.png\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-grid-row-selection\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-012\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"focus.visible-recovery\\\",\n        \\\"keyboard.tab-shift-tab\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-grid-row-selection.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-grid-semantic-theme-modes\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-002\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"contrast.high\\\",\n        \\\"theme.dark\\\",\n        \\\"theme.light\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json\\\",\n        \\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-notification-timestamp-contrast\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-007\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"contrast.high\\\",\n        \\\"theme.dark\\\",\n        \\\"theme.light\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-reduced-motion\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-015\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"motion.reduced\\\",\n        \\\"semantics.role-name-state\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-reduced-motion.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-reflow-320-css-px\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-014\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"reflow.320-css-px\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.narrow\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json\\\",\n        \\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-saved-view-checkbox-selection\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-003\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"focus.visible-recovery\\\",\n        \\\"keyboard.enter-space-escape\\\",\n        \\\"semantics.role-name-state\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-theme-operations-primary-action\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-001\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"theme.dark\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json\\\",\n        \\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-empty\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-009\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-work-items-empty.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-error\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-010\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-work-items-error.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-loading\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-008\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-work-items-loading.json\\\"\n      ]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-permission-readonly\\\",\n      \\\"browser_test_id\\\": \\\"uiqa-011\\\",\n      \\\"status\\\": \\\"PASS\\\",\n      \\\"exercised_dimensions\\\": [\n        \\\"axe.serious-critical\\\",\n        \\\"browser-computed\\\",\n        \\\"semantics.role-name-state\\\",\n        \\\"viewport.desktop\\\"\n      ],\n      \\\"artifact_locators\\\": [\n        \\\"evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json\\\"\n      ]\n    }\n  ]\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy python3 -c 'import hashlib,sys;print(hashlib.sha256(sys.argv[1].encode('\\\\''utf-8'\\\\'')).hexdigest())' '{\n  \\\"schema_version\\\": 1,\n  \\\"matrix_id\\\": \\\"project-os-ui-state-matrix\\\",\n  \\\"change\\\": \\\"CHG-34\\\",\n  \\\"source_of_truth\\\": \\\"frontend/tests/e2e/ui-state-matrix.json\\\",\n  \\\"material_state_classes\\\": [\n    \\\"empty\\\",\n    \\\"error\\\",\n    \\\"loading\\\",\n    \\\"normal\\\",\n    \\\"permission\\\",\n    \\\"selection\\\"\n  ],\n  \\\"required_dimensions\\\": [\n    \\\"theme.light\\\",\n    \\\"theme.dark\\\",\n    \\\"contrast.high\\\",\n    \\\"forced-colors.active\\\",\n    \\\"viewport.desktop\\\",\n    \\\"viewport.narrow\\\",\n    \\\"reflow.320-css-px\\\",\n    \\\"motion.reduced\\\",\n    \\\"keyboard.tab-shift-tab\\\",\n    \\\"keyboard.enter-space-escape\\\",\n    \\\"semantics.role-name-state\\\",\n    \\\"focus.visible-recovery\\\",\n    \\\"browser-computed\\\",\n    \\\"axe.serious-critical\\\"\n  ],\n  \\\"rows\\\": [\n    {\n      \\\"state_id\\\": \\\"chg34-theme-operations-primary-action\\\",\n      \\\"surface_component_family\\\": \\\"shared-theme/action\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"runtime-controls: /work-items with Appearance=dark and Theme=operations\\\",\n      \\\"required_dimensions\\\": [\\\"theme.dark\\\", \\\"browser-computed\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"primary action retains an accessible name\\\", \\\"dark accent text has at least 4.5:1 computed contrast\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json\\\", \\\"evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png\\\"],\n        \\\"claims\\\": [\\\"browser-computed contrast\\\", \\\"rendered dark-theme action\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-001\\\",\n      \\\"legacy_uiqa_ids\\\": [\\\"UIQA-001\\\"]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-grid-semantic-theme-modes\\\",\n      \\\"surface_component_family\\\": \\\"AG Grid/shared workspace\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"seed-demo /work-items page with 50-row server page and runtime theme controls\\\",\n      \\\"required_dimensions\\\": [\\\"theme.light\\\", \\\"theme.dark\\\", \\\"contrast.high\\\", \\\"viewport.desktop\\\", \\\"browser-computed\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"grid has an accessible label\\\", \\\"virtualized rendering remains bounded\\\", \\\"row text remains visible in light, dark and high contrast\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json\\\", \\\"evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png\\\"],\n        \\\"claims\\\": [\\\"browser-computed grid colors\\\", \\\"bounded rendered rows\\\", \\\"rendered high-contrast grid\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-002\\\",\n      \\\"legacy_uiqa_ids\\\": [\\\"UIQA-002\\\"]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-saved-view-checkbox-selection\\\",\n      \\\"surface_component_family\\\": \\\"Saved Views/native checkbox\\\",\n      \\\"material_state_class\\\": \\\"selection\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"open Save current view dialog from /work-items\\\",\n      \\\"required_dimensions\\\": [\\\"keyboard.enter-space-escape\\\", \\\"semantics.role-name-state\\\", \\\"focus.visible-recovery\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"Favorite and Default controls are native checkboxes\\\", \\\"Space toggles checked state\\\", \\\"checkboxes expose stable accessible names\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json\\\"],\n        \\\"claims\\\": [\\\"native checkbox semantics\\\", \\\"computed control geometry\\\", \\\"keyboard selection\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-003\\\",\n      \\\"legacy_uiqa_ids\\\": [\\\"UIQA-003\\\"]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-notification-timestamp-contrast\\\",\n      \\\"surface_component_family\\\": \\\"System/notification list\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"route-intercept notification and preference endpoints with fixed UTC records\\\",\n      \\\"required_dimensions\\\": [\\\"theme.light\\\", \\\"theme.dark\\\", \\\"contrast.high\\\", \\\"browser-computed\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"notification timestamp text remains visible on every supported color mode\\\", \\\"notification list remains a named tab surface\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json\\\"],\n        \\\"claims\\\": [\\\"browser-computed timestamp contrast\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-007\\\",\n      \\\"legacy_uiqa_ids\\\": [\\\"UIQA-007\\\"]\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-loading\\\",\n      \\\"surface_component_family\\\": \\\"shared workspace data query\\\",\n      \\\"material_state_class\\\": \\\"loading\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"hold GET /api/v1/work-items until the loading assertion completes\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.desktop\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"loading status is intentional and named\\\", \\\"essential workspace shell remains available while records are pending\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-work-items-loading.json\\\"],\n        \\\"claims\\\": [\\\"deterministic loading status\\\", \\\"semantic status role\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-008\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-empty\\\",\n      \\\"surface_component_family\\\": \\\"shared workspace data query\\\",\n      \\\"material_state_class\\\": \\\"empty\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"fulfill GET /api/v1/work-items with an empty WorkItemPage\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.desktop\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"empty result is distinguished from loading and error\\\", \\\"empty message explains the next action without exposing a fake record\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-work-items-empty.json\\\"],\n        \\\"claims\\\": [\\\"deterministic empty state\\\", \\\"semantic empty heading\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-009\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-error\\\",\n      \\\"surface_component_family\\\": \\\"shared workspace data query\\\",\n      \\\"material_state_class\\\": \\\"error\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"fulfill GET /api/v1/work-items with a stable 503 error envelope\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.desktop\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"error is exposed through an alert\\\", \\\"error state is not rendered as an empty dataset\\\", \\\"retry action is named\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-work-items-error.json\\\"],\n        \\\"claims\\\": [\\\"deterministic error alert\\\", \\\"named retry action\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-010\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-work-items-permission-readonly\\\",\n      \\\"surface_component_family\\\": \\\"shared workspace permission boundary\\\",\n      \\\"material_state_class\\\": \\\"permission\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"route-intercept bootstrap with a tenant that has no write or restore permission\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.desktop\\\", \\\"semantics.role-name-state\\\", \\\"browser-computed\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"Access is announced as Read only\\\", \\\"write actions are absent rather than misleadingly interactive\\\", \\\"records remain readable\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json\\\"],\n        \\\"claims\\\": [\\\"read-only action visibility\\\", \\\"computed visibility of primary write action\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-011\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-grid-row-selection\\\",\n      \\\"surface_component_family\\\": \\\"AG Grid/shared workspace selection\\\",\n      \\\"material_state_class\\\": \\\"selection\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"seed-demo /work-items page and activate the first row selection checkbox\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.desktop\\\", \\\"keyboard.tab-shift-tab\\\", \\\"semantics.role-name-state\\\", \\\"focus.visible-recovery\\\", \\\"browser-computed\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"selection uses the platform checkbox semantics\\\", \\\"selected action region appears only after actual selection\\\", \\\"focus remains visible on the active control\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-grid-row-selection.json\\\"],\n        \\\"claims\\\": [\\\"actual selection state\\\", \\\"selected action region\\\", \\\"computed focus outline\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-012\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-dialog-focus-recovery\\\",\n      \\\"surface_component_family\\\": \\\"platform dialog/overlay\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"open Save current view dialog from its stable invoking button\\\",\n      \\\"required_dimensions\\\": [\\\"keyboard.tab-shift-tab\\\", \\\"keyboard.enter-space-escape\\\", \\\"semantics.role-name-state\\\", \\\"focus.visible-recovery\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"dialog has a stable accessible name\\\", \\\"Escape closes the overlay\\\", \\\"focus returns to the logical Save view invoker\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json\\\"],\n        \\\"claims\\\": [\\\"visible focus\\\", \\\"Escape close\\\", \\\"focus restoration\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-013\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-reflow-320-css-px\\\",\n      \\\"surface_component_family\\\": \\\"shared workspace layout\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"set viewport to exactly 320 CSS px wide and open /work-items\\\",\n      \\\"required_dimensions\\\": [\\\"viewport.narrow\\\", \\\"reflow.320-css-px\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"essential heading, search and workspace action remain available\\\", \\\"page does not require inappropriate two-dimensional scrolling\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json\\\", \\\"evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png\\\"],\n        \\\"claims\\\": [\\\"320 CSS px reflow\\\", \\\"horizontal and vertical overflow dimensions\\\", \\\"rendered narrow layout\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-014\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-reduced-motion\\\",\n      \\\"surface_component_family\\\": \\\"shared motion/token platform\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"Playwright emulateMedia prefers-reduced-motion=reduce before loading /work-items\\\",\n      \\\"required_dimensions\\\": [\\\"motion.reduced\\\", \\\"browser-computed\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"reduced-motion media query is active\\\", \\\"shared transitions are effectively disabled\\\", \\\"essential content is present without waiting for animation\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-reduced-motion.json\\\"],\n        \\\"claims\\\": [\\\"reduced-motion media emulation\\\", \\\"computed transition duration\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-015\\\"\n    },\n    {\n      \\\"state_id\\\": \\\"chg34-forced-colors\\\",\n      \\\"surface_component_family\\\": \\\"shared theme/high-contrast platform\\\",\n      \\\"material_state_class\\\": \\\"normal\\\",\n      \\\"applicability\\\": \\\"applicable\\\",\n      \\\"deterministic_setup_fixture\\\": \\\"Playwright emulateMedia forced-colors=active with a visible workspace action\\\",\n      \\\"required_dimensions\\\": [\\\"forced-colors.active\\\", \\\"browser-computed\\\", \\\"focus.visible-recovery\\\", \\\"semantics.role-name-state\\\", \\\"axe.serious-critical\\\"],\n      \\\"semantic_expectations\\\": [\\\"forced-colors media query is active\\\", \\\"named action remains visible and focusable\\\", \\\"computed foreground/background are not transparent\\\"],\n      \\\"required_evidence\\\": {\n        \\\"artifact_locators\\\": [\\\"evidence/current/uiqa/rendered/chg34-forced-colors.json\\\", \\\"evidence/current/uiqa/rendered/chg34-forced-colors.png\\\"],\n        \\\"claims\\\": [\\\"forced-colors media emulation\\\", \\\"browser-computed rendered action\\\"],\n        \\\"axe_serious_critical\\\": true\n      },\n      \\\"browser_test_id\\\": \\\"uiqa-016\\\"\n    }\n  ]\n}\n'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "update_properties",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "replace_content",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "update_properties",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD''^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor 1de9cfae29450990d201785f35992c72ff0d0684 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --quiet 09e300de562230dd4e11d8ecc8bc52979b2e5405 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk mkdir -p /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c && rtk cp artifact-manifest.json /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c/r3-artifact-manifest.json && rtk cp chg34-rc12-evidence-bundle.tar.gz /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c/r3-complete-evidence-bundle.tar.gz && rtk python3 - <<'PY'\nimport json\nfrom pathlib import Path\n\njob = 'CF-339b8d9b51744cc551c8886c'\nbase = Path('/Users/haewonkim/.codex-fabric/jobs') / f'{job}.executed'\nartifact = base / 'artifact-bridge'\nresults = base / 'results' / job\nmanifest = json.loads((artifact / 'artifact-manifest.json').read_text(encoding='utf-8'))\nreceipt = {\n    'schemaVersion': 'project-os.artifact-stage-receipt/1',\n    'kind': 'project-os.artifact-stage-receipt',\n    'status': 'Staged',\n    'stageErrorCode': None,\n    'fabric': {\n        'jobId': job,\n        'project': 'react-fastapi-base',\n        'request': 'ui-state-accessibility-matrix-v1-artifact-direct-r3',\n        'operation': 'VERIFY',\n        'workBranch': 'codex/react-fastapi-base-ui-state-accessibility-matrix-v1-artifact-direct-r3',\n        'targetBranch': 'main',\n    },\n    'artifactRun': {\n        'runId': 'AR-8',\n        'pageId': '3dec564c-8d04-8100-8c10-ecd694e2dabd',\n        'url': 'https://app.notion.com/p/3dec564c8d0481008c10ecd694e2dabd',\n        'database': 'Artifact Runs',\n        'status': 'Staged',\n    },\n    'bridge': {\n        'implementation': 'bounded-direct-notion-api-fallback',\n        'qualifiedHelper': 'not invoked; synthetic AR-2 helper explicitly excluded',\n        'provider': 'host-managed Notion connector',\n        'bridgeVersion': 'project-os.artifact-bundle/1 / direct-notion-api-fallback',\n        'uploadFlow': 'Notion File Upload create -> signed multipart upload -> uploaded attachment -> Artifact Run properties/content',\n        'credentialRecorded': False,\n    },\n    'source': {\n        'repository': 'kimhw8084/react-fastapi-base',\n        'head': '09e300de562230dd4e11d8ecc8bc52979b2e5405',\n        'tree': '43b3e15c3acefbd8e959018d0f0d1f7efe78feee',\n        'base': '1de9cfae29450990d201785f35992c72ff0d0684',\n        'baseAncestor': True,\n        'verifiedExecutableCommit': '32d1cc0d3bfb6bc76413103566162c304f2843f1',\n        'verifiedExecutableDigest': '6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8',\n        'productSourceChanged': False,\n    },\n    'manifest': {\n        'relativePath': 'artifact-manifest.json',\n        'sha256': '176f046be897f3b241baf121a05431f44341e27949ea1359133eec5b59f41462',\n        'bytes': 10147,\n        'artifactCount': 23,\n        'retainedBytes': 730859,\n    },\n    'bundle': {\n        'relativePath': 'chg34-rc12-evidence-bundle.tar.gz',\n        'sha256': 'c6bbb65d5290dc9c79ad7f9a0f374018794594c0e7a488c6c4094bae8e921ad4',\n        'bytes': 653425,\n        'memberCount': 23,\n    },\n    'upload': {\n        'providerFileAttachmentCount': 25,\n        'artifactPropertyFileCount': 24,\n        'manifestPropertyFileCount': 1,\n        'uploadedBytes': 1394431,\n        'bytesFormula': '10,147 manifest + 730,859 retained inventory + 653,425 complete bundle',\n    },\n    'directReaderPublication': {\n        'status': 'PRESENT',\n        'imageBlocks': 4,\n        'structuredFileBlocks': 21,\n        'canonicalDecisivePaths': [\n            'evidence/current/uiqa/rendered/chg34-forced-colors.png',\n            'evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png',\n            'evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png',\n            'evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png',\n            'evidence/current/uiqa/ui-state-matrix-results.json',\n            'frontend/tests/e2e/ui-state-matrix.json',\n            'evidence/current/release/CHG-34-ui-accessibility.json',\n            'evidence/current/release/rc12-evidence-binding.json',\n            'deploy/rc12-release-identity.json',\n            'evidence/current/full-stack/verification.json',\n        ],\n    },\n    'postStageReadback': {\n        'verified': True,\n        'provider': 'Notion fetch plus upload/readback connector',\n        'exactTuple': True,\n        'projectRelation': True,\n        'sourceChangeRelation': True,\n        'statusStaged': True,\n        'stageErrorEmpty': True,\n        'artifactCountMatchesManifest': True,\n        'uploadedBytesMatchesFormula': True,\n        'manifestHashMatches': True,\n        'bundleHashRecordedAndMatchesLocal': True,\n        'all25ProviderContentLengthsMatchLocal': True,\n        'decisiveStructuredDownloadHashMatches': True,\n        'decisiveStructuredDownloadCount': 7,\n        'requiredReaderBlocksPresent': True,\n        'exactActiveLogicalRun': True,\n        'binaryDownloadLimitation': 'The connected Notion MCP exposes download_attachment only for UTF-8 text; the four PNGs and gzip bundle were provider-uploaded with exact local byte lengths and published as direct reader blocks, but no binary signed-URL download surface was available in this execution.',\n    },\n    'lineage': {\n        'r1': {\n            'request': 'ui-state-accessibility-matrix-v1',\n            'fabricJob': 'CF-beef6535001582ee07d729fc',\n            'candidateHead': '09e300de562230dd4e11d8ecc8bc52979b2e5405',\n        },\n        'r2': {\n            'request': 'ui-state-accessibility-matrix-v1-artifact-handoff-verify',\n            'fabricJob': 'CF-3d6534df5bb0040bb678620f',\n            'candidateHead': '09e300de562230dd4e11d8ecc8bc52979b2e5405',\n            'helperFailure': 'INVALID_BUNDLE_MANIFEST before upload; helper not invoked in R3',\n        },\n    },\n    'integrity': {\n        'productSourceChanged': False,\n        'repositoryEvidenceOnlyCommitCreated': False,\n        'selfAccepted': False,\n        'promoted': False,\n        'finalBranchHeadExact': True,\n        'finalTreeExact': True,\n        'worktreeClean': True,\n    },\n    'externalCompanyQualificationBlockers': [\n        'identity',\n        'storage',\n        'deployment',\n        'ui_accessibility',\n        'performance',\n        'operations',\n    ],\n    'productionReady': False,\n    'durableEvidence': {\n        'receiptPath': f'results/{job}/r3-stage-receipt.json',\n        'manifestPath': f'results/{job}/r3-artifact-manifest.json',\n        'bundlePath': f'results/{job}/r3-complete-evidence-bundle.tar.gz',\n    },\n}\n(results / 'r3-stage-receipt.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\\\\n', encoding='utf-8')\nprint(json.dumps({'receipt':str(results/'r3-stage-receipt.json'),'manifest':str(results/'r3-artifact-manifest.json'),'bundle':str(results/'r3-complete-evidence-bundle.tar.gz'),'status':'Staged','artifactRun':'AR-8'}, sort_keys=True))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk sha256sum /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c/r3-artifact-manifest.json /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c/r3-complete-evidence-bundle.tar.gz && rtk tar -tzf /Users/haewonkim/.codex-fabric/jobs/CF-339b8d9b51744cc551c8886c.executed/results/CF-339b8d9b51744cc551c8886c/r3-complete-evidence-bundle.tar.gz | rtk wc -l && rtk python3 scripts/check_ui_state_matrix.py --results evidence/current/uiqa/ui-state-matrix-results.json && rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 557,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 97.97,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 12533504,
+      "fresh_input_tokens": 260188,
+      "input_tokens": 12793692,
+      "non_reasoning_output_tokens": 29750,
+      "output_tokens": 59620,
+      "reasoning_output_tokens": 29870,
+      "total_processed_tokens": 12853312
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "09e300de562230dd4e11d8ecc8bc52979b2e5405",
+      "subject": "Refresh RC.12 checkpoint manifest"
+    },
+    {
+      "sha": "e548751809b3f0c6e0a5cba73362eea6fcc568a2",
+      "subject": "Bind RC.12 evidence to verified source"
+    },
+    {
+      "sha": "9f76748882e052258364e48b402dc3ad795ea995",
+      "subject": "Record RC.12 CHG-34 verification evidence"
+    },
+    {
+      "sha": "32d1cc0d3bfb6bc76413103566162c304f2843f1",
+      "subject": "Implement CHG-34 UI state matrix and accessibility gate"
+    }
+  ],
+  "diff": {
+    "additions": 2865,
+    "changed_files": 105,
+    "commit_count": 4,
+    "deletions": 1271
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 89,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
+        "bytes": 11452,
+        "path": "CHANGELOG.md",
+        "sha256": "5beb13dfc2c77d54a37654f22269582d1af8664bd35af8734361430b08ac2a9b"
+      },
+      {
+        "bytes": 77031,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "255db191ef964c9b084498906f22d8ed323e22a477f6a9bb74ea5c0e1ee45b77"
+      },
+      {
+        "bytes": 3409,
+        "path": "README.md",
+        "sha256": "0a6bee302bb1e1a1f3905c119d36d4247e30797254809b13b832b2b2493cdf0e"
+      },
+      {
+        "bytes": 2204,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "920b042cad65a13c22f7ad5def5059a0ef046084c591564011787626767d36dc"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "c61322bd17e0d87f47309398bf34d19aff7f13f076aff208462bcf8df10fc87a"
+      },
+      {
         "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "path": "deploy/rc12-release-identity.json",
+        "sha256": "3f170cf32f04a6fd031f29062ece845d84bc751ba518f87de70132ed89fbe662"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 3223,
+        "path": "docs/API_COMPATIBILITY.md",
+        "sha256": "527ed334c11e84cd809d94b521a3018f2c5bbcc3613b5a1811e5b5f66311ba68"
       },
       {
+        "bytes": 7455,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "ba5eaa5f14cf576d8d14174e9405abab971447e92e02d0ae8d41f9dc815c6a51"
+      },
+      {
+        "bytes": 3633,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "0c3eb32a5a8fec41326dc7aa2803a6e0f2ae12d5713b569621eaf2c451c2a413"
+      },
+      {
+        "bytes": 8087,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "ad0bea54329cafc85320ee1d8960d1e8219aea9c60db2a8955706c60bfd7f787"
+      },
+      {
+        "bytes": 2937,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "b72db30b0eaee94e6b1160566c1b47751cd375ecb88f3d65d351da3ee46061f9"
+      },
+      {
+        "bytes": 45317,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "4f216a267421461abd22fdb57adc741c47bc9ef3cf96ac3c5ca27b78c47bb18d"
+      },
+      {
+        "bytes": 8262,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "3f28c25faef492aa567423481da6d21705b65289dde4f5515afd0db7fb7a5d10"
+      },
+      {
+        "bytes": 6084,
+        "path": "docs/TESTING.md",
+        "sha256": "72617610e56522f4fb6740b86d6d58612a8151968ea6ed5e7c15d2e66b29d1b7"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "6fe3b9189d13c147fee04636334ec15c66e2fbadce0832077c8e87cdb33fe038"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "91fed8d46f457dae59c5b6796cc38623984559a70360b24c1e5e436f7663fa38"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "09b3ddddb6ec85a2b87f2445ff8ad0806571aa93927a370c75f9ab5b90a8d91c"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "7a6be849e20ae2257267df04c88eab3d05568b40088c172d597c422dc4cc0cef"
+      },
+      {
+        "bytes": 12799,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "4a1d4940409868bd38aa0ea53cfd32c82d64e7d0c15a6087f1c30e3dfc614ab4"
+      },
+      {
+        "bytes": 7511,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "2850bbfa6abd95f58623f7ff2218d78b2964fed432ffc11ea4be29372983fd76"
+      },
+      {
+        "bytes": 6922,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "90cbc3bf37218e082c03d890fb0f3a432b8234d30928e39955aa9312e8855791"
+      },
+      {
+        "bytes": 9784,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "1dce6cd4f516b342995315c95a0773d24fd67255e0d19061620ee291a0425da5"
+      },
+      {
+        "bytes": 36131,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "9670a06a166da52f785c319070c522219b4a1b9873f047d167c3812432571bdb"
+      },
+      {
+        "bytes": 989,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "8cc39082076ddbf13134bd5b498ebf6f2e5f53103a244751cbf22f25bc36d39d"
+      },
+      {
+        "bytes": 57430,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "b32e51a2c86dd3922fc17869ed2ba9bc7b96dd98db1d3a1aaaf56cca302ec000"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "395c07729ab9c7ecf16a0095d0d26373456765a5f9b18d271cae8ed9a9db3354"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "a5946f48e0c6cb427de6e319057d2fc04083142ed4cc18868847ccbe4a219b80"
+      },
+      {
+        "bytes": 50660,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "1cf7dd4fd7c3eddfd6b35e967ccfa61fee990c2fe093b8bb92d3bb2ef278f044"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "9ddb87ade4f078e216df88aa522383907a950f5902d5f3399b3dedb7a32d8f93"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "a6e42379a08cd12da0569eb150f9c0ed8e1732d89c39f4ec375cb9ada67160a1"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "b867fe3ede6357c32b22b335766aedb49e0625002f586ab4f98d14a462cd8526"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "ac6a15669114fade9ac1f35b30b918f94876e665da95140059f8d1b55ccaaa04"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "b85418efe001db33ec65a425defafcdc4804272268d0c856fc252a23eb448f6d"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "34dc44c05b660b3b2f02eff6e80409180859e88cac1684264ebcfb6354d5d150"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "69af68dad5b2f03c8496ea602db610edd000501e1ac855eba4dc5ff23360ce8b"
+      },
+      {
+        "bytes": 6447,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "12e0f7562b88cf14c89bd7abbd511b5022578aa797c0292e57a413dec1b8c30c"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "05319b44b2b0fe52a8ac064d00b1cae069e9dd897c27b84e8f942806bacb946c"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "f47dbf441911fdd6f697a2637d265b8a518c146c19ce35c7a0050f8b2f67ab9e"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "e977d71026f9fcb10f795e4f8821df456432d27f9c56f574f781f1098977345f"
+      },
+      {
+        "bytes": 487,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "e6c29f8dfde7d46b7f77ac735fcb1367cce0e476113aacb57b0bb157f1a6f6bd"
+      },
+      {
+        "bytes": 1723,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "7f3642337a3fe292b04f5e17e7ca236295af15587e9ed6227ba29e8b37dd86d0"
+      },
+      {
+        "bytes": 27196,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "57b299f3a12b51b98e99e7632d5eca05577f635805592a00c0872d5b3e75e731"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "62c0ceced0bc65b20a39cb1488ad1fb635c3b2d9503fe2093d05dea2a07e97e4"
+      },
+      {
+        "bytes": 70150,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "8ee41b73a30b8ae4f1e8a62618463b1f54e0e305b38e97dd02e2796228d95e15"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2732,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "4baafc80cb0b4de9a2e556c51349926179f64039ceddca5dbf8227335cc0f0be"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
+        "bytes": 100,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "6224bdedfa2950d9202c5c651e6589fea04815379bb89a10a928c848271a30b0"
+      },
+      {
+        "bytes": 5723,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "f01ab7b1a7a303f97f1a0f337d22bf0611a15f92d68e0b1a5b5da15f76fac47a"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+        "sha256": "625e3a1b43c2fd5819eb47c6e603bfa96921504c11310910505d174af9fad9ad"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+        "sha256": "625e3a1b43c2fd5819eb47c6e603bfa96921504c11310910505d174af9fad9ad"
+      },
+      {
+        "bytes": 7344,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "b8c400ec9a0a246ae27e94b9c672eadbb31c85d6c18acb8d00314d35bc5119cf"
+      },
+      {
+        "bytes": 7344,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "b8c400ec9a0a246ae27e94b9c672eadbb31c85d6c18acb8d00314d35bc5119cf"
+      },
+      {
+        "bytes": 12529,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "50d604ba94b9a7b1c5ff1b172bf2fb81f0d21f7d0456cb9bd467f4a65406c403"
+      },
+      {
+        "bytes": 49,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "cc256a566083cb6d9ed9c33de9d8c3b0d46e8dd0b403a26162892db1cca6a977"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/lab/browser-interactions.log",
+        "sha256": "ed819545a96927b6869c93c0307196a4cb4cc96b97d2e7661d5748510355d5b3"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/lab/browser-junit.xml",
+        "sha256": "618192e8481a2faa3ae0c2a41672b060cec84dea5bf6ea0ce5d18b66432b65ed"
+      },
+      {
+        "bytes": 6442,
+        "path": "evidence/current/lab/pure-model-tests.log",
+        "sha256": "a39298499c212443d2ba97063e15cec9f51713c6c41a5ade01081327e2e14c80"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/lab/static-http-server.log",
+        "sha256": "34e8b08ad0832d676cac6a638746bb0d659d90b5bc1c00b3cfc4b7f841698592"
+      },
+      {
+        "bytes": 11410,
+        "path": "evidence/current/lab/verification.json",
+        "sha256": "ed0cfe571a0c409604fbcef5dc9dc57e5dd9685b1e1a2b7d393d66df9585ffad"
+      },
+      {
+        "bytes": 1723,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "7f3642337a3fe292b04f5e17e7ca236295af15587e9ed6227ba29e8b37dd86d0"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "e977d71026f9fcb10f795e4f8821df456432d27f9c56f574f781f1098977345f"
+      },
+      {
+        "bytes": 1547,
+        "path": "evidence/current/release/CHG-34-ui-accessibility.json",
+        "sha256": "acbbddfe10a70d31d203ce4b2725c8266f8fcd9b7371b50ca0f1b32f2f5d24bf"
+      },
+      {
+        "bytes": 1211,
+        "path": "evidence/current/release/rc12-evidence-binding.json",
+        "sha256": "b657403db69473ba491d85f1aa13b3da456d53e0c5c40b2890d2ffa6cb99cd2a"
+      },
+      {
+        "bytes": 1403,
+        "path": "evidence/current/release/rc12-manifest.json",
+        "sha256": "4586b1442c9607258535286a138b1fa7abece326fbe6db7efef01c7a18f34458"
+      },
+      {
         "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "path": "evidence/current/release/rc12-readiness-matrix.json",
+        "sha256": "ab611b5aed80065b1a25cea6b6c07ffbebb34e0f27360adb03973cb1573c04e1"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 27196,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "57b299f3a12b51b98e99e7632d5eca05577f635805592a00c0872d5b3e75e731"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 908,
+        "path": "evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json",
+        "sha256": "baa8abd008ddf52f4445ac7bccb470f60bea47e2c66c0f2885e82622eb1f9872"
+      },
+      {
+        "bytes": 425,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.json",
+        "sha256": "bb368af1edbf90b7d868ecc8bb475ff0203c4beab715a2ae68169a0245ebe8c4"
+      },
+      {
+        "bytes": 178611,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+        "sha256": "6065454ddb9d05db231adbabead95edfab6b51a2996d08f42de66fbef48f4b93"
+      },
+      {
+        "bytes": 395,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.json",
+        "sha256": "933cc4c621bdf7b985dd5008f97cc8690ecb37a22f6b6162a25b44178e14d418"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json",
+        "sha256": "520d141d05b8cedde03d2c770c6a0b542695302bf75dc015b2e12d5af777ebce"
+      },
+      {
+        "bytes": 161984,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+        "sha256": "53ac401319db1493bea9d46b009448f897c2bcf1c088b34cdfd5ed73bf791211"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 411,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+        "sha256": "316e1e9fe0238ff9fd366c0f21f748d2bb76c72264271abae9877e71ad8e58d4"
+      },
+      {
+        "bytes": 152602,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+        "sha256": "53941791974ad83571ad986a94513d1821c82f757d037c30f0115086b3cd03d5"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 195430,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+        "sha256": "d28ce2bce45402a38c72f5d1f2ba8503df850221f8aa7281bd7d93f6be902550"
+      },
+      {
+        "bytes": 248,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-empty.json",
+        "sha256": "7dcb272a3abdc4ba87008fc191c04dabd611e58bc41665950bfec280ee39c9b1"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 5890,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "b78ba3c86f0c2c54de0d80b7f8cc3978416ce24528ad893e2698dabaf9a641f6"
+      },
+      {
+        "bytes": 186039,
+        "path": "frontend/package-lock.json",
+        "sha256": "b16c05a85582787f7dc5a6a87dfb64fab788713ba2430060e13084207304f8d4"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "b2c77520a45fa8f00deb0cc543e293f6732c18eacd9081cf7c11ac3c19c58084"
+      },
+      {
+        "bytes": 12822,
+        "path": "frontend/tests/e2e/ui-state-matrix.json",
+        "sha256": "a3efb74bd029edf695a891fb3084611f51b177b3196d8e520d17a04dfde9a631"
+      },
+      {
+        "bytes": 3775,
+        "path": "scripts/bind_release_evidence.py",
+        "sha256": "8a3ea9f16c49685cb7132107c9051f2a790599dc605ffe041ae3d830cb1450d2"
+      },
+      {
+        "bytes": 9590,
+        "path": "scripts/release_evidence.py",
+        "sha256": "66cad66f9703ce18084fef00e781150849072ceaf1fbb58c2f4762a7bdeb5acb"
+      },
+      {
+        "bytes": 4636,
+        "path": "tests/test_release_evidence.py",
+        "sha256": "93e48f7b9f5db5308ac5564bddb5d35b71b83ee8f6c6d45c5641e200ad9df9af"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-17T23:30:31Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "1de9cfae29450990d201785f35992c72ff0d0684",
+    "branch": "codex/react-fastapi-base-ui-state-accessibility-matrix-v1-artifact-direct-r3",
+    "head_sha": "09e300de562230dd4e11d8ecc8bc52979b2e5405",
+    "remote_exact_head": true,
+    "remote_head_sha": "09e300de562230dd4e11d8ecc8bc52979b2e5405",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "1de9cfae29450990d201785f35992c72ff0d0684",
+    "work_branch": "codex/react-fastapi-base-ui-state-accessibility-matrix-v1-artifact-direct-r3",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-339b8d9b51744cc551c8886c",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/ui-state-accessibility-matrix-v1-artifact-direct-r3",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/ui-state-accessibility-matrix-v1-artifact-direct-r3"
+  },
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "ui-state-accessibility-matrix-v1-artifact-direct-r3",
+  "schema_version": 1,
+  "started_at": "2026-09-17T23:07:56Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 1355,
+    "queue_seconds": 0,
+    "total_seconds": 1355
+  },
+  "transport": {
+    "bytes": 11704,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 11315,
+    "prompt_sha256": "940c8dba89b1cf3f16a374b49b56d9980b1af93fc87baa53bfed04fd6b94ce58",
+    "sha256": "339b8d9b51744cc551c8886cd13a5c58a6d54c071be39f0402e6d908f94d22b9"
+  }
 }
