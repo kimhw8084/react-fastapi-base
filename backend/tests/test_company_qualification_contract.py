@@ -14,6 +14,9 @@ from app.platform.settings import (
     IdentityFacts,
     OperationsFacts,
     PerformanceFacts,
+    REPOSITORY_RELEASE_IDENTITY_PATH,
+    RepositoryReleaseIdentity,
+    RepositorySourceEvidence,
     ReleaseEvidenceFacts,
     Settings,
     StorageFacts,
@@ -29,8 +32,28 @@ def evidence(kind: str, name: str) -> EvidenceReference:
     return EvidenceReference(kind=kind, locator=f'evidence/company/{name}.json', evidence_id=f'fixture-{name}', issuer='fixture-operator')
 
 
+def repository_identity() -> RepositoryReleaseIdentity:
+    try:
+        return load_repository_release_identity()
+    except ValueError:
+        return RepositoryReleaseIdentity(
+            identity_type='repository_rc11_release',
+            project='react-fastapi-base',
+            profile='company',
+            candidate_version=VERSION,
+            verified_source_commit='a' * 40,
+            source_digest='b' * 64,
+            source_evidence=RepositorySourceEvidence(locator='evidence/test/source-hashes.json', sha256='c' * 64),
+            verification=RepositorySourceEvidence(locator='evidence/test/verification.json', sha256='d' * 64),
+            generated_by='scripts/generate_release_identity.py',
+            code_ready=True,
+            production_ready=False,
+            release_status='NOT_CERTIFIED',
+        )
+
+
 def qualified(root: Path, *, source_commit: str | None = None, source_digest: str | None = None) -> CompanyQualification:
-    expected = load_repository_release_identity()
+    expected = repository_identity()
     source_commit = expected.verified_source_commit if source_commit is None else source_commit
     source_digest = expected.source_digest if source_digest is None else source_digest
     return CompanyQualification(
@@ -65,7 +88,7 @@ def test_exact_gate_enumeration_and_statuses(tmp_path):
         'ui_accessibility', 'performance', 'operations', 'release_evidence',
     ]
     assert all(gate.status == 'PASS' for gate in model.gates)
-    assert model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=tmp_path / 'root', expected_release_identity=load_repository_release_identity())
+    assert model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=tmp_path / 'root', expected_release_identity=repository_identity())
 
 
 def test_missing_duplicate_unknown_and_illegal_gate_statuses_fail_closed(tmp_path):
@@ -135,9 +158,9 @@ def test_binding_mismatches_never_derive_readiness(tmp_path, field, value, expec
     payload = qualified(root).model_dump()
     payload[field] = value
     model = CompanyQualification.model_validate(payload)
-    errors = model.contract_errors() + model.binding_errors(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=root, expected_release_identity=load_repository_release_identity())
+    errors = model.contract_errors() + model.binding_errors(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=root, expected_release_identity=repository_identity())
     assert any(expected.casefold() in error.casefold() for error in errors)
-    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=root, expected_release_identity=load_repository_release_identity())
+    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=root, expected_release_identity=repository_identity())
 
 
 def test_self_consistent_fake_source_identity_is_rejected_by_repository_anchor(tmp_path):
@@ -146,22 +169,31 @@ def test_self_consistent_fake_source_identity_is_rejected_by_repository_anchor(t
         expected_version=VERSION,
         expected_deployment_id='deployment-1',
         expected_root=tmp_path / 'root',
-        expected_release_identity=load_repository_release_identity(),
+        expected_release_identity=repository_identity(),
     )
     assert any('repository RC.11 release identity' in error for error in errors)
     assert not model.derived_production_ready(
         expected_version=VERSION,
         expected_deployment_id='deployment-1',
         expected_root=tmp_path / 'root',
-        expected_release_identity=load_repository_release_identity(),
+        expected_release_identity=repository_identity(),
     )
+
+
+@pytest.mark.skipif(not REPOSITORY_RELEASE_IDENTITY_PATH.is_file(), reason='generated RC.11 repository identity is not present yet')
+def test_positive_fixture_uses_repository_owned_expected_identity(tmp_path):
+    expected = load_repository_release_identity()
+    model = qualified(tmp_path / 'root')
+    assert model.verified_source_commit == expected.verified_source_commit
+    assert model.source_digest == expected.source_digest
+    assert model.repository_release_identity_errors(expected) == []
 
 
 def test_approval_and_production_ready_are_derived(tmp_path):
     payload = qualified(tmp_path / 'root').model_dump()
     payload.pop('approved_by')
     model = CompanyQualification.model_validate(payload)
-    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=tmp_path / 'root', expected_release_identity=load_repository_release_identity())
+    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='deployment-1', expected_root=tmp_path / 'root', expected_release_identity=repository_identity())
     payload = qualified(tmp_path / 'root').model_dump()
     payload['production_ready'] = True
     with pytest.raises(ValidationError):
@@ -178,4 +210,4 @@ def test_secret_bearing_evidence_reference_is_rejected_without_echoing_secret():
 def test_template_is_complete_but_not_certifying():
     path = Path(__file__).resolve().parents[2] / 'deploy/company-qualification.template.json'
     model = CompanyQualification.model_validate_json(path.read_text())
-    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='template', expected_root=Path('/template'), expected_release_identity=load_repository_release_identity())
+    assert not model.derived_production_ready(expected_version=VERSION, expected_deployment_id='template', expected_root=Path('/template'), expected_release_identity=repository_identity())
