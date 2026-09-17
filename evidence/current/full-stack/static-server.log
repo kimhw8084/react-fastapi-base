@@ -2,77 +2,77 @@ TAP version 13
 # Subtest: static HTML has CSP and no-store
 ok 1 - static HTML has CSP and no-store
   ---
-  duration_ms: 24.287708
+  duration_ms: 23.187917
   ...
 # Subtest: SPA navigation works but API is never HTML fallback
 ok 2 - SPA navigation works but API is never HTML fallback
   ---
-  duration_ms: 5.514792
+  duration_ms: 5.267625
   ...
 # Subtest: hashed assets are immutable; missing asset is 404
 ok 3 - hashed assets are immutable; missing asset is 404
   ---
-  duration_ms: 4.727666
+  duration_ms: 4.367167
   ...
 # Subtest: invalid host and unsafe method fail
 ok 4 - invalid host and unsafe method fail
   ---
-  duration_ms: 6.742625
+  duration_ms: 6.128458
   ...
 # Subtest: symlink cannot disclose source outside dist
 ok 5 - symlink cannot disclose source outside dist
   ---
-  duration_ms: 5.368625
+  duration_ms: 3.545125
   ...
 # Subtest: runtime config can change without rebuilding; corrupt config fails closed
 ok 6 - runtime config can change without rebuilding; corrupt config fails closed
   ---
-  duration_ms: 5.600708
+  duration_ms: 4.516708
   ...
 # Subtest: hidden files and source maps are not served
 ok 7 - hidden files and source maps are not served
   ---
-  duration_ms: 5.798292
+  duration_ms: 3.975458
   ...
 # Subtest: runtime rejects credentials, scripts, unknown keys and bad version
 ok 8 - runtime rejects credentials, scripts, unknown keys and bad version
   ---
-  duration_ms: 0.296334
+  duration_ms: 0.272583
   ...
 # Subtest: public runtime rejects server profile, storage and identity fields
 ok 9 - public runtime rejects server profile, storage and identity fields
   ---
-  duration_ms: 0.161708
+  duration_ms: 0.143916
   ...
 # Subtest: publisher namespace rejects unknown, case-variant and invalid configuration without values
 ok 10 - publisher namespace rejects unknown, case-variant and invalid configuration without values
   ---
-  duration_ms: 0.443791
+  duration_ms: 0.463375
   ...
 # Subtest: publisher process exceptions reject case-variant names
 ok 11 - publisher process exceptions reject case-variant names
   ---
-  duration_ms: 0.070417
+  duration_ms: 0.071083
   ...
 # Subtest: publisher production routing requires explicit public hosts and absolute runtime override
 ok 12 - publisher production routing requires explicit public hosts and absolute runtime override
   ---
-  duration_ms: 0.352917
+  duration_ms: 0.346542
   ...
 # Subtest: static publisher rejects a relative runtime path
 ok 13 - static publisher rejects a relative runtime path
   ---
-  duration_ms: 1.895167
+  duration_ms: 1.834083
   ...
 # Subtest: publisher never serves runtime values outside the strict browser schema
 ok 14 - publisher never serves runtime values outside the strict browser schema
   ---
-  duration_ms: 3.168917
+  duration_ms: 2.785042
   ...
 # Subtest: embedded lab has a same-origin frame boundary; app remains non-frameable
 ok 15 - embedded lab has a same-origin frame boundary; app remains non-frameable
   ---
-  duration_ms: 3.984916
+  duration_ms: 3.530625
   ...
 1..15
 # tests 15
@@ -82,4 +82,4 @@ ok 15 - embedded lab has a same-origin frame boundary; app remains non-frameable
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 107.062208
+# duration_ms 98.847084

@@ -1,0 +1,26 @@
+{
+  "binding_status": "PENDING_EVIDENCE_COMMIT",
+  "evidence_commit": null,
+  "manifest": {
+    "locator": "evidence/current/release/rc12-manifest.json",
+    "sha256": "4db082c3514935be2a2f4dd7ff800b532012e904fcc6530c046b815a53a58f7d"
+  },
+  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "profile": "company",
+  "project": "react-fastapi-base",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc12-readiness-matrix.json",
+    "sha256": "ab611b5aed80065b1a25cea6b6c07ffbebb34e0f27360adb03973cb1573c04e1"
+  },
+  "result": "NOT_CERTIFIED",
+  "schema_version": 2,
+  "source_digest": "6d242ec2bc0afb6e6a7b178de315580097428392c9328f8d06bfa03e897f59c8",
+  "target_base_sha": "1de9cfae29450990d201785f35992c72ff0d0684",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "b78ba3c86f0c2c54de0d80b7f8cc3978416ce24528ad893e2698dabaf9a641f6"
+  },
+  "verified_source_commit": "32d1cc0d3bfb6bc76413103566162c304f2843f1",
+  "version": "1.0.0-rc.12"
+}

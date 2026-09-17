@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-  "timestamp": "2026-09-17T14:18:29.216895+00:00",
+  "source_commit": "32d1cc0d3bfb6bc76413103566162c304f2843f1",
+  "timestamp": "2026-09-17T19:21:38.324856+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-a22269b25328d1ce42bd0c35/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-a22269b25328d1ce42bd0c35/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
@@ -14,10 +14,10 @@
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "d0b76911-a0c7-466f-b088-09eba2c5be6b",
+  "tenant": "b3a02ebd-f0ba-4f55-adb9-0c457804ac7e",
   "record_type": "work_items",
-  "record_id": "030692fc-70a2-4bff-80ae-6d1ad8338801",
-  "object_key": "attachments/ac17d18f-799c-424e-8251-ebfad672b07c/recovery.txt",
+  "record_id": "1dea8e03-03bf-447a-8f6e-158fd33c6904",
+  "object_key": "attachments/3f44b80d-afc2-416b-a5b3-fab1dcbea187/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
