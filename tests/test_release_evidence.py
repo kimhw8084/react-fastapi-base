@@ -70,3 +70,11 @@ def test_written_build_manifest_uses_target_base_and_not_post_acceptance_fields(
     binder_source = (Path(__file__).resolve().parents[1] / 'scripts/bind_release_evidence.py').read_text()
     assert 'accepted_head' not in binder_source
     assert 'repository_merge_sha' not in binder_source
+
+
+def test_executable_source_digest_excludes_generated_lab_payload():
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts.source_manifest import source_hashes
+
+    assert not any(name.startswith('frontend/public/experience-lab/') for name in source_hashes())

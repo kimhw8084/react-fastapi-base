@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIRECTORIES = ('backend', 'frontend', 'contracts', 'scripts', 'tests', 'experience-lab', 'catalog')
 EXCLUDED_PARTS = {'__pycache__', '.pytest_cache', '.venv', 'venv', 'node_modules', 'dist', 'coverage', 'test-results', 'playwright-report'}
+EXCLUDED_PATH_PREFIXES = {'frontend/public/experience-lab/'}
 EXCLUDED_NAMES = {'.coverage', 'coverage.xml'}
 EXCLUDED_SUFFIXES = {'.pyc', '.log', '.sqlite3'}
 
@@ -20,6 +21,7 @@ def source_hashes() -> dict[str, str]:
             if (
                 path.is_file()
                 and not set(relative.parts) & EXCLUDED_PARTS
+                and not any(relative.as_posix().startswith(prefix) for prefix in EXCLUDED_PATH_PREFIXES)
                 and path.name not in EXCLUDED_NAMES
                 and path.suffix not in EXCLUDED_SUFFIXES
             ):
