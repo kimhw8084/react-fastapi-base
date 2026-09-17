@@ -12,36 +12,42 @@
     {
       "evidence_state": "external_unproven",
       "id": "identity",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Authentic company per-user identity and simultaneous real-user evidence is unavailable.",
       "status": "BLOCKED"
     },
     {
       "evidence_state": "external_unproven",
       "id": "storage",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Provider-supported SQLite locking, durability, persistence and restore evidence is unavailable.",
       "status": "BLOCKED"
     },
     {
       "evidence_state": "external_unproven",
       "id": "deployment",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Company publication, ingress, restart, redeploy and recovery evidence is unavailable.",
       "status": "BLOCKED"
     },
     {
       "evidence_state": "external_unproven",
       "id": "ui_accessibility",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Local browser and axe checks do not establish applicable company/profile accessibility evidence.",
       "status": "BLOCKED"
     },
     {
       "evidence_state": "external_unproven",
       "id": "performance",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Local stress checks do not establish applicable company/profile performance evidence.",
       "status": "BLOCKED"
     },
     {
       "evidence_state": "external_unproven",
       "id": "operations",
+      "qualification_status": "BLOCKED_EXTERNAL",
       "reason": "Applicable company/profile operational readiness evidence is unavailable.",
       "status": "BLOCKED"
     },
@@ -70,6 +76,6 @@
   "release_status": "NOT_CERTIFIED",
   "report_type": "repository-readiness-matrix",
   "schema_version": 1,
-  "source_digest": "b84877cc372eed3090ce87f095fe8b57e66219bdcbc5c03c5b14e2654bc92a95",
-  "verified_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5"
+  "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
+  "verified_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25"
 }
