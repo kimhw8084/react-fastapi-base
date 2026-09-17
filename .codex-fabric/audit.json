@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "kind": "codex-fabric-audit-evidence",
+  "operation": "BUILD",
+  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
+  "project_id": "react-fastapi-base",
+  "request": "CHG-33-r2-source-binding",
+  "git": {
+    "target_branch": "main",
+    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
+    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
+    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
+    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
+    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
+    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
+    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
+    "target_changed": false,
+    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
+  },
+  "source_anchor": {
+    "identity_locator": "deploy/rc11-release-identity.json",
+    "project": "react-fastapi-base",
+    "profile": "company",
+    "version": "1.0.0-rc.11",
+    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
+    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
+    "code_ready": true,
+    "production_ready": false,
+    "release_status": "NOT_CERTIFIED"
+  },
+  "checks": [
+    {
+      "name": "focused-source-binding",
+      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
+      "status": "PASS",
+      "detail": "53 passed, 1 skipped"
+    },
+    {
+      "name": "contracts",
+      "command": "./dev contracts",
+      "status": "PASS"
+    },
+    {
+      "name": "architecture",
+      "command": "./dev architecture",
+      "status": "PASS"
+    },
+    {
+      "name": "verify",
+      "command": "./dev verify",
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
+      "code_ready": true,
+      "production_ready": false
+    },
+    {
+      "name": "verify-release",
+      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
+      "code_ready": true,
+      "production_ready": false,
+      "release_status": "NOT_CERTIFIED",
+      "external_blockers": [
+        "identity",
+        "storage",
+        "deployment",
+        "ui_accessibility",
+        "performance",
+        "operations"
+      ]
+    },
+    {
+      "name": "source-identity-generation",
+      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
+      "status": "PASS"
+    },
+    {
+      "name": "evidence-binding",
+      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+      "status": "PASS"
+    }
+  ],
+  "evidence_manifest": {
+    "version": 1,
+    "items": [
+      {
+        "path": "deploy/rc11-release-identity.json",
+        "bytes": 648,
+        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+      },
+      {
+        "path": "evidence/current/full-stack/verification.json",
+        "bytes": 11674,
+        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+      },
+      {
+        "path": "evidence/current/full-stack/source-hashes.json",
+        "bytes": 69828,
+        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+      },
+      {
+        "path": "evidence/current/release/CHG-33-company-qualification.json",
+        "bytes": 1345,
+        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+      },
+      {
+        "path": "evidence/current/release/rc11-readiness-matrix.json",
+        "bytes": 2843,
+        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+      },
+      {
+        "path": "evidence/current/release/rc11-manifest.json",
+        "bytes": 1201,
+        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+      },
+      {
+        "path": "evidence/current/release/rc11-evidence-binding.json",
+        "bytes": 1009,
+        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+      }
+    ]
+  },
+  "release": {
+    "version": "1.0.0-rc.11",
+    "code_ready": true,
+    "production_ready": false,
+    "project_os_go": false
+  },
+  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+}

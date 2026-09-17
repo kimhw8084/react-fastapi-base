@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'backend'))
 from app.main import create_app
-from app.platform.settings import Settings
+from app.platform.settings import CompanyQualification, Settings
 from app.platform.version import API_CONTRACT_REVISION, API_MAJOR
 
 
@@ -103,8 +103,13 @@ def generate() -> dict[Path, str]:
             operations[op] = {'method': method.upper(), 'path': path}
     lines += ['}', 'export interface OperationOutputs {', *outputs, '}',
               'export const operationRoutes = ' + json.dumps(operations, indent=2) + ' as const', '']
-    return {ROOT/'contracts/openapi.json': json.dumps(document, indent=2, sort_keys=True)+'\n',
-            ROOT/'frontend/src/generated/schema.ts': '\n'.join(lines)}
+    return {
+        ROOT/'contracts/openapi.json': json.dumps(document, indent=2, sort_keys=True)+'\n',
+        ROOT/'frontend/src/generated/schema.ts': '\n'.join(lines),
+        ROOT/'deploy/company-qualification.schema.json': json.dumps(
+            CompanyQualification.model_json_schema(), indent=2, sort_keys=True
+        )+'\n',
+    }
 
 
 def main():

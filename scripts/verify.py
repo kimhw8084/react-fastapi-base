@@ -2,7 +2,6 @@
 """Authoritative gate: missing tools/dependencies are BLOCKED, never SKIPPED/PASS."""
 from __future__ import annotations
 import argparse
-import hashlib
 import platform
 from datetime import datetime, timezone
 import importlib.util
@@ -13,6 +12,9 @@ import subprocess
 import sys
 import time
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from scripts.release_evidence import write_repository_release_evidence
+from scripts.source_manifest import source_digest, source_hashes
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -90,19 +92,27 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         ('company-storage','Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount.'),
         ('company-deployment','Separate frontend/backend publishes and real browser routing have not been exercised here.'),
     ]:blocked(name,reason,'deployment')
-    source_hashes={}
-    for directory in ('backend','frontend','contracts','scripts','tests','experience-lab','catalog'):
-        for file in sorted((ROOT/directory).rglob('*')):
-            relative=file.relative_to(ROOT)
-            if file.is_file() and not set(relative.parts)&{'__pycache__','.pytest_cache','.venv','venv','node_modules','dist','coverage','test-results','playwright-report'} and file.name not in {'.coverage','coverage.xml'} and file.suffix not in {'.pyc','.log','.sqlite3'}:
-                source_hashes[relative.as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
-    source_hashes['dev']=hashlib.sha256((ROOT/'dev').read_bytes()).hexdigest()
-    source_digest=hashlib.sha256(json.dumps(source_hashes,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    source_hash_map=source_hashes()
+    source_digest_value=source_digest(source_hash_map)
     commit_result=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,check=False)
     source_commit=commit_result.stdout.strip() if commit_result.returncode==0 else None
-    (output/'source-hashes.json').write_text(json.dumps(source_hashes,indent=2)+'\n')
-    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code') else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest},'release_status':'NOT_CERTIFIED',
-      'production_ready':False,'code_ready':all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code'),'results':results,
+    (output/'source-hashes.json').write_text(json.dumps(source_hash_map,indent=2)+'\n')
+    code_ready=all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code')
+    api_base_sha=None
+    api_report=output/'api-compatibility.json'
+    if api_report.is_file():
+        try:api_base_sha=json.loads(api_report.read_text()).get('resolved_base_sha')
+        except (OSError,json.JSONDecodeError):api_base_sha=None
+    release_evidence=write_repository_release_evidence(
+        source_commit=source_commit or '',
+        source_digest=source_digest_value,
+        version=(ROOT/'VERSION').read_text(encoding='utf-8').strip(),
+        results=results,
+        verification_path='evidence/current/full-stack/verification.json',
+        api_compatibility_base_sha=api_base_sha,
+    )
+    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest_value,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if code_ready else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest_value},'release_status':'NOT_CERTIFIED',
+      'production_ready':False,'code_ready':code_ready,'readiness_matrix':release_evidence['readiness_matrix'],'readiness_matrix_sha256':release_evidence['readiness_matrix_sha256'],'results':results,
       'note':'Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.'}
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
     print(f"NOT_CERTIFIED — report: {output/'verification.json'}")

@@ -1,13 +1,16 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.10
+# Delivery verification — react-fastapi-base 1.0.0-rc.11
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
 ## Actual executed tests
 
-CHG-32 configuration-contract evidence is recorded in
+CHG-33 CompanyQualification/readiness evidence is recorded in
+`evidence/current/release/CHG-33-company-qualification.json` and
+`evidence/current/release/rc11-readiness-matrix.json`. CHG-32
+configuration-contract evidence remains immutable historical evidence in
 `evidence/current/release/CHG-32-configuration-contract.json`. The exact
 base for API compatibility is the integrated main commit supplied for this
-branch: `f52fb02df980b06ce4b1a0ff741d626304381a23`.
+branch: `6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf`.
 
 | Check | Result |
 |---|---:|
@@ -17,7 +20,7 @@ branch: `f52fb02df980b06ce4b1a0ff741d626304381a23`.
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `f52fb02df980b06ce4b1a0ff741d626304381a23`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf`; API major/revision unchanged |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 
@@ -29,7 +32,9 @@ The React browser suite uses disposable local services and dynamically allocated
 
 The current source and compiled Lab are delivered together, with a ZIP manifest and checksum. No SysGrid source modification, remote commit, company deployment or production database operation occurred.
 
-RC.10 contains CHG-32 configuration/secrets evidence. RC.9 CHG-31 API
+RC.11 contains the final CompanyQualification contract and source-bound readiness
+matrix. RC.10 CHG-32 configuration/secrets evidence remains immutable historical
+evidence. RC.9 CHG-31 API
 compatibility evidence and RC.8 CHG-27 profile-contract evidence remain
 historical for their exact sources, as do RC.7 UIQA and RC.6 evidence.
 

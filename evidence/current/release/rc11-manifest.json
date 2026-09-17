@@ -1,0 +1,32 @@
+{
+  "api_compatibility_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "evidence_binding": "evidence/current/release/rc11-evidence-binding.json",
+  "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc11-readiness-matrix.json",
+    "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "schema_version": 2,
+  "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
+  "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29"
+  },
+  "verified_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+  "version": "1.0.0-rc.11"
+}

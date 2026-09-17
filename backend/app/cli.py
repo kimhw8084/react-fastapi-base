@@ -68,7 +68,10 @@ def main():
                 profile.identity.current_user()
             except AppError:
                 errors.append('Company identity is missing or invalid.')
-        print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':settings.environment=='production' and not errors,'errors':sorted(set(errors))},indent=2));return 1 if errors else 0
+        production_ready = settings.derived_production_ready(
+            scanner_is_noop=settings.attachment_upload_mode == 'scanner_required'
+        ) if not errors else False
+        print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':production_ready,'errors':sorted(set(errors))},indent=2));return 1 if errors else 0
     settings.assert_configuration()
     database=Database(settings)
     try:

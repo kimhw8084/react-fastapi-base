@@ -11,8 +11,28 @@ from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
 from app.main import create_app
+from app.platform import settings as settings_module
 from app.platform.errors import AppError
-from app.platform.settings import CompanyQualification, CompanyQualificationPrerequisites, Settings
+from app.platform.settings import (
+    CompanyQualification,
+    CompanyQualificationGate,
+    CompanyQualificationPrerequisites,
+    DeploymentFacts,
+    EvidenceReference,
+    IdentityFacts,
+    OperationsFacts,
+    PerformanceFacts,
+    REPOSITORY_RELEASE_IDENTITY_PATH,
+    RepositoryReleaseIdentity,
+    RepositorySourceEvidence,
+    ReleaseEvidenceFacts,
+    Settings,
+    StorageFacts,
+    TechnicalReleaseFacts,
+    UiAccessibilityFacts,
+    load_repository_release_identity,
+)
+from app.platform.version import VERSION
 from app.profiles.company.identity import CompanyIdentity
 
 
@@ -29,20 +49,62 @@ def _prerequisites(root: Path, *, deployment_id: str = 'qualification-fixture') 
     )
 
 
-def _final_qualification(root: Path, *, deployment_id: str = 'qualification-fixture') -> CompanyQualification:
+def _repository_identity() -> RepositoryReleaseIdentity:
+    try:
+        return load_repository_release_identity()
+    except ValueError:
+        return RepositoryReleaseIdentity(
+            identity_type='repository_rc11_release',
+            project='react-fastapi-base',
+            profile='company',
+            candidate_version=VERSION,
+            verified_source_commit='a' * 40,
+            source_digest='b' * 64,
+            source_evidence=RepositorySourceEvidence(locator='evidence/test/source-hashes.json', sha256='c' * 64),
+            generated_by='scripts/generate_release_identity.py',
+            code_ready=True,
+            production_ready=False,
+            release_status='NOT_CERTIFIED',
+        )
+
+
+def _bind_repository_identity(tmp_path: Path, monkeypatch) -> RepositoryReleaseIdentity:
+    identity = _repository_identity()
+    path = tmp_path / 'repository-release-identity.json'
+    path.write_text(identity.model_dump_json())
+    monkeypatch.setattr(settings_module, 'REPOSITORY_RELEASE_IDENTITY_PATH', path)
+    return identity
+
+
+def _final_qualification(root: Path, *, deployment_id: str = 'qualification-fixture', identity: RepositoryReleaseIdentity | None = None) -> CompanyQualification:
+    def evidence(kind: str, number: str) -> EvidenceReference:
+        return EvidenceReference(kind=kind, locator=f'evidence/company/{number}.json', evidence_id=f'fixture-{number}', issuer='fixture-operator')
+
+    expected = _repository_identity() if identity is None else identity
+    source_commit = expected.verified_source_commit
+    source_digest = expected.source_digest
     return CompanyQualification(
+        candidate_version=VERSION,
+        verified_source_commit=source_commit,
+        source_digest=source_digest,
         deployment_id=deployment_id,
         identity_topology='per_user_process',
-        simultaneous_identity_evidence='fixture-identity-evidence',
         storage_kind='local_disk',
         provider_sqlite_support_reference='fixture-provider-reference',
         all_database_clients_same_host=True,
         persistent_root=str(root.resolve()),
-        redeploy_persistence_evidence='fixture-redeploy-evidence',
-        restore_drill_evidence='fixture-restore-evidence',
-        ingress_authentication_evidence='fixture-ingress-evidence',
         approved_by='fixture-release-operator',
         approved_at='2026-09-10T00:00:00Z',
+        gates=[
+            CompanyQualificationGate(id='technical_release', status='PASS', evidence=[evidence('verification_report', 'technical')], facts=TechnicalReleaseFacts(code_ready=True, candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest)),
+            CompanyQualificationGate(id='identity', status='PASS', evidence=[evidence('identity_proof', 'identity')], facts=IdentityFacts(identity_topology='per_user_process', simultaneous_real_user_evidence=True)),
+            CompanyQualificationGate(id='storage', status='PASS', evidence=[evidence('storage_proof', 'storage')], facts=StorageFacts(storage_kind='local_disk', provider_sqlite_support_reference='fixture-provider-reference', all_database_clients_same_host=True, persistent_root=str(root.resolve()))),
+            CompanyQualificationGate(id='deployment', status='PASS', evidence=[evidence('deployment_proof', 'deployment')], facts=DeploymentFacts(deployment_id=deployment_id, ingress_authentication_evidence=True, redeploy_persistence_evidence=evidence('deployment_proof', 'redeploy'), restore_drill_evidence=evidence('deployment_proof', 'restore'))),
+            CompanyQualificationGate(id='ui_accessibility', status='PASS', evidence=[evidence('accessibility_report', 'accessibility')], facts=UiAccessibilityFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='performance', status='PASS', evidence=[evidence('performance_report', 'performance')], facts=PerformanceFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=OperationsFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, target_base_sha='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf', readiness_matrix_sha256='6' * 64)),
+        ],
     )
 
 
@@ -213,10 +275,11 @@ def test_production_operator_preflight_rejects_prerequisite_only(tmp_path):
     assert payload['ready'] is False and payload['production_ready'] is False
 
 
-def test_valid_final_qualification_passes_production_preflight(tmp_path):
+def test_valid_final_qualification_passes_production_preflight(tmp_path, monkeypatch):
     root = tmp_path / 'root'
+    identity = _bind_repository_identity(tmp_path, monkeypatch)
     final_path = tmp_path / 'qualification.json'
-    final_path.write_text(_final_qualification(root).model_dump_json())
+    final_path.write_text(_final_qualification(root, identity=identity).model_dump_json())
     settings = Settings(
         environment='production', profile='company', data_root=root,
         allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],
@@ -224,6 +287,72 @@ def test_valid_final_qualification_passes_production_preflight(tmp_path):
         deployment_id='qualification-fixture', attachment_upload_mode='disabled',
     )
     assert settings.production_errors(scanner_is_noop=False) == []
+
+
+def test_production_rejects_self_consistent_fake_source_binding(tmp_path, monkeypatch):
+    root = tmp_path / 'root'
+    identity = _bind_repository_identity(tmp_path, monkeypatch)
+    payload = _final_qualification(root, identity=identity).model_dump()
+    payload['verified_source_commit'] = '1' * 40
+    payload['source_digest'] = '2' * 64
+    for gate in payload['gates']:
+        if gate['id'] == 'technical_release':
+            gate['facts']['verified_source_commit'] = '1' * 40
+            gate['facts']['source_digest'] = '2' * 64
+        if gate['id'] == 'release_evidence':
+            gate['facts']['verified_source_commit'] = '1' * 40
+            gate['facts']['source_digest'] = '2' * 64
+    final_path = tmp_path / 'qualification.json'
+    final_path.write_text(CompanyQualification.model_validate(payload).model_dump_json())
+    settings = Settings(
+        environment='production', profile='company', data_root=root,
+        allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],
+        csrf_secret='s' * 40, qualification_file=final_path,
+        deployment_id='qualification-fixture', attachment_upload_mode='disabled',
+    )
+    errors = settings.production_errors(scanner_is_noop=False)
+    assert any('repository RC.11 release identity' in error for error in errors)
+
+
+@pytest.mark.parametrize('gate_id,field_name', [
+    ('technical_release', 'verified_source_commit'),
+    ('release_evidence', 'source_digest'),
+])
+def test_production_rejects_release_fact_mismatch_against_repository_anchor(tmp_path, monkeypatch, gate_id, field_name):
+    root = tmp_path / 'root'
+    identity = _bind_repository_identity(tmp_path, monkeypatch)
+    payload = _final_qualification(root, identity=identity).model_dump()
+    for gate in payload['gates']:
+        if gate['id'] == gate_id:
+            gate['facts'][field_name] = ('1' * 40) if field_name.endswith('commit') else ('2' * 64)
+    final_path = tmp_path / 'qualification.json'
+    final_path.write_text(CompanyQualification.model_validate(payload).model_dump_json())
+    settings = Settings(
+        environment='production', profile='company', data_root=root,
+        allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],
+        csrf_secret='s' * 40, qualification_file=final_path,
+        deployment_id='qualification-fixture', attachment_upload_mode='disabled',
+    )
+    errors = settings.production_errors(scanner_is_noop=False)
+    assert any(gate_id.replace('_', ' ') in error.casefold() or 'repository RC.11 release identity' in error for error in errors)
+
+
+def test_production_missing_or_unreadable_repository_identity_fails_closed(tmp_path, monkeypatch):
+    root = tmp_path / 'root'
+    identity = _bind_repository_identity(tmp_path, monkeypatch)
+    final_path = tmp_path / 'qualification.json'
+    final_path.write_text(_final_qualification(root, identity=identity).model_dump_json())
+    identity_path = tmp_path / 'missing-release-identity.json'
+    monkeypatch.setattr(settings_module, 'REPOSITORY_RELEASE_IDENTITY_PATH', identity_path)
+    settings = Settings(
+        environment='production', profile='company', data_root=root,
+        allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],
+        csrf_secret='s' * 40, qualification_file=final_path,
+        deployment_id='qualification-fixture', attachment_upload_mode='disabled',
+    )
+    assert any('repository rc.11 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
+    identity_path.mkdir()
+    assert any('repository rc.11 release identity' in error.casefold() for error in settings.production_errors(scanner_is_noop=False))
 
 
 def test_qualification_operator_flow_does_not_require_final_evidence(tmp_path, monkeypatch):
@@ -294,6 +423,7 @@ def test_qualification_operator_flow_does_not_require_final_evidence(tmp_path, m
 
 def test_qualification_state_machine_fixture_can_transition_to_final_preflight(tmp_path, monkeypatch):
     root = tmp_path / 'root'
+    identity = _bind_repository_identity(tmp_path, monkeypatch)
     prerequisites_path = tmp_path / 'prerequisites.json'
     prerequisites_path.write_text(_prerequisites(root).model_dump_json())
     provision = _run_operator(root, prerequisites_path, 'provision', '--tenant', 'Qualification Fixture', '--admin', 'company.alice')
@@ -312,7 +442,7 @@ def test_qualification_state_machine_fixture_can_transition_to_final_preflight(t
         }
 
     final_path = tmp_path / 'qualification.json'
-    final_path.write_text(_final_qualification(root).model_dump_json())
+    final_path.write_text(_final_qualification(root, identity=identity).model_dump_json())
     production_settings = Settings(
         environment='production', profile='company', data_root=root,
         allowed_origins=['https://frontend.example.com'], allowed_hosts=['backend.example.com'],

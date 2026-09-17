@@ -1,0 +1,41 @@
+{
+  "api_contract_impact": {
+    "api_major": 1,
+    "base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+    "contract_revision": 1,
+    "observable_change": false
+  },
+  "change": "CHG-33",
+  "evidence_binding": "evidence/current/release/rc11-evidence-binding.json",
+  "evidence_policy": "No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.",
+  "external_blockers": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "final_company_qualification_schema_version": 2,
+  "mandatory_gate_ids": [
+    "technical_release",
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations",
+    "release_evidence"
+  ],
+  "manifest": "evidence/current/release/rc11-manifest.json",
+  "production_ready": false,
+  "project": "react-fastapi-base",
+  "readiness_matrix": "evidence/current/release/rc11-readiness-matrix.json",
+  "release_status": "NOT_CERTIFIED",
+  "schema_version": 2,
+  "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
+  "template": "deploy/company-qualification.template.json",
+  "typed_schema": "deploy/company-qualification.schema.json",
+  "verified_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
+  "version": "1.0.0-rc.11"
+}

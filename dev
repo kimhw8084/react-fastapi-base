@@ -90,7 +90,9 @@ def main():
     if a.command=='seed-demo':return run([backend_python(),'-m','app.cli','seed-demo'],ROOT/'backend',local_env())
     if a.command=='contracts':
         code=run([backend_python(),'scripts/generate_contracts.py'])
-        return code if code else run([backend_python(),'scripts/check_configuration_contract.py'])
+        if code:return code
+        code=run([backend_python(),'scripts/check_configuration_contract.py'])
+        return code if code else run([backend_python(),'scripts/check_qualification_contract.py'])
     if a.command=='architecture':return run([backend_python(),'scripts/check_architecture.py'])
     if a.command in ('verify','verify-release'):
         return run([backend_python(),'scripts/verify.py','--output',str(ROOT/'evidence/current/full-stack'),*(['--release'] if a.command=='verify-release' else [])])

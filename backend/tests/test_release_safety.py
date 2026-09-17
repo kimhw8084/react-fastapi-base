@@ -5,22 +5,65 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import create_app
+from app.platform import settings as settings_module
 from app.platform.attachments import AttachmentUpload, DeterministicMalwareScanner, NoopMalwareScanner, attach
 from app.platform.errors import AppError
 from app.platform.security import Actor
-from app.platform.settings import CompanyQualification, Settings
+from app.platform.settings import (
+    CompanyQualification,
+    CompanyQualificationGate,
+    DeploymentFacts,
+    EvidenceReference,
+    IdentityFacts,
+    OperationsFacts,
+    PerformanceFacts,
+    ReleaseEvidenceFacts,
+    Settings,
+    StorageFacts,
+    TechnicalReleaseFacts,
+    UiAccessibilityFacts,
+    RepositoryReleaseIdentity,
+    RepositorySourceEvidence,
+    load_repository_release_identity,
+)
+from app.platform.version import VERSION
 from app.platform.storage import MemoryStorage
 
 
-def qualified_production_settings(tmp_path: Path, *, mode: str = 'scanner_required') -> Settings:
+def qualified_production_settings(tmp_path: Path, monkeypatch, *, mode: str = 'scanner_required') -> Settings:
     root=tmp_path/'qualified-data'
+    def evidence(kind: str, name: str) -> EvidenceReference:
+        return EvidenceReference(kind=kind, locator=f'evidence/company/{name}.json', evidence_id=f'fixture-{name}', issuer='fixture-operator')
+    try:
+        expected = load_repository_release_identity()
+    except ValueError:
+        expected = RepositoryReleaseIdentity(
+            identity_type='repository_rc11_release', project='react-fastapi-base', profile='company',
+            candidate_version=VERSION, verified_source_commit='a' * 40, source_digest='b' * 64,
+            source_evidence=RepositorySourceEvidence(locator='evidence/test/source-hashes.json', sha256='c' * 64),
+            generated_by='scripts/generate_release_identity.py', code_ready=True,
+            production_ready=False, release_status='NOT_CERTIFIED',
+        )
+    identity_path=tmp_path/'repository-release-identity.json';identity_path.write_text(expected.model_dump_json())
+    monkeypatch.setattr(settings_module,'REPOSITORY_RELEASE_IDENTITY_PATH',identity_path)
+    source_commit = expected.verified_source_commit
+    source_digest = expected.source_digest
     qualification=CompanyQualification(
+        candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest,
         deployment_id='staging-1', identity_topology='per_user_process',
-        simultaneous_identity_evidence='operator evidence reference', storage_kind='local_disk',
+        storage_kind='local_disk',
         provider_sqlite_support_reference='provider evidence reference', all_database_clients_same_host=True,
-        persistent_root=str(root), redeploy_persistence_evidence='operator redeploy evidence',
-        restore_drill_evidence='operator restore evidence', ingress_authentication_evidence='operator ingress evidence',
-        approved_by='release-operator', approved_at='2026-09-09T00:00:00Z',
+        persistent_root=str(root), approved_by='release-operator', approved_at='2026-09-09T00:00:00Z',
+        gates=[
+            CompanyQualificationGate(id='technical_release', status='PASS', evidence=[evidence('verification_report', 'technical')], facts=TechnicalReleaseFacts(code_ready=True, candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest)),
+            CompanyQualificationGate(id='identity', status='PASS', evidence=[evidence('identity_proof', 'identity')], facts=IdentityFacts(identity_topology='per_user_process', simultaneous_real_user_evidence=True)),
+            CompanyQualificationGate(id='storage', status='PASS', evidence=[evidence('storage_proof', 'storage')], facts=StorageFacts(storage_kind='local_disk', provider_sqlite_support_reference='provider evidence reference', all_database_clients_same_host=True, persistent_root=str(root))),
+            CompanyQualificationGate(id='deployment', status='PASS', evidence=[evidence('deployment_proof', 'deployment')], facts=DeploymentFacts(deployment_id='staging-1', ingress_authentication_evidence=True, redeploy_persistence_evidence=evidence('deployment_proof', 'redeploy'), restore_drill_evidence=evidence('deployment_proof', 'restore'))),
+            CompanyQualificationGate(id='ui_accessibility', status='PASS', evidence=[evidence('accessibility_report', 'accessibility')], facts=UiAccessibilityFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='performance', status='PASS', evidence=[evidence('performance_report', 'performance')], facts=PerformanceFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=OperationsFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, target_base_sha='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf', readiness_matrix_sha256='6' * 64)),
+        ],
     )
     qualification_file=tmp_path/'qualification.json';qualification_file.write_text(qualification.model_dump_json())
     return Settings(environment='production',profile='company',data_root=root,allowed_origins=['https://app.example.com'],allowed_hosts=['api.example.com'],csrf_secret='s'*40,qualification_file=qualification_file,deployment_id='staging-1',attachment_upload_mode=mode)
@@ -28,7 +71,7 @@ def qualified_production_settings(tmp_path: Path, *, mode: str = 'scanner_requir
 
 def test_production_scanner_required_rejects_noop_at_startup(tmp_path,monkeypatch):
     monkeypatch.setenv('AccessKey','company.alice')
-    settings=qualified_production_settings(tmp_path)
+    settings=qualified_production_settings(tmp_path, monkeypatch)
     assert any('NoopMalwareScanner' in error for error in settings.production_errors(scanner_is_noop=True))
     app=create_app(settings)
     with pytest.raises(RuntimeError,match='NoopMalwareScanner'):
@@ -38,7 +81,7 @@ def test_production_scanner_required_rejects_noop_at_startup(tmp_path,monkeypatc
 
 def test_production_uploads_disabled_is_safe_with_noop(tmp_path,monkeypatch):
     monkeypatch.setenv('AccessKey','company.alice')
-    app=create_app(qualified_production_settings(tmp_path,mode='disabled'))
+    app=create_app(qualified_production_settings(tmp_path,monkeypatch,mode='disabled'))
     with TestClient(app,base_url='https://api.example.com') as client:
         assert client.app.state.malware_scanner is None
         assert client.get('/api/v1/health').json()['alive']
