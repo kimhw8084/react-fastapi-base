@@ -50,26 +50,28 @@ def main():
     p=commands.add_parser('run-jobs');p.add_argument('--once',action='store_true');p.add_argument('--worker-id',default='operator-worker')
     commands.add_parser('preflight')
     commands.add_parser('seed-demo')
-    args=parser.parse_args();settings=Settings();database=Database(settings)
+    args=parser.parse_args();settings=Settings()
+    pure_errors=settings.configuration_errors()
+    if args.command=='preflight':
+        # Preflight reports both pure configuration failures and the separate
+        # qualification/runtime-dependent checks without opening a database.
+        errors=list(pure_errors)
+        if settings.environment == 'production':
+            errors.extend(settings.production_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required'))
+        elif settings.environment == 'qualification':
+            errors.extend(settings.qualification_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required'))
+        else:
+            errors.append('Preflight must be run with BASE_ENVIRONMENT=qualification or production.')
+        profile=load_profile(settings)
+        if not errors and profile.require_startup_identity:
+            try:
+                profile.identity.current_user()
+            except AppError:
+                errors.append('Company identity is missing or invalid.')
+        print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':settings.environment=='production' and not errors,'errors':sorted(set(errors))},indent=2));return 1 if errors else 0
+    settings.assert_configuration()
+    database=Database(settings)
     try:
-        if args.command=='preflight':
-            # The CLI has no injected scanner provider. Treat scanner-required
-            # as unavailable so preflight cannot approve an app that would
-            # fail closed at ASGI startup. Qualification has its own explicit
-            # prerequisite contract and is never reported production-ready.
-            if settings.environment == 'production':
-                errors=settings.production_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
-            elif settings.environment == 'qualification':
-                errors=settings.qualification_errors(scanner_is_noop=settings.attachment_upload_mode=='scanner_required')
-            else:
-                errors=['Preflight must be run with BASE_ENVIRONMENT=qualification or production.']
-            profile=load_profile(settings)
-            if not errors and profile.require_startup_identity:
-                try:
-                    profile.identity.current_user()
-                except AppError:
-                    errors.append('Company identity is missing or invalid.')
-            print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':settings.environment=='production' and not errors,'errors':errors},indent=2));return 1 if errors else 0
         if args.command=='doctor-storage':
             _assert_operator_safe(settings)
             result=probe(args.scratch_parent);print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1

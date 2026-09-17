@@ -1,11 +1,13 @@
 import test from 'node:test'
+import {createHash} from 'node:crypto'
 import {request as httpRequest} from 'node:http'
 import assert from 'node:assert/strict'
 import {mkdtemp,writeFile,mkdir,rm,symlink} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
-import {createStaticServer,validateRuntime} from '../server.mjs'
+import {createStaticServer,validatePublisherEnvironment,validateRuntime} from '../server.mjs'
 const runtime={schemaVersion:1,apiBase:'',defaultTheme:'operations',titleOverride:''}
+const sentinel=label=>`test-secret-${createHash('sha256').update(`CHG32:${label}`).digest('hex')}`
 async function fixture(fn){
  const parent=await mkdtemp(join(tmpdir(),'golden-static-test-'));const root=join(parent,'dist');await mkdir(root)
  await writeFile(join(root,'index.html'),'<!doctype html><h1>Static test fixture, not the React application</h1>')
@@ -24,6 +26,38 @@ test('runtime config can change without rebuilding; corrupt config fails closed'
 test('hidden files and source maps are not served',()=>fixture(async({base,root})=>{await writeFile(join(root,'x.map'),'source');assert.equal((await fetch(base+'/x.map')).status,404);assert.equal((await fetch(base+'/.env')).status,400)}))
 test('runtime rejects credentials, scripts, unknown keys and bad version',()=>{for(const patch of [{apiBase:'javascript:alert(1)'},{apiBase:'https://user:pass@api.test'},{secret:'x'},{schemaVersion:2}])assert.throws(()=>validateRuntime({...runtime,...patch}))})
 test('public runtime rejects server profile, storage and identity fields',()=>{for(const patch of [{profile:'company'},{companyProfile:{key:'company'}},{dataRoot:'/srv/data'},{AccessKey:'company.alice'},{qualification_file:'/srv/qualification.json'}])assert.throws(()=>validateRuntime({...runtime,...patch}))})
+test('publisher namespace rejects unknown, case-variant and invalid configuration without values',()=>{
+ const value=sentinel('publisher-value')
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_SECRET:value}),/Unknown frontend publisher configuration key/)
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'{}'}),/hosts/)
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["frontend.example.com"]',base_frontend_hosts:'["other.example.com"]'}),/Ambiguous/)
+ assert.doesNotMatch(String(assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_SECRET:value}))),new RegExp(value))
+})
+test('publisher process exceptions reject case-variant names',()=>{
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["frontend.example.com"]',node_env:'production'}),/canonical spelling/)
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["frontend.example.com"]',PORT:'4173',port:'4183'}),/canonical spelling/)
+})
+test('publisher production routing requires explicit public hosts and absolute runtime override',()=>{
+ assert.throws(()=>validatePublisherEnvironment({NODE_ENV:'production'}),/hosts/)
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["localhost"]',NODE_ENV:'production'}),/hosts/)
+ assert.throws(()=>validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["frontend.example.com"]',BASE_FRONTEND_RUNTIME_CONFIG:'runtime.json'}),/absolute/)
+ const config=validatePublisherEnvironment({BASE_FRONTEND_HOSTS:'["Frontend.Example.com"]',BASE_FRONTEND_RUNTIME_CONFIG:'/approved/runtime.json',NODE_ENV:'production'})
+ assert.deepEqual(config.allowedHosts,['frontend.example.com'])
+ assert.equal(config.runtimePath,'/approved/runtime.json')
+})
+test('static publisher rejects a relative runtime path',async()=>{
+ const parent=await mkdtemp(join(tmpdir(),'golden-static-path-test-'));const root=join(parent,'dist');await mkdir(root)
+ await writeFile(join(root,'index.html'),'fixture');await writeFile(join(root,'runtime-config.json'),JSON.stringify(runtime))
+ await assert.rejects(()=>createStaticServer({root,runtimePath:'runtime-config.json'}),/absolute/)
+ await rm(parent,{recursive:true,force:true})
+})
+test('publisher never serves runtime values outside the strict browser schema',()=>fixture(async({base,root})=>{
+ const value=sentinel('not-published')
+ await writeFile(join(root,'runtime-config.json'),JSON.stringify({...runtime,BASE_FRONTEND_HOSTS:['frontend.example.com'],secret:value}))
+ const response=await fetch(base+'/runtime-config.json')
+ assert.equal(response.status,503)
+ assert.doesNotMatch(await response.text(),new RegExp(value))
+}))
 
 test('embedded lab has a same-origin frame boundary; app remains non-frameable',()=>fixture(async({base,root})=>{
  await mkdir(join(root,'experience-lab'));await writeFile(join(root,'experience-lab','index.html'),'<!doctype html><h1>Lab fixture</h1>')

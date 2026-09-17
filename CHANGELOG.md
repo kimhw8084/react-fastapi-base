@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.10 — configuration and secrets contract
+
+- Added one metadata-only configuration contract covering backend settings, publisher configuration, browser runtime fields, development/test tooling and platform exceptions.
+- Made reserved backend and frontend-publisher namespaces fail closed, with explicit precedence, pure-before-runtime validation and safe configuration errors.
+- Kept CSRF and webhook signing values redacted behind Settings, preserved the CHG-27 CompanyProfile and CHG-31 API major/revision behavior, and kept company qualification external.
+
 ## 1.0.0-rc.9 — API compatibility and versioning policy
 
 - Added repository-owned API major 1 and monotonic v1 contract revision metadata, safe bootstrap negotiation, and generated frontend compatibility constants.

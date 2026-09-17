@@ -1,5 +1,10 @@
 # Company PaaS deployment contract — not yet exercised on company infrastructure
 
+The complete configuration/secrets ownership and validation contract is in
+[`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
+frontend example files are metadata-free operator templates, not qualification
+evidence.
+
 ## Hard boundary
 
 No provided command publishes or changes a live company deployment. Code readiness, source review, dependency clearance and company qualification are all required. Do not bypass a missing qualification by selecting development mode.
@@ -44,6 +49,10 @@ npm run build
 Static publisher: serve dist/ with SPA navigation fallback, but never rewrite /api into index.html. Set equivalent security headers to frontend/server.mjs. Required runtime config must use the separately published FastAPI HTTPS origin unless the ingress actually provides same-origin API routing.
 
 Node starting-file publisher: server.mjs, with PORT supplied by PaaS. Set NODE_ENV=production, explicit BASE_FRONTEND_HOSTS (JSON array), and optional BASE_FRONTEND_RUNTIME_CONFIG. See the file's native contract. It serves assets only; it does not implement company authentication or reverse proxying. CSP permits inline style geometry for AG Grid but forbids inline scripts/eval. Company embedding requires an explicitly reviewed frame-ancestors policy change.
+
+The Node publisher rejects unknown or case-variant `BASE_FRONTEND_*` variables,
+requires a JSON host array and accepts only an explicit absolute runtime-config
+path override. It publishes only the strictly parsed four-field runtime JSON.
 
 ## Deployment order
 

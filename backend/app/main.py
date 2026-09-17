@@ -14,6 +14,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from sqlalchemy import select, text
 from sqlalchemy.exc import OperationalError
 from app.platform.settings import Settings
+from app.platform.configuration_contract import ConfigurationContractError
 from app.platform.policy import load_policy
 from app.platform.workspace_registry import WorkspaceRegistry
 from app.platform.entity_registry import EntityRegistry, load_relationship_definitions
@@ -45,9 +46,10 @@ ERROR_RESPONSE_DESCRIPTIONS={
 }
 
 def create_app(settings: Settings | None = None) -> FastAPI:
-    settings=settings or Settings()
-    profile=load_profile(settings)
-    runtime: ProfileRuntime=profile.build_runtime(settings)
+    settings=settings if settings is not None else Settings()
+    # Pure configuration checks must finish before any profile-owned runtime,
+    # database, object storage or scanner is constructed.
+    settings.assert_configuration()
     application=load_config(settings.app_config)
     policy=load_policy(settings.policy_config)
     workspaces=WorkspaceRegistry(DEFINITIONS)
@@ -55,6 +57,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     entities=EntityRegistry(ENTITY_BINDINGS,load_relationship_definitions(relationships_path),workspaces.definitions())
     unknown={n.workspace for n in application.navigation}-set(DEFINITIONS)
     if unknown:raise ValueError('Unknown workspace configuration: '+', '.join(sorted(unknown)))
+    profile=load_profile(settings)
+    runtime: ProfileRuntime=profile.build_runtime(settings)
     @asynccontextmanager
     async def lifespan(app):
         runtime.assert_safe()
@@ -88,7 +92,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.object_storage=runtime.object_storage
     app.state.malware_scanner=runtime.malware_scanner
     app.state.identity=runtime.identity
-    app.state.csrf_secret=settings.csrf_secret or secrets.token_urlsafe(32)
+    configured_csrf_secret=settings.csrf_secret.get_secret_value()
+    app.state.csrf_secret=configured_csrf_secret or secrets.token_urlsafe(32)
     app.add_middleware(RequestSafetyMiddleware,settings=settings)
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=settings.allowed_hosts)
     # CORS wraps safety responses too; no wildcard credentials.
@@ -132,4 +137,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.include_router(router,prefix='/api/v1')
     return app
 
-app=create_app()
+def _configuration_failure_app() -> FastAPI:
+    """Keep module import safe while making invalid default startup fail closed."""
+    @asynccontextmanager
+    async def lifespan(_app):
+        raise RuntimeError('Application configuration is invalid; startup is refused.')
+        yield
+    return FastAPI(lifespan=lifespan)
+
+
+try:
+    app=create_app()
+except ConfigurationContractError:
+    # Uvicorn can import the module to report a deterministic startup refusal;
+    # no profile/runtime resource is constructed for the invalid default.
+    app=_configuration_failure_app()

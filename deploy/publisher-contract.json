@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
   "status": "not_company_verified",
+  "publisher_environment": ["BASE_FRONTEND_HOSTS", "BASE_FRONTEND_RUNTIME_CONFIG"],
+  "browser_runtime_keys": ["schemaVersion", "apiBase", "defaultTheme", "titleOverride"],
   "services": [
     {
       "id": "backend",

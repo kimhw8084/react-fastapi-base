@@ -7,17 +7,55 @@ import {resolve, relative, extname, isAbsolute} from 'node:path'
 import {fileURLToPath} from 'node:url'
 
 const TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.ico':'image/x-icon','.woff2':'font/woff2'}
+export const PUBLISHER_ENV_KEYS=Object.freeze(['BASE_FRONTEND_HOSTS','BASE_FRONTEND_RUNTIME_CONFIG'])
+const PROCESS_ENV_KEYS=new Set(['PORT','HOST','NODE_ENV'])
+const HOSTNAME_PATTERN=/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/
+
+function validateAllowedHosts(value,production=false){
+  if(!Array.isArray(value)||!value.length||value.length>64||value.some(host=>typeof host!=='string'||!host||host.length>253||!HOSTNAME_PATTERN.test(host)))throw new Error('Frontend publisher hosts are invalid.')
+  const hosts=value.map(host=>host.toLowerCase())
+  if(new Set(hosts).size!==hosts.length)throw new Error('Frontend publisher hosts must be unique.')
+  if(production&&hosts.some(host=>host==='*'||host==='localhost'||host==='127.0.0.1'))throw new Error('Explicit production frontend hosts are required.')
+  return hosts
+}
+
+export function validatePublisherEnvironment(environment=process.env){
+  for(const name of Object.keys(environment)){
+    const normalized=name.toUpperCase()
+    if(PROCESS_ENV_KEYS.has(normalized)&&name!==normalized)throw new Error(`Process configuration key must use canonical spelling: ${normalized}.`)
+  }
+  const names=Object.keys(environment).filter(name=>name.toUpperCase().startsWith('BASE_FRONTEND_'))
+  const seen=new Set()
+  for(const name of names){
+    const normalized=name.toUpperCase()
+    if(seen.has(normalized))throw new Error(`Ambiguous frontend publisher configuration keys for ${normalized}.`)
+    seen.add(normalized)
+    if(!PUBLISHER_ENV_KEYS.includes(name))throw new Error(`Unknown frontend publisher configuration key: ${normalized}.`)
+  }
+  const nodeEnv=environment.NODE_ENV??'development'
+  if(!['development','test','production'].includes(nodeEnv))throw new Error('NODE_ENV must be development, test or production.')
+  let rawHosts
+  try{rawHosts=JSON.parse(environment.BASE_FRONTEND_HOSTS??'["127.0.0.1","localhost"]')}catch{throw new Error('BASE_FRONTEND_HOSTS must be a JSON array of hosts.')}
+  if(nodeEnv==='production'&&!Object.hasOwn(environment,'BASE_FRONTEND_HOSTS'))throw new Error('Production frontend hosts must be explicit.')
+  const allowedHosts=validateAllowedHosts(rawHosts,nodeEnv==='production')
+  const runtimePath=environment.BASE_FRONTEND_RUNTIME_CONFIG
+  if(runtimePath!==undefined&&(!runtimePath||!isAbsolute(runtimePath)))throw new Error('BASE_FRONTEND_RUNTIME_CONFIG must be an absolute path.')
+  return {allowedHosts,runtimePath,nodeEnv}
+}
+
 export function validateRuntime(value){
   if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('Invalid runtime config.')
   const allowed=['schemaVersion','apiBase','defaultTheme','titleOverride']
   if(Object.keys(value).some(k=>!allowed.includes(k))||value.schemaVersion!==1||typeof value.apiBase!=='string'||typeof value.titleOverride!=='string'||value.titleOverride.length>80||!['operations','clarity','minimal'].includes(value.defaultTheme))throw new Error('Invalid runtime config.')
-  if(value.apiBase){if(/[;'"\s]/.test(value.apiBase))throw new Error('Invalid origin.');const url=new URL(value.apiBase);if(!['https:','http:'].includes(url.protocol)||url.username||url.password||url.pathname!=='/'||url.search||url.hash||value.apiBase.endsWith('/'))throw new Error('API must be an origin.')}
+  if(value.apiBase){if(/[;'"\s]/.test(value.apiBase))throw new Error('Invalid origin.');let url;try{url=new URL(value.apiBase)}catch{throw new Error('API must be an origin.')}if(!['https:','http:'].includes(url.protocol)||url.username||url.password||url.pathname!=='/'||url.search||url.hash||value.apiBase.endsWith('/'))throw new Error('API must be an origin.')}
   return value
 }
 export async function createStaticServer({root,runtimePath,allowedHosts=['127.0.0.1','localhost'],production=false}){
+  allowedHosts=validateAllowedHosts(allowedHosts,production)
   root=await realpath(root)
   await stat(resolve(root,'index.html'))
   runtimePath=runtimePath??resolve(root,'runtime-config.json')
+  if(!isAbsolute(runtimePath))throw new Error('Runtime configuration path must be absolute.')
   const readRuntime=async()=>{
     const config=validateRuntime(JSON.parse(await readFile(runtimePath,'utf8')))
     if(production&&config.apiBase&&!config.apiBase.startsWith('https://'))throw new Error('Production API must use HTTPS.')
@@ -78,8 +116,8 @@ export async function createStaticServer({root,runtimePath,allowedHosts=['127.0.
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const root=resolve(fileURLToPath(new URL('.',import.meta.url)),'dist')
-  const allowedHosts=JSON.parse(process.env.BASE_FRONTEND_HOSTS??'["127.0.0.1","localhost"]')
-  const server=await createStaticServer({root,runtimePath:process.env.BASE_FRONTEND_RUNTIME_CONFIG,allowedHosts,production:process.env.NODE_ENV==='production'})
+  const publisher=validatePublisherEnvironment(process.env)
+  const server=await createStaticServer({root,runtimePath:publisher.runtimePath,allowedHosts:publisher.allowedHosts,production:publisher.nodeEnv==='production'})
   const port=Number(process.env.PORT??4173)
   if(!Number.isInteger(port)||port<1||port>65535)throw new Error('Invalid PORT.')
   server.listen(port,process.env.HOST??'0.0.0.0',()=>console.log(`Static frontend listening on ${port}`))

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "project": "react-fastapi-base",
+  "change": "CHG-32",
+  "version": "1.0.0-rc.10",
+  "source_commit": "352d609a793790defe3788eaaa109c9841cd6e27",
+  "base_sha": "f52fb02df980b06ce4b1a0ff741d626304381a23",
+  "contract": {
+    "path": "deploy/configuration-contract.json",
+    "sha256": "7569ddcffa28570a95b9e3b86039d04ee4445c19ba6b3a0b98570796e5bc702c",
+    "metadata_only": true,
+    "entries_by_surface": {
+      "backend_environment": 19,
+      "frontend_publisher_environment": 2,
+      "browser_runtime": 4,
+      "development_test_tooling": 6
+    },
+    "external_platform_exceptions": [
+      "AccessKey",
+      "PORT",
+      "HOST",
+      "NODE_ENV"
+    ]
+  },
+  "precedence": [
+    "trusted explicit constructor or tooling override",
+    "environment value",
+    "declared default policy"
+  ],
+  "validation": {
+    "pure_before_profile_runtime": true,
+    "runtime_dependent_qualification_owner": "CompanyProfile deployment adapter and CompanyQualification flow",
+    "unknown_backend_namespace": "fail_closed",
+    "frontend_publisher_namespace": "validated_separately; server-private"
+  },
+  "secret_boundary": {
+    "secret_fields_redacted": true,
+    "sentinel_values_recorded": false,
+    "public_runtime_keys_only": [
+      "schemaVersion",
+      "apiBase",
+      "defaultTheme",
+      "titleOverride"
+    ],
+    "qualification_or_credential_payload_recorded": false
+  },
+  "api_contract_impact": {
+    "observable_change": false,
+    "api_major": 1,
+    "contract_revision": 1,
+    "base_api_major": 1,
+    "base_contract_revision": 1,
+    "breaking_changes": 0,
+    "compatible_changes": 0,
+    "compatibility_evidence": "evidence/current/full-stack/api-compatibility.json"
+  },
+  "local_checks": {
+    "configuration-contract": "PASS",
+    "architecture": "PASS",
+    "security-source": "PASS",
+    "backend-tests": "PASS",
+    "frontend-typecheck": "PASS",
+    "frontend-unit": "PASS",
+    "static-server": "PASS",
+    "api-compatibility": "PASS"
+  },
+  "external_qualification": {
+    "status": "BLOCKED_EXTERNAL",
+    "production_ready": false,
+    "blockers": [
+      "company-identity",
+      "company-storage",
+      "company-deployment"
+    ]
+  },
+  "evidence_policy": "No real credentials, secret values, fingerprints or qualification payloads are copied into this report."
+}
