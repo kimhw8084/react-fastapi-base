@@ -67,12 +67,12 @@ def build_readiness_matrix(*, source_commit: str, source_digest: str, version: s
     )
     gate_rows = [
         {'id': 'technical_release', 'status': technical_status, 'reason': technical_reason, 'evidence_state': 'repository_verification'},
-        {'id': 'identity', 'status': 'BLOCKED', 'reason': 'Authentic company per-user identity and simultaneous real-user evidence is unavailable.', 'evidence_state': 'external_unproven'},
-        {'id': 'storage', 'status': 'BLOCKED', 'reason': 'Provider-supported SQLite locking, durability, persistence and restore evidence is unavailable.', 'evidence_state': 'external_unproven'},
-        {'id': 'deployment', 'status': 'BLOCKED', 'reason': 'Company publication, ingress, restart, redeploy and recovery evidence is unavailable.', 'evidence_state': 'external_unproven'},
-        {'id': 'ui_accessibility', 'status': 'BLOCKED', 'reason': 'Local browser and axe checks do not establish applicable company/profile accessibility evidence.', 'evidence_state': 'external_unproven'},
-        {'id': 'performance', 'status': 'BLOCKED', 'reason': 'Local stress checks do not establish applicable company/profile performance evidence.', 'evidence_state': 'external_unproven'},
-        {'id': 'operations', 'status': 'BLOCKED', 'reason': 'Applicable company/profile operational readiness evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'identity', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Authentic company per-user identity and simultaneous real-user evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'storage', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Provider-supported SQLite locking, durability, persistence and restore evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'deployment', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Company publication, ingress, restart, redeploy and recovery evidence is unavailable.', 'evidence_state': 'external_unproven'},
+        {'id': 'ui_accessibility', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Local browser and axe checks do not establish applicable company/profile accessibility evidence.', 'evidence_state': 'external_unproven'},
+        {'id': 'performance', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Local stress checks do not establish applicable company/profile performance evidence.', 'evidence_state': 'external_unproven'},
+        {'id': 'operations', 'status': 'BLOCKED', 'qualification_status': 'BLOCKED_EXTERNAL', 'reason': 'Applicable company/profile operational readiness evidence is unavailable.', 'evidence_state': 'external_unproven'},
         {'id': 'release_evidence', 'status': release_status, 'reason': release_reason, 'evidence_state': 'repository_verification'},
     ]
     return {
@@ -116,6 +116,8 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
         'verification': {'locator': verification_path, 'source_commit': source_commit, 'source_digest': source_digest},
         'api_compatibility_base_sha': api_compatibility_base_sha,
+        'target_base_sha': api_compatibility_base_sha,
+        'evidence_commit': None,
         'code_ready': code_ready,
         'production_ready': False,
         'release_status': 'NOT_CERTIFIED',
@@ -131,13 +133,12 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'verified_source_commit': source_commit,
         'source_digest': source_digest,
         'evidence_commit': None,
-        'accepted_head': None,
-        'repository_merge_sha': None,
+        'target_base_sha': api_compatibility_base_sha,
         'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
         'manifest': {'locator': str(MANIFEST_PATH.relative_to(ROOT)), 'sha256': manifest_digest},
         'binding_status': 'PENDING_EVIDENCE_COMMIT',
         'result': 'NOT_CERTIFIED',
-        'note': 'Bind evidence_commit, Accepted Head and repository merge SHA only after the exact verified source evidence is committed; this file never certifies production.',
+        'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',
     }
     BINDING_PATH.write_text(json.dumps(binding, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     contract = {

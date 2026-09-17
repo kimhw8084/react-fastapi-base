@@ -33,6 +33,14 @@ prerequisite file cannot be renamed into a final qualification: production
 startup/preflight still validates the complete `CompanyQualification`, exact
 project/profile/source/version/deployment/root/storage binding and the selected scanner policy.
 
+Production also loads the fixed repository-owned `deploy/rc11-release-identity.json`.
+This artifact is generated from the passing source verification report and its
+canonical executable-source hash evidence; it is outside the executable-source
+hash set so the digest is not self-referential. The operator qualification,
+including its `technical_release` and `release_evidence` facts, must match that
+identity exactly. Missing, unreadable, malformed or mismatched repository
+identity fails closed in startup, readiness/preflight and maintenance.
+
 ## Identity
 
 AccessKey is trusted only because the authenticated platform supplies it. A normal process environment is shared by all requests in that process. With the current provider, production requires per-user process/execution isolation and routing that cannot send Alice to Bob's instance. Do not expose another identity header as a silent fallback.
@@ -76,5 +84,12 @@ certify schema v2.
 Copy deploy/company-qualification.template.json to an operator-managed, nonpublic location only after the qualification drills and replace invalid placeholders with actual approved evidence references. Its schema intentionally refuses the template defaults. Pin deployment_id and persistent_root to the actual environment. An evidence string is an attestation, not cryptographic or independent certification. Only authorized release operators may approve it. A later environment/topology change invalidates the approval.
 
 The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes `evidence/current/release/rc11-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file.
+
+BUILD-time release evidence records the verified executable-source commit and
+digest, the evidence commit once that evidence is committed, and the exact
+target base when available. `accepted_head` and `repository_merge_sha` are not
+BUILD facts: an Accepted Head exists only after Project OS acceptance, and a
+repository merge SHA exists only after candidate integration. The target base
+must never be used as a merge SHA.
 
 Before qualification, verify the deployment uses an explicit attachment upload policy. The default `scanner_required` mode must have a real scanner/CDR adapter; otherwise startup/readiness is rejected. The local deterministic scanner proves only the adapter contract and rejects EICAR/SVG test content. During the company recovery drill, upload an object-backed attachment, stop all writers, run the schema-versioned object-inclusive backup, restore into a second root, and verify the original bytes and SHA-256 after download.

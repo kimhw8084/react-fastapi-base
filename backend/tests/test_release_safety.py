@@ -21,6 +21,7 @@ from app.platform.settings import (
     StorageFacts,
     TechnicalReleaseFacts,
     UiAccessibilityFacts,
+    load_repository_release_identity,
 )
 from app.platform.version import VERSION
 from app.platform.storage import MemoryStorage
@@ -30,8 +31,9 @@ def qualified_production_settings(tmp_path: Path, *, mode: str = 'scanner_requir
     root=tmp_path/'qualified-data'
     def evidence(kind: str, name: str) -> EvidenceReference:
         return EvidenceReference(kind=kind, locator=f'evidence/company/{name}.json', evidence_id=f'fixture-{name}', issuer='fixture-operator')
-    source_commit = '1' * 40
-    source_digest = '2' * 64
+    expected = load_repository_release_identity()
+    source_commit = expected.verified_source_commit
+    source_digest = expected.source_digest
     qualification=CompanyQualification(
         candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest,
         deployment_id='staging-1', identity_topology='per_user_process',
@@ -46,7 +48,7 @@ def qualified_production_settings(tmp_path: Path, *, mode: str = 'scanner_requir
             CompanyQualificationGate(id='ui_accessibility', status='PASS', evidence=[evidence('accessibility_report', 'accessibility')], facts=UiAccessibilityFacts(company_profile_evidence=True)),
             CompanyQualificationGate(id='performance', status='PASS', evidence=[evidence('performance_report', 'performance')], facts=PerformanceFacts(company_profile_evidence=True)),
             CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=OperationsFacts(company_profile_evidence=True)),
-            CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, accepted_head='4' * 40, repository_merge_sha='5' * 40, readiness_matrix_sha256='6' * 64)),
+            CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, target_base_sha='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf', readiness_matrix_sha256='6' * 64)),
         ],
     )
     qualification_file=tmp_path/'qualification.json';qualification_file.write_text(qualification.model_dump_json())

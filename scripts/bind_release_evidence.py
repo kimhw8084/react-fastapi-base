@@ -28,21 +28,24 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verified-source-commit', required=True)
     parser.add_argument('--evidence-commit', required=True)
-    parser.add_argument('--accepted-head', required=True)
-    parser.add_argument('--repository-merge-sha', required=True)
+    parser.add_argument('--target-base-sha')
     args = parser.parse_args()
     verified_source_commit = full_commit(args.verified_source_commit, 'verified source commit')
     evidence_commit = full_commit(args.evidence_commit, 'evidence commit')
-    accepted_head = full_commit(args.accepted_head, 'Accepted Head')
-    repository_merge_sha = full_commit(args.repository_merge_sha, 'repository merge SHA')
     if evidence_commit == verified_source_commit:
         raise ValueError('Evidence commit must remain distinct from verified executable source.')
     manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf-8'))
     if manifest.get('verified_source_commit') != verified_source_commit:
         raise ValueError('Manifest verified-source binding does not match the requested source commit.')
+    target_base_sha = manifest.get('target_base_sha')
+    if args.target_base_sha is not None:
+        target_base_sha = full_commit(args.target_base_sha, 'target base SHA')
+    if target_base_sha is not None and not re.fullmatch(r'[0-9a-fA-F]{40}', target_base_sha):
+        raise ValueError('Manifest target base SHA must be a full commit SHA.')
+    if target_base_sha == evidence_commit:
+        raise ValueError('Evidence commit must remain distinct from the target base SHA.')
     manifest['evidence_commit'] = evidence_commit
-    manifest['accepted_head'] = accepted_head
-    manifest['repository_merge_sha'] = repository_merge_sha
+    manifest['target_base_sha'] = target_base_sha
     manifest['evidence_binding'] = str(BINDING_PATH.relative_to(ROOT))
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     binding = {
@@ -53,8 +56,7 @@ def main() -> int:
         'verified_source_commit': verified_source_commit,
         'source_digest': manifest['source_digest'],
         'evidence_commit': evidence_commit,
-        'accepted_head': accepted_head,
-        'repository_merge_sha': repository_merge_sha,
+        'target_base_sha': target_base_sha,
         'readiness_matrix': {
             'locator': manifest['readiness_matrix']['locator'],
             'sha256': manifest['readiness_matrix']['sha256'],
@@ -65,7 +67,7 @@ def main() -> int:
         },
         'binding_status': 'PASS',
         'result': 'PASS_SOURCE_BOUND_NOT_CERTIFIED',
-        'note': 'Source/evidence identity is bound; company gates and production approval remain independent.',
+        'note': 'Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.',
     }
     BINDING_PATH.write_text(json.dumps(binding, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     print(json.dumps({'binding': str(BINDING_PATH.relative_to(ROOT)), 'status': binding['binding_status']}))

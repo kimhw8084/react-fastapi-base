@@ -19,6 +19,7 @@ from app.platform.version import VERSION
 COMPANY_QUALIFICATION_SCHEMA_VERSION = 2
 COMPANY_QUALIFICATION_PROJECT = 'react-fastapi-base'
 COMPANY_QUALIFICATION_PROFILE = 'company'
+REPOSITORY_RELEASE_IDENTITY_PATH = Path(__file__).resolve().parents[3] / 'deploy' / 'rc11-release-identity.json'
 MANDATORY_GATE_IDS = (
     'technical_release',
     'identity',
@@ -93,6 +94,20 @@ def _validate_digest(value: str, field_name: str) -> str:
     if not re.fullmatch(r'[0-9a-fA-F]{64}', value):
         raise ValueError(f'{field_name} must be a SHA-256 source digest.')
     return value.lower()
+
+
+def _validate_candidate_version(value: str) -> str:
+    if not re.fullmatch(r'\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+)?', value):
+        raise ValueError('Qualification candidate version is invalid.')
+    return value
+
+
+def _validate_repository_locator(value: str, field_name: str) -> str:
+    value = _validate_safe_metadata(value, field_name)
+    parsed = urlsplit(value)
+    if parsed.scheme or parsed.username or parsed.password or parsed.query or parsed.fragment or value.startswith('/'):
+        raise ValueError(f'{field_name} must be a relative repository locator.')
+    return value
 
 
 class EvidenceReference(BaseModel):
@@ -220,24 +235,91 @@ class ReleaseEvidenceFacts(BaseModel):
     verified_source_commit: str
     source_digest: str
     evidence_commit: str
-    accepted_head: str
-    repository_merge_sha: str
     readiness_matrix_sha256: str
+    target_base_sha: str | None = None
+    accepted_head: str | None = None
+    repository_merge_sha: str | None = None
 
     @field_validator('project', 'profile')
     @classmethod
     def safe_identity(cls, value: str) -> str:
         return _validate_safe_metadata(value, 'Release identity')
 
-    @field_validator('verified_source_commit', 'evidence_commit', 'accepted_head', 'repository_merge_sha')
+    @field_validator('candidate_version')
     @classmethod
-    def full_commits(cls, value: str, info) -> str:
-        return _validate_commit(value, str(info.field_name))
+    def valid_candidate_version(cls, value: str) -> str:
+        return _validate_candidate_version(value)
+
+    @field_validator('verified_source_commit', 'evidence_commit', 'target_base_sha', 'accepted_head', 'repository_merge_sha')
+    @classmethod
+    def full_commits(cls, value: str | None, info) -> str | None:
+        return None if value is None else _validate_commit(value, str(info.field_name))
 
     @field_validator('source_digest', 'readiness_matrix_sha256')
     @classmethod
     def digests(cls, value: str, info) -> str:
         return _validate_digest(value, str(info.field_name))
+
+    @model_validator(mode='after')
+    def post_acceptance_fields_are_semantic(self):
+        if self.evidence_commit == self.verified_source_commit:
+            raise ValueError('Evidence commit must remain distinct from verified executable source.')
+        post_acceptance = (self.accepted_head, self.repository_merge_sha)
+        if any(value in {self.verified_source_commit, self.evidence_commit, self.target_base_sha} for value in post_acceptance if value is not None):
+            raise ValueError('Post-acceptance release identities must remain distinct from source, evidence and target base commits.')
+        if self.repository_merge_sha is not None and self.repository_merge_sha == self.target_base_sha:
+            raise ValueError('Repository merge SHA must not alias the target base SHA.')
+        return self
+
+
+class RepositorySourceEvidence(BaseModel):
+    model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
+    locator: str = Field(min_length=1, max_length=512)
+    sha256: str
+
+    @field_validator('locator')
+    @classmethod
+    def safe_locator(cls, value: str) -> str:
+        return _validate_repository_locator(value, 'Repository source evidence locator')
+
+    @field_validator('sha256')
+    @classmethod
+    def valid_sha256(cls, value: str) -> str:
+        return _validate_digest(value, 'Repository source evidence digest')
+
+
+class RepositoryReleaseIdentity(BaseModel):
+    """Repository-generated RC.11 identity independent of operator evidence."""
+
+    model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
+    schema_version: Literal[1] = 1
+    identity_type: Literal['repository_rc11_release']
+    project: Literal['react-fastapi-base']
+    profile: Literal['company']
+    candidate_version: str = Field(min_length=1, max_length=64)
+    verified_source_commit: str
+    source_digest: str
+    source_evidence: RepositorySourceEvidence
+    verification: RepositorySourceEvidence
+    generated_by: Literal['scripts/generate_release_identity.py']
+    code_ready: Literal[True]
+    production_ready: Literal[False]
+    release_status: Literal['NOT_CERTIFIED']
+
+    @field_validator('candidate_version')
+    @classmethod
+    def valid_candidate_version(cls, value: str) -> str:
+        return _validate_candidate_version(value)
+
+    @field_validator('verified_source_commit')
+    @classmethod
+    def full_source_commit(cls, value: str) -> str:
+        return _validate_commit(value, 'Repository release source commit')
+
+    @field_validator('source_digest')
+    @classmethod
+    def source_sha256(cls, value: str) -> str:
+        return _validate_digest(value, 'Repository release source digest')
 
 
 QualificationFacts = Annotated[
@@ -339,9 +421,7 @@ class CompanyQualification(BaseModel):
     def safe_candidate_version(cls, value: str | None) -> str | None:
         if value is None:
             return None
-        if not re.fullmatch(r'\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+)?', value):
-            raise ValueError('Qualification candidate version is invalid.')
-        return value
+        return _validate_candidate_version(value)
 
     @field_validator('verified_source_commit')
     @classmethod
@@ -444,11 +524,53 @@ class CompanyQualification(BaseModel):
             errors.append('Release evidence verified-source binding does not match qualification.')
         if facts.source_digest != self.source_digest:
             errors.append('Release evidence source-digest binding does not match qualification.')
-        if facts.evidence_commit == facts.verified_source_commit:
-            errors.append('Release evidence commit must remain distinct from verified executable source.')
         return errors
 
-    def binding_errors(self, *, expected_version: str, expected_deployment_id: str, expected_root: Path) -> list[str]:
+    def repository_release_identity_errors(self, expected: RepositoryReleaseIdentity) -> list[str]:
+        errors: list[str] = []
+        for field_name, label in (
+            ('project', 'project'),
+            ('profile', 'profile'),
+            ('candidate_version', 'version'),
+            ('verified_source_commit', 'verified executable source commit'),
+            ('source_digest', 'executable source digest'),
+        ):
+            if getattr(self, field_name) != getattr(expected, field_name):
+                errors.append(f'Qualification {label} does not match the repository RC.11 release identity.')
+
+        technical_gate = self.gate('technical_release')
+        technical_facts = technical_gate.facts if technical_gate else None
+        if isinstance(technical_facts, TechnicalReleaseFacts):
+            if technical_facts.candidate_version != expected.candidate_version:
+                errors.append('Technical release version does not match the repository RC.11 release identity.')
+            if technical_facts.verified_source_commit != expected.verified_source_commit:
+                errors.append('Technical release source commit does not match the repository RC.11 release identity.')
+            if technical_facts.source_digest != expected.source_digest:
+                errors.append('Technical release source digest does not match the repository RC.11 release identity.')
+
+        release_gate = self.gate('release_evidence')
+        release_facts = release_gate.facts if release_gate else None
+        if isinstance(release_facts, ReleaseEvidenceFacts):
+            if release_facts.project != expected.project:
+                errors.append('Release evidence project does not match the repository RC.11 release identity.')
+            if release_facts.profile != expected.profile:
+                errors.append('Release evidence profile does not match the repository RC.11 release identity.')
+            if release_facts.candidate_version != expected.candidate_version:
+                errors.append('Release evidence version does not match the repository RC.11 release identity.')
+            if release_facts.verified_source_commit != expected.verified_source_commit:
+                errors.append('Release evidence source commit does not match the repository RC.11 release identity.')
+            if release_facts.source_digest != expected.source_digest:
+                errors.append('Release evidence source digest does not match the repository RC.11 release identity.')
+        return sorted(set(errors))
+
+    def binding_errors(
+        self,
+        *,
+        expected_version: str,
+        expected_deployment_id: str,
+        expected_root: Path,
+        expected_release_identity: RepositoryReleaseIdentity | None = None,
+    ) -> list[str]:
         errors: list[str] = []
         if self.candidate_version != expected_version:
             errors.append('Qualification belongs to a different candidate version.')
@@ -465,13 +587,25 @@ class CompanyQualification(BaseModel):
         deployment_gate = self.gate('deployment')
         if isinstance(deployment_gate.facts if deployment_gate else None, DeploymentFacts) and deployment_gate.facts.deployment_id != self.deployment_id:
             errors.append('Deployment qualification belongs to a different deployment.')
-        return errors
+        if expected_release_identity is None:
+            errors.append('Repository RC.11 release identity is unavailable; production qualification is refused.')
+        else:
+            errors.extend(self.repository_release_identity_errors(expected_release_identity))
+        return errors 
 
-    def derived_production_ready(self, *, expected_version: str, expected_deployment_id: str, expected_root: Path) -> bool:
+    def derived_production_ready(
+        self,
+        *,
+        expected_version: str,
+        expected_deployment_id: str,
+        expected_root: Path,
+        expected_release_identity: RepositoryReleaseIdentity | None = None,
+    ) -> bool:
         return not self.contract_errors() and not self.binding_errors(
             expected_version=expected_version,
             expected_deployment_id=expected_deployment_id,
             expected_root=expected_root,
+            expected_release_identity=expected_release_identity,
         )
 
     @property
@@ -482,6 +616,14 @@ class CompanyQualification(BaseModel):
 
 class LegacyCompanyQualificationError(ValueError):
     """Schema-v1 infrastructure-only records require explicit requalification."""
+
+
+def load_repository_release_identity(path: Path | None = None) -> RepositoryReleaseIdentity:
+    identity_path = REPOSITORY_RELEASE_IDENTITY_PATH if path is None else path
+    try:
+        return RepositoryReleaseIdentity.model_validate_json(identity_path.read_text(encoding='utf-8'))
+    except (OSError, ValueError, ValidationError) as error:
+        raise ValueError('Repository RC.11 release identity is missing or invalid.') from error
 
 
 def load_company_qualification(payload: str) -> CompanyQualification:
@@ -639,6 +781,11 @@ class Settings(BaseSettings):
             return []
         errors = self._common_company_errors('Production')
         errors.extend(self._upload_policy_errors(scanner_is_noop=scanner_is_noop, check_attachment_policy=check_attachment_policy, label='Production'))
+        expected_release_identity: RepositoryReleaseIdentity | None = None
+        try:
+            expected_release_identity = load_repository_release_identity()
+        except ValueError:
+            errors.append('Repository RC.11 release identity is missing or invalid; production qualification is refused.')
         try:
             if self.qualification_file is None:
                 raise ValueError('missing qualification file')
@@ -648,6 +795,7 @@ class Settings(BaseSettings):
                 expected_version=VERSION,
                 expected_deployment_id=self.deployment_id,
                 expected_root=self.data_root,
+                expected_release_identity=expected_release_identity,
             ))
         except LegacyCompanyQualificationError as error:
             # Preserve a useful migration diagnostic without echoing the old

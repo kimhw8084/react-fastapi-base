@@ -261,8 +261,16 @@
       "additionalProperties": false,
       "properties": {
         "accepted_head": {
-          "title": "Accepted Head",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accepted Head"
         },
         "candidate_version": {
           "maxLength": 64,
@@ -293,12 +301,32 @@
           "type": "string"
         },
         "repository_merge_sha": {
-          "title": "Repository Merge Sha",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repository Merge Sha"
         },
         "source_digest": {
           "title": "Source Digest",
           "type": "string"
+        },
+        "target_base_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Base Sha"
         },
         "verified_source_commit": {
           "title": "Verified Source Commit",
@@ -312,8 +340,6 @@
         "verified_source_commit",
         "source_digest",
         "evidence_commit",
-        "accepted_head",
-        "repository_merge_sha",
         "readiness_matrix_sha256"
       ],
       "title": "ReleaseEvidenceFacts",

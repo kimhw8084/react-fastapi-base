@@ -5,6 +5,7 @@
 - Added the schema-versioned composite CompanyQualification contract with exactly eight independently evaluated production gates, derived readiness and secret-safe evidence references.
 - Preserved qualification prerequisites and identity/storage/deployment facts while rejecting legacy schema-v1 certification and keeping qualification mode non-production.
 - Added deterministic source-bound readiness matrix, RC.11 release manifest/evidence binding, and exact-candidate evidence sequencing without changing API major 1/revision 1.
+- R2 independently anchors production qualification to the repository-generated RC.11 source commit/digest, fails closed when that identity is unavailable or mismatched, and removes pre-acceptance Accepted Head/merge-SHA claims from BUILD evidence.
 
 ## 1.0.0-rc.10 — configuration and secrets contract
 
