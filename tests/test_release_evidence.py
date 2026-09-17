@@ -77,4 +77,6 @@ def test_executable_source_digest_excludes_generated_lab_payload():
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     from scripts.source_manifest import source_hashes
 
-    assert not any(name.startswith('frontend/public/experience-lab/') for name in source_hashes())
+    hashes = source_hashes()
+    assert not any(name.startswith('frontend/public/experience-lab/') for name in hashes)
+    assert not any(name.startswith('frontend/storybook-static/') for name in hashes)
