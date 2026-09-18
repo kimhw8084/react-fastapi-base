@@ -1,132 +1,1495 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-18T02:27:58Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 7,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 39,
+      "deletions": 33,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 15,
+      "deletions": 15,
+      "path": "backend/app/platform/settings.py",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "backend/tests/test_company_qualification_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "backend/tests/test_qualification_bootstrap.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_release_safety.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_security.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc12-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/API_COMPATIBILITY.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 4,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "docs/TESTING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 612,
+      "deletions": 542,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 18,
+      "deletions": 18,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 32,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 79,
+      "deletions": 79,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 19,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+      "status": "A"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 24,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 87,
+      "deletions": 63,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-34-ui-accessibility.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 81,
+      "deletions": 0,
+      "path": "evidence/current/release/rc12-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 79,
+      "deletions": 79,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 207,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "frontend/src/platform/testing/uiqa-proof.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "frontend/src/platform/testing/uiqa-proof.ts",
+      "status": "A"
+    },
+    {
+      "additions": 5,
+      "deletions": 3,
+      "path": "frontend/src/platform/ui/OverlayShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/src/theme/application.css",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "frontend/stories/Engineering.stories.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 235,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/ui-state-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 213,
+      "deletions": 37,
+      "path": "frontend/tests/e2e/uiqa.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "scripts/bind_release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 244,
+      "deletions": 0,
+      "path": "scripts/check_ui_state_matrix.py",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 1,
+      "path": "scripts/e2e_runner.py",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "scripts/generate_release_identity.py",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 8,
+      "path": "scripts/release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 2,
+      "path": "scripts/verify.py",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 11,
+      "path": "tests/test_release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 150,
+      "deletions": 0,
+      "path": "tests/test_ui_state_matrix.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk jq -c '.inventory[]' /tmp/chg34-r4-artifact/artifact-manifest.json | head -3\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.inventory[].reader_filename' /tmp/chg34-r4-artifact/artifact-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.inventory[].reader_filename' /tmp/chg34-r4-artifact/artifact-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/deploy__rc12-release-identity.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81a1-88bb-00b2d1f7eae6/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.inventory[].reader_filename' /tmp/chg34-r4-artifact/artifact-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/deploy__rc12-release-identity.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81f5-a13a-00b2cdfecf66/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__full-stack__frontend-unit.log;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81c3-bf8a-00b2ae26db1f/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__full-stack__source-hashes.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81d9-b2dc-00b2e96766e5/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__full-stack__ui-state-matrix-contract.log;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81d5-a9ee-00b2a06cc9c4/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__full-stack__verification.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-818b-a54c-00b28a3b2679/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__release__CHG-34-ui-accessibility.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81b9-91c2-00b2fbbcb6d1/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__release__rc12-evidence-binding.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81e1-a1f9-00b2365d1b62/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__release__rc12-manifest.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8149-ac94-00b296271a2b/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__release__rc12-readiness-matrix.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8155-8f16-00b23bf347e1/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-dialog-focus-recovery.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-810d-9c71-00b293bf5960/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-forced-colors.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-814d-a858-00b221ef7508/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-forced-colors.png;type=image/png' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81ce-83ab-00b2635e5be2/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-grid-row-selection.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8181-9d4e-00b2538d4388/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-grid-row-selection.png;type=image/png' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81da-8c2c-00b2464cbac7/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-grid-semantic-theme-modes.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-812d-9958-00b2f259b8e5/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-grid-semantic-theme-modes.png;type=image/png' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-813e-a22c-00b2bbb7fb10/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-notification-timestamp-contrast.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-811f-812a-00b23deb1e32/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-reduced-motion.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8124-99eb-00b2d0236594/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-reflow-320-css-px.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-818b-957f-00b215105444/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-reflow-320-css-px.png;type=image/png' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81f3-bbf2-00b2d56d0b81/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-saved-view-checkbox-selection.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8149-af16-00b219088b4c/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-theme-operations-primary-action.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-814a-bac6-00b20b7dd390/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-theme-operations-primary-action.png;type=image/png' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81b0-b1ab-00b205b8f7a0/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-work-items-empty.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-815a-bbd3-00b28101945c/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-work-items-error.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81fa-b470-00b299341dbd/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-work-items-loading.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-817b-80c6-00b2d92cae79/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__rendered__chg34-work-items-permission-readonly.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-812a-851d-00b20e2588e7/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/evidence__current__uiqa__ui-state-matrix-results.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-811c-beee-00b2de127292/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/frontend__src__platform__testing__uiqa-proof.test.ts;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-819e-a5cb-00b2944d63b2/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/frontend__src__platform__testing__uiqa-proof.ts;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81d8-8fdb-00b2d0b466bc/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/frontend__tests__e2e__ui-state-matrix.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81e8-abdc-00b285ea6cfa/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/scripts__check_ui_state_matrix.py;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-81c3-9161-00b27b41409b/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/uploads/tests__test_ui_state_matrix.py;type=text/plain' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-8117-a21f-00b2fc6fbae5/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"curl -sS -o /dev/null -w '%{http_code}' -X POST -H 'authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg34-r4-artifact/chg34-r4-evidence-bundle.tar.gz;type=application/gzip' 'https://api.notion.com/v1/mcp/file_uploads/3dfc564c-8d04-814e-8f59-00b2b3403cd0/send'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import json; from pathlib import Path; m=json.loads(Path(\\\"/tmp/chg34-r4-artifact/artifact-manifest.json\\\").read_text()); print(sum(x[\\\"bytes\\\"] for x in m[\\\"inventory\\\"])+Path(\\\"/tmp/chg34-r4-artifact/artifact-manifest.json\\\").stat().st_size+Path(\\\"/tmp/chg34-r4-artifact/chg34-r4-evidence-bundle.tar.gz\\\").stat().st_size)'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "update_content",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff HEAD --stat && rtk git diff HEAD --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_commit,source_digest,code_ready,production_ready,release_status,exit_code}' evidence/current/full-stack/verification.json; rtk jq '{verified_source_commit,source_digest,evidence_commit,target_base_sha,code_ready,production_ready,release_status}' evidence/current/release/rc12-manifest.json; rtk jq '{candidate_version,verified_source_commit,source_digest,code_ready,production_ready,release_status}' deploy/rc12-release-identity.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git merge-base --is-ancestor 09e300de562230dd4e11d8ecc8bc52979b2e5405 HEAD; rtk git log --oneline --decorate --ancestry-path 09e300de562230dd4e11d8ecc8bc52979b2e5405..HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push -u origin codex/react-fastapi-base-ui-state-accessibility-focus-proof-r4'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"passed|failed|PASS|FAIL|violations|No known vulnerabilities\" evidence/current/full-stack/browser-e2e-accessibility.log evidence/current/full-stack/frontend-unit.log evidence/current/full-stack/ui-state-matrix-contract.log evidence/current/full-stack/verification.json | tail -80'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sha256sum /tmp/chg34-r4-artifact/artifact-manifest.json /tmp/chg34-r4-artifact/chg34-r4-evidence-bundle.tar.gz; rtk jq '{source_sha,tree_sha,verified_executable_source_commit,verified_executable_source_digest,evidence_commit,inventory_count,bundle}' /tmp/chg34-r4-artifact/artifact-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show --format='' --name-only 244dfcfcd3bf3a013d1e0885f483e22bec89c207; rtk git show --format='' --name-only 8851021885921defd89aa3d106931e37a42b2460; rtk git show --format='' --name-only af7033a3fe478d57d73812f87036b1efbdc47a2\"",
+      "exit_code": 128,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --porcelain=v1; rtk git rev-parse HEAD; rtk git rev-parse HEAD''^{tree}; rtk git rev-parse origin/codex/react-fastapi-base-ui-state-accessibility-focus-proof-r4; rtk git merge-base --is-ancestor 09e300de562230dd4e11d8ecc8bc52979b2e5405 HEAD && rtk git show -s --format='\"'%H %s' 09e300de562230dd4e11d8ecc8bc52979b2e5405\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show --format='' --name-only af7033ae3fe478d57d73812f87036b1efbdc47a2 && rtk git status --porcelain=v1\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 575,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.12,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 28047104,
+      "fresh_input_tokens": 536457,
+      "input_tokens": 28583561,
+      "non_reasoning_output_tokens": 50374,
+      "output_tokens": 98337,
+      "reasoning_output_tokens": 47963,
+      "total_processed_tokens": 28681898
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "af7033ae3fe478d57d73812f87036b1efbdc47a2",
+      "subject": "chore: bind CHG-34 R4 evidence to source"
+    },
+    {
+      "sha": "8851021885921defd89aa3d106931e37a42b2460",
+      "subject": "chore: record CHG-34 R4 verification evidence"
+    },
+    {
+      "sha": "244dfcfcd3bf3a013d1e0885f483e22bec89c207",
+      "subject": "fix: bind CHG-34 results to runtime dimension proofs"
+    },
+    {
+      "sha": "3fce53c198b61f194b18582667b336e4eb5331f6",
+      "subject": "Merge remote-tracking branch 'refs/remotes/origin/codex/react-fastapi-base-ui-state-accessibility-matrix-v1' into codex/react-fastapi-base-ui-state-accessibility-focus-proof-r4"
+    },
+    {
+      "sha": "09e300de562230dd4e11d8ecc8bc52979b2e5405",
+      "subject": "Refresh RC.12 checkpoint manifest"
+    },
+    {
+      "sha": "e548751809b3f0c6e0a5cba73362eea6fcc568a2",
+      "subject": "Bind RC.12 evidence to verified source"
+    },
+    {
+      "sha": "9f76748882e052258364e48b402dc3ad795ea995",
+      "subject": "Record RC.12 CHG-34 verification evidence"
+    },
+    {
+      "sha": "32d1cc0d3bfb6bc76413103566162c304f2843f1",
+      "subject": "Implement CHG-34 UI state matrix and accessibility gate"
+    }
+  ],
+  "diff": {
+    "additions": 3120,
+    "changed_files": 108,
+    "commit_count": 8,
+    "deletions": 1273
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 90,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
+        "bytes": 11452,
+        "path": "CHANGELOG.md",
+        "sha256": "5beb13dfc2c77d54a37654f22269582d1af8664bd35af8734361430b08ac2a9b"
+      },
+      {
+        "bytes": 77274,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "f52c94e15926bfd814e2f7519ee940cf64ec4996f7522a25fcb05bc03887b743"
+      },
+      {
+        "bytes": 3409,
+        "path": "README.md",
+        "sha256": "0a6bee302bb1e1a1f3905c119d36d4247e30797254809b13b832b2b2493cdf0e"
+      },
+      {
+        "bytes": 2204,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "920b042cad65a13c22f7ad5def5059a0ef046084c591564011787626767d36dc"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "c61322bd17e0d87f47309398bf34d19aff7f13f076aff208462bcf8df10fc87a"
+      },
+      {
         "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "path": "deploy/rc12-release-identity.json",
+        "sha256": "e4386b2331cd957f12d9ddfdb395f2537800dfe3391bc6afe85ca258d90e1714"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 3223,
+        "path": "docs/API_COMPATIBILITY.md",
+        "sha256": "527ed334c11e84cd809d94b521a3018f2c5bbcc3613b5a1811e5b5f66311ba68"
       },
       {
+        "bytes": 7455,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "ba5eaa5f14cf576d8d14174e9405abab971447e92e02d0ae8d41f9dc815c6a51"
+      },
+      {
+        "bytes": 3633,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "0c3eb32a5a8fec41326dc7aa2803a6e0f2ae12d5713b569621eaf2c451c2a413"
+      },
+      {
+        "bytes": 8087,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "ad0bea54329cafc85320ee1d8960d1e8219aea9c60db2a8955706c60bfd7f787"
+      },
+      {
+        "bytes": 2937,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "b72db30b0eaee94e6b1160566c1b47751cd375ecb88f3d65d351da3ee46061f9"
+      },
+      {
+        "bytes": 45317,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "4f216a267421461abd22fdb57adc741c47bc9ef3cf96ac3c5ca27b78c47bb18d"
+      },
+      {
+        "bytes": 8262,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "3f28c25faef492aa567423481da6d21705b65289dde4f5515afd0db7fb7a5d10"
+      },
+      {
+        "bytes": 6084,
+        "path": "docs/TESTING.md",
+        "sha256": "72617610e56522f4fb6740b86d6d58612a8151968ea6ed5e7c15d2e66b29d1b7"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "6fe3b9189d13c147fee04636334ec15c66e2fbadce0832077c8e87cdb33fe038"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "91fed8d46f457dae59c5b6796cc38623984559a70360b24c1e5e436f7663fa38"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "1ea34e3d842e7aab2cb1ab5f4379a888f8096ea787c02429fc706fd1caeec57b"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "e6a121e084157dcf9c3e3425d393c2933738f57d30a779a595bdeb6bfc831e2d"
+      },
+      {
+        "bytes": 12799,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "4f1ee9f71bf1c6d739dbc189f5e25ee9b2a909606deb927d9101e1bc6356ac97"
+      },
+      {
+        "bytes": 7511,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "62d31fee32f46325b049d3459c4dcbaa384d5cbe4409afa0857040695068bc87"
+      },
+      {
+        "bytes": 6629,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "7de0c1c7483f66cc573e30bb1da3c40167989e8b7954afbb5dbdeb4a54e228a1"
+      },
+      {
+        "bytes": 9784,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "1738f5f10cdeceb93d247df0443cfcda6fe896bd14840a9a24ff7d0a062d8d17"
+      },
+      {
+        "bytes": 35838,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "cdae2692521ceaadc8f1a32a3b2143f97460cdbba3aea17921ad264ddd98ab66"
+      },
+      {
+        "bytes": 780,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "c23f30a5b43c8910fc98215303be47328ab1d8b694e26027c5070cc41cd537ef"
+      },
+      {
+        "bytes": 55637,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "71dc813c038d71e53092295f2cd16c2f1221e0ecc0c3ba768e912023b7ce119f"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "9ba4f549711585b429dbf490616acd655f3f7390dfc83d2d05efd5c8d5c68255"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "3a092437de29c4e3680516358e8c32847e8897fe005805cc35fc2e48c24280bf"
+      },
+      {
+        "bytes": 50446,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "7bc733f61e43893dbe8d6fc649ae034af5770b2da88aac6699baf8516de171b9"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "bc5b8224b3b1d5266709e771c26a9a285ee89c026d9f1171288ef0bce7e8fa46"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "fa2ef4f1dd1ce23604d3f61e3b218f12683ce62af026186144fb59e42ad29777"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "b867fe3ede6357c32b22b335766aedb49e0625002f586ab4f98d14a462cd8526"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "50bb6d62cac548dcd6940935a7257c0ca9c14028ac3a5cce3bead5611fe067f4"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "314315c445699308a97a99451b6193b6c51ef2ba737c942dc9c1b7a7cff8378f"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "979d7721d47b5d553e3ec5d9baf7b7da2c6655c30fdcbf2f333a902065b45a87"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "3fe38a8b634f28860b284eb13fc8aecafb961da542cb73d8ee08a6f146f00c74"
+      },
+      {
+        "bytes": 6443,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "380abe79050770410206215375eec3bcdf44bdf5addb5b6345da217cad44fa83"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "05319b44b2b0fe52a8ac064d00b1cae069e9dd897c27b84e8f942806bacb946c"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "871a8bfd133399cecd33fa6a6080881c032b055a23a09d3039c3be36c91e7cc9"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "74e82a62b216da4ddb78dededd013a4e9cfd0e49d7c2a3e965884c7399b5eeb2"
+      },
+      {
+        "bytes": 487,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "0f362f4899d71313a67ae94086b1f85a7a6496b01ec3c987f9d765044c3abaab"
+      },
+      {
+        "bytes": 1725,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "9190ce91c4b94eb67ff5fa447b47a3a22f898b34dfb27f1fcf96bf68cd4d898d"
+      },
+      {
+        "bytes": 27203,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "7457e396333591bd6d4c425ebb3fa31331f3d5b6407e5912010334d0def4cb08"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "b2d99732a6cd740aa2e6c1e9ecbd256884d786268ab418f2bcd274d88c815651"
+      },
+      {
+        "bytes": 70389,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "b9335e28e0a8a0e96d6412f0fbf41345b76617f660ee425d2828f90d544c66e6"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2724,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "fd593472fd19b0863e13fdf26346142643667d70bb74e546c8adbfca9fdf750d"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
+        "bytes": 100,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "43683f5a6e0c4885d3f4c4fc92ec1c42a6e1c7e50e4e61789a41037f09feb83b"
+      },
+      {
+        "bytes": 5731,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "5c38127c2047d58916fd4f069bd6926a8e72a1ca8b8284f1ef6c296bdfeb9326"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+        "sha256": "31151ffee9c8f5789d44a4794806fbed832f87e2f741dea1dde0a7e077c44004"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+        "sha256": "31151ffee9c8f5789d44a4794806fbed832f87e2f741dea1dde0a7e077c44004"
+      },
+      {
+        "bytes": 7346,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "288c5f111090696acf60cfc3a3d4683dd376ddcb427053820c71cca0e231a6cb"
+      },
+      {
+        "bytes": 7346,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "288c5f111090696acf60cfc3a3d4683dd376ddcb427053820c71cca0e231a6cb"
+      },
+      {
+        "bytes": 12531,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "3f46f01dd8758821295704ac46cc0f64e6a4b8e0a66c42ae60604e962898b203"
+      },
+      {
+        "bytes": 49,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "cc256a566083cb6d9ed9c33de9d8c3b0d46e8dd0b403a26162892db1cca6a977"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/lab/browser-interactions.log",
+        "sha256": "ed819545a96927b6869c93c0307196a4cb4cc96b97d2e7661d5748510355d5b3"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/lab/browser-junit.xml",
+        "sha256": "618192e8481a2faa3ae0c2a41672b060cec84dea5bf6ea0ce5d18b66432b65ed"
+      },
+      {
+        "bytes": 6442,
+        "path": "evidence/current/lab/pure-model-tests.log",
+        "sha256": "a39298499c212443d2ba97063e15cec9f51713c6c41a5ade01081327e2e14c80"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/lab/static-http-server.log",
+        "sha256": "34e8b08ad0832d676cac6a638746bb0d659d90b5bc1c00b3cfc4b7f841698592"
+      },
+      {
+        "bytes": 11410,
+        "path": "evidence/current/lab/verification.json",
+        "sha256": "ed0cfe571a0c409604fbcef5dc9dc57e5dd9685b1e1a2b7d393d66df9585ffad"
+      },
+      {
+        "bytes": 1725,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "9190ce91c4b94eb67ff5fa447b47a3a22f898b34dfb27f1fcf96bf68cd4d898d"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "74e82a62b216da4ddb78dededd013a4e9cfd0e49d7c2a3e965884c7399b5eeb2"
+      },
+      {
+        "bytes": 1547,
+        "path": "evidence/current/release/CHG-34-ui-accessibility.json",
+        "sha256": "f47bba8cdeae40e3393c4da458681d30e4eea2173bef6055c878cc0f043bac40"
+      },
+      {
+        "bytes": 1211,
+        "path": "evidence/current/release/rc12-evidence-binding.json",
+        "sha256": "72485838141386a473fa4e1e94a9d9bf054b87a7a6b55966a8e984059173b49d"
+      },
+      {
+        "bytes": 1403,
+        "path": "evidence/current/release/rc12-manifest.json",
+        "sha256": "4b2e93bac009b1740c00669526d93993613f743be1ddde312f667ee9f181fe02"
+      },
+      {
         "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "path": "evidence/current/release/rc12-readiness-matrix.json",
+        "sha256": "31d1fcbfb2206cbd51a87eddc6916e9c7e2b18afe006e8d599161776e640ed75"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 27203,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "7457e396333591bd6d4c425ebb3fa31331f3d5b6407e5912010334d0def4cb08"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 908,
+        "path": "evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json",
+        "sha256": "baa8abd008ddf52f4445ac7bccb470f60bea47e2c66c0f2885e82622eb1f9872"
+      },
+      {
+        "bytes": 535,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.json",
+        "sha256": "74fbd3193aa1977ce977bc8114fa869d5c06975f4e561b6e6c369171c1901705"
+      },
+      {
+        "bytes": 179152,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+        "sha256": "d151c6af1f8cccd5b46a57661b2ae253898ea84c59281a8066e6bcbb7fbda687"
+      },
+      {
+        "bytes": 699,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.json",
+        "sha256": "0ea6d04084b234e7ca51c05eaf44711650c4362eab7b08bad6dab3677ec5b80d"
+      },
+      {
+        "bytes": 192616,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+        "sha256": "1d81aafe86dc40066788e6ce72a5bb07e1871cf8b3ce05cc1ed019cf5df5901e"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json",
+        "sha256": "520d141d05b8cedde03d2c770c6a0b542695302bf75dc015b2e12d5af777ebce"
+      },
+      {
+        "bytes": 162658,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+        "sha256": "a4b52ecb999ce78147d71bbeae0a83fa35c6e6b94dd3ebee63b12fa66619a5e1"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 411,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+        "sha256": "316e1e9fe0238ff9fd366c0f21f748d2bb76c72264271abae9877e71ad8e58d4"
+      },
+      {
+        "bytes": 152602,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+        "sha256": "53941791974ad83571ad986a94513d1821c82f757d037c30f0115086b3cd03d5"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 196331,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+        "sha256": "34e2292ba3e4a17b034be0ee604d8558fc02badfe15f143209e27e3888899e0f"
+      },
+      {
+        "bytes": 248,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-empty.json",
+        "sha256": "7dcb272a3abdc4ba87008fc191c04dabd611e58bc41665950bfec280ee39c9b1"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 6088,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "0b9aaa49716640a37fc289f27d2eb9fa44acad0aabc9b982c3171e0417fafcb8"
+      },
+      {
+        "bytes": 186039,
+        "path": "frontend/package-lock.json",
+        "sha256": "b16c05a85582787f7dc5a6a87dfb64fab788713ba2430060e13084207304f8d4"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "b2c77520a45fa8f00deb0cc543e293f6732c18eacd9081cf7c11ac3c19c58084"
+      },
+      {
+        "bytes": 12984,
+        "path": "frontend/tests/e2e/ui-state-matrix.json",
+        "sha256": "ec6cbaed7def4516d36b89be24afa6b0dba94d4084a5e286b0051d428c3f6687"
+      },
+      {
+        "bytes": 3775,
+        "path": "scripts/bind_release_evidence.py",
+        "sha256": "8a3ea9f16c49685cb7132107c9051f2a790599dc605ffe041ae3d830cb1450d2"
+      },
+      {
+        "bytes": 9590,
+        "path": "scripts/release_evidence.py",
+        "sha256": "66cad66f9703ce18084fef00e781150849072ceaf1fbb58c2f4762a7bdeb5acb"
+      },
+      {
+        "bytes": 4636,
+        "path": "tests/test_release_evidence.py",
+        "sha256": "93e48f7b9f5db5308ac5564bddb5d35b71b83ee8f6c6d45c5641e200ad9df9af"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-18T03:26:21Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "1de9cfae29450990d201785f35992c72ff0d0684",
+    "branch": "codex/react-fastapi-base-ui-state-accessibility-focus-proof-r4",
+    "head_sha": "af7033ae3fe478d57d73812f87036b1efbdc47a2",
+    "remote_exact_head": true,
+    "remote_head_sha": "af7033ae3fe478d57d73812f87036b1efbdc47a2",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "1de9cfae29450990d201785f35992c72ff0d0684",
+    "work_branch": "codex/react-fastapi-base-ui-state-accessibility-focus-proof-r4",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-3139aeef56ab4bc0eefb9419",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/ui-state-accessibility-focus-proof-r4",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/ui-state-accessibility-focus-proof-r4"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "ui-state-accessibility-focus-proof-r4",
+  "schema_version": 1,
+  "started_at": "2026-09-18T02:27:58Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 3503,
+    "queue_seconds": 0,
+    "total_seconds": 3503
+  },
+  "transport": {
+    "bytes": 13692,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 13334,
+    "prompt_sha256": "5ce9ad25eae0f41c2380f5d85706fc80caddddbbfe53e41e44444c80ef36a6e0",
+    "sha256": "3139aeef56ab4bc0eefb941912a361d176f5cbb4e947b39e922b3d4122d3b1c1"
+  }
 }
