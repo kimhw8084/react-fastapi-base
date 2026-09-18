@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build source-bound RC.12 readiness and release evidence metadata."""
+"""Build source-bound repository readiness and release evidence metadata."""
 from __future__ import annotations
 
 import hashlib
@@ -9,11 +9,18 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.release_version import current_release_paths, parse_candidate_version, release_paths
+
 RELEASE_DIR = ROOT / 'evidence/current/release'
-READINESS_PATH = RELEASE_DIR / 'rc12-readiness-matrix.json'
-MANIFEST_PATH = RELEASE_DIR / 'rc12-manifest.json'
-BINDING_PATH = RELEASE_DIR / 'rc12-evidence-binding.json'
-CHG34_PATH = RELEASE_DIR / 'CHG-34-ui-accessibility.json'
+_RELEASE_PATHS = current_release_paths(ROOT)
+READINESS_PATH = _RELEASE_PATHS.readiness_matrix
+MANIFEST_PATH = _RELEASE_PATHS.manifest
+BINDING_PATH = _RELEASE_PATHS.evidence_binding
 UIQA_MATRIX_PATH = ROOT / 'evidence/current/uiqa/ui-state-matrix-results.json'
 MANDATORY_GATE_IDS = (
     'technical_release',
@@ -50,6 +57,8 @@ def _code_status(results: list[dict[str, Any]]) -> tuple[bool, list[str], list[s
 
 
 def build_readiness_matrix(*, source_commit: str, source_digest: str, version: str, results: list[dict[str, Any]], deployment_id: str | None = None, persistent_root: str | None = None) -> dict[str, Any]:
+    parsed_version = parse_candidate_version(version)
+    artifact_paths = release_paths(parsed_version, ROOT)
     code_ready, failures, blocked = _code_status(results)
     if failures:
         technical_status = 'FAIL'
@@ -82,6 +91,13 @@ def build_readiness_matrix(*, source_commit: str, source_digest: str, version: s
         'project': 'react-fastapi-base',
         'profile': 'company',
         'candidate_version': version,
+        'artifact_label': parsed_version.artifact_label,
+        'release_artifacts': {
+            'identity': str(artifact_paths.identity.relative_to(ROOT)),
+            'readiness_matrix': str(artifact_paths.readiness_matrix.relative_to(ROOT)),
+            'manifest': str(artifact_paths.manifest.relative_to(ROOT)),
+            'evidence_binding': str(artifact_paths.evidence_binding.relative_to(ROOT)),
+        },
         'verified_source_commit': source_commit,
         'source_digest': source_digest,
         'deployment_id': deployment_id,
@@ -96,6 +112,7 @@ def build_readiness_matrix(*, source_commit: str, source_digest: str, version: s
 
 
 def write_repository_release_evidence(*, source_commit: str, source_digest: str, version: str, results: list[dict[str, Any]], verification_path: str = 'evidence/current/full-stack/verification.json', api_compatibility_base_sha: str | None = None) -> dict[str, Any]:
+    parsed_version = parse_candidate_version(version)
     RELEASE_DIR.mkdir(parents=True, exist_ok=True)
     matrix = build_readiness_matrix(
         source_commit=source_commit,
@@ -117,6 +134,8 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'product': 'react-fastapi-base',
         'profile': 'company',
         'version': version,
+        'artifact_label': parsed_version.artifact_label,
+        'release_identity': {'locator': str(release_paths(parsed_version, ROOT).identity.relative_to(ROOT))},
         'verified_source_commit': source_commit,
         'source_digest': source_digest,
         'readiness_matrix': {'locator': str(READINESS_PATH.relative_to(ROOT)), 'sha256': matrix_digest},
@@ -137,6 +156,8 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'project': 'react-fastapi-base',
         'profile': 'company',
         'version': version,
+        'artifact_label': parsed_version.artifact_label,
+        'release_identity': {'locator': str(release_paths(parsed_version, ROOT).identity.relative_to(ROOT))},
         'verified_source_commit': source_commit,
         'source_digest': source_digest,
         'evidence_commit': None,
@@ -149,33 +170,10 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',
     }
     BINDING_PATH.write_text(json.dumps(binding, indent=2, sort_keys=True) + '\n', encoding='utf-8')
-    contract = {
-        'schema_version': 2,
-        'project': 'react-fastapi-base',
-        'change': 'CHG-34',
-        'version': version,
-        'verified_source_commit': source_commit,
-        'source_digest': source_digest,
-        'final_company_qualification_schema_version': 2,
-        'mandatory_gate_ids': list(MANDATORY_GATE_IDS),
-        'template': 'deploy/company-qualification.template.json',
-        'typed_schema': 'deploy/company-qualification.schema.json',
-        'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
-        'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
-        'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
-        'uiqa_matrix': uiqa_evidence,
-        'production_ready': False,
-        'release_status': 'NOT_CERTIFIED',
-        'external_blockers': ['identity', 'storage', 'deployment', 'ui_accessibility', 'performance', 'operations'],
-        'api_contract_impact': {'observable_change': False, 'api_major': 1, 'contract_revision': 1, 'base_sha': api_compatibility_base_sha},
-        'evidence_policy': 'No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.',
-    }
-    CHG34_PATH.write_text(json.dumps(contract, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     return {
         'readiness_matrix': str(READINESS_PATH.relative_to(ROOT)),
         'readiness_matrix_sha256': matrix_digest,
         'manifest': str(MANIFEST_PATH.relative_to(ROOT)),
         'evidence_binding': str(BINDING_PATH.relative_to(ROOT)),
-        'chg34_evidence': str(CHG34_PATH.relative_to(ROOT)),
         'matrix': matrix,
     }

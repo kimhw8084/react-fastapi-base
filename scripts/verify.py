@@ -13,8 +13,9 @@ import sys
 import time
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from scripts.release_version import ReleaseProgressionError, assert_candidate_progression
 from scripts.release_evidence import write_repository_release_evidence
-from scripts.source_manifest import source_digest, source_hashes
+from scripts.source_manifest import executable_source_commit, source_digest, source_hashes
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -40,6 +41,17 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('configuration-contract',[sys.executable,'scripts/check_configuration_contract.py'])
     run('checkpoint-manifest',[sys.executable,'scripts/generate_checkpoint_manifest.py','--check'])
     run('version-metadata',[sys.executable,'scripts/version_check.py'])
+    release_base=os.environ.get('RELEASE_BASE_SHA') or os.environ.get('API_COMPATIBILITY_BASE_SHA')
+    if release_base:
+        try:
+            progression=assert_candidate_progression(base_sha=release_base,root=ROOT)
+            results.append({'name':'candidate-progression','status':'PASS','base_sha':release_base,'progression':progression.as_dict()})
+            print(f"PASS    candidate-progression: {progression.reason}",flush=True)
+        except (OSError,ValueError,ReleaseProgressionError) as error:
+            results.append({'name':'candidate-progression','status':'FAIL','base_sha':release_base,'reason':str(error)})
+            print(f'FAIL    candidate-progression: {error}',flush=True)
+    else:
+        blocked('candidate-progression','An exact release base SHA is required; set RELEASE_BASE_SHA or API_COMPATIBILITY_BASE_SHA.')
     run('performance-owned-algorithms',[sys.executable,'scripts/performance_check.py'])
     run('performance-stress',[sys.executable,'scripts/performance_stress.py'])
     run('generated-contracts',[sys.executable,'scripts/generate_contracts.py','--check'])
@@ -103,8 +115,10 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     ]:blocked(name,reason,'deployment')
     source_hash_map=source_hashes()
     source_digest_value=source_digest(source_hash_map)
-    commit_result=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,check=False)
-    source_commit=commit_result.stdout.strip() if commit_result.returncode==0 else None
+    try:
+        source_commit=executable_source_commit(ROOT)
+    except ValueError:
+        source_commit=None
     (output/'source-hashes.json').write_text(json.dumps(source_hash_map,indent=2)+'\n')
     code_ready=all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code')
     api_base_sha=None

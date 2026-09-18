@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.13 — source-bound release and evidence lifecycle
+
+- Generalized release identity, readiness, manifest and evidence binding paths from the current candidate VERSION, with RC.11/RC.12 identities retained only as explicit historical compatibility.
+- Added exact-base candidate progression and explicit stable-promotion policy without changing API major 1, contract revision 1 or company qualification semantics.
+- Preserved RC.12 as immutable integrated historical evidence; repository technical readiness remains distinct from external company production qualification.
+
 ## 1.0.0-rc.12 — canonical UI state matrix and accessibility regression gate
 
 - Added one repository-owned machine-readable UI state matrix with explicit normal, loading, empty, error, permission and selection coverage, deterministic fixtures, semantic expectations and required evidence.

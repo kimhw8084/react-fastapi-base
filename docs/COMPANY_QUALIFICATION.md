@@ -33,7 +33,7 @@ prerequisite file cannot be renamed into a final qualification: production
 startup/preflight still validates the complete `CompanyQualification`, exact
 project/profile/source/version/deployment/root/storage binding and the selected scanner policy.
 
-Production also loads the fixed repository-owned `deploy/rc12-release-identity.json`.
+Production also loads the current-version-derived repository-owned release identity, currently `deploy/rc13-release-identity.json`. RC.12's identity remains an explicit historical compatibility artifact.
 This artifact is generated from the passing source verification report and its
 canonical executable-source hash evidence; it is outside the executable-source
 hash set so the digest is not self-referential. The operator qualification,
@@ -83,7 +83,7 @@ certify schema v2.
 
 Copy deploy/company-qualification.template.json to an operator-managed, nonpublic location only after the qualification drills and replace invalid placeholders with actual approved evidence references. Its schema intentionally refuses the template defaults. Pin deployment_id and persistent_root to the actual environment. An evidence string is an attestation, not cryptographic or independent certification. Only authorized release operators may approve it. A later environment/topology change invalidates the approval.
 
-The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes `evidence/current/release/rc12-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file.
+The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes the current-version-derived `evidence/current/release/rc13-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file.
 
 BUILD-time release evidence records the verified executable-source commit and
 digest, the evidence commit once that evidence is committed, and the exact

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finalize a verified RC.12 source candidate in deterministic order."""
+"""Finalize a verified repository release candidate in deterministic order."""
 from __future__ import annotations
 
 import argparse
@@ -8,20 +8,32 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.release_version import current_release_paths
 
 
 def run(command: list[str]) -> None:
     subprocess.run(command, cwd=ROOT, check=True)
 
 
-def finalize(verification_path: Path) -> None:
+def finalize(verification_path: Path, *, stable_promotion: bool = False) -> None:
     """Bind the final identity, then regenerate and verify the broad snapshot."""
-    run([
+    # Resolve the candidate paths before invoking the generator so finalization
+    # cannot silently fall back to a historical release label.
+    current_release_paths(ROOT)
+    identity_command = [
         sys.executable,
         'scripts/generate_release_identity.py',
         '--verification',
         str(verification_path.resolve()),
         '--replace',
+    ]
+    if stable_promotion:
+        identity_command.append('--stable-promotion')
+    run([
+        *identity_command,
     ])
     run([sys.executable, 'scripts/generate_checkpoint_manifest.py'])
     run([sys.executable, 'scripts/generate_checkpoint_manifest.py', '--check'])
@@ -34,8 +46,9 @@ def main() -> int:
         type=Path,
         default=ROOT / 'evidence/current/full-stack/verification.json',
     )
+    parser.add_argument('--stable-promotion', action='store_true')
     args = parser.parse_args()
-    finalize(args.verification)
+    finalize(args.verification, stable_promotion=args.stable_promotion)
     print('Release finalization complete: identity, checkpoint, checkpoint check.')
     return 0
 

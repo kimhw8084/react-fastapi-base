@@ -11,6 +11,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_NAMES = (
     'source_manifest.py',
+    'release_version.py',
     'generate_checkpoint_manifest.py',
     'generate_release_identity.py',
     'finalize_release.py',
