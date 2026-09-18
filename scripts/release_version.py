@@ -1,11 +1,18 @@
 """Shared release-version, artifact-path and candidate-progression contract."""
 from __future__ import annotations
 
+import copy
+import json
 import re
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - Python 3.11+ is required by the repo.
+    tomllib = None  # type: ignore[assignment]
 
 
 VERSION_PATTERN = re.compile(
@@ -77,6 +84,7 @@ class ProgressionResult:
     candidate_version: str
     source_changed: bool
     reason: str
+    version_projection_only: bool = False
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -85,8 +93,252 @@ class ProgressionResult:
             "base_version": self.base_version,
             "candidate_version": self.candidate_version,
             "source_changed": self.source_changed,
+            "version_projection_only": self.version_projection_only,
             "reason": self.reason,
         }
+
+
+@dataclass(frozen=True)
+class VersionProjectionResult:
+    """Classification of executable-source changes during stable promotion."""
+
+    allowed: bool
+    changed_paths: tuple[str, ...]
+    projection_fields: tuple[str, ...]
+    forbidden_changes: tuple[str, ...]
+    reason: str
+
+    @property
+    def version_projection_only(self) -> bool:
+        return self.allowed and bool(self.changed_paths)
+
+
+_JSON_PROJECTION_PATHS = {
+    "frontend/package.json": (("version",),),
+    "frontend/package-lock.json": (("version",), ("packages", "", "version")),
+    "contracts/openapi.json": (("info", "version"),),
+}
+_TOML_PROJECTION_PATHS = {
+    "backend/pyproject.toml": (("project", "version"),),
+}
+_REQUIRED_PROJECTION_FILES = tuple((*_JSON_PROJECTION_PATHS, *_TOML_PROJECTION_PATHS))
+
+
+class _ProjectionValidationError(ValueError):
+    """A stable version projection is malformed or incomplete."""
+
+
+def _strict_json(raw: bytes, path: str) -> Any:
+    def object_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise _ProjectionValidationError(f"{path} contains duplicate JSON field {key!r}.")
+            result[key] = value
+        return result
+
+    try:
+        return json.loads(raw.decode("utf-8"), object_pairs_hook=object_pairs)
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise _ProjectionValidationError(f"{path} is not valid UTF-8 JSON.") from error
+
+
+def _strict_toml(raw: bytes, path: str) -> dict[str, Any]:
+    if tomllib is None:  # pragma: no cover - guarded by the supported Python range.
+        raise _ProjectionValidationError("TOML parsing is unavailable.")
+    try:
+        document = tomllib.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, tomllib.TOMLDecodeError) as error:
+        raise _ProjectionValidationError(f"{path} is not valid TOML.") from error
+    if not isinstance(document, dict):
+        raise _ProjectionValidationError(f"{path} must contain a TOML document.")
+    return document
+
+
+def _remove_path(document: Any, path: tuple[str, ...], label: str) -> Any:
+    result = copy.deepcopy(document)
+    cursor = result
+    for key in path[:-1]:
+        if not isinstance(cursor, dict) or key not in cursor:
+            raise _ProjectionValidationError(f"{label} is missing expected version field {'.'.join(path)}.")
+        cursor = cursor[key]
+    if not isinstance(cursor, dict) or path[-1] not in cursor:
+        raise _ProjectionValidationError(f"{label} is missing expected version field {'.'.join(path)}.")
+    del cursor[path[-1]]
+    return result
+
+
+def _path_value(document: Any, path: tuple[str, ...], label: str) -> Any:
+    cursor = document
+    for key in path:
+        if not isinstance(cursor, dict) or key not in cursor:
+            raise _ProjectionValidationError(f"{label} is missing expected version field {'.'.join(path)}.")
+        cursor = cursor[key]
+    return cursor
+
+
+def _field_label(path: tuple[str, ...]) -> str:
+    return ".".join(f"[{key!r}]" if key == "" else key for key in path).replace(".[", "[")
+
+
+def _git_file_at_base(base_sha: str, root: Path, relative: str) -> bytes:
+    result = subprocess.run(
+        ["git", "show", f"{base_sha}:{relative}"],
+        cwd=root,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise _ProjectionValidationError(f"The exact release base is missing executable source {relative}.")
+    return result.stdout
+
+
+def _current_file(root: Path, relative: str) -> bytes:
+    path = root / relative
+    try:
+        return path.read_bytes()
+    except OSError as error:
+        raise _ProjectionValidationError(f"The proposed stable candidate is missing executable source {relative}.") from error
+
+
+def _validate_json_projection(
+    *,
+    relative: str,
+    base_raw: bytes,
+    current_raw: bytes,
+    fields: tuple[tuple[str, ...], ...],
+    previous: ReleaseVersion,
+    candidate: ReleaseVersion,
+) -> tuple[str, ...]:
+    base_document = _strict_json(base_raw, relative)
+    current_document = _strict_json(current_raw, relative)
+    if not isinstance(base_document, dict) or not isinstance(current_document, dict):
+        raise _ProjectionValidationError(f"{relative} must contain a JSON object.")
+
+    for field in fields:
+        base_value = _path_value(base_document, field, relative)
+        current_value = _path_value(current_document, field, relative)
+        expected_base = previous.version
+        expected_candidate = candidate.version
+        if relative == "backend/pyproject.toml":
+            expected_base = previous.pep440
+            expected_candidate = candidate.pep440
+        if base_value != expected_base or current_value != expected_candidate:
+            raise _ProjectionValidationError(
+                f"{relative} must project {expected_base!r} to {expected_candidate!r} at {'.'.join(field)}."
+            )
+
+    normalized_base = base_document
+    normalized_current = current_document
+    for field in fields:
+        normalized_base = _remove_path(normalized_base, field, relative)
+        normalized_current = _remove_path(normalized_current, field, relative)
+    if normalized_base != normalized_current:
+        raise _ProjectionValidationError(f"{relative} contains non-version metadata changes.")
+    return tuple(f"{relative}:{_field_label(field)}" for field in fields)
+
+
+def _validate_toml_projection(
+    *,
+    relative: str,
+    base_raw: bytes,
+    current_raw: bytes,
+    previous: ReleaseVersion,
+    candidate: ReleaseVersion,
+) -> tuple[str, ...]:
+    base_document = _strict_toml(base_raw, relative)
+    current_document = _strict_toml(current_raw, relative)
+    field = ("project", "version")
+    if _path_value(base_document, field, relative) != previous.pep440:
+        raise _ProjectionValidationError(
+            f"{relative} must contain the base PEP 440 version {previous.pep440!r}."
+        )
+    if _path_value(current_document, field, relative) != candidate.pep440:
+        raise _ProjectionValidationError(
+            f"{relative} must contain the stable PEP 440 version {candidate.pep440!r}."
+        )
+    normalized_base = _remove_path(base_document, field, relative)
+    normalized_current = _remove_path(current_document, field, relative)
+    if normalized_base != normalized_current:
+        raise _ProjectionValidationError(f"{relative} contains non-version metadata changes.")
+    return (f"{relative}:{_field_label(field)}",)
+
+
+def compare_stable_version_projection(
+    *,
+    base_sha: str,
+    root: Path,
+    previous: ReleaseVersion,
+    candidate: ReleaseVersion,
+) -> VersionProjectionResult:
+    """Prove that a stable candidate differs from its prerelease base only in version metadata.
+
+    This is intentionally a content-aware contract.  A changed path is not
+    accepted merely because its filename is known: each supported structured
+    file is parsed, its exact version field is validated, and the remainder of
+    the normalized document must be identical to the exact base candidate.
+    """
+    try:
+        from scripts.source_manifest import source_hashes
+    except ModuleNotFoundError:
+        from source_manifest import source_hashes
+
+    changed_paths: tuple[str, ...] = ()
+    forbidden: tuple[str, ...] = ()
+    try:
+        base_hashes = _source_hashes_at_base(base_sha, root)
+        current_hashes = source_hashes(root=root)
+        changed_paths = tuple(sorted(
+            path for path in set(base_hashes) | set(current_hashes)
+            if base_hashes.get(path) != current_hashes.get(path)
+        ))
+        missing = [path for path in _REQUIRED_PROJECTION_FILES if path not in base_hashes or path not in current_hashes]
+        if missing:
+            raise _ProjectionValidationError(
+                "Stable version projection is incomplete; required metadata is missing: " + ", ".join(missing)
+            )
+        forbidden = tuple(path for path in changed_paths if path not in _REQUIRED_PROJECTION_FILES)
+        if forbidden:
+            return VersionProjectionResult(
+                False,
+                changed_paths,
+                (),
+                forbidden,
+                "Stable promotion rejects executable-source substitution outside version projection metadata: "
+                + ", ".join(forbidden),
+            )
+
+        projection_fields: list[str] = []
+        for relative, fields in _JSON_PROJECTION_PATHS.items():
+            projection_fields.extend(_validate_json_projection(
+                relative=relative,
+                base_raw=_git_file_at_base(base_sha, root, relative),
+                current_raw=_current_file(root, relative),
+                fields=fields,
+                previous=previous,
+                candidate=candidate,
+            ))
+        for relative in _TOML_PROJECTION_PATHS:
+            projection_fields.extend(_validate_toml_projection(
+                relative=relative,
+                base_raw=_git_file_at_base(base_sha, root, relative),
+                current_raw=_current_file(root, relative),
+                previous=previous,
+                candidate=candidate,
+            ))
+        if not changed_paths:
+            raise _ProjectionValidationError(
+                "Stable promotion requires a real prerelease-to-stable version projection in executable metadata."
+            )
+        return VersionProjectionResult(
+            True,
+            changed_paths,
+            tuple(sorted(projection_fields)),
+            (),
+            "Executable-source changes are limited to the validated stable version projection.",
+        )
+    except _ProjectionValidationError as error:
+        return VersionProjectionResult(False, changed_paths, (), forbidden or changed_paths, str(error))
 
 
 def parse_candidate_version(value: str) -> ReleaseVersion:
@@ -192,13 +444,44 @@ def check_candidate_progression(
 
     source_changed = source_hashes(root=root) != _source_hashes_at_base(resolved_base, root)
     if candidate.is_stable:
+        if candidate_version is not None and read_candidate_version(root) != candidate:
+            return ProgressionResult(
+                False,
+                "stable_promotion",
+                previous.version,
+                candidate.version,
+                source_changed,
+                "Candidate version must match the repository VERSION.",
+            )
         if not stable_promotion:
             return ProgressionResult(False, "ordinary_build", previous.version, candidate.version, source_changed, "Stable versions require explicit stable promotion mode.")
         if previous.is_stable or candidate.release_train != previous.release_train:
             return ProgressionResult(False, "stable_promotion", previous.version, candidate.version, source_changed, "Stable promotion must promote the same release train from a prerelease candidate.")
-        if source_changed:
-            return ProgressionResult(False, "stable_promotion", previous.version, candidate.version, source_changed, "Stable promotion rejects executable-source substitution.")
-        return ProgressionResult(True, "stable_promotion", previous.version, candidate.version, source_changed, "Explicit stable promotion preserves the exact established executable source.")
+        projection = compare_stable_version_projection(
+            base_sha=resolved_base,
+            root=root,
+            previous=previous,
+            candidate=candidate,
+        )
+        if not projection.allowed:
+            return ProgressionResult(
+                False,
+                "stable_promotion",
+                previous.version,
+                candidate.version,
+                source_changed,
+                projection.reason,
+                projection.version_projection_only,
+            )
+        return ProgressionResult(
+            True,
+            "stable_promotion",
+            previous.version,
+            candidate.version,
+            source_changed,
+            projection.reason,
+            projection.version_projection_only,
+        )
 
     if stable_promotion:
         return ProgressionResult(False, "stable_promotion", previous.version, candidate.version, source_changed, "Stable promotion mode requires a stable VERSION.")
