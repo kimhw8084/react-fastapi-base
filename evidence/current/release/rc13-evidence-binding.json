@@ -1,22 +1,19 @@
 {
   "artifact_label": "rc13",
-  "binding_status": "PENDING_EVIDENCE_COMMIT",
-  "evidence_commit": null,
+  "binding_status": "PASS",
+  "evidence_commit": "b6551bf4f4b580240bdb795f7a61f34b50ff1058",
   "manifest": {
     "locator": "evidence/current/release/rc13-manifest.json",
-    "sha256": "ea38b412c9fd181f5e0d5d36c8db18e2fe5d036f33bde8a18538898d35c38835"
+    "sha256": "2a059c81dd93c74a06aeb4c21ea300e44f9912f4492ab97110cf07de8f34db4f"
   },
-  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "note": "Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.",
   "profile": "company",
   "project": "react-fastapi-base",
   "readiness_matrix": {
     "locator": "evidence/current/release/rc13-readiness-matrix.json",
     "sha256": "166ef9ec728e985ab4e479370780b7ddd2dbd3aaac729bf99b5dbf5120ae76c1"
   },
-  "release_identity": {
-    "locator": "deploy/rc13-release-identity.json"
-  },
-  "result": "NOT_CERTIFIED",
+  "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
   "schema_version": 2,
   "source_digest": "448278f7cae0c67ede2a1855dbc56283cff9a34cfdf3d0f78caaaf5eb303a867",
   "target_base_sha": "86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f",
