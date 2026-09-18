@@ -493,11 +493,12 @@
   "scripts/e2e_runner.py": "ada20b3adc2658c820eb18e708f02a9da1d458ed0d1beb7fef9bee053d6b5d4b",
   "scripts/entity_generator.py": "c547032c46574104b1a060b5779e925792499f073059668bd62433f599ec52d9",
   "scripts/export_lab_fixtures.py": "9bd18a5687887bc021c92ced56530b1db0e3b43f90438bb70daec0dcc16cd89c",
+  "scripts/finalize_release.py": "9d467b0f43c98e42c76ec5b45b6fd3d82837dbd0a3d01e9a0e2991b96dce59fd",
   "scripts/fresh_clone_check.py": "ec68bbb9c91318576248a6cb84bdb9b369afbca38e4301c9efe89dc84cdb7fa1",
   "scripts/generate_catalog_registry.py": "0f2bbafd2264bc4517b36b668db0b656771538c7d04cf52dbbbda178f95fdc7b",
   "scripts/generate_checkpoint_manifest.py": "2f35270e4048c41b18446df9bdb852c01c68ae0ccb7556980e0c13b0492ef0c0",
   "scripts/generate_contracts.py": "2280086b5c37c44f3eec11f33b7a54c5a8a44b954b11ffffddf7881ade6df8b6",
-  "scripts/generate_release_identity.py": "1f961e9c3ac83d9f0895e3254f780aa4872606e10574c9ad27f9dde05b4ae21a",
+  "scripts/generate_release_identity.py": "93c90b46fb39872489c43a5c577352b2969dc411a0570de5a34cc57af6771c33",
   "scripts/http_smoke.py": "bdce648fb9d64b37a70353b0a996b52e2df1f1ef5d28c62584027b6855bcae31",
   "scripts/lab_server.py": "02fa6d00155f9583e44537ceacf3e3e3e5ce7e594b64d41a00fb162edae50b13",
   "scripts/performance_check.py": "0a6f44caf5d61b4b19a319bc138dd546e9aa7bd8bb7c9b67715e465b9203098a",
@@ -522,6 +523,7 @@
   "tests/test_lab_server.py": "95321cbf1fbfcedb68b197c9f84b04dc41e86087163b31f1c5075c2fa2963181",
   "tests/test_relationship_generator.py": "14571612aa274adafe368185b216640d2871efd06cdb2725ed5db2e47f748f7a",
   "tests/test_release_evidence.py": "93e48f7b9f5db5308ac5564bddb5d35b71b83ee8f6c6d45c5641e200ad9df9af",
+  "tests/test_release_finalization.py": "8c7cc18f184bd58bad9441db91b0ee96a638e86cb40a6efb448438b2842d464e",
   "tests/test_release_hardening.py": "2137d717eefd1e02a5d14614f84504c5dc395b39261ca243eea5ccb907802d06",
   "tests/test_template_tools.py": "f126e8d949ea28f934d55889913131bd5d8074c9c6daaa059f6c0e8b79648093",
   "tests/test_ui_state_matrix.py": "22844aa77874b5c7215ead6d7bdbb0fb7e52b6b3d06b01d25d0eb0b229de9c01",
@@ -611,5 +613,5 @@
   "catalog/examples.json": "766ccabafb83cfe30b82d7d8504b1e8d9b31981748fb56c0cf69a06047f24984",
   "catalog/implementation-evidence.json": "5ada4af99c2632ddd7cd1f64bac07274fceed0edbb9ee0dd3111664f276ca435",
   "catalog/roadmap.json": "65228040f957f1b57d8830fbc5927aedfcb22a552260c163e35a24c1057ff388",
-  "dev": "bfdb17493ffea8dfffcc212651b1c01f31cc59baf43a0d0457c96a669b1ad6e7"
+  "dev": "f3f95f5755a17ee3363a93476dd7daf022d267c679c5bccb68c1aff49411260b"
 }

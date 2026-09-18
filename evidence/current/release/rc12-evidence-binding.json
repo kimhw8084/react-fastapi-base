@@ -1,26 +1,26 @@
 {
-  "binding_status": "PASS",
-  "evidence_commit": "8851021885921defd89aa3d106931e37a42b2460",
+  "binding_status": "PENDING_EVIDENCE_COMMIT",
+  "evidence_commit": null,
   "manifest": {
     "locator": "evidence/current/release/rc12-manifest.json",
-    "sha256": "4b2e93bac009b1740c00669526d93993613f743be1ddde312f667ee9f181fe02"
+    "sha256": "855a4944ed68628bd8c26bf918af2d19b01e394726c17bfa853cae6a9df3bf89"
   },
-  "note": "Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.",
+  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
   "profile": "company",
   "project": "react-fastapi-base",
   "readiness_matrix": {
     "locator": "evidence/current/release/rc12-readiness-matrix.json",
-    "sha256": "31d1fcbfb2206cbd51a87eddc6916e9c7e2b18afe006e8d599161776e640ed75"
+    "sha256": "1107b771a08367b60f3b1c261c6ccd1e72de657da7185f752b3c1aa11d728e90"
   },
-  "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
+  "result": "NOT_CERTIFIED",
   "schema_version": 2,
-  "source_digest": "283dacfb96a754ebdae89764a98573d534589315c680199dc0a1e5fb1acd982f",
+  "source_digest": "21cc6c5229c8fdfb3e72d78edf0d463b57b2ec3da0d117f40020d0068a153e55",
   "target_base_sha": "1de9cfae29450990d201785f35992c72ff0d0684",
   "uiqa_matrix": {
     "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
     "required_for": "code",
-    "sha256": "0b9aaa49716640a37fc289f27d2eb9fa44acad0aabc9b982c3171e0417fafcb8"
+    "sha256": "62307a4e1981fffe1db9685f972a163bcb0724d42e33b6df2549d069331e95c1"
   },
-  "verified_source_commit": "244dfcfcd3bf3a013d1e0885f483e22bec89c207",
+  "verified_source_commit": "72de1f38ab1d04d91e1b4069b354b3a24b9c3f5b",
   "version": "1.0.0-rc.12"
 }
