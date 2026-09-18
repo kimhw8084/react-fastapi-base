@@ -1,17 +1,15 @@
 Collected 29 backend test files into 4 deterministic shards.
---- backend shard 1 (28.9s, exit 0) ---
+--- backend shard 1 (25.9s, exit 0) ---
 ........................................................................ [ 69%]
 ...............................                                          [100%]
-103 passed in 27.63s
---- backend shard 2 (18.5s, exit 0) ---
+103 passed in 24.74s
+--- backend shard 2 (17.2s, exit 0) ---
 .............................................................            [100%]
-61 passed in 17.08s
---- backend shard 3 (8.4s, exit 0) ---
-...........s...................................                          [100%]
-=========================== short test summary info ============================
-SKIPPED [1] tests/test_company_qualification_contract.py:182: generated RC.12 repository identity is not present yet
-46 passed, 1 skipped in 5.99s
---- backend shard 4 (23.7s, exit 0) ---
+61 passed in 15.81s
+--- backend shard 3 (8.0s, exit 0) ---
+...............................................                          [100%]
+47 passed in 5.64s
+--- backend shard 4 (21.2s, exit 0) ---
 ........................................................................ [ 92%]
 ......                                                                   [100%]
-78 passed in 22.15s
+78 passed in 19.93s
