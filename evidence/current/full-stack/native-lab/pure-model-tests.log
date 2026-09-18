@@ -2,197 +2,197 @@ TAP version 13
 # Subtest: fixture identifiers and schedule are valid
 ok 1 - fixture identifiers and schedule are valid
   ---
-  duration_ms: 0.892
+  duration_ms: 0.834375
   ...
 # Subtest: moveTask is immutable and retains unrelated task references
 ok 2 - moveTask is immutable and retains unrelated task references
   ---
-  duration_ms: 0.2595
+  duration_ms: 0.241292
   ...
 # Subtest: finish-to-start conflict is rejected
 ok 3 - finish-to-start conflict is rejected
   ---
-  duration_ms: 0.27075
+  duration_ms: 0.249792
   ...
 # Subtest: September has 30 days and out-of-month tasks fail
 ok 4 - September has 30 days and out-of-month tasks fail
   ---
-  duration_ms: 0.071125
+  duration_ms: 0.066625
   ...
 # Subtest: unknown task cannot silently update nothing
 ok 5 - unknown task cannot silently update nothing
   ---
-  duration_ms: 0.060542
+  duration_ms: 0.054834
   ...
 # Subtest: cycles and missing dependencies are reported
 ok 6 - cycles and missing dependencies are reported
   ---
-  duration_ms: 0.108584
+  duration_ms: 0.099333
   ...
 # Subtest: duplicate tasks and invalid progress fail
 ok 7 - duplicate tasks and invalid progress fail
   ---
-  duration_ms: 0.121792
+  duration_ms: 0.382083
   ...
 # Subtest: rack move preserves original and respects occupied units
 ok 8 - rack move preserves original and respects occupied units
   ---
-  duration_ms: 0.534166
+  duration_ms: 0.295292
   ...
 # Subtest: rack overflow, invalid watts and missing devices fail
 ok 9 - rack overflow, invalid watts and missing devices fail
   ---
-  duration_ms: 0.134958
+  duration_ms: 0.135708
   ...
 # Subtest: rack power budget is explicit
 ok 10 - rack power budget is explicit
   ---
-  duration_ms: 0.110292
+  duration_ms: 0.101292
   ...
 # Subtest: wafer yield excludes edge and untested dies
 ok 11 - wafer yield excludes edge and untested dies
   ---
-  duration_ms: 0.136333
+  duration_ms: 0.132584
   ...
 # Subtest: sample statistics use sample n-1 convention
 ok 12 - sample statistics use sample n-1 convention
   ---
-  duration_ms: 0.087417
+  duration_ms: 0.086666
   ...
 # Subtest: point-limit detection is not mislabeled SPC capability
 ok 13 - point-limit detection is not mislabeled SPC capability
   ---
-  duration_ms: 0.085333
+  duration_ms: 0.084208
   ...
 # Subtest: pagination validates caller input
 ok 14 - pagination validates caller input
   ---
-  duration_ms: 0.12725
+  duration_ms: 0.121458
   ...
 # Subtest: HTML escaped in text and attributes
 ok 15 - HTML escaped in text and attributes
   ---
-  duration_ms: 0.091
+  duration_ms: 0.085417
   ...
 # Subtest: CSV guards formula cells and quotes embedded delimiters
 ok 16 - CSV guards formula cells and quotes embedded delimiters
   ---
-  duration_ms: 0.18725
+  duration_ms: 0.183542
   ...
 # Subtest: positional diff compares both sides including additions
 ok 17 - positional diff compares both sides including additions
   ---
-  duration_ms: 0.085583
+  duration_ms: 0.082667
   ...
 # Subtest: graph bounds references validated
 ok 18 - graph bounds references validated
   ---
-  duration_ms: 0.173
+  duration_ms: 0.158792
   ...
 # Subtest: carrier reassigns atomically without duplicate occupancy
 ok 19 - carrier reassigns atomically without duplicate occupancy
   ---
-  duration_ms: 0.109208
+  duration_ms: 0.10675
   ...
 # Subtest: carrier rejects occupied target, empty source and invalid slots
 ok 20 - carrier rejects occupied target, empty source and invalid slots
   ---
-  duration_ms: 0.129875
+  duration_ms: 0.1305
   ...
 # Subtest: carrier rejects duplicate wafer identity
 ok 21 - carrier rejects duplicate wafer identity
   ---
-  duration_ms: 0.043917
+  duration_ms: 0.041792
   ...
 # Subtest: traveler protects prerequisites and terminal state
 ok 22 - traveler protects prerequisites and terminal state
   ---
-  duration_ms: 0.092792
+  duration_ms: 0.0895
   ...
 # Subtest: traveler hold/resume does not skip completion rules
 ok 23 - traveler hold/resume does not skip completion rules
   ---
-  duration_ms: 0.045666
+  duration_ms: 0.042875
   ...
 # Subtest: floor layout rejects overlap and bounds but allows touching edges
 ok 24 - floor layout rejects overlap and bounds but allows touching edges
   ---
-  duration_ms: 0.087625
+  duration_ms: 0.083291
   ...
 # Subtest: rf-record-table: valid fixture passes and malformed boundary fails
 ok 25 - rf-record-table: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.272042
+  duration_ms: 0.24175
   ...
 # Subtest: rf-work-board: valid fixture passes and malformed boundary fails
 ok 26 - rf-work-board: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.06675
+  duration_ms: 0.059792
   ...
 # Subtest: rf-gantt: valid fixture passes and malformed boundary fails
 ok 27 - rf-gantt: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.108459
+  duration_ms: 0.103916
   ...
 # Subtest: rf-rack: valid fixture passes and malformed boundary fails
 ok 28 - rf-rack: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.052083
+  duration_ms: 0.046791
   ...
 # Subtest: rf-wafer: valid fixture passes and malformed boundary fails
 ok 29 - rf-wafer: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.233791
+  duration_ms: 0.224666
   ...
 # Subtest: rf-topology: valid fixture passes and malformed boundary fails
 ok 30 - rf-topology: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.050125
+  duration_ms: 0.048125
   ...
 # Subtest: rf-log-explorer: valid fixture passes and malformed boundary fails
 ok 31 - rf-log-explorer: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.076834
+  duration_ms: 0.072625
   ...
 # Subtest: rf-trace-waterfall: valid fixture passes and malformed boundary fails
 ok 32 - rf-trace-waterfall: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.101375
+  duration_ms: 0.098917
   ...
 # Subtest: rf-calendar: valid fixture passes and malformed boundary fails
 ok 33 - rf-calendar: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.160833
+  duration_ms: 0.143542
   ...
 # Subtest: rf-state-timeline: valid fixture passes and malformed boundary fails
 ok 34 - rf-state-timeline: valid fixture passes and malformed boundary fails
   ---
-  duration_ms: 0.066042
+  duration_ms: 0.060375
   ...
 # Subtest: runtime boundary rejects HTML injection in numeric and enum properties
 ok 35 - runtime boundary rejects HTML injection in numeric and enum properties
   ---
-  duration_ms: 0.075416
+  duration_ms: 0.072125
   ...
 # Subtest: missing localStorage safely returns fallback
 ok 36 - missing localStorage safely returns fallback
   ---
-  duration_ms: 0.051125
+  duration_ms: 0.046375
   ...
 # Subtest: presentation configuration permits custom rack/date/locale values
 ok 37 - presentation configuration permits custom rack/date/locale values
   ---
-  duration_ms: 21.954667
+  duration_ms: 12.40775
   ...
 # Subtest: presentation rejects impossible dates and rack budgets
 ok 38 - presentation rejects impossible dates and rack budgets
   ---
-  duration_ms: 0.180875
+  duration_ms: 0.085167
   ...
 # Subtest: all generated React story fixtures satisfy widget runtime contracts
 ok 39 - all generated React story fixtures satisfy widget runtime contracts
   ---
-  duration_ms: 0.584
+  duration_ms: 0.518833
   ...
 1..39
 # tests 39
@@ -202,4 +202,4 @@ ok 39 - all generated React story fixtures satisfy widget runtime contracts
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 75.015708
+# duration_ms 62.295292
