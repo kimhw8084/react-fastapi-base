@@ -1,9 +1,9 @@
 
-> react-fastapi-base-frontend@1.0.0-rc.12 prebuild
+> react-fastapi-base-frontend@1.0.0-rc.13 prebuild
 > node scripts/prepare-lab.mjs
 
 
-> react-fastapi-base-frontend@1.0.0-rc.12 build
+> react-fastapi-base-frontend@1.0.0-rc.13 build
 > tsc --noEmit && vite build
 
 vite v8.2.2 building client environment for production...
@@ -44,4 +44,4 @@ dist/assets/EntityWorkspace-d0Wsg5rG.js    103.51 kB │ gzip:  27.03 kB
 dist/assets/index-JOWZ_JPk.js              260.02 kB │ gzip:  80.37 kB
 dist/assets/FieldInput-BG3asN3Q.js       1,161.23 kB │ gzip: 320.91 kB
 
-✓ built in 236ms
+✓ built in 516ms

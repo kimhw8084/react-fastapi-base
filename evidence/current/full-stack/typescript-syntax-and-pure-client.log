@@ -3,147 +3,147 @@ TAP version 13
 # Subtest: runtime accepts each configured visual profile
 ok 1 - runtime accepts each configured visual profile
   ---
-  duration_ms: 0.572083
+  duration_ms: 0.650917
   ...
 # Subtest: runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
 ok 2 - runtime rejects mixed content, URL credentials, paths, scripts and unknown settings
   ---
-  duration_ms: 0.191958
+  duration_ms: 0.245666
   ...
 # Subtest: storage keys isolate app, user, tenant and version
 ok 3 - storage keys isolate app, user, tenant and version
   ---
-  duration_ms: 0.102
+  duration_ms: 0.135875
   ...
 # Subtest: corrupted or unavailable local storage is harmless
 ok 4 - corrupted or unavailable local storage is harmless
   ---
-  duration_ms: 0.081458
+  duration_ms: 0.537792
   ...
 # Subtest: API transport supplies tenant and CSRF but never an identity header
 ok 5 - API transport supplies tenant and CSRF but never an identity header
   ---
-  duration_ms: 9.403083
+  duration_ms: 16.366708
   ...
 # Subtest: generated operation routes safely encode parameters
 ok 6 - generated operation routes safely encode parameters
   ---
-  duration_ms: 0.194083
+  duration_ms: 0.250167
   ...
 # Subtest: API error retains safe code/request ID and conflict details
 ok 7 - API error retains safe code/request ID and conflict details
   ---
-  duration_ms: 0.272125
+  duration_ms: 0.301042
   ...
 # Subtest: HTML API response is not treated as data
 ok 8 - HTML API response is not treated as data
   ---
-  duration_ms: 0.195625
+  duration_ms: 0.213541
   ...
 # Subtest: transport failures produce an explicit error, not an empty dataset
 ok 9 - transport failures produce an explicit error, not an empty dataset
   ---
-  duration_ms: 0.1785
+  duration_ms: 0.204292
   ...
 # Subtest: API refuses arbitrary external endpoints
 ok 10 - API refuses arbitrary external endpoints
   ---
-  duration_ms: 0.12425
+  duration_ms: 0.137834
   ...
 # Subtest: appearance mode is independent from visual personality
 ok 11 - appearance mode is independent from visual personality
   ---
-  duration_ms: 0.061833
+  duration_ms: 0.067666
   ...
 # Subtest: surface presentation converts dense side surfaces to mobile sheets
 ok 12 - surface presentation converts dense side surfaces to mobile sheets
   ---
-  duration_ms: 0.075875
+  duration_ms: 0.084667
   ...
 # Subtest: command registry exposes one action consistently by permission selection and mode
 ok 13 - command registry exposes one action consistently by permission selection and mode
   ---
-  duration_ms: 0.082708
+  duration_ms: 0.090584
   ...
 # Subtest: adaptive layout preserves complexity while changing presentation
 ok 14 - adaptive layout preserves complexity while changing presentation
   ---
-  duration_ms: 0.111083
+  duration_ms: 0.122791
   ...
 # Subtest: surface stack enforces top-most layering and closes descendants with parents
 ok 15 - surface stack enforces top-most layering and closes descendants with parents
   ---
-  duration_ms: 0.2525
+  duration_ms: 0.475708
   ...
 # Subtest: typed field draft helpers reject ambiguity and normalize values
 ok 16 - typed field draft helpers reject ambiguity and normalize values
   ---
-  duration_ms: 0.777083
+  duration_ms: 4.771042
   ...
 # Subtest: rich field draft helpers validate structured data and choices
 ok 17 - rich field draft helpers validate structured data and choices
   ---
-  duration_ms: 0.185625
+  duration_ms: 0.268708
   ...
 # Subtest: generic workspace field parser enforces read-only and numeric bounds
 ok 18 - generic workspace field parser enforces read-only and numeric bounds
   ---
-  duration_ms: 0.196667
+  duration_ms: 0.229208
   ...
 # Subtest: workspace state sanitizes stale view data and preserves supported projection intent
 ok 19 - workspace state sanitizes stale view data and preserves supported projection intent
   ---
-  duration_ms: 0.198792
+  duration_ms: 0.2285
   ...
 # Subtest: workspace state rejects stale visualization by falling back deterministically
 ok 20 - workspace state rejects stale visualization by falling back deterministically
   ---
-  duration_ms: 0.103875
+  duration_ms: 0.106417
   ...
 # Subtest: dashboard composer sanitizes widgets, persists variables and responds to viewport
 ok 21 - dashboard composer sanitizes widgets, persists variables and responds to viewport
   ---
-  duration_ms: 0.152625
+  duration_ms: 0.166708
   ...
 # Subtest: risk model keeps scoring server-parity friendly and exposes heatmap/effect bands
 ok 22 - risk model keeps scoring server-parity friendly and exposes heatmap/effect bands
   ---
-  duration_ms: 0.110542
+  duration_ms: 0.127042
   ...
 # Subtest: workspace state migrates legacy views and exposes deterministic server conflict reconciliation
 ok 23 - workspace state migrates legacy views and exposes deterministic server conflict reconciliation
   ---
-  duration_ms: 0.117125
+  duration_ms: 0.150417
   ...
 # Subtest: operational table model groups rows and preserves at least the identity column
 ok 24 - operational table model groups rows and preserves at least the identity column
   ---
-  duration_ms: 12.0975
+  duration_ms: 17.769291
   ...
 # Subtest: planning critical path follows longest dependency chain and date shift is deterministic
 ok 25 - planning critical path follows longest dependency chain and date shift is deterministic
   ---
-  duration_ms: 0.656875
+  duration_ms: 1.404917
   ...
 # Subtest: rack connection trace finds deterministic shortest multi-hop path
 ok 26 - rack connection trace finds deterministic shortest multi-hop path
   ---
-  duration_ms: 0.611375
+  duration_ms: 0.537333
   ...
 # Subtest: SPC model matches deterministic engineering fixtures
 ok 27 - SPC model matches deterministic engineering fixtures
   ---
-  duration_ms: 0.957458
+  duration_ms: 1.27925
   ...
 # Subtest: semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
 ok 28 - semiconductor model sanitizes wafer cells, diffs recipes and summarizes state utilization
   ---
-  duration_ms: 0.776083
+  duration_ms: 0.934875
   ...
 # Subtest: software engineering pack models parse pipeline, incident and trace data safely
 ok 29 - software engineering pack models parse pipeline, incident and trace data safely
   ---
-  duration_ms: 0.787417
+  duration_ms: 0.826375
   ...
 1..29
 # tests 29
@@ -153,4 +153,4 @@ ok 29 - software engineering pack models parse pipeline, incident and trace data
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 68.621084
+# duration_ms 94.6985

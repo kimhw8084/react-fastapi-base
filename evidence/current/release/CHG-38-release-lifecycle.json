@@ -1,0 +1,89 @@
+{
+  "api_contract_impact": {
+    "api_major": 1,
+    "base_sha": "86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f",
+    "contract_revision": 1,
+    "observable_change": false
+  },
+  "artifact_label": "rc13",
+  "candidate_version": "1.0.0-rc.13",
+  "change": "CHG-38",
+  "checkpoint_entry_sha256": "4aaea4cb371b7fec311d9769e1293bae9bc474487eb89fee3bf8b73ca8a347d3",
+  "derived_artifacts": {
+    "evidence_binding": "evidence/current/release/rc13-evidence-binding.json",
+    "identity": "deploy/rc13-release-identity.json",
+    "manifest": "evidence/current/release/rc13-manifest.json",
+    "readiness_matrix": "evidence/current/release/rc13-readiness-matrix.json"
+  },
+  "evidence_policy": "Repository technical release evidence is distinct from external company production qualification; no company PASS evidence is asserted.",
+  "evidence_type": "change_evidence",
+  "identity_checkpoint_sha256": "4aaea4cb371b7fec311d9769e1293bae9bc474487eb89fee3bf8b73ca8a347d3",
+  "immutable_historical_artifacts_checked": [
+    {
+      "immutable": true,
+      "path": "deploy/rc11-release-identity.json",
+      "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+    },
+    {
+      "immutable": true,
+      "path": "deploy/rc12-release-identity.json",
+      "sha256": "3d0f98e5bebbc5e52c8f2e129a9a21cfd212d6ff2148f5974ac64d1491c4488e"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-readiness-matrix.json",
+      "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-manifest.json",
+      "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-evidence-binding.json",
+      "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-readiness-matrix.json",
+      "sha256": "b900e6c3ecbc6621471284ffbd3ac1a7ff77f639b8ff051f76e2e83fcffd07af"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-manifest.json",
+      "sha256": "7a601c1d497072f0c5492054a3e605847a72dc308f56ef9dc524bec9bcce0120"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-evidence-binding.json",
+      "sha256": "bb9fe8d4ca31ea009570ee09d83dd8346c877a40ff7b76a61032e0d10e64fb93"
+    }
+  ],
+  "production_boundary": {
+    "code_ready": true,
+    "external_blockers": [
+      "identity",
+      "storage",
+      "deployment",
+      "ui_accessibility",
+      "performance",
+      "operations"
+    ],
+    "production_ready": false,
+    "release_status": "NOT_CERTIFIED"
+  },
+  "progression": {
+    "allowed": true,
+    "base_version": "1.0.0-rc.12",
+    "candidate_version": "1.0.0-rc.13",
+    "mode": "ordinary_build",
+    "reason": "Candidate advances exactly from 1.0.0-rc.12 to 1.0.0-rc.13.",
+    "source_changed": true
+  },
+  "project": "react-fastapi-base",
+  "schema_version": 1,
+  "source_digest": "87b4f5fb66afcf48e523b1c3927ca68184a07a7aa20cf24723d9776aa1f82b70",
+  "target_base_sha": "86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f",
+  "verified_source_commit": "ffda779c54deb709079a16b4449583abf63637be"
+}
