@@ -21,6 +21,8 @@ LEGACY_ID_PATTERN = re.compile(r'^UIQA-[0-9]{3}$')
 COMMIT_PATTERN = re.compile(r'^[0-9a-f]{40}$')
 SHA256_PATTERN = re.compile(r'^[0-9a-f]{64}$')
 SECRET_PATTERN = re.compile(r'(?:accesskey|authorization|bearer|credential|password|secret|token)', re.IGNORECASE)
+MATRIX_TEST_PATTERN = re.compile(r"matrixTest\(\s*['\"]([^'\"]+)['\"]\s*,")
+PROOF_MARKER_PATTERN = re.compile(r"proof\.prove\(\s*['\"]([^'\"]+)['\"]")
 
 
 class MatrixContractError(ValueError):
@@ -136,11 +138,41 @@ def _validate_executable_coverage(by_state: dict[str, dict[str, Any]], spec_path
     _require(len(expected_by_test) == len(applicable), 'Applicable browser test IDs must be unique.')
 
 
-def _validate_results(matrix_path: Path, by_state: dict[str, dict[str, Any]], results_path: Path) -> None:
+def _validate_runtime_proof_coverage(matrix: dict[str, Any], by_state: dict[str, dict[str, Any]], spec_path: Path) -> None:
+    try:
+        source = spec_path.read_text(encoding='utf-8')
+    except OSError as error:
+        raise MatrixContractError(f'Cannot read runtime proof coverage: {error}') from error
+    _require('RuntimeDimensionProof' in source and 'proof.complete()' in source, 'UIQA executable coverage must use the runtime dimension-proof collector.')
+    _require(not re.search(r'exercised_dimensions\s*:\s*\[\s*\.\.\.\s*row\.required_dimensions', source), 'UIQA results may not copy matrix required_dimensions as evidence.')
+    global_dimensions = set(matrix['required_dimensions'])
+    matches = list(MATRIX_TEST_PATTERN.finditer(source))
+    _require(matches, 'UIQA executable coverage contains no matrix tests.')
+    shared_markers = set(PROOF_MARKER_PATTERN.findall(source[:matches[0].start()]))
+    blocks = {
+        match.group(1): set(PROOF_MARKER_PATTERN.findall(source[match.end():matches[index + 1].start() if index + 1 < len(matches) else len(source)]))
+        for index, match in enumerate(matches)
+    }
+    all_markers = shared_markers | set().union(*blocks.values())
+    unknown = sorted(all_markers - global_dimensions)
+    _require(not unknown, f'UIQA runtime proof references unknown dimensions: {", ".join(unknown)}.')
+    _require('axe.serious-critical' in shared_markers, 'UIQA axe coverage must be recorded through the runtime proof collector.')
+    for state_id, row in by_state.items():
+        if row['applicability'] != 'applicable':
+            continue
+        markers = blocks.get(state_id, set()) | shared_markers
+        missing = sorted(set(row['required_dimensions']) - markers)
+        _require(not missing, f'{state_id} has no executable runtime proof marker for: {", ".join(missing)}.')
+        undeclared = sorted((blocks.get(state_id, set()) - {'axe.serious-critical'}) - set(row['required_dimensions']))
+        _require(not undeclared, f'{state_id} runtime proof reports undeclared dimensions: {", ".join(undeclared)}.')
+
+
+def _validate_results(matrix_path: Path, by_state: dict[str, dict[str, Any]], global_dimensions: set[str], results_path: Path) -> None:
     results = _load(results_path)
     _require(results.get('schema_version') == 1, 'UIQA result manifest schema_version must be 1.')
     _require(results.get('matrix_id') == 'project-os-ui-state-matrix', 'UIQA result manifest matrix_id is unknown.')
     _require(results.get('matrix_sha256') == hashlib.sha256(matrix_path.read_bytes()).hexdigest(), 'UIQA result manifest is not bound to the canonical matrix bytes.')
+    _require(results.get('proof_model') == 'runtime-assertion-v1', 'UIQA result manifest must identify the runtime assertion proof model.')
     _require('timestamp' not in results and 'created_at' not in results, 'UIQA result metadata must be deterministic and may not contain timestamps.')
     source_commit = results.get('source_commit')
     _require(source_commit is None or (isinstance(source_commit, str) and COMMIT_PATTERN.fullmatch(source_commit)), 'UIQA result source_commit must be a full commit SHA or null.')
@@ -156,7 +188,13 @@ def _validate_results(matrix_path: Path, by_state: dict[str, dict[str, Any]], re
         row = by_state[state_id]
         _require(result.get('browser_test_id') == row['browser_test_id'], f'{state_id} result browser_test_id drifted from the matrix.')
         _require(result.get('status') == 'PASS', f'{state_id} has no passing browser result.')
-        _require(sorted(result.get('exercised_dimensions', [])) == sorted(row['required_dimensions']), f'{state_id} result dimensions do not match the matrix.')
+        exercised = result.get('exercised_dimensions')
+        _require(isinstance(exercised, list), f'{state_id} result exercised_dimensions must be a list.')
+        _require(all(isinstance(value, str) and DIMENSION_PATTERN.fullmatch(value) for value in exercised), f'{state_id} result exercised_dimensions contain an invalid dimension.')
+        _require(len(exercised) == len(set(exercised)), f'{state_id} result exercised_dimensions contain duplicates.')
+        _require(exercised == sorted(exercised), f'{state_id} result exercised_dimensions must be sorted runtime observations.')
+        _require(set(exercised) <= global_dimensions, f'{state_id} result exercised_dimensions contain unknown dimensions.')
+        _require(set(exercised) == set(row['required_dimensions']), f'{state_id} result dimensions are not the exact required runtime-proven set.')
         artifacts = result.get('artifact_locators')
         _require(sorted(artifacts or []) == sorted(row['required_evidence']['artifact_locators']), f'{state_id} result artifacts do not match the matrix.')
         for artifact in artifacts:
@@ -170,8 +208,9 @@ def validate_matrix(matrix_path: Path = MATRIX_PATH, spec_path: Path = SPEC_PATH
     matrix = _load(matrix_path)
     by_state = _validate_rows(matrix)
     _validate_executable_coverage(by_state, spec_path)
+    _validate_runtime_proof_coverage(matrix, by_state, spec_path)
     if results_path is not None:
-        _validate_results(matrix_path, by_state, results_path)
+        _validate_results(matrix_path, by_state, set(matrix['required_dimensions']), results_path)
     return {
         'schema_version': 1,
         'matrix_id': matrix['matrix_id'],
@@ -180,6 +219,7 @@ def validate_matrix(matrix_path: Path = MATRIX_PATH, spec_path: Path = SPEC_PATH
         'state_classes': sorted({row['material_state_class'] for row in by_state.values()}),
         'dimensions': sorted({dimension for row in by_state.values() for dimension in row['required_dimensions']}),
         'executable_coverage': len(_executable_refs(spec_path)),
+        'proof_model': 'runtime-assertion-v1',
         'results_checked': results_path is not None,
         'status': 'PASS',
     }

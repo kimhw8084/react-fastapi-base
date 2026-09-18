@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -23,6 +24,37 @@ def write_fixture(tmp_path: Path, matrix: dict, spec: str | None = None) -> tupl
     matrix_path.write_text(json.dumps(matrix, indent=2) + '\n', encoding='utf-8')
     spec_path.write_text(spec if spec is not None else SPEC_PATH.read_text(encoding='utf-8'), encoding='utf-8')
     return matrix_path, spec_path
+
+
+def write_result_fixture(tmp_path: Path) -> tuple[Path, Path, Path, dict]:
+    matrix = load_matrix()
+    for row in matrix['rows']:
+        row['required_evidence']['artifact_locators'] = [
+            locator for locator in row['required_evidence']['artifact_locators'] if (ROOT / locator).is_file()
+        ]
+    matrix_path, spec_path = write_fixture(tmp_path, matrix)
+    results = {
+        'schema_version': 1,
+        'result_kind': 'browser-computed-uiqa',
+        'proof_model': 'runtime-assertion-v1',
+        'matrix_id': matrix['matrix_id'],
+        'matrix_sha256': hashlib.sha256(matrix_path.read_bytes()).hexdigest(),
+        'source_commit': None,
+        'overall_status': 'PASS',
+        'results': [
+            {
+                'state_id': row['state_id'],
+                'browser_test_id': row['browser_test_id'],
+                'status': 'PASS',
+                'exercised_dimensions': sorted(row['required_dimensions']),
+                'artifact_locators': sorted(row['required_evidence']['artifact_locators']),
+            }
+            for row in matrix['rows']
+        ],
+    }
+    results_path = tmp_path / 'results.json'
+    results_path.write_text(json.dumps(results, indent=2) + '\n', encoding='utf-8')
+    return matrix_path, spec_path, results_path, results
 
 
 def test_canonical_matrix_has_all_material_classes_and_dimensions():
@@ -68,6 +100,51 @@ def test_required_dimension_disappearance_fails_closed(tmp_path: Path):
 
 def test_result_metadata_may_not_contain_timestamps_or_unknown_rows(tmp_path: Path):
     result_path = tmp_path / 'results.json'
-    result_path.write_text(json.dumps({'schema_version': 1, 'matrix_id': 'project-os-ui-state-matrix', 'matrix_sha256': '0' * 64, 'timestamp': 'never', 'results': []}), encoding='utf-8')
+    result_path.write_text(json.dumps({'schema_version': 1, 'matrix_id': 'project-os-ui-state-matrix', 'proof_model': 'runtime-assertion-v1', 'matrix_sha256': '0' * 64, 'timestamp': 'never', 'results': []}), encoding='utf-8')
     with pytest.raises(MatrixContractError, match='timestamp|not bound'):
         validate_matrix(MATRIX_PATH, SPEC_PATH, result_path)
+
+
+@pytest.mark.parametrize(
+    ('mutation', 'message'),
+    [
+        ('missing', 'exact required runtime-proven set'),
+        ('extra', 'exact required runtime-proven set'),
+        ('unknown', 'unknown dimensions'),
+        ('duplicate', 'contain duplicates'),
+    ],
+)
+def test_result_contract_rejects_false_or_unproven_dimension_sets(tmp_path: Path, mutation: str, message: str):
+    matrix_path, spec_path, result_path, results = write_result_fixture(tmp_path)
+    target = next(row for row in results['results'] if row['state_id'] == 'chg34-theme-operations-primary-action')
+    if mutation == 'missing':
+        target['exercised_dimensions'].pop()
+    elif mutation == 'extra':
+        target['exercised_dimensions'] = sorted([*target['exercised_dimensions'], 'theme.light'])
+    elif mutation == 'unknown':
+        target['exercised_dimensions'] = sorted([*target['exercised_dimensions'], 'unknown.dimension'])
+    else:
+        target['exercised_dimensions'].append(target['exercised_dimensions'][0])
+    result_path.write_text(json.dumps(results, indent=2) + '\n', encoding='utf-8')
+    with pytest.raises(MatrixContractError, match=message):
+        validate_matrix(matrix_path, spec_path, result_path)
+
+
+def test_adding_a_matrix_requirement_without_a_runtime_proof_marker_fails_closed(tmp_path: Path):
+    matrix = load_matrix()
+    first = matrix['rows'][0]
+    first['required_dimensions'].append('keyboard.enter')
+    matrix_path, spec_path = write_fixture(tmp_path, matrix)
+    with pytest.raises(MatrixContractError, match='no executable runtime proof marker'):
+        validate_matrix(matrix_path, spec_path)
+
+
+def test_legacy_automatic_copy_path_is_rejected_by_the_runtime_proof_contract(tmp_path: Path):
+    matrix = load_matrix()
+    first = matrix['rows'][0]
+    first['required_dimensions'].append('keyboard.enter')
+    matrix_path, spec_path = write_fixture(tmp_path, matrix)
+    old_copy = SPEC_PATH.read_text(encoding='utf-8').replace('proof?.observedDimensions()??[]', '[...row.required_dimensions].sort()')
+    spec_path.write_text(old_copy, encoding='utf-8')
+    with pytest.raises(MatrixContractError, match='no executable runtime proof marker|may not copy'):
+        validate_matrix(matrix_path, spec_path)

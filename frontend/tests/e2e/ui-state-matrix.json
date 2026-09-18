@@ -20,10 +20,14 @@
     "viewport.narrow",
     "reflow.320-css-px",
     "motion.reduced",
-    "keyboard.tab-shift-tab",
-    "keyboard.enter-space-escape",
+    "keyboard.enter",
+    "keyboard.escape",
+    "keyboard.shift-tab",
+    "keyboard.space",
+    "keyboard.tab",
     "semantics.role-name-state",
-    "focus.visible-recovery",
+    "focus.recovery",
+    "focus.visible",
     "browser-computed",
     "axe.serious-critical"
   ],
@@ -66,7 +70,7 @@
       "material_state_class": "selection",
       "applicability": "applicable",
       "deterministic_setup_fixture": "open Save current view dialog from /work-items",
-      "required_dimensions": ["keyboard.enter-space-escape", "semantics.role-name-state", "focus.visible-recovery", "axe.serious-critical"],
+      "required_dimensions": ["keyboard.space", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["Favorite and Default controls are native checkboxes", "Space toggles checked state", "checkboxes expose stable accessible names"],
       "required_evidence": {
         "artifact_locators": ["evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json"],
@@ -158,10 +162,10 @@
       "material_state_class": "selection",
       "applicability": "applicable",
       "deterministic_setup_fixture": "seed-demo /work-items page and activate the first row selection checkbox",
-      "required_dimensions": ["viewport.desktop", "keyboard.tab-shift-tab", "semantics.role-name-state", "focus.visible-recovery", "browser-computed", "axe.serious-critical"],
+      "required_dimensions": ["viewport.desktop", "keyboard.shift-tab", "keyboard.space", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["selection uses the platform checkbox semantics", "selected action region appears only after actual selection", "focus remains visible on the active control"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-row-selection.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-row-selection.json", "evidence/current/uiqa/rendered/chg34-grid-row-selection.png"],
         "claims": ["actual selection state", "selected action region", "computed focus outline"],
         "axe_serious_critical": true
       },
@@ -173,7 +177,7 @@
       "material_state_class": "normal",
       "applicability": "applicable",
       "deterministic_setup_fixture": "open Save current view dialog from its stable invoking button",
-      "required_dimensions": ["keyboard.tab-shift-tab", "keyboard.enter-space-escape", "semantics.role-name-state", "focus.visible-recovery", "axe.serious-critical"],
+      "required_dimensions": ["keyboard.enter", "keyboard.escape", "keyboard.shift-tab", "keyboard.tab", "semantics.role-name-state", "focus.visible", "focus.recovery", "axe.serious-critical"],
       "semantic_expectations": ["dialog has a stable accessible name", "Escape closes the overlay", "focus returns to the logical Save view invoker"],
       "required_evidence": {
         "artifact_locators": ["evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json"],
@@ -218,7 +222,7 @@
       "material_state_class": "normal",
       "applicability": "applicable",
       "deterministic_setup_fixture": "Playwright emulateMedia forced-colors=active with a visible workspace action",
-      "required_dimensions": ["forced-colors.active", "browser-computed", "focus.visible-recovery", "semantics.role-name-state", "axe.serious-critical"],
+      "required_dimensions": ["forced-colors.active", "keyboard.shift-tab", "keyboard.tab", "browser-computed", "focus.visible", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["forced-colors media query is active", "named action remains visible and focusable", "computed foreground/background are not transparent"],
       "required_evidence": {
         "artifact_locators": ["evidence/current/uiqa/rendered/chg34-forced-colors.json", "evidence/current/uiqa/rendered/chg34-forced-colors.png"],
