@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bind RC.11 evidence to the exact verified source after evidence is committed."""
+"""Bind RC.12 evidence to the exact verified source after evidence is committed."""
 from __future__ import annotations
 
 import argparse
@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE_DIR = ROOT / 'evidence/current/release'
-MANIFEST_PATH = RELEASE_DIR / 'rc11-manifest.json'
-BINDING_PATH = RELEASE_DIR / 'rc11-evidence-binding.json'
+MANIFEST_PATH = RELEASE_DIR / 'rc12-manifest.json'
+BINDING_PATH = RELEASE_DIR / 'rc12-evidence-binding.json'
 
 
 def full_commit(value: str, label: str) -> str:
@@ -65,6 +65,7 @@ def main() -> int:
             'locator': str(MANIFEST_PATH.relative_to(ROOT)),
             'sha256': sha256(MANIFEST_PATH),
         },
+        'uiqa_matrix': manifest['uiqa_matrix'],
         'binding_status': 'PASS',
         'result': 'PASS_SOURCE_BOUND_NOT_CERTIFIED',
         'note': 'Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.',

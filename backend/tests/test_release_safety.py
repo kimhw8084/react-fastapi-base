@@ -38,7 +38,7 @@ def qualified_production_settings(tmp_path: Path, monkeypatch, *, mode: str = 's
         expected = load_repository_release_identity()
     except ValueError:
         expected = RepositoryReleaseIdentity(
-            identity_type='repository_rc11_release', project='react-fastapi-base', profile='company',
+            identity_type='repository_rc12_release', project='react-fastapi-base', profile='company',
             candidate_version=VERSION, verified_source_commit='a' * 40, source_digest='b' * 64,
             source_evidence=RepositorySourceEvidence(locator='evidence/test/source-hashes.json', sha256='c' * 64),
             generated_by='scripts/generate_release_identity.py', code_ready=True,
