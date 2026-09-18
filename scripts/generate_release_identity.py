@@ -75,10 +75,11 @@ def generate(verification_path: Path) -> dict[str, object]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verification', type=Path, default=ROOT / 'evidence/current/full-stack/verification.json')
+    parser.add_argument('--replace', action='store_true', help='Allow the canonical finalization path to rebind an existing identity.')
     args = parser.parse_args()
     identity = generate(args.verification.resolve())
     encoded = json.dumps(identity, indent=2, sort_keys=True) + '\n'
-    if IDENTITY_PATH.exists() and IDENTITY_PATH.read_text(encoding='utf-8') != encoded:
+    if IDENTITY_PATH.exists() and IDENTITY_PATH.read_text(encoding='utf-8') != encoded and not args.replace:
         raise ValueError('The repository release identity already exists with different values.')
     IDENTITY_PATH.write_text(encoded, encoding='utf-8')
     print(json.dumps({'identity': str(IDENTITY_PATH.relative_to(ROOT)), 'status': 'PASS'}))
