@@ -1,16 +1,17 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.12
+# Delivery verification — react-fastapi-base 1.0.0-rc.13
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
 ## Actual executed tests
 
-CHG-34 UI accessibility evidence is recorded in
-`evidence/current/release/CHG-34-ui-accessibility.json` and
-`evidence/current/release/rc12-readiness-matrix.json`. CHG-32
+CHG-34 UI accessibility evidence is immutable historical evidence in
+`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.13
+repository readiness is recorded in
+`evidence/current/release/rc13-readiness-matrix.json`. CHG-32
 configuration-contract evidence remains immutable historical evidence in
 `evidence/current/release/CHG-32-configuration-contract.json`. The exact
 base for API compatibility is the integrated main commit supplied for this
-branch: `1de9cfae29450990d201785f35992c72ff0d0684`.
+branch: `86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f`.
 
 | Check | Result |
 |---|---:|
@@ -20,7 +21,7 @@ branch: `1de9cfae29450990d201785f35992c72ff0d0684`.
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `1de9cfae29450990d201785f35992c72ff0d0684`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f`; API major/revision unchanged |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 

@@ -53,7 +53,6 @@ def test_written_build_manifest_uses_target_base_and_not_post_acceptance_fields(
     monkeypatch.setattr(RELEASE, 'READINESS_PATH', release_dir / 'rc12-readiness-matrix.json')
     monkeypatch.setattr(RELEASE, 'MANIFEST_PATH', release_dir / 'rc12-manifest.json')
     monkeypatch.setattr(RELEASE, 'BINDING_PATH', release_dir / 'rc12-evidence-binding.json')
-    monkeypatch.setattr(RELEASE, 'CHG34_PATH', release_dir / 'CHG-34-ui-accessibility.json')
     uiqa_path = tmp_path / 'uiqa' / 'ui-state-matrix-results.json'
     uiqa_path.parent.mkdir()
     uiqa_path.write_text('{}')
@@ -85,3 +84,9 @@ def test_executable_source_digest_excludes_generated_lab_payload():
     hashes = source_hashes()
     assert not any(name.startswith('frontend/public/experience-lab/') for name in hashes)
     assert not any(name.startswith('frontend/storybook-static/') for name in hashes)
+
+
+def test_generic_release_verifier_does_not_own_historical_chg34_evidence():
+    source = (Path(__file__).resolve().parents[1] / 'scripts/release_evidence.py').read_text()
+    assert 'CHG34_PATH' not in source
+    assert "'CHG-34'" not in source

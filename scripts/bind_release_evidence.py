@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
-"""Bind RC.12 evidence to the exact verified source after evidence is committed."""
+"""Bind repository evidence to the exact verified source after evidence is committed."""
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.release_version import current_release_paths, parse_candidate_version
+
 RELEASE_DIR = ROOT / 'evidence/current/release'
-MANIFEST_PATH = RELEASE_DIR / 'rc12-manifest.json'
-BINDING_PATH = RELEASE_DIR / 'rc12-evidence-binding.json'
+_RELEASE_PATHS = current_release_paths(ROOT)
+MANIFEST_PATH = _RELEASE_PATHS.manifest
+BINDING_PATH = _RELEASE_PATHS.evidence_binding
 
 
 def full_commit(value: str, label: str) -> str:
@@ -35,6 +42,7 @@ def main() -> int:
     if evidence_commit == verified_source_commit:
         raise ValueError('Evidence commit must remain distinct from verified executable source.')
     manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf-8'))
+    parse_candidate_version(str(manifest.get('version', '')))
     if manifest.get('verified_source_commit') != verified_source_commit:
         raise ValueError('Manifest verified-source binding does not match the requested source commit.')
     target_base_sha = manifest.get('target_base_sha')
@@ -53,6 +61,7 @@ def main() -> int:
         'project': manifest['product'],
         'profile': manifest['profile'],
         'version': manifest['version'],
+        'artifact_label': manifest.get('artifact_label', parse_candidate_version(manifest['version']).artifact_label),
         'verified_source_commit': verified_source_commit,
         'source_digest': manifest['source_digest'],
         'evidence_commit': evidence_commit,

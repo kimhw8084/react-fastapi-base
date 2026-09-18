@@ -170,7 +170,7 @@ def test_self_consistent_fake_source_identity_is_rejected_by_repository_anchor(t
         expected_root=tmp_path / 'root',
         expected_release_identity=repository_identity(),
     )
-    assert any('repository RC.12 release identity' in error for error in errors)
+    assert any('repository release identity' in error for error in errors)
     assert not model.derived_production_ready(
         expected_version=VERSION,
         expected_deployment_id='deployment-1',
@@ -179,7 +179,7 @@ def test_self_consistent_fake_source_identity_is_rejected_by_repository_anchor(t
     )
 
 
-@pytest.mark.skipif(not REPOSITORY_RELEASE_IDENTITY_PATH.is_file(), reason='generated RC.12 repository identity is not present yet')
+@pytest.mark.skipif(not REPOSITORY_RELEASE_IDENTITY_PATH.is_file(), reason='generated repository release identity is not present yet')
 def test_positive_fixture_uses_repository_owned_expected_identity(tmp_path):
     expected = load_repository_release_identity()
     model = qualified(tmp_path / 'root')
