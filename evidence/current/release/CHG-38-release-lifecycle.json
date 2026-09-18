@@ -8,7 +8,7 @@
   "artifact_label": "rc13",
   "candidate_version": "1.0.0-rc.13",
   "change": "CHG-38",
-  "checkpoint_entry_sha256": "4d7dc40c59877b4ffa475cdf369d10d03812badad6b6e48a09c086e22f085e89",
+  "checkpoint_entry_sha256": "9ad52bc1dbea9d987c9a36078b0e80dd8bb8fcb2dbc1136bb6b230acb5571ba0",
   "derived_artifacts": {
     "evidence_binding": "evidence/current/release/rc13-evidence-binding.json",
     "identity": "deploy/rc13-release-identity.json",
@@ -17,7 +17,7 @@
   },
   "evidence_policy": "Repository technical release evidence is distinct from external company production qualification; no company PASS evidence is asserted.",
   "evidence_type": "change_evidence",
-  "identity_checkpoint_sha256": "4d7dc40c59877b4ffa475cdf369d10d03812badad6b6e48a09c086e22f085e89",
+  "identity_checkpoint_sha256": "9ad52bc1dbea9d987c9a36078b0e80dd8bb8fcb2dbc1136bb6b230acb5571ba0",
   "immutable_historical_artifacts_checked": [
     {
       "immutable": true,
@@ -79,11 +79,12 @@
     "candidate_version": "1.0.0-rc.13",
     "mode": "ordinary_build",
     "reason": "Candidate advances exactly from 1.0.0-rc.12 to 1.0.0-rc.13.",
-    "source_changed": true
+    "source_changed": true,
+    "version_projection_only": false
   },
   "project": "react-fastapi-base",
   "schema_version": 1,
-  "source_digest": "5d7c9dc5d78cf0fbc4736d6fe9eb96830c74794f33cbd48170b9cde0987e05ef",
+  "source_digest": "448278f7cae0c67ede2a1855dbc56283cff9a34cfdf3d0f78caaaf5eb303a867",
   "target_base_sha": "86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f",
-  "verified_source_commit": "7b224edc6c91ce295905f715774c97c4ca9ff4d3"
+  "verified_source_commit": "0e85e380095472ae9bd46538239a576ff4805dad"
 }
