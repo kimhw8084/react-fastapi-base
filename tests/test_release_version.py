@@ -12,6 +12,7 @@ from scripts.release_version import (
     parse_candidate_version,
     release_paths,
 )
+from scripts.source_manifest import executable_source_commit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,6 +90,7 @@ def test_evidence_only_commit_may_retain_established_candidate(tmp_path: Path):
     assert result.allowed is True
     assert result.mode == 'evidence_only'
     assert result.source_changed is False
+    assert executable_source_commit(repo) == base
 
 
 def test_stable_promotion_is_explicit_and_rejects_source_substitution(tmp_path: Path):

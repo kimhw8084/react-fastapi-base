@@ -49,6 +49,19 @@ def source_digest(hashes: dict[str, str] | None = None) -> str:
     return hashlib.sha256(json.dumps(values, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
+def executable_source_commit(root: Path = ROOT) -> str:
+    result = subprocess.run(
+        ['git', 'log', '-1', '--format=%H', '--', *SOURCE_DIRECTORIES, 'dev'],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        raise ValueError('The executable-source commit is unavailable.')
+    return result.stdout.strip()
+
+
 def source_hashes_at_git(commit: str, *, root: Path = ROOT) -> dict[str, str]:
     result = subprocess.run(
         ['git', 'ls-tree', '-r', '--name-only', commit],

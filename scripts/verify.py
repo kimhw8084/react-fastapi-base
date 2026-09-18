@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.release_version import ReleaseProgressionError, assert_candidate_progression
 from scripts.release_evidence import write_repository_release_evidence
-from scripts.source_manifest import source_digest, source_hashes
+from scripts.source_manifest import executable_source_commit, source_digest, source_hashes
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -115,8 +115,10 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     ]:blocked(name,reason,'deployment')
     source_hash_map=source_hashes()
     source_digest_value=source_digest(source_hash_map)
-    commit_result=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,check=False)
-    source_commit=commit_result.stdout.strip() if commit_result.returncode==0 else None
+    try:
+        source_commit=executable_source_commit(ROOT)
+    except ValueError:
+        source_commit=None
     (output/'source-hashes.json').write_text(json.dumps(source_hash_map,indent=2)+'\n')
     code_ready=all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code')
     api_base_sha=None

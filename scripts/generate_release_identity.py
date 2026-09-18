@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 import sys
 from pathlib import Path
 
@@ -14,25 +13,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.release_version import current_release_paths, parse_candidate_version
-from scripts.source_manifest import source_digest, source_hashes
+from scripts.source_manifest import executable_source_commit, source_digest, source_hashes
 
 # Kept as an import-compatible view for tooling/tests; main() resolves it again
 # from the current VERSION immediately before writing.
 IDENTITY_PATH = current_release_paths(ROOT).identity
 VERSION_PATH = ROOT / 'VERSION'
-
-
-def current_commit() -> str:
-    result = subprocess.run(
-        ['git', 'rev-parse', 'HEAD'],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if result.returncode != 0:
-        raise ValueError('The repository source commit is unavailable.')
-    return result.stdout.strip()
 
 
 def generate(verification_path: Path, *, stable_promotion: bool = False) -> dict[str, object]:
@@ -45,7 +31,7 @@ def generate(verification_path: Path, *, stable_promotion: bool = False) -> dict
 
     source_commit = verification.get('source_commit')
     digest = verification.get('source_digest')
-    actual_commit = current_commit()
+    actual_commit = executable_source_commit(ROOT)
     actual_digest = source_digest()
     if source_commit != actual_commit or digest != actual_digest:
         raise ValueError('The release report is not bound to the current executable source.')
