@@ -14,6 +14,11 @@ const meta={title:'Engineering/Interactive widgets',component:Example,tags:['aut
 export default meta
 type Story=StoryObj<typeof meta>
 export const Table:Story={args:{kind:'tables'}}
+export const TableLoading:Story={args:{kind:'tables',state:'loading'}}
+export const TableEmpty:Story={args:{kind:'tables',state:'empty'}}
+export const TableError:Story={args:{kind:'tables',state:'error'}}
+export const TableReadonly:Story={args:{kind:'tables',state:'readonly',readOnly:true}}
+export const PermissionsReadonly:Story={args:{kind:'permissions',state:'readonly',readOnly:true}}
 export const Board:Story={args:{kind:'boards'}}
 export const Gantt:Story={args:{kind:'gantt'}}
 export const Calendar:Story={args:{kind:'calendar'}}

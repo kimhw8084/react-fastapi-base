@@ -1,0 +1,46 @@
+{
+  "api_contract_impact": {
+    "api_major": 1,
+    "base_sha": "1de9cfae29450990d201785f35992c72ff0d0684",
+    "contract_revision": 1,
+    "observable_change": false
+  },
+  "change": "CHG-34",
+  "evidence_binding": "evidence/current/release/rc12-evidence-binding.json",
+  "evidence_policy": "No credentials, secrets, qualification payloads or fabricated company PASS evidence are recorded.",
+  "external_blockers": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "final_company_qualification_schema_version": 2,
+  "mandatory_gate_ids": [
+    "technical_release",
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations",
+    "release_evidence"
+  ],
+  "manifest": "evidence/current/release/rc12-manifest.json",
+  "production_ready": false,
+  "project": "react-fastapi-base",
+  "readiness_matrix": "evidence/current/release/rc12-readiness-matrix.json",
+  "release_status": "NOT_CERTIFIED",
+  "schema_version": 2,
+  "source_digest": "d333a044e814bef570dfa17e1b35b2ccaeaa850dca2378ea2f8ab3766210ecd8",
+  "template": "deploy/company-qualification.template.json",
+  "typed_schema": "deploy/company-qualification.schema.json",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "967703442f211cbf63c10061f0f00facfce74d3ff359f44d1ab3f00cd2fb3880"
+  },
+  "verified_source_commit": "d8a6dbf5a705d0e348268fdfc2a277ef6f5f87b5",
+  "version": "1.0.0-rc.12"
+}

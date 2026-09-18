@@ -1,0 +1,36 @@
+{
+  "state_id": "chg34-saved-view-checkbox-selection",
+  "material_state_class": "selection",
+  "controls": [
+    {
+      "name": "Favorite",
+      "geometry": {
+        "display": "flex",
+        "direction": "row",
+        "width": 16,
+        "height": 16,
+        "native": true
+      },
+      "checked": true,
+      "role": null
+    },
+    {
+      "name": "Default for this workspace",
+      "geometry": {
+        "display": "flex",
+        "direction": "row",
+        "width": 16,
+        "height": 16,
+        "native": true
+      },
+      "checked": true,
+      "role": null
+    }
+  ],
+  "dialog_role": "dialog",
+  "dialog_name": null,
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}

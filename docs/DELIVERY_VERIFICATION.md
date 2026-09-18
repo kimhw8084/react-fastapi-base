@@ -1,26 +1,26 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.11
+# Delivery verification — react-fastapi-base 1.0.0-rc.12
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
 ## Actual executed tests
 
-CHG-33 CompanyQualification/readiness evidence is recorded in
-`evidence/current/release/CHG-33-company-qualification.json` and
-`evidence/current/release/rc11-readiness-matrix.json`. CHG-32
+CHG-34 UI accessibility evidence is recorded in
+`evidence/current/release/CHG-34-ui-accessibility.json` and
+`evidence/current/release/rc12-readiness-matrix.json`. CHG-32
 configuration-contract evidence remains immutable historical evidence in
 `evidence/current/release/CHG-32-configuration-contract.json`. The exact
 base for API compatibility is the integrated main commit supplied for this
-branch: `6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf`.
+branch: `1de9cfae29450990d201785f35992c72ff0d0684`.
 
 | Check | Result |
 |---|---:|
 | FastAPI/backend | PASS; current deterministic backend suite in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 17 Playwright cases including CHG-6 UIQA coverage |
+| React browser workflows | PASS; 26 Playwright cases including 13 canonical CHG-34 UIQA rows and preserved UIQA regressions |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `1de9cfae29450990d201785f35992c72ff0d0684`; API major/revision unchanged |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 

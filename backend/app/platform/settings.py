@@ -19,7 +19,7 @@ from app.platform.version import VERSION
 COMPANY_QUALIFICATION_SCHEMA_VERSION = 2
 COMPANY_QUALIFICATION_PROJECT = 'react-fastapi-base'
 COMPANY_QUALIFICATION_PROFILE = 'company'
-REPOSITORY_RELEASE_IDENTITY_PATH = Path(__file__).resolve().parents[3] / 'deploy' / 'rc11-release-identity.json'
+REPOSITORY_RELEASE_IDENTITY_PATH = Path(__file__).resolve().parents[3] / 'deploy' / 'rc12-release-identity.json'
 MANDATORY_GATE_IDS = (
     'technical_release',
     'identity',
@@ -289,11 +289,11 @@ class RepositorySourceEvidence(BaseModel):
 
 
 class RepositoryReleaseIdentity(BaseModel):
-    """Repository-generated RC.11 identity independent of operator evidence."""
+    """Repository-generated RC.12 identity independent of operator evidence."""
 
     model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
     schema_version: Literal[1] = 1
-    identity_type: Literal['repository_rc11_release']
+    identity_type: Literal['repository_rc12_release']
     project: Literal['react-fastapi-base']
     profile: Literal['company']
     candidate_version: str = Field(min_length=1, max_length=64)
@@ -535,31 +535,31 @@ class CompanyQualification(BaseModel):
             ('source_digest', 'executable source digest'),
         ):
             if getattr(self, field_name) != getattr(expected, field_name):
-                errors.append(f'Qualification {label} does not match the repository RC.11 release identity.')
+                errors.append(f'Qualification {label} does not match the repository RC.12 release identity.')
 
         technical_gate = self.gate('technical_release')
         technical_facts = technical_gate.facts if technical_gate else None
         if isinstance(technical_facts, TechnicalReleaseFacts):
             if technical_facts.candidate_version != expected.candidate_version:
-                errors.append('Technical release version does not match the repository RC.11 release identity.')
+                errors.append('Technical release version does not match the repository RC.12 release identity.')
             if technical_facts.verified_source_commit != expected.verified_source_commit:
-                errors.append('Technical release source commit does not match the repository RC.11 release identity.')
+                errors.append('Technical release source commit does not match the repository RC.12 release identity.')
             if technical_facts.source_digest != expected.source_digest:
-                errors.append('Technical release source digest does not match the repository RC.11 release identity.')
+                errors.append('Technical release source digest does not match the repository RC.12 release identity.')
 
         release_gate = self.gate('release_evidence')
         release_facts = release_gate.facts if release_gate else None
         if isinstance(release_facts, ReleaseEvidenceFacts):
             if release_facts.project != expected.project:
-                errors.append('Release evidence project does not match the repository RC.11 release identity.')
+                errors.append('Release evidence project does not match the repository RC.12 release identity.')
             if release_facts.profile != expected.profile:
-                errors.append('Release evidence profile does not match the repository RC.11 release identity.')
+                errors.append('Release evidence profile does not match the repository RC.12 release identity.')
             if release_facts.candidate_version != expected.candidate_version:
-                errors.append('Release evidence version does not match the repository RC.11 release identity.')
+                errors.append('Release evidence version does not match the repository RC.12 release identity.')
             if release_facts.verified_source_commit != expected.verified_source_commit:
-                errors.append('Release evidence source commit does not match the repository RC.11 release identity.')
+                errors.append('Release evidence source commit does not match the repository RC.12 release identity.')
             if release_facts.source_digest != expected.source_digest:
-                errors.append('Release evidence source digest does not match the repository RC.11 release identity.')
+                errors.append('Release evidence source digest does not match the repository RC.12 release identity.')
         return sorted(set(errors))
 
     def binding_errors(
@@ -587,7 +587,7 @@ class CompanyQualification(BaseModel):
         if isinstance(deployment_gate.facts if deployment_gate else None, DeploymentFacts) and deployment_gate.facts.deployment_id != self.deployment_id:
             errors.append('Deployment qualification belongs to a different deployment.')
         if expected_release_identity is None:
-            errors.append('Repository RC.11 release identity is unavailable; production qualification is refused.')
+            errors.append('Repository RC.12 release identity is unavailable; production qualification is refused.')
         else:
             errors.extend(self.repository_release_identity_errors(expected_release_identity))
         return errors 
@@ -622,7 +622,7 @@ def load_repository_release_identity(path: Path | None = None) -> RepositoryRele
     try:
         return RepositoryReleaseIdentity.model_validate_json(identity_path.read_text(encoding='utf-8'))
     except (OSError, ValueError, ValidationError) as error:
-        raise ValueError('Repository RC.11 release identity is missing or invalid.') from error
+        raise ValueError('Repository RC.12 release identity is missing or invalid.') from error
 
 
 def load_company_qualification(payload: str) -> CompanyQualification:
@@ -784,7 +784,7 @@ class Settings(BaseSettings):
         try:
             expected_release_identity = load_repository_release_identity()
         except ValueError:
-            errors.append('Repository RC.11 release identity is missing or invalid; production qualification is refused.')
+            errors.append('Repository RC.12 release identity is missing or invalid; production qualification is refused.')
         try:
             if self.qualification_file is None:
                 raise ValueError('missing qualification file')

@@ -24,15 +24,17 @@ export interface OverlayShellProps {
 export function OverlayShell({open,kind,title,subtitle,status,footer,onClose,children,className='',modal=true,expandable=false,wide=false,busy=false}:OverlayShellProps){
  const ref=useRef<HTMLDivElement>(null)
  const returnFocus=useRef<HTMLElement|null>(null)
+ const wasOpen=useRef(false)
  const [expanded,setExpanded]=useState(false)
  const titleId=`surface-title-${useId().replaceAll(':','')}`
  const {layer,isTop}=useSurfaceRegistration(kind,open)
  const requestClose=useCallback(()=>{if(!busy)onClose()},[busy,onClose])
+ if(open&&!wasOpen.current)returnFocus.current=document.activeElement instanceof HTMLElement?document.activeElement:null
  useEffect(()=>{
-  if(!open)return
-  returnFocus.current=document.activeElement instanceof HTMLElement?document.activeElement:null
+  if(!open){wasOpen.current=false;return}
+  wasOpen.current=true
   queueMicrotask(()=>{const nodes=focusables(ref.current);(nodes[0]??ref.current)?.focus()})
-  return ()=>{const previous=returnFocus.current;returnFocus.current=null;if(previous?.isConnected)previous.focus()}
+  return ()=>{const previous=returnFocus.current;returnFocus.current=null;if(previous?.isConnected)queueMicrotask(()=>{if(previous.isConnected)previous.focus()})}
  },[open])
  useEffect(()=>{if(!open)setExpanded(false)},[open])
  useEffect(()=>{const node=ref.current;if(!open||!node)return;const handler=()=>requestClose();node.addEventListener('golden-request-close',handler);return()=>node.removeEventListener('golden-request-close',handler)},[open,requestClose])

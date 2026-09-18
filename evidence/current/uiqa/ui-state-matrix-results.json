@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "result_kind": "browser-computed-uiqa",
+  "proof_model": "runtime-assertion-v1",
+  "matrix_id": "project-os-ui-state-matrix",
+  "matrix_sha256": "ec6cbaed7def4516d36b89be24afa6b0dba94d4084a5e286b0051d428c3f6687",
+  "source_commit": "d8a6dbf5a705d0e348268fdfc2a277ef6f5f87b5",
+  "overall_status": "PASS",
+  "results": [
+    {
+      "state_id": "chg34-dialog-focus-recovery",
+      "browser_test_id": "uiqa-013",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "focus.recovery",
+        "focus.visible",
+        "keyboard.enter",
+        "keyboard.escape",
+        "keyboard.shift-tab",
+        "keyboard.tab",
+        "semantics.role-name-state"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json"
+      ]
+    },
+    {
+      "state_id": "chg34-forced-colors",
+      "browser_test_id": "uiqa-016",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "focus.visible",
+        "forced-colors.active",
+        "keyboard.shift-tab",
+        "keyboard.tab",
+        "semantics.role-name-state"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-forced-colors.json",
+        "evidence/current/uiqa/rendered/chg34-forced-colors.png"
+      ]
+    },
+    {
+      "state_id": "chg34-grid-row-selection",
+      "browser_test_id": "uiqa-012",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "focus.visible",
+        "keyboard.shift-tab",
+        "keyboard.space",
+        "keyboard.tab",
+        "semantics.role-name-state",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-grid-row-selection.json",
+        "evidence/current/uiqa/rendered/chg34-grid-row-selection.png"
+      ]
+    },
+    {
+      "state_id": "chg34-grid-semantic-theme-modes",
+      "browser_test_id": "uiqa-002",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "contrast.high",
+        "theme.dark",
+        "theme.light",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json",
+        "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png"
+      ]
+    },
+    {
+      "state_id": "chg34-notification-timestamp-contrast",
+      "browser_test_id": "uiqa-007",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "contrast.high",
+        "theme.dark",
+        "theme.light"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json"
+      ]
+    },
+    {
+      "state_id": "chg34-reduced-motion",
+      "browser_test_id": "uiqa-015",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "motion.reduced",
+        "semantics.role-name-state"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-reduced-motion.json"
+      ]
+    },
+    {
+      "state_id": "chg34-reflow-320-css-px",
+      "browser_test_id": "uiqa-014",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "reflow.320-css-px",
+        "semantics.role-name-state",
+        "viewport.narrow"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+        "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png"
+      ]
+    },
+    {
+      "state_id": "chg34-saved-view-checkbox-selection",
+      "browser_test_id": "uiqa-003",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "keyboard.space",
+        "semantics.role-name-state"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json"
+      ]
+    },
+    {
+      "state_id": "chg34-theme-operations-primary-action",
+      "browser_test_id": "uiqa-001",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "theme.dark"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json",
+        "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png"
+      ]
+    },
+    {
+      "state_id": "chg34-work-items-empty",
+      "browser_test_id": "uiqa-009",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "semantics.role-name-state",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-work-items-empty.json"
+      ]
+    },
+    {
+      "state_id": "chg34-work-items-error",
+      "browser_test_id": "uiqa-010",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "semantics.role-name-state",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-work-items-error.json"
+      ]
+    },
+    {
+      "state_id": "chg34-work-items-loading",
+      "browser_test_id": "uiqa-008",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "semantics.role-name-state",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-work-items-loading.json"
+      ]
+    },
+    {
+      "state_id": "chg34-work-items-permission-readonly",
+      "browser_test_id": "uiqa-011",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "semantics.role-name-state",
+        "viewport.desktop"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json"
+      ]
+    }
+  ]
+}

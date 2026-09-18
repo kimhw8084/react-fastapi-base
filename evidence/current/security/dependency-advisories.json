@@ -1,10 +1,51 @@
 {
-  "schema_version": 1,
-  "source_commit": "a048fc6a9f29cdf2971984a58405d0e6ca77ab22",
-  "timestamp": "2026-09-08T15:52:06Z",
-  "command": ["npm audit --audit-level=high", "python -m pip_audit -r backend/requirements.lock"],
-  "exit_code": 0,
-  "environment": "macOS arm64; Python 3.14.5; Node 22.23.2",
-  "hashes": {"source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11", "VERSION": "8e3ccfbe492191dbb919be7b4ef3d93bd88f92b1d99532b25ba19c5ad9f1f722", "frontend/package-lock.json": "fe9551e67b3a9982dc0694932cca8430e445af5fc7056fadf3053d7e619709c0", "backend/requirements.lock": "510dab176f9446a8817bfcae88abb9032ef3852a2f1f79082b841887c085c444"},
-  "result": "PASS"
+  "schema_version": 2,
+  "kind": "dependency-advisory-repair",
+  "project": "react-fastapi-base",
+  "request": "ui-state-accessibility-anyio-security-r7",
+  "operation": "FIX",
+  "source_commit": "d8a6dbf5a705d0e348268fdfc2a277ef6f5f87b5",
+  "source_digest": "d333a044e814bef570dfa17e1b35b2ccaeaa850dca2378ea2f8ab3766210ecd8",
+  "lock": {
+    "path": "backend/requirements.lock",
+    "before_sha256": "590643d189b4614db21e9b82e3347ab73984d6de59a722d94c6ecf8dae015a19",
+    "after_sha256": "fe8a60265f426287f6d313d2ee874b5ff2a24316f79db8726e1c1be53fc2eec5",
+    "before_anyio": "4.13.0",
+    "after_anyio": "4.14.2",
+    "only_intended_dependency_delta": true
+  },
+  "pr21_failure": {
+    "workflow_run": "35378938024",
+    "gate": "python-advisories",
+    "status": "FAIL",
+    "advisories": [
+      {
+        "id": "GHSA-82r6-8w77-94w6",
+        "package": "anyio",
+        "affected_version": "4.13.0",
+        "fix_version": "4.14.2"
+      },
+      {
+        "id": "GHSA-5p39-cfhj-2xmp",
+        "package": "anyio",
+        "affected_version": "4.13.0",
+        "fix_version": "4.14.2"
+      }
+    ]
+  },
+  "clean_lock_verification": {
+    "environment": "fresh disposable Python 3.11.7 virtualenv",
+    "install_command": "python -m pip install -r backend/requirements.lock",
+    "installed_anyio": "4.14.2",
+    "preserved_runtime_versions": {
+      "fastapi": "0.141.1",
+      "starlette": "1.6.0",
+      "uvicorn": "0.52.4",
+      "httpx": "0.28.1"
+    },
+    "audit_command": "pip-audit -r backend/requirements.lock",
+    "audit_exit_code": 0,
+    "audit_result": "PASS",
+    "audit_output": "No known vulnerabilities found"
+  }
 }

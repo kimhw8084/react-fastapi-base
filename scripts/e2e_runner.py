@@ -40,7 +40,10 @@ def main():
         env={k:v for k,v in os.environ.items() if not k.startswith('BASE_') and k not in ('AccessKey','NODE_ENV')}
         env.update(BASE_ENVIRONMENT='test',BASE_PROFILE='development',BASE_DEV_USER='demo.admin',BASE_DATA_ROOT=str(data),
             BASE_ALLOWED_ORIGINS=json.dumps([f'http://127.0.0.1:{frontend_port}']),BASE_ALLOWED_HOSTS='["127.0.0.1","localhost"]',BASE_REQUEST_LIMIT_PER_MINUTE='1000',
-            BASE_E2E_BASE=f'http://127.0.0.1:{frontend_port}',BASE_FRONTEND_RUNTIME_CONFIG=str(runtime),PORT=str(frontend_port),HOST='127.0.0.1')
+            BASE_E2E_BASE=f'http://127.0.0.1:{frontend_port}',BASE_FRONTEND_RUNTIME_CONFIG=str(runtime),PORT=str(frontend_port),HOST='127.0.0.1',
+            UIQA_OUTPUT=str(ROOT/'evidence/current/uiqa/ui-state-matrix-results.json'),
+            UIQA_RENDERED_DIR=str(ROOT/'evidence/current/uiqa/rendered'),
+            UIQA_SOURCE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip())
         subprocess.check_call([str(BACKEND_PYTHON),'-m','app.cli','seed-demo'],cwd=ROOT/'backend',env=env)
         processes=[]
         try:

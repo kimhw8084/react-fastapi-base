@@ -1,0 +1,6 @@
+command: python3 scripts/generate_checkpoint_manifest.py --check
+status: PASS
+output: Checkpoint manifest is current: 670 source files.
+release_identity: deploy/rc12-release-identity.json
+release_identity_sha256: 3d0f98e5bebbc5e52c8f2e129a9a21cfd212d6ff2148f5974ac64d1491c4488e
+checkpoint_entry_sha256: 3d0f98e5bebbc5e52c8f2e129a9a21cfd212d6ff2148f5974ac64d1491c4488e
