@@ -48,6 +48,7 @@ GateId = Literal[
 ]
 GateStatus = Literal['PASS', 'BLOCKED', 'FAIL']
 StorageKind = Literal['local_disk', 'provider_supported_posix']
+SUPPORTED_COMPANY_STORAGE_KINDS = frozenset({'local_disk', 'provider_supported_posix'})
 
 _QUALIFICATION_PLACEHOLDERS = {
     'unqualified', 'placeholder', 'changeme', 'todo', 'tbd', 'n/a', 'none',
@@ -386,6 +387,11 @@ class CompanyQualificationPrerequisites(BaseModel):
     @classmethod
     def nonblank_attestation(cls, value: str) -> str:
         return _validate_attestation(value)
+
+    @field_validator('provider_sqlite_support_reference', 'authorized_by')
+    @classmethod
+    def safe_operator_metadata(cls, value: str, info) -> str:
+        return _validate_safe_metadata(value, str(info.field_name))
 
     @field_validator('persistent_root')
     @classmethod
@@ -827,6 +833,53 @@ class Settings(BaseSettings):
         except (ValueError, OSError):
             errors.append('Qualification prerequisites are missing or invalid; final production evidence is not implied.')
         return errors
+
+    def company_storage_errors(self) -> list[str]:
+        """Validate only the typed storage facts owned by the company adapter.
+
+        Development and test profiles intentionally do not consult company
+        qualification files. Qualification uses the operator-authorized
+        prerequisites record; production uses the final CompanyQualification's
+        typed storage gate. Neither path infers provider guarantees from a
+        local probe.
+        """
+        if self.environment not in ('qualification', 'production'):
+            return []
+        errors: list[str] = []
+        facts: StorageFacts | CompanyQualificationPrerequisites | None = None
+        if self.environment == 'qualification':
+            try:
+                if self.qualification_prerequisites_file is None:
+                    raise ValueError('missing qualification prerequisites file')
+                facts = CompanyQualificationPrerequisites.model_validate_json(
+                    self.qualification_prerequisites_file.read_text(encoding='utf-8')
+                )
+            except (OSError, ValueError):
+                errors.append('Typed company storage prerequisites are missing or invalid.')
+        else:
+            try:
+                if self.qualification_file is None:
+                    raise ValueError('missing final qualification file')
+                qualification = load_company_qualification(self.qualification_file.read_text(encoding='utf-8'))
+                storage_gate = qualification.gate('storage')
+                if storage_gate is None or storage_gate.status != 'PASS' or not isinstance(storage_gate.facts, StorageFacts):
+                    raise ValueError('storage gate is not a typed PASS')
+                facts = storage_gate.facts
+                if qualification.contract_errors():
+                    errors.append('Final company storage qualification has inconsistent typed facts.')
+            except (LegacyCompanyQualificationError, OSError, ValueError):
+                errors.append('Typed company storage qualification is missing or invalid.')
+
+        if facts is not None:
+            if facts.storage_kind not in SUPPORTED_COMPANY_STORAGE_KINDS:
+                errors.append('Company storage kind is unsupported.')
+            if not facts.provider_sqlite_support_reference.strip() or facts.provider_sqlite_support_reference.casefold() in _QUALIFICATION_PLACEHOLDERS:
+                errors.append('Company storage provider SQLite support reference is missing or a placeholder.')
+            if facts.all_database_clients_same_host is not True:
+                errors.append('Company storage requires all database clients on one host.')
+            if Path(facts.persistent_root).resolve() != self.data_root.resolve():
+                errors.append('Company storage qualification does not bind to settings.data_root.')
+        return sorted(set(errors))
 
     def production_errors(self, *, scanner_is_noop: bool | None = None) -> list[str]:
         return self._production_errors(scanner_is_noop=scanner_is_noop, check_attachment_policy=True)

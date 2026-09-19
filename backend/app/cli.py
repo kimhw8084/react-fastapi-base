@@ -1,12 +1,13 @@
 from __future__ import annotations
 import argparse
 import json
+import platform
 from pathlib import Path
+import sys
 from uuid import uuid4
 from sqlalchemy import select
 from app.platform.settings import Settings
 from app.platform.errors import AppError
-from app.platform.database import Database
 from app.platform.models import Tenant
 from app.platform.provision import provision,add_member
 from app.platform.migrations import migrate
@@ -15,6 +16,8 @@ from app.profiles.company.storage_probe import probe
 from app.profiles.loader import load_profile
 from app.tooling.work_items import create_work_item_direct
 from app.features.work_items.schemas import WorkItemCreate
+from app.platform.version import VERSION
+from scripts.source_manifest import source_provenance
 
 
 def _deliver_webhook_job(database,settings,tenant_id,payload):
@@ -23,7 +26,7 @@ def _deliver_webhook_job(database,settings,tenant_id,payload):
         return deliver(session,settings,str(payload.get('endpoint_id','')),str(payload.get('event_id','')))
 
 
-def _assert_operator_safe(settings: Settings) -> None:
+def _assert_operator_safe(settings: Settings):
     """Validate production qualification without pretending maintenance has a scanner.
 
     These commands do not accept uploads or start the ASGI request surface. The
@@ -37,6 +40,40 @@ def _assert_operator_safe(settings: Settings) -> None:
         # company identity boundary as the ASGI application.  This proves that
         # AccessKey is present without exposing it or allowing a CLI override.
         profile.identity.current_user()
+    return profile
+
+
+def _doctor_report(result: dict[str, object], settings: Settings, runtime) -> dict[str, object]:
+    provenance = source_provenance()
+    result.update({
+        'candidate_version': VERSION,
+        'candidate_head': provenance['checkout_commit'],
+        'checkout_commit': provenance['checkout_commit'],
+        'executable_source_commit': provenance['executable_source_commit'],
+        'source_commit': provenance['executable_source_commit'],
+        'source_digest': provenance['source_digest'],
+        'hashes': {'source_digest': provenance['source_digest']},
+        'source_identity': {
+            'candidate_version': VERSION,
+            'candidate_head': provenance['checkout_commit'],
+            'executable_source_commit': provenance['executable_source_commit'],
+            'source_digest': provenance['source_digest'],
+        },
+        'environment': {
+            'platform': platform.system(),
+            'platform_release': platform.release(),
+            'python': platform.python_version(),
+            'profile': settings.profile,
+            'environment': settings.environment,
+        },
+        'storage_contract': {
+            'database_semantics': 'sqlite_same_host_delete_full_foreign_keys_bounded_busy_timeout',
+            'object_backup_mode': getattr(runtime.object_storage, 'backup_mode', None),
+            'persistent_root_binding': 'settings.data_root',
+            'scratch_scope': 'configured persistent root or bounded child',
+        },
+    })
+    return result
 
 def main():
     parser=argparse.ArgumentParser(description='Golden operator tools. Never run against live data without the documented maintenance procedure.')
@@ -46,7 +83,7 @@ def main():
     p=commands.add_parser('migrate');p.add_argument('--maintenance',required=True,choices=['APP-STOPPED'])
     p=commands.add_parser('backup');p.add_argument('--output',type=Path,required=True);p.add_argument('--maintenance',required=True,choices=['APP-STOPPED'])
     p=commands.add_parser('restore');p.add_argument('--snapshot',type=Path,required=True);p.add_argument('--target',type=Path,required=True)
-    p=commands.add_parser('doctor-storage');p.add_argument('--scratch-parent',type=Path,required=True)
+    p=commands.add_parser('doctor-storage');p.add_argument('--scratch-parent',type=Path,required=True);p.add_argument('--evidence-output',type=Path)
     p=commands.add_parser('run-jobs');p.add_argument('--once',action='store_true');p.add_argument('--worker-id',default='operator-worker')
     commands.add_parser('preflight')
     commands.add_parser('seed-demo')
@@ -73,13 +110,17 @@ def main():
         ) if not errors else False
         print(json.dumps({'ready':not errors,'environment':settings.environment,'production_ready':production_ready,'errors':sorted(set(errors))},indent=2));return 1 if errors else 0
     settings.assert_configuration()
-    database=Database(settings)
+    profile=_assert_operator_safe(settings)
+    runtime=profile.build_runtime(settings)
+    database=runtime.database
     try:
         if args.command=='doctor-storage':
-            _assert_operator_safe(settings)
-            result=probe(args.scratch_parent);print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
+            result=_doctor_report(probe(args.scratch_parent, intended_root=settings.data_root), settings, runtime)
+            if args.evidence_output is not None:
+                args.evidence_output.parent.mkdir(parents=True, exist_ok=True)
+                args.evidence_output.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+            print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
         if args.command=='run-jobs':
-            _assert_operator_safe(settings)
             from app.platform.jobs import process_one
             from app.platform.webhooks import deliver as deliver_webhook
             processed=0
@@ -93,16 +134,18 @@ def main():
                     if args.once:break
             print(json.dumps({'processed':processed,'worker_id':args.worker_id}));return 0
         if args.command=='restore':
-            _assert_operator_safe(settings)
-            print(restore(args.snapshot,args.target));return 0
-        _assert_operator_safe(settings)
+            print(restore(
+                args.snapshot,
+                args.target,
+                storage_factory=lambda root: profile.storage.build_restore_object_storage(settings, root),
+            ));return 0
         if args.command=='provision':print(provision(database,args.tenant,args.admin))
         elif args.command=='add-member':add_member(database,args.tenant_id,args.user,args.role)
         elif args.command=='migrate':
             migrate(database)
             with database.session() as session:ids=list(session.scalars(select(Tenant.id)))
             for tenant_id in ids:migrate(database,tenant_id)
-        elif args.command=='backup':print(snapshot(database.root,args.output,maintenance=args.maintenance))
+        elif args.command=='backup':print(snapshot(database.root,args.output,maintenance=args.maintenance,storage=runtime.object_storage))
         elif args.command=='seed-demo':
             if settings.environment=='production' or settings.profile=='company':raise ValueError('Demo seeding is forbidden for company or production profiles.')
             if database.path().exists():raise ValueError('Demo seeding requires a new data root. Existing data is preserved.')

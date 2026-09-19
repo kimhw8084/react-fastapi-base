@@ -50,6 +50,7 @@ REQUIRED_RESULT_NAMES = {
     'engineering-widget-layer',
     'required-catalog-completeness',
     'object-inclusive-backup-restore',
+    'storage-qualification',
     'frontend-typecheck',
     'frontend-unit',
     'frontend-build',
@@ -71,6 +72,7 @@ EVIDENCE_PATHS = {
     'clean_clone': Path('evidence/current/full-stack/fresh-clone-macos.json'),
     'reference_apps': Path('evidence/current/release/reference-apps.json'),
     'upgrade_fixture': Path('evidence/current/full-stack/upgrade-fixture.json'),
+    'storage_qualification': Path('evidence/current/storage/qualification.json'),
 }
 
 
@@ -175,6 +177,17 @@ def _validate_upgrade(document: dict[str, Any] | None, problems: list[str]) -> N
     _require(isinstance(rollback, dict) and rollback.get('integrity_restored') is True, problems, 'upgrade-fixture: managed-core rollback integrity was not restored.')
 
 
+def _validate_storage(document: dict[str, Any] | None, problems: list[str]) -> None:
+    if document is None:
+        return
+    _require(document.get('schema_version') == 1, problems, 'storage-qualification: stale evidence schema; rerun the storage proof.')
+    _require(document.get('profile') == 'company', problems, 'storage-qualification: company profile binding is missing.')
+    _require(document.get('production_ready') is False and document.get('production_approved') is False, problems, 'storage-qualification: repository proof must not claim production approval.')
+    _require(document.get('companyqualification_boundary', {}).get('final_company_storage') == 'BLOCKED_EXTERNAL', problems, 'storage-qualification: final company storage must remain external.')
+    checks = document.get('checks')
+    _require(isinstance(checks, dict) and all(value is True for value in checks.values()), problems, 'storage-qualification: a storage contract check did not pass.')
+
+
 def _dev_commands() -> set[str]:
     result = subprocess.run([sys.executable, 'dev', '--help'], cwd=ROOT, capture_output=True, text=True, check=False)
     if result.returncode != 0:
@@ -231,6 +244,7 @@ def build_qualification(
     _validate_clean_clone(documents['clean_clone'], problems)
     _validate_reference_apps(documents['reference_apps'], version=version, expected_commit=executable_source_commit, expected_digest=source_digest, problems=problems)
     _validate_upgrade(documents['upgrade_fixture'], problems)
+    _validate_storage(documents['storage_qualification'], problems)
     _validate_documentation(version, problems)
 
     inputs = {label: {'locator': str(relative), 'sha256': _sha256(ROOT / relative) if (ROOT / relative).is_file() else None} for label, relative in EVIDENCE_PATHS.items()}
@@ -255,6 +269,7 @@ def build_qualification(
             'clean_clone_bootstrap': documents['clean_clone'] is not None and not any(problem.startswith('clean-clone:') for problem in problems),
             'reference_app_generation': documents['reference_apps'] is not None and not any(problem.startswith('reference-apps/') for problem in problems),
             'upgrade_and_rollback': documents['upgrade_fixture'] is not None and not any(problem.startswith('upgrade-fixture:') for problem in problems),
+            'storage_contract': documents['storage_qualification'] is not None and not any(problem.startswith('storage-qualification:') for problem in problems),
             'provenance': not any('source' in problem or 'template-lock' in problem or 'aggregate:' in problem for problem in problems),
             'documentation_and_commands': not any(problem.startswith('documentation/') for problem in problems),
         },

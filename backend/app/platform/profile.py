@@ -7,6 +7,7 @@ imports a concrete company or development provider.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal, Protocol
 
 from fastapi import Request
@@ -24,6 +25,8 @@ class StorageAdapter(Protocol):
     def build_database(self, settings: Settings) -> Database: ...
 
     def build_object_storage(self, settings: Settings) -> StorageBackupAdapter: ...
+
+    def build_restore_object_storage(self, settings: Settings, target_root: Path) -> StorageBackupAdapter: ...
 
 
 StoragePort = StorageAdapter
@@ -76,7 +79,7 @@ class ProfileRuntime:
     settings: Settings
     database: Database
     storage: StorageAdapter
-    object_storage: ObjectStorageAdapter
+    object_storage: StorageBackupAdapter
     identity: IdentityProvider
     deployment: DeploymentAdapter
     malware_scanner: MalwareScanner | None
