@@ -20,6 +20,19 @@ The last command is the release contract for the generated 605-entry generic fam
 
 ## React/FastAPI application
 
+CHG-35 uses `contracts/performance-regression.json` as the only authority for
+the owned pure-algorithm, platform data-volume and browser/AG Grid scale
+workloads, representative sizes, structural invariants and generous
+regression ceilings. `scripts/performance_check.py`,
+`scripts/performance_stress.py` and `frontend/tests/e2e/performance.spec.ts`
+consume that contract; `scripts/performance_results.py` fails closed on stale,
+unknown, duplicate or missing results. The 100k/50 server-page fixture proves
+the production paging boundary. The separate 5000-loaded-row fixture is
+synthetic/test-only and exercises the shared `StandardDataGrid`'s actual AG
+Grid virtualization, recycling, deep selection/keyboard behavior and sorting.
+`GroupedSemanticGrid` remains a non-virtualized semantic table bounded by the
+server-returned page and is not certified as virtualized.
+
 `python3 dev setup` creates the repository-local `backend/.venv` from the reviewed locks and installs the frontend lock. Run it before `python3 dev verify` or `python3 dev verify-release`; backend gates refuse an ambient interpreter so local verification uses the same environment contract as CI. The verifier checks backend, tooling, architecture, generated API contracts, client transport logic, Node static publisher and real Uvicorn HTTP requests. It then requires the installed/locked React dependency tree, full TypeScript, unit tests, production build, browser/a11y, dependency advisories, catalog completion and an isolated exact-candidate clean-install proof. On Linux, that proof is a portable candidate gate and macOS-specific qualification is recorded as `BLOCKED`; on Darwin it can provide the macOS qualification. Company identity, mounted-storage and deployment checks remain explicitly external.
 
 Missing tooling is BLOCKED, never PASS. A missing required catalog implementation is FAIL. Its nonzero exit must not be weakened merely to get a green badge.

@@ -1,12 +1,12 @@
-# Release status — react-fastapi-base 1.0.0-rc.13
+# Release status — react-fastapi-base 1.0.0-rc.14
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.13 codifies the source-bound release/evidence lifecycle on top of the schema-v2 CompanyQualification contract. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.14 adds the canonical source-bound performance and AG Grid virtualization regression qualification on top of the RC.13 release/evidence lifecycle. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
 
-RC.12 is immutable integrated historical evidence for its exact source. RC.13 binds the current release lifecycle artifacts to the verified RC.13 source; the local browser gate does not prove the final company/profile `ui_accessibility` qualification.
+RC.12 and RC.13 are immutable integrated historical evidence for their exact sources. RC.14 binds the current release lifecycle artifacts to the verified RC.14 source; local performance and browser gates do not prove the final company/profile `ui_accessibility` or `performance` qualification.
 
 ## Current local proof
 
@@ -45,5 +45,5 @@ Optional authenticated realtime push, enterprise malware/CDR provider selection,
 
 Reports under `evidence/current/` are generated from the current source and carry commit, timestamp, command, exit code, environment and hashes. Historical reports remain under historical directories and are not release proof. Local success does not certify company infrastructure, SEMI compliance, WCAG conformance, or production safety.
 
-The deterministic RC.13 repository readiness report is `evidence/current/release/rc13-readiness-matrix.json`; its companion manifest and binding are `rc13-manifest.json` and `rc13-evidence-binding.json`. RC.12's corresponding artifacts remain immutable historical evidence. The UI matrix/result evidence is under `evidence/current/uiqa/`; all are repository evidence, not an operator-approved qualification file.
+The deterministic RC.14 repository readiness report is `evidence/current/release/rc14-readiness-matrix.json`; its companion manifest and binding are `rc14-manifest.json` and `rc14-evidence-binding.json`. RC.13 and RC.12's corresponding artifacts remain immutable historical evidence. Canonical performance evidence is under `evidence/current/performance/`, including `qualification.json` and `browser.json`; all are repository evidence, not an operator-approved qualification file.
 The repository identity is generated from the passing current source verification report by `scripts/generate_release_identity.py` and is intentionally outside the executable-source hash set to avoid a digest cycle. Its `source_commit` is the verified executable-source commit; the later evidence and Fabric branch heads do not replace it.

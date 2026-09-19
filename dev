@@ -92,7 +92,9 @@ def main():
         code=run([backend_python(),'scripts/generate_contracts.py'])
         if code:return code
         code=run([backend_python(),'scripts/check_configuration_contract.py'])
-        return code if code else run([backend_python(),'scripts/check_qualification_contract.py'])
+        if code:return code
+        code=run([backend_python(),'scripts/check_qualification_contract.py'])
+        return code if code else run([backend_python(),'scripts/performance_results.py','--contract-only'])
     if a.command=='architecture':return run([backend_python(),'scripts/check_architecture.py'])
     if a.command=='finalize-release':
         return run([backend_python(),'scripts/finalize_release.py','--verification',str(ROOT/'evidence/current/full-stack/verification.json')])

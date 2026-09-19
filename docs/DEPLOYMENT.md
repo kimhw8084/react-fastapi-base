@@ -1,4 +1,4 @@
-# Company PaaS deployment contract — 1.0.0-rc.13, not yet exercised on company infrastructure
+# Company PaaS deployment contract — 1.0.0-rc.14, not yet exercised on company infrastructure
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and

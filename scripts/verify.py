@@ -34,6 +34,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         except (OSError,subprocess.TimeoutExpired) as error:
             row={'name':name,'status':'BLOCKED','reason':str(error),'duration_seconds':round(time.monotonic()-started,3),'command':command}
         results.append(row);print(f"{row['status']:7} {name}",flush=True);return row['status']=='PASS'
+    run('performance-contract',[sys.executable,'scripts/performance_results.py','--contract',str((ROOT/'contracts/performance-regression.json').resolve()),'--contract-only'])
     run('backend-tests',[sys.executable,'scripts/backend_test_runner.py','--output',str((output/'backend-junit.xml').resolve())],ROOT,timeout=300)
     run('tooling-tests',[sys.executable,'-m','pytest','-q','tests'],ROOT)
     run('architecture',[sys.executable,'scripts/check_architecture.py'])
@@ -105,6 +106,10 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
             blocked('browser-e2e-accessibility','Frontend checks must pass first.')
             blocked('ui-state-matrix-results','Frontend checks must pass before browser UIQA/accessibility execution.')
         run('npm-advisories',['npm','audit','--audit-level=high'],ROOT/'frontend',120)
+    if source_only:
+        blocked('performance-results','Source-only request: browser performance qualification was not executed.')
+    else:
+        run('performance-results',[sys.executable,'scripts/performance_results.py','--output',str((ROOT/'evidence/current/performance/qualification.json').resolve())],timeout=120)
     if not source_only and importlib.util.find_spec('pip_audit'):
         run('python-advisories',[sys.executable,'-m','pip_audit','-r','backend/requirements.lock'],timeout=120)
     else:blocked('python-advisories','Install the audit tooling and enable network access; a version pin is not a vulnerability scan.')

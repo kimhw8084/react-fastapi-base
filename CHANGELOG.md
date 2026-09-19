@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.14 — canonical performance and virtualization qualification
+
+- Added one source-bound performance regression contract for owned algorithms, deterministic platform stress and browser/AG Grid scale.
+- Preserved the 100k logical/50-row server-page proof and added a synthetic/test-only 5000-loaded-row StandardDataGrid virtualization proof with row recycling, deep interaction and sorting gates.
+- Added source/contract-bound aggregate performance evidence and kept CompanyQualification performance external and `BLOCKED_EXTERNAL`.
+
 ## 1.0.0-rc.13 — source-bound release and evidence lifecycle
 
 - Generalized release identity, readiness, manifest and evidence binding paths from the current candidate VERSION, with RC.11/RC.12 identities retained only as explicit historical compatibility.
