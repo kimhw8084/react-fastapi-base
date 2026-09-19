@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 from app.platform.database import Database
 from app.platform.profile import StorageAdapter
@@ -18,3 +19,6 @@ class LocalStorageAdapter(StorageAdapter):
 
     def build_object_storage(self, settings: Settings) -> StorageBackupAdapter:
         return LocalFilesystemStorage(settings.data_root / 'objects')
+
+    def build_restore_object_storage(self, settings: Settings, target_root: Path) -> StorageBackupAdapter:
+        return LocalFilesystemStorage(target_root / 'objects')

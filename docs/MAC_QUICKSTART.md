@@ -1,10 +1,10 @@
-# macOS quickstart — 1.0.0-rc.15
+# macOS quickstart — 1.0.0-rc.16
 
 This is a portable launch procedure. The exact-candidate clean-clone proof and reusable-platform qualification are repository evidence; neither is a company deployment certificate.
 
 ## View the implemented application
 
-1. Unpack the exact RC.15 repository checkout into a new folder, separate from SysGrid.
+1. Unpack the exact RC.16 repository checkout into a new folder, separate from SysGrid.
 2. Open Terminal in the resulting `react-fastapi-base` folder.
 3. Check `python3 --version` (3.11–3.14 for the full React/FastAPI path).
 4. Run `python3 dev lab`.

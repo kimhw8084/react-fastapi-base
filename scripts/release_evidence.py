@@ -141,6 +141,12 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'sha256': sha256_file(reusable_path) if reusable_path.is_file() else None,
         'required_for': 'code',
     }
+    storage_path = ROOT / 'evidence/current/storage/qualification.json'
+    storage_evidence = {
+        'locator': str(storage_path.relative_to(ROOT)),
+        'sha256': sha256_file(storage_path) if storage_path.is_file() else None,
+        'required_for': 'code',
+    }
     manifest = {
         'schema_version': 2,
         'product': 'react-fastapi-base',
@@ -155,6 +161,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'uiqa_matrix': uiqa_evidence,
         'performance_qualification': performance_evidence,
         'reusable_platform_qualification': reusable_evidence,
+        'storage_qualification': storage_evidence,
         'api_compatibility_base_sha': api_compatibility_base_sha,
         'target_base_sha': api_compatibility_base_sha,
         'evidence_commit': None,
@@ -181,6 +188,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'uiqa_matrix': uiqa_evidence,
         'performance_qualification': performance_evidence,
         'reusable_platform_qualification': reusable_evidence,
+        'storage_qualification': storage_evidence,
         'binding_status': 'PENDING_EVIDENCE_COMMIT',
         'result': 'NOT_CERTIFIED',
         'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',

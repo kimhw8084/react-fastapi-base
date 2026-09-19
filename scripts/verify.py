@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 from scripts.release_version import ReleaseProgressionError, assert_candidate_progression
 from scripts.release_evidence import write_repository_release_evidence
 from scripts.reusable_platform_qualification import build_qualification
-from scripts.source_manifest import checkout_commit, executable_source_commit, source_digest, source_hashes
+from scripts.source_manifest import checkout_commit, executable_source_commit, source_digest, source_hashes, source_provenance
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -72,11 +72,32 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         blocked('upgrade-fixture','Source-only request: generated application upgrade proof was not executed.')
     elif release:
         run('upgrade-fixture',[sys.executable,'scripts/upgrade_fixture.py','--output',str((output/'upgrade-fixture.json').resolve())],timeout=600)
-        run('object-inclusive-backup-restore',[sys.executable,'scripts/recovery_fixture.py','--output',str((ROOT/'evidence/current/recovery/object-restore.json').resolve())],timeout=300)
+        recovery_ok=run('object-inclusive-backup-restore',[sys.executable,'scripts/recovery_fixture.py','--output',str((ROOT/'evidence/current/recovery/object-restore.json').resolve())],timeout=300)
+        if recovery_ok:
+            provenance=source_provenance(ROOT)
+            run('storage-qualification',[
+                sys.executable,
+                'scripts/storage_qualification.py',
+                '--recovery',
+                str((ROOT/'evidence/current/recovery/object-restore.json').resolve()),
+                '--verified-source-commit',
+                provenance['executable_source_commit'],
+                '--source-digest',
+                provenance['source_digest'],
+                '--candidate-head',
+                provenance['checkout_commit'],
+                '--candidate-version',
+                (ROOT/'VERSION').read_text(encoding='utf-8').strip(),
+                '--output',
+                str((ROOT/'evidence/current/storage/qualification.json').resolve()),
+            ],timeout=300)
+        else:
+            blocked('storage-qualification','Object-inclusive recovery evidence is required before storage qualification can be reconciled.')
         run('reference-apps',[sys.executable,'scripts/reference_app_proof.py'],timeout=1200)
     else:
         blocked('upgrade-fixture','Release verification only; run `python3 dev verify-release` for the generated-app upgrade proof.','release')
         blocked('object-inclusive-backup-restore','Release verification only; run `python3 dev verify-release` for the object recovery proof.','release')
+        blocked('storage-qualification','Release verification only; run `python3 dev verify-release` for the source-bound storage qualification.','release')
     if source_only:
         blocked('candidate-fresh-install','Source-only request; isolated clone execution was not run.')
         blocked('macos-fresh-install','Source-only request; macOS qualification was not run.','external')

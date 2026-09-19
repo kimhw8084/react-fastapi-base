@@ -31,6 +31,18 @@ def test_backup_restore_retains_data_and_source(env,client,item,tmp_path):
     restored.close()
 
 
+def test_restore_uses_profile_owned_storage_factory(env, tmp_path):
+    out=snapshot(env['db'].root,tmp_path/'backup',maintenance='APP-STOPPED')
+    observed=[]
+    def factory(root):
+        storage=LocalFilesystemStorage(root/'objects')
+        observed.append(storage.root)
+        return storage
+    target=restore(out,tmp_path/'restored',storage_factory=factory)
+    assert target == (tmp_path/'restored').resolve()
+    assert len(observed) == 1 and observed[0].parent.name.startswith('.golden-restore-')
+
+
 def test_snapshot_enumerates_attachment_references_from_staged_database(env,tmp_path,monkeypatch):
     observed=[]
     original=backup_module._attachment_references
@@ -145,11 +157,25 @@ def test_snapshot_requires_quiescence(env,tmp_path):
     with pytest.raises(ValueError):snapshot(env['db'].root,tmp_path/'backup',maintenance='')
     with pytest.raises(ValueError):snapshot(env['db'].root,env['db'].root/'backup',maintenance='APP-STOPPED')
 
+
+def test_snapshot_refuses_externally_managed_object_backup(env, tmp_path):
+    storage = LocalFilesystemStorage(tmp_path / 'objects')
+    storage.backup_mode = 'externally_managed'
+    with pytest.raises(ValueError, match='externally managed'):
+        snapshot(env['db'].root, tmp_path/'backup', maintenance='APP-STOPPED', storage=storage)
+
 def test_storage_probe_is_not_certification(tmp_path):
     result=probe(tmp_path)
     assert result['diagnostic_pass']
     assert result['production_approved'] is False
     assert list(tmp_path.iterdir())==[]
+
+
+def test_storage_probe_rejects_unrelated_filesystem(tmp_path):
+    configured = tmp_path/'configured'; configured.mkdir()
+    unrelated = tmp_path/'unrelated'; unrelated.mkdir()
+    with pytest.raises(ValueError, match='configured persistent root'):
+        probe(unrelated, intended_root=configured)
 
 def test_direct_api_uses_membership_and_audit(env):
     db=Database(env['settings'].model_copy(update={'dev_user':'bob'}))

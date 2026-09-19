@@ -145,3 +145,8 @@ Original Company Golden review archive, now retained as source provenance. Not p
 - Added typed service/deployment/observability/incident/SLO relationships and service dependency topology contracts.
 - Added server-owned pipeline/incident duration, timeline/stage validation, observability validation, and SLO burn/error-budget/status calculations.
 - Added reusable Delivery Pipeline, Observability/Trace Waterfall, Incident Command and SLO/Error Budget projections.
+## 1.0.0-rc.16 — company storage persistence contract
+
+- Made company storage explicit and fail-closed on typed qualification facts.
+- Routed operator backup, restore and diagnostics through profile-owned storage paths.
+- Added source-bound repository storage qualification while keeping final company storage qualification external.

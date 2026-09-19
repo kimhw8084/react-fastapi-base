@@ -1,10 +1,10 @@
-> **Implementation addendum (1.0.0-rc.15):** this candidate adds source-bound reusable-platform bootstrap, reference-app generation, upgrade/rollback and aggregate qualification on top of RC.14's release/evidence lifecycle. Earlier release artifacts remain immutable historical evidence for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
+> **Implementation addendum (1.0.0-rc.16):** this candidate makes company storage explicit and profile-owned, closes operator maintenance profile bypasses, and adds source-bound repository storage qualification on top of RC.15's reusable-platform release lifecycle. Earlier release artifacts remain immutable historical evidence for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
 > CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
 
-**Version: 1.0.0-rc.15 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.16 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.

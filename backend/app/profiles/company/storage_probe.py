@@ -22,13 +22,20 @@ c=sqlite3.connect(sys.argv[1])
 c.execute('BEGIN IMMEDIATE');c.execute('INSERT INTO sample VALUES (99)');os._exit(0)
 """
 
-def probe(parent: Path) -> dict:
+def probe(parent: Path, *, intended_root: Path | None = None) -> dict:
     """Destructive tests are confined to a newly created scratch subdirectory.
 
     PASS is diagnostic only: no short test proves cross-host locking, power-loss
     durability, or a vendor's unsupported filesystem semantics.
     """
     if not parent.is_dir() or parent.is_symlink():raise ValueError('Provide an existing non-symlink scratch parent, not a live database path.')
+    if intended_root is not None:
+        if intended_root.is_symlink():
+            raise ValueError('Configured persistent root must not be a symbolic link.')
+        bound_root = intended_root.resolve()
+        bound_parent = parent.resolve()
+        if bound_parent != bound_root and bound_root not in bound_parent.parents:
+            raise ValueError('Storage probe scratch parent must be the configured persistent root or a child of it.')
     root=Path(tempfile.mkdtemp(prefix='golden-probe-',dir=parent))
     checks={}
     try:

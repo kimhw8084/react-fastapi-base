@@ -391,11 +391,18 @@ def test_qualification_operator_flow_does_not_require_final_evidence(tmp_path, m
         assert readiness.status_code == 200
         assert readiness.json()['production_ready'] is False
 
-    scratch = tmp_path / 'scratch'
+    scratch = root / 'scratch'
     scratch.mkdir()
-    doctor = _run_operator(root, prerequisites_path, 'doctor-storage', '--scratch-parent', str(scratch))
+    doctor_evidence = tmp_path / 'doctor-storage-evidence.json'
+    doctor = _run_operator(root, prerequisites_path, 'doctor-storage', '--scratch-parent', str(scratch), '--evidence-output', str(doctor_evidence))
     assert doctor.returncode == 0, doctor.stdout + doctor.stderr
-    assert json.loads(doctor.stdout)['production_approved'] is False
+    doctor_report = json.loads(doctor.stdout)
+    assert doctor_report['production_approved'] is False
+    assert doctor_report['candidate_version'] == VERSION
+    assert doctor_report['source_digest'] == doctor_report['hashes']['source_digest']
+    assert doctor_report['storage_contract']['persistent_root_binding'] == 'settings.data_root'
+    assert 'qualification_file' not in json.dumps(doctor_report)
+    assert json.loads(doctor_evidence.read_text()) == doctor_report
 
     snapshot = tmp_path / 'snapshot'
     backup = _run_operator(root, prerequisites_path, 'backup', '--output', str(snapshot), '--maintenance', 'APP-STOPPED')

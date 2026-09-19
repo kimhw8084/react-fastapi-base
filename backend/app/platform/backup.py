@@ -9,6 +9,7 @@ from pathlib import Path, PurePosixPath
 import shutil
 import sqlite3
 import tempfile
+from collections.abc import Callable
 from uuid import UUID
 
 from app.platform.storage import LocalFilesystemStorage, StorageBackupAdapter, validate_object_key, validate_content_type
@@ -207,12 +208,20 @@ def snapshot(
         raise
 
 
-def restore(snapshot_root: Path, target_root: Path) -> Path:
+def restore(
+    snapshot_root: Path,
+    target_root: Path,
+    *,
+    storage: StorageBackupAdapter | None = None,
+    storage_factory: Callable[[Path], StorageBackupAdapter] | None = None,
+) -> Path:
     """Validate every database and object before atomically publishing a root."""
     snapshot_root = snapshot_root.resolve()
     target_root = target_root.absolute()
     if target_root.exists() or target_root.is_symlink():
         raise ValueError('Restore target must not exist; live overwrite is prohibited.')
+    if storage is not None and storage_factory is not None:
+        raise ValueError('Restore accepts one profile-owned object storage path.')
     if snapshot_root == target_root or snapshot_root in target_root.parents:
         raise ValueError('Restore outside the snapshot directory.')
     try:
@@ -225,6 +234,8 @@ def restore(snapshot_root: Path, target_root: Path) -> Path:
     objects = manifest.get('objects')
     if not isinstance(databases, list) or not 1 <= len(databases) <= 1000 or not isinstance(objects, list) or len(objects) > 100_000:
         raise ValueError('Invalid snapshot resource lists.')
+    if storage is not None and getattr(storage, 'backup_mode', None) != 'application_snapshot':
+        raise ValueError('The configured object provider has externally managed backup; repository restore cannot pretend object bytes are included.')
 
     database_entries: dict[str, dict[str, object]] = {}
     for entry in databases:
@@ -287,13 +298,17 @@ def restore(snapshot_root: Path, target_root: Path) -> Path:
     target_root.parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix='.golden-restore-', dir=target_root.parent))
     try:
+        restored_storage = storage_factory(stage) if storage_factory is not None else storage
+        if restored_storage is None:
+            restored_storage = LocalFilesystemStorage(stage / 'objects')
+        if getattr(restored_storage, 'backup_mode', None) != 'application_snapshot':
+            raise ValueError('The configured object provider has externally managed backup; repository restore cannot pretend object bytes are included.')
         for entry in database_entries.values():
             target = stage / str(entry['path'])
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(snapshot_root / str(entry['path']), target)
             target.chmod(0o600)
             integrity(target)
-        restored_storage = LocalFilesystemStorage(stage / 'objects')
         for entry in object_entries.values():
             restored = restored_storage.import_object(
                 str(entry['tenant_id']), str(entry['object_key']), snapshot_root / str(entry['snapshot_path']), str(entry['content_type'])

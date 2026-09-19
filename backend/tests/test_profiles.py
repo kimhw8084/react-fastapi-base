@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from fastapi import Request
+from fastapi.testclient import TestClient
+import pytest
 
 from app.main import create_app
 from app.platform.profile import CompanyProfile, ProfileRuntime
@@ -65,6 +67,39 @@ def test_company_profile_owns_company_adapters_without_exposing_profile_contract
     app.state.profile_runtime.database.close()
 
 
+def test_company_storage_is_explicit_and_rejects_invalid_qualification_facts(tmp_path):
+    from app.platform.settings import CompanyQualificationPrerequisites
+
+    root = tmp_path / 'company-root'
+    prerequisites = tmp_path / 'prerequisites.json'
+    prerequisites.write_text(CompanyQualificationPrerequisites(
+        deployment_id='storage-test',
+        identity_topology='per_user_process',
+        storage_kind='local_disk',
+        provider_sqlite_support_reference='provider-reference',
+        all_database_clients_same_host=True,
+        persistent_root=str(root.resolve()),
+        authorized_by='operator',
+        authorized_at='2026-09-19T00:00:00Z',
+    ).model_dump_json())
+    settings = Settings(environment='qualification', profile='company', data_root=root, qualification_prerequisites_file=prerequisites, deployment_id='storage-test')
+    profile = load_profile(settings)
+    runtime = profile.build_runtime(settings)
+    runtime.database.close()
+
+    invalid = settings.model_copy(update={'data_root': tmp_path / 'other-root'})
+    with pytest.raises(RuntimeError, match='data_root'):
+        profile.storage.build_database(invalid)
+
+
+def test_development_storage_does_not_require_company_qualification(tmp_path):
+    settings = Settings(environment='test', profile='development', data_root=tmp_path / 'development-root')
+    profile = load_profile(settings)
+    runtime = profile.build_runtime(settings)
+    assert isinstance(runtime.object_storage, LocalFilesystemStorage)
+    runtime.database.close()
+
+
 def test_identity_port_is_request_aware_but_never_browser_identity_aware(monkeypatch):
     request = _request()
     assert DevelopmentIdentity('alice').resolve(request) == 'alice'
@@ -73,8 +108,6 @@ def test_identity_port_is_request_aware_but_never_browser_identity_aware(monkeyp
 
 
 def test_profile_runtime_is_not_serialized_by_bootstrap(tmp_path):
-    from fastapi.testclient import TestClient
-
     settings = Settings(environment='test', profile='development', data_root=tmp_path / 'data')
     database = Database(settings)
     provision(database, 'Profile boundary fixture', settings.dev_user)
