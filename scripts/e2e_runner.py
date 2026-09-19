@@ -13,7 +13,12 @@ ROOT=Path(__file__).resolve().parents[1]
 BACKEND_PYTHON=ROOT/'backend/.venv'/('Scripts/python.exe' if os.name=='nt' else 'bin/python')
 sys.path.insert(0,str(ROOT))
 from scripts.performance_contract import CONTRACT_PATH,sha256_file
-from scripts.source_manifest import source_digest,source_hashes
+from scripts.source_manifest import executable_source_commit, source_digest, source_hashes
+
+
+def performance_source_identity(root: Path = ROOT) -> tuple[str, str]:
+    source_hash_map = source_hashes(root)
+    return executable_source_commit(root), source_digest(source_hash_map)
 
 def wait(url,process):
     # Cold-start migrations can exceed ten seconds when the full release gate is
@@ -36,6 +41,7 @@ def free_port():
 def main():
     if not (ROOT/'frontend/dist/index.html').is_file():raise RuntimeError('Build the actual frontend before browser tests.')
     if not BACKEND_PYTHON.is_file():raise RuntimeError('Create backend/.venv before running browser tests.')
+    performance_source_commit, performance_source_digest = performance_source_identity()
     api_port=free_port();frontend_port=free_port()
     with tempfile.TemporaryDirectory(prefix='golden-e2e-') as temp:
         folder=Path(temp);data=folder/'data';runtime=folder/'runtime.json'
@@ -48,8 +54,8 @@ def main():
             UIQA_RENDERED_DIR=str(ROOT/'evidence/current/uiqa/rendered'),
             UIQA_SOURCE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             PERFORMANCE_OUTPUT=str(ROOT/'evidence/current/performance/browser.json'),
-            PERFORMANCE_SOURCE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-            PERFORMANCE_SOURCE_DIGEST=source_digest(source_hashes(ROOT)),
+            PERFORMANCE_SOURCE_COMMIT=performance_source_commit,
+            PERFORMANCE_SOURCE_DIGEST=performance_source_digest,
             PERFORMANCE_CONTRACT_SHA256=sha256_file(CONTRACT_PATH),
             PERFORMANCE_PROJECT='chromium')
         subprocess.check_call([str(BACKEND_PYTHON),'-m','app.cli','seed-demo'],cwd=ROOT/'backend',env=env)
