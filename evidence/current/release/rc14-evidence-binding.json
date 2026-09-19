@@ -1,12 +1,12 @@
 {
   "artifact_label": "rc14",
-  "binding_status": "PENDING_EVIDENCE_COMMIT",
-  "evidence_commit": null,
+  "binding_status": "PASS",
+  "evidence_commit": "5e13498f6c9583b2ca0dd72f46767064b3e324e8",
   "manifest": {
     "locator": "evidence/current/release/rc14-manifest.json",
-    "sha256": "c84f7569f21e5221874de6d1292c7c76fbe7dff22553788f97cef667e954924c"
+    "sha256": "b912ba6ae095eca7b57fd3147bd623c1d8d6d57172662b7d9c06d8f6fd342ec1"
   },
-  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "note": "Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
@@ -18,10 +18,7 @@
     "locator": "evidence/current/release/rc14-readiness-matrix.json",
     "sha256": "35fce29e07282794cc7aa866a27a00df0d0a421ee5647d5f5b50feee2af4a653"
   },
-  "release_identity": {
-    "locator": "deploy/rc14-release-identity.json"
-  },
-  "result": "NOT_CERTIFIED",
+  "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
   "schema_version": 2,
   "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
   "target_base_sha": "9bf11bd889d13d718656747cc76354d80b46561b",
