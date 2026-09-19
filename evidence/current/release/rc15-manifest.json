@@ -10,7 +10,8 @@
     "operations"
   ],
   "code_ready": true,
-  "evidence_commit": null,
+  "evidence_binding": "evidence/current/release/rc15-evidence-binding.json",
+  "evidence_commit": "c87a5d9a381ff6c851f6dc043972977a7dffe083",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",

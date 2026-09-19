@@ -1,12 +1,12 @@
 {
   "artifact_label": "rc15",
-  "binding_status": "PENDING_EVIDENCE_COMMIT",
-  "evidence_commit": null,
+  "binding_status": "PASS",
+  "evidence_commit": "c87a5d9a381ff6c851f6dc043972977a7dffe083",
   "manifest": {
     "locator": "evidence/current/release/rc15-manifest.json",
-    "sha256": "92c6130e58ee562d5a988c1dfe867d5c0d0f6bb95355668de1e0091a32e4a17e"
+    "sha256": "1b5ee28151ebfe12821589ea578f117cbfc820deeddae1bdad8e0cab21211bff"
   },
-  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "note": "Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
@@ -18,10 +18,7 @@
     "locator": "evidence/current/release/rc15-readiness-matrix.json",
     "sha256": "d0d5f12f88300106d482bd6e6668916c74e480b324049bed318205dcd6739083"
   },
-  "release_identity": {
-    "locator": "deploy/rc15-release-identity.json"
-  },
-  "result": "NOT_CERTIFIED",
+  "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
   "reusable_platform_qualification": {
     "locator": "evidence/current/reuse/qualification.json",
     "required_for": "code",
