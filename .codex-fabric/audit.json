@@ -1,132 +1,1389 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-19T02:06:46Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 6,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 36,
+      "deletions": 28,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "SOURCE_PROVENANCE.json",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/tests/test_security.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 235,
+      "deletions": 0,
+      "path": "contracts/performance-regression.json",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc14-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 6,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 0,
+      "path": "docs/TESTING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 605,
+      "deletions": 569,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 19,
+      "deletions": 19,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/performance-contract.log",
+      "status": "A"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "evidence/current/full-stack/performance-results.log",
+      "status": "A"
+    },
+    {
+      "additions": 8,
+      "deletions": 77,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 79,
+      "deletions": 79,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 99,
+      "deletions": 72,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 104,
+      "deletions": 0,
+      "path": "evidence/current/performance/browser.json",
+      "status": "A"
+    },
+    {
+      "additions": 263,
+      "deletions": 8,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 448,
+      "deletions": 0,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "A"
+    },
+    {
+      "additions": 114,
+      "deletions": 46,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 217,
+      "deletions": 0,
+      "path": "evidence/current/release/CHG-35-performance-virtualization.json",
+      "status": "A"
+    },
+    {
+      "additions": 35,
+      "deletions": 0,
+      "path": "evidence/current/release/rc14-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 45,
+      "deletions": 0,
+      "path": "evidence/current/release/rc14-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 88,
+      "deletions": 0,
+      "path": "evidence/current/release/rc14-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 79,
+      "deletions": 79,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 0,
+      "path": "frontend/src/platform/grid/DataGrid.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 137,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/performance.spec.ts",
+      "status": "A"
+    },
+    {
+      "additions": 0,
+      "deletions": 15,
+      "path": "frontend/tests/e2e/workspace.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "scripts/bind_release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 119,
+      "deletions": 0,
+      "path": "scripts/chg35_evidence.py",
+      "status": "A"
+    },
+    {
+      "additions": 16,
+      "deletions": 1,
+      "path": "scripts/e2e_runner.py",
+      "status": "M"
+    },
+    {
+      "additions": 122,
+      "deletions": 42,
+      "path": "scripts/performance_check.py",
+      "status": "M"
+    },
+    {
+      "additions": 283,
+      "deletions": 0,
+      "path": "scripts/performance_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 139,
+      "deletions": 0,
+      "path": "scripts/performance_results.py",
+      "status": "A"
+    },
+    {
+      "additions": 95,
+      "deletions": 34,
+      "path": "scripts/performance_stress.py",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 0,
+      "path": "scripts/release_evidence.py",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "scripts/verify.py",
+      "status": "M"
+    },
+    {
+      "additions": 183,
+      "deletions": 0,
+      "path": "tests/test_performance_contract.py",
+      "status": "A"
+    },
+    {
+      "additions": 97,
+      "deletions": 0,
+      "path": "tests/test_performance_source_binding.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "tests/test_release_evidence.py",
+      "status": "M"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc 'rtk git log --graph --oneline --decorate --all --max-count=80 --simplify-by-decoration'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' scripts/source_manifest.py; sed -n '1,300p' scripts/e2e_runner.py; sed -n '1,360p' scripts/performance_results.py 2>/dev/null || true; rtk rg --files scripts tests backend frontend | rtk rg 'performance|e2e|qualification|virtual' | sed -n '1,260p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-list --parents -n 4 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 && rtk git show --stat --oneline --decorate 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 && rtk git show --format=fuller --find-renames --find-copies --stat 8b2010fa10c41ee5a16f63c4158f45d7acaa0396'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge --ff-only 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 && rtk git status --short --branch && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,380p' scripts/performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,360p' scripts/performance_results.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,280p' scripts/e2e_runner.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,280p' scripts/verify.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,320p' tests/test_performance_contract.py; rtk sed -n '1,260p' frontend/tests/e2e/performance.spec.ts; rtk sed -n '1,280p' scripts/chg35_evidence.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg --files .github | sort | xargs -r -n1 sh -c 'echo === \\\"\"'$0\" ===; rtk sed -n \"1,300p\" \"$0\"'\"' | sed -n '1,1200p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,280p' tests/test_performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '200,520p' scripts/performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n -C 8 \"performance|e2e|API_COMPATIBILITY_BASE_SHA|check_api_compatibility\" scripts/verify.py dev'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n -C 12 \"source_commit|source_digest|reconcile_reports|browser-ag-grid-scale|overall_status\" scripts/performance_contract.py scripts/performance_results.py tests frontend/tests/e2e/performance.spec.ts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n -C 12 \\\"verify-release|performance_results|performance\\\" dev scripts/verify.py | sed -n '1,500p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n -C 8 \\\"executable_source_commit|source_hashes_at_git|source_digest\\\" tests scripts frontend .github | sed -n '1,360p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '241,520p' tests/test_performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,240p' tests/test_performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '120,300p' scripts/performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '300,500p' scripts/performance_contract.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,100p' frontend/tests/e2e/performance.spec.ts\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python - <<'PY'\nimport json\nfrom pathlib import Path\nfor p in [Path('evidence/current/performance/browser.json'),Path('evidence/current/performance/qualification.json'),Path('evidence/current/performance/owned-algorithms.json'),Path('evidence/current/performance/stress.json')]:\n d=json.loads(p.read_text())\n print(p, d.get('source_commit'), d.get('source_digest'), d.get('result'), d.get('overall_status'))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk test -x backend/.venv/bin/python && rtk test -x frontend/node_modules && rtk git status --short'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls -ld backend/.venv/bin/python frontend/node_modules 2>/dev/null; rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 10
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 99,
+        "output_sha256": "9934fa8282a1035629e95e67fb1b1e5fd6627cf9e63daa1f8f046fc049b7c78e",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff -- scripts/e2e_runner.py tests/test_performance_source_binding.py && rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add scripts/e2e_runner.py tests/test_performance_source_binding.py && rtk git commit -m \"fix: bind browser performance evidence to executable source\" && rtk git status --short --branch && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev setup'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python --version; rtk node --version; rtk npm --version'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python -m playwright install chromium; rtk npm --prefix frontend exec playwright install chromium'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python -m pytest -q tests && rtk ./dev contracts && rtk ./dev architecture'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 98
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 804,
+        "output_sha256": "e4cee99493ae73dc116a9d2cbf66bb8e4aa8c9986ddd015ae00ba160afd693a5",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk git diff --stat'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev lab-build && rtk ./dev test-lab --mode http'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps -axo pid,etime,command | rtk rg 'fresh_clone|npm|pytest|playwright|verify.py' | sed -n '1,120p'\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ps'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,360p' scripts/fresh_clone_check.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps -ef | rtk rg 'fresh_clone|clone --no-local|verify.py|git clone|npm install|python3 dev' | sed -n '1,120p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps aux | rtk rg 'fresh|clone|npm|python3' | sed -n '1,160p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b backend/.venv/bin/python scripts/verify.py --output .evidence/ci'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python scripts/checkpoint.py --help; rtk sed -n '1,280p' scripts/checkpoint.py; rtk backend/.venv/bin/python - <<'PY'\nimport json\nfrom pathlib import Path\np=Path('.evidence/ci/verification.json')\nif p.is_file():\n d=json.loads(p.read_text())\n print(json.dumps({'code_ready':d.get('code_ready'),'release_status':d.get('release_status'),'source_commit':d.get('source_commit'),'source_digest':d.get('source_digest'),'results':[(r.get('name'),r.get('status')) for r in d.get('results',[])]},indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,300p' scripts/generate_checkpoint_manifest.py; rtk sed -n '1,180p' scripts/checkpoint.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py && rtk backend/.venv/bin/python scripts/checkpoint.py chg35-source-binding-fix && rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py --check && rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --check && rtk git diff --stat && rtk git add CHECKPOINT_MANIFEST.json evidence/current && rtk git commit -m \\\"CHG-35 bind source-bound verification evidence\\\" && rtk git status --short --branch && rtk git rev-parse HEAD && rtk backend/.venv/bin/python - <<'PY'\nfrom scripts.source_manifest import executable_source_commit\nfrom pathlib import Path\nimport subprocess\nroot=Path.cwd()\nprint('head=',subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())\nprint('executable_source_commit=',executable_source_commit(root))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b backend/.venv/bin/python scripts/verify.py --output .evidence/ci'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python - <<'PY'\nimport json\nfrom pathlib import Path\nimport subprocess\nfrom scripts.source_manifest import executable_source_commit\nroot=Path.cwd()\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nprint(json.dumps({'head':head,'executable_source_commit':executable_source_commit(root)},indent=2))\nfor name in ['browser','owned-algorithms','stress','qualification']:\n p=root/'evidence/current/performance'/f'{name}.json'\n d=json.loads(p.read_text())\n print(name, json.dumps({k:d.get(k) for k in ['source_commit','source_digest','result','overall_status']}))\nverification=json.loads((root/'.evidence/ci/verification.json').read_text())\nprint(json.dumps({'code_ready':verification.get('code_ready'),'release_status':verification.get('release_status'),'performance_result':next(r for r in verification['results'] if r['name']=='performance-results')},indent=2))\nPY\nrtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b ./dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b backend/.venv/bin/python scripts/chg35_evidence.py --verification evidence/current/full-stack/verification.json --base-sha 9bf11bd889d13d718656747cc76354d80b46561b && rtk git status --short && rtk git diff --check && rtk backend/.venv/bin/python - <<'PY'\nimport json\nfrom pathlib import Path\nfrom scripts.source_manifest import executable_source_commit\nimport subprocess\nroot=Path.cwd()\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nprint(json.dumps({'head':head,'executable_source_commit':executable_source_commit(root)},indent=2))\nfor p in [root/'evidence/current/full-stack/verification.json',root/'evidence/current/performance/browser.json',root/'evidence/current/performance/qualification.json',root/'evidence/current/release/CHG-35-performance-virtualization.json']:\n d=json.loads(p.read_text())\n print(p.relative_to(root), json.dumps({k:d.get(k) for k in ['code_ready','source_commit','source_digest','overall_status','repository_performance_status','company_performance_gate','production_ready','release_status']}))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --check && rtk git add CHECKPOINT_MANIFEST.json deploy/rc14-release-identity.json evidence/current && rtk git commit -m \"CHG-35 record release verification evidence\" && rtk git status --short --branch && rtk git log --oneline --decorate -5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git branch --show-current && rtk git merge-base --is-ancestor 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 HEAD && rtk git merge-base --is-ancestor 9bf11bd889d13d718656747cc76354d80b46561b HEAD && rtk backend/.venv/bin/python -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py && rtk backend/.venv/bin/python scripts/performance_results.py --output evidence/current/performance/qualification.json && rtk git diff --exit-code && rtk git status --short --branch && rtk backend/.venv/bin/python - <<'PY'\nfrom pathlib import Path\nimport json, subprocess\nfrom scripts.source_manifest import executable_source_commit\nroot=Path.cwd()\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nsource=executable_source_commit(root)\nqualification=json.loads((root/'evidence/current/performance/qualification.json').read_text())\nprint(json.dumps({'head':head,'executable_source_commit':source,'head_differs_from_source':head \"'!= source,'\"'performance_overall_status':qualification['overall_status'],'qualification_source_commit':qualification['source_commit'],'qualification_source_digest':qualification['source_digest']},indent=2))\nPY\"",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 10
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 679,
+        "output_sha256": "7db196b8d661e750eae312aed537d58efa4fd26e1f05569d432339fd616cd0e5",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin HEAD:refs/heads/codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r4 && rtk git status --short --branch && rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 154,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.4,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 11538176,
+      "fresh_input_tokens": 187469,
+      "input_tokens": 11725645,
+      "non_reasoning_output_tokens": 14566,
+      "output_tokens": 25564,
+      "reasoning_output_tokens": 10998,
+      "total_processed_tokens": 11751209
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "10567d964af84f75ebbf3da4c94082513aa413b6",
+      "subject": "CHG-35 record release verification evidence"
+    },
+    {
+      "sha": "d584abc13125299009a32115392ffb51b802796a",
+      "subject": "CHG-35 bind source-bound verification evidence"
+    },
+    {
+      "sha": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+      "subject": "fix: bind browser performance evidence to executable source"
+    },
+    {
+      "sha": "8b2010fa10c41ee5a16f63c4158f45d7acaa0396",
+      "subject": "CHG-35 bind evidence commit"
+    },
+    {
+      "sha": "5e13498f6c9583b2ca0dd72f46767064b3e324e8",
+      "subject": "CHG-35 publish RC.14 qualification evidence"
+    },
+    {
+      "sha": "7682e126b78ffe2154681bdc804ef3fae458e140",
+      "subject": "CHG-35 establish canonical performance qualification"
+    }
+  ],
+  "diff": {
+    "additions": 4040,
+    "changed_files": 94,
+    "commit_count": 6,
+    "deletions": 1376
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 79,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 12579,
+        "path": "CHANGELOG.md",
+        "sha256": "e93c7a9af4003415eaf3407bbd792be54bfc6a61db055eb54bbb1a7252228724"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 78780,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "c6d16dfd84dcfc3f62626222f001e9f6f790233b8c836d74d2f7603b26132004"
       },
       {
+        "bytes": 3404,
+        "path": "README.md",
+        "sha256": "149b570ebf8274b0b23a6655627c1b5a91fce275a5dfac0423f83960fa347d0c"
+      },
+      {
+        "bytes": 2204,
+        "path": "SOURCE_PROVENANCE.json",
+        "sha256": "db3353644e1d6a951d6c1a0f47405a449acea754c2239ec612dd6a30427667f7"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "dd9fd5a97fbde0109391fadcb9569d248857513218016ed40425cf898e41e15d"
+      },
+      {
+        "bytes": 9719,
+        "path": "contracts/performance-regression.json",
+        "sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc14-release-identity.json",
+        "sha256": "63dec3e9e0e1ebab3bb56cb1fabc2f3d9a591691331d509a71228f0f9e240a8b"
+      },
+      {
+        "bytes": 7610,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "016004dbc21cc7e9f770d9c96787871d5655dc5ca0378b8afe31ebd335b13422"
+      },
+      {
+        "bytes": 3901,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "888564504eca642bc59fc3ade167cfee812fc521aa11aec776df2f074caf4a1e"
+      },
+      {
+        "bytes": 8087,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "d1a1e1bf114ed2a2766c7ebbf41abcbda95f3f2c33f381bc27c9e08caf529d14"
+      },
+      {
+        "bytes": 2937,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "4f6fd4490f70b34fd19faa1de4a00257f2debbb51adc4b2a1af9aac968df41c4"
+      },
+      {
+        "bytes": 45235,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "e48499f990109411a36f840751c0e53b67453d86ae3bbaa0e7877a4283c1544c"
+      },
+      {
+        "bytes": 8793,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "5981956c779cf764e157b2f86ea0535494792826c8e8bf732f5bf20db6eed6a5"
+      },
+      {
+        "bytes": 7382,
+        "path": "docs/TESTING.md",
+        "sha256": "f9312128cb9be8116ac0e5c6e705b73157d1af13c40022150da149cd79e6bfe2"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "f2e1cb38968cc0dfa087139c209ebb14c6665ad3b980281e1afe57cf86d4c1a2"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "3e79f088f2a7f8f4bae4a170d4630e7587b94db02481fb1597cf739d4951467d"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "82f8faead6112dd21a9302749753cfc5050188c0796235ab850423fe3d851085"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "7139c84077ffb993ebe8ef2934777f2b4a8221386d01bf869f3a84b7793658b9"
+      },
+      {
+        "bytes": 12799,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "0cd549bb5f12f36b06f54a6d37a304c99696711a9827c7902f0808800c024d5a"
+      },
+      {
+        "bytes": 7511,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "3b9bc364b44fd42c2a5a2e74337891f7ff28edf8ce1b6f535f62fda57683d7f7"
+      },
+      {
+        "bytes": 6629,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "698f6e2bab6da118f44d7bdcbeb01d67fcf40c72a687b041c5abb0763d50b747"
+      },
+      {
+        "bytes": 9784,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "87b0d82933620ab24fb84e15efc6169c4f97441ee267197baf73214e1523886e"
+      },
+      {
+        "bytes": 35838,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "1d07f3e726d853ca26ba459d2c7a0b09d06e85119f28688d6c02710a74fd8783"
+      },
+      {
+        "bytes": 780,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "474252e5e952ed3f79624bef2d6edf8e7d729d9f3eeb524337db2d470c63fba2"
+      },
+      {
+        "bytes": 55058,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "6688a88bcbd837c596d243ca84087614dfc8498340e8173b56f3b259287ad048"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "24374ac6322ec2f1ee0e4eb75d0e105ff2328963277db1862f3c8e1eef4fe331"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "ae57f97d675735a06a0b925dd49080ea2a308b4d3ec36f4e6019ba916186e395"
+      },
+      {
+        "bytes": 50626,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "8a530208b21ddf2a9f203e7aa59d818426ba38ba134e50ac39fe0adf5d30f55d"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "8d637bc1b72ad00cbd2929279369be39daa6168188b75a8c3bc63790dda90614"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "ed0a669408ac26b23224f2f4a933c40ad4327a7da78bb2585734eeaccc1b01ad"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "1f729e9e7b233331dbf1a3b7bd85fe6ea363476f52b5dddca17404f5df5eaa0f"
+      },
+      {
+        "bytes": 332,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "4fbdeb41d1c8a92ac66ed32c59d7a5f8ced7897c30c3d51cba7bb02fa394687d"
+      },
+      {
+        "bytes": 465,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "6c8667b0d6ecb5edbdcb75641381ee7eaa114086eee9022bde6a896e0f7620ce"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "93d742f82588653438db056e84cc93a2f24556a9398804fe7b181f6d04db08cc"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "11317c98b752b4d44c03310645ca0dbe9d48d62489f5325a92d426d803ab363c"
+      },
+      {
+        "bytes": 6449,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "dd7c5d8dbecec11b9e37318fc545253bae8c728520b590d678890097fad21606"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "34e8b08ad0832d676cac6a638746bb0d659d90b5bc1c00b3cfc4b7f841698592"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "23a4a9377efc855f1b8b760858282b57480afc395b7868513a3a7ec658eff114"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "ee0634b95d3604ba77d78d7a9e9611627c204029f6dc7adf1371846c388d0e97"
+      },
+      {
+        "bytes": 175,
+        "path": "evidence/current/full-stack/performance-contract.log",
+        "sha256": "0cee1b09883d23686c743ef474ffa634584140d26d4409006db399abbb5cf2b5"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "aa41604c1e5a3ca15f0a14eadb6fdf2e5734c089ebaadb1f2764ef4a03c6d93b"
+      },
+      {
+        "bytes": 87,
+        "path": "evidence/current/full-stack/performance-results.log",
+        "sha256": "09cdf144c13cd21dd5ca11d91a4c51b836fe390351cb99269603c93322085455"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "04cbbcaa8833d8e0507a413232ac7c023e4b696f035fe4ad47efbe6fc8a5462b"
+      },
+      {
+        "bytes": 26504,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "8492745d12c6d2ceb385ec4a00e79e9d411591ff9a1de00384e8e137413d1f9f"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "be66ed4fd0f8ea7ae3835b93868e8919bc5bbc4c9dfc8d7b84a42a9210907f7c"
+      },
+      {
+        "bytes": 71653,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "03aa16354616a0664de39d4028f317517adddd665717efdba525e0516072fba2"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2723,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "31f5c53641fa6c0c099764bc8481351eda1fdb07a684ba0e140271e809e09e5e"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 180,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "df324089f311d63122755db1998a34ae63b7ab358486c598d3d49d7511e256e8"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 5731,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "8d23061e77134c7cac5d6ada1497f0fe9d17ea9972fa5999951771cf6e87a03d"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 7246,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "f6c2244ab4792e6f578872f1f5c8f8e89dafe5c3e5feb1007860858fb6811720"
+      },
+      {
+        "bytes": 7246,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "f6c2244ab4792e6f578872f1f5c8f8e89dafe5c3e5feb1007860858fb6811720"
+      },
+      {
+        "bytes": 13997,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "6130a469826f9df8af6f7290d1166bb3e317db76ed2d091b6d789c7ccd1dcc2d"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "1cae6dce7dc8477c6379735a4c68b42737a2a5835789847953e6e6a6125c747a"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/lab/browser-interactions.log",
+        "sha256": "02ea1bfa080dcdbccf7fd511ad4da03964de9ca3f1bf2ba28166af3ee91d12a2"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/lab/browser-junit.xml",
+        "sha256": "f7ce661d386b41826b71850b0365761f1e448b4a2d07cb1161929a6100f2ecb2"
+      },
+      {
+        "bytes": 6446,
+        "path": "evidence/current/lab/pure-model-tests.log",
+        "sha256": "e345cb1ecc76f373b6e8eee0bed2ff8062e74113330eeb4b4927c5feb4f1deb1"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/lab/static-http-server.log",
+        "sha256": "05319b44b2b0fe52a8ac064d00b1cae069e9dd897c27b84e8f942806bacb946c"
+      },
+      {
+        "bytes": 11410,
+        "path": "evidence/current/lab/verification.json",
+        "sha256": "bd29a49fbad64265cf15473a9f6ebd3e06229b107a1425d004299cb24c5b2dab"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "705c47a66b303f95e10189d917130c15e02088eed34c9c18f6781d5830907a76"
+      },
+      {
+        "bytes": 6125,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "e0a1f38ea3a3816713b0de182382cdfe6e80c9acf98deabe4dda70dc73d57218"
+      },
+      {
+        "bytes": 11936,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "c83c45179f47f140c3e2745c102a5d9854b545d29d3874ba1e4d8d5a1af04711"
+      },
+      {
+        "bytes": 3493,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "54c39188a1731afc3361702e69c0c7a1b6c0aee98c8facc0d234dc4a5391b512"
+      },
+      {
+        "bytes": 1135,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "ee0634b95d3604ba77d78d7a9e9611627c204029f6dc7adf1371846c388d0e97"
+      },
+      {
+        "bytes": 6862,
+        "path": "evidence/current/release/CHG-35-performance-virtualization.json",
+        "sha256": "27ee94dbc887bbab6992bcd2f773d5b6346fa72315cb6da1da224b7cdf706189"
+      },
+      {
+        "bytes": 1498,
+        "path": "evidence/current/release/rc14-evidence-binding.json",
+        "sha256": "58b258819ce4e2bd1073a80677fcc2134f764ca1d7076eff156a63086fc3bbda"
+      },
+      {
+        "bytes": 1609,
+        "path": "evidence/current/release/rc14-manifest.json",
+        "sha256": "58d9e3fd1ef698edacff5740e71a399f9a2b0c0930daaba9124b62a8f41cb8e8"
+      },
+      {
+        "bytes": 3174,
+        "path": "evidence/current/release/rc14-readiness-matrix.json",
+        "sha256": "96cec1fed54a8687ee1512f157c7835ca128ad58b0bf1f404b158ee56ceb117d"
+      },
+      {
+        "bytes": 26504,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "8492745d12c6d2ceb385ec4a00e79e9d411591ff9a1de00384e8e137413d1f9f"
+      },
+      {
+        "bytes": 177897,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+        "sha256": "8f0d5890481dcec2a564f21841e7009511e6af7ce7b3cd69edb0b3af3e657c1e"
+      },
+      {
+        "bytes": 190661,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+        "sha256": "68ca26a2609298c4b42b3a80b7dc6c7b0ba9859bbd9ce8b5c45c5bdb6aa0ea5a"
+      },
+      {
+        "bytes": 161306,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+        "sha256": "783b739df224bff99d40b5d06dc239e47d6a73d28a5287f2257c9a27207d2f13"
+      },
+      {
+        "bytes": 194465,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+        "sha256": "e16a81e9f96387da56004e502406f77f08849f677a1c101f393ca429044ae047"
+      },
+      {
+        "bytes": 6088,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "aa7249546ddca7ab17edb2f3074d039a25379a3d7ca8c2d76acec8388846dbaf"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "7464a61c12c5476685d723ee09e2e4a3ff0cd3e620cffd6b7b336a2adabf7dee"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "13697a1d63d3896b44f840a3677b2b22300286fb8dc5398fb3be626ad8b7b025"
+      },
+      {
+        "bytes": 4220,
+        "path": "scripts/bind_release_evidence.py",
+        "sha256": "a7e0ca2abbc2d5fd7c37e34e292e09c103ce9cb4fae0f4d71424c979de0cf0c9"
+      },
+      {
+        "bytes": 6364,
+        "path": "scripts/chg35_evidence.py",
+        "sha256": "5b4119b817ff7818dec211e41ae731eecdd41db589414c9bff301e05689a80e5"
+      },
+      {
+        "bytes": 9720,
+        "path": "scripts/release_evidence.py",
+        "sha256": "86606c99dc65f8f1073ed846878ebce4f5d141494b9db57f93d1ae397b3b5c8a"
+      },
+      {
+        "bytes": 4897,
+        "path": "tests/test_release_evidence.py",
+        "sha256": "5fda7a601a79cc33fb6880f4f7192778772a720c72d8ee1b9cad1f3943e48b15"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-19T02:33:26Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "9bf11bd889d13d718656747cc76354d80b46561b",
+    "branch": "codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r4",
+    "detached_verify": false,
+    "head_sha": "10567d964af84f75ebbf3da4c94082513aa413b6",
+    "remote_exact_head": true,
+    "remote_head_sha": "10567d964af84f75ebbf3da4c94082513aa413b6",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "9bf11bd889d13d718656747cc76354d80b46561b",
+    "work_branch": "codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r4",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-01dab29ee85f0e943483a316",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/performance-virtualization-ci-source-binding-fix-r4",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/performance-virtualization-ci-source-binding-fix-r4"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "performance-virtualization-ci-source-binding-fix-r4",
+  "schema_version": 1,
+  "started_at": "2026-09-19T02:06:47Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 1599,
+    "queue_seconds": 1,
+    "total_seconds": 1600
+  },
+  "transport": {
+    "bytes": 4226,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 3840,
+    "prompt_sha256": "53ad41bf72273b76ea68221298495ef58ddfda3f69331ea0a4e8e7177eeb4e8f",
+    "sha256": "01dab29ee85f0e943483a31691cb15503fcda2b9304b3cd6147fdaded2240e15"
+  }
 }
