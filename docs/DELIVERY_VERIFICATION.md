@@ -1,22 +1,29 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.16
+# Delivery verification — react-fastapi-base 1.0.0-rc.17
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
+
+RC.17's repository deployment proof is recorded in
+`evidence/current/deployment/qualification.json`. It proves separate frontend
+and backend publishers only; the final company deployment gate remains
+`BLOCKED_EXTERNAL`.
 
 ## Actual executed tests
 
 CHG-34 UI accessibility evidence is immutable historical evidence in
-`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.16
+`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.17
 repository readiness is recorded in
-`evidence/current/release/rc16-readiness-matrix.json`. CHG-35 performance
+`evidence/current/release/rc17-readiness-matrix.json`. The independent
+deployment qualification is recorded in
+`evidence/current/deployment/qualification.json`. CHG-35 performance
 qualification is recorded in
 `evidence/current/performance/qualification.json` and
 `evidence/current/release/CHG-35-performance-virtualization.json`. CHG-32
 configuration-contract evidence remains immutable historical evidence in
-`evidence/current/release/CHG-32-configuration-contract.json`. RC.16
+`evidence/current/release/CHG-32-configuration-contract.json`. RC.17
 reusable-platform qualification is recorded in `evidence/current/reuse/qualification.json`,
 and repository storage qualification is recorded in
 `evidence/current/storage/qualification.json`. The exact base for API
-compatibility is `2b1077eddaa42b700afdb69db09ca12b6cc1373c`.
+compatibility is `a5eb5a4d84695e80defe0d1f24679f6557c79c5f`.
 
 | Check | Result |
 |---|---:|
@@ -26,7 +33,7 @@ compatibility is `2b1077eddaa42b700afdb69db09ca12b6cc1373c`.
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `2b1077eddaa42b700afdb69db09ca12b6cc1373c`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `a5eb5a4d84695e80defe0d1f24679f6557c79c5f`; API major/revision unchanged |
 | Repository storage qualification | PASS locally; conservative filesystem/SQLite/object recovery contract only; final company storage remains `BLOCKED_EXTERNAL` |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |

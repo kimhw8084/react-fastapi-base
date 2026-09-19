@@ -130,9 +130,31 @@ def _validate_clean_clone(document: dict[str, Any] | None, problems: list[str]) 
     _require(qualification in {'PASS', 'BLOCKED'}, problems, 'clean-clone: macOS qualification must be PASS or truthfully BLOCKED.')
     commands = document.get('commands')
     _require(isinstance(commands, list) and commands and all(row.get('exit_code') == 0 for row in commands if isinstance(row, dict)), problems, 'clean-clone: setup or maintained gate command failed.')
-    command_names = {' '.join(row.get('command', [])) for row in commands if isinstance(row, dict)}
-    for expected in ('python3 dev setup', 'python3 dev seed-demo', 'python3 dev contracts', 'python3 dev architecture', 'python3 scripts/catalog.py --check --release', 'npm run typecheck', 'npm run build', 'npm run build:storybook', 'python3 scripts/e2e_runner.py'):
-        _require(any(expected in name for name in command_names), problems, f'clean-clone: documented gate is missing: {expected}.')
+    command_rows = [row.get('command') for row in commands if isinstance(row, dict) and isinstance(row.get('command'), list)]
+
+    def has_python_command(arguments: list[str], expected: list[str]) -> bool:
+        if len(arguments) != len(expected) or arguments[1:] != expected[1:]:
+            return False
+        interpreter = Path(arguments[0]).name
+        return interpreter == 'python3' or re.fullmatch(r'python3\.\d+', interpreter) is not None
+
+    expected_commands = (
+        (['python3', 'dev', 'setup'], 'python3 dev setup'),
+        (['python3', 'dev', 'seed-demo'], 'python3 dev seed-demo'),
+        (['python3', 'dev', 'contracts'], 'python3 dev contracts'),
+        (['python3', 'dev', 'architecture'], 'python3 dev architecture'),
+        (['python3', 'scripts/catalog.py', '--check', '--release'], 'python3 scripts/catalog.py --check --release'),
+        (['npm', 'run', 'typecheck'], 'npm run typecheck'),
+        (['npm', 'run', 'build'], 'npm run build'),
+        (['npm', 'run', 'build:storybook'], 'npm run build:storybook'),
+        (['python3', 'scripts/e2e_runner.py'], 'python3 scripts/e2e_runner.py'),
+    )
+    for expected, label in expected_commands:
+        matched = any(
+            has_python_command(command, expected) if expected[0] == 'python3' else command == expected
+            for command in command_rows
+        )
+        _require(matched, problems, f'clean-clone: documented gate is missing: {label}.')
 
 
 def _validate_reference_apps(document: dict[str, Any] | None, *, version: str, expected_commit: str, expected_digest: str, problems: list[str]) -> None:

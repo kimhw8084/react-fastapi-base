@@ -6,6 +6,12 @@ machine-readable metadata is
 It contains policy metadata only; it never contains environment values,
 credentials, evidence payloads or fingerprints.
 
+The independent frontend/backend deployment topology is separately defined by
+[`contracts/independent-deployment.json`](../contracts/independent-deployment.json).
+Its repository qualification requires a non-empty `apiBase` pointing at the
+separately published backend; a blank `apiBase` remains reserved for an
+operator-owned same-origin ingress topology.
+
 ## Ownership and visibility
 
 | Surface | Classification | Examples | Browser-visible? |

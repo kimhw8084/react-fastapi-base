@@ -63,6 +63,21 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('typescript-syntax-and-pure-client',['node','scripts/source_smoke.mjs'])
     run('static-server',['node','--test','frontend/tests/server.test.mjs'])
     run('localhost-http',[sys.executable,'scripts/http_smoke.py'])
+    deployment_evidence = ROOT / 'evidence/current/deployment/qualification.json'
+    if source_only or not (ROOT/'frontend/node_modules').is_dir() or not (ROOT/'frontend/package-lock.json').is_file():
+        blocked('independent-deployment-qualification', 'Dependency-resolved frontend installation is required for the real two-process publisher proof.')
+        blocked('deployment-contract', 'Independent deployment evidence was not produced.')
+    else:
+        deployment_ok = run('independent-deployment-qualification', [
+            sys.executable,
+            'scripts/independent_deployment_qualification.py',
+            '--output',
+            str(deployment_evidence.resolve()),
+        ], timeout=900)
+        if deployment_ok and deployment_evidence.is_file():
+            run('deployment-contract', [sys.executable, 'scripts/check_deployment_contract.py', '--evidence', str(deployment_evidence.resolve())])
+        else:
+            blocked('deployment-contract', 'Independent deployment qualification must pass before its evidence can be reconciled.')
     if source_only:
         blocked('engineering-widget-layer','Source-only request: native browser verification was not executed.')
     else:

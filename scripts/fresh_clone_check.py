@@ -34,21 +34,22 @@ DEVELOPMENT_BOOTSTRAP_CHECK = (
 
 
 def verification_commands(source_root: Path, source_commit: str) -> list[list[str]]:
+    python = shutil.which('python3.14') or shutil.which('python3') or 'python3'
     return [
         ['git', 'clone', '--no-local', str(source_root), 'clone'],
         ['git', 'checkout', '--detach', source_commit],
-        ['python3', 'dev', 'setup'],
-        ['python3', 'dev', 'seed-demo'],
+        [python, 'dev', 'setup'],
+        [python, 'dev', 'seed-demo'],
         ['.venv/bin/python', '-c', DEVELOPMENT_BOOTSTRAP_CHECK],
-        ['python3', 'dev', 'contracts'],
-        ['python3', 'dev', 'architecture'],
-        ['python3', 'scripts/catalog.py', '--check', '--release'],
+        [python, 'dev', 'contracts'],
+        [python, 'dev', 'architecture'],
+        [python, 'scripts/catalog.py', '--check', '--release'],
         ['.venv/bin/python', '-m', 'pytest', '-q'],
         ['npm', 'run', 'typecheck'],
         ['npm', 'run', 'build'],
         ['npm', 'run', 'build:storybook'],
         ['npx', 'playwright', 'install', 'chromium'],
-        ['python3', 'scripts/e2e_runner.py'],
+        [python, 'scripts/e2e_runner.py'],
     ]
 
 
@@ -105,7 +106,7 @@ def main() -> int:
             if command[0] in {'npm', 'npx'}: cwd = clone / 'frontend'
             if command[0] == '.venv/bin/python': cwd = clone / 'backend'
             if command[0] == 'python3' and len(command) > 2 and command[1] == 'scripts/e2e_runner.py': cwd = clone
-            if command == ['python3', 'dev', 'setup'] and any((clone / path).exists() for path in initial_runtime_paths):
+            if len(command) >= 3 and command[1:3] == ['dev', 'setup'] and any((clone / path).exists() for path in initial_runtime_paths):
                 preinstall_clean = False
                 break
             try:
