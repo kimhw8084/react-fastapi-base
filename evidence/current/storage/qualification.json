@@ -1,0 +1,51 @@
+{
+  "candidate_head": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "candidate_version": "1.0.0-rc.16",
+  "checkout_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "checks": {
+    "database_invariants": true,
+    "development_is_qualification_independent": true,
+    "explicit_company_adapter": true,
+    "object_storage_backup_mode": true,
+    "profile_owned_operator_path": true,
+    "qualification_contract": true,
+    "storage_probe_contract": true
+  },
+  "code_ready": true,
+  "companyqualification_boundary": {
+    "final_company_storage": "BLOCKED_EXTERNAL",
+    "production_ready": false,
+    "reason": "Repository/local storage evidence does not prove actual company provider SQLite semantics, durability, redeploy persistence or production-like backup/restore.",
+    "release_status": "NOT_CERTIFIED"
+  },
+  "environment": {
+    "platform": "Darwin",
+    "python": "3.11.7"
+  },
+  "executable_source_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "exit_code": 0,
+  "hashes": {
+    "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3"
+  },
+  "inputs": {
+    "qualification_contract": {
+      "locator": "deploy/company-qualification.schema.json",
+      "sha256": "61fcabff989734f97af0d2dabd216c4cdc89881008c65ad78682dc5eae0a23d0"
+    },
+    "recovery": {
+      "locator": "evidence/current/recovery/object-restore.json",
+      "sha256": "80849a3a3cbdf2518dbdf668cd32635296d0ea69742290e63471aed109257a97"
+    }
+  },
+  "problems": [],
+  "production_approved": false,
+  "production_ready": false,
+  "profile": "company",
+  "project": "react-fastapi-base",
+  "report_type": "repository-storage-qualification",
+  "result": "PASS",
+  "schema_version": 1,
+  "source_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3",
+  "status": "PASS"
+}

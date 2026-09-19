@@ -1,0 +1,55 @@
+{
+  "api_compatibility_base_sha": "2b1077eddaa42b700afdb69db09ca12b6cc1373c",
+  "artifact_label": "rc16",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "evidence_commit": null,
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "ce1df60d2863cb358adcef9987ca6acaef30083e2cdd2fb4846360f2c729c0ab"
+  },
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc16-readiness-matrix.json",
+    "sha256": "17c079eedf09b2055b4d3e823491d74d6f5b47d589da9aabb1c907661a7f116f"
+  },
+  "release_identity": {
+    "locator": "deploy/rc16-release-identity.json"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "d022ad580d5aaa2db93509650e27cf491b97e987eb868d6b45b14f2ba754553a"
+  },
+  "schema_version": 2,
+  "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3",
+  "storage_qualification": {
+    "locator": "evidence/current/storage/qualification.json",
+    "required_for": "code",
+    "sha256": "a2f6c1af319a070e044708363b7f0829d2343c71cfcb67f6db1b1cd86fc4bd93"
+  },
+  "target_base_sha": "2b1077eddaa42b700afdb69db09ca12b6cc1373c",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "2879b891cfac2453095c4ffb1fd2b44aa10a9132d5d91c25c20c848e90a3736c"
+  },
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+    "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3"
+  },
+  "verified_source_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "version": "1.0.0-rc.16"
+}
