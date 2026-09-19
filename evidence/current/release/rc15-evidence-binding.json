@@ -1,0 +1,40 @@
+{
+  "artifact_label": "rc15",
+  "binding_status": "PENDING_EVIDENCE_COMMIT",
+  "evidence_commit": null,
+  "manifest": {
+    "locator": "evidence/current/release/rc15-manifest.json",
+    "sha256": "92c6130e58ee562d5a988c1dfe867d5c0d0f6bb95355668de1e0091a32e4a17e"
+  },
+  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "9c55ccb694593abc0039dcca91c5731c9b572eb5d50a3470ec0e9f567ef20f13"
+  },
+  "profile": "company",
+  "project": "react-fastapi-base",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc15-readiness-matrix.json",
+    "sha256": "d0d5f12f88300106d482bd6e6668916c74e480b324049bed318205dcd6739083"
+  },
+  "release_identity": {
+    "locator": "deploy/rc15-release-identity.json"
+  },
+  "result": "NOT_CERTIFIED",
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "4b99af35e9a1bab2d55523ab3076018bb08c3aecf26a872822583f6ba2245a4f"
+  },
+  "schema_version": 2,
+  "source_digest": "bf3e68f37ef24db914c227c64de414d69945b40db3abb76059211ab0ccbf56dd",
+  "target_base_sha": "97a9db4bd19f98f61510ae553a620008525018b6",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "bfe0b79b0859b4c14ddfa7c13c66b2897d946342661af8228b07604f51f042d6"
+  },
+  "verified_source_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "version": "1.0.0-rc.15"
+}

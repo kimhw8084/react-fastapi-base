@@ -1,23 +1,30 @@
 {
-  "schema_version": 1,
-  "source_commit": "d584abc13125299009a32115392ffb51b802796a",
-  "timestamp": "2026-09-19T02:25:54.197246+00:00",
+  "schema_version": 2,
+  "candidate_head": "ac05f51d880d075125867f7764d735dad0dec676",
+  "checkout_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "executable_source_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "source_digest": "bf3e68f37ef24db914c227c64de414d69945b40db3abb76059211ab0ccbf56dd",
+  "source_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "timestamp": "2026-09-19T04:46:25.894063+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-01dab29ee85f0e943483a316/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-b0641ad9ac83ec7276c5f4d7/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-01dab29ee85f0e943483a316/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-b0641ad9ac83ec7276c5f4d7/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
     "python": "3.11.7"
   },
+  "hashes": {
+    "source_digest": "bf3e68f37ef24db914c227c64de414d69945b40db3abb76059211ab0ccbf56dd"
+  },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "3b655522-a0ee-4ef5-8401-de98873d969f",
+  "tenant": "68008f0b-10f7-43c1-9628-e99e6e5d8fc8",
   "record_type": "work_items",
-  "record_id": "14c7e2e7-7a74-4d65-a70a-1e3958fa110b",
-  "object_key": "attachments/3742740f-a460-4e19-83bb-0f6778383f30/recovery.txt",
+  "record_id": "0f609fc3-ae7e-412e-bba8-b9bdd4fb9139",
+  "object_key": "attachments/fd59c8e9-7d72-4b92-a605-23ef7e5b1d24/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
