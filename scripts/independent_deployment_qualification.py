@@ -266,7 +266,7 @@ def qualify(output: Path, *, backend_port: int = 18000, frontend_port: int = 141
         'qualification_environment': 'test',
         'qualification_profile': 'development',
         'candidate_version': version,
-        'candidate_head': provenance['checkout_commit'],
+        'candidate_head': provenance['executable_source_commit'],
         'executable_source_commit': provenance['executable_source_commit'],
         'source_digest': provenance['source_digest'],
         'contract_sha256': contract_sha256(),

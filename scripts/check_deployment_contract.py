@@ -93,7 +93,7 @@ def validate_evidence(path: Path, contract: dict[str, object]) -> None:
     _assert(evidence.get('production_ready') is False and evidence.get('company_qualification') == 'BLOCKED_EXTERNAL', 'Independent deployment evidence overclaims qualification.')
     _assert(evidence.get('qualification_environment') == 'test' and evidence.get('qualification_profile') == 'development', 'Repository deployment proof must use the deterministic development/test profile.')
     _assert(evidence.get('candidate_version') == read_candidate_version(ROOT).version, 'Independent deployment evidence candidate version is stale.')
-    _assert(evidence.get('candidate_head') == provenance['checkout_commit'], 'Independent deployment evidence checkout identity is stale.')
+    _assert(evidence.get('candidate_head') == provenance['executable_source_commit'], 'Independent deployment evidence executable-source identity is stale.')
     _assert(evidence.get('executable_source_commit') == provenance['executable_source_commit'], 'Independent deployment evidence executable-source identity is stale.')
     _assert(evidence.get('source_digest') == provenance['source_digest'], 'Independent deployment evidence source digest is stale.')
     _assert(evidence.get('contract_sha256') == contract_sha256(), 'Independent deployment evidence contract hash is stale.')
