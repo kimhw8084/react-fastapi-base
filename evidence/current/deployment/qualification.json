@@ -1,0 +1,92 @@
+{
+  "candidate_head": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
+  "candidate_version": "1.0.0-rc.17",
+  "checks": {
+    "api_compatibility_current_pair": {
+      "status": "PASS"
+    },
+    "api_compatibility_incompatible_major": {
+      "status": "PASS"
+    },
+    "api_compatibility_older_revision": {
+      "status": "PASS"
+    },
+    "backend_health": {
+      "status": "PASS"
+    },
+    "backend_readiness": {
+      "status": "PASS"
+    },
+    "backend_stop_does_not_serve_frontend": {
+      "status": "PASS"
+    },
+    "browser_api_bootstrap": {
+      "status": "PASS"
+    },
+    "cors_allows_configured_origin": {
+      "status": "PASS"
+    },
+    "cors_rejects_unconfigured_origin": {
+      "status": "PASS"
+    },
+    "cross_origin_api_bootstrap": {
+      "status": "PASS"
+    },
+    "frontend_api_not_proxied": {
+      "status": "PASS"
+    },
+    "frontend_build": {
+      "status": "PASS"
+    },
+    "frontend_static_content": {
+      "status": "PASS"
+    },
+    "frontend_static_health": {
+      "status": "PASS"
+    },
+    "frontend_stop_does_not_proxy_backend": {
+      "status": "PASS"
+    },
+    "production_descriptor_rejections": {
+      "status": "PASS"
+    },
+    "provision_disposable_data": {
+      "status": "PASS"
+    },
+    "runtime_config_public_schema": {
+      "status": "PASS"
+    },
+    "runtime_origin_rejections": {
+      "status": "PASS"
+    }
+  },
+  "company_deployment_status": "BLOCKED_EXTERNAL",
+  "company_qualification": "BLOCKED_EXTERNAL",
+  "contract_sha256": "75146432abf1258bde1df557349d961322c13df3e43c0e8da36beefa87881800",
+  "executable_source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
+  "failure_checks": [],
+  "frontend_api_base": "http://127.0.0.1:18000",
+  "note": "Repository proof covers independently published software units only; company publication, ingress, session, restart, redeploy and recovery qualification remain external.",
+  "process_roles": {
+    "backend": {
+      "host": "127.0.0.1",
+      "origin": "http://127.0.0.1:18000",
+      "port": 18000,
+      "role": "backend_asgi_service"
+    },
+    "frontend": {
+      "host": "127.0.0.1",
+      "origin": "http://127.0.0.1:14173",
+      "port": 14173,
+      "role": "frontend_static_node_publisher"
+    }
+  },
+  "production_ready": false,
+  "qualification_environment": "test",
+  "qualification_profile": "development",
+  "report_type": "repository-independent-deployment-qualification",
+  "repository_deployment_status": "PASS",
+  "schema_version": 1,
+  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
+  "status": "PASS"
+}

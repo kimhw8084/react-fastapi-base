@@ -1,7 +1,7 @@
 {
-  "candidate_head": "a5b46a42bcb52803982ae08252480929aceb3d7b",
-  "candidate_version": "1.0.0-rc.16",
-  "checkout_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "candidate_head": "42f73f2bc6d0925f0b378f621acb6f1c15d0dc16",
+  "candidate_version": "1.0.0-rc.17",
+  "checkout_commit": "42f73f2bc6d0925f0b378f621acb6f1c15d0dc16",
   "checks": {
     "clean_clone_bootstrap": true,
     "documentation_and_commands": true,
@@ -57,23 +57,23 @@
     "production_ready": false,
     "status": "BLOCKED_EXTERNAL"
   },
-  "executable_source_commit": "a5b46a42bcb52803982ae08252480929aceb3d7b",
+  "executable_source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
   "inputs": {
     "clean_clone": {
       "locator": "evidence/current/full-stack/fresh-clone-macos.json",
-      "sha256": "894f1c5fdcd30a84c570ef7f5e4afbe61e3f7d9a0d32abd4e9379248fb7aa5db"
+      "sha256": "19b0cd5429652292c01b1a8f66cf8860fa00ace36688498f0d85ff829d7d904a"
     },
     "reference_apps": {
       "locator": "evidence/current/release/reference-apps.json",
-      "sha256": "7dbdca80a8ec2b96c028bdbaee6acf3c85752ead15c22413f4b7f619d740bd84"
+      "sha256": "15f687cafcfd207e44cada6e0a1bba5ae848fb21b6253b53db630e4f8f461886"
     },
     "storage_qualification": {
       "locator": "evidence/current/storage/qualification.json",
-      "sha256": "a2f6c1af319a070e044708363b7f0829d2343c71cfcb67f6db1b1cd86fc4bd93"
+      "sha256": "949f85be83aee427d1a133be7bdd802209d5d943c36f693f669c40afb1ba0143"
     },
     "upgrade_fixture": {
       "locator": "evidence/current/full-stack/upgrade-fixture.json",
-      "sha256": "dbf945f6ebf184cb3f4e772d42775cae274169f96e98e12af5865562a3ef3924"
+      "sha256": "ae1f91c7a24766fcc00501917d8d43608ca9ac4b7450c68d583c234beadc9771"
     }
   },
   "problems": [],
@@ -84,10 +84,10 @@
   "result": "PASS",
   "schema_version": 1,
   "source_binding": {
-    "candidate_checkout": "a5b46a42bcb52803982ae08252480929aceb3d7b",
-    "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3",
-    "verified_executable_source": "a5b46a42bcb52803982ae08252480929aceb3d7b"
+    "candidate_checkout": "42f73f2bc6d0925f0b378f621acb6f1c15d0dc16",
+    "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
+    "verified_executable_source": "105fe0510b0638abc94fd744c395ae7e7d19fc52"
   },
-  "source_digest": "fd39863f3fb8158d761235002cb5c2eaed1c81ff77eb9ec89736cd86df2b8ba3",
+  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
   "status": "PASS"
 }

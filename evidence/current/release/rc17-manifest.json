@@ -1,0 +1,60 @@
+{
+  "api_compatibility_base_sha": "a5eb5a4d84695e80defe0d1f24679f6557c79c5f",
+  "artifact_label": "rc17",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "deployment_qualification": {
+    "locator": "evidence/current/deployment/qualification.json",
+    "required_for": "code",
+    "sha256": "2569a91000bd7fe3d43b529abf39872eaaa0ed5332a9c6a2bd31efc9459e90a5"
+  },
+  "evidence_commit": null,
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "9f84613a113cef28cca6a10cdfdb1ffb5cf065863e57d2fc35eec80d24681b3e"
+  },
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc17-readiness-matrix.json",
+    "sha256": "9d8ca99e3c70032a246571d2b6fc59fb07bd41c28425a20dda8b0693a849200a"
+  },
+  "release_identity": {
+    "locator": "deploy/rc17-release-identity.json"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "ff0afbaf7bd1cbdca42bdc7c9307ffb6d4e3cdaa3da4cd146bc9815bdfe51295"
+  },
+  "schema_version": 2,
+  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
+  "storage_qualification": {
+    "locator": "evidence/current/storage/qualification.json",
+    "required_for": "code",
+    "sha256": "949f85be83aee427d1a133be7bdd802209d5d943c36f693f669c40afb1ba0143"
+  },
+  "target_base_sha": "a5eb5a4d84695e80defe0d1f24679f6557c79c5f",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "222f28bbfe85e33a4b264aed412b8d5a7c9509902da100e83eaa5c01131f9301"
+  },
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
+    "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77"
+  },
+  "verified_source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
+  "version": "1.0.0-rc.17"
+}
