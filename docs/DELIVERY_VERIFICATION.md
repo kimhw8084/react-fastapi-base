@@ -20,7 +20,7 @@ branch: `9bf11bd889d13d718656747cc76354d80b46561b`.
 |---|---:|
 | FastAPI/backend | PASS; current deterministic backend suite in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 26 Playwright cases including 13 canonical CHG-34 UIQA rows and preserved UIQA regressions |
+| React browser workflows | PASS; 27 Playwright cases including 13 canonical CHG-34 UIQA rows, preserved UIQA regressions, and two CHG-35 performance cases |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |

@@ -1,10 +1,265 @@
 {
-  "schema_version": 1,
-  "source_commit": "a048fc6a9f29cdf2971984a58405d0e6ca77ab22",
-  "timestamp": "2026-09-08T15:52:06Z",
-  "command": ["python scripts/performance_check.py"],
-  "exit_code": 0,
-  "environment": "macOS arm64; Python 3.14.5",
-  "hashes": {"source_digest": "be301017e304f69a029efd36bb081d1837672071f52ae1da3f8612028c728f11"},
-  "result": "PASS — bounded owned algorithms only; browser/render and large-scale budgets remain uncertified"
+  "schema_version": 2,
+  "report_kind": "performance-regression-result",
+  "tier_id": "owned-pure-algorithms",
+  "contract_id": "project-os-performance-regression",
+  "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
+  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
+  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "command": [
+    "python3",
+    "scripts/performance_check.py"
+  ],
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.7"
+  },
+  "result": "PASS",
+  "workloads": [
+    {
+      "id": "descriptive-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.029224
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "imr-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.012411
+      },
+      "diagnostic_metrics": {
+        "result": 99999
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "ewma-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.006
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "run-rules-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.083178
+      },
+      "diagnostic_metrics": {
+        "result": 180411
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "pareto-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000,
+        "categories": 17
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.006039
+      },
+      "diagnostic_metrics": {
+        "result": 17
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "p-chart-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000,
+        "samples_per_observation": 100
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.031532
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "c-chart-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.007314
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "cusum-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.02007
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "correlation-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.022285
+      },
+      "diagnostic_metrics": {
+        "result": 1.0
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    },
+    {
+      "id": "regression-100k",
+      "status": "PASS",
+      "scale": {
+        "observations": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.026877
+      },
+      "diagnostic_metrics": {
+        "result": 1.0
+      },
+      "evidence_locator": "evidence/current/performance/owned-algorithms.json"
+    }
+  ],
+  "browser_render_budget_certified": false,
+  "checks": [
+    {
+      "name": "descriptive-100k",
+      "seconds": 0.029224,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "summary": 100000
+    },
+    {
+      "name": "imr-100k",
+      "seconds": 0.012411,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "summary": 99999
+    },
+    {
+      "name": "ewma-100k",
+      "seconds": 0.006,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "summary": 100000
+    },
+    {
+      "name": "run-rules-100k",
+      "seconds": 0.083178,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "summary": 180411
+    },
+    {
+      "name": "pareto-100k",
+      "seconds": 0.006039,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "summary": 17
+    },
+    {
+      "name": "p-chart-100k",
+      "seconds": 0.031532,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "summary": 100000
+    },
+    {
+      "name": "c-chart-100k",
+      "seconds": 0.007314,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "summary": 100000
+    },
+    {
+      "name": "cusum-100k",
+      "seconds": 0.02007,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "summary": 100000
+    },
+    {
+      "name": "correlation-100k",
+      "seconds": 0.022285,
+      "budget_seconds": 1.5,
+      "status": "PASS",
+      "summary": 1.0
+    },
+    {
+      "name": "regression-100k",
+      "seconds": 0.026877,
+      "budget_seconds": 2.5,
+      "status": "PASS",
+      "summary": 1.0
+    }
+  ]
 }
