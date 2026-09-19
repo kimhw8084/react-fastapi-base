@@ -1,0 +1,217 @@
+{
+  "aggregate_performance_evidence": {
+    "locator": "evidence/current/performance/qualification.json",
+    "sha256": "c83c45179f47f140c3e2745c102a5d9854b545d29d3874ba1e4d8d5a1af04711"
+  },
+  "api_contract_impact": {
+    "api_major": 1,
+    "base_sha": "9bf11bd889d13d718656747cc76354d80b46561b",
+    "contract_revision": 1,
+    "observable_change": false
+  },
+  "artifact_label": "rc14",
+  "candidate_version": "1.0.0-rc.14",
+  "canonical_contract": {
+    "contract_id": "project-os-performance-regression",
+    "locator": "contracts/performance-regression.json",
+    "sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05"
+  },
+  "change": "CHG-35",
+  "companyqualification_boundary": {
+    "company_performance_gate": "BLOCKED_EXTERNAL",
+    "production_ready": false,
+    "reason": "Local/Fabric/CI repository evidence does not constitute authentic company/profile production-like performance evidence.",
+    "release_status": "NOT_CERTIFIED",
+    "repository_performance_status": "PASS"
+  },
+  "evidence_policy": "Repository performance evidence is source-bound regression qualification, not a company performance certification or Project OS GO decision.",
+  "evidence_type": "change_evidence",
+  "immutable_historical_artifacts_checked": [
+    {
+      "immutable": true,
+      "path": "deploy/rc11-release-identity.json",
+      "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+    },
+    {
+      "immutable": true,
+      "path": "deploy/rc12-release-identity.json",
+      "sha256": "3d0f98e5bebbc5e52c8f2e129a9a21cfd212d6ff2148f5974ac64d1491c4488e"
+    },
+    {
+      "immutable": true,
+      "path": "deploy/rc13-release-identity.json",
+      "sha256": "9ad52bc1dbea9d987c9a36078b0e80dd8bb8fcb2dbc1136bb6b230acb5571ba0"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-readiness-matrix.json",
+      "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-manifest.json",
+      "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc11-evidence-binding.json",
+      "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-readiness-matrix.json",
+      "sha256": "b900e6c3ecbc6621471284ffbd3ac1a7ff77f639b8ff051f76e2e83fcffd07af"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-manifest.json",
+      "sha256": "7a601c1d497072f0c5492054a3e605847a72dc308f56ef9dc524bec9bcce0120"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc12-evidence-binding.json",
+      "sha256": "bb9fe8d4ca31ea009570ee09d83dd8346c877a40ff7b76a61032e0d10e64fb93"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc13-readiness-matrix.json",
+      "sha256": "166ef9ec728e985ab4e479370780b7ddd2dbd3aaac729bf99b5dbf5120ae76c1"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc13-manifest.json",
+      "sha256": "2a059c81dd93c74a06aeb4c21ea300e44f9912f4492ab97110cf07de8f34db4f"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/rc13-evidence-binding.json",
+      "sha256": "1ce57d655ab52eb6ea8c77d5c8d037fd90a7fd3d1caf42639d1240840e1bb7bc"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/CHG-34-ui-accessibility.json",
+      "sha256": "e4d889c644e70b9ffb6065938907ac2b347f3fdd87525df6991402884308c1e3"
+    },
+    {
+      "immutable": true,
+      "path": "evidence/current/release/CHG-38-release-lifecycle.json",
+      "sha256": "7e506de2767c7e5d11f6b5f91a3875f3c12570f9c68cd3e9526ba6c3ddf8921d"
+    }
+  ],
+  "progression": {
+    "allowed": true,
+    "base_version": "1.0.0-rc.13",
+    "candidate_version": "1.0.0-rc.14",
+    "mode": "ordinary_build",
+    "reason": "Candidate advances exactly from 1.0.0-rc.13 to 1.0.0-rc.14.",
+    "source_changed": true,
+    "version_projection_only": false
+  },
+  "project": "react-fastapi-base",
+  "representative_scales": {
+    "browser-ag-grid-virtualization-5000": {
+      "loaded_rows": 5000,
+      "logical_rows": 100000
+    },
+    "browser-server-page-100k-50": {
+      "loaded_rows": 50,
+      "logical_rows": 100000,
+      "page_size": 50
+    },
+    "c-chart-100k": {
+      "observations": 100000
+    },
+    "correlation-100k": {
+      "observations": 100000
+    },
+    "cusum-100k": {
+      "observations": 100000
+    },
+    "dashboard-1000-widgets-layout": {
+      "widgets": 1000
+    },
+    "descriptive-100k": {
+      "observations": 100000
+    },
+    "ewma-100k": {
+      "observations": 100000
+    },
+    "graph-10000-nodes-20000-edges": {
+      "edges": 20000,
+      "nodes": 10000
+    },
+    "imr-100k": {
+      "observations": 100000
+    },
+    "observability-100k-events": {
+      "correlation_ids": 1000,
+      "events": 100000,
+      "services": 50
+    },
+    "p-chart-100k": {
+      "observations": 100000,
+      "samples_per_observation": 100
+    },
+    "pareto-100k": {
+      "categories": 17,
+      "observations": 100000
+    },
+    "planning-5000-dependencies": {
+      "tasks": 5000
+    },
+    "rack-100-racks-20000-connections": {
+      "connections": 20000,
+      "devices_per_rack": 100,
+      "racks": 100
+    },
+    "regression-100k": {
+      "observations": 100000
+    },
+    "run-rules-100k": {
+      "observations": 100000
+    },
+    "table-100k-filter-sort": {
+      "returned_rows": 100,
+      "rows": 100000
+    },
+    "wafer-100k-die-map": {
+      "die": 100000
+    }
+  },
+  "schema_version": 1,
+  "structural_virtualization": {
+    "metrics": {
+      "deep_scroll_settle_ms": 32,
+      "initial_readiness_ms": 287,
+      "initial_rows_recycled": true,
+      "loaded_rows": 5000,
+      "logical_rows": 100000,
+      "reached_target_row": true,
+      "rendered_row_ratio": 0.004,
+      "rendered_rows_after_deep_scroll": 20,
+      "rendered_rows_before_deep_scroll": 20,
+      "representative_sort_works": true,
+      "selection_or_keyboard_works": true,
+      "sort_interaction_ms": 255
+    },
+    "row_recycling_proof": {
+      "initial_identity": "Synthetic work item 0000",
+      "removed_after_deep_scroll": true
+    },
+    "selection_result": {
+      "keyboard": "Space",
+      "selected_region": true,
+      "target_label": "Synthetic work item 4999"
+    },
+    "sort_result": {
+      "column": "Title",
+      "first_row": "Synthetic work item 0000"
+    },
+    "status": "PASS",
+    "workload_id": "browser-ag-grid-virtualization-5000"
+  },
+  "verified_executable_source": {
+    "commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+    "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7"
+  }
+}

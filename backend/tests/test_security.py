@@ -78,7 +78,7 @@ def test_qualification_template_and_placeholder_evidence_cannot_validate():
     from pydantic import ValidationError
     template=json.loads(Path(__file__).resolve().parents[2].joinpath('deploy/company-qualification.template.json').read_text())
     model = CompanyQualification.model_validate(template)
-    assert model.derived_production_ready(expected_version='1.0.0-rc.13', expected_deployment_id='deployment', expected_root=Path('/persistent')) is False
+    assert model.derived_production_ready(expected_version='1.0.0-rc.14', expected_deployment_id='deployment', expected_root=Path('/persistent')) is False
     template.update({
         'deployment_id':'looks good',
         'identity_topology':'per_user_process',

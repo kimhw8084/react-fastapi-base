@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "contract_id": "project-os-performance-regression",
+  "contract_revision": 1,
+  "description": "Repository-owned regression qualification for bounded algorithms, platform projections and browser grid scale. Timing values are generous regression ceilings, not production latency SLOs.",
+  "tiers": [
+    {
+      "id": "owned-pure-algorithms",
+      "label": "Owned pure algorithms",
+      "runner": "scripts/performance_check.py",
+      "evidence_obligation": "Regression guards for repository-owned statistical algorithms; not hardware certification."
+    },
+    {
+      "id": "platform-data-volume",
+      "label": "Platform data-volume projections",
+      "runner": "scripts/performance_stress.py",
+      "evidence_obligation": "Deterministic projections for current table, planning, graph, rack, wafer, observability and dashboard workloads."
+    },
+    {
+      "id": "browser-ag-grid-scale",
+      "label": "Browser and AG Grid scale",
+      "runner": "frontend/tests/e2e/performance.spec.ts",
+      "evidence_obligation": "Browser-visible bounded paging and synthetic test-only AG Grid virtualization proof."
+    }
+  ],
+  "browser": {
+    "project": "chromium",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "grouped_grid_strategy": {
+      "component": "GroupedSemanticGrid",
+      "virtualization_claim": false,
+      "scale_strategy": "server-page-bounded",
+      "scope": "The semantic grouped table renders only the server-returned page and is not certified as AG Grid virtualization."
+    }
+  },
+  "workloads": [
+    {
+      "id": "descriptive-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "imr-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "ewma-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "run-rules-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "pareto-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000, "categories": 17},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "p-chart-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000, "samples_per_observation": 100},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "c-chart-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "cusum-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "correlation-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "regression-100k",
+      "tier_id": "owned-pure-algorithms",
+      "applicability": "required",
+      "scale": {"observations": 100000},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/owned-algorithms.json"}
+    },
+    {
+      "id": "table-100k-filter-sort",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"rows": 100000, "returned_rows": 100},
+      "budgets": {"elapsed_seconds": 2.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "planning-5000-dependencies",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"tasks": 5000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "graph-10000-nodes-20000-edges",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"nodes": 10000, "edges": 20000},
+      "budgets": {"elapsed_seconds": 2.0},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "rack-100-racks-20000-connections",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"racks": 100, "devices_per_rack": 100, "connections": 20000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "wafer-100k-die-map",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"die": 100000},
+      "budgets": {"elapsed_seconds": 1.0},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "observability-100k-events",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"events": 100000, "services": 50, "correlation_ids": 1000},
+      "budgets": {"elapsed_seconds": 1.5},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "dashboard-1000-widgets-layout",
+      "tier_id": "platform-data-volume",
+      "applicability": "required",
+      "scale": {"widgets": 1000},
+      "budgets": {"elapsed_seconds": 0.75},
+      "hard_metrics": ["elapsed_seconds"],
+      "diagnostic_metrics": ["result"],
+      "evidence": {"report_locator": "evidence/current/performance/stress.json"}
+    },
+    {
+      "id": "browser-server-page-100k-50",
+      "tier_id": "browser-ag-grid-scale",
+      "applicability": "required",
+      "fixture_kind": "production-shaped-server-page",
+      "scale": {"logical_rows": 100000, "loaded_rows": 50, "page_size": 50},
+      "budgets": {"initial_readiness_ms": 5000},
+      "invariants": {"rendered_row_ceiling": 55},
+      "hard_metrics": ["logical_rows", "loaded_rows", "rendered_rows_before_deep_scroll", "rendered_rows_after_deep_scroll", "initial_readiness_ms"],
+      "diagnostic_metrics": ["rendered_row_ratio", "used_js_heap_bytes"],
+      "evidence": {"report_locator": "evidence/current/performance/browser.json"}
+    },
+    {
+      "id": "browser-ag-grid-virtualization-5000",
+      "tier_id": "browser-ag-grid-scale",
+      "applicability": "required",
+      "fixture_kind": "synthetic-test-only",
+      "scale": {"logical_rows": 100000, "loaded_rows": 5000},
+      "budgets": {"initial_readiness_ms": 5000, "deep_scroll_settle_ms": 5000, "sort_interaction_ms": 5000},
+      "invariants": {"rendered_row_ceiling": 250, "rendered_row_fraction_ceiling": 0.1, "deep_target_index": 4999},
+      "hard_metrics": ["logical_rows", "loaded_rows", "rendered_rows_before_deep_scroll", "rendered_rows_after_deep_scroll", "rendered_row_ratio", "initial_rows_recycled", "reached_target_row", "selection_or_keyboard_works", "representative_sort_works", "initial_readiness_ms", "deep_scroll_settle_ms", "sort_interaction_ms"],
+      "diagnostic_metrics": ["used_js_heap_bytes"],
+      "evidence": {"report_locator": "evidence/current/performance/browser.json"}
+    }
+  ]
+}

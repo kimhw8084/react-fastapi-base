@@ -71,6 +71,7 @@ def test_written_build_manifest_uses_target_base_and_not_post_acceptance_fields(
         assert 'repository_merge_sha' not in document
         assert document['target_base_sha'] == 'c' * 40
         assert document['uiqa_matrix']['locator'] == 'uiqa/ui-state-matrix-results.json'
+        assert document['performance_qualification']['locator'].endswith('performance/qualification.json')
     binder_source = (Path(__file__).resolve().parents[1] / 'scripts/bind_release_evidence.py').read_text()
     assert 'accepted_head' not in binder_source
     assert 'repository_merge_sha' not in binder_source

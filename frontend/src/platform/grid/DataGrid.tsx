@@ -33,6 +33,9 @@ function identityLabel<T extends BaseRecord>(row:T,definition:WorkspaceDefinitio
 function hoverAnchor(event:React.MouseEvent<HTMLElement>):GridAnchor{const rect=event.currentTarget.getBoundingClientRect();return{x:Math.min(window.innerWidth-20,rect.right+8),y:Math.max(12,rect.top)}}
 
 function GroupedSemanticGrid<T extends BaseRecord>({rows,definition,density,columns,scope,groupBy,onOpen,onPeek,onHover,onContext,onSelection}:Props<T>&{groupBy:string}){
+ // GroupedSemanticGrid is intentionally a semantic table, not AG Grid. Its
+ // scale strategy is the server-returned page; the performance contract makes
+ // no virtualization claim for this renderer.
  const [selected,setSelected]=useState<Set<string>>(new Set())
  const [collapsed,setCollapsed]=useState<Set<string>>(new Set())
  useEffect(()=>{setSelected(new Set());onSelection([])},[scope,onSelection])

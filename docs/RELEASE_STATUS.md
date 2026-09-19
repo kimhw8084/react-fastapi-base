@@ -1,18 +1,18 @@
-# Release status — react-fastapi-base 1.0.0-rc.13
+# Release status — react-fastapi-base 1.0.0-rc.14
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.13 codifies the source-bound release/evidence lifecycle on top of the schema-v2 CompanyQualification contract. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.14 adds the canonical source-bound performance and AG Grid virtualization regression qualification on top of the RC.13 release/evidence lifecycle. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
 
-RC.12 is immutable integrated historical evidence for its exact source. RC.13 binds the current release lifecycle artifacts to the verified RC.13 source; the local browser gate does not prove the final company/profile `ui_accessibility` qualification.
+RC.12 and RC.13 are immutable integrated historical evidence for their exact sources. RC.14 binds the current release lifecycle artifacts to the verified RC.14 source; local performance and browser gates do not prove the final company/profile `ui_accessibility` or `performance` qualification.
 
 ## Current local proof
 
-- Backend: 270 tests passed across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
-- Frontend: locked `npm ci`, TypeScript, 17 Vitest files / 44 tests, production build, Storybook build and 26 Playwright workflows passed, including the 13-row canonical UI state matrix.
-- Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
+- Backend: 288 tests passed with one contract-test skip across the deterministic four-shard runner; generated contracts, migrations, architecture checks, security-source checks and owned statistical/performance checks passed.
+- Frontend: locked `npm ci`, TypeScript, 18 Vitest files / 50 tests, production build, Storybook build and 27 Playwright workflows passed, including the 13-row canonical UI state matrix and two CHG-35 performance cases.
+- Browser proof covers create/reload/dossier tabs, dirty navigation, team saved views, administration events/teams, every registered workspace, mobile keyboard/axe, a 100k logical-row bounded table, synthetic 5,000-row AG Grid virtualization with row recycling, and major surfaces at 200%/400% zoom with reduced motion and high contrast. Tested workflows reported no browser console errors or page errors.
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
 - Seven generated reference applications pass their migration, contract, frontend test/build and source-integrity proofs. The upgrade fixture passes plan, conflict-safe apply, migration, build/tests, rollback and integrity comparison.
@@ -29,7 +29,7 @@ RC.12 is immutable integrated historical evidence for its exact source. RC.13 bi
 - RC.11 adds the final composite CompanyQualification schema v2, exact eight-gate enumeration, derived readiness, secret-safe durable evidence references, legacy-schema migration refusal, deterministic source-bound readiness matrix and RC.11 evidence-manifest binding. API major 1/revision 1 remains unchanged; company/profile gates remain external and visibly BLOCKED.
 - RC.11 R2 repairs source/evidence binding: production requires the repository-owned `deploy/rc11-release-identity.json` and rejects self-consistent operator source identities that do not match it. BUILD evidence records only verified source/evidence/target-base facts; Accepted Head and repository merge SHA remain later workflow facts. API major 1/revision 1 remains unchanged; company/profile gates remain external and visibly BLOCKED_EXTERNAL.
 
-Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [stress.json](../evidence/current/performance/stress.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
+Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [qualification.json](../evidence/current/performance/qualification.json), [browser.json](../evidence/current/performance/browser.json), [CHG-35-performance-virtualization.json](../evidence/current/release/CHG-35-performance-virtualization.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 
 ## External qualification only
 
@@ -45,5 +45,5 @@ Optional authenticated realtime push, enterprise malware/CDR provider selection,
 
 Reports under `evidence/current/` are generated from the current source and carry commit, timestamp, command, exit code, environment and hashes. Historical reports remain under historical directories and are not release proof. Local success does not certify company infrastructure, SEMI compliance, WCAG conformance, or production safety.
 
-The deterministic RC.13 repository readiness report is `evidence/current/release/rc13-readiness-matrix.json`; its companion manifest and binding are `rc13-manifest.json` and `rc13-evidence-binding.json`. RC.12's corresponding artifacts remain immutable historical evidence. The UI matrix/result evidence is under `evidence/current/uiqa/`; all are repository evidence, not an operator-approved qualification file.
+The deterministic RC.14 repository readiness report is `evidence/current/release/rc14-readiness-matrix.json`; its companion manifest and binding are `rc14-manifest.json` and `rc14-evidence-binding.json`. RC.13 and RC.12's corresponding artifacts remain immutable historical evidence. Canonical performance evidence is under `evidence/current/performance/`, including `qualification.json` and `browser.json`; all are repository evidence, not an operator-approved qualification file.
 The repository identity is generated from the passing current source verification report by `scripts/generate_release_identity.py` and is intentionally outside the executable-source hash set to avoid a digest cycle. Its `source_commit` is the verified executable-source commit; the later evidence and Fabric branch heads do not replace it.

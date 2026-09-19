@@ -1,77 +1,145 @@
 {
-  "schema_version": 1,
-  "source_commit": "0e85e380095472ae9bd46538239a576ff4805dad",
-  "created_at": "2026-09-18T22:21:07Z",
-  "timestamp": "2026-09-18T22:21:07Z",
+  "schema_version": 2,
+  "report_kind": "performance-regression-result",
+  "tier_id": "platform-data-volume",
+  "contract_id": "project-os-performance-regression",
+  "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
+  "source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
   "command": [
     "python3",
     "scripts/performance_stress.py"
   ],
-  "exit_code": 0,
   "environment": {
     "platform": "macOS-26.6.2-arm64-arm-64bit",
     "python": "3.11.7"
   },
-  "hashes": {
-    "source_commit": "0e85e380095472ae9bd46538239a576ff4805dad"
-  },
-  "checks": [
+  "result": "PASS",
+  "workloads": [
     {
-      "name": "table-100k-filter-sort",
-      "size": 100000,
-      "seconds": 0.013953,
-      "budget_seconds": 2.5,
+      "id": "table-100k-filter-sort",
       "status": "PASS",
-      "result": 100
+      "scale": {
+        "rows": 100000,
+        "returned_rows": 100
+      },
+      "budgets": {
+        "elapsed_seconds": 2.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.013428
+      },
+      "diagnostic_metrics": {
+        "result": 100
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "planning-5000-dependencies",
-      "size": 5000,
-      "seconds": 0.000164,
-      "budget_seconds": 1.5,
+      "id": "planning-5000-dependencies",
       "status": "PASS",
-      "result": 4999
+      "scale": {
+        "tasks": 5000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.000157
+      },
+      "diagnostic_metrics": {
+        "result": 4999
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "graph-10000-nodes-20000-edges",
-      "size": 30000,
-      "seconds": 0.001575,
-      "budget_seconds": 2.0,
+      "id": "graph-10000-nodes-20000-edges",
       "status": "PASS",
-      "result": 10000
+      "scale": {
+        "nodes": 10000,
+        "edges": 20000
+      },
+      "budgets": {
+        "elapsed_seconds": 2.0
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.001489
+      },
+      "diagnostic_metrics": {
+        "result": 10000
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "rack-100-racks-20000-connections",
-      "size": 40000,
-      "seconds": 0.000446,
-      "budget_seconds": 1.5,
+      "id": "rack-100-racks-20000-connections",
       "status": "PASS",
-      "result": 20000
+      "scale": {
+        "racks": 100,
+        "devices_per_rack": 100,
+        "connections": 20000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.000385
+      },
+      "diagnostic_metrics": {
+        "result": 20000
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "wafer-100k-die-map",
-      "size": 100000,
-      "seconds": 0.001809,
-      "budget_seconds": 1.0,
+      "id": "wafer-100k-die-map",
       "status": "PASS",
-      "result": 94117
+      "scale": {
+        "die": 100000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.0
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.001969
+      },
+      "diagnostic_metrics": {
+        "result": 94117
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "observability-100k-events",
-      "size": 100000,
-      "seconds": 0.002567,
-      "budget_seconds": 1.5,
+      "id": "observability-100k-events",
       "status": "PASS",
-      "result": 100
+      "scale": {
+        "events": 100000,
+        "services": 50,
+        "correlation_ids": 1000
+      },
+      "budgets": {
+        "elapsed_seconds": 1.5
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 0.002991
+      },
+      "diagnostic_metrics": {
+        "result": 100
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
-      "name": "dashboard-1000-widgets-layout",
-      "size": 1000,
-      "seconds": 3.4e-05,
-      "budget_seconds": 0.75,
+      "id": "dashboard-1000-widgets-layout",
       "status": "PASS",
-      "result": 86
+      "scale": {
+        "widgets": 1000
+      },
+      "budgets": {
+        "elapsed_seconds": 0.75
+      },
+      "hard_metrics": {
+        "elapsed_seconds": 4.3e-05
+      },
+      "diagnostic_metrics": {
+        "result": 86
+      },
+      "evidence_locator": "evidence/current/performance/stress.json"
     }
-  ],
-  "result": "PASS"
+  ]
 }

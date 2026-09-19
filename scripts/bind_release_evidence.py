@@ -75,6 +75,7 @@ def main() -> int:
             'sha256': sha256(MANIFEST_PATH),
         },
         'uiqa_matrix': manifest['uiqa_matrix'],
+        'performance_qualification': manifest['performance_qualification'],
         'binding_status': 'PASS',
         'result': 'PASS_SOURCE_BOUND_NOT_CERTIFIED',
         'note': 'Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.',

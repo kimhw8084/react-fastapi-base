@@ -1,27 +1,30 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.13
+# Delivery verification — react-fastapi-base 1.0.0-rc.14
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
 ## Actual executed tests
 
 CHG-34 UI accessibility evidence is immutable historical evidence in
-`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.13
+`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.14
 repository readiness is recorded in
-`evidence/current/release/rc13-readiness-matrix.json`. CHG-32
+`evidence/current/release/rc14-readiness-matrix.json`. CHG-35 performance
+qualification is recorded in
+`evidence/current/performance/qualification.json` and
+`evidence/current/release/CHG-35-performance-virtualization.json`. CHG-32
 configuration-contract evidence remains immutable historical evidence in
 `evidence/current/release/CHG-32-configuration-contract.json`. The exact
 base for API compatibility is the integrated main commit supplied for this
-branch: `86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f`.
+branch: `9bf11bd889d13d718656747cc76354d80b46561b`.
 
 | Check | Result |
 |---|---:|
 | FastAPI/backend | PASS; current deterministic backend suite in `evidence/current/full-stack/backend-junit.xml` |
 | Frontend unit/typecheck/build | PASS |
-| React browser workflows | PASS; 26 Playwright cases including 13 canonical CHG-34 UIQA rows and preserved UIQA regressions |
+| React browser workflows | PASS; 27 Playwright cases including 13 canonical CHG-34 UIQA rows, preserved UIQA regressions, and two CHG-35 performance cases |
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `86be626e7b6962ffeb3370c80d66c7c0d6ea7a9f`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `9bf11bd889d13d718656747cc76354d80b46561b`; API major/revision unchanged |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
 
