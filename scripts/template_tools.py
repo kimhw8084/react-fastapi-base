@@ -12,11 +12,16 @@ import shutil
 import tempfile
 import os
 from datetime import datetime, timezone
+import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-PLATFORM_VERSION=(ROOT/'VERSION').read_text(encoding='utf-8').strip()
 MANAGED=('backend/app/platform/','frontend/src/platform/','experience-lab/src/base.ts','experience-lab/src/dialog.ts','experience-lab/src/icons.ts','experience-lab/src/presentation.ts','experience-lab/src/model.ts','experience-lab/src/validation.ts','experience-lab/src/table.ts','experience-lab/src/scheduling.ts','experience-lab/src/spatial.ts','experience-lab/src/charts.ts','experience-lab/src/editors.ts','experience-lab/src/windows.ts','experience-lab/src/manufacturing','experience-lab/src/composition.ts')
-EXCLUDED={'.git','.local','.evidence','.template-upgrades','.venv','.lab-venv','venv','node_modules','dist','__pycache__','.pytest_cache','test-results','playwright-report','.generated-smoke','verification','checkpoints','evidence'}
+EXCLUDED={'.git','.local','.evidence','.template-upgrades','.venv','.lab-venv','venv','node_modules','dist','__pycache__','.pytest_cache','test-results','playwright-report','.generated-smoke','verification','checkpoints','evidence','credentials','secrets','.credentials','.secrets'}
+EXCLUDED_NAMES={'accesskey','access_key','credentials.json','credentials.yml','credentials.yaml','service-account.json','.npmrc','.pypirc'}
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.source_manifest import source_provenance
 
 def digest(path: Path)->str:return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -24,6 +29,7 @@ def source_files(root: Path):
     for path in sorted(root.rglob('*')):
         rel=path.relative_to(root)
         if not path.is_file() or path.is_symlink() or set(rel.parts)&EXCLUDED:continue
+        if path.name.casefold() in EXCLUDED_NAMES:continue
         if path.name.startswith('.env') and not any(x in path.name for x in ('example','sample','template')):continue
         if path.name=='.coverage' or path.name.endswith(('-wal','-shm','-journal','.pid')):continue
         if path.suffix.lower() in {'.pyc','.db','.sqlite','.sqlite3','.zip','.pem','.key','.ttf','.otf','.woff','.woff2'}:continue
@@ -50,7 +56,14 @@ def create_application(source: Path, target: Path, app_id: str, name: str, theme
         runtime_path=stage/'frontend/public/runtime-config.json'
         runtime=json.loads(runtime_path.read_text());runtime.update(defaultTheme=theme,titleOverride=name)
         runtime_path.write_text(json.dumps(runtime,indent=2)+'\n')
-        (stage/'template.lock.json').write_text(json.dumps({'schema_version':1,'platform_version':PLATFORM_VERSION,'reference_source_commit':'66244b997a70b85e6e887870c96db958f3f0d22d','managed':core_manifest(stage)},indent=2)+'\n')
+        provenance=source_provenance(source)
+        (stage/'template.lock.json').write_text(json.dumps({
+            'schema_version':2,
+            'platform_version':(source/'VERSION').read_text(encoding='utf-8').strip(),
+            'executable_source_commit':provenance['executable_source_commit'],
+            'source_digest':provenance['source_digest'],
+            'managed':core_manifest(stage),
+        },indent=2)+'\n')
         if target.exists():raise ValueError('Destination appeared while generating.')
         os.rename(stage,target)
     except BaseException:
@@ -84,10 +97,25 @@ def _upgrade_root(app:Path)->Path:
     path.mkdir(exist_ok=True)
     return path
 
+def validate_template_lock(path:Path)->dict:
+    try:
+        lock=json.loads(path.read_text())
+    except (OSError,json.JSONDecodeError) as error:
+        raise ValueError('Template lock is missing or invalid.') from error
+    if lock.get('schema_version')!=2:
+        raise ValueError('Unsupported template lock; regenerate the application with the current template.')
+    if not re.fullmatch(r'[0-9a-fA-F]{40}',str(lock.get('executable_source_commit',''))):
+        raise ValueError('Template lock executable source commit is invalid.')
+    if not re.fullmatch(r'[0-9a-fA-F]{64}',str(lock.get('source_digest',''))):
+        raise ValueError('Template lock source digest is invalid.')
+    if not isinstance(lock.get('managed'),dict):
+        raise ValueError('Template lock managed-core hashes are invalid.')
+    return lock
+
 def upgrade_plan(app: Path,incoming: Path)->dict:
     app=app.resolve();incoming=incoming.resolve()
-    baseline=json.loads((app/'template.lock.json').read_text())
-    if baseline.get('schema_version')!=1:raise ValueError('Unsupported template lock.')
+    baseline=validate_template_lock(app/'template.lock.json')
+    incoming_lock=validate_template_lock(incoming/'template.lock.json')
     previous=baseline['managed'];new=core_manifest(incoming);changes=[]
     for rel in sorted(set(previous)|set(new)):
         current_path=_safe_managed_path(app,rel)
@@ -98,7 +126,9 @@ def upgrade_plan(app: Path,incoming: Path)->dict:
         elif old==next_hash:kind='preserve_local'
         else:kind='conflict'
         if kind!='unchanged':changes.append({'path':rel,'action':kind,'base':old,'current':current,'incoming':next_hash})
-    return {'schema_version':1,'mode':'dry_run','conflicts':sum(c['action']=='conflict' for c in changes),'plan_hash':_plan_hash(changes),'changes':changes,
+    return {'schema_version':2,'mode':'dry_run','conflicts':sum(c['action']=='conflict' for c in changes),'plan_hash':_plan_hash(changes),'changes':changes,
+            'base_provenance':{'platform_version':baseline['platform_version'],'executable_source_commit':baseline['executable_source_commit'],'source_digest':baseline['source_digest']},
+            'incoming_provenance':{'platform_version':incoming_lock['platform_version'],'executable_source_commit':incoming_lock['executable_source_commit'],'source_digest':incoming_lock['source_digest']},
             'note':'Application config and feature directories are outside managed ownership. Apply requires APP-STOPPED acknowledgement and an exact plan hash.'}
 
 def upgrade_apply(app:Path,incoming:Path,expected_plan_hash:str,maintenance:str)->Path:
@@ -130,9 +160,14 @@ def upgrade_apply(app:Path,incoming:Path,expected_plan_hash:str,maintenance:str)
                 if current_path.exists():current_path.unlink()
             journal['changes'].append({'path':rel,'action':row['action'],'before':row['current'],'after':row['incoming'],'had_before':current is not None})
             _atomic_bytes(journal_dir/'journal.json',json.dumps(journal,indent=2).encode()+b'\n')
-        incoming_lock=incoming/'template.lock.json'
-        incoming_version=json.loads(incoming_lock.read_text()).get('platform_version') if incoming_lock.is_file() else 'incoming'
-        lock=json.loads(lock_before);lock['platform_version']=incoming_version;lock['managed']=core_manifest(incoming)
+        incoming_lock_path=incoming/'template.lock.json'
+        incoming_lock=validate_template_lock(incoming_lock_path)
+        lock=json.loads(lock_before)
+        lock['schema_version']=2
+        lock['platform_version']=incoming_lock['platform_version']
+        lock['executable_source_commit']=incoming_lock['executable_source_commit']
+        lock['source_digest']=incoming_lock['source_digest']
+        lock['managed']=core_manifest(incoming)
         _atomic_bytes(lock_path,json.dumps(lock,indent=2).encode()+b'\n')
         journal['status']='applied';journal['applied_at']=datetime.now(timezone.utc).isoformat();journal['template_lock_after']=digest(lock_path)
         _atomic_bytes(journal_dir/'journal.json',json.dumps(journal,indent=2).encode()+b'\n')

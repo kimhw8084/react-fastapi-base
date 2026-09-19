@@ -135,6 +135,12 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'sha256': sha256_file(performance_path) if performance_path.is_file() else None,
         'required_for': 'code',
     }
+    reusable_path = ROOT / 'evidence/current/reuse/qualification.json'
+    reusable_evidence = {
+        'locator': str(reusable_path.relative_to(ROOT)),
+        'sha256': sha256_file(reusable_path) if reusable_path.is_file() else None,
+        'required_for': 'code',
+    }
     manifest = {
         'schema_version': 2,
         'product': 'react-fastapi-base',
@@ -148,6 +154,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'verification': {'locator': verification_path, 'source_commit': source_commit, 'source_digest': source_digest},
         'uiqa_matrix': uiqa_evidence,
         'performance_qualification': performance_evidence,
+        'reusable_platform_qualification': reusable_evidence,
         'api_compatibility_base_sha': api_compatibility_base_sha,
         'target_base_sha': api_compatibility_base_sha,
         'evidence_commit': None,
@@ -173,6 +180,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'manifest': {'locator': str(MANIFEST_PATH.relative_to(ROOT)), 'sha256': manifest_digest},
         'uiqa_matrix': uiqa_evidence,
         'performance_qualification': performance_evidence,
+        'reusable_platform_qualification': reusable_evidence,
         'binding_status': 'PENDING_EVIDENCE_COMMIT',
         'result': 'NOT_CERTIFIED',
         'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',

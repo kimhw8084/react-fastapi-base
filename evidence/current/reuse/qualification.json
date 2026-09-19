@@ -1,0 +1,87 @@
+{
+  "candidate_head": "ac05f51d880d075125867f7764d735dad0dec676",
+  "candidate_version": "1.0.0-rc.15",
+  "checkout_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "checks": {
+    "clean_clone_bootstrap": true,
+    "documentation_and_commands": true,
+    "maintained_gates": {
+      "api-compatibility": "PASS",
+      "architecture": "PASS",
+      "backend-tests": "PASS",
+      "browser-e2e-accessibility": "PASS",
+      "candidate-progression": "PASS",
+      "checkpoint-manifest": "PASS",
+      "configuration-contract": "PASS",
+      "engineering-widget-layer": "PASS",
+      "frontend-build": "PASS",
+      "frontend-storybook": "PASS",
+      "frontend-typecheck": "PASS",
+      "frontend-unit": "PASS",
+      "generated-contracts": "PASS",
+      "localhost-http": "PASS",
+      "macos-fresh-install": "PASS",
+      "npm-advisories": "PASS",
+      "object-inclusive-backup-restore": "PASS",
+      "performance-contract": "PASS",
+      "performance-owned-algorithms": "PASS",
+      "performance-results": "PASS",
+      "performance-stress": "PASS",
+      "python-advisories": "PASS",
+      "reference-apps": "PASS",
+      "required-catalog-completeness": "PASS",
+      "security-source": "PASS",
+      "static-server": "PASS",
+      "tooling-tests": "PASS",
+      "typescript-syntax-and-pure-client": "PASS",
+      "ui-state-matrix-contract": "PASS",
+      "ui-state-matrix-results": "PASS",
+      "upgrade-fixture": "PASS",
+      "version-metadata": "PASS"
+    },
+    "provenance": true,
+    "reference_app_generation": true,
+    "upgrade_and_rollback": true
+  },
+  "code_ready": true,
+  "company_qualification": {
+    "gates": {
+      "deployment": "BLOCKED_EXTERNAL",
+      "identity": "BLOCKED_EXTERNAL",
+      "operations": "BLOCKED_EXTERNAL",
+      "storage": "BLOCKED_EXTERNAL"
+    },
+    "note": "Reusable-platform PASS is repository evidence only; company identity, storage, deployment, operations and overall CompanyQualification remain external.",
+    "production_ready": false,
+    "status": "BLOCKED_EXTERNAL"
+  },
+  "executable_source_commit": "ac05f51d880d075125867f7764d735dad0dec676",
+  "inputs": {
+    "clean_clone": {
+      "locator": "evidence/current/full-stack/fresh-clone-macos.json",
+      "sha256": "f279bc7f091e6f347c9656891044695e0d61c6f1b28a7be088dea48ee1075d04"
+    },
+    "reference_apps": {
+      "locator": "evidence/current/release/reference-apps.json",
+      "sha256": "35025fb6941c557008563e3041902e7f291417004b1b540654aa5b52e4a9a6fc"
+    },
+    "upgrade_fixture": {
+      "locator": "evidence/current/full-stack/upgrade-fixture.json",
+      "sha256": "3c3646a852acc2c17db320fb1b6ee8bb52442dca761bbfdf05ca067f9e80bf93"
+    }
+  },
+  "problems": [],
+  "production_ready": false,
+  "project": "react-fastapi-base",
+  "qualification_status": "PASS",
+  "report_type": "reusable-platform-qualification",
+  "result": "PASS",
+  "schema_version": 1,
+  "source_binding": {
+    "candidate_checkout": "ac05f51d880d075125867f7764d735dad0dec676",
+    "source_digest": "bf3e68f37ef24db914c227c64de414d69945b40db3abb76059211ab0ccbf56dd",
+    "verified_executable_source": "ac05f51d880d075125867f7764d735dad0dec676"
+  },
+  "source_digest": "bf3e68f37ef24db914c227c64de414d69945b40db3abb76059211ab0ccbf56dd",
+  "status": "PASS"
+}

@@ -15,7 +15,8 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.release_version import ReleaseProgressionError, assert_candidate_progression
 from scripts.release_evidence import write_repository_release_evidence
-from scripts.source_manifest import executable_source_commit, source_digest, source_hashes
+from scripts.reusable_platform_qualification import build_qualification
+from scripts.source_manifest import checkout_commit, executable_source_commit, source_digest, source_hashes
 
 def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     output.mkdir(parents=True,exist_ok=True)
@@ -124,6 +125,23 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         source_commit=executable_source_commit(ROOT)
     except ValueError:
         source_commit=None
+    if source_commit is not None:
+        reusable = build_qualification(
+            results=results,
+            candidate_head=checkout_commit(ROOT),
+            executable_source_commit=source_commit,
+            source_digest=source_digest_value,
+            output=ROOT / 'evidence/current/reuse/qualification.json',
+        )
+        results.append({
+            'name': 'reusable-platform-qualification',
+            'status': reusable['status'],
+            'required_for': 'code' if release else 'release',
+            'log': 'reusable-platform-qualification.json',
+            'result': reusable['result'],
+        })
+    else:
+        blocked('reusable-platform-qualification', 'Canonical executable-source identity is unavailable.')
     (output/'source-hashes.json').write_text(json.dumps(source_hash_map,indent=2)+'\n')
     code_ready=all(x['status']=='PASS' for x in results if x.get('required_for','code')=='code')
     api_base_sha=None
@@ -139,7 +157,7 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
         verification_path='evidence/current/full-stack/verification.json',
         api_compatibility_base_sha=api_base_sha,
     )
-    result={'schema_version':1,'source_commit':source_commit,'source_digest':source_digest_value,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if code_ready else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest_value},'release_status':'NOT_CERTIFIED',
+    result={'schema_version':2,'candidate_head':checkout_commit(ROOT),'checkout_commit':checkout_commit(ROOT),'executable_source_commit':source_commit,'source_commit':source_commit,'source_digest':source_digest_value,'source_hashes':'source-hashes.json','python_version':platform.python_version(),'platform':platform.platform(),'created_at':datetime.now(timezone.utc).isoformat(),'timestamp':datetime.now(timezone.utc).isoformat(),'command':[sys.executable,'scripts/verify.py','--output',str(output),*(['--release'] if release else [])],'exit_code':0 if code_ready else 1,'environment':{'platform':platform.platform(),'python':platform.python_version()},'hashes':{'source_digest':source_digest_value},'release_status':'NOT_CERTIFIED',
       'production_ready':False,'code_ready':code_ready,'readiness_matrix':release_evidence['readiness_matrix'],'readiness_matrix_sha256':release_evidence['readiness_matrix_sha256'],'results':results,
       'note':'Company qualification is a separate operator-controlled release process. This tool never issues a production certificate from local test success.'}
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
