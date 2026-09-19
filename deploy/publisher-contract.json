@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
+  "canonical_contract": "contracts/independent-deployment.json",
   "status": "not_company_verified",
+  "independent_publishers": true,
   "publisher_environment": ["BASE_FRONTEND_HOSTS", "BASE_FRONTEND_RUNTIME_CONFIG"],
   "browser_runtime_keys": ["schemaVersion", "apiBase", "defaultTheme", "titleOverride"],
   "services": [

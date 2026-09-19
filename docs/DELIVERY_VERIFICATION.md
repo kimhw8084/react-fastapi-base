@@ -1,18 +1,25 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.16
+# Delivery verification — react-fastapi-base 1.0.0-rc.17
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
+
+RC.17's repository deployment proof is recorded in
+`evidence/current/deployment/qualification.json`. It proves separate frontend
+and backend publishers only; the final company deployment gate remains
+`BLOCKED_EXTERNAL`.
 
 ## Actual executed tests
 
 CHG-34 UI accessibility evidence is immutable historical evidence in
-`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.16
+`evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.17
 repository readiness is recorded in
-`evidence/current/release/rc16-readiness-matrix.json`. CHG-35 performance
+`evidence/current/release/rc17-readiness-matrix.json`. The independent
+deployment qualification is recorded in
+`evidence/current/deployment/qualification.json`. CHG-35 performance
 qualification is recorded in
 `evidence/current/performance/qualification.json` and
 `evidence/current/release/CHG-35-performance-virtualization.json`. CHG-32
 configuration-contract evidence remains immutable historical evidence in
-`evidence/current/release/CHG-32-configuration-contract.json`. RC.16
+`evidence/current/release/CHG-32-configuration-contract.json`. RC.17
 reusable-platform qualification is recorded in `evidence/current/reuse/qualification.json`,
 and repository storage qualification is recorded in
 `evidence/current/storage/qualification.json`. The exact base for API

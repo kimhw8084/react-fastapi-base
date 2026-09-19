@@ -1,4 +1,4 @@
-# Company PaaS deployment contract — 1.0.0-rc.16, not yet exercised on company infrastructure
+# Independent frontend/backend deployment contract — 1.0.0-rc.17, repository-qualified only
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
@@ -17,7 +17,7 @@ and real `AccessKey`, never `DevelopmentIdentity`.
 
 ## Backend project
 
-Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The current RC.7 release verification environment is recorded in generated evidence; the company PaaS runtime must fall within the supported range and be exercised during qualification.
+Root: backend/. Native ASGI import: app.main:app. Optional starting file: run.py. Backend contract: Python `>=3.11,<3.15`. The company PaaS runtime must fall within the supported range and be exercised during external qualification.
 
 ```bash
 python -m pip install -r requirements.lock
@@ -39,6 +39,14 @@ to require the final schema-v2 composite `CompanyQualification`; schema-v1
 infrastructure-only records fail closed with a migration diagnostic.
 
 ## Frontend project
+
+The canonical machine-readable independent-publisher contract is
+[`contracts/independent-deployment.json`](../contracts/independent-deployment.json).
+It defines the frontend static/Node publisher and backend ASGI service as
+separate deployable units. The repository qualification runs both real
+processes on distinct loopback ports with a non-empty `apiBase`; it does not
+qualify the company PaaS path. Same-origin ingress remains a possible,
+separately operated topology only when the ingress owns `/api/*` routing.
 
 Root: frontend/. Clean build, after resolving and reviewing the first lock:
 

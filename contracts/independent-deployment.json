@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "contract_id": "react-fastapi-base.independent-deployment",
+  "candidate_version": "1.0.0-rc.17",
+  "status": "repository_supported_not_company_certified",
+  "topology": {
+    "independent_publishers": true,
+    "same_origin_ingress": {
+      "supported": true,
+      "api_base": "blank_only_when_operator_ingress_routes_same_origin_api",
+      "qualification_scope": "documented_possible_topology_not_this_qualification"
+    },
+    "independent_publisher": {
+      "api_base_required": true,
+      "api_fallback": "404",
+      "implicit_reverse_proxy": false,
+      "co_deployment_dependency": false
+    }
+  },
+  "api_compatibility": {
+    "major": 1,
+    "frontend_compiled_revision": 1,
+    "backend_overlap_rule": "same_major_and_backend_revision_greater_than_or_equal_to_frontend_compiled_revision",
+    "rollout_order": "backend_first",
+    "bootstrap_failure": "missing_incompatible_or_older_backend_fails_closed"
+  },
+  "units": [
+    {
+      "id": "frontend",
+      "role": "frontend_static_node_publisher",
+      "root": "frontend",
+      "build": {
+        "command": ["npm", "run", "build"],
+        "artifact": "dist"
+      },
+      "start": {
+        "command": ["node", "server.mjs"],
+        "port_env": "PORT",
+        "host_env": "HOST"
+      },
+      "health": "/healthz",
+      "public_origin": {
+        "source": "operator_configured_publisher_host",
+        "production_policy": "explicit_non_local_host"
+      },
+      "runtime_config": {
+        "path": "/runtime-config.json",
+        "override_env": "BASE_FRONTEND_RUNTIME_CONFIG",
+        "keys": ["schemaVersion", "apiBase", "defaultTheme", "titleOverride"],
+        "api_base": "exact_absolute_backend_origin_for_independent_publisher"
+      },
+      "host_policy": {
+        "environment_key": "NODE_ENV",
+        "hosts_key": "BASE_FRONTEND_HOSTS",
+        "production_requires_explicit_hosts": true
+      },
+      "api_route_policy": {
+        "path_prefix": "/api/",
+        "behavior": "404_non_proxy"
+      }
+    },
+    {
+      "id": "backend",
+      "role": "backend_asgi_service",
+      "root": "backend",
+      "asgi_target": "app.main:app",
+      "starting_file": "run.py",
+      "build": {
+        "command": ["python", "-m", "pip", "install", "-r", "requirements.lock"]
+      },
+      "start": {
+        "command": ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}", "--workers", "1"],
+        "port_env": "PORT",
+        "host_env": "HOST"
+      },
+      "health": "/api/v1/health",
+      "readiness": "/api/v1/readiness",
+      "public_origin": {
+        "source": "operator_configured_asgi_host",
+        "production_policy": "explicit_https_origin"
+      },
+      "host_policy": {
+        "environment_key": "BASE_ENVIRONMENT",
+        "origins_key": "BASE_ALLOWED_ORIGINS",
+        "hosts_key": "BASE_ALLOWED_HOSTS",
+        "production_requires_explicit_identity_and_deployment_binding": true
+      },
+      "migration": "explicit_operator_only"
+    }
+  ],
+  "evidence": {
+    "repository_proof_profile": "development_or_test",
+    "repository_proof_requires_non_empty_api_base": true,
+    "company_qualification": "BLOCKED_EXTERNAL",
+    "forbidden_surfaces": [
+      "credential_values",
+      "private_filesystem_values",
+      "qualification_payloads",
+      "secret_fingerprints",
+      "server_private_profile_storage_or_identity_fields"
+    ],
+    "required_identity": [
+      "candidate_head",
+      "executable_source_commit",
+      "source_digest",
+      "contract_sha256"
+    ]
+  }
+}
