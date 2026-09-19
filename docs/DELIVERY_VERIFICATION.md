@@ -23,7 +23,7 @@ configuration-contract evidence remains immutable historical evidence in
 reusable-platform qualification is recorded in `evidence/current/reuse/qualification.json`,
 and repository storage qualification is recorded in
 `evidence/current/storage/qualification.json`. The exact base for API
-compatibility is `2b1077eddaa42b700afdb69db09ca12b6cc1373c`.
+compatibility is `a5eb5a4d84695e80defe0d1f24679f6557c79c5f`.
 
 | Check | Result |
 |---|---:|
@@ -33,7 +33,7 @@ compatibility is `2b1077eddaa42b700afdb69db09ca12b6cc1373c`.
 | Storybook build | PASS |
 | Experience Lab | PASS; current machine-readable report |
 | Contracts/configuration/architecture/security/performance | PASS; configuration contract covers 18 backend, 2 publisher and 4 browser keys |
-| API compatibility | PASS; Git-resolved base `2b1077eddaa42b700afdb69db09ca12b6cc1373c`; API major/revision unchanged |
+| API compatibility | PASS; Git-resolved base `a5eb5a4d84695e80defe0d1f24679f6557c79c5f`; API major/revision unchanged |
 | Repository storage qualification | PASS locally; conservative filesystem/SQLite/object recovery contract only; final company storage remains `BLOCKED_EXTERNAL` |
 | Catalog release contract | PASS; 605 generic family entries |
 | Exact-candidate clean-install proof | PASS; setup through React E2E, with macOS qualification PASS on the current Darwin runner |
