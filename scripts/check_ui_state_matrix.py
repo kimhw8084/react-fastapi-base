@@ -169,13 +169,19 @@ def _validate_runtime_proof_coverage(matrix: dict[str, Any], by_state: dict[str,
 
 def _validate_results(matrix_path: Path, by_state: dict[str, dict[str, Any]], global_dimensions: set[str], results_path: Path) -> None:
     results = _load(results_path)
-    _require(results.get('schema_version') == 1, 'UIQA result manifest schema_version must be 1.')
+    _require(results.get('schema_version') in {1, 2}, 'UIQA result manifest schema_version must be 1 or 2.')
     _require(results.get('matrix_id') == 'project-os-ui-state-matrix', 'UIQA result manifest matrix_id is unknown.')
     _require(results.get('matrix_sha256') == hashlib.sha256(matrix_path.read_bytes()).hexdigest(), 'UIQA result manifest is not bound to the canonical matrix bytes.')
     _require(results.get('proof_model') == 'runtime-assertion-v1', 'UIQA result manifest must identify the runtime assertion proof model.')
     _require('timestamp' not in results and 'created_at' not in results, 'UIQA result metadata must be deterministic and may not contain timestamps.')
     source_commit = results.get('source_commit')
     _require(source_commit is None or (isinstance(source_commit, str) and COMMIT_PATTERN.fullmatch(source_commit)), 'UIQA result source_commit must be a full commit SHA or null.')
+    if results.get('schema_version') == 2:
+        _require(results.get('checkout_commit') == results.get('candidate_head'), 'UIQA checkout and candidate identities must agree.')
+        _require(isinstance(results.get('checkout_commit'), str) and COMMIT_PATTERN.fullmatch(results['checkout_commit']), 'UIQA checkout_commit must be a full commit SHA.')
+        _require(isinstance(results.get('executable_source_commit'), str) and COMMIT_PATTERN.fullmatch(results['executable_source_commit']), 'UIQA executable_source_commit must be a full commit SHA.')
+        _require(results.get('source_commit') == results.get('executable_source_commit'), 'UIQA source_commit must identify the canonical executable source.')
+        _require(isinstance(results.get('source_digest'), str) and SHA256_PATTERN.fullmatch(results['source_digest']), 'UIQA source_digest must be a SHA-256 digest.')
     rows = results.get('results')
     _require(isinstance(rows, list), 'UIQA result manifest results must be a list.')
     expected_ids = {state_id for state_id, row in by_state.items() if row['applicability'] == 'applicable'}

@@ -12,6 +12,10 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON = ROOT / 'backend/.venv/bin/python'
+import sys
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.source_manifest import source_provenance
 APPS = (
     ('operational-registry', 'Operational Registry', 'operations'),
     ('datacenter-estate', 'Datacenter Estate', 'operations'),
@@ -44,8 +48,10 @@ def main() -> int:
     node_bins = sorted((Path.home() / '.nvm/versions/node').glob('v22*/bin'))
     if not node_bins:
         raise RuntimeError('Node 22 is required for reference app proof.')
-    env = os.environ.copy()
+    env = {key: value for key, value in os.environ.items() if not key.startswith('BASE_') and key != 'AccessKey'}
     env['PATH'] = str(node_bins[-1]) + os.pathsep + env.get('PATH', '')
+    provenance = source_provenance(ROOT)
+    version = (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
     proof = []
     started = time.monotonic()
     with tempfile.TemporaryDirectory(prefix='react-fastapi-reference-apps-') as raw:
@@ -55,18 +61,66 @@ def main() -> int:
             tools.create_application(ROOT, app, app_id, name, theme)
             config = json.loads((app / 'backend/app/config/application.json').read_text())
             runtime = json.loads((app / 'frontend/public/runtime-config.json').read_text())
+            lock = tools.validate_template_lock(app / 'template.lock.json')
             if config['id'] != app_id or config['name'] != name or runtime['titleOverride'] != name:
                 raise RuntimeError(f'Generated configuration mismatch for {app_id}.')
+            if lock['platform_version'] != version or lock['executable_source_commit'] != provenance['executable_source_commit'] or lock['source_digest'] != provenance['source_digest']:
+                raise RuntimeError(f'Template lock provenance mismatch for {app_id}.')
+            if 'reference_source_commit' in lock or lock['managed'] != tools.core_manifest(app):
+                raise RuntimeError(f'Template lock managed-core manifest mismatch for {app_id}.')
+            runtime_text = json.dumps(runtime, sort_keys=True)
+            config_text = json.dumps(config, sort_keys=True)
+            if set(runtime) != {'schemaVersion', 'apiBase', 'defaultTheme', 'titleOverride'}:
+                raise RuntimeError(f'Generated runtime configuration has an unsafe shape for {app_id}.')
+            if any(token in (runtime_text + config_text).casefold() for token in ('accesskey', 'credential', 'password', 'authorization', 'secret', 'token')):
+                raise RuntimeError(f'Generated public/configuration metadata is secret-like for {app_id}.')
             steps = []
-            steps.append({'name': 'contracts', **run([str(PYTHON), 'scripts/generate_contracts.py'], app, {**env, 'BASE_ENVIRONMENT': 'test', 'BASE_PROFILE': 'development', 'PYTHONPATH': str(app / 'backend')})})
+            app_env = {**env, 'BASE_ENVIRONMENT': 'test', 'BASE_PROFILE': 'development', 'BASE_DATA_ROOT': str(root / f'{app_id}-runtime'), 'BASE_DEV_USER': 'demo.admin', 'PYTHONPATH': str(app / 'backend')}
+            bootstrap = (
+                "import tempfile; from pathlib import Path; "
+                "from fastapi.testclient import TestClient; "
+                "from app.main import create_app; "
+                "from app.platform.database import Database; "
+                "from app.platform.provision import provision; "
+                "from app.platform.settings import Settings; "
+                "root=Path(tempfile.mkdtemp(prefix='reference-app-runtime-')); "
+                "settings=Settings(environment='test', profile='development', data_root=root, dev_user='demo.admin'); "
+                "database=Database(settings); tenant=provision(database, 'Reference fixture', 'demo.admin'); database.close(); "
+                "app=create_app(settings); client=TestClient(app); "
+                "payload=client.get('/api/v1/bootstrap').json(); "
+                "assert payload['profile']=='development' and payload['user_id']=='demo.admin'; "
+                "client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':payload['csrf_token']}); "
+                "created=client.post('/api/v1/projects', json={'title':'Reference project','summary':'fixture','status':'planned','owner':'demo.admin'}); "
+                "assert created.status_code==201 and client.get('/api/v1/projects').json()['total']==1; "
+                "assert 'AccessKey' not in str(payload) and 'data_root' not in str(payload) and 'profile_runtime' not in str(payload); client.close()"
+            )
+            steps.append({'name': 'development-bootstrap-and-migration', **run([str(PYTHON), '-c', bootstrap], app / 'backend', app_env)})
+            steps.append({'name': 'contracts', **run([str(PYTHON), 'scripts/generate_contracts.py'], app, app_env)})
             for label, command in (('frontend-install', ['npm', 'ci', '--ignore-scripts']), ('frontend-typecheck', ['npm', 'run', 'typecheck']), ('frontend-tests', ['npm', 'test']), ('frontend-build', ['npm', 'run', 'build'])):
                 steps.append({'name': label, **run(command, app / 'frontend', env)})
             if any(step['exit_code'] != 0 for step in steps):
                 failed = next(step for step in steps if step['exit_code'] != 0)
                 raise RuntimeError(f'Reference app proof failed for {app_id}: {failed}')
-            proof.append({'id': app_id, 'name': name, 'theme': theme, 'steps': steps, 'template_lock': json.loads((app / 'template.lock.json').read_text())['platform_version']})
-    source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
-    report = {'schema_version': 1, 'source_commit': source_commit, 'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'command': ['python3', 'scripts/reference_app_proof.py'], 'exit_code': 0, 'environment': {'platform': os.uname().sysname, 'machine': os.uname().machine}, 'hashes': {'source_commit': source_commit}, 'result': 'PASS', 'duration_seconds': round(time.monotonic() - started, 3), 'apps': proof}
+            proof.append({'id': app_id, 'name': name, 'theme': theme, 'steps': steps, 'template_lock': lock})
+    report = {
+        'schema_version': 2,
+        'candidate_head': provenance['checkout_commit'],
+        'checkout_commit': provenance['checkout_commit'],
+        'executable_source_commit': provenance['executable_source_commit'],
+        'source_digest': provenance['source_digest'],
+        'source_commit': provenance['executable_source_commit'],
+        'created_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        'command': ['python3', 'scripts/reference_app_proof.py'],
+        'exit_code': 0,
+        'environment': {'platform': os.uname().sysname, 'machine': os.uname().machine, 'profile': 'development'},
+        'hashes': {'source_digest': provenance['source_digest']},
+        'profile': 'development',
+        'runtime_non_secret': True,
+        'result': 'PASS',
+        'duration_seconds': round(time.monotonic() - started, 3),
+        'apps': proof,
+    }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))

@@ -63,6 +63,13 @@ def test_generated_application_contains_compiled_lab_without_old_evidence(tmp_pa
     assert not (target/'checkpoints').exists()
     assert not (target/'evidence').exists()
     lock=json.loads((target/'template.lock.json').read_text())
+    from scripts.source_manifest import source_provenance
+    provenance = source_provenance(ROOT)
+    assert lock['schema_version'] == 2
+    assert lock['platform_version'] == (ROOT/'VERSION').read_text().strip()
+    assert lock['executable_source_commit'] == provenance['executable_source_commit']
+    assert lock['source_digest'] == provenance['source_digest']
+    assert 'reference_source_commit' not in lock
     assert 'experience-lab/src/presentation.ts' in lock['managed']
     assert 'experience-lab/src/dialog.ts' in lock['managed']
     assert 'experience-lab/src/app.ts' not in lock['managed']
@@ -85,6 +92,15 @@ def test_upgrade_apply_and_rollback_are_hash_bound_and_preserve_app_config(tmp_p
     tools.upgrade_rollback(app,journal,'APP-STOPPED')
     assert (app/rel).read_bytes()==original
     assert json.loads(journal.read_text())['status']=='rolled_back'
+
+
+def test_generator_excludes_credentials_and_private_runtime_state(tmp_path):
+    for relative in ('credentials.json', 'nested/accesskey', 'secrets/token.txt', '.npmrc'):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('not for a generated application')
+    copied = {relative for _, relative in tools.source_files(tmp_path)}
+    assert copied == set()
 
 
 def test_upgrade_rollback_refuses_post_upgrade_edits(tmp_path):

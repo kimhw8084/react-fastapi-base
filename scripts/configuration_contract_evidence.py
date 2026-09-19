@@ -10,14 +10,13 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'backend'))
 
 from app.platform.configuration_contract import metadata_contains_forbidden_runtime_values  # noqa: E402
 from app.platform.version import API_CONTRACT_REVISION, API_MAJOR, VERSION  # noqa: E402
-
-
-def _git_head() -> str:
-    return subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+from scripts.source_manifest import source_provenance  # noqa: E402
 
 
 def _sha256(path: Path) -> str:
@@ -29,6 +28,7 @@ def main() -> int:
     parser.add_argument('--base-sha', required=True)
     parser.add_argument('--output', type=Path, default=ROOT / 'evidence/current/release/CHG-32-configuration-contract.json')
     args = parser.parse_args()
+    provenance = source_provenance(ROOT)
 
     contract_path = ROOT / 'deploy/configuration-contract.json'
     contract = json.loads(contract_path.read_text(encoding='utf-8'))
@@ -60,7 +60,11 @@ def main() -> int:
         'project': 'react-fastapi-base',
         'change': 'CHG-32',
         'version': VERSION,
-        'source_commit': _git_head(),
+        'candidate_head': provenance['checkout_commit'],
+        'checkout_commit': provenance['checkout_commit'],
+        'executable_source_commit': provenance['executable_source_commit'],
+        'source_digest': provenance['source_digest'],
+        'source_commit': provenance['executable_source_commit'],
         'base_sha': args.base_sha,
         'contract': {
             'path': 'deploy/configuration-contract.json',

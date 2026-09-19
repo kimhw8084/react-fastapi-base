@@ -49,6 +49,19 @@ def source_digest(hashes: dict[str, str] | None = None) -> str:
     return hashlib.sha256(json.dumps(values, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
+def checkout_commit(root: Path = ROOT) -> str:
+    result = subprocess.run(
+        ['git', 'rev-parse', 'HEAD'],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        raise ValueError('The checkout commit is unavailable.')
+    return result.stdout.strip()
+
+
 def executable_source_commit(root: Path = ROOT) -> str:
     result = subprocess.run(
         ['git', 'log', '-1', '--format=%H', '--', *SOURCE_DIRECTORIES, 'dev'],
@@ -60,6 +73,22 @@ def executable_source_commit(root: Path = ROOT) -> str:
     if result.returncode != 0 or not result.stdout.strip():
         raise ValueError('The executable-source commit is unavailable.')
     return result.stdout.strip()
+
+
+def source_provenance(root: Path = ROOT) -> dict[str, str]:
+    """Return the canonical identity used by source-bound repository evidence.
+
+    ``checkout_commit`` is the exact candidate/evidence checkout.  It may be
+    newer than ``executable_source_commit`` when a commit only adds evidence
+    or release binding metadata.  The digest is calculated from the canonical
+    executable-source hash set, never from generated evidence or local state.
+    """
+    hashes = source_hashes(root)
+    return {
+        'checkout_commit': checkout_commit(root),
+        'executable_source_commit': executable_source_commit(root),
+        'source_digest': source_digest(hashes),
+    }
 
 
 def source_hashes_at_git(commit: str, *, root: Path = ROOT) -> dict[str, str]:

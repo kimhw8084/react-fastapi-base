@@ -16,6 +16,8 @@ import tempfile
 from fastapi.testclient import TestClient
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'backend'))
 
 from app.main import create_app  # noqa: E402
@@ -24,6 +26,7 @@ from app.platform.database import Database  # noqa: E402
 from app.platform.models import Attachment  # noqa: E402
 from app.platform.provision import provision  # noqa: E402
 from app.platform.settings import Settings  # noqa: E402
+from scripts.source_manifest import source_provenance  # noqa: E402
 
 
 def main() -> int:
@@ -31,12 +34,18 @@ def main() -> int:
     parser.add_argument('--output', type=Path, default=ROOT / 'evidence/current/recovery/object-restore.json')
     args = parser.parse_args()
     started = datetime.now(timezone.utc)
+    provenance = source_provenance(ROOT)
     result: dict[str, object] = {
-        'schema_version': 1,
-        'source_commit': subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT, capture_output=True, text=True, check=False).stdout.strip(),
+        'schema_version': 2,
+        'candidate_head': provenance['checkout_commit'],
+        'checkout_commit': provenance['checkout_commit'],
+        'executable_source_commit': provenance['executable_source_commit'],
+        'source_digest': provenance['source_digest'],
+        'source_commit': provenance['executable_source_commit'],
         'timestamp': started.isoformat(),
         'command': [sys.executable, 'scripts/recovery_fixture.py', '--output', str(args.output)],
         'environment': {'platform': sys.platform, 'python': sys.version.split()[0]},
+        'hashes': {'source_digest': provenance['source_digest']},
         'result': 'FAIL',
         'exit_code': 1,
     }

@@ -65,12 +65,16 @@ test.afterAll(()=>{
  mkdirSync(dirname(resultsFile),{recursive:true})
  const ordered=[...results].sort((left,right)=>left.state_id.localeCompare(right.state_id))
  const manifest={
-  schema_version:1,
+  schema_version:2,
   result_kind:'browser-computed-uiqa',
   proof_model:'runtime-assertion-v1',
   matrix_id:matrix.matrix_id,
   matrix_sha256:createHash('sha256').update(readFileSync(matrixFile)).digest('hex'),
-  source_commit:process.env.UIQA_SOURCE_COMMIT??null,
+  checkout_commit:process.env.UIQA_CHECKOUT_COMMIT??null,
+  candidate_head:process.env.UIQA_CHECKOUT_COMMIT??null,
+  executable_source_commit:process.env.UIQA_EXECUTABLE_SOURCE_COMMIT??process.env.UIQA_SOURCE_COMMIT??null,
+  source_digest:process.env.UIQA_SOURCE_DIGEST??null,
+  source_commit:process.env.UIQA_EXECUTABLE_SOURCE_COMMIT??process.env.UIQA_SOURCE_COMMIT??null,
   overall_status:ordered.length===rows.length&&ordered.every(row=>row.status==='PASS')?'PASS':'FAIL',
   results:ordered,
  }

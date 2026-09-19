@@ -1,10 +1,10 @@
-> **Implementation addendum (1.0.0-rc.14):** this candidate adds the canonical source-bound performance and AG Grid virtualization regression qualification on top of RC.13's release/evidence lifecycle. RC.13, RC.12 and earlier release artifacts remain immutable historical evidence for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
+> **Implementation addendum (1.0.0-rc.15):** this candidate adds source-bound reusable-platform bootstrap, reference-app generation, upgrade/rollback and aggregate qualification on top of RC.14's release/evidence lifecycle. Earlier release artifacts remain immutable historical evidence for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
 > CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
 
-**Version: 1.0.0-rc.14 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.15 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.
@@ -87,7 +87,7 @@ Forms use the authoritative field metadata and Pydantic validation. Custom React
 
 ## 7. Packaging, upgrades and workflow
 
-The current output is a source template rather than published npm/Python packages. `./dev create` writes a new destination only, changes app config/runtime values, excludes private/generated execution state and records managed-core hashes. `./dev upgrade-plan` compares the app's original core hashes, its current files and an incoming template. Conflicts are surfaced; `./dev upgrade-apply` performs hash-bound atomic managed-core updates and `./dev upgrade-rollback` restores a journaled snapshot while refusing post-upgrade human edits. `./dev upgrade-fixture` exercises the generated-app migration/build/test/rollback path.
+The current output is a source template rather than published npm/Python packages. `python3 dev create` writes a new destination only, changes app config/runtime values, excludes private/generated execution state and records source-bound template-lock provenance plus managed-core hashes. `python3 dev upgrade-plan` compares the app's original core hashes, its current files and an incoming template. Conflicts are surfaced; `python3 dev upgrade-apply` performs hash-bound atomic managed-core updates and `python3 dev upgrade-rollback` restores a journaled snapshot while refusing post-upgrade human edits. `python3 dev upgrade-fixture` exercises the generated-app migration/build/test/rollback path and verifies application-owned configuration/data preservation.
 
 The template's AGENTS.md applies only to this new repository. It does not supersede SysGrid's control-room workflow. No commit, push, production migration or publication is performed by the supplied verification/generation commands. Developers work in config, theme and feature directories first. Kernel changes need evidence of a cross-feature concern and associated regression tests.
 

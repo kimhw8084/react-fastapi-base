@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.14` — canonical performance and virtualization qualification candidate; V1 local code complete; company qualification pending.
+`1.0.0-rc.15` — reusable-platform bootstrap and upgrade qualification candidate; V1 local code complete; company qualification pending.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
@@ -38,6 +38,7 @@ python3 dev architecture
 python3 dev lab-build
 python3 dev test-lab
 python3 dev verify
+python3 dev verify-release
 ```
 
 The direct frontend gates are:
@@ -53,6 +54,7 @@ npm run test:e2e
 ```
 
 Current machine-readable reports are written under `evidence/current/`. They distinguish passing local checks from external company qualification and do not issue a production certificate. The clean-clone proof validates the exact candidate checkout on its supported runner; macOS-specific qualification is reported only on Darwin and remains distinct from company deployment qualification.
+The reusable-platform qualification at `evidence/current/reuse/qualification.json` reconciles the exact-candidate clean clone, seven neutral reference applications, hash-bound upgrade/rollback, canonical source provenance and documentation/command consistency. A reusable-platform PASS does not pass company identity, storage, deployment, operations or overall CompanyQualification.
 
 ## Safety boundaries
 

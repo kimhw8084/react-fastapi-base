@@ -1,4 +1,4 @@
-# Company PaaS deployment contract — 1.0.0-rc.14, not yet exercised on company infrastructure
+# Company PaaS deployment contract — 1.0.0-rc.15, not yet exercised on company infrastructure
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
@@ -24,7 +24,7 @@ python -m pip install -r requirements.lock
 python -m uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8000}" --workers 1
 ```
 
-The file entrypoint runs that same ASGI application. Configure the publisher's own start/import mechanism when it owns Uvicorn. No implicit migration is performed at startup. Supply production env through the PaaS configuration service, not a committed .env. AccessKey must be injected by the platform for the actual caller's isolated execution; do not manually set it to the app owner for a shared service.
+The file entrypoint runs that same ASGI application. Configure the publisher's own start/import mechanism when it owns Uvicorn. No implicit migration is performed at startup. Supply production env through the PaaS configuration service, not a committed .env. AccessKey must be injected by the platform for the actual caller's isolated execution; do not manually set it to the app owner for a shared service. Local reusable-platform qualification uses only the explicit development adapter and never exports AccessKey, company storage or deployment state.
 
 Health is /api/v1/health; readiness is /api/v1/readiness. Readiness includes expected migration heads for active tenants and fails on invalid production configuration. A healthy endpoint is not proof of user identity or storage durability.
 

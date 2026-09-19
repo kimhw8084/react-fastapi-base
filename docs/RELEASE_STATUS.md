@@ -1,12 +1,12 @@
-# Release status — react-fastapi-base 1.0.0-rc.14
+# Release status — react-fastapi-base 1.0.0-rc.15
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.14 adds the canonical source-bound performance and AG Grid virtualization regression qualification on top of the RC.13 release/evidence lifecycle. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.15 adds executable source-bound reusable-platform bootstrap, clean-consumer, reference-app and upgrade/rollback qualification on top of RC.14's performance and release/evidence lifecycle. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
 
-RC.12 and RC.13 are immutable integrated historical evidence for their exact sources. RC.14 binds the current release lifecycle artifacts to the verified RC.14 source; local performance and browser gates do not prove the final company/profile `ui_accessibility` or `performance` qualification.
+RC.12–RC.14 are immutable integrated historical evidence for their exact sources. RC.15 binds the current release lifecycle artifacts to the verified RC.15 source; reusable-platform PASS and local performance/browser gates do not prove the final company/profile identity, storage, deployment, operations, `ui_accessibility` or `performance` qualification.
 
 ## Current local proof
 
@@ -16,6 +16,7 @@ RC.12 and RC.13 are immutable integrated historical evidence for their exact sou
 - Platform proof covers server-owned computed fields, generic relationship explorers, saved-view schema reconciliation/conflict recovery, universal dossier compare, deterministic attachment scanning, typed integration adapters, and relationship-set stress.
 - `scripts/catalog.py --check --release` passes all 605 retained catalog entries without wrapper-only certification.
 - Seven generated reference applications pass their migration, contract, frontend test/build and source-integrity proofs. The upgrade fixture passes plan, conflict-safe apply, migration, build/tests, rollback and integrity comparison.
+- The reusable-platform qualification passes the exact-candidate clean-consumer setup/bootstrap gates, seven neutral reference applications with schema-v2 template-lock provenance and non-secret development configuration, and the hash-bound upgrade fixture with application-owned configuration/project data preserved through apply and rollback. It does not claim arbitrary application-owned schema migration.
 - Deterministic performance stress passes the table, planning, graph, rack, wafer, observability, dashboard and SPC workloads. The exact-candidate clean-install proof passes without reusing the working tree's virtualenv, node modules or caches; on Linux it is the portable code gate and macOS-specific qualification is recorded as BLOCKED, while the current Darwin evidence also passes macOS qualification.
 - RC.2 hardens object-inclusive backup/restore, fails closed when production uploads have no malware scanner, renews long-running job leases, refreshes the deterministic source manifest, clarifies the historical requirements ledger, and makes archived/viewer dossier comments read-only.
 - RC.3 centrally enforces the attachment upload policy for every caller, binds object export to the copied snapshot database, rejects archived comment deletion server-side, and reconciles the supported Python runtime documentation.
@@ -45,5 +46,5 @@ Optional authenticated realtime push, enterprise malware/CDR provider selection,
 
 Reports under `evidence/current/` are generated from the current source and carry commit, timestamp, command, exit code, environment and hashes. Historical reports remain under historical directories and are not release proof. Local success does not certify company infrastructure, SEMI compliance, WCAG conformance, or production safety.
 
-The deterministic RC.14 repository readiness report is `evidence/current/release/rc14-readiness-matrix.json`; its companion manifest and binding are `rc14-manifest.json` and `rc14-evidence-binding.json`. RC.13 and RC.12's corresponding artifacts remain immutable historical evidence. Canonical performance evidence is under `evidence/current/performance/`, including `qualification.json` and `browser.json`; all are repository evidence, not an operator-approved qualification file.
-The repository identity is generated from the passing current source verification report by `scripts/generate_release_identity.py` and is intentionally outside the executable-source hash set to avoid a digest cycle. Its `source_commit` is the verified executable-source commit; the later evidence and Fabric branch heads do not replace it.
+The deterministic RC.15 repository readiness report is `evidence/current/release/rc15-readiness-matrix.json`; its companion manifest and binding are `rc15-manifest.json` and `rc15-evidence-binding.json`. RC.14 and earlier corresponding artifacts remain immutable historical evidence. The reusable-platform aggregate is `evidence/current/reuse/qualification.json`. Canonical performance evidence is under `evidence/current/performance/`, including `qualification.json` and `browser.json`; all are repository evidence, not an operator-approved qualification file.
+The repository identity is generated from the passing current source verification report by `scripts/generate_release_identity.py` and is intentionally outside the executable-source hash set to avoid a digest cycle. Its `verified_source_commit` and `source_digest` are the canonical executable-source identity. Evidence-only checkout/candidate heads are recorded separately and do not replace that identity.

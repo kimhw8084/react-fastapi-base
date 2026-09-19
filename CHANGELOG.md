@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.15 — reusable-platform bootstrap and upgrade qualification
+
+- Bound generated template locks to the current platform version, canonical executable-source commit/digest and managed-core hashes; obsolete reference-source provenance is rejected.
+- Strengthened clean-consumer bootstrap, seven neutral reference-app generation, non-secret development runtime proof and hash-bound application-owned upgrade/rollback preservation.
+- Added deterministic aggregate reusable-platform qualification evidence that remains separate from external company identity, storage, deployment, operations and production readiness.
+
 ## 1.0.0-rc.14 — canonical performance and virtualization qualification
 
 - Added one source-bound performance regression contract for owned algorithms, deterministic platform stress and browser/AG Grid scale.
