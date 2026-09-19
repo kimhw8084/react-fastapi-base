@@ -1,7 +1,7 @@
 {
   "aggregate_performance_evidence": {
     "locator": "evidence/current/performance/qualification.json",
-    "sha256": "885bbadfb495af5dfafb55f8deff54b2a256591109bc80c24ec1960227535ea9"
+    "sha256": "c83c45179f47f140c3e2745c102a5d9854b545d29d3874ba1e4d8d5a1af04711"
   },
   "api_contract_impact": {
     "api_major": 1,
@@ -181,8 +181,8 @@
   "schema_version": 1,
   "structural_virtualization": {
     "metrics": {
-      "deep_scroll_settle_ms": 28,
-      "initial_readiness_ms": 275,
+      "deep_scroll_settle_ms": 32,
+      "initial_readiness_ms": 287,
       "initial_rows_recycled": true,
       "loaded_rows": 5000,
       "logical_rows": 100000,
@@ -192,7 +192,7 @@
       "rendered_rows_before_deep_scroll": 20,
       "representative_sort_works": true,
       "selection_or_keyboard_works": true,
-      "sort_interaction_ms": 200
+      "sort_interaction_ms": 255
     },
     "row_recycling_proof": {
       "initial_identity": "Synthetic work item 0000",
@@ -211,7 +211,7 @@
     "workload_id": "browser-ag-grid-virtualization-5000"
   },
   "verified_executable_source": {
-    "commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-    "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b"
+    "commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+    "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7"
   }
 }

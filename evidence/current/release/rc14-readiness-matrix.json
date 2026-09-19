@@ -1,14 +1,14 @@
 {
   "artifact_label": "rc14",
   "candidate_version": "1.0.0-rc.14",
-  "code_ready": false,
+  "code_ready": true,
   "deployment_id": null,
   "gates": [
     {
       "evidence_state": "repository_verification",
       "id": "technical_release",
-      "reason": "Repository-owned code checks failed: checkpoint-manifest.",
-      "status": "FAIL"
+      "reason": "Repository-owned code and release checks passed for the exact candidate.",
+      "status": "PASS"
     },
     {
       "evidence_state": "external_unproven",
@@ -55,8 +55,8 @@
     {
       "evidence_state": "repository_verification",
       "id": "release_evidence",
-      "reason": "Source-bound release evidence cannot be established until the exact code candidate is verified.",
-      "status": "BLOCKED"
+      "reason": "Immutable source/version/digest binding metadata and this matrix are repository-bound.",
+      "status": "PASS"
     }
   ],
   "mandatory_gate_ids": [

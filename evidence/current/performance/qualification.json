@@ -10,15 +10,15 @@
   "reports": {
     "owned-pure-algorithms": {
       "locator": "evidence/current/performance/owned-algorithms.json",
-      "sha256": "7fd4a6185638c0c8a80ac0cc28916297d0597c1bc8ca49e824e437038c624fa9"
+      "sha256": "e0a1f38ea3a3816713b0de182382cdfe6e80c9acf98deabe4dda70dc73d57218"
     },
     "platform-data-volume": {
       "locator": "evidence/current/performance/stress.json",
-      "sha256": "4e1044d8578bc836f4fdecdae85df273fff42bdc6153a3caf4bc91157ba1d850"
+      "sha256": "54c39188a1731afc3361702e69c0c7a1b6c0aee98c8facc0d234dc4a5391b512"
     },
     "browser-ag-grid-scale": {
       "locator": "evidence/current/performance/browser.json",
-      "sha256": "e087c936a67cdf2462a69608e102a1f60e9e8ef21f7f3de454419c482ff90ad7"
+      "sha256": "705c47a66b303f95e10189d917130c15e02088eed34c9c18f6781d5830907a76"
     }
   },
   "required_workload_ids": [
@@ -54,7 +54,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.027835
+        "elapsed_seconds": 0.028767
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -72,7 +72,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.012406
+        "elapsed_seconds": 0.012377
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -90,7 +90,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.005991
+        "elapsed_seconds": 0.005962
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -108,7 +108,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.082306
+        "elapsed_seconds": 0.084239
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -127,7 +127,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006792
+        "elapsed_seconds": 0.006782
       },
       "diagnostic_metrics": {
         "result": 17
@@ -146,7 +146,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.033797
+        "elapsed_seconds": 0.032381
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.007556
+        "elapsed_seconds": 0.007423
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -182,7 +182,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.021149
+        "elapsed_seconds": 0.020464
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -200,7 +200,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.022112
+        "elapsed_seconds": 0.021825
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -218,7 +218,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.02721
+        "elapsed_seconds": 0.027122
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -237,7 +237,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.014058
+        "elapsed_seconds": 0.013428
       },
       "diagnostic_metrics": {
         "result": 100
@@ -255,7 +255,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000186
+        "elapsed_seconds": 0.000157
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -274,7 +274,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001984
+        "elapsed_seconds": 0.001489
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -294,7 +294,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000455
+        "elapsed_seconds": 0.000385
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -312,7 +312,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001996
+        "elapsed_seconds": 0.001969
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -332,7 +332,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.003096
+        "elapsed_seconds": 0.002991
       },
       "diagnostic_metrics": {
         "result": 100
@@ -350,7 +350,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 3.7e-05
+        "elapsed_seconds": 4.3e-05
       },
       "diagnostic_metrics": {
         "result": 86
@@ -374,7 +374,7 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 434
+        "initial_readiness_ms": 406
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
@@ -411,12 +411,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 300,
-        "deep_scroll_settle_ms": 43,
-        "sort_interaction_ms": 213
+        "initial_readiness_ms": 287,
+        "deep_scroll_settle_ms": 32,
+        "sort_interaction_ms": 255
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 37300000
+        "used_js_heap_bytes": 29400000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "synthetic-test-only",

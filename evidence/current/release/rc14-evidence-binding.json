@@ -4,19 +4,19 @@
   "evidence_commit": null,
   "manifest": {
     "locator": "evidence/current/release/rc14-manifest.json",
-    "sha256": "5444401ce892915a774b2290c93423802e76650fdbc90751da6b412fc82938a5"
+    "sha256": "58d9e3fd1ef698edacff5740e71a399f9a2b0c0930daaba9124b62a8f41cb8e8"
   },
   "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
-    "sha256": "c92783ae0ddd95712c4fb107111eca944ba5d9765092b79b788cde73d4c833f9"
+    "sha256": "c83c45179f47f140c3e2745c102a5d9854b545d29d3874ba1e4d8d5a1af04711"
   },
   "profile": "company",
   "project": "react-fastapi-base",
   "readiness_matrix": {
     "locator": "evidence/current/release/rc14-readiness-matrix.json",
-    "sha256": "19cfb6d3521417a6c71d0eafa285a7bc9d57f928cd86c652f425c878127906ef"
+    "sha256": "96cec1fed54a8687ee1512f157c7835ca128ad58b0bf1f404b158ee56ceb117d"
   },
   "release_identity": {
     "locator": "deploy/rc14-release-identity.json"
@@ -28,7 +28,7 @@
   "uiqa_matrix": {
     "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
     "required_for": "code",
-    "sha256": "26965533ad735e926f24ed88ef63c5728a26f7e19c3f4af88951a47dc366f05c"
+    "sha256": "aa7249546ddca7ab17edb2f3074d039a25379a3d7ca8c2d76acec8388846dbaf"
   },
   "verified_source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
   "version": "1.0.0-rc.14"
