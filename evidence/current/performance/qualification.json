@@ -3,22 +3,22 @@
   "result_kind": "aggregate-performance-qualification",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "source_commit": "049ba7bb5d6445721a6d1ea797a020208f35623f",
+  "source_digest": "0af67b8153c03d46b575074b9376e07c8f18ea8222ab84d9027c6b16fa933478",
   "candidate_version": "1.0.0-rc.14",
   "overall_status": "PASS",
   "reports": {
     "owned-pure-algorithms": {
       "locator": "evidence/current/performance/owned-algorithms.json",
-      "sha256": "d7c7f94da67cac8edea594d371f28fd921aa848cd3003d34aa493dabc794a56b"
+      "sha256": "2ee32e8f57d41ef9980effe8e23175a31bae65e82666d14f0192dddc65896b9a"
     },
     "platform-data-volume": {
       "locator": "evidence/current/performance/stress.json",
-      "sha256": "dacc469de06ede4bbf74eb3f357853059b73b04d34bb0ce42a36669867af61fb"
+      "sha256": "b0b85e4aa35da71e388f6a3414a850bd9efc6fea8bc67f026f61ab41ab150bff"
     },
     "browser-ag-grid-scale": {
       "locator": "evidence/current/performance/browser.json",
-      "sha256": "21f0d8a5514e912d7428a53e0c7adb55de436f1c86516cc6a84db93f08b5026d"
+      "sha256": "f39d168666a51fac4deb1b905a5cf25b0c550bdcc6678718c9a4a2808dce5eb6"
     }
   },
   "required_workload_ids": [
@@ -54,7 +54,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.029224
+        "elapsed_seconds": 0.029995
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -72,7 +72,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.012411
+        "elapsed_seconds": 0.013499
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -90,7 +90,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006
+        "elapsed_seconds": 0.006009
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -108,7 +108,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.083178
+        "elapsed_seconds": 0.086439
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -127,7 +127,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006039
+        "elapsed_seconds": 0.007432
       },
       "diagnostic_metrics": {
         "result": 17
@@ -146,7 +146,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.031532
+        "elapsed_seconds": 0.032783
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.007314
+        "elapsed_seconds": 0.007327
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -182,7 +182,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.02007
+        "elapsed_seconds": 0.02171
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -200,7 +200,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.022285
+        "elapsed_seconds": 0.022472
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -218,7 +218,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.026877
+        "elapsed_seconds": 0.027161
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -237,7 +237,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.015687
+        "elapsed_seconds": 0.014499
       },
       "diagnostic_metrics": {
         "result": 100
@@ -255,7 +255,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000165
+        "elapsed_seconds": 0.000159
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -274,7 +274,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.00189
+        "elapsed_seconds": 0.001637
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -294,7 +294,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000635
+        "elapsed_seconds": 0.001145
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -312,7 +312,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.002349
+        "elapsed_seconds": 0.002317
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -332,7 +332,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.004399
+        "elapsed_seconds": 0.003209
       },
       "diagnostic_metrics": {
         "result": 100
@@ -350,7 +350,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 3.7e-05
+        "elapsed_seconds": 4.1e-05
       },
       "diagnostic_metrics": {
         "result": 86
@@ -374,11 +374,11 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 328
+        "initial_readiness_ms": 349
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
-        "used_js_heap_bytes": 15200000
+        "used_js_heap_bytes": 11900000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "production-shaped-server-page",
@@ -411,12 +411,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 275,
-        "deep_scroll_settle_ms": 28,
-        "sort_interaction_ms": 200
+        "initial_readiness_ms": 261,
+        "deep_scroll_settle_ms": 27,
+        "sort_interaction_ms": 205
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 35100000
+        "used_js_heap_bytes": 42100000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "synthetic-test-only",

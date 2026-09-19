@@ -1,19 +1,19 @@
 {
   "product": "react-fastapi-base",
-  "version": "1.0.0-rc.12",
-  "timestamp": "2026-09-17T19:12:14.737575+00:00",
+  "version": "1.0.0-rc.14",
+  "timestamp": "2026-09-19T01:45:06.422778+00:00",
   "platform": "macOS-26.6.2-arm64-arm-64bit",
   "python_version": "3.11.7",
-  "node_version": "v20.19.4",
+  "node_version": "v22.23.2",
   "typescript_version": "Version 5.9.3",
-  "browser_mode": "http",
+  "browser_mode": "in_memory",
   "checks": [
     {
       "name": "strict-types-and-artifact-parity",
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-e015b471d19a09d4fdd14052/backend/.venv/bin/python",
         "scripts/check_lab_build.py"
       ],
       "log": "strict-types-and-artifact-parity.log"
@@ -34,7 +34,7 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-e015b471d19a09d4fdd14052/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
@@ -47,7 +47,7 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-e015b471d19a09d4fdd14052/backend/.venv/bin/python",
         "scripts/catalog.py",
         "--check"
       ],
@@ -58,12 +58,12 @@
       "status": "PASS",
       "exit_code": 0,
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-e015b471d19a09d4fdd14052/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
         "experience-lab/tests/test_browser.py",
-        "--junitxml=/Users/haewonkim/.codex-fabric/worktrees/CF-beef6535001582ee07d729fc/evidence/current/lab/browser-junit.xml"
+        "--junitxml=/Users/haewonkim/.codex-fabric/worktrees/CF-e015b471d19a09d4fdd14052/evidence/current/lab/browser-junit.xml"
       ],
       "log": "browser-interactions.log"
     }
