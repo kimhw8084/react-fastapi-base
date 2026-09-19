@@ -55,7 +55,7 @@ def test_production_descriptor_rejects_http_and_local_hosts():
         )
 
 
-def test_company_adapter_owns_production_deployment_contract_validation(tmp_path: Path):
+def test_company_adapter_owns_production_deployment_contract_validation(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     settings = Settings(
         environment='production', profile='company', data_root=tmp_path / 'root',
         allowed_origins=['http://frontend.example.test'], allowed_hosts=['localhost'],
@@ -65,5 +65,6 @@ def test_company_adapter_owns_production_deployment_contract_validation(tmp_path
     assert any('HTTPS' in error for error in errors)
     assert any('hosts' in error for error in errors)
     assert any('identity' in error for error in errors)
+    monkeypatch.setattr(Settings, 'assert_safe', lambda self, scanner_is_noop=None: None)
     with pytest.raises(RuntimeError, match='Company deployment contract refused'):
         CompanyDeploymentAdapter().assert_safe(settings, scanner_is_noop=False)
