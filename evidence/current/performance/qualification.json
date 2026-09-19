@@ -3,22 +3,22 @@
   "result_kind": "aggregate-performance-qualification",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
   "candidate_version": "1.0.0-rc.14",
   "overall_status": "PASS",
   "reports": {
     "owned-pure-algorithms": {
       "locator": "evidence/current/performance/owned-algorithms.json",
-      "sha256": "d7c7f94da67cac8edea594d371f28fd921aa848cd3003d34aa493dabc794a56b"
+      "sha256": "7fd4a6185638c0c8a80ac0cc28916297d0597c1bc8ca49e824e437038c624fa9"
     },
     "platform-data-volume": {
       "locator": "evidence/current/performance/stress.json",
-      "sha256": "dacc469de06ede4bbf74eb3f357853059b73b04d34bb0ce42a36669867af61fb"
+      "sha256": "4e1044d8578bc836f4fdecdae85df273fff42bdc6153a3caf4bc91157ba1d850"
     },
     "browser-ag-grid-scale": {
       "locator": "evidence/current/performance/browser.json",
-      "sha256": "21f0d8a5514e912d7428a53e0c7adb55de436f1c86516cc6a84db93f08b5026d"
+      "sha256": "e087c936a67cdf2462a69608e102a1f60e9e8ef21f7f3de454419c482ff90ad7"
     }
   },
   "required_workload_ids": [
@@ -54,7 +54,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.029224
+        "elapsed_seconds": 0.027835
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -72,7 +72,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.012411
+        "elapsed_seconds": 0.012406
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -90,7 +90,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006
+        "elapsed_seconds": 0.005991
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -108,7 +108,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.083178
+        "elapsed_seconds": 0.082306
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -127,7 +127,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006039
+        "elapsed_seconds": 0.006792
       },
       "diagnostic_metrics": {
         "result": 17
@@ -146,7 +146,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.031532
+        "elapsed_seconds": 0.033797
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.007314
+        "elapsed_seconds": 0.007556
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -182,7 +182,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.02007
+        "elapsed_seconds": 0.021149
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -200,7 +200,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.022285
+        "elapsed_seconds": 0.022112
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -218,7 +218,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.026877
+        "elapsed_seconds": 0.02721
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -237,7 +237,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.015687
+        "elapsed_seconds": 0.014058
       },
       "diagnostic_metrics": {
         "result": 100
@@ -255,7 +255,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000165
+        "elapsed_seconds": 0.000186
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -274,7 +274,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.00189
+        "elapsed_seconds": 0.001984
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -294,7 +294,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000635
+        "elapsed_seconds": 0.000455
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -312,7 +312,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.002349
+        "elapsed_seconds": 0.001996
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -332,7 +332,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.004399
+        "elapsed_seconds": 0.003096
       },
       "diagnostic_metrics": {
         "result": 100
@@ -374,7 +374,7 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 328
+        "initial_readiness_ms": 434
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
@@ -411,12 +411,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 275,
-        "deep_scroll_settle_ms": 28,
-        "sort_interaction_ms": 200
+        "initial_readiness_ms": 300,
+        "deep_scroll_settle_ms": 43,
+        "sort_interaction_ms": 213
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 35100000
+        "used_js_heap_bytes": 37300000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "synthetic-test-only",

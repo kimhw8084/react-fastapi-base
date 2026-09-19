@@ -1,14 +1,14 @@
 {
   "artifact_label": "rc14",
   "candidate_version": "1.0.0-rc.14",
-  "code_ready": true,
+  "code_ready": false,
   "deployment_id": null,
   "gates": [
     {
       "evidence_state": "repository_verification",
       "id": "technical_release",
-      "reason": "Repository-owned code and release checks passed for the exact candidate.",
-      "status": "PASS"
+      "reason": "Repository-owned code checks failed: checkpoint-manifest.",
+      "status": "FAIL"
     },
     {
       "evidence_state": "external_unproven",
@@ -55,8 +55,8 @@
     {
       "evidence_state": "repository_verification",
       "id": "release_evidence",
-      "reason": "Immutable source/version/digest binding metadata and this matrix are repository-bound.",
-      "status": "PASS"
+      "reason": "Source-bound release evidence cannot be established until the exact code candidate is verified.",
+      "status": "BLOCKED"
     }
   ],
   "mandatory_gate_ids": [
@@ -83,6 +83,6 @@
   "release_status": "NOT_CERTIFIED",
   "report_type": "repository-readiness-matrix",
   "schema_version": 1,
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
-  "verified_source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140"
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
+  "verified_source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9"
 }

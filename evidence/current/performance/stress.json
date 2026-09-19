@@ -4,8 +4,8 @@
   "tier_id": "platform-data-volume",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
   "command": [
     "python3",
     "scripts/performance_stress.py"
@@ -27,7 +27,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.015687
+        "elapsed_seconds": 0.014058
       },
       "diagnostic_metrics": {
         "result": 100
@@ -44,7 +44,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.000165
+        "elapsed_seconds": 0.000186
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -62,7 +62,7 @@
         "elapsed_seconds": 2.0
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.00189
+        "elapsed_seconds": 0.001984
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -81,7 +81,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.000635
+        "elapsed_seconds": 0.000455
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -98,7 +98,7 @@
         "elapsed_seconds": 1.0
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.002349
+        "elapsed_seconds": 0.001996
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -117,7 +117,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.004399
+        "elapsed_seconds": 0.003096
       },
       "diagnostic_metrics": {
         "result": 100

@@ -4,8 +4,8 @@
   "tier_id": "owned-pure-algorithms",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
   "command": [
     "python3",
     "scripts/performance_check.py"
@@ -26,7 +26,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.029224
+        "elapsed_seconds": 0.027835
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -43,7 +43,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.012411
+        "elapsed_seconds": 0.012406
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -60,7 +60,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.006
+        "elapsed_seconds": 0.005991
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -77,7 +77,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.083178
+        "elapsed_seconds": 0.082306
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -95,7 +95,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.006039
+        "elapsed_seconds": 0.006792
       },
       "diagnostic_metrics": {
         "result": 17
@@ -113,7 +113,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.031532
+        "elapsed_seconds": 0.033797
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -130,7 +130,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.007314
+        "elapsed_seconds": 0.007556
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -147,7 +147,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.02007
+        "elapsed_seconds": 0.021149
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.022285
+        "elapsed_seconds": 0.022112
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -181,7 +181,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.026877
+        "elapsed_seconds": 0.02721
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -193,70 +193,70 @@
   "checks": [
     {
       "name": "descriptive-100k",
-      "seconds": 0.029224,
+      "seconds": 0.027835,
       "budget_seconds": 1.5,
       "status": "PASS",
       "summary": 100000
     },
     {
       "name": "imr-100k",
-      "seconds": 0.012411,
+      "seconds": 0.012406,
       "budget_seconds": 2.5,
       "status": "PASS",
       "summary": 99999
     },
     {
       "name": "ewma-100k",
-      "seconds": 0.006,
+      "seconds": 0.005991,
       "budget_seconds": 1.5,
       "status": "PASS",
       "summary": 100000
     },
     {
       "name": "run-rules-100k",
-      "seconds": 0.083178,
+      "seconds": 0.082306,
       "budget_seconds": 2.5,
       "status": "PASS",
       "summary": 180411
     },
     {
       "name": "pareto-100k",
-      "seconds": 0.006039,
+      "seconds": 0.006792,
       "budget_seconds": 1.5,
       "status": "PASS",
       "summary": 17
     },
     {
       "name": "p-chart-100k",
-      "seconds": 0.031532,
+      "seconds": 0.033797,
       "budget_seconds": 2.5,
       "status": "PASS",
       "summary": 100000
     },
     {
       "name": "c-chart-100k",
-      "seconds": 0.007314,
+      "seconds": 0.007556,
       "budget_seconds": 1.5,
       "status": "PASS",
       "summary": 100000
     },
     {
       "name": "cusum-100k",
-      "seconds": 0.02007,
+      "seconds": 0.021149,
       "budget_seconds": 2.5,
       "status": "PASS",
       "summary": 100000
     },
     {
       "name": "correlation-100k",
-      "seconds": 0.022285,
+      "seconds": 0.022112,
       "budget_seconds": 1.5,
       "status": "PASS",
       "summary": 1.0
     },
     {
       "name": "regression-100k",
-      "seconds": 0.026877,
+      "seconds": 0.02721,
       "budget_seconds": 2.5,
       "status": "PASS",
       "summary": 1.0

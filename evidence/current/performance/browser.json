@@ -4,8 +4,8 @@
   "tier_id": "browser-ag-grid-scale",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "7682e126b78ffe2154681bdc804ef3fae458e140",
-  "source_digest": "3e59da18d7378b23f9c02aea6c6d8f509ce4440c193011c2721167524f46d66b",
+  "source_commit": "9945b7ef2a499aca3141094c47acfeb3ae850ea9",
+  "source_digest": "64a98060c5e56f025074cc409e276ac87bc0b840bc26f814033d89f2f0477cc7",
   "command": [
     "npm",
     "run",
@@ -41,12 +41,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 275,
-        "deep_scroll_settle_ms": 28,
-        "sort_interaction_ms": 200
+        "initial_readiness_ms": 300,
+        "deep_scroll_settle_ms": 43,
+        "sort_interaction_ms": 213
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 35100000
+        "used_js_heap_bytes": 37300000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "browser_project": "chromium",
@@ -86,7 +86,7 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 328
+        "initial_readiness_ms": 434
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
