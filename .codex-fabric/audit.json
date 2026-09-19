@@ -1,132 +1,310 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "accepted_at": "2026-09-19T01:39:17Z",
+  "changed_files": [],
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "command": "/bin/zsh -lc \"pwd; printf '%s\\\\n' '--- git status ---'; git status --short --branch; printf '%s\\\\n' '--- refs ---'; git show-ref --heads --tags | sed -n '1,120p'; printf '%s\\\\n' '--- recent graph ---'; git log --oneline --decorate --graph --all -30\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- policy ---'; sed -n '1,240p' /Users/haewonkim/.codex/RTK.md; printf '%s\\\\n' '--- law ---'; sed -n '1,260p' /Users/haewonkim/.codex/law.md; printf '%s\\\\n' '--- required docs ---'; sed -n '1,240p' README.md; sed -n '1,240p' docs/RELEASE_STATUS.md; sed -n '1,280p' docs/MASTER_DESIGN.md; printf '%s\\\\n' '--- requirements status ---'; sed -n '1,240p' docs/requirements-status.json; printf '%s\\\\n' '--- relevant recipes ---'; find docs -maxdepth 3 -type f | sort | rg -i '35|performance|virtual|recipe|experience' | sed -n '1,160p'; printf '%s\\\\n' '--- ancestry ---'; git merge-base 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 9bf11bd889d13d718656747cc76354d80b46561b; git log --oneline --decorate --ancestry-path 9bf11bd889d13d718656747cc76354d80b46561b..8b2010fa10c41ee5a16f63c4158f45d7acaa0396; git log --oneline --decorate --ancestry-path 8b2010fa10c41ee5a16f63c4158f45d7acaa0396..9bf11bd889d13d718656747cc76354d80b46561b | head -80\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk git show --stat --oneline 8b2010fa10c41ee5a16f63c4158f45d7acaa0396; rtk rg -n --hidden --glob '\"'!node_modules'\"' --glob '\"'!frontend/node_modules'\"' --glob '\"'!backend/.venv'\"' 'CHG-35|performance_results|PERFORMANCE_SOURCE_COMMIT|executable_source_commit|source_digest|browser-ag-grid-scale|100000|5000' . | head -500; printf '%s\\\\n' '--- experience lab instructions ---'; rtk sed -n '1,260p' docs/EXPERIENCE_LAB.md; printf '%s\\\\n' '--- roadmap ---'; rtk sed -n '1,260p' catalog/roadmap.json; printf '%s\\\\n' '--- test/file inventory ---'; rtk rg --files scripts backend frontend experience-lab tests 2>/dev/null | rg -i 'performance|source_manifest|verify|e2e|stress|virtual|grid|lab' | head -300\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "command": "/bin/zsh -lc 'rtk git switch -c codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r3 8b2010fa10c41ee5a16f63c4158f45d7acaa0396; rtk git status --short --branch; rtk git rev-parse HEAD; rtk git merge-base --is-ancestor 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 HEAD; rtk git merge-base --is-ancestor 9bf11bd889d13d718656747cc76354d80b46561b HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- scripts ---'; rtk rg --files scripts | sort | rg 'source|performance|verify|e2e|release'; printf '%s\\\\n' '--- performance references ---'; rtk rg -n 'performance_results|PERFORMANCE_SOURCE_COMMIT|PERFORMANCE_SOURCE_DIGEST|source_commit|executable_source_commit|source_digest' scripts backend/tests tests .github Makefile dev 2>/dev/null | head -500; printf '%s\\\\n' '--- e2e runner ---'; rtk sed -n '1,320p' scripts/e2e_runner.py; printf '%s\\\\n' '--- source manifest ---'; rtk sed -n '1,300p' scripts/source_manifest.py; printf '%s\\\\n' '--- performance results ---'; if [ -f scripts/performance_results.py ]; then rtk sed -n '1,380p' scripts/performance_results.py; else rtk rg --files . | rg 'performance_results'; fi; printf '%s\\\\n' '--- recent CHG commits ---'; rtk git show --format=fuller --stat 7682e126b78ffe2154681bdc804ef3fae458e140; rtk git show --format=fuller --stat 5e13498; rtk git show --format=fuller --stat 8b2010fa\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- e2e test refs ---'; rtk rg -n 'e2e_runner|PERFORMANCE_OUTPUT|browser.json|build_qualification|reconcile_reports|performance-results|verify.py|API_COMPATIBILITY_BASE_SHA' tests backend frontend scripts dev .github 2>/dev/null | head -500; printf '%s\\\\n' '--- performance contract ---'; rtk sed -n '1,380p' scripts/performance_contract.py; printf '%s\\\\n' '--- performance tests ---'; rtk sed -n '1,300p' tests/test_performance_contract.py; printf '%s\\\\n' '--- release finalization tests ---'; rtk sed -n '1,260p' tests/test_release_finalization.py; printf '%s\\\\n' '--- verify/dev ---'; rtk sed -n '1,230p' scripts/verify.py; rtk sed -n '1,180p' dev; printf '%s\\\\n' '--- CHG35 evidence ---'; rtk sed -n '1,260p' scripts/chg35_evidence.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- current performance identities ---'; for f in evidence/current/performance/owned-algorithms.json evidence/current/performance/stress.json evidence/current/performance/browser.json evidence/current/performance/qualification.json; do echo \\\"\"'$f\"; rtk python3 -c \"import json; p='\"'\"'$f'\"'; x=json.load(open(p)); print({k:x.get(k) for k in ('source_commit','source_digest','result','overall_status','tier_id','contract_sha256')})\\\"; done; printf '%s\\\\n' '--- performance test file ---'; rtk sed -n '1,260p' tests/test_performance_contract.py; printf '%s\\\\n' '--- release version tests ---'; rtk sed -n '1,180p' tests/test_release_version.py; printf '%s\\\\n' '--- verify full top ---'; rtk sed -n '1,180p' scripts/verify.py; printf '%s\\\\n' '--- workflow ---'; rtk sed -n '1,180p' .github/workflows/verify.yml; printf '%s\\\\n' '--- e2e perf spec ---'; rtk sed -n '1,240p' frontend/tests/e2e/performance.spec.ts\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short; rtk git diff -- scripts/e2e_runner.py tests/test_performance_source_binding.py; rtk git diff --check; if [ -x backend/.venv/bin/python ]; then backend/.venv/bin/python -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py; else python3 -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py; fi'",
+      "exit_code": 1,
+      "test_result": {
+        "counts": {
+          "failed": 2,
+          "passed": 8
+        },
+        "exit_code": 1,
+        "failing_test_ids": [
+          "tests/test_performance_source_binding.py::test_browser_identity_uses_executable_source_after_evidence_binding_and_qualifies",
+          "tests/test_performance_source_binding.py::test_wrong_browser_source_commit_fails_closed_after_evidence_binding"
+        ],
+        "framework": "pytest",
+        "outcome": "test_failures",
+        "output_bytes": 7760,
+        "output_sha256": "fde258af80e59b7f5c6d2601f7be6965837e145c213a1a11cb8f5cf57fba0287",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'backend/.venv/bin/python -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py; rtk git diff --check; rtk git status --short'",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 128,
+        "output_sha256": "27bff929bf756c8188547fa92d05d841f5d6f87c515ea36c160c185090b440d5",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'python3 -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py; rtk git diff --check; rtk git status --short'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 10
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 168,
+        "output_sha256": "39673cc3c86dec9839c9f1f9423f84eec459bc7b79f4111f49e30f1388c48ca2",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk --version; which rtk; rtk git status --short --branch; rtk test -x backend/.venv/bin/python && echo backend-venv-present || echo backend-venv-missing; rtk test -d frontend/node_modules && echo node-modules-present || echo node-modules-missing; rtk test -x frontend/node_modules/.bin/playwright && echo playwright-present || echo playwright-missing; rtk python3 --version; rtk node --version; rtk npm --version; rtk git remote -v'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk command -v node22 || true; rtk command -v node-22 || true; rtk command -v nodejs22 || true; rtk command -v nvm || true; rtk command -v fnm || true; rtk command -v mise || true; rtk ls -1 /opt/homebrew/opt 2>/dev/null | rg '\"'^node'\"' || true; rtk git diff -- scripts/e2e_runner.py; rtk sed -n '1,180p' tests/test_performance_source_binding.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls -l /opt/homebrew/opt/node@22/bin; rtk /opt/homebrew/opt/node@22/bin/node --version; rtk /opt/homebrew/opt/node@22/bin/npm --version; rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" python3 dev setup'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" frontend/node_modules/.bin/playwright install chromium; rtk backend/.venv/bin/python -m playwright install chromium'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'backend/.venv/bin/python -m pytest -q tests/test_performance_source_binding.py tests/test_performance_contract.py; rtk git status --short; rtk git diff --stat; rtk git diff --check'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 10
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 257,
+        "output_sha256": "8a44f625fe91e9ad685c3b8e593aabec518f63f7ae8c50bc9839a9a85ee44eae",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add scripts/e2e_runner.py tests/test_performance_source_binding.py; rtk git commit -m \"fix: bind browser performance evidence to executable source\"; rtk git status --short --branch; rtk git log --oneline --decorate -5; rtk git merge-base --is-ancestor 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg --files scripts | rg 'checkpoint|archive|verify'; rtk rg -n 'checkpoint.py|generate_checkpoint_manifest|CHECKPOINT_MANIFEST|archive' AGENTS.md docs scripts README.md .gitignore | head -300; rtk sed -n '1,260p' scripts/generate_checkpoint_manifest.py 2>/dev/null; rtk sed -n '1,260p' scripts/checkpoint.py 2>/dev/null\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk backend/.venv/bin/python scripts/generate_checkpoint_manifest.py; rtk backend/.venv/bin/python scripts/checkpoint.py chg35-source-binding-r3; rtk unzip -t checkpoints/react-fastapi-base-chg35-source-binding-r3.zip; rtk git status --short; rtk git diff --stat; rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add CHECKPOINT_MANIFEST.json; rtk git commit -m \"chore: refresh source checkpoint manifest\"; rtk git status --short --branch; rtk git rev-parse HEAD; rtk git log -1 --format=%H -- backend frontend contracts scripts tests experience-lab catalog dev; rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" python3 dev contracts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short; rtk git diff --stat; rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" python3 dev architecture'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" python3 dev lab-build'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" python3 dev test-lab --mode in_memory; rtk git status --short; rtk git diff --stat; rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b backend/.venv/bin/python scripts/verify.py --output .evidence/ci'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short; rtk python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor path in (Path('.evidence/ci/verification.json'), Path('.evidence/ci/api-compatibility.json'), Path('evidence/current/performance/qualification.json')):\n    data=json.loads(path.read_text())\n    if path.name=='verification.json':\n        print(path, 'code_ready=',data.get('code_ready'),'source_commit=',data.get('source_commit'))\n        print('statuses=',[(row['name'],row['status']) for row in data['results']])\n    elif path.name=='api-compatibility.json': print(path, {k:data.get(k) for k in ('status','resolved_base_sha','exit_code')})\n    else: print(path, {k:data.get(k) for k in ('overall_status','source_commit','source_digest','contract_sha256')})\nPY\nrtk python3 - <<'PY'\nfrom pathlib import Path\nimport sys\nsys.path.insert(0,'.')\nfrom scripts.e2e_runner import performance_source_identity\nfrom scripts.source_manifest import executable_source_commit\nimport subprocess\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nprint('HEAD=',head)\nprint('executable_source_commit=',executable_source_commit())\nprint('performance_source_identity=',performance_source_identity())\nPY\nrtk git diff --stat\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b python3 dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short; rtk git diff --stat; printf '%s\\\\n' '--- current source/release identities ---'; rtk python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor name in ['deploy/rc14-release-identity.json','evidence/current/release/rc14-manifest.json','evidence/current/release/rc14-evidence-binding.json','evidence/current/release/rc14-readiness-matrix.json','evidence/current/release/CHG-35-performance-virtualization.json','evidence/current/full-stack/verification.json','evidence/current/performance/qualification.json']:\n p=Path(name)\n try:\n  x=json.loads(p.read_text())\n  print(name, {k:x.get(k) for k in ('verified_source_commit','source_commit','source_digest','evidence_commit','target_base_sha','overall_status','code_ready','release_status','production_ready')})\n except Exception as e: print(name,e)\nPY\nprintf '%s\\\\n' '--- binding script ---'; rtk sed -n '1,240p' scripts/bind_release_evidence.py; printf '%s\\\\n' '--- previous binding command evidence ---'; rtk git show 8b2010fa10c41ee5a16f63c4158f45d7acaa0396:evidence/current/release/rc14-evidence-binding.json; rtk git show 8b2010fa10c41ee5a16f63c4158f45d7acaa0396:evidence/current/release/rc14-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python scripts/chg35_evidence.py --verification evidence/current/full-stack/verification.json --base-sha 9bf11bd889d13d718656747cc76354d80b46561b; rtk python3 - <<'PY'\nimport json\np='evidence/current/release/CHG-35-performance-virtualization.json'\nx=json.load(open(p))\nprint({k:x.get(k) for k in ('change','candidate_version','verified_executable_source','api_contract_impact','companyqualification_boundary')})\nprint('browser=',x.get('structural_virtualization',{}).get('workload_id'),x.get('structural_virtualization',{}).get('status'))\nPY\nrtk git status --short; rtk git diff --check\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add CHECKPOINT_MANIFEST.json deploy/rc14-release-identity.json evidence/current; rtk git commit -m \"CHG-35 publish source-bound verification evidence\"; EVIDENCE_COMMIT=$(git rev-parse HEAD); printf '\"'evidence_commit=%s\\\\n' \\\"\"'$EVIDENCE_COMMIT\"; rtk git status --short --branch; rtk git log --oneline --decorate -4'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 049ba7bb5d6445721a6d1ea797a020208f35623f --evidence-commit 53f7d6b0c8ca19fa15cb074ee57bb96f5e7e7484 --target-base-sha 9bf11bd889d13d718656747cc76354d80b46561b; rtk python3 - <<'PY'\nimport json\nfor p in ('evidence/current/release/rc14-manifest.json','evidence/current/release/rc14-evidence-binding.json'):\n x=json.load(open(p)); print(p, {k:x.get(k) for k in ('verified_source_commit','evidence_commit','target_base_sha','binding_status','result','source_digest')})\nPY\nrtk git diff --check; rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add evidence/current/release/rc14-manifest.json evidence/current/release/rc14-evidence-binding.json; rtk git commit -m \"CHG-35 bind source-bound evidence commit\"; rtk git status --short --branch; rtk git log --oneline --decorate -6; rtk git rev-parse HEAD; rtk git rev-parse 049ba7bb5d6445721a6d1ea797a020208f35623f; rtk git merge-base --is-ancestor 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env API_COMPATIBILITY_BASE_SHA=9bf11bd889d13d718656747cc76354d80b46561b backend/.venv/bin/python scripts/performance_results.py --output .evidence/final-performance-qualification.json; rtk backend/.venv/bin/python - <<'PY'\nimport hashlib\nimport json\nimport subprocess\nfrom pathlib import Path\nimport sys\nsys.path.insert(0, '.')\nfrom scripts.source_manifest import executable_source_commit, source_digest, source_hashes\nhead=subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()\nsource=executable_source_commit()\nqualification=json.loads(Path('evidence/current/performance/qualification.json').read_text())\nbrowser=json.loads(Path('evidence/current/performance/browser.json').read_text())\nmanifest=json.loads(Path('evidence/current/release/rc14-manifest.json').read_text())\nbinding=json.loads(Path('evidence/current/release/rc14-evidence-binding.json').read_text())\nchecks={\n 'head': head,\n 'executable_source_commit': source,\n 'head_differs_from_source': head \"'!= source,\n '\"'performance_identity_matches': qualification.get('source_commit') == source and qualification.get('source_digest') == source_digest(source_hashes()),\n 'performance_status': qualification.get('overall_status'),\n 'browser_status': browser.get('result'),\n 'browser_source_commit': browser.get('source_commit'),\n 'browser_source_digest': browser.get('source_digest'),\n 'browser_workloads': [row.get('id') for row in browser.get('workloads', [])],\n 'release_binding_status': binding.get('binding_status'),\n 'release_binding_result': binding.get('result'),\n 'release_source_commit': binding.get('verified_source_commit'),\n 'release_evidence_commit': binding.get('evidence_commit'),\n 'release_base_sha': binding.get('target_base_sha'),\n 'manifest_hash_matches_binding': binding.get('manifest', {}).get('sha256') == hashlib.sha256(Path('evidence/current/release/rc14-manifest.json').read_bytes()).hexdigest(),\n}\nprint(json.dumps(checks, indent=2, sort_keys=True))\nassert head \"'!= source\nassert qualification['\"'overall_status'] == 'PASS'\nassert browser['result'] == 'PASS'\nassert binding['binding_status'] == 'PASS'\nassert binding['verified_source_commit'] == source\nassert binding['target_base_sha'] == '9bf11bd889d13d718656747cc76354d80b46561b'\nassert binding['manifest']['sha256'] == hashlib.sha256(Path('evidence/current/release/rc14-manifest.json').read_bytes()).hexdigest()\nPY\nrtk git diff --check; rtk git status --short --branch\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push --set-upstream origin codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r3; rtk git ls-remote --heads origin codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r3; rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- final ancestry ---'; rtk git merge-base 8b2010fa10c41ee5a16f63c4158f45d7acaa0396 HEAD; rtk git merge-base 9bf11bd889d13d718656747cc76354d80b46561b HEAD; rtk git show -s --format='%H%n%P%n%s' HEAD; printf '%s\\\\n' '--- changed paths from fresh base ---'; rtk git diff --name-status 9bf11bd889d13d718656747cc76354d80b46561b..HEAD | sed -n '1,180p'; printf '%s\\\\n' '--- source commits in final history ---'; rtk git log --oneline --decorate --max-count=6; printf '%s\\\\n' '--- remote exact head ---'; rtk git ls-remote --heads origin codex/react-fastapi-base-performance-virtualization-ci-source-binding-fix-r3; printf '%s\\\\n' '--- status ---'; rtk git status --short --branch\"",
+      "exit_code": 0,
+      "type": "command_execution"
     }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.154.0",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 98,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.35,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 13490176,
+      "fresh_input_tokens": 226996,
+      "input_tokens": 13717172,
+      "non_reasoning_output_tokens": 15622,
+      "output_tokens": 29907,
+      "reasoning_output_tokens": 14285,
+      "total_processed_tokens": 13747079
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": null,
+  "error_code": "WRONG_WORK_BRANCH",
   "evidence_manifest": {
-    "version": 1,
-    "items": [
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": null,
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": "CONTROL_PLANE",
+  "finished_at": "2026-09-19T02:02:05Z",
+  "git": {},
+  "instructions": {
+    "files": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
       }
-    ]
+    ],
+    "total_bytes": 2593,
+    "warning": null
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "job_id": "CF-e015b471d19a09d4fdd14052",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/performance-virtualization-ci-source-binding-fix-r2",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/performance-virtualization-ci-source-binding-fix-r2"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "44756118cd7fda0c45cd23ba1d31a48a3f4f2422d687df15264ba4406f40e1f2",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": true,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "performance-virtualization-ci-source-binding-fix-r2",
+  "schema_version": 1,
+  "started_at": "2026-09-19T01:39:17Z",
+  "status": "FAILED_INFRA",
+  "timing": {
+    "execution_seconds": 1368,
+    "queue_seconds": 0,
+    "total_seconds": 1368
+  },
+  "transport": {
+    "bytes": 3730,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 3345,
+    "prompt_sha256": "d1a27157dc964db196e3192ec682c3a80938070f1e8ad8e6b3a493c695991b66",
+    "sha256": "e015b471d19a09d4fdd140528ad775592b7147dc9869110401a184bce0504653"
+  }
 }
