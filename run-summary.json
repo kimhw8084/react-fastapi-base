@@ -1,10 +1,10 @@
 {
-  "artifact_receipt_sha256": "c68d2921fcd4237e481cb5bebc92f934de3360c4ac2f44d2289acf2badc6f47b",
+  "artifact_receipt_sha256": "0306b2fd7038d9bc653c61aad4bd55e8645a2cd380607a33ea2ab7959649da6f",
   "bundle_sha256": "2c152e93b31aaf73436b4fa053d38accd7d95f5684fc1e8511a805352c2808b3",
   "error_code": null,
   "git_artifact_commit": "recorded in artifact-stage-receipt and remote-readback to avoid self-reference",
   "git_artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7",
-  "git_package_verified": "pending publication readback",
+  "git_package_verified": "verified after remote publication readback; exact commit/tree recorded in remote-readback.json",
   "health_result": "NOT_CERTIFIED_WITH_RELEASE_ONLY_BLOCKERS",
   "manifest_sha256": "6c18938e8e889ebb4d69fb24ddb4de1e5474ad88a1b855f3f64178359fc4252d",
   "note": "Machine receipt is emitted again after Git publication with exact carrier readback.",

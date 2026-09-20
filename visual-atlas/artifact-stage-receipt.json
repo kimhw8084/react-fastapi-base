@@ -6,7 +6,7 @@
   "artifact_tree": "recorded in remote-readback.json to avoid self-referential receipt",
   "carrier_readback": "remote-readback.json (job-owned readback record; not native Fabric identity)",
   "git_readback": {
-    "status": "pending publication; exact carrier commit/tree will be written to remote-readback.json",
+    "status": "published; exact final carrier commit/tree are recorded in remote-readback.json",
     "transport": "qualified Golden Visual Atlas Git publisher contract"
   },
   "native_fabric_audit_identity": "not impersonated; native Fabric audit-only child is created after model completion",
