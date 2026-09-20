@@ -1,0 +1,750 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "component_families": [
+    {
+      "family": "app-navigation",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "actions-buttons",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "finite-choice",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "fields-forms",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "search-filter-query",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "toolbar-command-palette",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "disclosure",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "dialogs-overlays-menus",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "feedback-notifications",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "loading-empty-error",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "cards-lists",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "tables",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "editable-virtualized-grids",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "charts-metrics-dashboards",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "temporal-planning",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "spatial-node",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "documents-code",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "drag-resize-split",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "files-attachments",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "identity-permission",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    },
+    {
+      "family": "consequential-bulk-actions",
+      "coverage_count": 42,
+      "coverage_basis": "runtime DOM/source mapping; absence is not silently exempted"
+    }
+  ],
+  "surface_relationships": [
+    {
+      "surface_key": "work_items",
+      "route": "/work-items",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "projects",
+      "route": "/projects",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "racks",
+      "route": "/racks",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "equipment",
+      "route": "/equipment",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "knowledge_entries",
+      "route": "/knowledge-entries",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "investigations",
+      "route": "/investigations",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "research",
+      "route": "/research",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "risks",
+      "route": "/risks",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "plan_tasks",
+      "route": "/plan-tasks",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "diagram_documents",
+      "route": "/diagram-documents",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "process_measurements",
+      "route": "/process-measurements",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "wafer_runs",
+      "route": "/wafer-runs",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "manufacturing_lots",
+      "route": "/manufacturing-lots",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "equipment_states",
+      "route": "/equipment-states",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "process_recipes",
+      "route": "/process-recipes",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "software_services",
+      "route": "/software-services",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "delivery_runs",
+      "route": "/delivery-runs",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "observability_events",
+      "route": "/observability-events",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "incidents",
+      "route": "/incidents",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "service_objectives",
+      "route": "/service-objectives",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    },
+    {
+      "surface_key": "system",
+      "route": "/system",
+      "families": [
+        "app-navigation",
+        "actions-buttons",
+        "finite-choice",
+        "fields-forms",
+        "search-filter-query",
+        "toolbar-command-palette",
+        "disclosure",
+        "dialogs-overlays-menus",
+        "feedback-notifications",
+        "loading-empty-error",
+        "cards-lists",
+        "tables",
+        "editable-virtualized-grids",
+        "charts-metrics-dashboards",
+        "temporal-planning",
+        "spatial-node",
+        "documents-code",
+        "drag-resize-split",
+        "files-attachments",
+        "identity-permission",
+        "consequential-bulk-actions"
+      ],
+      "edges": [
+        "app-shell -> workspace route",
+        "workspace -> server query",
+        "query -> grid/list/projection",
+        "row/object -> dossier/overlay where exposed",
+        "action -> API mutation -> feedback where exposed"
+      ]
+    }
+  ]
+}

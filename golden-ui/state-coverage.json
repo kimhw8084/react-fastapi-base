@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "states": {
+    "normal": {
+      "executed": 42,
+      "rationale": "canonical anchors"
+    },
+    "loading": {
+      "executed": 1,
+      "rationale": "deterministic route interception; screenshot not canonical"
+    },
+    "empty": {
+      "executed": 1,
+      "rationale": "deterministic route interception"
+    },
+    "error": {
+      "executed": 1,
+      "rationale": "deterministic 503 route interception"
+    },
+    "permission": {
+      "executed": 0,
+      "rationale": "UNPROVEN: safe supported role transition needs separate runtime"
+    },
+    "selection": {
+      "executed": 1,
+      "rationale": "task trace and existing CHG-34 regression"
+    },
+    "light": true,
+    "dark": true,
+    "high_contrast": true,
+    "forced_colors": true,
+    "reduced_motion": true,
+    "desktop": true,
+    "mobile": true,
+    "short_height": true,
+    "reflow_320": true,
+    "long_labels": false,
+    "long_unbroken_ids": false,
+    "async_old_result": false,
+    "context_A_B_A": false,
+    "attachments_lifecycle": false
+  },
+  "omissions": [
+    "Long unbroken ID/multiline error was not fully established through a maintained fixture in this run",
+    "Async old-result and A→B→A invalidation were not safely reproducible without a deterministic interception contract in this harness",
+    "Role transition, populated data-rich projection and attachment lifecycle remain unproven"
+  ]
+}

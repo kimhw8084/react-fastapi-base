@@ -1,0 +1,185 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "runtime": {
+    "start": "2026-09-20T05:51:00.483Z",
+    "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+    "version": "1.0.0-rc.18",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-perfection-inspection-v1",
+    "browser_version": "151.0.7922.34",
+    "playwright_version": "1.62.1",
+    "node": "/Users/haewonkim/.nvm/versions/node/v22.23.2/bin/node v22.23.2",
+    "npm": "/Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm 10.9.8",
+    "python": "backend/.venv/bin/python 3.11.7",
+    "profile": "development/test",
+    "fixture": "repository app.cli seed-demo",
+    "role": "demo.admin/admin",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "frontend_origin": "http://127.0.0.1:56243",
+    "api_origin": "http://127.0.0.1:56242",
+    "viewport_dpr": 1,
+    "data_root_class": "fresh disposable temp root",
+    "runtime_root": "/tmp/chg153-runtime-8cw3ew",
+    "frontend_pid": 92044,
+    "backend_pid": 92035
+  },
+  "cases": [
+    {
+      "stress_case": "dark-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "dark appearance",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 21,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "high-contrast-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "high contrast control",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 21,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "forced-colors-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "forced-colors active",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 21,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "reduced-motion-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "prefers-reduced-motion reduce",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 21,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "short-height-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 500
+      },
+      "setup": "short height 1440x500",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 21,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "reflow-320-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "setup": "320 CSS px reflow",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 13,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "mobile-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "setup": "mobile canonical parity",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 14,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "loading-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "deterministic loading hold",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 6,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "empty-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "deterministic empty fixture",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 6,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "error-work-items",
+      "route": "/work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "setup": "deterministic 503 fixture",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 6,
+      "obscured_controls": 0
+    },
+    {
+      "stress_case": "overlay-edge-short-height",
+      "route": "/work-items",
+      "viewport": {
+        "width": 390,
+        "height": 500
+      },
+      "setup": "save-view dialog near short-height edge",
+      "classification": "established-geometry-finding",
+      "axe_total": 0,
+      "axe_serious_critical": 0,
+      "overflow_nodes": 14,
+      "obscured_controls": 26
+    }
+  ]
+}

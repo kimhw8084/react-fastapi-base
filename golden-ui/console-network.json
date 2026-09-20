@@ -1,0 +1,1232 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "canonical": [
+    {
+      "surface_key": "work_items",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "projects",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/projects/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/projects?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "racks",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/racks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/racks?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/equipment/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/equipment?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "knowledge_entries",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/knowledge_entries/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/knowledge-entries?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/investigations/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/investigations?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "research",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/research/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/research?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "risks",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/risks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/risks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "plan_tasks",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/plan_tasks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/relationships/definitions",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "diagram_documents",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/diagram_documents/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/diagram-documents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "process_measurements",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/process_measurements/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/process-measurements?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "wafer_runs",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/wafer_runs/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/wafer-runs?search=&archived=false&sort=updated_at&direction=desc&limit=300&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "manufacturing_lots",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/manufacturing_lots/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/manufacturing-lots?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "equipment_states",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/equipment_states/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/equipment-states?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "process_recipes",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/process_recipes/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/process-recipes?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "software_services",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/software_services/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/software-services?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "delivery_runs",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/delivery_runs/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/delivery-runs?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "observability_events",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/observability_events/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/observability-events?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/incidents/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "service_objectives",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/service_objectives/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/service-objectives?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "system",
+      "viewport": "desktop-1440x900",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "work_items",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "projects",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/projects/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/projects?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "racks",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/racks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/racks?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/equipment/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/equipment?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "knowledge_entries",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/knowledge_entries/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/knowledge-entries?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/investigations/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/investigations?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "research",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/research/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/research?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "risks",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/risks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/risks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "plan_tasks",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/plan_tasks/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/relationships/definitions",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "diagram_documents",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/diagram_documents/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/diagram-documents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "process_measurements",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/process_measurements/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/process-measurements?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "wafer_runs",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/wafer_runs/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/wafer-runs?search=&archived=false&sort=updated_at&direction=desc&limit=300&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "manufacturing_lots",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/manufacturing_lots/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/manufacturing-lots?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "equipment_states",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/equipment_states/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/equipment-states?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "process_recipes",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/process_recipes/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/process-recipes?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "software_services",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/software_services/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/software-services?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "delivery_runs",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/delivery_runs/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/delivery-runs?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "observability_events",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/observability_events/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/observability-events?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/incidents/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "service_objectives",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/service_objectives/views",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/service-objectives?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "surface_key": "system",
+      "viewport": "mobile-390x844",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "unexpected_network": []
+    }
+  ],
+  "stress": [
+    {
+      "stress_case": "dark-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "high-contrast-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "forced-colors-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "reduced-motion-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "short-height-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "reflow-320-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "mobile-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "loading-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "empty-work-items",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    },
+    {
+      "stress_case": "error-work-items",
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+      ],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "status": 503
+        }
+      ]
+    },
+    {
+      "stress_case": "overlay-edge-short-height",
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:56243/api/v1/workspaces/work_items/views",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/teams",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:56243/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "unexpected_network": []
+    }
+  ]
+}

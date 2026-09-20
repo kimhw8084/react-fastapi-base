@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "limitations": [
+    {
+      "layer": "browser-engine",
+      "status": "LIMITED",
+      "detail": "Chromium/Playwright only; no non-Chromium engine evidence."
+    },
+    {
+      "layer": "native",
+      "status": "OUT_OF_SCOPE",
+      "detail": "No native iOS/Android execution."
+    },
+    {
+      "layer": "screen-reader",
+      "status": "UNPROVEN",
+      "detail": "Semantic DOM/axe checks are not screen-reader product certification."
+    },
+    {
+      "layer": "company",
+      "status": "EXTERNAL",
+      "detail": "Identity provider, company storage, deployment and CompanyQualification remain external."
+    },
+    {
+      "layer": "long-content",
+      "status": "PARTIAL",
+      "detail": "Long label and error controls were exercised only in bounded fixture cases; full long-unbroken identifier coverage remains unproven."
+    },
+    {
+      "layer": "async-invalidation",
+      "status": "UNPROVEN",
+      "detail": "Old-result and A→B→A context invalidation were not safely reproduced with the maintained product harness."
+    },
+    {
+      "layer": "attachments",
+      "status": "UNPROVEN",
+      "detail": "Complete safe file lifecycle was not established under seed-demo without fabricating data."
+    },
+    {
+      "layer": "visual-quality",
+      "status": "AUDIT_REQUIRED",
+      "detail": "Evidence package is for independent Project OS adjudication; this run does not self-accept perfection."
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "runtime": {
+    "start": "2026-09-20T05:51:00.483Z",
+    "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+    "version": "1.0.0-rc.18",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-perfection-inspection-v1",
+    "browser_version": "151.0.7922.34",
+    "playwright_version": "1.62.1",
+    "node": "/Users/haewonkim/.nvm/versions/node/v22.23.2/bin/node v22.23.2",
+    "npm": "/Users/haewonkim/.nvm/versions/node/v22.23.2/bin/npm 10.9.8",
+    "python": "backend/.venv/bin/python 3.11.7",
+    "profile": "development/test",
+    "fixture": "repository app.cli seed-demo",
+    "role": "demo.admin/admin",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "frontend_origin": "http://127.0.0.1:56243",
+    "api_origin": "http://127.0.0.1:56242",
+    "viewport_dpr": 1,
+    "data_root_class": "fresh disposable temp root",
+    "runtime_root": "/tmp/chg153-runtime-8cw3ew",
+    "frontend_pid": 92044,
+    "backend_pid": 92035
+  },
+  "tasks": [
+    {
+      "task_id": "app-shell-wayfinding",
+      "oracle": {
+        "precondition": "fresh demo.admin shell",
+        "input": "navigate Work items→Projects→Work items; open Command palette with Meta+K; search Projects; close with Escape; toggle appearance/theme control; reload; Back/Forward",
+        "outcome": "current route cue, command palette semantics, focus return and truthful route/history state",
+        "effect": "only URL/history/preferences change",
+        "prohibited": "no tenant/record mutation",
+        "recovery": "repeat navigation and reload"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [
+        "startup /work-items settled"
+      ],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'Projects workspace', exact: true }) to be visible\u001b[22m\n"
+    },
+    {
+      "task_id": "data-grid-table",
+      "oracle": {
+        "precondition": "seed-demo /work-items with five real records",
+        "input": "search, sort, keyboard focus/selection, deep scroll, reorder/filter while focused",
+        "outcome": "server-scoped query and explicit logical row identity remain visible",
+        "effect": "only query/selection state changes",
+        "prohibited": "no hidden rows included in page selection",
+        "recovery": "clear search, return to active dataset"
+      },
+      "status": "PASS",
+      "steps": [
+        "search applied",
+        "sort and direction changed"
+      ],
+      "observations": [
+        {
+          "scrollY": 467,
+          "rows": [
+            {
+              "id": null,
+              "rowIndex": null,
+              "text": "Select                Title                Status                Priority       "
+            },
+            {
+              "id": null,
+              "rowIndex": "0",
+              "text": "Qualify company identity◫openhighdemo.admin2026-09-20T05:51:01.019157Z1"
+            }
+          ]
+        }
+      ],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed"
+    },
+    {
+      "task_id": "form-edit",
+      "oracle": {
+        "precondition": "new disposable record form available",
+        "input": "open New work item; invalid submit with empty title; fill title/description; submit; reopen; cancel; repeat reload",
+        "outcome": "associated validation preserves input; valid save yields detail with exact title/revision",
+        "effect": "one new server record with one audit effect",
+        "prohibited": "no duplicate save on repeat acknowledgement",
+        "recovery": "cancel/reopen/reload detail"
+      },
+      "status": "PASS",
+      "steps": [
+        "valid save and exact detail identity"
+      ],
+      "observations": [
+        {
+          "title": "CHG153 disposable 1789883536555",
+          "url": "http://127.0.0.1:56243/work-items?item=d8e824a5-1f01-4f33-a3e7-6fa30477a221",
+          "revision": 1
+        }
+      ],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed"
+    },
+    {
+      "task_id": "overlay-focus",
+      "oracle": {
+        "precondition": "work-items workspace with Save view trigger",
+        "input": "pointer open and keyboard open Save current view; Tab/Shift+Tab; Escape; pointer close; dirty cancel and Keep editing",
+        "outcome": "modal owns focus/Escape; close returns to eligible invoker; dirty draft is preserved on Keep editing",
+        "effect": "only overlay/draft state",
+        "prohibited": "hidden invoker not focused",
+        "recovery": "reopen and repeat"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Discard unsaved changes?' }).getByRole('button', { name: 'Keep editing' })\u001b[22m\n"
+    },
+    {
+      "task_id": "search-saved-view-filter",
+      "oracle": {
+        "precondition": "work-items search/filter controls",
+        "input": "apply search; open Save current view; cancel; clear search; saved-view path",
+        "outcome": "edit/applied filter distinction and no-match/clear behavior remain truthful",
+        "effect": "view metadata only; no record mutation",
+        "prohibited": "no-data is not no-match success",
+        "recovery": "clear and reload"
+      },
+      "status": "PASS",
+      "steps": [
+        "no-match state observed"
+      ],
+      "observations": [
+        {
+          "cleared": true,
+          "query": ""
+        }
+      ],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed"
+    },
+    {
+      "task_id": "permission-read-only",
+      "oracle": {
+        "precondition": "server-supported demo.viewer membership exists but process identity remains demo.admin",
+        "input": "attempt role transition using supported backend identity boundary",
+        "outcome": "write controls truthfully absent and privileged stale results invalidated",
+        "effect": "none",
+        "prohibited": "frontend-only permission flags are not accepted as proof",
+        "recovery": "repeat with a separately launched demo.viewer runtime"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "The supported browser fixture binds process identity at runtime; a safe in-session role transition was not available without launching a second runtime. Existing CHG-34 intercept coverage is retained as regression evidence, not backend authorization proof."
+    },
+    {
+      "task_id": "relationship-detail-drilldown",
+      "oracle": {
+        "precondition": "real created work item detail",
+        "input": "open seeded row, inspect Relationships/History/Compare, close",
+        "outcome": "related/detail surface remains parent-bound and returns without losing URL/query context",
+        "effect": "read-only queries only",
+        "prohibited": "no parent selection loss",
+        "recovery": "reopen same item"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog') to be visible\u001b[22m\n"
+    },
+    {
+      "task_id": "file-attachment",
+      "oracle": {
+        "precondition": "seeded work item detail",
+        "input": "inspect Files tab and supported attachment policy surface",
+        "outcome": "limits/state/recovery are truthful; no policy bypass",
+        "effect": "no upload if fixture cannot safely prove lifecycle",
+        "prohibited": "no fabricated file or DOM upload",
+        "recovery": "report unavailable/unproven"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog') to be visible\u001b[22m\n"
+    },
+    {
+      "task_id": "data-rich-projection",
+      "oracle": {
+        "precondition": "registered planning/spatial/analytics routes",
+        "input": "open plan-tasks visualization=gantt and diagram-documents visualization=designer; inspect labels and non-drag controls",
+        "outcome": "quantitative/freshness/missing-state truth and keyboard/non-drag alternative where declared",
+        "effect": "read-only projection state",
+        "prohibited": "no invented measurements",
+        "recovery": "return to parent workspace"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [
+        {
+          "gantt": "CANONICAL PROJECTION\nPlanning Gantt\n\nSchedule projection using baseline start → baseline end. Records remain canonical; this view does not create a separate task store.\n\n↻ Refresh\n＋ New plan task\nMatching records\n0\nVisualization\ngantt\nDataset\nActive\nAccess\nEditor\nSearch records\n⌕\nActive\nArchived\nStatus\nAll status\nplanned\nready\nin progress\nblocked\ndone\ncancelled\nPlanning\nTable\nBoard\nGantt\nCalendar\nTimeline\nDashboard\nGraph\nSaved views\nSaved views\nSave view\n◇\nNo matching records\n\nAdjust the shared workspace filters or create the first record.",
+          "diagram": "CANONICAL PROJECTION\nDiagram studio\n\nEditable architecture, workflow, topology and process canvas with server-validated graph integrity, multi-selection, layout history and revision-safe saves.\n\n↻ Refresh\n＋ New diagram\nMatching records\n0\nVisualization\ndesigner\nDataset\nActive\nAccess\nEditor\nActive diagrams\n0\nTotal nodes\n0\nSearch records\n⌕\nActive\nArchived\nDiagram type\nAll diagram type\narchitecture\nworkflow\ndata flow\ntopology\nprocess\nstate machine\nlineage\nStatus\nAll status\ndraft\nactive\nin review\nretired\nDesigner\nTable\nDashboard\nGraph\nSaved views\nSaved views\nSave view\n◇\nNo matching records\n\nAdjust the shared workspace filters or create the first record.",
+          "nonDragButtons": [
+            "⌘K",
+            "↻ Refresh",
+            "＋ New diagram",
+            "Active",
+            "Archived",
+            "Designer",
+            "Table",
+            "Dashboard",
+            "Graph",
+            "Save view"
+          ]
+        }
+      ],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "Projection screens rendered their supported empty/fixture state, but no populated quantitative dataset or declared keyboard geometry action was available in seed-demo."
+    },
+    {
+      "task_id": "feedback-notification",
+      "oracle": {
+        "precondition": "disposable create path and system notification surface",
+        "input": "submit one valid create; observe pending/success; open system notifications",
+        "outcome": "feedback is discoverable, does not steal focus, and only claims success after detail confirmation",
+        "effect": "one record creation plus audit",
+        "prohibited": "no false success before detail",
+        "recovery": "reload and verify exact record"
+      },
+      "status": "BLOCKED/UNPROVEN",
+      "steps": [],
+      "observations": [],
+      "prohibited_effects": [],
+      "recovery_repeat_path": "not executed",
+      "blocker": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'System', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <a class=\"\" href=\"/system\" data-discover=\"true\">…</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    10 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - element is outside of the viewport\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ]
+}
