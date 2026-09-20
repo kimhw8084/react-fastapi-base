@@ -147,6 +147,8 @@
         "bytes": 60907
       }
     ],
-    "note": "Remote readback was performed against the first immutable publication before this receipt was fast-forwarded with the final package metadata. This receipt never impersonates native Fabric audit identity."
+    "note": "All package files, both PDFs, the bundle, receipt, every canonical PNG and deterministic desktop/mobile binaries were read back from the final immutable carrier commit. This receipt never impersonates native Fabric audit identity.",
+    "final_remote_readback_commit": "256899121e1552303e65fbd36421f03cb370dc35",
+    "final_remote_readback_verified": true
   }
 }
