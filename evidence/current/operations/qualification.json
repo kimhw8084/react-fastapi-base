@@ -1,19 +1,19 @@
 {
-  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "candidate_version": "1.0.0-rc.20",
+  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_version": "1.0.0-rc.21",
   "company_operations_status": "BLOCKED_EXTERNAL",
   "contract_id": "react-fastapi-base.operational-reliability",
   "contract_revision": 1,
   "contract_sha256": "ea5321b0cd71eab7881951d7e97d3cc620cfec024f76dc8691f9e4918c90f24f",
-  "created_at": "2026-09-20T15:21:18.540393+00:00",
+  "created_at": "2026-09-20T19:25:28.091649+00:00",
   "environment": {
     "kind": "repository_test",
     "platform": "Darwin",
     "profile": "development",
-    "python": "3.11.7",
+    "python": "3.12.9",
     "runner": "disposable_local_resources"
   },
-  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
   "external_blockers": [
     {
       "id": "startup_restart",
@@ -144,5 +144,5 @@
     }
   ],
   "schema_version": 1,
-  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9"
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19"
 }

@@ -3,14 +3,37 @@
   "result_kind": "browser-computed-uiqa",
   "proof_model": "runtime-assertion-v1",
   "matrix_id": "project-os-ui-state-matrix",
-  "matrix_sha256": "a8bf2344b8a4f5ea0acc201ccdb25708890f875e6aceccbb91350a642224af24",
-  "checkout_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
-  "source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "matrix_sha256": "fb4e8ff3c6aabe8260106a865a5b9f0426e661b09a4beccf2b06d1dbafd2a325",
+  "checkout_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
   "overall_status": "PASS",
   "results": [
+    {
+      "state_id": "chg153-mobile-navigation-shell",
+      "browser_test_id": "uiqa-019",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "focus.recovery",
+        "focus.visible",
+        "input.pointer",
+        "keyboard.enter",
+        "keyboard.escape",
+        "keyboard.tab",
+        "reflow.320-css-px",
+        "semantics.role-name-state",
+        "viewport.desktop",
+        "viewport.narrow"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.json",
+        "evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.png"
+      ]
+    },
     {
       "state_id": "chg153-system-responsive-geometry",
       "browser_test_id": "uiqa-017",

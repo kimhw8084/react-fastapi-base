@@ -1,0 +1,1652 @@
+{
+  "state_id": "chg153-mobile-navigation-shell",
+  "material_state_class": "normal",
+  "candidate_sha": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_tree": "0447c7bf5b26b66e50d68bf4c9e33dbfb3b1b536",
+  "candidate_version": "1.0.0-rc.21",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36",
+  "all_21_initial_view": {
+    "candidate_sha": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "candidate_tree": "0447c7bf5b26b66e50d68bf4c9e33dbfb3b1b536",
+    "candidate_version": "1.0.0-rc.21",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36",
+    "surfaces": {
+      "work_items@390": {
+        "surface_key": "work_items",
+        "path": "/work-items",
+        "heading": "Work items",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 168.984375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationWork items⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/work-items",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "projects@390": {
+        "surface_key": "projects",
+        "path": "/projects",
+        "heading": "Projects",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 168.984375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProjects⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/projects",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "racks@390": {
+        "surface_key": "racks",
+        "path": "/racks",
+        "heading": "Racks",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 168.984375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationRacks⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/racks",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "equipment@390": {
+        "surface_key": "equipment",
+        "path": "/equipment",
+        "heading": "Equipment",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 168.984375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationEquipment⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/equipment",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "knowledge_entries@390": {
+        "surface_key": "knowledge_entries",
+        "path": "/knowledge-entries",
+        "heading": "Engineering knowledge",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationKnowledge⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/knowledge-entries",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "investigations@390": {
+        "surface_key": "investigations",
+        "path": "/investigations",
+        "heading": "Investigation center",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationInvestigations⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/investigations",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "research@390": {
+        "surface_key": "research",
+        "path": "/research",
+        "heading": "Research laboratory",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationResearch⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/research",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "risks@390": {
+        "surface_key": "risks",
+        "path": "/risks",
+        "heading": "Risk analysis",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationRisk analysis⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/risks",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "plan_tasks@390": {
+        "surface_key": "plan_tasks",
+        "path": "/plan-tasks",
+        "heading": "Program planning",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 338.359375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationPlanning⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/plan-tasks",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "diagram_documents@390": {
+        "surface_key": "diagram_documents",
+        "path": "/diagram-documents",
+        "heading": "Diagram studio",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationDiagram studio⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/diagram-documents",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "process_measurements@390": {
+        "surface_key": "process_measurements",
+        "path": "/process-measurements",
+        "heading": "Statistical process control",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProcess measurements⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/process-measurements",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "wafer_runs@390": {
+        "surface_key": "wafer_runs",
+        "path": "/wafer-runs",
+        "heading": "Wafer analysis",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationWafer runs⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/wafer-runs",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "manufacturing_lots@390": {
+        "surface_key": "manufacturing_lots",
+        "path": "/manufacturing-lots",
+        "heading": "Lot traveler & WIP",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationManufacturing lots⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/manufacturing-lots",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "equipment_states@390": {
+        "surface_key": "equipment_states",
+        "path": "/equipment-states",
+        "heading": "Equipment state & utilization",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationEquipment states⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/equipment-states",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "process_recipes@390": {
+        "surface_key": "process_recipes",
+        "path": "/process-recipes",
+        "heading": "Recipe compare",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProcess recipes⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/process-recipes",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "software_services@390": {
+        "surface_key": "software_services",
+        "path": "/software-services",
+        "heading": "Software services",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 168.984375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationSoftware services⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/software-services",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "delivery_runs@390": {
+        "surface_key": "delivery_runs",
+        "path": "/delivery-runs",
+        "heading": "Delivery pipeline",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationDelivery runs⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/delivery-runs",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "observability_events@390": {
+        "surface_key": "observability_events",
+        "path": "/observability-events",
+        "heading": "Observability explorer",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationObservability events⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/observability-events",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "incidents@390": {
+        "surface_key": "incidents",
+        "path": "/incidents",
+        "heading": "Incident command",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 511.296875,
+          "width": 358,
+          "height": 273.078125
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationIncidents⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/incidents",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "service_objectives@390": {
+        "surface_key": "service_objectives",
+        "path": "/service-objectives",
+        "heading": "SLO & error budget",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 490.296875,
+          "width": 358,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationService objectives⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/service-objectives",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "system@390": {
+        "surface_key": "system",
+        "path": "/system",
+        "heading": "System workspace",
+        "width": 390,
+        "height": 844,
+        "heading_bounds": {
+          "x": 16,
+          "y": 327.5,
+          "width": 358,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 451.296875,
+          "width": 358,
+          "height": 86
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationSystem⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/system",
+        "page_geometry": {
+          "viewport_css_px": 390,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390
+        },
+        "document_width_bounded": true
+      },
+      "work_items@320": {
+        "surface_key": "work_items",
+        "path": "/work-items",
+        "heading": "Work items",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 185.484375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationWork items⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/work-items",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "projects@320": {
+        "surface_key": "projects",
+        "path": "/projects",
+        "heading": "Projects",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 514.796875,
+          "width": 288,
+          "height": 185.484375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProjects⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/projects",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "racks@320": {
+        "surface_key": "racks",
+        "path": "/racks",
+        "heading": "Racks",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 514.796875,
+          "width": 288,
+          "height": 185.484375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationRacks⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/racks",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "equipment@320": {
+        "surface_key": "equipment",
+        "path": "/equipment",
+        "heading": "Equipment",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 185.484375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationEquipment⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/equipment",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "knowledge_entries@320": {
+        "surface_key": "knowledge_entries",
+        "path": "/knowledge-entries",
+        "heading": "Engineering knowledge",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 69.59375
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 618.59375,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationKnowledge⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/knowledge-entries",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "investigations@320": {
+        "surface_key": "investigations",
+        "path": "/investigations",
+        "heading": "Investigation center",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 273.078125
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationInvestigations⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/investigations",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "research@320": {
+        "surface_key": "research",
+        "path": "/research",
+        "heading": "Research laboratory",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationResearch⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/research",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "risks@320": {
+        "surface_key": "risks",
+        "path": "/risks",
+        "heading": "Risk analysis",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 556.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationRisk analysis⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/risks",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "plan_tasks@320": {
+        "surface_key": "plan_tasks",
+        "path": "/plan-tasks",
+        "heading": "Program planning",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 338.359375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationPlanning⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/plan-tasks",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "diagram_documents@320": {
+        "surface_key": "diagram_documents",
+        "path": "/diagram-documents",
+        "heading": "Diagram studio",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 556.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationDiagram studio⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/diagram-documents",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "process_measurements@320": {
+        "surface_key": "process_measurements",
+        "path": "/process-measurements",
+        "heading": "Statistical process control",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 69.59375
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 570.59375,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProcess measurements⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/process-measurements",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "wafer_runs@320": {
+        "surface_key": "wafer_runs",
+        "path": "/wafer-runs",
+        "heading": "Wafer analysis",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationWafer runs⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/wafer-runs",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "manufacturing_lots@320": {
+        "surface_key": "manufacturing_lots",
+        "path": "/manufacturing-lots",
+        "heading": "Lot traveler & WIP",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationManufacturing lots⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/manufacturing-lots",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "equipment_states@320": {
+        "surface_key": "equipment_states",
+        "path": "/equipment-states",
+        "heading": "Equipment state & utilization",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 69.59375
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 618.59375,
+          "width": 288,
+          "height": 273.078125
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationEquipment states⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/equipment-states",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "process_recipes@320": {
+        "surface_key": "process_recipes",
+        "path": "/process-recipes",
+        "heading": "Recipe compare",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationProcess recipes⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/process-recipes",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "software_services@320": {
+        "surface_key": "software_services",
+        "path": "/software-services",
+        "heading": "Software services",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 185.484375
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationSoftware services⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/software-services",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "delivery_runs@320": {
+        "surface_key": "delivery_runs",
+        "path": "/delivery-runs",
+        "heading": "Delivery pipeline",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 556.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationDelivery runs⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/delivery-runs",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "observability_events@320": {
+        "surface_key": "observability_events",
+        "path": "/observability-events",
+        "heading": "Observability explorer",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 273.078125
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationObservability events⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/observability-events",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "incidents@320": {
+        "surface_key": "incidents",
+        "path": "/incidents",
+        "heading": "Incident command",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 273.078125
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationIncidents⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/incidents",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "service_objectives@320": {
+        "surface_key": "service_objectives",
+        "path": "/service-objectives",
+        "heading": "SLO & error budget",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 535.796875,
+          "width": 288,
+          "height": 253.671875
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationService objectives⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/service-objectives",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      },
+      "system@320": {
+        "surface_key": "system",
+        "path": "/system",
+        "heading": "System workspace",
+        "width": 320,
+        "height": 800,
+        "heading_bounds": {
+          "x": 16,
+          "y": 352,
+          "width": 288,
+          "height": 34.796875
+        },
+        "material_task_start_bounds": {
+          "x": 16,
+          "y": 496.796875,
+          "width": 288,
+          "height": 86
+        },
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "trigger_visible": true,
+        "trigger_label": "NavigationSystem⌄",
+        "navigation_expanded": "false",
+        "visible_destination_count": 0,
+        "active_destination": "/system",
+        "page_geometry": {
+          "viewport_css_px": 320,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320
+        },
+        "document_width_bounded": true
+      }
+    },
+    "all_390_pass": true,
+    "all_320_pass": true
+  },
+  "work_items": {
+    "pointerReachability": {
+      "first": true,
+      "middle": true,
+      "final": true
+    },
+    "pointerActivation": {
+      "history_change_count": 1,
+      "url": "/process-measurements"
+    },
+    "keyboard": {
+      "first": {
+        "active": true,
+        "focusVisible": true,
+        "outline": "rgb(21, 88, 168) solid 3px",
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineOffset": "3px",
+        "bounds": {
+          "left": 16,
+          "right": 374,
+          "top": 122.5,
+          "bottom": 167.5
+        },
+        "focus_bounds": {
+          "left": 10,
+          "right": 380,
+          "top": 116.5,
+          "bottom": 173.5
+        },
+        "owner_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 41,
+          "bottom": 461
+        },
+        "viewport_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 0,
+          "bottom": 844
+        },
+        "fully_inside_owner": true,
+        "fully_inside_viewport": true
+      },
+      "middle": {
+        "active": true,
+        "focusVisible": true,
+        "outline": "rgb(21, 88, 168) solid 3px",
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineOffset": "3px",
+        "bounds": {
+          "left": 16,
+          "right": 374,
+          "top": 380.5,
+          "bottom": 425.5
+        },
+        "focus_bounds": {
+          "left": 10,
+          "right": 380,
+          "top": 374.5,
+          "bottom": 431.5
+        },
+        "owner_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 41,
+          "bottom": 461
+        },
+        "viewport_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 0,
+          "bottom": 844
+        },
+        "fully_inside_owner": true,
+        "fully_inside_viewport": true
+      },
+      "final": {
+        "active": true,
+        "focusVisible": true,
+        "outline": "rgb(21, 88, 168) solid 3px",
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineOffset": "3px",
+        "bounds": {
+          "left": 16,
+          "right": 374,
+          "top": 402.5,
+          "bottom": 447.5
+        },
+        "focus_bounds": {
+          "left": 10,
+          "right": 380,
+          "top": 396.5,
+          "bottom": 453.5
+        },
+        "owner_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 41,
+          "bottom": 461
+        },
+        "viewport_bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 0,
+          "bottom": 844
+        },
+        "fully_inside_owner": true,
+        "fully_inside_viewport": true
+      }
+    },
+    "short_height_final": {
+      "active": true,
+      "focusVisible": true,
+      "outline": "rgb(255, 255, 0) solid 3px",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineOffset": "3px",
+      "bounds": {
+        "left": 16,
+        "right": 374,
+        "top": 286.5,
+        "bottom": 331.5
+      },
+      "focus_bounds": {
+        "left": 10,
+        "right": 380,
+        "top": 280.5,
+        "bottom": 337.5
+      },
+      "owner_bounds": {
+        "left": 0,
+        "right": 390,
+        "top": 41,
+        "bottom": 341
+      },
+      "viewport_bounds": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 420
+      },
+      "fully_inside_owner": true,
+      "fully_inside_viewport": true
+    }
+  },
+  "planning_responsive_state_preservation": {
+    "before": {
+      "visualization": "true",
+      "search": "task",
+      "filter": "planned",
+      "appearance": "light",
+      "theme": "clarity",
+      "contrast": "high",
+      "tenant": "1054f93b-fdd6-4653-aaa6-bb791b6d7653"
+    },
+    "after_390": {
+      "visualization": "true",
+      "search": "task",
+      "filter": "planned",
+      "appearance": "light",
+      "theme": "clarity",
+      "contrast": "high",
+      "tenant": "1054f93b-fdd6-4653-aaa6-bb791b6d7653"
+    },
+    "after_320": {
+      "visualization": "true",
+      "search": "task",
+      "filter": "planned",
+      "appearance": "light",
+      "theme": "clarity",
+      "contrast": "high",
+      "tenant": "1054f93b-fdd6-4653-aaa6-bb791b6d7653"
+    }
+  },
+  "system_short_height": {
+    "active": true,
+    "focusVisible": true,
+    "outline": "rgb(255, 255, 0) solid 3px",
+    "outlineStyle": "solid",
+    "outlineWidth": "3px",
+    "outlineOffset": "3px",
+    "bounds": {
+      "left": 16,
+      "right": 374,
+      "top": 286.5,
+      "bottom": 331.5
+    },
+    "focus_bounds": {
+      "left": 10,
+      "right": 380,
+      "top": 280.5,
+      "bottom": 337.5
+    },
+    "owner_bounds": {
+      "left": 0,
+      "right": 390,
+      "top": 41,
+      "bottom": 341
+    },
+    "viewport_bounds": {
+      "left": 0,
+      "right": 390,
+      "top": 0,
+      "bottom": 420
+    },
+    "fully_inside_owner": true,
+    "fully_inside_viewport": true
+  },
+  "desktop_sidebar": {
+    "sidebar_visible": true,
+    "mobile_trigger_operable": false,
+    "destination_count": 21
+  },
+  "negative_control_sensitivity": {
+    "static_21_link_heading_failure_detected": true,
+    "compact_missing_destinations_failure_detected": true,
+    "duplicate_operable_navigation_failure_detected": true,
+    "bounded_final_focus_failure_detected": true,
+    "bounded_final_sound_fixture_passed": true,
+    "skip_bypass_failure_detected": true,
+    "skip_bypass_sound_fixture_passed": true
+  },
+  "focused_rendered_evidence_paths": [
+    "evidence/current/uiqa/rendered/chg153/work-items-desktop-1440x900.png",
+    "evidence/current/uiqa/rendered/chg153/work-items-mobile-closed-390x844.png",
+    "evidence/current/uiqa/rendered/chg153/work-items-mobile-closed-320x800.png",
+    "evidence/current/uiqa/rendered/chg153/planning-mobile-closed-390x844.png",
+    "evidence/current/uiqa/rendered/chg153/planning-mobile-open-390x844.png",
+    "evidence/current/uiqa/rendered/chg153/planning-mobile-closed-320x800.png",
+    "evidence/current/uiqa/rendered/chg153/planning-mobile-open-320x800.png",
+    "evidence/current/uiqa/rendered/chg153/system-mobile-closed-390x844.png",
+    "evidence/current/uiqa/rendered/chg153/system-mobile-open-390x844.png",
+    "evidence/current/uiqa/rendered/chg153/system-mobile-closed-320x800.png",
+    "evidence/current/uiqa/rendered/chg153/system-mobile-open-320x800.png",
+    "evidence/current/uiqa/rendered/chg153/all-21-initial-view.json"
+  ],
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}

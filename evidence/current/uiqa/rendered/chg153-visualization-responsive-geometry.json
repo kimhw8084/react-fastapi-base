@@ -1,9 +1,9 @@
 {
   "state_id": "chg153-visualization-responsive-geometry",
   "material_state_class": "normal",
-  "candidate_sha": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "candidate_tree": "bfbb361618d45093f5b433c3747ae7dbe5d039f9",
-  "candidate_version": "1.0.0-rc.20",
+  "candidate_sha": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_tree": "0447c7bf5b26b66e50d68bf4c9e33dbfb3b1b536",
+  "candidate_version": "1.0.0-rc.21",
   "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36",
   "surface": "EntityWorkspace visualization selector",
   "consumers": [
@@ -56,7 +56,7 @@
         "Graph"
       ],
       "active_mode": "Graph",
-      "url": "http://127.0.0.1:53709/plan-tasks?visualization=graph",
+      "url": "http://127.0.0.1:55365/plan-tasks?visualization=graph",
       "page": {
         "viewport_css_px": 390,
         "document_scroll_width": 390,
@@ -99,20 +99,20 @@
             "bounds": {
               "left": 25,
               "right": 109.515625,
-              "top": 436.65625,
-              "bottom": 476.65625
+              "top": 437.15625,
+              "bottom": 477.15625
             },
             "focus_bounds": {
               "left": 19,
               "right": 115.515625,
-              "top": 430.65625,
-              "bottom": 482.65625
+              "top": 431.15625,
+              "bottom": 483.15625
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 427.65625,
-              "bottom": 485.65625
+              "top": 428.15625,
+              "bottom": 486.15625
             },
             "viewport_bounds": {
               "left": 0,
@@ -136,20 +136,20 @@
             "bounds": {
               "left": 273.390625,
               "right": 360.203125,
-              "top": 436.65625,
-              "bottom": 476.65625
+              "top": 437.15625,
+              "bottom": 477.15625
             },
             "focus_bounds": {
               "left": 267.390625,
               "right": 366.203125,
-              "top": 430.65625,
-              "bottom": 482.65625
+              "top": 431.15625,
+              "bottom": 483.15625
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 427.65625,
-              "bottom": 485.65625
+              "top": 428.15625,
+              "bottom": 486.15625
             },
             "viewport_bounds": {
               "left": 0,
@@ -163,7 +163,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/plan-tasks?visualization=calendar"
+            "url": "http://127.0.0.1:55365/plan-tasks?visualization=calendar"
           }
         },
         "final": {
@@ -178,20 +178,20 @@
             "bounds": {
               "left": 298.09375,
               "right": 365.296875,
-              "top": 548.28125,
-              "bottom": 588.28125
+              "top": 547.78125,
+              "bottom": 587.78125
             },
             "focus_bounds": {
               "left": 292.09375,
               "right": 371.296875,
-              "top": 542.28125,
-              "bottom": 594.28125
+              "top": 541.78125,
+              "bottom": 593.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 539.28125,
-              "bottom": 597.28125
+              "top": 538.78125,
+              "bottom": 596.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -205,7 +205,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/plan-tasks?visualization=graph"
+            "url": "http://127.0.0.1:55365/plan-tasks?visualization=graph"
           }
         }
       },
@@ -234,7 +234,7 @@
         "Graph"
       ],
       "active_mode": "Graph",
-      "url": "http://127.0.0.1:53709/plan-tasks?visualization=graph",
+      "url": "http://127.0.0.1:55365/plan-tasks?visualization=graph",
       "page": {
         "viewport_css_px": 320,
         "document_scroll_width": 320,
@@ -277,20 +277,20 @@
             "bounds": {
               "left": 25,
               "right": 109.515625,
-              "top": 393.15625,
-              "bottom": 433.15625
+              "top": 392.65625,
+              "bottom": 432.65625
             },
             "focus_bounds": {
               "left": 19,
               "right": 115.515625,
-              "top": 387.15625,
-              "bottom": 439.15625
+              "top": 386.65625,
+              "bottom": 438.65625
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 384.15625,
-              "bottom": 442.15625
+              "top": 383.65625,
+              "bottom": 441.65625
             },
             "viewport_bounds": {
               "left": 0,
@@ -312,22 +312,22 @@
             "outlineWidth": "3px",
             "outlineOffset": "3px",
             "bounds": {
-              "left": 153.390625,
-              "right": 240.203125,
-              "top": 393.15625,
-              "bottom": 433.15625
+              "left": 116.390625,
+              "right": 203.203125,
+              "top": 392.65625,
+              "bottom": 432.65625
             },
             "focus_bounds": {
-              "left": 147.390625,
-              "right": 246.203125,
-              "top": 387.15625,
-              "bottom": 439.15625
+              "left": 110.390625,
+              "right": 209.203125,
+              "top": 386.65625,
+              "bottom": 438.65625
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 384.15625,
-              "bottom": 442.15625
+              "top": 383.65625,
+              "bottom": 441.65625
             },
             "viewport_bounds": {
               "left": 0,
@@ -341,7 +341,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/plan-tasks?visualization=calendar"
+            "url": "http://127.0.0.1:55365/plan-tasks?visualization=calendar"
           }
         },
         "final": {
@@ -356,20 +356,20 @@
             "bounds": {
               "left": 228.09375,
               "right": 295.296875,
-              "top": 503.78125,
-              "bottom": 543.78125
+              "top": 504.28125,
+              "bottom": 544.28125
             },
             "focus_bounds": {
               "left": 222.09375,
               "right": 301.296875,
-              "top": 497.78125,
-              "bottom": 549.78125
+              "top": 498.28125,
+              "bottom": 550.28125
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 494.78125,
-              "bottom": 552.78125
+              "top": 495.28125,
+              "bottom": 553.28125
             },
             "viewport_bounds": {
               "left": 0,
@@ -383,7 +383,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/plan-tasks?visualization=graph"
+            "url": "http://127.0.0.1:55365/plan-tasks?visualization=graph"
           }
         }
       },
@@ -411,7 +411,7 @@
         "Graph"
       ],
       "active_mode": "Graph",
-      "url": "http://127.0.0.1:53709/work-items?visualization=graph",
+      "url": "http://127.0.0.1:55365/work-items?visualization=graph",
       "page": {
         "viewport_css_px": 390,
         "document_scroll_width": 390,
@@ -454,20 +454,20 @@
             "bounds": {
               "left": 25,
               "right": 87.265625,
-              "top": 406.78125,
-              "bottom": 446.78125
+              "top": 402.28125,
+              "bottom": 442.28125
             },
             "focus_bounds": {
               "left": 19,
               "right": 93.265625,
-              "top": 400.78125,
-              "bottom": 452.78125
+              "top": 396.28125,
+              "bottom": 448.28125
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 397.78125,
-              "bottom": 455.78125
+              "top": 393.28125,
+              "bottom": 451.28125
             },
             "viewport_bounds": {
               "left": 0,
@@ -491,20 +491,20 @@
             "bounds": {
               "left": 252.890625,
               "right": 336.171875,
-              "top": 406.78125,
-              "bottom": 446.78125
+              "top": 402.28125,
+              "bottom": 442.28125
             },
             "focus_bounds": {
               "left": 246.890625,
               "right": 342.171875,
-              "top": 400.78125,
-              "bottom": 452.78125
+              "top": 396.28125,
+              "bottom": 448.28125
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 397.78125,
-              "bottom": 455.78125
+              "top": 393.28125,
+              "bottom": 451.28125
             },
             "viewport_bounds": {
               "left": 0,
@@ -518,7 +518,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/work-items?visualization=timeline"
+            "url": "http://127.0.0.1:55365/work-items?visualization=timeline"
           }
         },
         "final": {
@@ -533,20 +533,20 @@
             "bounds": {
               "left": 297.578125,
               "right": 364.78125,
-              "top": 547.78125,
-              "bottom": 587.78125
+              "top": 548.28125,
+              "bottom": 588.28125
             },
             "focus_bounds": {
               "left": 291.578125,
               "right": 370.78125,
-              "top": 541.78125,
-              "bottom": 593.78125
+              "top": 542.28125,
+              "bottom": 594.28125
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 538.78125,
-              "bottom": 596.78125
+              "top": 539.28125,
+              "bottom": 597.28125
             },
             "viewport_bounds": {
               "left": 0,
@@ -560,7 +560,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/work-items?visualization=graph"
+            "url": "http://127.0.0.1:55365/work-items?visualization=graph"
           }
         }
       },
@@ -588,7 +588,7 @@
         "Graph"
       ],
       "active_mode": "Graph",
-      "url": "http://127.0.0.1:53709/work-items?visualization=graph",
+      "url": "http://127.0.0.1:55365/work-items?visualization=graph",
       "page": {
         "viewport_css_px": 320,
         "document_scroll_width": 320,
@@ -631,20 +631,20 @@
             "bounds": {
               "left": 25,
               "right": 87.265625,
-              "top": 380.28125,
-              "bottom": 420.28125
+              "top": 379.78125,
+              "bottom": 419.78125
             },
             "focus_bounds": {
               "left": 19,
               "right": 93.265625,
-              "top": 374.28125,
-              "bottom": 426.28125
+              "top": 373.78125,
+              "bottom": 425.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 371.28125,
-              "bottom": 429.28125
+              "top": 370.78125,
+              "bottom": 428.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -668,20 +668,20 @@
             "bounds": {
               "left": 206.890625,
               "right": 290.171875,
-              "top": 380.28125,
-              "bottom": 420.28125
+              "top": 379.78125,
+              "bottom": 419.78125
             },
             "focus_bounds": {
               "left": 200.890625,
               "right": 296.171875,
-              "top": 374.28125,
-              "bottom": 426.28125
+              "top": 373.78125,
+              "bottom": 425.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 371.28125,
-              "bottom": 429.28125
+              "top": 370.78125,
+              "bottom": 428.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -695,7 +695,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/work-items?visualization=timeline"
+            "url": "http://127.0.0.1:55365/work-items?visualization=timeline"
           }
         },
         "final": {
@@ -710,20 +710,20 @@
             "bounds": {
               "left": 227.578125,
               "right": 294.78125,
-              "top": 504.28125,
-              "bottom": 544.28125
+              "top": 503.78125,
+              "bottom": 543.78125
             },
             "focus_bounds": {
               "left": 221.578125,
               "right": 300.78125,
-              "top": 498.28125,
-              "bottom": 550.28125
+              "top": 497.78125,
+              "bottom": 549.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 495.28125,
-              "bottom": 553.28125
+              "top": 494.78125,
+              "bottom": 552.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -737,7 +737,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/work-items?visualization=graph"
+            "url": "http://127.0.0.1:55365/work-items?visualization=graph"
           }
         }
       },
@@ -763,7 +763,7 @@
         "Dashboard"
       ],
       "active_mode": "Dashboard",
-      "url": "http://127.0.0.1:53709/incidents?visualization=dashboard",
+      "url": "http://127.0.0.1:55365/incidents?visualization=dashboard",
       "page": {
         "viewport_css_px": 390,
         "document_scroll_width": 390,
@@ -806,20 +806,20 @@
             "bounds": {
               "left": 25,
               "right": 180.609375,
-              "top": 436.875,
-              "bottom": 476.875
+              "top": 437.375,
+              "bottom": 477.375
             },
             "focus_bounds": {
               "left": 19,
               "right": 186.609375,
-              "top": 430.875,
-              "bottom": 482.875
+              "top": 431.375,
+              "bottom": 483.375
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 427.875,
-              "bottom": 485.875
+              "top": 428.375,
+              "bottom": 486.375
             },
             "viewport_bounds": {
               "left": 0,
@@ -843,20 +843,20 @@
             "bounds": {
               "left": 242.875,
               "right": 308.890625,
-              "top": 436.875,
-              "bottom": 476.875
+              "top": 437.375,
+              "bottom": 477.375
             },
             "focus_bounds": {
               "left": 236.875,
               "right": 314.890625,
-              "top": 430.875,
-              "bottom": 482.875
+              "top": 431.375,
+              "bottom": 483.375
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 427.875,
-              "bottom": 485.875
+              "top": 428.375,
+              "bottom": 486.375
             },
             "viewport_bounds": {
               "left": 0,
@@ -870,7 +870,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/incidents?visualization=board"
+            "url": "http://127.0.0.1:55365/incidents?visualization=board"
           }
         },
         "final": {
@@ -885,20 +885,20 @@
             "bounds": {
               "left": 265.171875,
               "right": 364.78125,
-              "top": 533.28125,
-              "bottom": 573.28125
+              "top": 532.78125,
+              "bottom": 572.78125
             },
             "focus_bounds": {
               "left": 259.171875,
               "right": 370.78125,
-              "top": 527.28125,
-              "bottom": 579.28125
+              "top": 526.78125,
+              "bottom": 578.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 374,
-              "top": 524.28125,
-              "bottom": 582.28125
+              "top": 523.78125,
+              "bottom": 581.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -912,7 +912,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/incidents?visualization=dashboard"
+            "url": "http://127.0.0.1:55365/incidents?visualization=dashboard"
           }
         }
       },
@@ -938,7 +938,7 @@
         "Dashboard"
       ],
       "active_mode": "Dashboard",
-      "url": "http://127.0.0.1:53709/incidents?visualization=dashboard",
+      "url": "http://127.0.0.1:55365/incidents?visualization=dashboard",
       "page": {
         "viewport_css_px": 320,
         "document_scroll_width": 320,
@@ -981,20 +981,20 @@
             "bounds": {
               "left": 25,
               "right": 180.609375,
-              "top": 393.375,
-              "bottom": 433.375
+              "top": 392.875,
+              "bottom": 432.875
             },
             "focus_bounds": {
               "left": 19,
               "right": 186.609375,
-              "top": 387.375,
-              "bottom": 439.375
+              "top": 386.875,
+              "bottom": 438.875
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 384.375,
-              "bottom": 442.375
+              "top": 383.875,
+              "bottom": 441.875
             },
             "viewport_bounds": {
               "left": 0,
@@ -1018,20 +1018,20 @@
             "bounds": {
               "left": 223.875,
               "right": 289.890625,
-              "top": 393.375,
-              "bottom": 433.375
+              "top": 392.875,
+              "bottom": 432.875
             },
             "focus_bounds": {
               "left": 217.875,
               "right": 295.890625,
-              "top": 387.375,
-              "bottom": 439.375
+              "top": 386.875,
+              "bottom": 438.875
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 384.375,
-              "bottom": 442.375
+              "top": 383.875,
+              "bottom": 441.875
             },
             "viewport_bounds": {
               "left": 0,
@@ -1045,7 +1045,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/incidents?visualization=board"
+            "url": "http://127.0.0.1:55365/incidents?visualization=board"
           }
         },
         "final": {
@@ -1060,20 +1060,20 @@
             "bounds": {
               "left": 195.171875,
               "right": 294.78125,
-              "top": 517.28125,
-              "bottom": 557.28125
+              "top": 516.78125,
+              "bottom": 556.78125
             },
             "focus_bounds": {
               "left": 189.171875,
               "right": 300.78125,
-              "top": 511.28125,
-              "bottom": 563.28125
+              "top": 510.78125,
+              "bottom": 562.78125
             },
             "owner_bounds": {
               "left": 16,
               "right": 304,
-              "top": 508.28125,
-              "bottom": 566.28125
+              "top": 507.78125,
+              "bottom": 565.78125
             },
             "viewport_bounds": {
               "left": 0,
@@ -1087,7 +1087,7 @@
           "activation": {
             "click_count": 1,
             "history_change_count": 1,
-            "url": "http://127.0.0.1:53709/incidents?visualization=dashboard"
+            "url": "http://127.0.0.1:55365/incidents?visualization=dashboard"
           }
         }
       },
@@ -1105,7 +1105,7 @@
     "mode": "true",
     "search": "task",
     "filter": "planned",
-    "url": "http://127.0.0.1:53709/plan-tasks?visualization=gantt",
+    "url": "http://127.0.0.1:55365/plan-tasks?visualization=gantt",
     "summary": true
   },
   "short_height_forced_colors": {
@@ -1129,20 +1129,20 @@
       "bounds": {
         "left": 298.09375,
         "right": 365.296875,
-        "top": 189.65625,
-        "bottom": 229.65625
+        "top": 190.15625,
+        "bottom": 230.15625
       },
       "focus_bounds": {
         "left": 292.09375,
         "right": 371.296875,
-        "top": 183.65625,
-        "bottom": 235.65625
+        "top": 184.15625,
+        "bottom": 236.15625
       },
       "owner_bounds": {
         "left": 16,
         "right": 374,
-        "top": 180.65625,
-        "bottom": 238.65625
+        "top": 181.15625,
+        "bottom": 239.15625
       },
       "viewport_bounds": {
         "left": 0,

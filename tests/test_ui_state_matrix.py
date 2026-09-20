@@ -91,8 +91,8 @@ def test_applicable_rows_cannot_lose_executable_coverage(tmp_path: Path):
 
 def test_required_dimension_disappearance_fails_closed(tmp_path: Path):
     matrix = load_matrix()
-    row = next(row for row in matrix['rows'] if 'keyboard.escape' in row['required_dimensions'])
-    row['required_dimensions'].remove('keyboard.escape')
+    row = next(row for row in matrix['rows'] if 'motion.reduced' in row['required_dimensions'])
+    row['required_dimensions'].remove('motion.reduced')
     matrix_path, spec_path = write_fixture(tmp_path, matrix)
     with pytest.raises(MatrixContractError, match='required dimension has disappeared'):
         validate_matrix(matrix_path, spec_path)
