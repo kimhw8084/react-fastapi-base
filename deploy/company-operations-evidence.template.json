@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "evidence_type": "company_operations_drill",
+  "deployment_id": null,
+  "candidate_version": null,
+  "verified_source_commit": null,
+  "source_digest": null,
+  "operator_id": null,
+  "created_at": "2026-01-01T00:00:00Z",
+  "drills": [
+    {"drill_id": "startup_restart", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["startup-restart-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company staging startup and restart evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "dependency_unavailable_recovery", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["dependency-recovery-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company dependency outage and recovery evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "database_readiness_degradation", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["database-readiness-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company database and readiness degradation evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "worker_crash_lease_recovery", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["worker-recovery-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company worker crash and lease recovery evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "outbound_integration_failure_retry", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["outbound-retry-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company outbound integration failure and retry evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "recovery_restore", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["recovery-restore-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company backup and restore evidence is not available.", "reason_code": "company_staging_required"},
+    {"drill_id": "request_log_correlation", "status": "BLOCKED_EXTERNAL", "evidence": [], "correlation_ids": ["request-correlation-not-collected"], "observed_at": "2026-01-01T00:00:00Z", "outcome": "Authentic company request and log correlation evidence is not available.", "reason_code": "company_staging_required"}
+  ]
+}

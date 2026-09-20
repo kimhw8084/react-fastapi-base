@@ -1,4 +1,4 @@
-# Template upgrades — 1.0.0-rc.17
+# Template upgrades — 1.0.0-rc.18
 
 The review build implements a hash-bound, conflict-refusing upgrade apply and rollback for the managed platform core. The disposable fixture at `scripts/upgrade_fixture.py` proves generated-app migration, contract regeneration, frontend tests/build, apply, rollback and integrity restoration. It does not migrate application-owned schema or silently reconcile local divergence.
 

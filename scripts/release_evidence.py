@@ -70,6 +70,7 @@ def build_readiness_matrix(*, source_commit: str, source_digest: str, version: s
         technical_status = 'PASS'
         technical_reason = 'Repository-owned code and release checks passed for the exact candidate.'
     release_status = 'PASS' if code_ready and _commit(source_commit) and _digest(source_digest) else 'BLOCKED'
+    operations_path = ROOT / 'evidence/current/operations/qualification.json'
     release_reason = (
         'Immutable source/version/digest binding metadata and this matrix are repository-bound.'
         if release_status == 'PASS' else
@@ -108,6 +109,12 @@ def build_readiness_matrix(*, source_commit: str, source_digest: str, version: s
             'locator': 'evidence/current/deployment/qualification.json',
             'status': 'PASS' if (ROOT / 'evidence/current/deployment/qualification.json').is_file() else 'BLOCKED',
             'qualification_status': 'REPOSITORY_ONLY',
+        },
+        'repository_operations': {
+            'locator': str(operations_path.relative_to(ROOT)),
+            'status': next((row.get('status') for row in results if row.get('name') == 'operational-reliability-qualification'), 'BLOCKED'),
+            'qualification_status': 'REPOSITORY_ONLY',
+            'company_operations_gate': 'BLOCKED_EXTERNAL',
         },
         'code_ready': code_ready,
         'production_ready': False,
@@ -158,6 +165,14 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'sha256': sha256_file(deployment_path) if deployment_path.is_file() else None,
         'required_for': 'code',
     }
+    operations_path = ROOT / 'evidence/current/operations/qualification.json'
+    operations_evidence = {
+        'locator': str(operations_path.relative_to(ROOT)),
+        'sha256': sha256_file(operations_path) if operations_path.is_file() else None,
+        'required_for': 'code',
+        'repository_status': next((row.get('status') for row in results if row.get('name') == 'operational-reliability-qualification'), 'BLOCKED'),
+        'company_operations_gate': 'BLOCKED_EXTERNAL',
+    }
     manifest = {
         'schema_version': 2,
         'product': 'react-fastapi-base',
@@ -174,6 +189,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'reusable_platform_qualification': reusable_evidence,
         'storage_qualification': storage_evidence,
         'deployment_qualification': deployment_evidence,
+        'repository_operations_qualification': operations_evidence,
         'api_compatibility_base_sha': api_compatibility_base_sha,
         'target_base_sha': api_compatibility_base_sha,
         'evidence_commit': None,
@@ -202,6 +218,7 @@ def write_repository_release_evidence(*, source_commit: str, source_digest: str,
         'reusable_platform_qualification': reusable_evidence,
         'storage_qualification': storage_evidence,
         'deployment_qualification': deployment_evidence,
+        'repository_operations_qualification': operations_evidence,
         'binding_status': 'PENDING_EVIDENCE_COMMIT',
         'result': 'NOT_CERTIFIED',
         'note': 'Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.',

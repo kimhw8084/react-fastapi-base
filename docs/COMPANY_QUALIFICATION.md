@@ -33,7 +33,7 @@ prerequisite file cannot be renamed into a final qualification: production
 startup/preflight still validates the complete `CompanyQualification`, exact
 project/profile/source/version/deployment/root/storage binding and the selected scanner policy.
 
-Production also loads the current-version-derived repository-owned release identity, currently `deploy/rc17-release-identity.json`. RC.16 and earlier identities remain explicit historical compatibility artifacts.
+Production also loads the current-version-derived repository-owned release identity, currently `deploy/rc18-release-identity.json`. RC.17 and earlier identities remain explicit historical compatibility artifacts.
 This artifact is generated from the passing source verification report and its
 canonical executable-source hash evidence; it is outside the executable-source
 hash set so the digest is not self-referential. The operator qualification,
@@ -79,11 +79,33 @@ The shipped template is intentionally complete but unproven: every gate is
 Schema-v1 records are parsed only to return a migration diagnostic and never
 certify schema v2.
 
+The `operations` gate has an additional typed evidence contract. Operators must
+provide `CompanyOperationsEvidence` in the shape of
+`deploy/company-operations-evidence.schema.json`, with exact bindings for the
+candidate version, executable-source commit/digest and deployment. It requires
+the seven drill categories `startup_restart`,
+`dependency_unavailable_recovery`, `database_readiness_degradation`,
+`worker_crash_lease_recovery`, `outbound_integration_failure_retry`,
+`recovery_restore` and `request_log_correlation`. Each passing drill needs a
+sanitized durable locator and correlation metadata. Placeholders, unsafe
+locators, missing/failed drills, stale source bindings, raw payloads and an
+operator-editable `production_ready` field are rejected. The repository report
+at `evidence/current/operations/qualification.json` is never accepted as this
+external evidence and cannot change the derived CompanyQualification result.
+
 ## Evidence file
 
 Copy deploy/company-qualification.template.json to an operator-managed, nonpublic location only after the qualification drills and replace invalid placeholders with actual approved evidence references. Its schema intentionally refuses the template defaults. Pin deployment_id and persistent_root to the actual environment. An evidence string is an attestation, not cryptographic or independent certification. Only authorized release operators may approve it. A later environment/topology change invalidates the approval.
 
-The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes the current-version-derived `evidence/current/release/rc17-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file. `evidence/current/deployment/qualification.json` proves only independent publisher support and remains separate from the external company deployment gate. `evidence/current/storage/qualification.json` is a repository storage-contract result only; final company storage remains `BLOCKED_EXTERNAL`. `evidence/current/reuse/qualification.json` is a repository reusable-platform result only and cannot pass company identity, storage, deployment, operations or overall CompanyQualification.
+The app's preflight checks configuration, exact project/profile/version/source/digest/deployment/root binding and evidence shape. It does not substitute for build/test/security scans, a complete platform scope, or a company release authorization. Local/Fabric verification publishes the current-version-derived `evidence/current/release/rc18-readiness-matrix.json`, which is repository evidence and remains `NOT_CERTIFIED`; it does not become an operator qualification file. `evidence/current/deployment/qualification.json` proves only independent publisher support and remains separate from the external company deployment gate. `evidence/current/storage/qualification.json` is a repository storage-contract result only; final company storage remains `BLOCKED_EXTERNAL`. `evidence/current/operations/qualification.json` is the canonical source-bound repository operations result; it cannot pass the external `operations` gate. `evidence/current/reuse/qualification.json` is a repository reusable-platform result only and cannot pass company identity, storage, deployment, operations or overall CompanyQualification.
+
+## Operations evidence boundary
+
+The repository contract is `contracts/operational-reliability.json`. It enumerates stable failure-mode scenario IDs, expected safe outcomes, repository-proven fault cases and the seven required authentic company-staging drill categories. `python3 dev operations` writes `evidence/current/operations/qualification.json` from disposable local resources and maintained service boundaries. A repository PASS is software evidence only; it always records `company_operations_status: BLOCKED_EXTERNAL` and `production_ready: false`.
+
+External operators must supply the typed `deploy/company-operations-evidence.template.json` shape, validated by `CompanyOperationsEvidence` and `deploy/company-operations-evidence.schema.json`. It requires startup/restart, dependency recovery, database/readiness degradation, worker lease recovery, outbound integration retry, recovery/restore and request/log-correlation drills, bound to the exact candidate version/source/deployment. Missing, placeholder, stale, unsafe or self-asserted evidence is rejected. The evidence model has no operator-editable `production_ready` field; the existing `CompanyQualification` operations gate remains derived and cannot be passed by repository evidence.
+
+Operator-safe diagnostics are available through the existing profile/settings boundary with `./dev operator diagnose-operations --evidence evidence/current/operations/qualification.json`. The output is a sanitized summary of source identity, contract identity, scenario IDs/statuses and external blockers. It never serializes credentials, cookies, authorization material, raw qualification payloads, request bodies, private roots, stack traces or secret fingerprints.
 
 BUILD-time release evidence records the verified executable-source commit and
 digest, the evidence commit once that evidence is committed, and the exact

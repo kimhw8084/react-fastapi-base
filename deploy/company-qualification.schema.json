@@ -1,5 +1,108 @@
 {
   "$defs": {
+    "CompanyOperationsEvidence": {
+      "additionalProperties": false,
+      "description": "Strict external company operations evidence consumed by the operations gate.",
+      "properties": {
+        "candidate_version": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Candidate Version"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "deployment_id": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Deployment Id"
+        },
+        "drills": {
+          "items": {
+            "$ref": "#/$defs/OperationsDrillEvidence"
+          },
+          "maxItems": 7,
+          "minItems": 7,
+          "title": "Drills",
+          "type": "array"
+        },
+        "evidence_type": {
+          "const": "company_operations_drill",
+          "default": "company_operations_drill",
+          "title": "Evidence Type",
+          "type": "string"
+        },
+        "operator_id": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operator Id"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Digest"
+        },
+        "verified_source_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verified Source Commit"
+        }
+      },
+      "required": [
+        "created_at",
+        "drills"
+      ],
+      "title": "CompanyOperationsEvidence",
+      "type": "object"
+    },
     "CompanyQualificationGate": {
       "additionalProperties": false,
       "properties": {
@@ -215,6 +318,78 @@
       "title": "IdentityFacts",
       "type": "object"
     },
+    "OperationsDrillEvidence": {
+      "additionalProperties": false,
+      "description": "One operator-owned company staging drill, never a raw evidence payload.",
+      "properties": {
+        "correlation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Correlation Ids",
+          "type": "array"
+        },
+        "drill_id": {
+          "enum": [
+            "startup_restart",
+            "dependency_unavailable_recovery",
+            "database_readiness_degradation",
+            "worker_crash_lease_recovery",
+            "outbound_integration_failure_retry",
+            "recovery_restore",
+            "request_log_correlation"
+          ],
+          "title": "Drill Id",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "maxItems": 16,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "outcome": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Outcome",
+          "type": "string"
+        },
+        "reason_code": {
+          "maxLength": 80,
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9_.-]{0,79}$",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "BLOCKED_EXTERNAL",
+            "FAIL"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "drill_id",
+        "status",
+        "correlation_ids",
+        "observed_at",
+        "outcome",
+        "reason_code"
+      ],
+      "title": "OperationsDrillEvidence",
+      "type": "object"
+    },
     "OperationsFacts": {
       "additionalProperties": false,
       "properties": {
@@ -228,6 +403,17 @@
           "default": "operations",
           "title": "Kind",
           "type": "string"
+        },
+        "operations_evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompanyOperationsEvidence"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [

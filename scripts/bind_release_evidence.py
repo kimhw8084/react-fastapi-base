@@ -79,6 +79,7 @@ def main() -> int:
         'reusable_platform_qualification': manifest['reusable_platform_qualification'],
         'storage_qualification': manifest['storage_qualification'],
         'deployment_qualification': manifest['deployment_qualification'],
+        'repository_operations_qualification': manifest['repository_operations_qualification'],
         'binding_status': 'PASS',
         'result': 'PASS_SOURCE_BOUND_NOT_CERTIFIED',
         'note': 'Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.',

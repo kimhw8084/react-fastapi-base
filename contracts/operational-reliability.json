@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "contract_id": "react-fastapi-base.operational-reliability",
+  "contract_revision": 1,
+  "scope": "repository",
+  "repository_scenarios": [
+    {
+      "id": "OR-STARTUP-INVALID-PROFILE",
+      "category": "startup",
+      "fault": "production_like_configuration_selects_development_profile_or_unsafe_defaults",
+      "expected_safe_outcome": "startup_refused_before_profile_runtime_database_storage_or_scanner_construction; no_development_fallback",
+      "reason_codes": ["configuration_refused", "profile_fallback_refused"]
+    },
+    {
+      "id": "OR-STARTUP-NO-DEV-FALLBACK",
+      "category": "startup",
+      "fault": "invalid_production_like_configuration_attempts_development_behavior",
+      "expected_safe_outcome": "company_profile_is_required_and_invalid_configuration_cannot_construct_a_development_runtime",
+      "reason_codes": ["profile_fallback_refused"]
+    },
+    {
+      "id": "OR-READINESS-DEPENDENCY-UNAVAILABLE",
+      "category": "readiness",
+      "fault": "provisioned_dependency_is_missing_after_process_start",
+      "expected_safe_outcome": "health_remains_alive; readiness_returns_bounded_503_without_database_creation_or_private_details",
+      "reason_codes": ["dependency_unavailable", "readiness_503"]
+    },
+    {
+      "id": "OR-DATABASE-SAFE-503",
+      "category": "database",
+      "fault": "database_operation_raises_operational_error_with_sensitive_provider_details",
+      "expected_safe_outcome": "bounded_database_busy_503_error_envelope_with_request_id_and_no_sql_paths_credentials_or_exception_details",
+      "reason_codes": ["database_busy", "request_correlation"]
+    },
+    {
+      "id": "OR-ATTACHMENT-SCANNER-FAIL-CLOSED",
+      "category": "attachments",
+      "fault": "malware_scanner_is_unavailable_or_returns_an_invalid_result",
+      "expected_safe_outcome": "upload_rejected_503_and_no_attachment_object_or_database_row_residue",
+      "reason_codes": ["scanner_unavailable", "attachment_no_residue"]
+    },
+    {
+      "id": "OR-ATTACHMENT-STORAGE-FAIL-CLOSED",
+      "category": "attachments",
+      "fault": "object_storage_fails_after_a_write",
+      "expected_safe_outcome": "upload_rejected_503; compensating_delete_runs; no_attachment_object_or_database_row_residue",
+      "reason_codes": ["storage_unavailable", "attachment_no_residue"]
+    },
+    {
+      "id": "OR-JOB-BOUNDED-RETRY",
+      "category": "durable_jobs",
+      "fault": "durable_job_handler_fails_repeatedly",
+      "expected_safe_outcome": "retry_delay_is_bounded_and_final_failure_is_recorded_at_max_attempts",
+      "reason_codes": ["retry_scheduled", "final_failure"]
+    },
+    {
+      "id": "OR-JOB-HEARTBEAT",
+      "category": "durable_jobs",
+      "fault": "durable_job_handler_runs_longer_than_its_initial_lease",
+      "expected_safe_outcome": "maintained_heartbeat_prevents_reclaim_while_owner_is_live",
+      "reason_codes": ["lease_heartbeat"]
+    },
+    {
+      "id": "OR-JOB-FENCE-RECLAIM",
+      "category": "durable_jobs",
+      "fault": "worker_stalls_and_lease_is_reclaimed_by_a_new_worker",
+      "expected_safe_outcome": "stale_worker_cannot_finalize_after_fencing_loss; external_side_effect_idempotency_remains_explicit",
+      "reason_codes": ["lease_reclaimed", "stale_fence_refused"]
+    },
+    {
+      "id": "OR-WEBHOOK-UNSAFE-DESTINATION",
+      "category": "webhooks",
+      "fault": "webhook_destination_is_http_private_or_secret_reference_is_missing",
+      "expected_safe_outcome": "destination_or_secret_is_refused_before_delivery_without_secret_disclosure",
+      "reason_codes": ["unsafe_destination", "secret_unavailable"]
+    },
+    {
+      "id": "OR-WEBHOOK-DURABLE-RETRY",
+      "category": "webhooks",
+      "fault": "webhook_returns_non_2xx_or_network_failure_including_redirect_response",
+      "expected_safe_outcome": "delivery_history_is_retrying; redirects_are_not_followed; signing_secret_and_sensitive_payload_are_not_logged_or_returned",
+      "reason_codes": ["non_success_response", "redirect_refused", "delivery_failed"]
+    },
+    {
+      "id": "OR-RECOVERY-INVALID-SNAPSHOT",
+      "category": "recovery",
+      "fault": "snapshot_is_missing_corrupt_source_mismatched_metadata_inconsistent_symlinked_or_traversal_unsafe",
+      "expected_safe_outcome": "restore_refused_before_publish; target_is_absent_and_live_root_is_unchanged",
+      "reason_codes": ["snapshot_invalid", "restore_not_published"]
+    },
+    {
+      "id": "OR-DIAGNOSTICS-SAFE-REDACTION",
+      "category": "diagnostics",
+      "fault": "operator_diagnostics_are_requested_with_sensitive_internal_values_present",
+      "expected_safe_outcome": "only_source_bound_sanitized_status_metadata_is_returned; no_credentials_payloads_roots_stacks_or_secret_fingerprints",
+      "reason_codes": ["diagnostic_redacted", "evidence_metadata_only"]
+    }
+  ],
+  "external_drill_categories": [
+    {
+      "id": "startup_restart",
+      "required_evidence": "authentic_company_staging_startup_and_restart_drill"
+    },
+    {
+      "id": "dependency_unavailable_recovery",
+      "required_evidence": "authentic_company_dependency_outage_and_recovery_drill"
+    },
+    {
+      "id": "database_readiness_degradation",
+      "required_evidence": "authentic_company_database_and_readiness_degradation_drill"
+    },
+    {
+      "id": "worker_crash_lease_recovery",
+      "required_evidence": "authentic_company_worker_crash_lease_recovery_drill"
+    },
+    {
+      "id": "outbound_integration_failure_retry",
+      "required_evidence": "authentic_company_outbound_integration_failure_and_retry_drill"
+    },
+    {
+      "id": "recovery_restore",
+      "required_evidence": "authentic_company_backup_restore_and_recovery_drill"
+    },
+    {
+      "id": "request_log_correlation",
+      "required_evidence": "authentic_company_request_and_log_correlation_drill"
+    }
+  ],
+  "evidence_policy": {
+    "repository_pass_is": "source_bound_software_contract_evidence_only",
+    "company_operations_gate": "BLOCKED_EXTERNAL_until_all_typed_authentic_drills_are_bound",
+    "production_ready": false,
+    "forbidden_fields": [
+      "AccessKey",
+      "credentials",
+      "cookies",
+      "authorization",
+      "raw_qualification_payload",
+      "request_body",
+      "private_filesystem_root",
+      "stack_trace",
+      "secret_fingerprint",
+      "production_ready"
+    ]
+  }
+}

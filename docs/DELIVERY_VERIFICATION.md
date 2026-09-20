@@ -1,4 +1,4 @@
-# Delivery verification — react-fastapi-base 1.0.0-rc.17
+# Delivery verification — react-fastapi-base 1.0.0-rc.18
 
 **The local code gates are green. The complete production platform is not certified for company deployment.**
 
@@ -12,7 +12,7 @@ and backend publishers only; the final company deployment gate remains
 CHG-34 UI accessibility evidence is immutable historical evidence in
 `evidence/current/release/CHG-34-ui-accessibility.json`. Current RC.17
 repository readiness is recorded in
-`evidence/current/release/rc17-readiness-matrix.json`. The independent
+`evidence/current/release/rc18-readiness-matrix.json`. The independent
 deployment qualification is recorded in
 `evidence/current/deployment/qualification.json`. CHG-35 performance
 qualification is recorded in
