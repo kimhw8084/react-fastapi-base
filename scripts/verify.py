@@ -38,9 +38,16 @@ def verify(output: Path, source_only: bool=False, release: bool=False)->dict:
     run('performance-contract',[sys.executable,'scripts/performance_results.py','--contract',str((ROOT/'contracts/performance-regression.json').resolve()),'--contract-only'])
     run('backend-tests',[sys.executable,'scripts/backend_test_runner.py','--output',str((output/'backend-junit.xml').resolve())],ROOT,timeout=300)
     run('tooling-tests',[sys.executable,'-m','pytest','-q','tests'],ROOT)
+    run('operational-reliability-qualification',[
+        sys.executable,
+        'scripts/operational_reliability.py',
+        '--output',
+        str((ROOT/'evidence/current/operations/qualification.json').resolve()),
+    ],ROOT,timeout=600)
     run('architecture',[sys.executable,'scripts/check_architecture.py'])
     run('security-source',[sys.executable,'scripts/security_source_check.py'])
     run('configuration-contract',[sys.executable,'scripts/check_configuration_contract.py'])
+    run('operational-reliability-contract',[sys.executable,'scripts/check_operational_reliability_contract.py'])
     run('checkpoint-manifest',[sys.executable,'scripts/generate_checkpoint_manifest.py','--check'])
     run('version-metadata',[sys.executable,'scripts/version_check.py'])
     release_base=os.environ.get('RELEASE_BASE_SHA') or os.environ.get('API_COMPATIBILITY_BASE_SHA')

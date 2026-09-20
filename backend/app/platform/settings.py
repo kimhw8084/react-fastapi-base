@@ -55,6 +55,16 @@ _QUALIFICATION_PLACEHOLDERS = {
     'approved', 'tested', 'looks good',
 }
 
+OPERATIONS_DRILL_IDS = (
+    'startup_restart',
+    'dependency_unavailable_recovery',
+    'database_readiness_degradation',
+    'worker_crash_lease_recovery',
+    'outbound_integration_failure_retry',
+    'recovery_restore',
+    'request_log_correlation',
+)
+
 
 def _validate_attestation(value: str) -> str:
     value = value.strip()
@@ -92,13 +102,13 @@ def _validate_safe_metadata(value: str, field_name: str) -> str:
 
 
 def _validate_commit(value: str, field_name: str) -> str:
-    if not re.fullmatch(r'[0-9a-fA-F]{40}', value):
+    if not re.fullmatch(r'[0-9a-fA-F]{40}', value) or value.casefold() == '0' * 40:
         raise ValueError(f'{field_name} must be a full executable-source commit.')
     return value.lower()
 
 
 def _validate_digest(value: str, field_name: str) -> str:
-    if not re.fullmatch(r'[0-9a-fA-F]{64}', value):
+    if not re.fullmatch(r'[0-9a-fA-F]{64}', value) or value.casefold() == '0' * 64:
         raise ValueError(f'{field_name} must be a SHA-256 source digest.')
     return value.lower()
 
@@ -147,7 +157,7 @@ class EvidenceReference(BaseModel):
             raise ValueError('Evidence locator must not contain credentials, query parameters or fragments.')
         if parsed.scheme and parsed.scheme not in ('http', 'https'):
             raise ValueError('Evidence locator must use HTTPS/HTTP or a relative repository locator.')
-        if value.startswith('/'):
+        if value.startswith('/') or '\\' in value or '\x00' in value or '..' in value.split('/'):
             raise ValueError('Evidence locator must not expose an absolute filesystem path.')
         return value
 
@@ -228,10 +238,149 @@ class PerformanceFacts(BaseModel):
     company_profile_evidence: Literal[True]
 
 
+class OperationsDrillEvidence(BaseModel):
+    """One operator-owned company staging drill, never a raw evidence payload."""
+
+    model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
+    drill_id: Literal[
+        'startup_restart',
+        'dependency_unavailable_recovery',
+        'database_readiness_degradation',
+        'worker_crash_lease_recovery',
+        'outbound_integration_failure_retry',
+        'recovery_restore',
+        'request_log_correlation',
+    ]
+    status: Literal['PASS', 'BLOCKED_EXTERNAL', 'FAIL']
+    evidence: list[EvidenceReference] = Field(default_factory=list, max_length=16)
+    correlation_ids: list[str] = Field(min_length=1, max_length=8)
+    observed_at: str
+    outcome: str = Field(min_length=1, max_length=512)
+    reason_code: str = Field(min_length=1, max_length=80, pattern=r'^[a-z][a-z0-9_.-]{0,79}$')
+
+    @field_validator('correlation_ids')
+    @classmethod
+    def safe_correlation_ids(cls, value: list[str]) -> list[str]:
+        if len(set(value)) != len(value):
+            raise ValueError('Operations correlation IDs must be unique.')
+        return [_validate_safe_metadata(item, 'Operations correlation ID') for item in value]
+
+    @field_validator('observed_at')
+    @classmethod
+    def timestamped_observation(cls, value: str) -> str:
+        return _validate_timezone_timestamp(value)
+
+    @field_validator('outcome')
+    @classmethod
+    def safe_outcome(cls, value: str) -> str:
+        value = _validate_safe_metadata(value, 'Operations outcome')
+        lowered = value.casefold()
+        if any(token in lowered for token in ('stack trace', 'traceback', 'request body', 'raw payload', 'private root')):
+            raise ValueError('Operations outcome must contain sanitized status metadata only.')
+        return value
+
+    @model_validator(mode='after')
+    def evidence_matches_status(self):
+        if self.status == 'PASS' and not self.evidence:
+            raise ValueError('A passing operations drill requires durable evidence metadata.')
+        if self.status == 'PASS' and any(reference.kind != 'operations_report' for reference in self.evidence):
+            raise ValueError('A passing operations drill requires operations-report evidence metadata.')
+        if self.status != 'PASS' and self.evidence:
+            raise ValueError('Unproven operations drills must not carry PASS evidence.')
+        if self.status == 'PASS' and self.reason_code not in {'drill_passed', 'recovery_verified', 'correlation_verified'}:
+            raise ValueError('A passing operations drill must use a maintained success reason code.')
+        if self.status != 'PASS' and self.reason_code in {'drill_passed', 'recovery_verified', 'correlation_verified'}:
+            raise ValueError('An unproven operations drill cannot use a success reason code.')
+        return self
+
+
+class CompanyOperationsEvidence(BaseModel):
+    """Strict external company operations evidence consumed by the operations gate."""
+
+    model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
+    schema_version: Literal[1] = 1
+    evidence_type: Literal['company_operations_drill'] = 'company_operations_drill'
+    deployment_id: str | None = Field(default=None, min_length=1, max_length=160)
+    candidate_version: str | None = Field(default=None, min_length=1, max_length=64)
+    verified_source_commit: str | None = None
+    source_digest: str | None = None
+    operator_id: str | None = Field(default=None, min_length=1, max_length=160)
+    created_at: str
+    drills: list[OperationsDrillEvidence] = Field(min_length=len(OPERATIONS_DRILL_IDS), max_length=len(OPERATIONS_DRILL_IDS))
+
+    @field_validator('deployment_id', 'operator_id')
+    @classmethod
+    def safe_operator_binding(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        value = _validate_safe_metadata(value, 'Company operations binding')
+        if any(token in value.casefold() for token in ('placeholder', 'not-collected', 'changeme', 'external-company')):
+            raise ValueError('Company operations bindings must not contain placeholders.')
+        return value
+
+    @field_validator('candidate_version')
+    @classmethod
+    def valid_operations_version(cls, value: str | None) -> str | None:
+        return None if value is None else _validate_candidate_version(value)
+
+    @field_validator('verified_source_commit')
+    @classmethod
+    def valid_operations_commit(cls, value: str | None) -> str | None:
+        return None if value is None else _validate_commit(value, 'Company operations source commit')
+
+    @field_validator('source_digest')
+    @classmethod
+    def valid_operations_digest(cls, value: str | None) -> str | None:
+        return None if value is None else _validate_digest(value, 'Company operations source digest')
+
+    @field_validator('created_at')
+    @classmethod
+    def valid_operations_timestamp(cls, value: str) -> str:
+        return _validate_timezone_timestamp(value)
+
+    @model_validator(mode='after')
+    def exact_drill_set(self):
+        ids = [drill.drill_id for drill in self.drills]
+        if len(ids) != len(set(ids)) or set(ids) != set(OPERATIONS_DRILL_IDS):
+            raise ValueError('Company operations evidence must contain exactly the required drill categories.')
+        return self
+
+    def binding_errors(
+        self,
+        *,
+        expected_version: str | None,
+        expected_deployment_id: str | None,
+        expected_source_commit: str | None,
+        expected_source_digest: str | None,
+    ) -> list[str]:
+        errors: list[str] = []
+        for field_name, label in (
+            ('deployment_id', 'deployment'),
+            ('candidate_version', 'candidate version'),
+            ('verified_source_commit', 'source commit'),
+            ('source_digest', 'source digest'),
+            ('operator_id', 'operator'),
+        ):
+            if getattr(self, field_name) is None:
+                errors.append(f'Company operations evidence {label} binding is missing.')
+        if expected_version is not None and self.candidate_version != expected_version:
+            errors.append('Company operations evidence belongs to a different candidate version.')
+        if expected_deployment_id is not None and self.deployment_id != expected_deployment_id:
+            errors.append('Company operations evidence belongs to a different deployment.')
+        if expected_source_commit is not None and self.verified_source_commit != expected_source_commit:
+            errors.append('Company operations evidence source commit does not match the qualification.')
+        if expected_source_digest is not None and self.source_digest != expected_source_digest:
+            errors.append('Company operations evidence source digest does not match the qualification.')
+        if any(drill.status != 'PASS' for drill in self.drills):
+            errors.append('Company operations evidence contains an unproven or failed drill.')
+        return errors
+
+
 class OperationsFacts(BaseModel):
     model_config = ConfigDict(extra='forbid', hide_input_in_errors=True)
     kind: Literal['operations'] = 'operations'
     company_profile_evidence: Literal[True]
+    operations_evidence: CompanyOperationsEvidence | None = None
 
 
 class ReleaseEvidenceFacts(BaseModel):
@@ -517,6 +666,18 @@ class CompanyQualification(BaseModel):
         deployment_gate = self.gate('deployment')
         if isinstance(deployment_gate.facts if deployment_gate else None, DeploymentFacts) and deployment_gate.facts.deployment_id != self.deployment_id:
             errors.append('Deployment facts do not match the qualification deployment binding.')
+        operations_gate = self.gate('operations')
+        operations_facts = operations_gate.facts if operations_gate else None
+        if operations_gate is not None and operations_gate.status == 'PASS':
+            if not isinstance(operations_facts, OperationsFacts) or operations_facts.operations_evidence is None:
+                errors.append('Operations qualification requires typed company operations drill evidence.')
+            else:
+                errors.extend(operations_facts.operations_evidence.binding_errors(
+                    expected_version=self.candidate_version,
+                    expected_deployment_id=self.deployment_id,
+                    expected_source_commit=self.verified_source_commit,
+                    expected_source_digest=self.source_digest,
+                ))
         errors.extend(self.release_evidence_binding_errors())
         return sorted(set(errors))
 

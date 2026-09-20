@@ -3,22 +3,22 @@
   "result_kind": "aggregate-performance-qualification",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
-  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
-  "candidate_version": "1.0.0-rc.17",
+  "source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf",
+  "candidate_version": "1.0.0-rc.18",
   "overall_status": "PASS",
   "reports": {
     "owned-pure-algorithms": {
       "locator": "evidence/current/performance/owned-algorithms.json",
-      "sha256": "6268e4c23c7d2cdc157e1834cfcea73a3dfa188532e7f1135562cb2f98305561"
+      "sha256": "8f86ac54bb2d7a656c71a5e3ca5118a0878860f70cd9c47dd9ae445395185b11"
     },
     "platform-data-volume": {
       "locator": "evidence/current/performance/stress.json",
-      "sha256": "bd37703fdb52c543aa9874ceafeb8ba5c279fae8fc6c2da1a2a5ac917ce9737b"
+      "sha256": "5328251064fcee499f2ddc31af57742048d3cee269ffb83952cd3f03aff17ee2"
     },
     "browser-ag-grid-scale": {
       "locator": "evidence/current/performance/browser.json",
-      "sha256": "887680eebf6ea8fa72479561a8ccedb4b2a8364e4f7fff896a34e183d6904dbd"
+      "sha256": "b66325cb55780339e5b58124ddbfc96d977d72ecfdf24f9b05b8ca924df25864"
     }
   },
   "required_workload_ids": [
@@ -54,7 +54,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.028969
+        "elapsed_seconds": 0.032416
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -72,7 +72,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.012327
+        "elapsed_seconds": 0.013935
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -90,7 +90,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.005996
+        "elapsed_seconds": 0.00721
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -108,7 +108,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.081958
+        "elapsed_seconds": 0.100405
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -127,7 +127,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.006426
+        "elapsed_seconds": 0.006916
       },
       "diagnostic_metrics": {
         "result": 17
@@ -146,7 +146,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.031522
+        "elapsed_seconds": 0.034529
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.007176
+        "elapsed_seconds": 0.007991
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -182,7 +182,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.019724
+        "elapsed_seconds": 0.021554
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -200,7 +200,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.022051
+        "elapsed_seconds": 0.023464
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -218,7 +218,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.026794
+        "elapsed_seconds": 0.028351
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -237,7 +237,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.01149
+        "elapsed_seconds": 0.014962
       },
       "diagnostic_metrics": {
         "result": 100
@@ -255,7 +255,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000157
+        "elapsed_seconds": 0.000165
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -274,7 +274,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001525
+        "elapsed_seconds": 0.001581
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -294,7 +294,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000412
+        "elapsed_seconds": 0.0006
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -312,7 +312,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001778
+        "elapsed_seconds": 0.002416
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -332,7 +332,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001685
+        "elapsed_seconds": 0.003747
       },
       "diagnostic_metrics": {
         "result": 100
@@ -350,7 +350,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 3.1e-05
+        "elapsed_seconds": 4.8e-05
       },
       "diagnostic_metrics": {
         "result": 86
@@ -374,7 +374,7 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 319
+        "initial_readiness_ms": 386
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
@@ -411,12 +411,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 251,
-        "deep_scroll_settle_ms": 26,
-        "sort_interaction_ms": 206
+        "initial_readiness_ms": 277,
+        "deep_scroll_settle_ms": 40,
+        "sort_interaction_ms": 217
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 37300000
+        "used_js_heap_bytes": 29400000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "synthetic-test-only",

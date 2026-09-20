@@ -37,6 +37,20 @@ server-returned page and is not certified as virtualized.
 
 Missing tooling is BLOCKED, never PASS. A missing required catalog implementation is FAIL. Its nonzero exit must not be weakened merely to get a green badge.
 
+## Operational reliability qualification
+
+`contracts/operational-reliability.json` is the canonical scenario contract. Run
+`python3 dev operations` to exercise its repository scenarios against disposable
+local resources: fail-closed startup/configuration, liveness/readiness and safe
+database envelopes, attachment cleanup, durable retry/heartbeat/fencing,
+webhook refusal/retry, invalid restore refusal and diagnostic redaction. The
+aggregate at `evidence/current/operations/qualification.json` is bound to the
+candidate checkout, executable-source commit/digest and contract hash. Missing
+or reordered scenarios, skipped faults, stale source/contract identity,
+sensitive evidence fields or any production claim make the aggregate fail
+closed. A repository PASS is not authentic company operations evidence and
+leaves the final CompanyQualification operations gate `BLOCKED_EXTERNAL`.
+
 ## Visual and accessibility evidence
 
 `evidence/current/browser` contains current browser evidence. Light/dark renderings, key interactions, focus guards, mobile overflow, axe checks across registered workspaces, keyboard smoke, 200%/400% zoom, reduced motion and high contrast were exercised. This is not a WCAG certification, independent screen-reader qualification or non-Chromium engine certification.

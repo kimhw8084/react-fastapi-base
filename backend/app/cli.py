@@ -85,6 +85,7 @@ def main():
     p=commands.add_parser('restore');p.add_argument('--snapshot',type=Path,required=True);p.add_argument('--target',type=Path,required=True)
     p=commands.add_parser('doctor-storage');p.add_argument('--scratch-parent',type=Path,required=True);p.add_argument('--evidence-output',type=Path)
     p=commands.add_parser('run-jobs');p.add_argument('--once',action='store_true');p.add_argument('--worker-id',default='operator-worker')
+    p=commands.add_parser('diagnose-operations');p.add_argument('--evidence',type=Path,default=Path('evidence/current/operations/qualification.json'))
     commands.add_parser('preflight')
     commands.add_parser('seed-demo')
     args=parser.parse_args();settings=Settings()
@@ -120,6 +121,20 @@ def main():
                 args.evidence_output.parent.mkdir(parents=True, exist_ok=True)
                 args.evidence_output.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n', encoding='utf-8')
             print(json.dumps(result,indent=2));return 0 if result['diagnostic_pass'] else 1
+        if args.command=='diagnose-operations':
+            from scripts.operational_diagnostics import safe_diagnostics_summary
+            from scripts.operational_reliability import validate_report
+            try:
+                report=json.loads(args.evidence.read_text(encoding='utf-8'))
+                errors=validate_report(report)
+            except (OSError,ValueError,json.JSONDecodeError):
+                report={}
+                errors=['evidence_unavailable_or_invalid']
+            if errors:
+                print(json.dumps({'ready':False,'reason_code':'operational_evidence_invalid','errors':errors},sort_keys=True))
+                return 1
+            print(json.dumps(safe_diagnostics_summary(report),sort_keys=True))
+            return 0
         if args.command=='run-jobs':
             from app.platform.jobs import process_one
             from app.platform.webhooks import deliver as deliver_webhook

@@ -1,0 +1,148 @@
+{
+  "candidate_head": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "candidate_version": "1.0.0-rc.18",
+  "company_operations_status": "BLOCKED_EXTERNAL",
+  "contract_id": "react-fastapi-base.operational-reliability",
+  "contract_revision": 1,
+  "contract_sha256": "ea5321b0cd71eab7881951d7e97d3cc620cfec024f76dc8691f9e4918c90f24f",
+  "created_at": "2026-09-20T03:07:28.486856+00:00",
+  "environment": {
+    "kind": "repository_test",
+    "platform": "Darwin",
+    "profile": "development",
+    "python": "3.11.7",
+    "runner": "disposable_local_resources"
+  },
+  "executable_source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "external_blockers": [
+    {
+      "id": "startup_restart",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "dependency_unavailable_recovery",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "database_readiness_degradation",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "worker_crash_lease_recovery",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "outbound_integration_failure_retry",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "recovery_restore",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "request_log_correlation",
+      "reason_code": "company_staging_required",
+      "safe_outcome": "authentic company-profile staging evidence is required for this drill category",
+      "status": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "note": "Repository operations PASS is source-bound software evidence only and cannot set the CompanyQualification operations or overall gate to PASS.",
+  "production_ready": false,
+  "release_status": "NOT_CERTIFIED",
+  "report_type": "repository-operational-reliability-qualification",
+  "repository_operations_status": "PASS",
+  "scenario_results": [
+    {
+      "id": "OR-STARTUP-INVALID-PROFILE",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "startup refused before profile-owned runtime construction",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-STARTUP-NO-DEV-FALLBACK",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "development identity and runtime fallback were refused",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-READINESS-DEPENDENCY-UNAVAILABLE",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "liveness stayed alive while missing dependency readiness returned bounded 503",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-DATABASE-SAFE-503",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "database failure produced correlated bounded 503 without provider detail leakage",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-ATTACHMENT-SCANNER-FAIL-CLOSED",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "scanner failure failed closed without row or object residue",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-ATTACHMENT-STORAGE-FAIL-CLOSED",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "storage failure ran compensating cleanup without row or object residue",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-JOB-BOUNDED-RETRY",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "retry, final failure, heartbeat, reclaim and stale-fence protection all held",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-JOB-HEARTBEAT",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "retry, final failure, heartbeat, reclaim and stale-fence protection all held",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-JOB-FENCE-RECLAIM",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "retry, final failure, heartbeat, reclaim and stale-fence protection all held",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-WEBHOOK-UNSAFE-DESTINATION",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "unsafe destinations and secrets refused; non-2xx and redirect responses remained durable retries",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-WEBHOOK-DURABLE-RETRY",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "unsafe destinations and secrets refused; non-2xx and redirect responses remained durable retries",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-RECOVERY-INVALID-SNAPSHOT",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "corrupt and traversal-unsafe snapshots were refused without target publication or live mutation",
+      "status": "PASS"
+    },
+    {
+      "id": "OR-DIAGNOSTICS-SAFE-REDACTION",
+      "reason_code": "scenario_passed",
+      "safe_outcome": "diagnostics exposed only sanitized source, scenario and blocker metadata",
+      "status": "PASS"
+    }
+  ],
+  "schema_version": 1,
+  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf"
+}

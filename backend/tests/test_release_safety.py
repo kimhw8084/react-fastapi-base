@@ -12,10 +12,12 @@ from app.platform.security import Actor
 from app.platform.settings import (
     CompanyQualification,
     CompanyQualificationGate,
+    CompanyOperationsEvidence,
     DeploymentFacts,
     EvidenceReference,
     IdentityFacts,
     OperationsFacts,
+    OperationsDrillEvidence,
     PerformanceFacts,
     ReleaseEvidenceFacts,
     Settings,
@@ -28,6 +30,31 @@ from app.platform.settings import (
 )
 from app.platform.version import VERSION
 from app.platform.storage import MemoryStorage
+
+
+def operations_facts(deployment_id: str, source_commit: str, source_digest: str) -> OperationsFacts:
+    ids = ('startup_restart', 'dependency_unavailable_recovery', 'database_readiness_degradation', 'worker_crash_lease_recovery', 'outbound_integration_failure_retry', 'recovery_restore', 'request_log_correlation')
+    drills = [
+        OperationsDrillEvidence(
+            drill_id=drill_id,
+            status='PASS',
+            evidence=[EvidenceReference(kind='operations_report', locator=f'evidence/company/{drill_id}.json', evidence_id=f'fixture-{drill_id}', issuer='fixture-operator')],
+            correlation_ids=[f'correlation-{drill_id}'],
+            observed_at='2026-09-10T00:00:00Z',
+            outcome='Company staging drill evidence was observed and retained as sanitized metadata.',
+            reason_code='correlation_verified' if drill_id == 'request_log_correlation' else ('recovery_verified' if drill_id == 'recovery_restore' else 'drill_passed'),
+        )
+        for drill_id in ids
+    ]
+    return OperationsFacts(company_profile_evidence=True, operations_evidence=CompanyOperationsEvidence(
+        deployment_id=deployment_id,
+        candidate_version=VERSION,
+        verified_source_commit=source_commit,
+        source_digest=source_digest,
+        operator_id='fixture-operator',
+        created_at='2026-09-10T00:00:00Z',
+        drills=drills,
+    ))
 
 
 def qualified_production_settings(tmp_path: Path, monkeypatch, *, mode: str = 'scanner_required') -> Settings:
@@ -61,7 +88,7 @@ def qualified_production_settings(tmp_path: Path, monkeypatch, *, mode: str = 's
             CompanyQualificationGate(id='deployment', status='PASS', evidence=[evidence('deployment_proof', 'deployment')], facts=DeploymentFacts(deployment_id='staging-1', ingress_authentication_evidence=True, redeploy_persistence_evidence=evidence('deployment_proof', 'redeploy'), restore_drill_evidence=evidence('deployment_proof', 'restore'))),
             CompanyQualificationGate(id='ui_accessibility', status='PASS', evidence=[evidence('accessibility_report', 'accessibility')], facts=UiAccessibilityFacts(company_profile_evidence=True)),
             CompanyQualificationGate(id='performance', status='PASS', evidence=[evidence('performance_report', 'performance')], facts=PerformanceFacts(company_profile_evidence=True)),
-            CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=OperationsFacts(company_profile_evidence=True)),
+            CompanyQualificationGate(id='operations', status='PASS', evidence=[evidence('operations_report', 'operations')], facts=operations_facts('staging-1', source_commit, source_digest)),
             CompanyQualificationGate(id='release_evidence', status='PASS', evidence=[evidence('release_manifest', 'manifest')], facts=ReleaseEvidenceFacts(project='react-fastapi-base', profile='company', candidate_version=VERSION, verified_source_commit=source_commit, source_digest=source_digest, evidence_commit='3' * 40, target_base_sha='6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf', readiness_matrix_sha256='6' * 64)),
         ],
     )
