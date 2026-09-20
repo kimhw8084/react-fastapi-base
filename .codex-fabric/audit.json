@@ -1,132 +1,1338 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-20T13:27:54Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 5,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 23,
+      "deletions": 22,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc19-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 47,
+      "deletions": 0,
+      "path": "evidence/current/browser/chg153-r3-pre-fix-reproduction.json",
+      "status": "A"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/deployment/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 824,
+      "deletions": 559,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/deployment-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 25,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 32,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 78,
+      "deletions": 39,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 115,
+      "deletions": 115,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 59,
+      "deletions": 30,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 100,
+      "deletions": 100,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/performance/browser.json",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 22,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 28,
+      "deletions": 28,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "evidence/current/release/rc19-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 68,
+      "deletions": 0,
+      "path": "evidence/current/release/rc19-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc19-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 115,
+      "deletions": 115,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/reuse/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 205,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 479,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+      "status": "M"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+      "status": "M"
+    },
+    {
+      "additions": 48,
+      "deletions": 6,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/src/features/system/Workspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/EntityWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 3,
+      "path": "frontend/src/theme/application.css",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/ui-state-matrix.json",
+      "status": "M"
+    },
+    {
+      "additions": 91,
+      "deletions": 1,
+      "path": "frontend/tests/e2e/uiqa.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "scripts/e2e_runner.py",
+      "status": "M"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{negative_control_sensitivity,short_height_forced_colors, responsive_state_preservation, captures: [.captures[] | {consumer,route,width,height,page,owned_scroller,pointer,keyboard,hidden_responsive_controls}]}' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'API_COMPATIBILITY_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 scripts/check_api_compatibility.py --base-ref e96f22df30bba6733d6c86c1900ad8af159a6613 --output evidence/current/full-stack/api-compatibility-chg153.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 dev architecture'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk npm audit --audit-level=high'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 scripts/generate_contracts.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short | sed -n '1,180p' && rtk git diff --stat && rtk jq '{resolved_base_sha,status,breaking_changes,additive_changes}' evidence/current/full-stack/api-compatibility-chg153.json && rtk jq '{candidate_version,executable_source_commit,source_digest,candidate_head,production_ready,company_qualification,status}' evidence/current/deployment/qualification.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,240p' evidence/current/full-stack/tooling-tests.log\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '120,235p' scripts/check_ui_state_matrix.py && rtk nl -ba frontend/tests/e2e/ui-state-matrix.json | sed -n '170,275p' && rtk nl -ba tests/test_ui_state_matrix.py | sed -n '70,112p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,75p' tests/test_ui_state_matrix.py && rtk git show e96f22df30bba6733d6c86c1900ad8af159a6613:tests/test_ui_state_matrix.py | sed -n '80,103p' && rtk git show e96f22df30bba6733d6c86c1900ad8af159a6613:scripts/check_ui_state_matrix.py | sed -n '145,180p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n 'required dimension has disappeared' scripts tests frontend | head -40 && rtk git show e96f22df30bba6733d6c86c1900ad8af159a6613:scripts/check_ui_state_matrix.py | rg -n -C 3 'required dimension|undeclared' | head -80 && rtk git show e96f22df30bba6733d6c86c1900ad8af159a6613:frontend/tests/e2e/ui-state-matrix.json | rg -n -C 2 'forced-colors'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '336,340p' frontend/tests/e2e/uiqa.spec.ts\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'RELEASE_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 API_COMPATIBILITY_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 dev verify-release'",
+      "exit_code": 130,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,260p' evidence/current/full-stack/reference-apps.log && rtk sed -n '1,220p' evidence/current/full-stack/tooling-tests.log | tail -40 && rtk git status --short | sed -n '1,180p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk wc -l evidence/current/full-stack/reference-apps.log && rtk sed -n '1,120p' evidence/current/full-stack/reference-apps.log && rtk rg -n 'Template lock provenance mismatch|datacenter-estate' scripts tests | head -100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,130p' scripts/reference_app_proof.py && rtk sed -n '1,120p' scripts/template_tools.py && rtk rg -n 'platform_version|executable_source_commit|source_digest|template.lock' scripts/template_tools.py scripts/reference_app_proof.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/check_ui_state_matrix.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m pytest -q tests/test_ui_state_matrix.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 12
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 99,
+        "output_sha256": "8df57c9b381a420da960c470cf26ad622e051d953d79e4b18b5cd1c994502f14",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk npm run typecheck'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff -- frontend/tests/e2e/ui-state-matrix.json frontend/tests/e2e/uiqa.spec.ts && rtk git status --short | head -120'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add frontend/tests/e2e/ui-state-matrix.json frontend/tests/e2e/uiqa.spec.ts && rtk git commit -m \"CHG-153 preserve UIQA dimension sensitivity\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 scripts/reference_app_proof.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'RELEASE_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 API_COMPATIBILITY_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH rtk python3 dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{candidate_head,checkout_commit,executable_source_commit,source_digest,release_status,production_ready,code_ready,exit_code,results: [.results[] | {name,status,required_for,reason}]}' evidence/current/full-stack/verification.json && rtk jq '{candidate_version,verified_source_commit,source_digest,checkout_commit,production_ready,company_qualification,release_status}' deploy/rc19-release-identity.json && rtk jq '{schema_version,matrix_sha256,checkout_commit,candidate_head,executable_source_commit,source_digest,overall_status,results}' evidence/current/uiqa/ui-state-matrix-results.json | head -180 && rtk git rev-parse HEAD HEAD\"'^{tree} && rtk git status --short | sed -n '\"'1,240p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.results[] | select(.status \"'!= \"PASS\") | {name,status,required_for,reason}]'\"' evidence/current/full-stack/verification.json && rtk jq '[.results[] | select(.name==\\\"npm-advisories\\\" or .name==\\\"api-compatibility\\\" or .name==\\\"browser-e2e-accessibility\\\" or .name==\\\"performance-results\\\" or .name==\\\"python-advisories\\\" or .name==\\\"candidate-progression\\\" or .name==\\\"macos-fresh-install\\\" or .name==\\\"frontend-typecheck\\\" or .name==\\\"frontend-unit\\\" or .name==\\\"frontend-build\\\" or .name==\\\"frontend-storybook\\\" or .name==\\\"tooling-tests\\\" or .name==\\\"backend-tests\\\") | {name,status,required_for}]' evidence/current/full-stack/verification.json && rtk jq '{candidate_version,checks,status,production_ready,company_deployment_status,company_qualification}' evidence/current/deployment/qualification.json | head -120 && rtk jq '{status,result,apps:(.apps|length),candidate_head,executable_source_commit,source_digest}' evidence/current/release/reference-apps.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{base_ref,resolved_base_sha,candidate_head,source_commit,source_digest}' evidence/current/full-stack/api-compatibility-chg153.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add CHECKPOINT_MANIFEST.json deploy/rc19-release-identity.json evidence/current && rtk git status --short | sed -n '1,260p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git show --stat --oneline a874cd4 && rtk git show --stat --oneline 3f0cbb5 && rtk git show --stat --oneline f848918 | head -120 && rtk git log --oneline --all -- deploy/rc18-release-identity.json evidence/current/release/rc18-readiness-matrix.json | head -20'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show -s --format='%H %P %s' 3f0cbb5 && rtk jq '{candidate_head,checkout_commit,executable_source_commit}' <(git show 3f0cbb5:evidence/current/full-stack/verification.json) 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' deploy/rc19-release-identity.json && rtk jq '.' evidence/current/release/rc19-evidence-binding.json | head -200 && rtk jq '.' evidence/current/release/rc19-manifest.json | head -160\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,180p' scripts/bind_release_evidence.py && rtk sed -n '1,160p' scripts/generate_checkpoint_manifest.py | head -120\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git commit -m \"CHG-153 bind RC.19 verification evidence\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/bind_release_evidence.py --verified-source-commit 50ff7adc9e641830f6c13f2e3ba2c02573febda8 --evidence-commit 067af09b4b3b0a4f4f4dba814a22e75a99c0fa1e --target-base-sha e96f22df30bba6733d6c86c1900ad8af159a6613'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD HEAD''^ && rtk jq '\"'{evidence_commit,target_base_sha,verified_source_commit,binding_status,result}' evidence/current/release/rc19-evidence-binding.json && rtk jq '{evidence_commit,verified_source_commit}' evidence/current/release/rc19-manifest.json && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/bind_release_evidence.py --verified-source-commit 50ff7adc9e641830f6c13f2e3ba2c02573febda8 --evidence-commit 067af099cebc7f6a334b450b50184e9c54bafa8c --target-base-sha e96f22df30bba6733d6c86c1900ad8af159a6613'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git add evidence/current/release/rc19-evidence-binding.json evidence/current/release/rc19-manifest.json && rtk git commit -m \"CHG-153 bind RC.19 evidence commit\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 scripts/generate_checkpoint_manifest.py --check && RELEASE_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 rtk python3 scripts/version_check.py && rtk python3 scripts/check_ui_state_matrix.py --results evidence/current/uiqa/ui-state-matrix-results.json && rtk jq '[.captures[] | {width,page,owned_scroller,pointer,keyboard}]' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json && rtk jq '{planning_390: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==390) | {page,available_modes,pointer,keyboard}],planning_320: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==320) | {page,available_modes,pointer,keyboard}],visualization_consumers: .consumers,responsive_state_preservation,hidden_responsive_controls,negative_control_sensitivity,short_height_forced_colors}' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps aux | rg 'version_check|check_ui_state_matrix|node' | head -20\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'RELEASE_BASE_SHA=e96f22df30bba6733d6c86c1900ad8af159a6613 rtk python3 scripts/version_check.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/check_ui_state_matrix.py --results evidence/current/uiqa/ui-state-matrix-results.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.captures[] | {width,page,owned_scroller,pointer,keyboard}]' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json && rtk jq '{planning_390: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==390) | {page,available_modes,pointer,keyboard}],planning_320: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==320) | {page,available_modes,pointer,keyboard}],visualization_consumers: .consumers,responsive_state_preservation,hidden_responsive_controls,negative_control_sensitivity,short_height_forced_colors}' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{system: [.captures[] | {width,doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,pointer:.pointer,keyboard:{last_focused:.keyboard.last_focused,enter_click_count:.keyboard.enter_click_count,focus_visible:.keyboard.focus.focusVisible}}],viz: {consumers,planning_390: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==390) | {doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,modes:.available_modes,pointer:.pointer,keyboard:.keyboard}],planning_320: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==320) | {doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,modes:.available_modes,pointer:.pointer,keyboard:.keyboard}],preservation:responsive_state_preservation,hidden_responsive_controls,negative_control_sensitivity,short_forced:{viewport:.short_height_forced_colors.viewport,geometry:.short_height_forced_colors.geometry,focus:{forced:.short_height_forced_colors.focus.forcedColors,active:.short_height_forced_colors.focus.active,focusVisible:.short_height_forced_colors.focus.focusVisible}}}}' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 3,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.captures[] | {width,doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,pointer:.pointer,keyboard:{last_focused:.keyboard.last_focused,enter_click_count:.keyboard.enter_click_count,focus_visible:.keyboard.focus.focusVisible}}]' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json && rtk jq '{consumers,planning_390: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==390) | {doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,modes:.available_modes,pointer:.pointer,keyboard:.keyboard}],planning_320: [.captures[] | select(.consumer==\\\"Planning\\\" and .width==320) | {doc:.page.document_scroll_width,body:.page.body_scroll_width,viewport:.page.viewport_css_px,modes:.available_modes,pointer:.pointer,keyboard:.keyboard}],preservation:.responsive_state_preservation,hidden_responsive_controls:.hidden_responsive_controls,negative_control_sensitivity:.negative_control_sensitivity,short_forced:{viewport:.short_height_forced_colors.viewport,geometry:.short_height_forced_colors.geometry,focus:{forced:.short_height_forced_colors.focus.forcedColors,active:.short_height_forced_colors.focus.active,focusVisible:.short_height_forced_colors.focus.focusVisible}}}' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{preservation:.responsive_state_preservation,hidden:.hidden_responsive_controls,negative:.negative_control_sensitivity,short:{viewport:.short_height_forced_colors.viewport,geometry:.short_height_forced_colors.geometry,focus:{forced:.short_height_forced_colors.focus.forcedColors,active:.short_height_forced_colors.focus.active,focusVisible:.short_height_forced_colors.focus.focusVisible,outline:.short_height_forced_colors.focus.outlineStyle}}}' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD HEAD''^{tree} && rtk git branch --show-current && rtk git rev-parse origin/main && rtk git ls-remote --heads origin codex/react-fastapi-base-golden-ui-v2-mobile-responsive-geometry-fix-v3 && rtk git status --short && rtk git diff --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse e96f22df30bba6733d6c86c1900ad8af159a6613''^{tree} && rtk git diff --name-only origin/main...HEAD | rg -i '\"'sysgrid' || true && rtk git diff --name-only e96f22df30bba6733d6c86c1900ad8af159a6613...HEAD | sed -n '1,160p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git log --oneline -5 && rtk jq '{artifact_label,version,evidence_commit,target_base_sha,verified_source_commit,binding_status,result}' evidence/current/release/rc19-evidence-binding.json && rtk jq '{artifact_label,version,evidence_commit,verified_source_commit,target_base_sha}' evidence/current/release/rc19-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.captures[] | {width,owner:.owned_scroller.after}]' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json && rtk jq '[.captures[] | select(.consumer==\\\"Planning\\\" or .consumer==\\\"Work items\\\" or .consumer==\\\"Incident command\\\") | {consumer,width,owner:.owned_scroller.after}]' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.captures[] | {consumer,width,viewport:.page.viewport_css_px,doc:.page.document_scroll_width,body:.page.body_scroll_width,client:.owned_scroller.after.clientWidth,scroll:.owned_scroller.after.scrollWidth,overflow:.owned_scroller.after.overflowX,buttons:.owned_scroller.after.buttonCount,operable:.owned_scroller.after.operableButtons}]' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.captures[] | select(.width==390 or .width==320) | {consumer,width,doc:.page.document_scroll_width,body:.page.body_scroll_width,buttons:.owned_scroller.after.buttonCount,operable:.owned_scroller.after.operableButtons,ownerClient:.owned_scroller.after.clientWidth,ownerScroll:.owned_scroller.after.scrollWidth}]' evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{system_browser:.browser,visualization_browser:.browser}' evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 542,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.27,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 41811968,
+      "fresh_input_tokens": 737272,
+      "input_tokens": 42549240,
+      "non_reasoning_output_tokens": 61810,
+      "output_tokens": 106635,
+      "reasoning_output_tokens": 44825,
+      "total_processed_tokens": 42655875
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "651a209cbc73ca93e572520bdadc7e5ed66e99b0",
+      "subject": "CHG-153 bind RC.19 evidence commit"
+    },
+    {
+      "sha": "067af099cebc7f6a334b450b50184e9c54bafa8c",
+      "subject": "CHG-153 bind RC.19 verification evidence"
+    },
+    {
+      "sha": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
+      "subject": "CHG-153 preserve UIQA dimension sensitivity"
+    },
+    {
+      "sha": "6d0206e020938e165236b63e30fc1569e2a902df",
+      "subject": "CHG-153 repair mobile responsive geometry"
+    }
+  ],
+  "diff": {
+    "additions": 2886,
+    "changed_files": 89,
+    "commit_count": 4,
+    "deletions": 1382
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 82,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 14050,
+        "path": "CHANGELOG.md",
+        "sha256": "413625cf0416938f922af0cf147b87f0bd3a50a19b7392833fc3916611b20c74"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 81323,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "5855b63665eb81dd9b0f8934169599344c302c2a484b1bde3ebd793092754a0d"
       },
       {
+        "bytes": 4052,
+        "path": "README.md",
+        "sha256": "2bd23954a72cd6112c8fe1221914b48801d829d77bd9a11647dcc15494f99103"
+      },
+      {
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "1e8a76ed5607e215c0ba1c2b6b3fdf97d9fc399713a30ea2706af09c2c81d19f"
+      },
+      {
+        "bytes": 1251430,
+        "path": "contracts/openapi.json",
+        "sha256": "444583624b279b1c056e3bf076839c88c004330a45c236213947e6e5e15355e3"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc19-release-identity.json",
+        "sha256": "fd514279fb4ab08aeaa7b6fcc1b49ef26eabb66c211302c4ae18cdb1cf48a66b"
+      },
+      {
+        "bytes": 4680,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "00c8cd0965c1d9c1b91a3f9f8b4c3b5cfe4e48822b3e8d12e9cd5befaf48932c"
+      },
+      {
+        "bytes": 8674,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "bf5bf8799b70cbfa6761ee0575f1d93d92add91b77ec5f8b6fa4cea2d51e1ed5"
+      },
+      {
+        "bytes": 3167,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "5be071905e6bee58379906604c5ed2c92eb99f9be7bc4f03a3527cbc586df1ba"
+      },
+      {
+        "bytes": 45319,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "db235197ca202705f6cefd6b300c9da2f963682f404a6a2eb72009d5c7199032"
+      },
+      {
+        "bytes": 11464,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "c08c12150d01db433e8bc4a5117331c8698706bebbe5195ea43faf9d8ad99e70"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "ffcde392b8dc9ac66771a1b02f650703225443c2b00fcae863e273c0390249d8"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "a40b8db3bf4523069408ec98159dbe35506e47d4dfdbc60dc0c5c838245a6408"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "57ac9b5b08a214b95133c05b782b6a11d44b4b02d867e205cfeb88550967dbfd"
+      },
+      {
+        "bytes": 2098,
+        "path": "evidence/current/browser/chg153-r3-pre-fix-reproduction.json",
+        "sha256": "2bb15bd7a0a09bfd220b41544b4cfc59ac3d50cc1252ae6ff85f31c28f4598ab"
+      },
+      {
+        "bytes": 2590,
+        "path": "evidence/current/deployment/qualification.json",
+        "sha256": "2f4c1c09549e8866ac418368d5be090f94ec39aa9ad81d3e040e2f5937864777"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "7c2b76cf044bdc24486ae28f4711c9892d47df8ca4ca02bcd81c8d660cdfae06"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "41ee89ac748cc78b7790fc876a3277288be5e428dc7c27b8ebfea200eec39d1d"
+      },
+      {
+        "bytes": 5257,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "2e146d5f0b3c6941a1254e06d7ad6469fee7604c653b9f84638ee64539bc2c46"
+      },
+      {
+        "bytes": 11074,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "8e4c2639b54bf3678682bfc468ab2411fdaedd857506aff7f0be8a0ac9983853"
+      },
+      {
+        "bytes": 13551,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "cbd97a8db9ca0b04e2fe487ae055bb3ee60cc2a2f74f8ec29ec1666de962f17e"
+      },
+      {
+        "bytes": 8789,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "85aaa6b808d37dec6c6ec90824474369cff7e2564d1b38013bd0dab2ff1c9b2c"
+      },
+      {
+        "bytes": 37786,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "a901c28c5ec61b94f17ed88262d84a74316aca0a8d5787c765ac86701a0e4530"
+      },
+      {
+        "bytes": 990,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "5e1330d8311faa5ccd7360a3b815292081224cd7d0a9d6bb707fb766f430ade3"
+      },
+      {
+        "bytes": 76648,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "ef1d9f50d37f0c7db4728a5b6ec53f6fab6edcc462d2816f7291d1cee04806ee"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "6e3caaffd1c66778c502e53ae3fda6e660343d9897a638ebb29f4f15b69a42fa"
+      },
+      {
+        "bytes": 156,
+        "path": "evidence/current/full-stack/deployment-contract.log",
+        "sha256": "d9b2270b5b0dba2d599facf5b9acb80dabc2ee38de624f0df429a0d78a8b8da9"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "e84a99e74bb643f49fe3e99442bc6f989097f5135ba055a39daf7e936c1d1c82"
+      },
+      {
+        "bytes": 51504,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "d9d909b02c42b2b549d105b0fa5fd3d3a9c916379d0ade123a0b11f72decead2"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "a60511235c8bf403e6c6825c4e090e3de8e46486a53a72e37f658a50504030fe"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "b9c2408b64467aa83252154178ddf9d2d5317bbbb5020140b25b05fcb01e1653"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "0d2f49465af670807664478497c20bb9a2bf36e58c8b43dca1d2bbc617c00d1f"
+      },
+      {
+        "bytes": 333,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "c1acec9935cc193bcf8ea777942a9304c627bae4044baabdebd29a90cc2d4169"
+      },
+      {
+        "bytes": 159,
+        "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+        "sha256": "624c6352e80ec55d61f67732cec9a078d32e2a40f5a4b8e5e3da3ecb2ddeebc0"
+      },
+      {
+        "bytes": 1230,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "b05c74dec1385c176cf65c80a451341ae03cee5d8320579e68fd78971a53bb9c"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "4804647b5f6780f032707012268688dbbd171e4929306f4b3e4c5ae640e2ea55"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "855516f33007054d961af485952b4d605a50425f0e083a2df09cebaa23370cf0"
+      },
+      {
+        "bytes": 7028,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "a66e80b48604c5b6a3e39dcb5078060ea6a8e7ceaae7bf760dfc819dedb0e4b5"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "9573086352a083679b93b865b3cfa28e97b19863d36a6f8292cb73238231d33f"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "7e2e1db30cb4c4e67e0c606e988fa7343fec21daf4d2646d80895ace07df549d"
+      },
+      {
+        "bytes": 696,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "2bae6d87f49760f155134ed27472ef76145ae0491c3bbe11fab3557b70680e6a"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "c212614634c8468f28489429d66f906f6d7f1576b53cdea526403e6096ba25e4"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "bac39ca7eb9c88647a5cdce44abea2b9c503d4d52b6146f35f96f914163bbb6f"
+      },
+      {
+        "bytes": 166393,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "b9f1bd5dc671671a55e8417937bdfaaf169768bdfe95ba27ae05b68897346d19"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "acfd82c87a062be8526576774817a8bf931c7f8a22445fd029c19f20fa9028da"
+      },
+      {
+        "bytes": 73375,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "3f7bb2a63c6914bf572aacf7ec7abee9761d175285318eff7c493cf9084bc5cc"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2955,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "422579b4a8c5414e3e4af0c84cd6017d100bc0e26bce54ec351a25444ca0d788"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "6f04c93865b2f5b11704cd1004318535a5e430c0bbdc53cfa8e3772fc2ad7b32"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 181,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "801ddca120e5f706c18de59ab932207ceebf0712ff76a90cca510efc17ff57e9"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 6159,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "89ee8f87d61284678a08c6e74fef614768b56c465f47919ea0732e1979828a1a"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-contract.log",
+        "sha256": "3344b3bdc8d32972c70ddfabd6599511bd29131984e5deb324e8e74f48e1911d"
+      },
+      {
+        "bytes": 81,
+        "path": "evidence/current/full-stack/ui-state-matrix-results.log",
+        "sha256": "3344b3bdc8d32972c70ddfabd6599511bd29131984e5deb324e8e74f48e1911d"
+      },
+      {
+        "bytes": 13730,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "d1c95af71bd8ffa5f6543dd7bc40059b482a71ea83b44a2402078d9e4b0ceb11"
+      },
+      {
+        "bytes": 13730,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "d1c95af71bd8ffa5f6543dd7bc40059b482a71ea83b44a2402078d9e4b0ceb11"
+      },
+      {
+        "bytes": 17312,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "5daf94aaadad7a44953dc45886a662f16097c472483107a3782648c95b5b6b75"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "7760cc9ee46d4fd2f852b7c44194638f237f2a2590daee509b026eed56af4191"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "c6275acc50d07e7860f445db4f48a9e39c6255f0a00ddd083b4a11846ac2f912"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "4368fd87fbb29014f119473370a1eb00dc5a2ff4c414b25002cbcfe1cac1c1eb"
+      },
+      {
+        "bytes": 6123,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "4ad43d33173f7cdd8c58a22de163ee62e20edb06af20beaeeb42fe3b933751c1"
+      },
+      {
+        "bytes": 11930,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "d416f4ed5e450385df4bf201f88d776961d1c011a4181f9337074810e86c2194"
+      },
+      {
+        "bytes": 3488,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "7d007da886c6665e879b35c8c3af7be4d255486fcead5c90928be3f315739aa0"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "7e2e1db30cb4c4e67e0c606e988fa7343fec21daf4d2646d80895ace07df549d"
+      },
+      {
+        "bytes": 2387,
+        "path": "evidence/current/release/rc19-evidence-binding.json",
+        "sha256": "3e6e8bd8ce2743932dc8fe67c420b9a885b1d38b4a83a69a41b85c0b2c78b69e"
+      },
+      {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc19-manifest.json",
+        "sha256": "70856cc67c85eb6ad630cab9469a59cf27bc15b9d2ff5eb218d11eb6d41f986f"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc19-readiness-matrix.json",
+        "sha256": "94b326c9b39eb74d6867765dec810e1a525bfc1d7cae7fb1f5921197b1c18e22"
+      },
+      {
+        "bytes": 166393,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "b9f1bd5dc671671a55e8417937bdfaaf169768bdfe95ba27ae05b68897346d19"
+      },
+      {
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "2b3111d713777891c20c675b99334b5aa2ddb58996c4bb0ff3e25849ad71c4f2"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "9e09201abb128415dd22185c21f94f542343a7204b3a024b54c3e7aea916e296"
+      },
+      {
+        "bytes": 5238,
+        "path": "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json",
+        "sha256": "68c0a86ca742727faaf14493e3d3a15a22c66543321f4c0b3992eb14321b41b8"
+      },
+      {
+        "bytes": 119352,
+        "path": "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.png",
+        "sha256": "0b80ea0376ec0f461b8d65fe5388f0a65f3cf1f07683b08e42e25d2d22beeeff"
+      },
+      {
+        "bytes": 11972,
+        "path": "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json",
+        "sha256": "e2c2238517aa44f708863438c840fd12cb8809be652297de600fdf56f56c44ff"
+      },
+      {
+        "bytes": 113454,
+        "path": "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.png",
+        "sha256": "50fda847caaab932ba2437ccf5e4642c58a0e71045e331ae9254b37ec1ca9e8d"
+      },
+      {
+        "bytes": 178746,
+        "path": "evidence/current/uiqa/rendered/chg34-forced-colors.png",
+        "sha256": "45df638e96447e3ec0fe8e1acf64b1689c6ebe839f6c361cfc99026ef4434c1d"
+      },
+      {
+        "bytes": 190345,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-row-selection.png",
+        "sha256": "983d4ab375f3c7fdbd71a1e1b276c05204a8369f7342b4fbe02e2c90d8ba4419"
+      },
+      {
+        "bytes": 162290,
+        "path": "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png",
+        "sha256": "35f7c05e121b90ffea7930a596764227247451cd8e8f0c9f660c251c91559b8f"
+      },
+      {
+        "bytes": 411,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json",
+        "sha256": "69b518bff5710298cce9a78e4990fe04049c1eb6960e200146717147a3360f99"
+      },
+      {
+        "bytes": 152348,
+        "path": "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png",
+        "sha256": "ca024e149eedf3475a420f852e13b9b8c466811fb00537728ef11a8b2992f79b"
+      },
+      {
+        "bytes": 195656,
+        "path": "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png",
+        "sha256": "4062a93c15e5a07603832b77cca0f58b3377a724e72887de81a92b05bfe869a4"
+      },
+      {
+        "bytes": 7693,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "9a38e00de7b0f9d042378b44894c66e42cf89b9477b56183ec2c1a42fcb28e53"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "7ff6d5d970c8b50a6283118257fa567b1490297fbbb6bb823183cced84b16fe1"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "4d76087228b181a0337a1e323126a8a56a6702013d62192140c24d6427e23054"
+      },
+      {
+        "bytes": 15682,
+        "path": "frontend/tests/e2e/ui-state-matrix.json",
+        "sha256": "481fd99616793e4947c64516dd542e83d6b5b2069bfbfc1cbdbaee1a581023a1"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-20T14:32:54Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "branch": "codex/react-fastapi-base-golden-ui-v2-mobile-responsive-geometry-fix-v3",
+    "detached_verify": false,
+    "head_sha": "651a209cbc73ca93e572520bdadc7e5ed66e99b0",
+    "remote_exact_head": true,
+    "remote_head_sha": "651a209cbc73ca93e572520bdadc7e5ed66e99b0",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-mobile-responsive-geometry-fix-v3",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-52c4166cdc70089e98abc2b4",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v2-mobile-responsive-geometry-fix-v3",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-mobile-responsive-geometry-fix-v3"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "a642c9f63bab2cb555704bdb0b9d1f28222591f133f934c1d0f93cc5a25ab8a1",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v2-mobile-responsive-geometry-fix-v3",
+  "schema_version": 1,
+  "started_at": "2026-09-20T13:27:54Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 3900,
+    "queue_seconds": 0,
+    "total_seconds": 3900
+  },
+  "transport": {
+    "bytes": 16066,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 15690,
+    "prompt_sha256": "08b78cb981ffe86420ca6f9719a62c136b0a6d7bc445c1522985d1519f3830b6",
+    "sha256": "52c4166cdc70089e98abc2b4553ef1fb454d29952616145f335146728c3b5cf2"
+  }
 }
