@@ -15,7 +15,8 @@
     "required_for": "code",
     "sha256": "6644f81977bd661682fde45cb12a007d8bd69e2d1f9fba33e80e7f1099ad3ffd"
   },
-  "evidence_commit": null,
+  "evidence_binding": "evidence/current/release/rc20-evidence-binding.json",
+  "evidence_commit": "5467a7f93fd79d48dc8036b908921e41c6ae7fc5",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
