@@ -1,0 +1,35 @@
+{
+  "comparisons": [
+    {
+      "artifact_run": "AR-43",
+      "carrier": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5@bbf9abb371fbb3cdf66b2dd7dd45d1dd7b8861b6",
+      "current_comparison": "not reused as current pixels; fresh RC.21 runtime capture required",
+      "finding_class": "all 21 mobile surfaces exposed mobile-static-shell-displaces-workspace-below-fold",
+      "id": "historical-ar43",
+      "status": "REJECTED_HISTORICAL"
+    },
+    {
+      "audit": "7bd46149131bdba5ad0330c66e3f7804544ebe97",
+      "current_comparison": "fresh runtime re-proved in this VERIFY; independent evidence remains distinct",
+      "id": "r6-native-fabric",
+      "result": "GO for RC.21 mobile navigation repair",
+      "status": "SOURCE_BOUND_ACCEPTED"
+    },
+    {
+      "id": "current-rc21-fresh",
+      "mobile_390_initial_task_start": "PASS across all discovered surfaces",
+      "page_width": "bounded at 390 and 320 for all discovered surfaces",
+      "status": "FRESH_RUNTIME_CAPTURE",
+      "surface_count": 21
+    }
+  ],
+  "interpretation": "Historical and native evidence are comparison context only; no older pixels were relabeled or reused.",
+  "schema": "project-os-golden-ui-baseline-comparison-v2",
+  "source": {
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  }
+}

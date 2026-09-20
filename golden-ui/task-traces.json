@@ -1,0 +1,143 @@
+{
+  "schema": "project-os-golden-ui-task-traces-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "fixture": {
+    "kind": "maintained-development-seed",
+    "user": "demo.admin",
+    "role": "admin/editor",
+    "tenant": "Demo workspace",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference"
+  },
+  "oracles": [
+    {
+      "id": "shell-navigation-history",
+      "status": "PASS",
+      "precondition": "seeded demo on /work-items, mobile 390x844",
+      "input": "open compact navigation; pointer middle link; reload; Back; Forward; Escape; skip link",
+      "outcome": "21 semantic links, route closes navigation, trigger focus recovers, #main-content focus recovers",
+      "effect": "single route activation to /process-measurements and correct history traversal",
+      "prohibited": "no hidden destination set, no duplicate operable shell, no page-width overflow",
+      "recovery_repeat": "reload/back/forward and Escape repeated",
+      "next": "continue in selected workspace",
+      "evidence": "golden-ui/stress-manifest.json"
+    },
+    {
+      "id": "ag-grid-sort-filter-search-selection-deep-scroll",
+      "status": "PASS",
+      "precondition": "seeded /work-items plus maintained 100k/5000-row browser fixtures",
+      "input": "sort Title; server-shaped page; deep-scroll 5000-row fixture; keyboard Space selection",
+      "outcome": "logical 100000 rows, rendered rows bounded/recycled, target row reached, selection region appears",
+      "effect": "exact selected row identity and sort result",
+      "prohibited": "no unbounded DOM growth",
+      "recovery_repeat": "return to top and sort again",
+      "next": "open dossier or continue filter",
+      "evidence": "baseline: frontend/tests/e2e/performance.spec.ts"
+    },
+    {
+      "id": "create-edit-invalid-valid-cancel-reopen-retry",
+      "status": "PASS",
+      "precondition": "seeded editor at /work-items",
+      "input": "New work item; invalid submit; valid create; reopen/edit; cancel/dirty guard; retry after transient query error",
+      "outcome": "named validation/error state; successful record returned with revision; dirty draft preserved when keeping edit",
+      "effect": "one server create/update identity and audited revision",
+      "prohibited": "no false completion or discarded draft",
+      "recovery_repeat": "reopen dossier and use retry",
+      "next": "open relationships/details",
+      "evidence": "baseline: frontend/tests/e2e/workspace.spec.ts create/dirty tests"
+    },
+    {
+      "id": "dialog-drawer-menu-focus",
+      "status": "PASS",
+      "precondition": "Save current view invoker visible",
+      "input": "Enter/open; Tab/Shift+Tab; Escape; pointer dismissal",
+      "outcome": "named dialog, focus remains visible and returns to invoker",
+      "effect": "overlay closes once",
+      "prohibited": "no focus theft or hidden controls",
+      "recovery_repeat": "reopen and repeat",
+      "next": "save or continue workspace",
+      "evidence": "baseline: CHG-34 uiqa-003/uiqa-013"
+    },
+    {
+      "id": "search-filter-saved-view",
+      "status": "PASS",
+      "precondition": "seeded Work items workspace",
+      "input": "search/filter; Save view team/favorite/default; reload",
+      "outcome": "applied view and saved metadata visible with scope truth",
+      "effect": "server-backed saved view identity",
+      "prohibited": "no implicit hidden-row selection",
+      "recovery_repeat": "clear/reload",
+      "next": "continue current view",
+      "evidence": "baseline: frontend/tests/e2e/workspace.spec.ts team saved views"
+    },
+    {
+      "id": "permission-read-only",
+      "status": "PASS",
+      "precondition": "viewer fixture/permission-intercept",
+      "input": "open Work items as read-only",
+      "outcome": "Read only announced; New action absent; records readable",
+      "effect": "no write request",
+      "prohibited": "no UI-only admin fallback",
+      "recovery_repeat": "return to editor fixture",
+      "next": "inspect details",
+      "evidence": "golden-ui/state-coverage.json and baseline uiqa-011"
+    },
+    {
+      "id": "relationship-detail-drilldown",
+      "status": "PASS",
+      "precondition": "created work item dossier",
+      "input": "open dossier; inspect relationships/history/comments/files tabs",
+      "outcome": "stable dossier identity and relationship explorers load",
+      "effect": "record context remains bound to item/revision",
+      "prohibited": "no route loss or unrelated record mutation",
+      "recovery_repeat": "return to workspace",
+      "next": "continue detail task",
+      "evidence": "baseline: frontend/tests/e2e/workspace.spec.ts create/reload"
+    },
+    {
+      "id": "file-attachment-lifecycle",
+      "status": "UNPROVEN",
+      "precondition": "no authentic safe attachment upload fixture was used",
+      "input": "not executed",
+      "outcome": "not claimed",
+      "effect": "none",
+      "prohibited": "no live/company file access",
+      "recovery_repeat": "not applicable",
+      "next": "requires independently provisioned disposable safe fixture"
+    },
+    {
+      "id": "dashboard-chart-planning-spatial-inspect",
+      "status": "PASS",
+      "precondition": "seeded Planning/Incident/Rack/diagram workspaces",
+      "input": "open material projection; change visualization where source-authoritative; inspect records",
+      "outcome": "bounded projection/graph/spatial owner and truthful current state",
+      "effect": "URL/render mode state remains aligned",
+      "prohibited": "no duplicate controls or clipped final mode",
+      "recovery_repeat": "responsive switch back",
+      "next": "open dossier/record",
+      "evidence": "golden-ui/stress-manifest.json and baseline uiqa-018"
+    },
+    {
+      "id": "feedback-notification-pending-success-error",
+      "status": "PASS",
+      "precondition": "notification and deterministic error fixtures",
+      "input": "load pending; fulfill success/error; inspect status/retry",
+      "outcome": "status/alert semantics distinguish pending, success and error",
+      "effect": "no false completion and no focus theft",
+      "prohibited": "no stale success after error",
+      "recovery_repeat": "retry/clear",
+      "next": "continue task",
+      "evidence": "baseline uiqa-007/uiqa-008/uiqa-010"
+    }
+  ]
+}

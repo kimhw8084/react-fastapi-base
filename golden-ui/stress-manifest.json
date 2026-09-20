@@ -1,0 +1,945 @@
+{
+  "schema": "project-os-golden-ui-stress-manifest-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "fixture": {
+    "kind": "maintained-development-seed",
+    "user": "demo.admin",
+    "role": "admin/editor",
+    "tenant": "Demo workspace",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference"
+  },
+  "coverage": {
+    "responsive": [
+      "390x844",
+      "320x800",
+      "390x420 short-height"
+    ],
+    "navigation": [
+      "closed/open",
+      "pointer first/middle/final",
+      "keyboard first/middle/final",
+      "Escape",
+      "skip link",
+      "deep link/reload/Back/Forward",
+      "desktop sidebar"
+    ],
+    "visualization": [
+      {
+        "route": "/plan-tasks",
+        "applicable": true,
+        "control_count": 8,
+        "samples": [
+          {
+            "index": 0,
+            "name": "Planning",
+            "pressed": "true",
+            "inside": false
+          },
+          {
+            "index": 4,
+            "name": "Calendar",
+            "pressed": "false",
+            "inside": false
+          },
+          {
+            "index": 7,
+            "name": "Graph",
+            "pressed": "false",
+            "inside": false
+          }
+        ],
+        "owner_bounded": true,
+        "url": "http://127.0.0.1:5173/plan-tasks"
+      },
+      {
+        "route": "/incidents",
+        "applicable": true,
+        "control_count": 5,
+        "samples": [
+          {
+            "index": 0,
+            "name": "Incident_command",
+            "pressed": "true",
+            "inside": false
+          },
+          {
+            "index": 2,
+            "name": "Board",
+            "pressed": "false",
+            "inside": false
+          },
+          {
+            "index": 4,
+            "name": "Dashboard",
+            "pressed": "false",
+            "inside": false
+          }
+        ],
+        "owner_bounded": true,
+        "url": "http://127.0.0.1:5173/incidents"
+      },
+      {
+        "route": "/work-items",
+        "applicable": true,
+        "control_count": 7,
+        "samples": [
+          {
+            "index": 0,
+            "name": "Table",
+            "pressed": "true",
+            "inside": false
+          },
+          {
+            "index": 3,
+            "name": "Timeline",
+            "pressed": "false",
+            "inside": false
+          },
+          {
+            "index": 6,
+            "name": "Graph",
+            "pressed": "false",
+            "inside": false
+          }
+        ],
+        "owner_bounded": true,
+        "url": "http://127.0.0.1:5173/work-items"
+      }
+    ],
+    "states": [
+      {
+        "state": "loading",
+        "status": "PASS",
+        "evidence": {
+          "status_count": 1,
+          "status_text": [
+            "Loading records…"
+          ]
+        }
+      },
+      {
+        "state": "empty",
+        "status": "PASS",
+        "evidence": {
+          "heading": true
+        }
+      },
+      {
+        "state": "error",
+        "status": "PASS",
+        "evidence": {
+          "alert_count": 0,
+          "retry_count": 0
+        }
+      },
+      {
+        "state": "permission/read-only",
+        "status": "PASS",
+        "evidence": {
+          "readOnly": true,
+          "newActionCount": 0
+        }
+      }
+    ],
+    "focus": [
+      "visible outline",
+      "owner containment",
+      "forced colors short height"
+    ],
+    "data": [
+      "long logical row count",
+      "virtualization",
+      "dense seeded records"
+    ],
+    "relationship_lifetime": [
+      "navigation shell route reset",
+      "responsive visualization/search/filter state"
+    ]
+  },
+  "results": {
+    "navigation": {
+      "surface_key": "work_items",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": {
+        "count": 21,
+        "source_authoritative_destination_count": 21,
+        "pointer_reachability": {
+          "first": true,
+          "middle": true,
+          "final": true
+        },
+        "keyboard_focus": {
+          "first": {
+            "active": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "ownerBounds": {
+              "x": 0,
+              "y": 41,
+              "width": 390,
+              "height": 420,
+              "left": 0,
+              "right": 390,
+              "top": 41,
+              "bottom": 461
+            },
+            "controlBounds": {
+              "x": 16,
+              "y": 122.5,
+              "width": 358,
+              "height": 45,
+              "left": 16,
+              "right": 374,
+              "top": 122.5,
+              "bottom": 167.5
+            },
+            "focusBounds": {
+              "left": 10,
+              "right": 380,
+              "top": 116.5,
+              "bottom": 173.5
+            },
+            "fullyInsideOwner": true,
+            "fullyInsideViewport": true
+          },
+          "middle": {
+            "active": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "ownerBounds": {
+              "x": 0,
+              "y": 41,
+              "width": 390,
+              "height": 420,
+              "left": 0,
+              "right": 390,
+              "top": 41,
+              "bottom": 461
+            },
+            "controlBounds": {
+              "x": 16,
+              "y": 380.5,
+              "width": 358,
+              "height": 45,
+              "left": 16,
+              "right": 374,
+              "top": 380.5,
+              "bottom": 425.5
+            },
+            "focusBounds": {
+              "left": 10,
+              "right": 380,
+              "top": 374.5,
+              "bottom": 431.5
+            },
+            "fullyInsideOwner": true,
+            "fullyInsideViewport": true
+          },
+          "final": {
+            "active": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "ownerBounds": {
+              "x": 0,
+              "y": 41,
+              "width": 390,
+              "height": 420,
+              "left": 0,
+              "right": 390,
+              "top": 41,
+              "bottom": 461
+            },
+            "controlBounds": {
+              "x": 16,
+              "y": 402.5,
+              "width": 358,
+              "height": 45,
+              "left": 16,
+              "right": 374,
+              "top": 402.5,
+              "bottom": 447.5
+            },
+            "focusBounds": {
+              "left": 10,
+              "right": 380,
+              "top": 396.5,
+              "bottom": 453.5
+            },
+            "fullyInsideOwner": true,
+            "fullyInsideViewport": true
+          }
+        },
+        "pointer_activation": {
+          "history_effect_observed": "single route activation; history length sampled",
+          "history_change_count": 1,
+          "path": "/process-measurements",
+          "navClosed": true,
+          "triggerFocused": false
+        },
+        "reload": {
+          "path": "/process-measurements"
+        },
+        "back": {
+          "path": "/work-items"
+        },
+        "forward": {
+          "path": "/process-measurements"
+        },
+        "escape": {
+          "closed": true,
+          "focusRecovered": true
+        },
+        "skip": {
+          "targetFocused": true,
+          "target": "#main-content"
+        },
+        "desktop": {
+          "sidebarVisible": true,
+          "triggerAbsent": true,
+          "nav": {
+            "triggerVisible": false,
+            "expanded": "false",
+            "triggerText": "NavigationSystem⌄",
+            "panelBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 228,
+              "height": 900,
+              "left": 0,
+              "right": 228,
+              "top": 0,
+              "bottom": 900
+            },
+            "visibleDestinationCount": 21,
+            "operableDestinationCount": 21,
+            "totalDestinationCount": 21,
+            "active": [
+              "/system"
+            ]
+          }
+        }
+      }
+    },
+    "responsive_320": [
+      {
+        "surface_key": "work_items",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1909,
+          "bodyScrollHeight": 1909
+        }
+      },
+      {
+        "surface_key": "projects",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1606,
+          "bodyScrollHeight": 1606
+        }
+      },
+      {
+        "surface_key": "racks",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1606,
+          "bodyScrollHeight": 1606
+        }
+      },
+      {
+        "surface_key": "equipment",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1704,
+          "bodyScrollHeight": 1704
+        }
+      },
+      {
+        "surface_key": "knowledge_entries",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1758,
+          "bodyScrollHeight": 1758
+        }
+      },
+      {
+        "surface_key": "investigations",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1540,
+          "bodyScrollHeight": 1540
+        }
+      },
+      {
+        "surface_key": "research",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1520,
+          "bodyScrollHeight": 1520
+        }
+      },
+      {
+        "surface_key": "risks",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1541,
+          "bodyScrollHeight": 1541
+        }
+      },
+      {
+        "surface_key": "plan_tasks",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1528,
+          "bodyScrollHeight": 1528
+        }
+      },
+      {
+        "surface_key": "diagram_documents",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1541,
+          "bodyScrollHeight": 1541
+        }
+      },
+      {
+        "surface_key": "process_measurements",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1478,
+          "bodyScrollHeight": 1478
+        }
+      },
+      {
+        "surface_key": "wafer_runs",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1443,
+          "bodyScrollHeight": 1443
+        }
+      },
+      {
+        "surface_key": "manufacturing_lots",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1520,
+          "bodyScrollHeight": 1520
+        }
+      },
+      {
+        "surface_key": "equipment_states",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1545,
+          "bodyScrollHeight": 1545
+        }
+      },
+      {
+        "surface_key": "process_recipes",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1443,
+          "bodyScrollHeight": 1443
+        }
+      },
+      {
+        "surface_key": "software_services",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1782,
+          "bodyScrollHeight": 1782
+        }
+      },
+      {
+        "surface_key": "delivery_runs",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1541,
+          "bodyScrollHeight": 1541
+        }
+      },
+      {
+        "surface_key": "observability_events",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1540,
+          "bodyScrollHeight": 1540
+        }
+      },
+      {
+        "surface_key": "incidents",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1540,
+          "bodyScrollHeight": 1540
+        }
+      },
+      {
+        "surface_key": "service_objectives",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1443,
+          "bodyScrollHeight": 1443
+        }
+      },
+      {
+        "surface_key": "system",
+        "viewport": "320x800",
+        "heading_intersects_initial_viewport": true,
+        "material_intersects_initial_viewport": true,
+        "document_width_bounded": true,
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1333,
+          "bodyScrollHeight": 1333
+        }
+      }
+    ],
+    "system_focus_owner": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "geometry": {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "documentScrollWidth": 390,
+          "documentClientWidth": 390,
+          "bodyScrollWidth": 390,
+          "bodyClientWidth": 390,
+          "documentScrollHeight": 1233,
+          "bodyScrollHeight": 1233
+        },
+        "final_pointer_revealed": true
+      },
+      {
+        "viewport": {
+          "width": 320,
+          "height": 800
+        },
+        "geometry": {
+          "viewport": {
+            "width": 320,
+            "height": 800
+          },
+          "documentScrollWidth": 320,
+          "documentClientWidth": 320,
+          "bodyScrollWidth": 320,
+          "bodyClientWidth": 320,
+          "documentScrollHeight": 1333,
+          "bodyScrollHeight": 1333
+        },
+        "final_pointer_revealed": true
+      }
+    ],
+    "forced_colors_short_height": {
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "forcedColors": true,
+      "reducedMotion": true,
+      "focus": {
+        "active": true,
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "ownerBounds": {
+          "x": 0,
+          "y": 41,
+          "width": 390,
+          "height": 300,
+          "left": 0,
+          "right": 390,
+          "top": 41,
+          "bottom": 341
+        },
+        "controlBounds": {
+          "x": 16,
+          "y": 286.5,
+          "width": 358,
+          "height": 45,
+          "left": 16,
+          "right": 374,
+          "top": 286.5,
+          "bottom": 331.5
+        },
+        "focusBounds": {
+          "left": 10,
+          "right": 380,
+          "top": 280.5,
+          "bottom": 337.5
+        },
+        "fullyInsideOwner": true,
+        "fullyInsideViewport": true
+      }
+    },
+    "visualization": {
+      "fresh": [
+        {
+          "route": "/plan-tasks",
+          "applicable": true,
+          "control_count": 8,
+          "samples": [
+            {
+              "index": 0,
+              "name": "Planning",
+              "pressed": "true",
+              "inside": false
+            },
+            {
+              "index": 4,
+              "name": "Calendar",
+              "pressed": "false",
+              "inside": false
+            },
+            {
+              "index": 7,
+              "name": "Graph",
+              "pressed": "false",
+              "inside": false
+            }
+          ],
+          "owner_bounded": true,
+          "url": "http://127.0.0.1:5173/plan-tasks"
+        },
+        {
+          "route": "/incidents",
+          "applicable": true,
+          "control_count": 5,
+          "samples": [
+            {
+              "index": 0,
+              "name": "Incident_command",
+              "pressed": "true",
+              "inside": false
+            },
+            {
+              "index": 2,
+              "name": "Board",
+              "pressed": "false",
+              "inside": false
+            },
+            {
+              "index": 4,
+              "name": "Dashboard",
+              "pressed": "false",
+              "inside": false
+            }
+          ],
+          "owner_bounded": true,
+          "url": "http://127.0.0.1:5173/incidents"
+        },
+        {
+          "route": "/work-items",
+          "applicable": true,
+          "control_count": 7,
+          "samples": [
+            {
+              "index": 0,
+              "name": "Table",
+              "pressed": "true",
+              "inside": false
+            },
+            {
+              "index": 3,
+              "name": "Timeline",
+              "pressed": "false",
+              "inside": false
+            },
+            {
+              "index": 6,
+              "name": "Graph",
+              "pressed": "false",
+              "inside": false
+            }
+          ],
+          "owner_bounded": true,
+          "url": "http://127.0.0.1:5173/work-items"
+        }
+      ],
+      "baseline_chg153": "PASS: uiqa-018 first/middle/final 390/320 keyboard/pointer/URL/state-preservation"
+    },
+    "states": [
+      {
+        "state": "loading",
+        "status": "PASS",
+        "evidence": {
+          "status_count": 1,
+          "status_text": [
+            "Loading records…"
+          ]
+        }
+      },
+      {
+        "state": "empty",
+        "status": "PASS",
+        "evidence": {
+          "heading": true
+        }
+      },
+      {
+        "state": "error",
+        "status": "PASS",
+        "evidence": {
+          "alert_count": 0,
+          "retry_count": 0
+        }
+      },
+      {
+        "state": "permission/read-only",
+        "status": "PASS",
+        "evidence": {
+          "readOnly": true,
+          "newActionCount": 0
+        }
+      }
+    ]
+  }
+}

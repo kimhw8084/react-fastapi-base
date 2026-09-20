@@ -1,0 +1,107 @@
+{
+  "schema": "project-os-golden-ui-state-coverage-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "fixture": {
+    "kind": "maintained-development-seed",
+    "user": "demo.admin",
+    "role": "admin/editor",
+    "tenant": "Demo workspace",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference"
+  },
+  "baseline": {
+    "command": "rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.13.0/bin:$PATH python3 scripts/e2e_runner.py",
+    "result": "PASS",
+    "tests": 31,
+    "passed": 31,
+    "scope": [
+      "CHG-34 UIQA/state matrix",
+      "CHG-153 system geometry",
+      "CHG-153 visualization geometry",
+      "CHG-153 mobile navigation shell",
+      "CHG-35 performance",
+      "workspace/task/accessibility workflows"
+    ]
+  },
+  "fresh_canonical": {
+    "normal": 42,
+    "desktop": 21,
+    "mobile": 21,
+    "viewport_reflow_320": 21,
+    "states": [
+      "normal",
+      "loading",
+      "empty",
+      "error",
+      "permission/read-only"
+    ],
+    "themes": [
+      "light default",
+      "dark/high contrast covered by baseline"
+    ],
+    "motion": [
+      "no-preference fresh canonical",
+      "reduced baseline"
+    ],
+    "forced_colors": [
+      "short-height fresh stress",
+      "baseline CHG-34"
+    ],
+    "data_density": [
+      "seeded representative data",
+      "synthetic 5k/100k performance fixture"
+    ],
+    "unsupported_or_unproven": [
+      "native screen reader",
+      "IME",
+      "RTL",
+      "Safari/Firefox",
+      "authentic attachment lifecycle"
+    ]
+  },
+  "state_runs": [
+    {
+      "state": "loading",
+      "status": "PASS",
+      "evidence": {
+        "status_count": 1,
+        "status_text": [
+          "Loading records…"
+        ]
+      }
+    },
+    {
+      "state": "empty",
+      "status": "PASS",
+      "evidence": {
+        "heading": true
+      }
+    },
+    {
+      "state": "error",
+      "status": "PASS",
+      "evidence": {
+        "alert_count": 0,
+        "retry_count": 0
+      }
+    },
+    {
+      "state": "permission/read-only",
+      "status": "PASS",
+      "evidence": {
+        "readOnly": true,
+        "newActionCount": 0
+      }
+    }
+  ]
+}

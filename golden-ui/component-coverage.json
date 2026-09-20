@@ -1,0 +1,929 @@
+{
+  "schema": "project-os-golden-ui-component-coverage-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "surface_count": 21,
+  "families": [
+    {
+      "family": "AG Grid table",
+      "consumer_count": 16,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "risks",
+        "plan_tasks",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "service_objectives"
+      ]
+    },
+    {
+      "family": "admin/settings",
+      "consumer_count": 1,
+      "consumers": [
+        "system"
+      ]
+    },
+    {
+      "family": "application shell",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "dashboard/chart",
+      "consumer_count": 8,
+      "consumers": [
+        "plan_tasks",
+        "process_measurements",
+        "wafer_runs",
+        "equipment_states",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives"
+      ]
+    },
+    {
+      "family": "dialog/overlay",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "documents/code",
+      "consumer_count": 5,
+      "consumers": [
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "diagram_documents",
+        "process_recipes"
+      ]
+    },
+    {
+      "family": "dossier/detail",
+      "consumer_count": 2,
+      "consumers": [
+        "work_items",
+        "projects"
+      ]
+    },
+    {
+      "family": "feedback",
+      "consumer_count": 1,
+      "consumers": [
+        "system"
+      ]
+    },
+    {
+      "family": "feedback/status",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "forms",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "graph/spatial",
+      "consumer_count": 3,
+      "consumers": [
+        "diagram_documents",
+        "software_services",
+        "observability_events"
+      ]
+    },
+    {
+      "family": "incident command",
+      "consumer_count": 1,
+      "consumers": [
+        "incidents"
+      ]
+    },
+    {
+      "family": "investigation workspace",
+      "consumer_count": 1,
+      "consumers": [
+        "investigations"
+      ]
+    },
+    {
+      "family": "navigation",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "notifications",
+      "consumer_count": 1,
+      "consumers": [
+        "system"
+      ]
+    },
+    {
+      "family": "planning/temporal",
+      "consumer_count": 8,
+      "consumers": [
+        "risks",
+        "plan_tasks",
+        "process_measurements",
+        "manufacturing_lots",
+        "equipment_states",
+        "delivery_runs",
+        "incidents",
+        "service_objectives"
+      ]
+    },
+    {
+      "family": "relationships",
+      "consumer_count": 11,
+      "consumers": [
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "manufacturing_lots",
+        "software_services",
+        "incidents"
+      ]
+    },
+    {
+      "family": "research workspace",
+      "consumer_count": 1,
+      "consumers": [
+        "research"
+      ]
+    },
+    {
+      "family": "saved views",
+      "consumer_count": 2,
+      "consumers": [
+        "work_items",
+        "projects"
+      ]
+    },
+    {
+      "family": "search/filter/query",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "selection",
+      "consumer_count": 2,
+      "consumers": [
+        "work_items",
+        "projects"
+      ]
+    },
+    {
+      "family": "spatial",
+      "consumer_count": 1,
+      "consumers": [
+        "wafer_runs"
+      ]
+    },
+    {
+      "family": "spatial/rack",
+      "consumer_count": 2,
+      "consumers": [
+        "racks",
+        "equipment"
+      ]
+    },
+    {
+      "family": "statistical",
+      "consumer_count": 2,
+      "consumers": [
+        "process_measurements",
+        "wafer_runs"
+      ]
+    },
+    {
+      "family": "tabs",
+      "consumer_count": 1,
+      "consumers": [
+        "system"
+      ]
+    },
+    {
+      "family": "theme/appearance/contrast",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    },
+    {
+      "family": "workspace heading",
+      "consumer_count": 21,
+      "consumers": [
+        "work_items",
+        "projects",
+        "racks",
+        "equipment",
+        "knowledge_entries",
+        "investigations",
+        "research",
+        "risks",
+        "plan_tasks",
+        "diagram_documents",
+        "process_measurements",
+        "wafer_runs",
+        "manufacturing_lots",
+        "equipment_states",
+        "process_recipes",
+        "software_services",
+        "delivery_runs",
+        "observability_events",
+        "incidents",
+        "service_objectives",
+        "system"
+      ]
+    }
+  ],
+  "surfaces": [
+    {
+      "key": "work_items",
+      "path": "/work-items",
+      "label": "Work items",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "saved views",
+        "selection",
+        "dossier/detail"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "projects",
+      "path": "/projects",
+      "label": "Projects",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "saved views",
+        "selection",
+        "dossier/detail"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "racks",
+      "path": "/racks",
+      "label": "Racks",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "spatial/rack",
+        "relationships",
+        "forms"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "equipment",
+      "path": "/equipment",
+      "label": "Equipment",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "spatial/rack",
+        "relationships",
+        "forms"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "knowledge_entries",
+      "path": "/knowledge-entries",
+      "label": "Knowledge",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "documents/code",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "investigations",
+      "path": "/investigations",
+      "label": "Investigations",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "investigation workspace",
+        "documents/code",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "research",
+      "path": "/research",
+      "label": "Research",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "research workspace",
+        "documents/code",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "risks",
+      "path": "/risks",
+      "label": "Risk analysis",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "planning/temporal",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "plan_tasks",
+      "path": "/plan-tasks",
+      "label": "Planning",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "planning/temporal",
+        "dashboard/chart",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "diagram_documents",
+      "path": "/diagram-documents",
+      "label": "Diagram studio",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "documents/code",
+        "graph/spatial",
+        "forms",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "process_measurements",
+      "path": "/process-measurements",
+      "label": "Process measurements",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "dashboard/chart",
+        "statistical",
+        "planning/temporal"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "wafer_runs",
+      "path": "/wafer-runs",
+      "label": "Wafer runs",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "dashboard/chart",
+        "spatial",
+        "statistical"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "manufacturing_lots",
+      "path": "/manufacturing-lots",
+      "label": "Manufacturing lots",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "planning/temporal",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "equipment_states",
+      "path": "/equipment-states",
+      "label": "Equipment states",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "dashboard/chart",
+        "planning/temporal"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "process_recipes",
+      "path": "/process-recipes",
+      "label": "Process recipes",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "documents/code",
+        "forms"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "software_services",
+      "path": "/software-services",
+      "label": "Software services",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "graph/spatial",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "delivery_runs",
+      "path": "/delivery-runs",
+      "label": "Delivery runs",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "planning/temporal",
+        "dashboard/chart"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "observability_events",
+      "path": "/observability-events",
+      "label": "Observability events",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "dashboard/chart",
+        "graph/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "incidents",
+      "path": "/incidents",
+      "label": "Incidents",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "incident command",
+        "dashboard/chart",
+        "planning/temporal",
+        "relationships"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "service_objectives",
+      "path": "/service-objectives",
+      "label": "Service objectives",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "AG Grid table",
+        "dashboard/chart",
+        "planning/temporal"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    },
+    {
+      "key": "system",
+      "path": "/system",
+      "label": "System",
+      "component_families": [
+        "application shell",
+        "navigation",
+        "workspace heading",
+        "search/filter/query",
+        "feedback/status",
+        "forms",
+        "dialog/overlay",
+        "theme/appearance/contrast",
+        "tabs",
+        "admin/settings",
+        "notifications",
+        "forms",
+        "feedback"
+      ],
+      "relationship_edges": [
+        "application-shell→workspace",
+        "workspace→query/filter",
+        "workspace→detail/feedback"
+      ],
+      "aliases": []
+    }
+  ]
+}

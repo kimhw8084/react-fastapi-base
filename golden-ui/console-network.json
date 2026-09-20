@@ -1,0 +1,1124 @@
+{
+  "schema": "project-os-golden-ui-console-network-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "canonical_events": [
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/projects/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/projects?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/projects/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/projects?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/racks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/racks?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/racks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/racks?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/knowledge_entries/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/knowledge-entries?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/knowledge_entries/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/knowledge-entries?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/investigations/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/investigations?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/investigations/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/investigations?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/research/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/research?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/research/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/research?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/risks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/risks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/risks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/risks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/plan_tasks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/definitions",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/plan_tasks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/definitions",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/diagram_documents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/diagram-documents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/diagram_documents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/diagram-documents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_measurements/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-measurements?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_measurements/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-measurements?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/wafer_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/wafer-runs?search=&archived=false&sort=updated_at&direction=desc&limit=300&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/wafer_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/wafer-runs?search=&archived=false&sort=updated_at&direction=desc&limit=300&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/manufacturing_lots/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/manufacturing-lots?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/manufacturing_lots/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/manufacturing-lots?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment_states/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment-states?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment_states/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment-states?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_recipes/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-recipes?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_recipes/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-recipes?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/software_services/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/software-services?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/software_services/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/software-services?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/delivery_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/delivery-runs?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/delivery_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/delivery-runs?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/observability_events/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/observability-events?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/observability_events/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/observability-events?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/incidents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/incidents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/service_objectives/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/service-objectives?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/service_objectives/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/service-objectives?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/projects/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/projects?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/racks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/racks?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/knowledge_entries/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/knowledge-entries?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/investigations/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/investigations?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/research/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/research?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/risks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/risks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/plan_tasks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/definitions",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/diagram_documents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/diagram-documents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_measurements/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-measurements?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/wafer_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/wafer-runs?search=&archived=false&sort=updated_at&direction=desc&limit=300&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/manufacturing_lots/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/manufacturing-lots?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/equipment_states/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/equipment-states?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/process_recipes/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/process-recipes?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/software_services/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/software-services?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/delivery_runs/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/delivery-runs?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/observability_events/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/observability-events?search=&archived=false&sort=updated_at&direction=desc&limit=1000&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/incidents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/service_objectives/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/service-objectives?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/plan_tasks/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/plan-tasks?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/definitions",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/relationships/graph?entity=plan_tasks&limit=1000",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/incidents/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/incidents?search=&archived=false&sort=updated_at&direction=desc&limit=500&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "console.error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "url": "http://127.0.0.1:5173/work-items"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/workspaces/work_items/views",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/teams",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "kind": "requestfailed",
+      "url": "http://127.0.0.1:5173/api/v1/work-items?search=&archived=false&sort=updated_at&direction=desc&limit=50&offset=0",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "expected_state_harness_events": {
+    "aborted_navigation_requests": 218,
+    "intercepted_error_console_messages": 1
+  },
+  "unexpected": {
+    "console_errors": [],
+    "page_errors": [],
+    "failed_requests": []
+  },
+  "canonical_console_errors_unexpected": 0,
+  "canonical_page_errors_unexpected": 0,
+  "canonical_failed_requests_unexpected": 0,
+  "baseline": {
+    "executed_browser_workflows": 31,
+    "reported_console_errors": 0,
+    "reported_page_errors": 0
+  }
+}

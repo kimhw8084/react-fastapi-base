@@ -1,0 +1,62 @@
+{
+  "schema": "project-os-golden-ui-negative-controls-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "fixture": "disposable DOM-only harness outside Product history",
+  "checks": {
+    "historical_static_21_link_displacing_content": {
+      "faulty_fixture_fails": true,
+      "page_width_green": true
+    },
+    "compact_navigation_hides_later_destinations": {
+      "faulty_fixture_fails": true
+    },
+    "duplicate_desktop_mobile_operable_sets": {
+      "faulty_fixture_fails": true
+    },
+    "bounded_mobile_nav_unrevealed_final_focus": {
+      "faulty_fixture_fails": true,
+      "sound_fixture_passes": true
+    },
+    "broken_skip_bypass": {
+      "faulty_fixture_fails": true,
+      "sound_fixture_passes": true
+    },
+    "blocked_intercepted_hit_region": {
+      "faulty_fixture_fails": true
+    },
+    "unusable_popup_interior": {
+      "faulty_fixture_fails": true
+    },
+    "locked_disabled_critical_control": {
+      "faulty_fixture_fails": true
+    },
+    "hidden_validation_feedback": {
+      "faulty_fixture_fails": true
+    },
+    "transparent_invisible_focus": {
+      "faulty_fixture_fails": true
+    },
+    "unreadable_text_contrast": {
+      "faulty_fixture_fails": true
+    },
+    "page_width_green_focused_target_clipped": {
+      "faulty_fixture_fails": true,
+      "page_width_green": true
+    },
+    "observed_dom_results": {
+      "blocked_intercepted": true,
+      "popup_unusable_interior": true,
+      "locked_critical_control": true,
+      "hidden_validation_feedback": true,
+      "transparent_focus": true,
+      "unreadable_contrast": true
+    }
+  },
+  "interpretation": "A failing fixture is detection sensitivity evidence, not a Product defect."
+}

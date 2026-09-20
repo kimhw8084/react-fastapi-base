@@ -1,0 +1,42 @@
+{
+  "schema": "project-os-golden-ui-limitations-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "limitations": [
+    {
+      "id": "native-screen-reader",
+      "status": "UNEXECUTED",
+      "reason": "No supported native screen-reader harness in repository"
+    },
+    {
+      "id": "ime-native-input",
+      "status": "UNEXECUTED",
+      "reason": "No authentic IME harness"
+    },
+    {
+      "id": "rtl",
+      "status": "UNEXECUTED",
+      "reason": "No supported RTL fixture declared"
+    },
+    {
+      "id": "non-chromium",
+      "status": "UNEXECUTED",
+      "reason": "Baseline and fresh atlas are Chromium only"
+    },
+    {
+      "id": "attachment-lifecycle",
+      "status": "UNPROVEN",
+      "reason": "No safe authentic attachment fixture used"
+    },
+    {
+      "id": "human-pixel-task-audit",
+      "status": "PENDING_INDEPENDENT_PROJECT_OS",
+      "reason": "VERIFY run does not self-accept visual quality"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "project-os-golden-ui-runtime-identity-v2",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "version": "1.0.0-rc.21"
+  },
+  "version": "1.0.0-rc.21",
+  "fixture": {
+    "kind": "maintained-development-seed",
+    "user": "demo.admin",
+    "role": "admin/editor",
+    "tenant": "Demo workspace",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference"
+  },
+  "source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+  "tree_sha": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+  "node": {
+    "version": "v22.13.0",
+    "binary": "/Users/haewonkim/.nvm/versions/node/v22.13.0/bin/node"
+  },
+  "npm": {
+    "version": "10.9.2",
+    "binary": "/Users/haewonkim/.nvm/versions/node/v22.13.0/bin/npm"
+  },
+  "browser": {
+    "engine": "Chromium",
+    "playwright": "1.62.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "headless": true,
+    "device_scale_factor": 1
+  },
+  "profile": {
+    "role": "demo.admin",
+    "tenant": "Demo workspace",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference"
+  },
+  "runtime": {
+    "frontend": "http://127.0.0.1:5173",
+    "backend": "http://127.0.0.1:8000",
+    "data_root": "/tmp/golden-ui-runtime-rc21-v7.1cXPCV/data",
+    "fresh_disposable": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "seed_source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+  "seed_sha256": "d653716b523a4bdc5779cb0aec936aba836084bd8b70f0338563367373da29b1",
+  "inventory": [
+    {
+      "id": "mobile-shell-closed-open",
+      "surface": "work_items",
+      "viewport": "390x844",
+      "stress": "navigation lifecycle"
+    },
+    {
+      "id": "responsive-lifetime-planning",
+      "surface": "plan_tasks",
+      "viewport": "390→1440→390",
+      "stress": "visualization/search/filter state"
+    },
+    {
+      "id": "short-height-forced-colors",
+      "surface": "system",
+      "viewport": "390x420",
+      "stress": "final-link focus"
+    },
+    {
+      "id": "visualization-selector",
+      "surface": "incidents",
+      "viewport": "390x844",
+      "stress": "first/middle/final mode reachability"
+    },
+    {
+      "id": "desktop-high-contrast-grid",
+      "surface": "work_items",
+      "viewport": "1440x900",
+      "stress": "AG Grid identity/selection"
+    },
+    {
+      "id": "narrow-system-overflow",
+      "surface": "system",
+      "viewport": "320x800",
+      "stress": "bounded page width"
+    }
+  ],
+  "selected": [
+    {
+      "id": "responsive-lifetime-planning",
+      "surface": "plan_tasks",
+      "viewport": "390→1440→390",
+      "stress": "visualization/search/filter state",
+      "ordinary_matrix_shaping": false,
+      "executed": "covered by fresh canonical/stress evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile-shell-closed-open",
+      "surface": "work_items",
+      "viewport": "390x844",
+      "stress": "navigation lifecycle",
+      "ordinary_matrix_shaping": false,
+      "executed": "covered by fresh canonical/stress evidence",
+      "status": "PASS"
+    }
+  ],
+  "selection_rule": "two distinct indices derived modulo inventory length from the exact source SHA; no manual override"
+}

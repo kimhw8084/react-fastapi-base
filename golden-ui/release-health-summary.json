@@ -1,0 +1,59 @@
+{
+  "canonical_verifier": {
+    "command": "python3 dev verify",
+    "interpretation": "Evidence-only verification; no production-readiness or perfection acceptance claim.",
+    "observed_non_pass": [
+      "browser-e2e-accessibility FAIL; ui-state-matrix-results BLOCKED",
+      "candidate-progression BLOCKED: exact release base SHA was not supplied to the verifier",
+      "upgrade-fixture, object-inclusive-backup-restore, storage-qualification BLOCKED: release verification only",
+      "company-identity, company-storage, company-deployment BLOCKED: external qualification not exercised"
+    ],
+    "report": "evidence/current/full-stack/verification.json",
+    "result": "NOT_CERTIFIED"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "name": "frontend build",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 scripts/e2e_runner.py",
+      "details": "31/31",
+      "name": "browser baseline",
+      "result": "PASS"
+    },
+    {
+      "details": "included in baseline",
+      "name": "CHG-34 UIQA/state matrix",
+      "result": "PASS"
+    },
+    {
+      "details": "included in baseline plus fresh stress",
+      "name": "CHG-153 navigation/responsive rows",
+      "result": "PASS"
+    },
+    {
+      "details": "included in baseline",
+      "name": "CHG-35 performance/virtualization",
+      "result": "PASS"
+    },
+    {
+      "name": "backend/contracts/architecture/typecheck/unit/Storybook/npm audit",
+      "result": "PENDING_OR_SEPARATE_HEALTH_RUN"
+    }
+  ],
+  "node": "v22.13.0",
+  "npm": "10.9.2",
+  "result": "NOT_CERTIFIED_WITH_RELEASE_ONLY_BLOCKERS",
+  "schema": "project-os-golden-ui-release-health-v2",
+  "source": {
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  },
+  "source_changed": false,
+  "version": "1.0.0-rc.21"
+}
