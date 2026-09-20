@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.21 — Golden UI v2 mobile navigation-shell repair
+
+- Replaced the mobile in-flow 21-destination navigation wrap with a compact, bounded disclosure owned by the shared AppShell while preserving semantic links, active-location cues, deep links, history and desktop sidebar geometry.
+- Added permanent CHG-153 all-surface mobile task-start, focus, short-height, state-preservation and negative-control regression coverage.
+
 ## 1.0.0-rc.20 — Golden UI v2 horizontal-focus containment repair
 
 - Repaired keyboard focus reveal for the bounded System tablist and shared EntityWorkspace visualization selector, including the 320px final-tab containment defect.

@@ -261,6 +261,21 @@
         "axe_serious_critical": true
       },
       "browser_test_id": "uiqa-018"
+    },
+    {
+      "state_id": "chg153-mobile-navigation-shell",
+      "surface_component_family": "AppShell/application navigation",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "seed-demo application routes at 1440×900, 390×844, 320×800 and 390×420",
+      "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "input.pointer", "keyboard.enter", "keyboard.escape", "keyboard.tab", "semantics.role-name-state", "focus.visible", "focus.recovery", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["all 21 frozen workspace destinations remain actual links", "closed mobile navigation leaves each heading and material task-start element in the initial viewport", "the single open navigation owner exposes active location and fully reveals the final destination to pointer and keyboard", "route activation closes the disclosure and restores focus to its visible trigger", "desktop keeps one permanent sidebar and no mobile-only control in focus order"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.json", "evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.png"],
+        "claims": ["all-21 390/320 heading and task-start geometry", "closed/open Work items and Planning renders", "short-height final-link focus containment", "deep-link/history/skip-link/state preservation", "negative-control sensitivity"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-019"
     }
   ]
 }
