@@ -1,132 +1,254 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "accepted_at": "2026-09-20T12:46:17Z",
+  "changed_files": [],
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' /Users/haewonkim/.codex/RTK.md && sed -n '1,260p' /Users/haewonkim/.codex/law.md && sed -n '1,240p' README.md && sed -n '1,260p' docs/RELEASE_STATUS.md && sed -n '1,280p' docs/MASTER_DESIGN.md && find . -maxdepth 3 -iname '*recipe*' -o -path './docs/requirements-status.json'\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk find docs/recipes -maxdepth 2 -type f -print && rtk sed -n '1,260p' docs/requirements-status.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'for f in docs/recipes/*.md; do echo \"=== $f\"; rtk sed -n '\"'1,180p' \\\"\"'$f\"; done'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "command": "/bin/zsh -lc \"rtk git status --short --branch && rtk git remote -v && rtk git fetch origin main && printf '%s\\\\n' '--- identity ---' && rtk git rev-parse refs/remotes/origin/main && rtk git show -s --format='%H%n%T%n%P%n%s' refs/remotes/origin/main && printf '%s\\\\n' '--- source branch ---' && rtk git rev-parse refs/heads/codex/react-fastapi-base-golden-ui-v2-perfection-inspection-v1 && rtk git show -s --format='%H%n%T%n%P%n%s' refs/heads/codex/react-fastapi-base-golden-ui-v2-perfection-inspection-v1 && printf '%s\\\\n' '--- artifact ref ---' && rtk git rev-parse refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-perfection-inspection-v1 && rtk git show -s --format='%H%n%T%n%P%n%s' refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-perfection-inspection-v1\"",
+      "exit_code": 128,
+      "type": "command_execution"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "command": "/bin/zsh -lc \"rtk git ls-remote origin 'refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-perfection-inspection-v1' 'refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-v1' 'refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-evidence-recovery-v2' && printf '%s\\\\n' '--- local matching refs ---' && rtk git for-each-ref --format='%(refname) %(objectname)' 'refs/heads/project-os-artifacts/' 'refs/heads/codex-fabric/' 'refs/remotes/origin/project-os-artifacts/' 'refs/remotes/origin/codex-fabric/' && printf '%s\\\\n' '--- all refs containing artifact request ---' && rtk git show-ref | rtk rg 'golden-ui-v2|project-os-artifacts|codex-fabric' || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- fabric tooling ---' && command -v fabricctl || true && command -v fabric || true && command -v codex || true && printf '%s\\\\n' '--- codex-fabric top-level ---' && rtk find /Users/haewonkim/.codex-fabric -maxdepth 3 -type d && printf '%s\\\\n' '--- likely registries/ledgers ---' && rtk find /Users/haewonkim/.codex-fabric -maxdepth 6 -type f | rtk rg -i 'fabric|ledger|job|result|state|receipt|audit' | head -200\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- fabricctl candidates ---' && rtk find /Users/haewonkim/.codex-fabric/bin /Users/haewonkim/.codex-fabric/libexec -maxdepth 2 -type f | head -100 && printf '%s\\\\n' '--- job samples ---' && rtk find /Users/haewonkim/.codex-fabric/jobs -maxdepth 1 -type f | head -40 && printf '%s\\\\n' '--- top-level registries ---' && rtk find /Users/haewonkim/.codex-fabric -maxdepth 1 -type f | head -80 && printf '%s\\\\n' '--- candidate strings in local state ---' && rtk rg -l --hidden --glob '\"'!worktrees/**'\"' --glob '\"'!backups/**'\"' --glob '\"'!artifacts/**'\"' --glob '\"'!repos/**'\"' 'golden-ui-v2-perfection-inspection-v1|CF-f4be893aa9620d40713e9a8f|e96f22df30bba6733d6c86c1900ad8af159a6613' /Users/haewonkim/.codex-fabric 2>/dev/null | head -100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- R1 job.json ---' && rtk sed -n '1,260p' /Users/haewonkim/.codex-fabric/jobs/CF-f4be893aa9620d40713e9a8f.executed/job.json && printf '%s\\\\n' '--- R1 job summary ---' && rtk sed -n '1,320p' /Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/job-summary.json && printf '%s\\\\n' '--- R1 result ---' && rtk sed -n '1,360p' /Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/result.json && printf '%s\\\\n' '--- global audit ---' && rtk sed -n '1,240p' /Users/haewonkim/.codex-fabric/audit.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"JOB=/Users/haewonkim/.codex-fabric/jobs/CF-f4be893aa9620d40713e9a8f.executed/job.json; RES=/Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/result.json; SUM=/Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/job-summary.json; printf '%s\\\\n' '--- authoritative tuple ---'; rtk jq '{job_id,accepted_at,operation,project_id,request,routes}' \\\"\"'$JOB\"; printf '\"'%s\\\\n' '--- result identity/status ---'; rtk jq '{job_id,project_id,request,operation,status,execution_outcome,error_code,warnings,started_at,finished_at,accepted_at,recovery_required,retry_safe,worktree_retained,remote_push_attempts,base_fetch_attempts}' \\\"\"'$RES\"; printf '\"'%s\\\\n' '--- result git/evidence ---'; rtk jq '{git,evidence_publication,fabric_capture}' \\\"\"'$RES\"; printf '\"'%s\\\\n' '--- summary selected ---'; rtk jq '{accepted_at,finished_at,error_code,execution_outcome,project_id,request,operation,status,job_id,git,evidence_publication,fabric_capture,recovery_flags:(.recovery_flags // .recovery // null)}' \\\"\"'$SUM\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,260p' /Users/haewonkim/.codex-fabric/bin/fabricctl && printf '%s\\\\n' '--- exact job status dirs ---' && rtk find /Users/haewonkim/.codex-fabric/jobs -maxdepth 1 -type d | rtk rg 'CF-f4be893aa9620d40713e9a8f' && printf '%s\\\\n' '--- result keys ---' && rtk jq 'keys' /Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/result.json && rtk jq 'keys' /Users/haewonkim/.codex-fabric/results/CF-f4be893aa9620d40713e9a8f/job-summary.json\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; printf '%s\\\\n' '--- carrier commit ---'; rtk git show -s --format='%H%n%T%n%P%n%s' \\\"\"'$C\"; printf '\"'%s\\\\n' '--- carrier files ---'; rtk git ls-tree -r --name-only \\\"\"'$C\" | sort; printf '\"'%s\\\\n' '--- run summary shape ---'; rtk git show \\\"\"'$C:run-summary.json\" | rtk jq '\"'{keys,request,operation,source_sha,tree_sha,source_changed,surface_count,screenshot_count,canonical_screenshot_count,stress_case_count,task_count,holdout_count,negative_control_count,counts,hashes,artifact_bundle:(.artifact_bundle // null),surface_keys_count:(.surface_keys|length),surface_keys}' ; printf '%s\\\\n' '--- manifest shape ---'; rtk git show \\\"\"'$C:visual-atlas/surface-manifest.json\" | rtk jq '\"'{keys,source_sha,tree_sha,surface_count,screenshot_count,canonical_screenshot_count,surfaces:(.surfaces // .surface_manifest // null)}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git fetch --no-tags origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-perfection-inspection-v1 && rtk git rev-parse FETCH_HEAD && rtk git cat-file -t FETCH_HEAD && rtk git show -s --format='%H%n%T%n%P%n%s' FETCH_HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; printf '%s\\\\n' '--- carrier commit ---'; rtk git show -s --format='%H%n%T%n%P%n%s' \\\"\"'$C\"; printf '\"'%s\\\\n' '--- carrier files ---'; rtk git ls-tree -r --name-only \\\"\"'$C\" | sort; printf '\"'%s\\\\n' '--- run summary shape ---'; rtk git show \\\"\"'$C:run-summary.json\" | rtk jq '\"'{keys,request,operation,source_sha,tree_sha,source_changed,surface_count,screenshot_count,canonical_screenshot_count,stress_case_count,task_count,holdout_count,negative_control_count,counts,hashes,artifact_bundle:(.artifact_bundle // null),surface_keys_count:(.surface_keys|length),surface_keys}' ; printf '%s\\\\n' '--- manifest shape ---'; rtk git show \\\"\"'$C:visual-atlas/surface-manifest.json\" | rtk jq '\"'{keys,source_sha,tree_sha,surface_count,screenshot_count,canonical_screenshot_count,surfaces:(.surfaces // .surface_manifest // null)}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; printf '%s\\\\n' '--- run summary shape ---'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'{keys,request,operation,source_sha,tree_sha,source_changed,surface_count,screenshot_count,canonical_screenshot_count,stress_case_count,task_count,holdout_count,negative_control_count,counts,hashes,artifact_bundle:(.artifact_bundle // null),surface_keys_count:(.surface_keys|length),surface_keys}' ; printf '%s\\\\n' '--- manifest summary ---'; rtk git show \\\"\"'${C}:visual-atlas/surface-manifest.json\" | rtk jq '\"'{schema_version,source_sha,tree_sha,surface_count,screenshot_count,canonical_screenshot_count,keys,top_level_counts:{surfaces:(.surfaces|length),keys:(.surfaces|map(.surface_key)|sort)}}'; printf '%s\\\\n' '--- capture/reader summary ---'; rtk git show \\\"\"'${C}:visual-atlas/capture-report.json\" | rtk jq '\"'{keys,source_sha,tree_sha,counts:(.counts // null),canonical:(.canonical|length),hashes:(.hashes // null)}'; rtk git show \\\"\"'${C}:visual-atlas/reader-index.json\" | rtk jq '\"'{keys,source_sha,tree_sha,counts:(.counts // null),entries:(.entries|length),hashes:(.hashes // null)}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; printf '%s\\\\n' '--- run summary keys ---'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'keys'; printf '%s\\\\n' '--- run summary non-hash metadata ---'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'{request,operation,version,source_sha,tree_sha,source_changed,surface_count,canonical_screenshot_count,stress_case_count,task_count,holdout_count,negative_control_count,surface_keys,structured_evidence:(.structured_evidence // .evidence // .evidence_files // null),required_files:(.required_files // null),artifact_files:(.artifact_files // null),canonical:(.canonical // null)}'; printf '%s\\\\n' '--- manifest keys and shape ---'; rtk git show \\\"\"'${C}:visual-atlas/surface-manifest.json\" | rtk jq '\"'keys'; rtk git show \\\"\"'${C}:visual-atlas/surface-manifest.json\" | rtk jq '\"'.surfaces[0] | keys'; printf '%s\\\\n' '--- package receipt ---'; rtk git show \\\"\"'${C}:runtime-identity.json\" | rtk jq '\"'.'; rtk git show \\\"\"'${C}:artifact-bundle.zip\" >/dev/null && echo artifact-bundle.zip=present; rtk git show \"${C}:visual-atlas/review-desktop.pdf\" >/dev/null && echo review-desktop.pdf=present; rtk git show \"${C}:visual-atlas/review-mobile.pdf\" >/dev/null && echo review-mobile.pdf=present'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; rtk git show \"${C}:run-summary.json\" | rtk jq '\"'.hashes | keys'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'.hashes | with_entries(select(.key|contains(\\\"artifact\\\") or contains(\\\"manifest\\\") or contains(\\\"capture\\\") or contains(\\\"reader\\\") or contains(\\\"review-\\\") or contains(\\\"findings\\\") or contains(\\\"task-traces\\\") or contains(\\\"objective-diagnostics\\\")))'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'.hashes | length'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; P=$(rtk git rev-parse \"${C}''^\" 2>/dev/null || true); printf '\"'%s\\\\n' \\\"parent=\"'$P\"; if [ -n \"$P\" ]; then rtk git show -s --format='\"'%H%n%T%n%P%n%s' \\\"\"'$P\"; printf '\"'%s\\\\n' '--- parent tree ---'; rtk git ls-tree --name-only \\\"\"'$P\"; printf '\"'%s\\\\n' '--- carrier diff stat ---'; rtk git diff --stat \\\"\"'$P\" \"$C\"; fi; printf '\"'%s\\\\n' '--- product-source path matches ---'; rtk git ls-tree -r --name-only \\\"\"'$C\" | rtk rg '\"'\"'^(backend|frontend|contracts|docs|scripts|VERSION|package|pyproject|requirements|'\"\\\\.github)/|(\"'^|/)'\"\\\\.git' || true; printf '%s\\\\n' '--- commit root entries ---'; rtk git ls-tree --name-only \\\"\"'$C\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; P=975d50a1947724b7c25d892d1278794126e1a4a3; printf '%s\\\\n' \\\"parent=\"'$P\"; rtk git cat-file -t \"$P\"; rtk git show -s --format='\"'%H%n%T%n%P%n%s' \\\"\"'$P\"; printf '\"'%s\\\\n' '--- parent tree ---'; rtk git ls-tree --name-only \\\"\"'$P\"; printf '\"'%s\\\\n' '--- carrier diff stat ---'; rtk git diff --stat \\\"\"'$P\" \"$C\"; printf '\"'%s\\\\n' '--- product-source path matches ---'; rtk git ls-tree -r --name-only \\\"\"'$C\" | rtk rg '\"'\"'^(backend|frontend|contracts|docs|scripts|VERSION|package|pyproject|requirements|'\"\\\\.github)/|(\"'^|/)'\"\\\\.git' || true; printf '%s\\\\n' '--- commit root entries ---'; rtk git ls-tree --name-only \\\"\"'$C\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; for p in artifact-bundle.zip visual-atlas/surface-manifest.json visual-atlas/capture-report.json visual-atlas/reader-index.json visual-atlas/review-desktop.pdf visual-atlas/review-mobile.pdf golden-ui/findings.json golden-ui/task-traces.json golden-ui/objective-diagnostics.json visual-atlas/screenshots/delivery_runs--desktop-1440x900.png visual-atlas/screenshots/delivery_runs--mobile-390x844.png; do h=$(rtk git cat-file blob \"${C}:$p\" | rtk shasum -a 256 | rtk awk '\"'{print \"'$1}'\"'); printf '%s %s\\\\n' \\\"\"'$p\" \"$h\"; done; printf '\"'%s\\\\n' '--- recorded selected hashes ---'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq -r '\"'.hashes | to_entries[] | select(.key==\\\"visual-atlas/surface-manifest.json\\\" or .key==\\\"visual-atlas/capture-report.json\\\" or .key==\\\"visual-atlas/review-desktop.pdf\\\" or .key==\\\"visual-atlas/review-mobile.pdf\\\" or .key==\\\"visual-atlas/screenshots/delivery_runs--desktop-1440x900.png\\\" or .key==\\\"visual-atlas/screenshots/delivery_runs--mobile-390x844.png\\\") | \\\"\\\\(.key) \\\\(.value)\\\"'; printf '%s\\\\n' '--- expected hash reconciliation ---'; rtk git show \\\"\"'${C}:run-summary.json\" | rtk jq '\"'{surface_manifest:.hashes[\\\"visual-atlas/surface-manifest.json\\\"],capture_report:.hashes[\\\"visual-atlas/capture-report.json\\\"],review_desktop:.hashes[\\\"visual-atlas/review-desktop.pdf\\\"],review_mobile:.hashes[\\\"visual-atlas/review-mobile.pdf\\\"],sample_desktop:.hashes[\\\"visual-atlas/screenshots/delivery_runs--desktop-1440x900.png\\\"],sample_mobile:.hashes[\\\"visual-atlas/screenshots/delivery_runs--mobile-390x844.png\\\"]}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; printf '%s\\\\n' '--- hash-map completeness/reconciliation ---'; total=0; pass=0; fail=0; missing=0; while IFS=\"'$'\"'\\\\t' read -r p expected; do [ -n \\\"\"'$p\" ] || continue; total=$((total+1)); if ! rtk git cat-file -e \"${C}:$p\" 2>/dev/null; then printf '\"'MISSING %s\\\\n' \\\"\"'$p\"; missing=$((missing+1)); continue; fi; actual=$(rtk git cat-file blob \"${C}:$p\" | rtk shasum -a 256 | rtk awk '\"'{print \"'$1}'\"'); if [ \\\"\"'$actual\" = \"$expected\" ]; then pass=$((pass+1)); else printf '\"'MISMATCH %s expected=%s actual=%s\\\\n' \\\"\"'$p\" \"$expected\" \"$actual\"; fail=$((fail+1)); fi; done < <(rtk git show \"${C}:run-summary.json\" | rtk proxy jq -r '\"'.hashes | to_entries[] | \\\"\\\\(.key)\\\\t\\\\(.value)\\\"'); printf 'hash_entries=%s matched=%s mismatched=%s missing=%s\\\\n' \\\"\"'$total\" \"$pass\" \"$fail\" \"$missing\"; printf '\"'%s\\\\n' '--- canonical surfaces and images ---'; surfaces=\"'$(rtk git show \"${C}:visual-atlas/surface-manifest.json\" | rtk proxy jq -r '\"'.surfaces[].surface_key'); surface_total=0; image_pass=0; image_fail=0; for s in \"'$surfaces; do surface_total=$((surface_total+1)); for v in desktop-1440x900 mobile-390x844; do p=\"visual-atlas/screenshots/${s}--${v}.png\"; if rtk git cat-file -e \"${C}:$p\" 2>/dev/null; then image_pass=$((image_pass+1)); else printf '\"'MISSING %s\\\\n' \\\"\"'$p\"; image_fail=$((image_fail+1)); fi; done; done; printf '\"'manifest_surfaces=%s canonical_images_present=%s missing_images=%s\\\\n' \\\"\"'$surface_total\" \"$image_pass\" \"$image_fail\"; printf '\"'%s\\\\n' '--- required structured/package files ---'; for p in artifact-bundle.zip visual-atlas/surface-manifest.json visual-atlas/capture-report.json visual-atlas/reader-index.json visual-atlas/review-desktop.pdf visual-atlas/review-mobile.pdf golden-ui/findings.json golden-ui/task-traces.json golden-ui/objective-diagnostics.json; do if rtk git cat-file -e \\\"\"'${C}:$p\" 2>/dev/null; then echo \"present $p\"; else echo \"MISSING $p\"; fi; done; tmp_zip=$(rtk mktemp /tmp/chg153-zip.XXXXXX); rtk git cat-file blob \"${C}:artifact-bundle.zip\" > \"$tmp_zip\"; rtk unzip -t \"$tmp_zip\" | rtk tail -n 3; rtk rm -f \"$tmp_zip\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; surfaces=$(rtk git show \"${C}:visual-atlas/surface-manifest.json\" | rtk proxy jq -r '\"'.surfaces[].surface_key'); surface_total=0; image_pass=0; image_fail=0; while IFS= read -r s; do [ -n \\\"\"'$s\" ] || continue; surface_total=$((surface_total+1)); for v in desktop-1440x900 mobile-390x844; do p=\"visual-atlas/screenshots/${s}--${v}.png\"; if rtk git cat-file -e \"${C}:$p\" 2>/dev/null; then image_pass=$((image_pass+1)); else printf '\"'MISSING %s\\\\n' \\\"\"'$p\"; image_fail=$((image_fail+1)); fi; done; done <<< \"$surfaces\"; printf '\"'manifest_surfaces=%s canonical_images_present=%s missing_images=%s\\\\n' \\\"\"'$surface_total\" \"$image_pass\" \"$image_fail\"; printf '\"'%s\\\\n' '--- deterministic sample selection ---'; desktop=\"'$(rtk git ls-tree -r --name-only \"$C\" | rtk rg '\"'\"'^visual-atlas/screenshots/.*--desktop-1440x900'\"\\\\.png\"'$'\"' | rtk sort | rtk head -n 1); mobile=\"'$(rtk git ls-tree -r --name-only \"$C\" | rtk rg '\"'\"'^visual-atlas/screenshots/.*--mobile-390x844'\"\\\\.png\"'$'\"' | rtk sort | rtk head -n 1); printf '%s\\\\n' \\\"desktop=\"'$desktop\" \"mobile=$mobile\"; for p in \"$desktop\" \"$mobile\"; do rtk git cat-file blob \"${C}:$p\" | rtk shasum -a 256; done'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"E=4a5bfba14ba2e4c9a222398c5c762f60d7dd0e7d; printf '%s\\\\n' '--- historical evidence commit ---'; rtk git show -s --format='%H%n%T%n%P%n%s' \\\"\"'$E\"; printf '\"'%s\\\\n' '--- historical evidence tree ---'; rtk git ls-tree -r --name-only \\\"\"'$E\" | sort; printf '\"'%s\\\\n' '--- native audit presence ---'; if rtk git cat-file -e \\\"\"'${E}:.codex-fabric/audit.json\" 2>/dev/null; then echo true; else echo false; fi; printf '\"'%s\\\\n' '--- candidate parentage ---'; parents=\"'$(rtk git show -s --format='\"'%P' \\\"\"'$E\"); printf '\"'parents=%s\\\\n' \\\"\"'$parents\"; for p in $parents; do printf '\"'%s ' \\\"\"'$p\"; rtk git show -s --format='\"'%s' \\\"\"'$p\"; done; printf '\"'%s\\\\n' 'candidate_parent_exact_source='; if printf '%s\\\\n' \\\"\"'$parents\" | rtk rg -q '\"'\"'^e96f22df30bba6733d6c86c1900ad8af159a6613$'\"'; then echo true; else echo false; fi; printf '%s\\\\n' '--- historical evidence metadata ---'; for p in run-summary.json runtime-identity.json visual-atlas/surface-manifest.json; do if rtk git cat-file -e \\\"\"'${E}:$p\" 2>/dev/null; then echo \"--- $p\"; rtk git show \"${E}:$p\" | rtk jq '\"'{project,request,operation,source_sha,tree_sha,source_changed,artifact_carrier_ref,evidence_ref,work_branch,counts:(.counts // null)}'; fi; done\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"B=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2; BASE=e96f22df30bba6733d6c86c1900ad8af159a6613; TREE=445a1d3e01f178b4a775a5a3395e4307a48882fd; printf '%s\\\\n' '--- R2 local identity ---'; rtk git branch --show-current; rtk git rev-parse HEAD; rtk git rev-parse HEAD\"'^{tree}; printf '\"'%s\\\\n' '--- R2 remote identity ---'; rtk git ls-remote origin \\\"refs/heads/\"'$B\"; printf '\"'%s\\\\n' '--- cleanliness ---'; rtk git status --porcelain=v1 --untracked-files=all; rtk git diff --exit-code; rtk git diff --cached --exit-code; printf '%s\\\\n' '--- package files ---'; rtk git diff \\\"\"'$BASE\" -- frontend/package.json frontend/package-lock.json; rtk git hash-object frontend/package.json; rtk git hash-object frontend/package-lock.json; rtk git rev-parse \"$BASE:frontend/package.json\"; rtk git rev-parse \"$BASE:frontend/package-lock.json\"; printf '\"'%s\\\\n' '--- main exact ---'; rtk git fetch origin main; rtk git rev-parse origin/main; rtk git rev-parse origin/main\"'^{tree}; printf '\"'%s\\\\n' '--- expected comparisons ---'; head=\"'$(rtk git rev-parse HEAD); tree=$(rtk git rev-parse HEAD''^{tree}); main=$(rtk git rev-parse origin/main); maintree=$(rtk git rev-parse origin/main''^{tree}); printf '\"'r2_head_exact=%s\\\\nr2_tree_exact=%s\\\\nmain_sha_exact=%s\\\\nmain_tree_exact=%s\\\\n' \\\"\"'$([ \"$head\" = \"$BASE\" ] && echo true || echo false)\" \"$([ \"$tree\" = \"$TREE\" ] && echo true || echo false)\" \"$([ \"$main\" = \"$BASE\" ] && echo true || echo false)\" \"$([ \"$maintree\" = \"$TREE\" ] && echo true || echo false)\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'B=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2; rtk git push origin \"HEAD:refs/heads/$B\"'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"BASE=e96f22df30bba6733d6c86c1900ad8af159a6613; TREE=445a1d3e01f178b4a775a5a3395e4307a48882fd; B=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2; C=d04c2201887b9efb0f3d279d7338b94fc5a71b72; E=4a5bfba14ba2e4c9a222398c5c762f60d7dd0e7d; R1=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-v1; ER1=codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-v1; AR1=project-os-artifacts/react-fastapi-base/golden-ui-v2-perfection-inspection-v1; ER2=codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-evidence-recovery-v2; printf '%s\\\\n' '--- final local ---'; printf 'branch='; rtk git branch --show-current; printf 'head='; rtk git rev-parse HEAD; printf 'tree='; rtk git rev-parse HEAD\"'^{tree}; printf '\"'status='; if [ -z \\\"\"'$(rtk git status --porcelain=v1 --untracked-files=all)\" ] && rtk git diff --quiet && rtk git diff --cached --quiet; then echo clean; else echo dirty; fi; printf '\"'%s\\\\n' '--- final remote refs ---'; rtk git ls-remote origin \\\"refs/heads/\"'$B\" \"refs/heads/$R1\" \"refs/heads/main\" \"refs/heads/$ER1\" \"refs/heads/$AR1\" \"refs/heads/$ER2\"; printf '\"'%s\\\\n' '--- package file equality ---'; for p in frontend/package.json frontend/package-lock.json; do work=\"'$(rtk git hash-object \"$p\"); base=$(rtk git rev-parse \"${BASE}:$p\"); printf '\"'%s work=%s base=%s equal=%s\\\\n' \\\"\"'$p\" \"$work\" \"$base\" \"$([ \"$work\" = \"$base\" ] && echo true || echo false)\"; done; printf '\"'%s\\\\n' '--- final carrier hashes ---'; for p in artifact-bundle.zip visual-atlas/surface-manifest.json visual-atlas/capture-report.json visual-atlas/reader-index.json visual-atlas/review-desktop.pdf visual-atlas/review-mobile.pdf golden-ui/findings.json golden-ui/task-traces.json golden-ui/objective-diagnostics.json visual-atlas/screenshots/delivery_runs--desktop-1440x900.png visual-atlas/screenshots/delivery_runs--mobile-390x844.png; do h=\"'$(rtk git cat-file blob \"${C}:$p\" | rtk shasum -a 256 | rtk awk '\"'{print \"'$1}'\"'); printf '%s=%s\\\\n' \\\"\"'$p\" \"$h\"; done; printf '\"'%s\\\\n' '--- final source/main comparisons ---'; printf 'main_sha='; rtk git rev-parse origin/main; printf 'main_tree='; rtk git rev-parse origin/main\"'^{tree}; printf '\"'r1_product_sha='; rtk git rev-parse \\\"refs/remotes/origin/\"'$R1\"; printf '\"'artifact_remote='; rtk git ls-remote origin \\\"refs/heads/\"'$AR1\" | rtk awk '\"'{print \"'$1}'\"'; printf 'historical_remote='; rtk git ls-remote origin \\\"refs/heads/\"'$ER1\" | rtk awk '\"'{print \"'$1}'\"'; printf 'r2_evidence_remote='; x=\"'$(rtk git ls-remote origin \"refs/heads/$ER2\"); [ -n \"$x\" ] && echo \"$x\" || echo ABSENT_PRE_NATIVE_POSTFLIGHT'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- status ---'; rtk git status --short --branch --untracked-files=all; printf '%s\\\\n' '--- unstaged names/stat ---'; rtk git diff --name-status; rtk git diff --stat; printf '%s\\\\n' '--- staged names/stat ---'; rtk git diff --cached --name-status; rtk git diff --cached --stat; printf '%s\\\\n' '--- untracked relevant ---'; rtk find . -maxdepth 3 -type f | rtk rg 'audit\\\\.json|chg153|FETCH_HEAD' || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'BASE=e96f22df30bba6733d6c86c1900ad8af159a6613; B=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2; head=$(rtk git rev-parse HEAD); tree=$(rtk git rev-parse HEAD''^{tree}); main=$(rtk git rev-parse origin/main); maintree=$(rtk git rev-parse origin/main''^{tree}); remote=$(rtk git ls-remote origin \"refs/heads/$B\" | rtk awk '\"'{print \"'$1}'\"'); status=\"'$(rtk proxy git status --porcelain=v1 --untracked-files=all); tracked=$(rtk proxy git diff --quiet; echo $?); cached=$(rtk proxy git diff --cached --quiet; echo $?); printf '\"'r2_local_head=%s\\\\nr2_local_tree=%s\\\\nr2_remote_head=%s\\\\nmain_sha=%s\\\\nmain_tree=%s\\\\nworktree_clean=%s\\\\ntracked_diff_exit=%s\\\\ncached_diff_exit=%s\\\\n' \\\"\"'$head\" \"$tree\" \"$remote\" \"$main\" \"$maintree\" \"$([ -z \"$status\" ] && [ \"$tracked\" = 0 ] && [ \"$cached\" = 0 ] && echo true || echo false)\" \"$tracked\" \"$cached\"; printf '\"'%s\\\\n' '--- status bytes ---'; if [ -n \\\"\"'$status\" ]; then printf '\"'%s\\\\n' \\\"\"'$status\"; else echo CLEAN; fi'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'BASE=e96f22df30bba6733d6c86c1900ad8af159a6613; B=codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2; head=$(rtk git rev-parse HEAD); tree=$(rtk git rev-parse HEAD''^{tree}); main=$(rtk git rev-parse origin/main); maintree=$(rtk git rev-parse origin/main''^{tree}); remote=$(rtk git ls-remote origin \"refs/heads/$B\" | rtk awk '\"'{print \"'$1}'\"'); wt_state=\"'$(rtk proxy git status --porcelain=v1 --untracked-files=all); tracked_exit=$(rtk proxy git diff --quiet; echo $?); cached_exit=$(rtk proxy git diff --cached --quiet; echo $?); printf '\"'r2_local_head=%s\\\\nr2_local_tree=%s\\\\nr2_remote_head=%s\\\\nmain_sha=%s\\\\nmain_tree=%s\\\\nworktree_clean=%s\\\\ntracked_diff_exit=%s\\\\ncached_diff_exit=%s\\\\n' \\\"\"'$head\" \"$tree\" \"$remote\" \"$main\" \"$maintree\" \"$([ -z \"$wt_state\" ] && [ \"$tracked_exit\" = 0 ] && [ \"$cached_exit\" = 0 ] && echo true || echo false)\" \"$tracked_exit\" \"$cached_exit\"; printf '\"'%s\\\\n' '--- status bytes ---'; if [ -n \\\"\"'$wt_state\" ]; then printf '\"'%s\\\\n' \\\"\"'$wt_state\"; else echo CLEAN; fi'",
+      "exit_code": 0,
+      "type": "command_execution"
     }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 67,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 94.43,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 1527552,
+      "fresh_input_tokens": 90026,
+      "input_tokens": 1617578,
+      "non_reasoning_output_tokens": 11472,
+      "output_tokens": 21223,
+      "reasoning_output_tokens": 9751,
+      "total_processed_tokens": 1638801
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": {
+    "additions": 0,
+    "changed_files": 0,
+    "commit_count": 0,
+    "deletions": 0
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
-    "items": [
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-20T12:53:41Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "branch": "codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2",
+    "detached_verify": false,
+    "head_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "remote_exact_head": true,
+    "remote_head_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-perfection-inspection-evidence-recovery-v2",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
       }
-    ]
+    ],
+    "total_bytes": 2593,
+    "warning": null
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "job_id": "CF-0224d27f8d93ba124c249564",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-evidence-recovery-v2",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-perfection-inspection-evidence-recovery-v2"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "a642c9f63bab2cb555704bdb0b9d1f28222591f133f934c1d0f93cc5a25ab8a1",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v2-perfection-inspection-evidence-recovery-v2",
+  "schema_version": 1,
+  "started_at": "2026-09-20T12:46:18Z",
+  "status": "EXECUTED_NO_CHANGE",
+  "timing": {
+    "execution_seconds": 443,
+    "queue_seconds": 1,
+    "total_seconds": 444
+  },
+  "transport": {
+    "bytes": 9389,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 8993,
+    "prompt_sha256": "378abb217f6bc9c95122f6c81e7be05336ded72289cd09d2f8b201e982b20658",
+    "sha256": "0224d27f8d93ba124c249564759497017b3ac983c90a4c62e259bcf21a4230d4"
+  }
 }
