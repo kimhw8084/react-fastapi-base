@@ -1,0 +1,47 @@
+{
+  "evidence_type": "historical_candidate_comparison",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-mobile-responsive-geometry-fix-v3",
+  "candidate_version": "1.0.0-rc.18",
+  "candidate_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "candidate_tree": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "browser": "Google Chrome 153.0.8010.52",
+  "profile": "development demo.admin",
+  "system": {
+    "route": "/system",
+    "role": "admin",
+    "390": {
+      "viewport_css_px": 390,
+      "document_scroll_width": 775,
+      "body_scroll_width": 775,
+      "tablist_client_width": 744,
+      "tablist_scroll_width": 744,
+      "tablist_overflow_x": "visible",
+      "first_section": "Overview",
+      "last_section": "Notifications"
+    },
+    "320": {
+      "viewport_css_px": 320,
+      "document_scroll_width": 775,
+      "body_scroll_width": 775,
+      "tablist_client_width": 744,
+      "tablist_scroll_width": 744,
+      "tablist_overflow_x": "visible",
+      "first_section": "Overview",
+      "last_section": "Notifications"
+    }
+  },
+  "visualization_switch": {
+    "routes": {
+      "/plan-tasks": {"390": {"owner_client_width": 356, "owner_scroll_width": 613, "overflow_x": "hidden"}, "320": {"owner_client_width": 286, "owner_scroll_width": 613, "overflow_x": "hidden"}},
+      "/work-items": {"390": {"owner_client_width": 356, "owner_scroll_width": 529, "overflow_x": "hidden"}, "320": {"owner_client_width": 286, "owner_scroll_width": 529, "overflow_x": "hidden"}},
+      "/incidents": {"390": {"owner_client_width": 356, "owner_scroll_width": 467, "overflow_x": "hidden"}, "320": {"owner_client_width": 286, "owner_scroll_width": 467, "overflow_x": "hidden", "document_scroll_width": 348, "body_scroll_width": 348}}
+    },
+    "unreachable_control_examples": {
+      "/plan-tasks": ["Timeline", "Dashboard", "Graph"],
+      "/work-items": ["Calendar", "Gantt", "Graph"],
+      "/incidents": ["Dashboard"]
+    }
+  },
+  "scope_note": "Pre-fix geometry is immutable comparison evidence only; it is not release certification and must not be reused for RC.19 qualification."
+}

@@ -1,7 +1,7 @@
 import {createHash} from 'node:crypto'
 import {mkdirSync,readFileSync,writeFileSync} from 'node:fs'
 import {basename,dirname,resolve} from 'node:path'
-import {test,expect,type Page,type TestInfo} from '@playwright/test'
+import {test,expect,type Locator,type Page,type TestInfo} from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 import {RuntimeDimensionProof} from '../../src/platform/testing/uiqa-proof'
 
@@ -98,6 +98,44 @@ async function workItemPage(page:Page):Promise<void>{
 }
 
 function workItemPayload(items:unknown[]=[],total=items.length){return {items,total,limit:50,offset:0}}
+
+type Geometry={viewport_css_px:number;document_scroll_width:number;document_client_width:number;body_scroll_width:number}
+async function pageGeometry(page:Page):Promise<Geometry>{
+ return page.evaluate(()=>({viewport_css_px:innerWidth,document_scroll_width:document.documentElement.scrollWidth,document_client_width:document.documentElement.clientWidth,body_scroll_width:document.body.scrollWidth}))
+}
+
+async function boxFullyInside(owner:Locator,control:Locator):Promise<boolean>{
+ const ownerBox=await owner.boundingBox(),controlBox=await control.boundingBox()
+ if(!ownerBox||!controlBox)return false
+ const inset=1
+ return controlBox.x>=ownerBox.x+inset&&controlBox.x+controlBox.width<=ownerBox.x+ownerBox.width-inset&&controlBox.y>=ownerBox.y+inset&&controlBox.y+controlBox.height<=ownerBox.y+ownerBox.height-inset
+}
+
+async function pointerScrollToEnd(page:Page,owner:Locator,target?:Locator):Promise<void>{
+ await owner.waitFor({state:'visible'});await page.waitForTimeout(100);await owner.scrollIntoViewIfNeeded();await owner.hover();await page.mouse.wheel(1200,0);if(await owner.evaluate(element=>element.scrollLeft===0&&element.scrollWidth>element.clientWidth)){await page.keyboard.down('Shift');await page.mouse.wheel(0,1200);await page.keyboard.up('Shift')}if(target)await target.scrollIntoViewIfNeeded()
+}
+
+async function negativeControl(page:Page){
+ return page.evaluate(()=>{
+  const labels=['Overview','Members','Teams','Feature flags','Jobs','Events','Webhooks','Audit','Notifications']
+  const system=document.createElement('div');system.style.cssText='position:absolute;left:0;top:0;display:flex;white-space:nowrap;z-index:-1'
+  for(const label of labels){const button=document.createElement('button');button.textContent=label;button.style.cssText='flex:0 0 auto;padding:8px 13px';system.append(button)}
+  document.body.append(system);const systemResult={viewport:innerWidth,documentScrollWidth:document.documentElement.scrollWidth,bodyScrollWidth:document.body.scrollWidth};system.remove()
+  const visualization=document.createElement('div');visualization.style.cssText='display:flex;width:100px;overflow:hidden;border:1px solid red'
+  for(const label of ['Table','Board','Dashboard','Timeline']){const button=document.createElement('button');button.textContent=label;button.style.cssText='flex:0 0 auto';visualization.append(button)}
+  document.body.append(visualization);const last=visualization.lastElementChild!,ownerBounds=visualization.getBoundingClientRect(),lastBounds=last.getBoundingClientRect();const visualizationResult={ownerClientWidth:visualization.clientWidth,ownerScrollWidth:visualization.scrollWidth,lastFullyInside:lastBounds.left>=ownerBounds.left&&lastBounds.right<=ownerBounds.right};visualization.remove()
+  return {system:systemResult,visualization:visualizationResult}
+ })
+}
+
+function projectionLocator(page:Page,mode:string):Locator{
+ const selectors:Record<string,string>={table:'.golden-grid',board:'.board-scroll',timeline:'.entity-timeline',calendar:'.calendar-projection',gantt:'.gantt-projection',dashboard:'.dashboard-projection',graph:'.graph-projection-wrap',planning:'.planning-workbench',incident_command:'.incident-workbench'}
+ return page.locator(selectors[mode]??`.${mode.replaceAll('_','-')}-workbench`)
+}
+
+async function expectRenderedMode(page:Page,mode:string):Promise<void>{
+ const projection=projectionLocator(page,mode);if(await projection.count())await expect(projection).toBeVisible();else{const summary=page.locator('.workspace-summary').getByText(mode,{exact:true});if(await summary.count())await expect(summary).toBeVisible();else await expect(page.getByRole('heading',{name:'No matching records',exact:true})).toBeVisible()}
+}
 
 matrixTest('chg34-theme-operations-primary-action',async({page,proof},row)=>{
  await workItemPage(page)
@@ -251,3 +289,55 @@ matrixTest('chg34-forced-colors',async({page,proof})=>{
  await proof.prove('forced-colors.active',async()=>expect(computed.forcedColors).toBe(true));await proof.prove('focus.visible',async()=>{expect(computed.focusVisible).toBe(true);expect(computed.outlineStyle).not.toBe('none');expect(Number.parseFloat(computed.outlineWidth)).toBeGreaterThan(0);expect(Number.parseFloat(computed.outlineOffset)).toBeGreaterThan(0)});await proof.prove('browser-computed',async()=>{expect(computed.visible).not.toBe('hidden');expect(computed.display).not.toBe('none');expect(computed.color).not.toBe('rgba(0, 0, 0, 0)');expect(computed.background).not.toBe('rgba(0, 0, 0, 0)')});await proof.prove('semantics.role-name-state',async()=>expect(action).toBeVisible())
  return {computed,action_name:await action.textContent(),focus_visible:computed.focusVisible}
 })
+
+matrixTest('chg153-system-responsive-geometry',async({page,proof})=>{
+ const candidate={candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,candidate_tree:process.env.UIQA_CANDIDATE_TREE??null,candidate_version:process.env.UIQA_CANDIDATE_VERSION??null,browser:await page.evaluate(()=>navigator.userAgent)}
+ const captures:Array<Record<string,unknown>>=[];let pointerWorked=false;let keyboardWorked=false
+ for(const width of [1440,390,320]){
+  await page.setViewportSize({width,height:width===320?800:width===390?844:900});await page.goto('/system');await expect(page.getByRole('heading',{name:'System workspace',exact:true})).toBeVisible()
+  const owner=page.getByRole('tablist',{name:'System sections'}),tabs=owner.getByRole('tab'),first=tabs.first(),last=tabs.last();expect(await tabs.count()).toBe(9)
+  const before=await pageGeometry(page);const ownerBefore=await owner.evaluate(element=>{const bounds=element.getBoundingClientRect(),style=getComputedStyle(element);return {clientWidth:element.clientWidth,scrollWidth:element.scrollWidth,left:bounds.left,right:bounds.right,overflowX:style.overflowX}})
+  await first.click();await expect(first).toHaveAttribute('aria-selected','true');pointerWorked=true
+  await pointerScrollToEnd(page,owner,last);const lastVisibleByPointer=await boxFullyInside(owner,last);await expect(last).toBeVisible();await last.click();await expect(last).toHaveAttribute('aria-selected','true');pointerWorked=pointerWorked&&lastVisibleByPointer
+  await first.click();await expect(first).toHaveAttribute('aria-selected','true')
+  await page.evaluate(()=>{const target=document.querySelector('[role="tablist"]')!;let count=0;(window as unknown as {__uiqaTabClickCount:number}).__uiqaTabClickCount=0;target.addEventListener('click',()=>{count+=1;(window as unknown as {__uiqaTabClickCount:number}).__uiqaTabClickCount=count})})
+  await first.focus();for(let index=0;index<(await tabs.count())-1;index+=1)await page.keyboard.press('Tab');await expect(last).toBeFocused();await page.keyboard.press('Enter');await expect(last).toHaveAttribute('aria-selected','true');const keyboardClickCount=await page.evaluate(()=>({count:(window as unknown as {__uiqaTabClickCount:number}).__uiqaTabClickCount,focusVisible:document.activeElement?.matches(':focus-visible')}));keyboardWorked=keyboardWorked||keyboardClickCount.count===1
+  const focus=await last.evaluate(element=>{const style=getComputedStyle(element),bounds=element.getBoundingClientRect();return {active:document.activeElement===element,focusVisible:element.matches(':focus-visible'),outline:style.outline,outlineStyle:style.outlineStyle,outlineWidth:style.outlineWidth,outlineOffset:style.outlineOffset,bounds:{left:bounds.left,right:bounds.right,top:bounds.top,bottom:bounds.bottom}}})
+  const controls=await owner.evaluate(element=>({tablistCount:document.querySelectorAll('[role="tablist"]').length,tabCount:element.querySelectorAll('[role="tab"]').length,visibleTabCount:[...element.querySelectorAll('[role="tab"]')].filter(control=>{const style=getComputedStyle(control);return style.display!=='none'&&style.visibility!=='hidden'&&control.getClientRects().length>0}).length,selected:[...element.querySelectorAll('[role="tab"]')].filter(control=>control.getAttribute('aria-selected')==='true').map(control=>control.textContent)}))
+  captures.push({width,height:width===320?800:width===390?844:900,role:'admin',active_section:await last.textContent(),page:before,owned_scroller:{before:ownerBefore,after:await owner.evaluate(element=>({scrollLeft:element.scrollLeft,clientWidth:element.clientWidth,scrollWidth:element.scrollWidth,overflowX:getComputedStyle(element).overflowX}))},pointer:{first:await first.textContent(),last:await last.textContent(),last_fully_visible_after_pointer_scroll:lastVisibleByPointer},keyboard:{last_focused:focus.active,enter_click_count:keyboardClickCount.count,focus},controls})
+  if(width===1440)await proof.prove('viewport.desktop',async()=>expect(before.viewport_css_px).toBe(1440))
+  if(width===390)await proof.prove('viewport.narrow',async()=>expect(before.viewport_css_px).toBe(390))
+  if(width===320)await proof.prove('reflow.320-css-px',async()=>{expect(before.viewport_css_px).toBe(320);expect(before.document_scroll_width).toBeLessThanOrEqual(320);expect(before.body_scroll_width).toBeLessThanOrEqual(320)})
+  if(width===390)await proof.prove('semantics.role-name-state',async()=>{expect(controls.tablistCount).toBe(1);expect(controls.tabCount).toBe(9);expect(controls.visibleTabCount).toBe(9);expect(controls.selected).toEqual(['Notifications'])})
+  if(width===390)await proof.prove('keyboard.tab',async()=>expect(focus.active).toBe(true))
+  if(width===390)await proof.prove('keyboard.enter',async()=>expect(keyboardClickCount.count).toBe(1))
+  if(width===390)await proof.prove('focus.visible',async()=>{expect(focus.active).toBe(true);expect(focus.focusVisible).toBe(true);expect(focus.outlineStyle).not.toBe('none');expect(Number.parseFloat(focus.outlineWidth)).toBeGreaterThan(0);expect(Number.parseFloat(focus.outlineOffset)).toBeGreaterThan(0);expect(focus.bounds.left).toBeGreaterThanOrEqual((await owner.boundingBox())!.x);expect(focus.bounds.right).toBeLessThanOrEqual((await owner.boundingBox())!.x+(await owner.boundingBox())!.width)})
+ }
+ const negative=await negativeControl(page);let pageContractFailed=false;let switchContractFailed=false;try{expect(negative.system.documentScrollWidth).toBeLessThanOrEqual(negative.system.viewport)}catch{pageContractFailed=true}try{expect(negative.visualization.lastFullyInside).toBe(true)}catch{switchContractFailed=true}
+ await proof.prove('input.pointer',async()=>expect(pointerWorked).toBe(true));await proof.prove('browser-computed',async()=>{expect(keyboardWorked).toBe(true);expect(pageContractFailed).toBe(true);expect(switchContractFailed).toBe(true);for(const capture of captures){const geometry=capture.page as Geometry;expect(geometry.document_scroll_width).toBeLessThanOrEqual(geometry.viewport_css_px);expect(geometry.body_scroll_width).toBeLessThanOrEqual(geometry.viewport_css_px)}})
+ return {...candidate,surface:'/system',captures,negative_control_sensitivity:{page_contract_failed_on_unbounded_tablist:pageContractFailed,selector_contract_failed_on_clipped_switch:switchContractFailed,fixture:negative}}
+})
+
+matrixTest('chg153-visualization-responsive-geometry',async({page,proof})=>{
+ test.setTimeout(120000)
+ const candidate={candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,candidate_tree:process.env.UIQA_CANDIDATE_TREE??null,candidate_version:process.env.UIQA_CANDIDATE_VERSION??null,browser:await page.evaluate(()=>navigator.userAgent)}
+ const consumers=[{route:'/plan-tasks',name:'Planning'},{route:'/work-items',name:'Work items'},{route:'/incidents',name:'Incident command'}];const captures:Array<Record<string,unknown>>=[];let pointerWorked=false;let keyboardWorked=false
+ const captureConsumer=async(route:string,name:string,width:number,height:number)=>{
+  await page.setViewportSize({width,height});await page.goto(route);await page.evaluate(()=>localStorage.clear());await page.reload();try{await page.locator('.visualization-switch').waitFor({state:'visible',timeout:10000})}catch(error){throw new Error(`Visualization selector did not load for ${route} at ${width}px: ${String(error)}`)}const owner=page.getByRole('group',{name:'Visualization'}),buttons=owner.getByRole('button'),count=await buttons.count();expect(count).toBeGreaterThanOrEqual(3);const modes=await buttons.allTextContents(),first=buttons.first(),middle=buttons.nth(Math.floor(count/2)),last=buttons.last();const before=await pageGeometry(page);const ownerBefore=await owner.evaluate(element=>{const bounds=element.getBoundingClientRect(),style=getComputedStyle(element);return {clientWidth:element.clientWidth,scrollWidth:element.scrollWidth,left:bounds.left,right:bounds.right,overflowX:style.overflowX}})
+  await first.click();await expect(first).toHaveAttribute('aria-pressed','true');await expectRenderedMode(page,modes[0]!.toLowerCase());pointerWorked=true
+  await first.focus();for(let index=0;index<Math.floor(count/2);index+=1)await page.keyboard.press('Tab');await expect(middle).toBeFocused();await page.keyboard.press('Enter');await expect(middle).toHaveAttribute('aria-pressed','true');await expect(page).toHaveURL(new RegExp(`[?&]visualization=${encodeURIComponent(modes[Math.floor(count/2)]!.toLowerCase())}(?:&|$)`));await expectRenderedMode(page,modes[Math.floor(count/2)]!.toLowerCase());keyboardWorked=true
+  await first.click();await pointerScrollToEnd(page,owner,last);const lastVisibleByPointer=await boxFullyInside(owner,last);await expect(last).toBeVisible();await last.click();await expect(last).toHaveAttribute('aria-pressed','true');await expect(page).toHaveURL(new RegExp(`[?&]visualization=${encodeURIComponent(modes.at(-1)!.toLowerCase())}(?:&|$)`));await expectRenderedMode(page,modes.at(-1)!.toLowerCase());pointerWorked=pointerWorked&&lastVisibleByPointer
+  const hiddenState=await owner.evaluate(element=>({ownerCount:document.querySelectorAll('.visualization-switch').length,buttonCount:element.querySelectorAll('button').length,operableButtons:[...element.querySelectorAll('button')].filter(button=>{const style=getComputedStyle(button);return style.display!=='none'&&style.visibility!=='hidden'&&button.getAttribute('aria-hidden')!=='true'}).length,scrollLeft:element.scrollLeft,scrollWidth:element.scrollWidth,clientWidth:element.clientWidth}));const focus=await last.evaluate(element=>{const style=getComputedStyle(element);return {active:document.activeElement===element,focusVisible:element.matches(':focus-visible'),outlineStyle:style.outlineStyle,outlineWidth:style.outlineWidth,outlineOffset:style.outlineOffset}})
+  captures.push({consumer:name,route,width,height,available_modes:modes,active_mode:modes.at(-1),url:page.url(),page:before,owned_scroller:{before:ownerBefore,after:hiddenState},pointer:{first:modes[0],middle:modes[Math.floor(count/2)],last:modes.at(-1),last_fully_visible_after_pointer_scroll:lastVisibleByPointer},keyboard:{middle:modes[Math.floor(count/2)],focus},hidden_responsive_controls:hiddenState})
+  return {owner,buttons,modes}
+ }
+ await page.setViewportSize({width:1440,height:900});await page.goto('/plan-tasks');await page.locator('.visualization-switch').waitFor({state:'visible'});const desktopOwner=page.getByRole('group',{name:'Visualization'}),desktopButtons=desktopOwner.getByRole('button');await proof.prove('viewport.desktop',async()=>expect((await pageGeometry(page)).viewport_css_px).toBe(1440));captures.push({consumer:'Planning',route:'/plan-tasks',width:1440,height:900,page:await pageGeometry(page),owned_scroller:await desktopOwner.evaluate(element=>({clientWidth:element.clientWidth,scrollWidth:element.scrollWidth,overflowX:getComputedStyle(element).overflowX})),available_modes:await desktopButtons.allTextContents(),active_mode:await desktopButtons.filter({hasText:/./}).evaluateAll(elements=>elements.find(element=>element.getAttribute('aria-pressed')==='true')?.textContent)})
+ for(const consumer of consumers)for(const width of [390,320])await captureConsumer(consumer.route,consumer.name,width,width===320?800:844)
+ await proof.prove('viewport.narrow',async()=>expect((captures.find(capture=>capture.width===390)?.page as Geometry).viewport_css_px).toBe(390));await proof.prove('reflow.320-css-px',async()=>{for(const capture of captures.filter(value=>value.width===320)){const geometry=capture.page as Geometry;expect(geometry.viewport_css_px).toBe(320);expect(geometry.document_scroll_width).toBeLessThanOrEqual(320);expect(geometry.body_scroll_width).toBeLessThanOrEqual(320)}})
+ await page.setViewportSize({width:390,height:844});await page.goto('/plan-tasks');await page.evaluate(()=>localStorage.clear());await page.reload();const planningOwner=page.getByRole('group',{name:'Visualization'}),gantt=planningOwner.getByRole('button',{name:'Gantt',exact:true}),search=page.getByRole('textbox').first();await search.waitFor({state:'visible'});await gantt.click();await search.fill('task');await page.waitForTimeout(350);const filter=page.locator('.command-bar select').first();let filterValue:string|null=null;if(await filter.count()&&await filter.locator('option').count()>1){await filter.selectOption({index:1});filterValue=await filter.inputValue()}await page.setViewportSize({width:1440,height:900});await page.waitForTimeout(100);await page.setViewportSize({width:390,height:844});await expect(gantt).toHaveAttribute('aria-pressed','true');await expect(search).toHaveValue('task');if(filterValue!==null)await expect(filter).toHaveValue(filterValue);const preserved={mode:await gantt.getAttribute('aria-pressed'),search:await search.inputValue(),filter:filterValue,url:page.url(),summary:await page.locator('.workspace-summary').getByText('gantt',{exact:true}).isVisible()}
+ await page.emulateMedia({forcedColors:'active'});await page.setViewportSize({width:390,height:420});await page.goto('/plan-tasks');await page.locator('.visualization-switch').waitFor({state:'visible'});const shortOwner=page.getByRole('group',{name:'Visualization'}),shortButtons=shortOwner.getByRole('button'),shortLast=shortButtons.last();await pointerScrollToEnd(page,shortOwner,shortLast);await shortLast.focus();await page.keyboard.press('Enter');const forcedFocus=await shortLast.evaluate(element=>{const style=getComputedStyle(element),bounds=element.getBoundingClientRect();return {forcedColors:window.matchMedia('(forced-colors: active)').matches,active:document.activeElement===element,focusVisible:element.matches(':focus-visible'),outlineStyle:style.outlineStyle,outlineWidth:style.outlineWidth,outlineOffset:style.outlineOffset,bounds:{left:bounds.left,right:bounds.right,top:bounds.top,bottom:bounds.bottom}}});const shortGeometry=await pageGeometry(page);await proof.prove('forced-colors.active',async()=>expect(forcedFocus.forcedColors).toBe(true));await proof.prove('focus.visible',async()=>{expect(forcedFocus.active).toBe(true);expect(forcedFocus.focusVisible).toBe(true);expect(forcedFocus.outlineStyle).not.toBe('none');expect(Number.parseFloat(forcedFocus.outlineWidth)).toBeGreaterThan(0);expect(Number.parseFloat(forcedFocus.outlineOffset)).toBeGreaterThan(0);expect(forcedFocus.bounds.left).toBeGreaterThanOrEqual((await shortOwner.boundingBox())!.x);expect(forcedFocus.bounds.right).toBeLessThanOrEqual((await shortOwner.boundingBox())!.x+(await shortOwner.boundingBox())!.width)});await proof.prove('semantics.role-name-state',async()=>{expect(await hiddenResponsiveCount(page)).toBe(0);expect(await shortOwner.count()).toBe(1);expect(await shortButtons.count()).toBeGreaterThanOrEqual(3)})
+ const negative=await negativeControl(page);let switchContractFailed=false;try{expect(negative.visualization.lastFullyInside).toBe(true)}catch{switchContractFailed=true};await proof.prove('input.pointer',async()=>expect(pointerWorked).toBe(true));await proof.prove('keyboard.tab',async()=>expect(keyboardWorked).toBe(true));await proof.prove('keyboard.enter',async()=>expect(keyboardWorked).toBe(true));await proof.prove('browser-computed',async()=>{expect(shortGeometry.document_scroll_width).toBeLessThanOrEqual(390);expect(shortGeometry.body_scroll_width).toBeLessThanOrEqual(390);expect(switchContractFailed).toBe(true);for(const capture of captures.filter(value=>typeof value.width==='number'&&value.width!==1440)){const geometry=capture.page as Geometry;expect(geometry.document_scroll_width).toBeLessThanOrEqual(geometry.viewport_css_px)}})
+ return {...candidate,surface:'EntityWorkspace visualization selector',consumers:consumers.map(consumer=>consumer.name),captures,responsive_state_preservation:preserved,short_height_forced_colors:{viewport:{width:390,height:420},geometry:shortGeometry,focus:forcedFocus},hidden_responsive_controls:'single owner; inactive modes are not duplicated or aria-hidden operable',negative_control_sensitivity:{selector_contract_failed_on_clipped_switch:switchContractFailed,fixture:negative}}
+})
+
+async function hiddenResponsiveCount(page:Page):Promise<number>{return page.locator('.visualization-switch').evaluateAll(elements=>elements.reduce((count,element)=>count+[...element.querySelectorAll('button')].filter(button=>{const style=getComputedStyle(button);return style.display==='none'||style.visibility==='hidden'||button.getAttribute('aria-hidden')==='true'}).length,0))}

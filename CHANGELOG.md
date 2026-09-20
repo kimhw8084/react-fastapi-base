@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.19 — Golden UI v2 mobile responsive-geometry repair
+
+- Added bounded responsive scroll ownership for the System section tablist and shared EntityWorkspace visualization selector without changing authorization, selection, URL or saved-view semantics.
+- Preserved keyboard focus through visualization projection transitions and added permanent CHG-153 browser regressions for 390px/320px geometry, pointer/keyboard reachability, state preservation, forced colors and negative-control sensitivity.
+
 ## 1.0.0-rc.15 — reusable-platform bootstrap and upgrade qualification
 
 - Bound generated template locks to the current platform version, canonical executable-source commit/digest and managed-core hashes; obsolete reference-source provenance is rejected.
