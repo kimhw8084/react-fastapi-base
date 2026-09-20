@@ -1,0 +1,48 @@
+{
+  "schema": "golden-ui.state-coverage/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "canonical": {
+    "normal_ready": 42,
+    "desktop": 21,
+    "mobile": 21
+  },
+  "exercised": [
+    "normal",
+    "loading",
+    "empty",
+    "error",
+    "permission/read-only",
+    "selection",
+    "light",
+    "dark",
+    "high-contrast",
+    "forced-colors",
+    "reduced-motion",
+    "desktop",
+    "mobile",
+    "320-css-px",
+    "short-height",
+    "keyboard",
+    "pointer",
+    "focus-recovery",
+    "filter/search/saved-view",
+    "responsive-state-preservation",
+    "dashboard/planning/spatial"
+  ],
+  "maintained_matrix": {
+    "status": "PASS",
+    "rows": 15
+  },
+  "unsupported_or_limited": [
+    "native screen-reader/IME/RTL/browser zoom/non-Chromium/human evidence not executed"
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "schema": "golden-ui.findings/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "findings": [
+    {
+      "id": "mobile-shell-displaces-workspace-work-items",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "work-items",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/work-items--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[1]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-projects",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "projects",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/projects--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[3]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-racks",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "racks",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/racks--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[5]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-equipment",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "equipment",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/equipment--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[7]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-knowledge-entries",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "knowledge-entries",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/knowledge-entries--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[9]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-investigations",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "investigations",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/investigations--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[11]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-research",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "research",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/research--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[13]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-risks",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "risks",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/risks--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[15]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-plan-tasks",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "plan-tasks",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/plan-tasks--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[17]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-diagram-documents",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "diagram-documents",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/diagram-documents--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[19]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-process-measurements",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "process-measurements",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/process-measurements--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[21]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-wafer-runs",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "wafer-runs",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/wafer-runs--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[23]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-manufacturing-lots",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "manufacturing-lots",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/manufacturing-lots--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[25]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-equipment-states",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "equipment-states",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/equipment-states--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[27]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-process-recipes",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "process-recipes",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/process-recipes--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[29]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-software-services",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "software-services",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/software-services--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[31]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-delivery-runs",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "delivery-runs",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/delivery-runs--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[33]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-observability-events",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "observability-events",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/observability-events--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[35]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-incidents",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "incidents",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/incidents--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[37]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-service-objectives",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "service-objectives",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/service-objectives--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[39]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "mobile-shell-displaces-workspace-system",
+      "classification": "established defect",
+      "severity": "P1",
+      "impact": "At the canonical 390x844 viewport, the persistent navigation consumes the initial view and the material workspace is below the fold, obstructing immediate task start and visual inspection.",
+      "surface_key": "system",
+      "state_stress_case": "normal-ready / mobile-390x844",
+      "evidence": {
+        "screenshot": "visual-atlas/screenshots/system--mobile-390x844.png",
+        "capture_report": "visual-atlas/capture-report.json#captures[41]"
+      },
+      "reproducibility": "deterministic fresh seed-demo capture",
+      "suspected_highest_correct_root_authority": "frontend/src/theme/application.css:49 responsive .sidebar position:static rule",
+      "root_failure_class": "mobile-static-shell-displaces-workspace-below-fold"
+    },
+    {
+      "id": "external-wcag-human-evidence",
+      "classification": "external/unproven evidence gap",
+      "severity": "P2",
+      "impact": "Native screen-reader, IME, RTL, Safari/Firefox and human review are outside this local harness.",
+      "surface_key": null,
+      "evidence": "golden-ui/limitations.json",
+      "reproducibility": "not executed by supported local harness"
+    },
+    {
+      "id": "attachment-lifecycle-unproven",
+      "classification": "external/unproven evidence gap",
+      "severity": "P2",
+      "impact": "Safe disposable attachment upload/download lifecycle was not exercised.",
+      "surface_key": null,
+      "evidence": "golden-ui/task-traces.json",
+      "reproducibility": "not executed by this VERIFY run"
+    }
+  ],
+  "summary": {
+    "established_defect_root_classes": [
+      "mobile-static-shell-displaces-workspace-below-fold"
+    ],
+    "affected_mobile_surfaces": 21,
+    "independent_visual_review_required": true
+  }
+}

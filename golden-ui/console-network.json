@@ -1,0 +1,606 @@
+{
+  "schema": "golden-ui.console-network/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "surfaces": [
+    {
+      "surface_key": "work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "work-items",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "projects",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "projects",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "racks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "racks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "knowledge-entries",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "knowledge-entries",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "research",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "research",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "risks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "risks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "plan-tasks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "plan-tasks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "diagram-documents",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "diagram-documents",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "process-measurements",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "process-measurements",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "wafer-runs",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "wafer-runs",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "manufacturing-lots",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "manufacturing-lots",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "equipment-states",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "equipment-states",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "process-recipes",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "process-recipes",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "software-services",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "software-services",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "delivery-runs",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "delivery-runs",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "observability-events",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "observability-events",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "service-objectives",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "service-objectives",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "system",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    },
+    {
+      "surface_key": "system",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "console_errors": [],
+      "console_warnings": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "aborted_requests": [],
+      "unexpected_responses": []
+    }
+  ],
+  "total_console_errors": 0,
+  "total_page_errors": 0,
+  "total_failed_requests": 0
+}

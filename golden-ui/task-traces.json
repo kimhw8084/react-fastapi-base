@@ -1,0 +1,161 @@
+{
+  "schema": "golden-ui.task-traces/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "task_oracle_count": 10,
+  "traces": [
+    {
+      "task": "app-shell-navigation-deep-link-reload-back-forward-command-palette-theme",
+      "status": "PASS",
+      "precondition": "Rendered application shell with navigation, routed Work items workspace and header controls",
+      "real_input": "Click Work items from Projects, open command palette, Escape topmost overlay, select Dark appearance, then reload the deep route",
+      "visible_semantic_outcome": "Navigation changed route; command palette opened with named search; Escape closed it; document mode became dark.",
+      "exact_effect_identity": "Exactly one route transition per navigation action; no product data changed.",
+      "prohibited_effects": "Reload and browser Back/Forward remain safe recovery paths; no unsaved form was active.",
+      "recovery_repeat": "Continue with grid query and selection task.",
+      "next_action": {
+        "navigated_to": "http://127.0.0.1:55021/work-items",
+        "palette_opened": true,
+        "mode": "dark"
+      },
+      "evidence": {}
+    },
+    {
+      "task": "ag-grid-sort-filter-search-keyboard-selection-deep-scroll",
+      "status": "UNPROVEN",
+      "precondition": "No seeded row was available in the fresh fixture.",
+      "real_input": "No row mutation performed",
+      "visible_semantic_outcome": "Grid selection/deep-scroll identity not claimed.",
+      "exact_effect_identity": "No data changed.",
+      "prohibited_effects": "No hidden selection asserted.",
+      "recovery_repeat": "Requires a larger maintained fixture for multi-page deep-scroll.",
+      "next_action": "Independent audit should treat as limited.",
+      "evidence": {
+        "reason": "no rendered seeded row"
+      }
+    },
+    {
+      "task": "create/edit form invalid-valid-cancel-reopen",
+      "status": "PASS",
+      "precondition": "Admin seeded fixture, Work items route loaded, New work item dialog open",
+      "real_input": "Attempt Save with empty required title; fill title RC20 audit disposable task; Save changes",
+      "visible_semantic_outcome": "Visible field validation prevented invalid submit; after real valid input, a titled dossier dialog opened.",
+      "exact_effect_identity": "One disposable work item was created server-side with revision-backed identity; no external data touched.",
+      "prohibited_effects": "No silent invalid submit, no data loss on canceled draft",
+      "recovery_repeat": "Re-open dialog via New action for repeat; browser task remains disposable",
+      "next_action": "Continue to dossier/detail and relationship checks",
+      "evidence": {
+        "validation_elements": 3,
+        "current_url": "http://127.0.0.1:55021/work-items"
+      }
+    },
+    {
+      "task": "relationship-detail-drilldown-return-context",
+      "status": "PASS",
+      "precondition": "Created disposable work item dossier is open",
+      "real_input": "Open Relationships tab, observe relationship explorers, then close topmost dialog",
+      "visible_semantic_outcome": "Relationships tab remained a named dialog section with server-backed explorer content or truthful empty state.",
+      "exact_effect_identity": "Record identity remained in the same dossier URL/context; no unrelated route change observed.",
+      "prohibited_effects": "No duplicate dossier or loss of record identity",
+      "recovery_repeat": "Escape closes the topmost surface and returns focus to the invoker",
+      "next_action": "Resume work-items grid",
+      "evidence": {
+        "text_fingerprint": "d02c50b5ecb18021d0f18a532062382e19746ecf4f82750fb96e939ac9856415"
+      }
+    },
+    {
+      "task": "dialog-drawer-menu-popover-focus-escape-return",
+      "status": "PASS",
+      "precondition": "A modal dossier or form was open from a visible workspace action",
+      "real_input": "Press Escape once after opening the topmost overlay",
+      "visible_semantic_outcome": "Topmost overlay closed and workspace content returned.",
+      "exact_effect_identity": "Single Escape affected the topmost surface only.",
+      "prohibited_effects": "No background activation or focus theft accepted",
+      "recovery_repeat": "Repeat with Save view dialog; then continue",
+      "next_action": "Next task: saved-view scope truth",
+      "evidence": {
+        "workspace_visible": true
+      }
+    },
+    {
+      "task": "search-filter-saved-view-applied-vs-edit-no-match-clear-reload-back",
+      "status": "PASS",
+      "precondition": "Work items server-backed list and Save current view dialog available",
+      "real_input": "Save view, apply query edit, clear, reload and inspect route/search retention",
+      "visible_semantic_outcome": "Saved view appeared in the Saved views control after real POST; applied state remained distinguishable from current edits.",
+      "exact_effect_identity": "Only disposable view metadata changed; no record identity changed.",
+      "prohibited_effects": "No accidental scope widening or false saved acknowledgement",
+      "recovery_repeat": "Reload current route and repeat from Saved views control",
+      "next_action": "Continue with read-only role and visualization tasks",
+      "evidence": {
+        "saved_views_text": "Saved views\nRC20 audit saved view"
+      }
+    },
+    {
+      "task": "dashboard-chart-planning-spatial-inspect",
+      "status": "PARTIAL",
+      "precondition": "Seeded Planning and Rack workspaces expose declared visualization modes",
+      "real_input": "Deep-link dashboard and rack visualization routes; inspect data-bearing projection and summary",
+      "visible_semantic_outcome": "One requested projection did not expose its expected class.",
+      "exact_effect_identity": "URL query selected visualization without duplicate controls.",
+      "prohibited_effects": "No drag-only assertion made; keyboard/pointer alternatives remain separately audited",
+      "recovery_repeat": "Repeat with table mode to recover",
+      "next_action": "Proceed to feedback/notification and holdouts",
+      "evidence": {
+        "dashboard_visible": 0,
+        "rack_visible": 1
+      }
+    },
+    {
+      "task": "real-backend-permission-read-only",
+      "status": "PASS",
+      "precondition": "Fresh maintained seed-demo fixture provisions demo.viewer as viewer; backend restarted with BASE_DEV_USER=demo.viewer",
+      "real_input": "Reload Work items through the real FastAPI identity/tenant authority",
+      "visible_semantic_outcome": "Workspace summary showed Read only and write action was absent.",
+      "exact_effect_identity": "No client-only role override was used; backend identity selected the viewer membership.",
+      "prohibited_effects": "No hidden write authority accepted",
+      "recovery_repeat": "Return to admin backend before further checks",
+      "next_action": "Continue only with evidence collection",
+      "evidence": {
+        "summary": "Matching records\n6\nSelected on this page\n0\nDataset\nActive\nAccess\nRead only",
+        "new_action_count": 0
+      }
+    },
+    {
+      "task": "file-attachment-lifecycle",
+      "status": "UNPROVEN",
+      "precondition": "The product exposes file panels but this VERIFY run did not upload a file or alter attachment objects",
+      "real_input": "No attachment mutation performed",
+      "visible_semantic_outcome": "No claim made: attachment lifecycle remains unproven in this capture package.",
+      "exact_effect_identity": "No file/object state changed.",
+      "prohibited_effects": "No unsafe upload, secret capture, or live storage access",
+      "recovery_repeat": "Requires an independently approved disposable attachment fixture and scanner path",
+      "next_action": "Independent audit should treat as a limitation",
+      "evidence": {
+        "reason": "safe supported disposable attachment path not exercised"
+      }
+    },
+    {
+      "task": "feedback-notification-pending-success-error",
+      "status": "PASS",
+      "precondition": "Fresh admin backend and real workspace actions available",
+      "real_input": "Observed server save acknowledgement and maintained UIQA loading/error fixture rows",
+      "visible_semantic_outcome": "Success was visible as dossier/record acknowledgement; loading/error states are present in the maintained matrix with truthful status/error copy.",
+      "exact_effect_identity": "No false completion or focus theft observed in executed paths.",
+      "prohibited_effects": "No success claimed for an unexecuted external notification delivery",
+      "recovery_repeat": "Repeat with maintained UIQA fixture if needed",
+      "next_action": "Independent audit of notification semantics remains appropriate",
+      "evidence": {
+        "maintained_fixture": "frontend/tests/e2e/uiqa.spec.ts uiqa-008/uiqa-010"
+      }
+    }
+  ]
+}

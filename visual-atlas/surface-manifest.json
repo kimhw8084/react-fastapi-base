@@ -1,0 +1,1071 @@
+{
+  "schema": "project-os.visual-atlas/2",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "exact_integrated_tree": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "capture_runtime": {
+    "browser": "Chromium",
+    "browser_version": "151.0.7922.34",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "playwright": "1.62.1",
+    "node": "v22.23.2",
+    "npm": "10.9.8",
+    "fixture": "maintained backend/app/cli.py seed-demo",
+    "data_root": "disposable external test root",
+    "role": "demo.admin / admin",
+    "locale": "en-US",
+    "timezone": "America/Chicago",
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference",
+    "canonical_viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      }
+    ]
+  },
+  "surface_count": 21,
+  "surface_keys": [
+    "work-items",
+    "projects",
+    "racks",
+    "equipment",
+    "knowledge-entries",
+    "investigations",
+    "research",
+    "risks",
+    "plan-tasks",
+    "diagram-documents",
+    "process-measurements",
+    "wafer-runs",
+    "manufacturing-lots",
+    "equipment-states",
+    "process-recipes",
+    "software-services",
+    "delivery-runs",
+    "observability-events",
+    "incidents",
+    "service-objectives",
+    "system"
+  ],
+  "router_discovery": {
+    "authority": "rendered nav from actual runtime plus app registry",
+    "navigation_count": 21,
+    "navigation_items": [
+      {
+        "label": "▦Work items",
+        "href": "/work-items"
+      },
+      {
+        "label": "▦Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "▦Racks",
+        "href": "/racks"
+      },
+      {
+        "label": "▦Equipment",
+        "href": "/equipment"
+      },
+      {
+        "label": "▦Knowledge",
+        "href": "/knowledge-entries"
+      },
+      {
+        "label": "▦Investigations",
+        "href": "/investigations"
+      },
+      {
+        "label": "▦Research",
+        "href": "/research"
+      },
+      {
+        "label": "▦Risk analysis",
+        "href": "/risks"
+      },
+      {
+        "label": "▦Planning",
+        "href": "/plan-tasks"
+      },
+      {
+        "label": "▦Diagram studio",
+        "href": "/diagram-documents"
+      },
+      {
+        "label": "▦Process measurements",
+        "href": "/process-measurements"
+      },
+      {
+        "label": "▦Wafer runs",
+        "href": "/wafer-runs"
+      },
+      {
+        "label": "▦Manufacturing lots",
+        "href": "/manufacturing-lots"
+      },
+      {
+        "label": "▦Equipment states",
+        "href": "/equipment-states"
+      },
+      {
+        "label": "▦Process recipes",
+        "href": "/process-recipes"
+      },
+      {
+        "label": "▦Software services",
+        "href": "/software-services"
+      },
+      {
+        "label": "▦Delivery runs",
+        "href": "/delivery-runs"
+      },
+      {
+        "label": "▦Observability events",
+        "href": "/observability-events"
+      },
+      {
+        "label": "▦Incidents",
+        "href": "/incidents"
+      },
+      {
+        "label": "▦Service objectives",
+        "href": "/service-objectives"
+      },
+      {
+        "label": "▦System",
+        "href": "/system"
+      }
+    ]
+  },
+  "surfaces": [
+    {
+      "surface_key": "work-items",
+      "label": "▦Work items",
+      "route": "/work-items",
+      "route_aliases": [],
+      "actual_navigation_href": "/work-items",
+      "source_components": [
+        "frontend/src/features/work_items/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "table",
+        "board",
+        "dashboard",
+        "timeline",
+        "calendar",
+        "gantt",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "tables/grids",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Work items",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "projects",
+      "label": "▦Projects",
+      "route": "/projects",
+      "route_aliases": [],
+      "actual_navigation_href": "/projects",
+      "source_components": [
+        "frontend/src/features/projects/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "table",
+        "board",
+        "dashboard",
+        "timeline",
+        "calendar",
+        "gantt",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Projects",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "racks",
+      "label": "▦Racks",
+      "route": "/racks",
+      "route_aliases": [],
+      "actual_navigation_href": "/racks",
+      "source_components": [
+        "frontend/src/features/racks/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "table",
+        "dashboard",
+        "graph",
+        "rack"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Racks",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "equipment",
+      "label": "▦Equipment",
+      "route": "/equipment",
+      "route_aliases": [],
+      "actual_navigation_href": "/equipment",
+      "source_components": [
+        "frontend/src/features/equipment/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "table",
+        "board",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Equipment",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "knowledge-entries",
+      "label": "▦Knowledge",
+      "route": "/knowledge-entries",
+      "route_aliases": [],
+      "actual_navigation_href": "/knowledge-entries",
+      "source_components": [
+        "frontend/src/features/knowledge_entries/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "knowledge",
+        "table",
+        "timeline",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Engineering knowledge",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "investigations",
+      "label": "▦Investigations",
+      "route": "/investigations",
+      "route_aliases": [],
+      "actual_navigation_href": "/investigations",
+      "source_components": [
+        "frontend/src/features/investigations/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "investigation",
+        "table",
+        "board",
+        "timeline",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Investigation center",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "research",
+      "label": "▦Research",
+      "route": "/research",
+      "route_aliases": [],
+      "actual_navigation_href": "/research",
+      "source_components": [
+        "frontend/src/features/research/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "research",
+        "table",
+        "board",
+        "timeline",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Research laboratory",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "risks",
+      "label": "▦Risk analysis",
+      "route": "/risks",
+      "route_aliases": [],
+      "actual_navigation_href": "/risks",
+      "source_components": [
+        "frontend/src/features/risks/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "risk",
+        "table",
+        "dashboard",
+        "timeline",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Risk analysis",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "plan-tasks",
+      "label": "▦Planning",
+      "route": "/plan-tasks",
+      "route_aliases": [],
+      "actual_navigation_href": "/plan-tasks",
+      "source_components": [
+        "frontend/src/features/plan_tasks/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "planning",
+        "table",
+        "board",
+        "gantt",
+        "calendar",
+        "timeline",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Program planning",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "diagram-documents",
+      "label": "▦Diagram studio",
+      "route": "/diagram-documents",
+      "route_aliases": [],
+      "actual_navigation_href": "/diagram-documents",
+      "source_components": [
+        "frontend/src/features/diagram_documents/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "designer",
+        "table",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Diagram studio",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "process-measurements",
+      "label": "▦Process measurements",
+      "route": "/process-measurements",
+      "route_aliases": [],
+      "actual_navigation_href": "/process-measurements",
+      "source_components": [
+        "frontend/src/features/process_measurements/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "spc",
+        "table",
+        "timeline",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Statistical process control",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "wafer-runs",
+      "label": "▦Wafer runs",
+      "route": "/wafer-runs",
+      "route_aliases": [],
+      "actual_navigation_href": "/wafer-runs",
+      "source_components": [
+        "frontend/src/features/wafer_runs/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "wafer",
+        "table",
+        "dashboard",
+        "timeline"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Wafer analysis",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "manufacturing-lots",
+      "label": "▦Manufacturing lots",
+      "route": "/manufacturing-lots",
+      "route_aliases": [],
+      "actual_navigation_href": "/manufacturing-lots",
+      "source_components": [
+        "frontend/src/features/manufacturing_lots/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "traveler",
+        "table",
+        "board",
+        "timeline",
+        "calendar",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Lot traveler & WIP",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "equipment-states",
+      "label": "▦Equipment states",
+      "route": "/equipment-states",
+      "route_aliases": [],
+      "actual_navigation_href": "/equipment-states",
+      "source_components": [
+        "frontend/src/features/equipment_states/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "state_timeline",
+        "table",
+        "timeline",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Equipment state & utilization",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "process-recipes",
+      "label": "▦Process recipes",
+      "route": "/process-recipes",
+      "route_aliases": [],
+      "actual_navigation_href": "/process-recipes",
+      "source_components": [
+        "frontend/src/features/process_recipes/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "recipe",
+        "table",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Recipe compare",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "software-services",
+      "label": "▦Software services",
+      "route": "/software-services",
+      "route_aliases": [],
+      "actual_navigation_href": "/software-services",
+      "source_components": [
+        "frontend/src/features/software_services/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "table",
+        "dashboard",
+        "graph"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Software services",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "delivery-runs",
+      "label": "▦Delivery runs",
+      "route": "/delivery-runs",
+      "route_aliases": [],
+      "actual_navigation_href": "/delivery-runs",
+      "source_components": [
+        "frontend/src/features/delivery_runs/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "pipeline",
+        "table",
+        "timeline",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Delivery pipeline",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "observability-events",
+      "label": "▦Observability events",
+      "route": "/observability-events",
+      "route_aliases": [],
+      "actual_navigation_href": "/observability-events",
+      "source_components": [
+        "frontend/src/features/observability_events/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "observability",
+        "table",
+        "timeline",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Observability explorer",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "incidents",
+      "label": "▦Incidents",
+      "route": "/incidents",
+      "route_aliases": [],
+      "actual_navigation_href": "/incidents",
+      "source_components": [
+        "frontend/src/features/incidents/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "incident_command",
+        "table",
+        "board",
+        "timeline",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "Incident command",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "service-objectives",
+      "label": "▦Service objectives",
+      "route": "/service-objectives",
+      "route_aliases": [],
+      "actual_navigation_href": "/service-objectives",
+      "source_components": [
+        "frontend/src/features/service_objectives/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [
+        "slo",
+        "table",
+        "dashboard"
+      ],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists",
+        "visualization-selector",
+        "dashboard/chart/planning/spatial"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> visualization selector -> projection",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "SLO & error budget",
+        "visible_main": true
+      }
+    },
+    {
+      "surface_key": "system",
+      "label": "▦System",
+      "route": "/system",
+      "route_aliases": [],
+      "actual_navigation_href": "/system",
+      "source_components": [
+        "frontend/src/features/system/Workspace.tsx",
+        "frontend/src/platform/ui/AppShell.tsx",
+        "frontend/src/platform/ui/WorkspaceShell.tsx"
+      ],
+      "available_visualizations": [],
+      "component_families": [
+        "application-shell",
+        "navigation",
+        "workspace-shell",
+        "actions",
+        "search/filter/query",
+        "forms",
+        "disclosure/overlays",
+        "feedback/loading/empty/error",
+        "cards/lists"
+      ],
+      "relationship_edges": [
+        "application-shell -> main navigation",
+        "main navigation -> routed workspace",
+        "routed workspace -> shared workspace shell",
+        "workspace -> actions/forms/feedback",
+        "workspace -> detail/overlay lifetime"
+      ],
+      "discovery": {
+        "heading": "System workspace",
+        "visible_main": true
+      }
+    }
+  ]
+}

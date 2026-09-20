@@ -1,0 +1,2586 @@
+{
+  "schema": "golden-ui.objective-diagnostics/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "observed_facts": [
+    {
+      "surface_key": "work-items",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 21,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "ag-grid-viewport ag-layout-normal",
+          "role": "grid",
+          "clientWidth": 1154,
+          "scrollWidth": 1184,
+          "rect": {
+            "left": 257,
+            "right": 1411,
+            "top": 535.984375,
+            "bottom": 1053.984375
+          },
+          "overflowX": "auto"
+        },
+        {
+          "class": "ag-body-horizontal-scroll-viewport",
+          "role": null,
+          "clientWidth": 1154,
+          "scrollWidth": 1184,
+          "rect": {
+            "left": 257,
+            "right": 1411,
+            "top": 1037.984375,
+            "bottom": 1053.984375
+          },
+          "overflowX": "scroll"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-top-rows",
+          "rect": {
+            "left": 257,
+            "right": 1441,
+            "top": 535.984375,
+            "bottom": 580.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 535.984375,
+            "bottom": 579.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 580.984375,
+            "bottom": 632.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 632.984375,
+            "bottom": 684.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 684.984375,
+            "bottom": 736.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 736.984375,
+            "bottom": 788.984375
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 257,
+            "right": 321,
+            "top": 788.984375,
+            "bottom": 840.984375
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": {
+        "aria_label": "Work items data grid",
+        "rendered_rows": 6,
+        "rendered_cells": 35
+      },
+      "data_text_fingerprint": "51755ede2c3a2f13fa8d8b8588ca7461b3b8cdcbe0501b5b632702a0e88e3129"
+    },
+    {
+      "surface_key": "work-items",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2332
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 62,
+        "offscreen_interactive_count": 62
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 547,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1588.78125,
+            "bottom": 1646.78125
+          },
+          "overflowX": "auto"
+        },
+        {
+          "class": "ag-grid-viewport ag-layout-normal",
+          "role": "grid",
+          "clientWidth": 356,
+          "scrollWidth": 1184,
+          "rect": {
+            "left": 17,
+            "right": 373,
+            "top": 1770.78125,
+            "bottom": 2228.78125
+          },
+          "overflowX": "auto"
+        },
+        {
+          "class": "ag-body-horizontal-scroll-viewport",
+          "role": null,
+          "clientWidth": 356,
+          "scrollWidth": 1184,
+          "rect": {
+            "left": 17,
+            "right": 373,
+            "top": 2212.78125,
+            "bottom": 2228.78125
+          },
+          "overflowX": "scroll"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-top-rows",
+          "rect": {
+            "left": 17,
+            "right": 1201,
+            "top": 1770.78125,
+            "bottom": 1815.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 1770.78125,
+            "bottom": 1814.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 1815.78125,
+            "bottom": 1867.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 1867.78125,
+            "bottom": 1919.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 1919.78125,
+            "bottom": 1971.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 1971.78125,
+            "bottom": 2023.78125
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "ag-grid-pinned-left-cells",
+          "rect": {
+            "left": 17,
+            "right": 81,
+            "top": 2023.78125,
+            "bottom": 2075.78125
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": {
+        "aria_label": "Work items data grid",
+        "rendered_rows": 6,
+        "rendered_cells": 20
+      },
+      "data_text_fingerprint": "c6362f4ecb255d665314e0a2c4cc93f96cbbbda392b34ceae609a672cb56c1c8",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "projects",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "48450c5bef4b9c4dd7dc9b5b65e5e052d8725ec45b5a95f1ea11922509df9495"
+    },
+    {
+      "surface_key": "projects",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2127
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 19,
+        "offscreen_interactive_count": 19
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 547,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1588.78125,
+            "bottom": 1646.78125
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "379a85c461a84997304e68d104face9b1e478bb92a574d9a0ba717f09968f431",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "racks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "877dcc2aa0a2103ecab6bb19620fb0b8f7a44770fd25b50bafea5e488b1243fc"
+    },
+    {
+      "surface_key": "racks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2127
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 16,
+        "offscreen_interactive_count": 16
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "11a62883a95d69ba0a421dc054748e0904e20fcb6e95930d9ad631f6971a39cf",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "73c4ad30af01c0b053bd4897f9d0fc3e13c33edb744bf90fe356673161610b04"
+    },
+    {
+      "surface_key": "equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2127
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 17,
+        "offscreen_interactive_count": 17
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "0bc1497185cd70fc8e5fa9e9dfa9cba81c36b78802033a61fb9312325ac4f833",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "knowledge-entries",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "8832b52209fd920daf749bd4afad206888db186c08dc3f5b24ec24b46850f7a3"
+    },
+    {
+      "surface_key": "knowledge-entries",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2136
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 17,
+        "offscreen_interactive_count": 17
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 431,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1719.96875,
+            "bottom": 1777.96875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "c3a968ea2086408be03cb5e928d3eb57ac9e2b81d8e6ae4649a94f344e334133",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "fba28379e93e9651f198fac5f48d31cdeb8e1054066fe423210944507a09a6a2"
+    },
+    {
+      "surface_key": "investigations",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2058
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 16,
+        "offscreen_interactive_count": 16
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 509,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1642.46875,
+            "bottom": 1700.46875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "e4f2571b23f5b80b4bc55c7cd3adbd46297bb9ad3097047689ca6b968163887c",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "research",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "e5bc9246379d82f08b2453f14dd615c57dd366ccdf42e8733da09a49b9428165"
+    },
+    {
+      "surface_key": "research",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2058
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 16,
+        "offscreen_interactive_count": 16
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 485,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1642.46875,
+            "bottom": 1700.46875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "8af60d1bf1dad1239be1c2bbec0e8aeadfa4b9d1d02ab929df9fd6f4b422616e",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "risks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "3886245942fd9970f94fad94eb0ab1e6eadef9cbe6c52b21e0afe09f895d4928"
+    },
+    {
+      "surface_key": "risks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2058
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 15,
+        "offscreen_interactive_count": 15
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 385,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1642.46875,
+            "bottom": 1700.46875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "f9a24930daa20335e52bb1fc58d5688eba1a7eff1edf989cf67bbecb5785d864",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "plan-tasks",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "f0fe505a3b23542099c06d22c36e4437eca9c086f2c1769117dd8ce9a2eb9caf"
+    },
+    {
+      "surface_key": "plan-tasks",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2066
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 17,
+        "offscreen_interactive_count": 17
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 631,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1649.65625,
+            "bottom": 1707.65625
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "0ab9ff72663626613912275b2d47ba82b05cdacc220971544d6ecf56ded6b939",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "diagram-documents",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "9c3a586c9a90b322cac88b62af4443c928e919261ae6ee7cb3409154e9ce768f"
+    },
+    {
+      "surface_key": "diagram-documents",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2058
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 14,
+        "offscreen_interactive_count": 14
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "1aef02d9d4dde0de7e520f172045b9f7ce6b9f6afff423dc2495bfa9d8ff707a",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "process-measurements",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "a3b7e46484f567d9939922f6300e1dbc2bd034bbf851946686e428c92cf14b4c"
+    },
+    {
+      "surface_key": "process-measurements",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 1960
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 13,
+        "offscreen_interactive_count": 13
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "f07a4cb530e940b037dec4d488ee0e83bd21099e6fb4dcdeb5af08d14c2b8a62",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "wafer-runs",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "cb14fdb845bc42aad0aa909a4688ae8b4769db6e0fd65129c0df7abf2b387719"
+    },
+    {
+      "surface_key": "wafer-runs",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 1960
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 13,
+        "offscreen_interactive_count": 13
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "6da0cb5e911592262e53cac49b6b544d14d53a47ca6f7aee9c925104defb090f",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "manufacturing-lots",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "71b815585a4f1b106dfe629e029b2527faa4488badc17011be3a5d1b554fa117"
+    },
+    {
+      "surface_key": "manufacturing-lots",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2037
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 16,
+        "offscreen_interactive_count": 16
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 497,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1621.46875,
+            "bottom": 1679.46875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "f7330b4d722e0b951cddeb1b564d44f5f90090b53593a921685498088a20625b",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "equipment-states",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "8fd958c055d90dc79d54eec1854b4cd46b6653d397f4a721bbe0260a2ee6dbc0"
+    },
+    {
+      "surface_key": "equipment-states",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2014
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 13,
+        "offscreen_interactive_count": 13
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 387,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1597.96875,
+            "bottom": 1655.96875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "dda221000b76a0fc3b3da38a8713befc93563be3a26450f1746247074e66ce41",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "process-recipes",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "278799917fafff58d5454fb365f4ba3e1a6337b51820c7ebc7096ce98591f747"
+    },
+    {
+      "surface_key": "process-recipes",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 1981
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 12,
+        "offscreen_interactive_count": 12
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "88ccca10153794cf5cebbef4b26e175f93b7eac219ead8e61bac9be3b4b7e5f1",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "software-services",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "a76e2cd84b489b5250191d86760f0474c033e17fdc22f484fd897ee845bfd483"
+    },
+    {
+      "surface_key": "software-services",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2205
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 17,
+        "offscreen_interactive_count": 17
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "38978370e7e95a92a6b093a497a5b37e120acf2c2f1f7ee5daf1b8a4e727800c",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "delivery-runs",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "c8e74e860ee6726b50e5fde5330d9c68c1845a48cb3fd1374241830c5a9f59b3"
+    },
+    {
+      "surface_key": "delivery-runs",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2058
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 14,
+        "offscreen_interactive_count": 14
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "9a928b95da31f1bc6f6007f95e106f0dc8dd26b6ad92f1060c9dc690acee726b",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "observability-events",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "34fafabc6d9e09c512a518951c2a93a73b85aae61436fced28d24e08081fdf1e"
+    },
+    {
+      "surface_key": "observability-events",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2037
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 14,
+        "offscreen_interactive_count": 14
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 379,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1621.46875,
+            "bottom": 1679.46875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "a9ee5f9909fc1516ee5fc63420a4f1135ea9c2e7b8e000cbb0ffc84335ac0f59",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "88a9ea0507dcbff61a07afd28ef562d84a39b1a754621d7a1580a3cbc1acd356"
+    },
+    {
+      "surface_key": "incidents",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 2078
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 15,
+        "offscreen_interactive_count": 15
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "visualization-switch-scroll",
+          "role": "group",
+          "clientWidth": 358,
+          "scrollWidth": 485,
+          "rect": {
+            "left": 16,
+            "right": 374,
+            "top": 1661.875,
+            "bottom": 1719.875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "76634b8f184a7561e09833e4d8ec75124fb3ca95edf33eedfaae41ddf88d27bf",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "service-objectives",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "2464f55ee32693ffdc30574a595834f00beb015d16a8273a1f87ce76fe0c8340"
+    },
+    {
+      "surface_key": "service-objectives",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 1960
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 12,
+        "offscreen_interactive_count": 12
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "e843628bab08b171e87f0e1c92e8a03ac1744a911dd61e0dd7d1c5839f7e6d2a",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    },
+    {
+      "surface_key": "system",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 1440,
+        "viewport_height_css_px": 900,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440,
+        "document_scroll_height": 1367
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 9,
+        "offscreen_interactive_count": 8
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "sidebar",
+          "rect": {
+            "left": 0,
+            "right": 228,
+            "top": 0,
+            "bottom": 900
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 257,
+            "right": 632.328125,
+            "top": 364.796875,
+            "bottom": 455.796875
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 646.328125,
+            "right": 1021.65625,
+            "top": 364.796875,
+            "bottom": 455.796875
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 1035.65625,
+            "right": 1411,
+            "top": 364.796875,
+            "bottom": 455.796875
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "0864936ebceda9f02da91121b3c38088e88ec455388a1b3015d6f03dc6bf9caf"
+    },
+    {
+      "surface_key": "system",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "geometry": {
+        "viewport_css_px": 390,
+        "viewport_height_css_px": 844,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390,
+        "document_scroll_height": 1850
+      },
+      "clipping": {
+        "partially_clipped_interactive_count": 13,
+        "offscreen_interactive_count": 13
+      },
+      "collisions": [],
+      "bounded_overflow_owners": [
+        {
+          "class": "ui-toggle-group system-section-tabs",
+          "role": "tablist",
+          "clientWidth": 328,
+          "scrollWidth": 797,
+          "rect": {
+            "left": 31,
+            "right": 359,
+            "top": 1082.796875,
+            "bottom": 1138.796875
+          },
+          "overflowX": "auto"
+        }
+      ],
+      "sticky_fixed_chrome": [
+        {
+          "position": "fixed",
+          "class": "skip-link",
+          "rect": {
+            "left": 12,
+            "right": 133.921875,
+            "top": -80,
+            "bottom": -35
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 17,
+            "right": 373,
+            "top": 1172.796875,
+            "bottom": 1257.796875
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 17,
+            "right": 373,
+            "top": 1415.796875,
+            "bottom": 1500.796875
+          }
+        },
+        {
+          "position": "sticky",
+          "class": "surface-header",
+          "rect": {
+            "left": 17,
+            "right": 373,
+            "top": 1650.796875,
+            "bottom": 1735.796875
+          }
+        }
+      ],
+      "focus": {
+        "active_element": {
+          "tag": "BODY",
+          "role": null,
+          "name": "Skip to contentGGolden UI RC.20 auditReusable engineering applications with expl"
+        }
+      },
+      "long_content_recovery": "within-viewport",
+      "grid": null,
+      "data_text_fingerprint": "d9f6ce84f8f10dd2ce9e8102dc4b18cc5cd44530516f7bec134f9cf5d85c9fcd",
+      "material_content_in_initial_viewport": {
+        "visible": false,
+        "observation": "Static responsive sidebar/navigation precedes workspace content; actual content is below the initial viewport."
+      }
+    }
+  ]
+}

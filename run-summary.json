@@ -1,0 +1,58 @@
+{
+  "schema": "golden-ui.run-summary/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "source_changed": false,
+  "work_branch_head": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "observed_worktree_status_during_capture": "",
+  "surface_count": 21,
+  "canonical_screenshot_count": 42,
+  "stress_case_count": 9,
+  "task_oracle_count": 10,
+  "holdout_count": 2,
+  "negative_control_count": 7,
+  "r4_regression_result": "PASS",
+  "existing_uiqa_result": "PASS",
+  "performance_result": "PASS (29-test baseline included CHG-35 browser cases)",
+  "release_health_result": "NOT_CERTIFIED: release mode 38 PASS, 0 FAIL, 3 external BLOCKED company qualifications; code_ready=true, production_ready=false.",
+  "finding_counts_by_class_and_severity": {
+    "established_defect": 21,
+    "high_confidence_friction_hypothesis": 0,
+    "taste_optimization_opportunity": 0,
+    "external_unproven_evidence_gap": 2,
+    "severity_counts": {
+      "P1": 21,
+      "P2": 2
+    }
+  },
+  "new_material_failure_classes": [
+    "mobile-static-shell-displaces-workspace-below-fold"
+  ],
+  "limitations": [
+    "No Notion call or Visual Surface promotion was performed.",
+    "No product source, tests, config, release metadata or ordinary history was changed.",
+    "Native screen-reader, IME, RTL, browser zoom, large-text, Safari/Firefox and human evidence are not claimed.",
+    "Attachment/file lifecycle remains UNPROVEN because no safe supported disposable upload fixture was exercised.",
+    "External company identity/storage/deployment/accessibility/performance/operations qualification remains outside this local VERIFY package.",
+    "The artifact is evidence-only and awaits independent Project OS staging/pixel audit; no perfection acceptance is asserted."
+  ],
+  "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "status": "AWAITING_ARTIFACT_PUBLICATION",
+  "blockers": [
+    "The requested source SHA is 41 hex characters and is not a Git object; package source_sha uses the exact 40-character local/origin/main commit and records the requested value separately.",
+    "Release-mode verification is NOT_CERTIFIED solely for company-identity, company-storage and company-deployment external qualifications.",
+    "Established P1 mobile shell layout defect blocks current-atlas promotion until routed through Project OS.",
+    "Independent Project OS staging/pixel audit required",
+    "Perfection verdict intentionally not self-accepted"
+  ],
+  "requested_source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f0",
+  "identity_resolution": "The supplied 41-character source SHA is not a Git object; source_sha is normalized to the exact 40-character local/origin/main commit."
+}

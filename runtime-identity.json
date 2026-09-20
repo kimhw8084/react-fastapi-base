@@ -1,0 +1,44 @@
+{
+  "schema": "golden-ui.runtime-identity/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "node": "v22.23.2",
+  "npm": "10.9.8",
+  "browser": {
+    "engine": "Chromium",
+    "version": "151.0.7922.34",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "playwright": "1.62.1"
+  },
+  "fixture": {
+    "seed_command": "backend/.venv/bin/python -m app.cli seed-demo",
+    "environment": "test",
+    "profile": "development",
+    "user": "demo.admin then demo.viewer role probe",
+    "data_root": "/tmp/golden-ui-v2-rc20-v5.VonKwe/disposable-data",
+    "locale": "en-US",
+    "timezone": "America/Chicago"
+  },
+  "canonical": {
+    "theme": "operations",
+    "appearance": "light",
+    "contrast": "normal",
+    "motion": "no-preference",
+    "viewport_desktop": "1440x900 DPR1",
+    "viewport_mobile": "390x844 DPR1"
+  },
+  "ports": {
+    "api": 55020,
+    "frontend": 55021
+  },
+  "requested_source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f0",
+  "identity_resolution": "The supplied 41-character source SHA is not a Git object; source_sha is normalized to the exact 40-character local/origin/main commit."
+}

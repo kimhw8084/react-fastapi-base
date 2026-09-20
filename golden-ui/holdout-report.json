@@ -1,0 +1,91 @@
+{
+  "schema": "golden-ui.holdout-report/1",
+  "project": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "target_branch": "main",
+  "deterministic_seed": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "selected": [
+    {
+      "surface_key": "plan-tasks",
+      "dimension": "mobile-390x844"
+    },
+    {
+      "surface_key": "observability-events",
+      "dimension": "stress-320-focus"
+    }
+  ],
+  "results": [
+    {
+      "surface_key": "plan-tasks",
+      "dimension": "mobile-390x844",
+      "status": "PASS",
+      "evidence": {
+        "url": "http://127.0.0.1:55021/plan-tasks",
+        "geometry": {
+          "viewport_css_px": 390,
+          "viewport_height_css_px": 844,
+          "document_scroll_width": 390,
+          "document_client_width": 390,
+          "body_scroll_width": 390,
+          "document_scroll_height": 1785
+        },
+        "accessibility": {
+          "total_violations": 0,
+          "serious_or_critical": []
+        },
+        "fingerprint": {
+          "text": "/plan-tasks|http://127.0.0.1:55021/plan-tasks|Planning dashboard|Planning dashboard|Skip to content G Golden UI RC.20 audit Reusable engineering applications with explicit contracts and configurable presentation. ▦ Work items ▦ Projects ▦ Racks ▦ Equipment ▦ Knowledge ▦ Investigations ▦ Research ▦ Risk analysis ▦ Planning ▦ Diagram studio ▦ Process measurements ▦ Wafer runs ▦ Manufacturing lots ▦ Equipment states ▦ Process recipes ▦ Software services ▦ Delivery runs ▦ Observability events ▦ Incidents ▦ Service objectives ▦ System Workspace / Demo workspace ⌘K Tenant Demo workspace Appearance System Light Dark Contrast Normal contrast High contrast Theme Operations Clarity Minimal D demo.admin Implementation review build. Company identity, mounted storage and real deployment certification remain required. CANONICAL PROJECTION Planning dashboard Configurable analytical projection built from the same workspace query. Metric drill-down opens the same records and dossier used by operational views. ↻ Refresh ＋ New plan task Matching records — Visualization dashboard Dataset Active Access Editor Search records ⌕ Active Archived Status All status planned ready in progress blocked done cancelled Planning Table Board Gantt Calendar Timeline Dashboard Graph Saved views Saved views Save view Loading dashboard…",
+          "sha256": "fc51b7926d0035a63a25d00afbc90184a923141c5d7b8f5b11cd122cd1c00c61"
+        },
+        "signals": {
+          "console_errors": [],
+          "console_warnings": [],
+          "page_errors": [],
+          "failed_requests": [],
+          "aborted_requests": [],
+          "unexpected_responses": []
+        }
+      }
+    },
+    {
+      "surface_key": "observability-events",
+      "dimension": "stress-320-focus",
+      "status": "PASS",
+      "evidence": {
+        "url": "http://127.0.0.1:55021/observability-events",
+        "geometry": {
+          "viewport_css_px": 320,
+          "viewport_height_css_px": 420,
+          "document_scroll_width": 320,
+          "document_client_width": 320,
+          "body_scroll_width": 320,
+          "document_scroll_height": 2249
+        },
+        "accessibility": {
+          "total_violations": 0,
+          "serious_or_critical": []
+        },
+        "fingerprint": {
+          "text": "/observability-events|http://127.0.0.1:55021/observability-events|Observability explorer|Observability explorer|Skip to content G Golden UI RC.20 audit Reusable engineering applications with explicit contracts and configurable presentation. ▦ Work items ▦ Projects ▦ Racks ▦ Equipment ▦ Knowledge ▦ Investigations ▦ Research ▦ Risk analysis ▦ Planning ▦ Diagram studio ▦ Process measurements ▦ Wafer runs ▦ Manufacturing lots ▦ Equipment states ▦ Process recipes ▦ Software services ▦ Delivery runs ▦ Observability events ▦ Incidents ▦ Service objectives ▦ System Workspace / Demo workspace ⌘K Tenant Demo workspace Appearance System Light Dark Contrast Normal contrast High contrast Theme Operations Clarity Minimal D demo.admin Implementation review build. Company identity, mounted storage and real deployment certification remain required. CANONICAL PROJECTION Observability explorer Unified logs, trace waterfall and event context over canonical signals linked to services. ↻ Refresh ＋ New event Matching records — Visualization observability Dataset Active Access Editor Errors 0 Traces 0 Search records ⌕ Active Archived Signal All signal log trace metric Severity All severity debug info warning error critical Observability Table Timeline Dashboard Saved views Saved views Save view Loading observability…",
+          "sha256": "2d81d4e0ec20f5d0d1cecdf8971182cb1397cff78ec7722b9c6e94d71056c43f"
+        },
+        "signals": {
+          "console_errors": [],
+          "console_warnings": [],
+          "page_errors": [],
+          "failed_requests": [],
+          "aborted_requests": [],
+          "unexpected_responses": []
+        }
+      }
+    }
+  ],
+  "new_material_failure_classes": []
+}

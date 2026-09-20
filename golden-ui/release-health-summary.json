@@ -1,0 +1,59 @@
+{
+  "schema": "golden-ui.release-health-summary/1",
+  "project": "react-fastapi-base",
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "operation": "VERIFY",
+  "source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "requested_source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f0",
+  "tree_sha": "31759b291bdadfad927eb76204f6ef56100b1620",
+  "version": "1.0.0-rc.20",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "commands": {
+    "baseline_uiqa": {
+      "command": "backend/.venv/bin/python scripts/e2e_runner.py",
+      "result": "PASS",
+      "passed": 29,
+      "failed": 0
+    },
+    "exact_base_nonrelease": {
+      "command": "RELEASE_BASE_SHA=<Git-authoritative SHA> API_COMPATIBILITY_BASE_SHA= backend/.venv/bin/python scripts/verify.py --output ...",
+      "result": "OBSERVED_FAILURE",
+      "browser_e2e_accessibility": "FAIL",
+      "browser_failure_reason": "chg153-visualization-responsive-geometry expected No matching records but the locator was absent; the earlier maintained baseline run passed 29/29."
+    },
+    "release_mode": {
+      "command": "RELEASE_BASE_SHA=<Git-authoritative SHA> API_COMPATIBILITY_BASE_SHA= ./dev verify-release",
+      "result": "NOT_CERTIFIED",
+      "code_ready": true,
+      "production_ready": false,
+      "counts": {
+        "pass": 38,
+        "fail": 0,
+        "blocked": 3
+      },
+      "blocked": [
+        {
+          "name": "company-identity",
+          "reason": "Two actual company users and the PaaS execution/ingress contract must be verified."
+        },
+        {
+          "name": "company-storage",
+          "reason": "Provider-supported SQLite semantics, topology and durability are unverified. A probe cannot certify an S3 mount."
+        },
+        {
+          "name": "company-deployment",
+          "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here."
+        }
+      ]
+    },
+    "npm_audit": {
+      "command": "native npm audit --audit-level=high",
+      "result": "PASS",
+      "high_or_critical_vulnerabilities": 0
+    }
+  },
+  "source_changed": false,
+  "tracked_product_restored": true,
+  "evidence_only": true
+}
