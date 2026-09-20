@@ -1,132 +1,364 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "accepted_at": "2026-09-20T21:31:03Z",
+  "changed_files": [],
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "command": "/bin/zsh -lc 'rtk git -C /tmp/golden-ui-carrier-v7 push origin ebd34b6ecdd1ebfe6a6a4759ab456f0da7ba4ec4:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7 && rtk git -C /tmp/golden-ui-carrier-v7 fetch -q origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7:refs/remotes/origin/atlas-v7 && rtk git -C /tmp/golden-ui-carrier-v7 rev-parse refs/remotes/origin/atlas-v7 && rtk git -C /tmp/golden-ui-carrier-v7 rev-parse refs/remotes/origin/atlas-v7''^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk shasum -a 256 /tmp/golden-ui-carrier-v7/visual-atlas/artifact-stage-receipt.json && rtk rg -n 'artifact_receipt_sha256|git_artifact_commit|git_package_verified' /tmp/golden-ui-carrier-v7/run-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "command": "/bin/zsh -lc 'rtk shasum -a 256 /tmp/golden-ui-carrier-v7/visual-atlas/artifact-stage-receipt.json'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "command": "/bin/zsh -lc \"rtk git -C /tmp/golden-ui-carrier-v7 add visual-atlas/artifact-stage-receipt.json run-summary.json && rtk git -C /tmp/golden-ui-carrier-v7 commit -q -m 'artifact: record remote publication readback contract' && rtk git -C /tmp/golden-ui-carrier-v7 rev-parse HEAD && rtk git -C /tmp/golden-ui-carrier-v7 rev-parse HEAD\"'^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk git -C /tmp/golden-ui-carrier-v7 push origin 77bb9f5982bf51ddc837a0fee37806eafc929738:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk git -C /tmp/golden-ui-carrier-v7 fetch -q origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7:refs/remotes/origin/atlas-v7 && rtk python3 /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/readback.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env BASE_ENVIRONMENT=test BASE_PROFILE=development BASE_DEV_USER=demo.admin BASE_DATA_ROOT=/tmp/golden-ui-runtime-rc21-v7.1cXPCV/data BASE_ALLOWED_ORIGINS='[\\\"http://127.0.0.1:5173\\\"]' BASE_ALLOWED_HOSTS='[\\\"127.0.0.1\\\",\\\"localhost\\\"]' BASE_REQUEST_LIMIT_PER_MINUTE=1000 .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000\"",
+      "exit_code": 130,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.13.0/bin:$PATH BASE_DEV_API=http://127.0.0.1:8000 npm run dev -- --host 127.0.0.1 --port 5173'",
+      "exit_code": 130,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git restore --worktree --staged -- .'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --untracked-files=all'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rm -rf /tmp/golden-ui-runtime-rc21-v7.1cXPCV /tmp/golden-ui-carrier-v7 /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/pdf-render /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/atlas-capture.mjs /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/make-package.py /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/readback.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk shasum -a 256 VERSION frontend/package.json && rtk rg -n '\\\"version\\\"' frontend/package.json | head -2\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote --heads origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git fetch --prune origin main && rtk git rev-parse origin/main && rtk git rev-parse origin/main''^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin 6204c307cd8a59228c2b00b561a9946fc4c5eaae:refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{count:(.tasks|length), keys:(.tasks|map(.id // .task // .name))}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/task-traces.json\"",
+      "exit_code": 5,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/holdout-report.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/release-health-summary.json | head -180\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq 'paths(scalars) as \"'$p | select(($p|join(\".\"))|test(\"stress|case|holdout|negative|finding\";\"i\")) | {path:$p,value:getpath($p)}'\"' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json | head -100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/findings.json && rtk jq '.' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/negative-controls.json | head -120\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote --heads origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{selected,results}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/holdout-report.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.checks | map(select(.name|test(\\\"browser|CHG|performance|audit|unit|type|storybook|server|contract|architecture\\\";\\\"i\\\")))' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/release-health-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq 'keys' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json && rtk jq 'to_entries | map({key:.key,kind:(.value|type),count:(if (.value|type)==\\\"array\\\" then (.value|length) else null end)})' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq 'keys' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/task-traces.json && rtk jq 'to_entries | map({key:.key,kind:(.value|type),count:(if (.value|type)==\\\"array\\\" then (.value|length) else null end)})' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/task-traces.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{result_keys:(.results|keys), result_counts:(.results|to_entries|map({key:.key,kind:(.value|type),count:(if (.value|type)==\\\"array\\\" then (.value|length) else null end)})), coverage_keys:(.coverage|keys)}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{navigation:(.results.navigation|keys),forced_colors:(.results.forced_colors_short_height|keys),visualization:(.results.visualization|keys),states:(.results.states|map(.state // .id // .name))}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/release-health-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{node,npm,python,playwright,browser,fixture,profile,viewports}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/runtime-identity.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk test \"$(rtk git rev-parse HEAD)\" = \"6204c307cd8a59228c2b00b561a9946fc4c5eaae\" && rtk test \"$(rtk git rev-parse HEAD''^{tree})\" = \"a83c00bc8d7752e5e84b208d5eaa135148ade6c8\" && rtk git diff --quiet 6204c307cd8a59228c2b00b561a9946fc4c5eaae -- && rtk git diff --cached --quiet && rtk test -z \"$(rtk git status --porcelain)\" && rtk test \"$(rtk git rev-parse origin/main)\" = \"6204c307cd8a59228c2b00b561a9946fc4c5eaae\" && rtk git ls-remote --exit-code origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7 | rtk rg '\"'\"'^6204c307cd8a59228c2b00b561a9946fc4c5eaae'\"\\\\s' && rtk git ls-remote --exit-code origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7 | rtk rg '\"'^77bb9f5982bf51ddc837a0fee37806eafc929738'\"\\\\s' && rtk echo 'POSTFLIGHT_PASS'\"",
+      "exit_code": 127,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD''^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse origin/main'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --cached --quiet'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --quiet 6204c307cd8a59228c2b00b561a9946fc4c5eaae --'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote --exit-code origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote --exit-code origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.checks|keys|length' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/negative-controls.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[.results.responsive_320|length, .results.system_focus_owner|length, (.results.states|length), 1, 1, (.results.visualization.fresh|length // 0)] | add' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 5,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '.results.visualization' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json | head -120\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{axe_violations:(.axe|keys // []), canonical:(.canonical|keys // []), unexpected_console:.unexpected_console_errors,unexpected_page:.unexpected_page_errors,unexpected_failed_requests:.unexpected_failed_requests}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/console-network.json /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/accessibility-summary.json 2>/dev/null | head -100\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '([.results.responsive_320|length, .results.system_focus_owner|length, (.results.states|length), 1, 1, (.results.visualization.fresh|length)] | add)' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 5,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq 'keys' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/accessibility-summary.json && rtk jq 'keys' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/console-network.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '[(.results.responsive_320|length), (.results.system_focus_owner|length), (.results.states|length), 1, 1, (.results.visualization.fresh|length)] | add' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/stress-manifest.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{canonical_keys:(.canonical|keys),baseline:(.baseline|keys),limitation_count:(.limitations|length)}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/accessibility-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{console:.canonical_console_errors_unexpected,page:.canonical_page_errors_unexpected,failed_requests:.canonical_failed_requests_unexpected,unexpected_keys:(.unexpected|keys)}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/console-network.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{canonical_count:(.canonical|length), serious_critical_total:([.canonical[] | (.serious // 0), (.critical // 0)]|add), total_violations:([.canonical[] | (.total_violations // 0)]|add)}' /tmp/golden-ui-v2-rc21-postfix-perfection-verify-v7.7ntEil/golden-ui/accessibility-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
     }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 509,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.82,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 38021888,
+      "fresh_input_tokens": 454463,
+      "input_tokens": 38476351,
+      "non_reasoning_output_tokens": 53694,
+      "output_tokens": 78995,
+      "reasoning_output_tokens": 25301,
+      "total_processed_tokens": 38555346
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": {
+    "additions": 0,
+    "changed_files": 0,
+    "commit_count": 0,
+    "deletions": 0
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
-    "items": [
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-20T22:19:08Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7",
+    "detached_verify": false,
+    "head_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "remote_exact_head": true,
+    "remote_head_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-perfection-verify-v7",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
       }
-    ]
+    ],
+    "total_bytes": 2593,
+    "warning": null
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "job_id": "CF-3ccab70c243452c5d55b9bd7",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "a642c9f63bab2cb555704bdb0b9d1f28222591f133f934c1d0f93cc5a25ab8a1",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v2-rc21-postfix-perfection-verify-v7",
+  "schema_version": 1,
+  "started_at": "2026-09-20T21:31:03Z",
+  "status": "EXECUTED_NO_CHANGE",
+  "timing": {
+    "execution_seconds": 2885,
+    "queue_seconds": 0,
+    "total_seconds": 2885
+  },
+  "transport": {
+    "bytes": 21552,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 21173,
+    "prompt_sha256": "2228e25784ebe7b640a72b10c518189ec78632a96f06004871819dcc8e8f998c",
+    "sha256": "3ccab70c243452c5d55b9bd735fdc218ae0eba7c72afc4ee46679f56c84cad55"
+  }
 }
