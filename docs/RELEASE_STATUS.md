@@ -1,8 +1,8 @@
-# Release status — react-fastapi-base 1.0.0-rc.19
+# Release status — react-fastapi-base 1.0.0-rc.20
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.19 is the bounded Golden UI v2 mobile responsive-geometry repair candidate on top of RC.18's source-bound operational-reliability contract. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.20 is the bounded Golden UI v2 horizontal-focus containment repair candidate on top of RC.19's source-bound mobile responsive-geometry contract. All locally achievable V1 contracts in [v1-completion-status.json](v1-completion-status.json) remain source-backed verification; this is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
 
@@ -33,6 +33,7 @@ RC.12–RC.16 are immutable integrated historical evidence for their exact sourc
 - RC.17 adds `contracts/independent-deployment.json`, validates the existing frontend static/Node and backend ASGI seams at the company deployment boundary, and runs a real two-process development/test qualification with a non-empty cross-origin `apiBase`. The repository deployment result is software support evidence only; actual company publication, ingress/session behavior, restart/redeploy and recovery remain `BLOCKED_EXTERNAL`.
 - RC.18 adds `contracts/operational-reliability.json`, the deterministic disposable-resource failure-mode harness at `evidence/current/operations/qualification.json`, sanitized operator diagnostics and the typed external company operations-drill evidence contract. Repository operations PASS remains separate from the final CompanyQualification operations gate, which remains `BLOCKED_EXTERNAL` until authentic company staging evidence is supplied.
 - RC.19 repairs the shared System section-tab and EntityWorkspace visualization-selector responsive geometry at 390px and 320px, with source-owned browser regressions for bounded scroll ownership, focus recovery, state preservation and affected-consumer traversal. Company qualification remains external.
+- RC.20 repairs the remaining 320px keyboard-focus containment defect in those bounded horizontal controls and strengthens CHG-153 browser proof for first/middle/final keyboard reachability, exact activation, forced colors, state preservation and focus-specific negative-control sensitivity. Company qualification remains external.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [storage qualification](../evidence/current/storage/qualification.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [qualification.json](../evidence/current/performance/qualification.json), [browser.json](../evidence/current/performance/browser.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

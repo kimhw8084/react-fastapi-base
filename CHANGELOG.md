@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.20 — Golden UI v2 horizontal-focus containment repair
+
+- Repaired keyboard focus reveal for the bounded System tablist and shared EntityWorkspace visualization selector, including the 320px final-tab containment defect.
+- Strengthened permanent CHG-153 browser proof for first/middle/final keyboard reachability, exact activation, focus geometry, forced colors, state preservation and focus-specific negative-control sensitivity.
+
 ## 1.0.0-rc.19 — Golden UI v2 mobile responsive-geometry repair
 
 - Added bounded responsive scroll ownership for the System section tablist and shared EntityWorkspace visualization selector without changing authorization, selection, URL or saved-view semantics.

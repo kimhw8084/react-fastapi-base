@@ -95,6 +95,35 @@ def test_evidence_only_commit_may_retain_established_candidate(tmp_path: Path):
     assert executable_source_commit(repo) == base
 
 
+def test_stacked_candidate_requires_contiguous_preserved_prerelease_ancestry(tmp_path: Path):
+    repo = tmp_path / 'repo'
+    (repo / 'backend').mkdir(parents=True)
+    (repo / 'VERSION').write_text('1.0.0-rc.12\n')
+    (repo / 'backend/source.py').write_text('VALUE = 1\n')
+    git(repo, 'init', '-q')
+    git(repo, 'config', 'user.email', 'release-test@example.invalid')
+    git(repo, 'config', 'user.name', 'Release progression test')
+    git(repo, 'add', '.')
+    git(repo, 'commit', '-qm', 'base candidate')
+    base = git(repo, 'rev-parse', 'HEAD')
+
+    (repo / 'VERSION').write_text('1.0.0-rc.13\n')
+    (repo / 'backend/source.py').write_text('VALUE = 2\n')
+    git(repo, 'add', '.')
+    git(repo, 'commit', '-qm', 'preserved intermediate candidate')
+    (repo / 'VERSION').write_text('1.0.0-rc.14\n')
+    (repo / 'backend/source.py').write_text('VALUE = 3\n')
+    git(repo, 'add', '.')
+    git(repo, 'commit', '-qm', 'stacked candidate')
+
+    result = check_candidate_progression(base_sha=base, root=repo, candidate_version='1.0.0-rc.14')
+    assert result.allowed is True
+    assert result.mode == 'stacked_ordinary_build'
+
+    (repo / 'VERSION').write_text('1.0.0-rc.16\n')
+    assert check_candidate_progression(base_sha=base, root=repo, candidate_version='1.0.0-rc.16').allowed is False
+
+
 def _write_json(path: Path, value: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
