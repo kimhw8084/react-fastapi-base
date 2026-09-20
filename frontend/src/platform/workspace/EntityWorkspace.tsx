@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ComponentType } from 'react'
+import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import type { ViewRead } from '../../generated/schema'
 import type { WorkspaceContext } from './context'
@@ -15,6 +15,7 @@ import { GraphWorkspace } from './GraphWorkspace'
 import { RackWorkspace } from './RackWorkspace'
 import { SavedViews } from './SavedViews'
 import { resolveWorkspaceVisualizations, sanitizeWorkspaceView } from './workspaceState'
+import { revealHorizontalFocus } from '../ui/focusReveal'
 
 interface Props<T extends BaseRecord> extends WorkspaceContext {
   adapter: WorkspaceAdapter<T>
@@ -30,6 +31,8 @@ export function EntityWorkspace<T extends BaseRecord>(props: Props<T>) {
   const initial = useMemo(() => ({ ...DEFAULT_VIEW, density: props.defaultDensity, visualization: available[0] ?? 'table' }), [available, props.defaultDensity])
   const [view, setView] = useState(() => readStorage(preferenceKey, initial, value => sanitizeWorkspaceView(props.adapter.definition, available, value, props.defaultDensity)))
   const [searchInput, setSearchInput] = useState(view.search)
+  const visualizationSwitchRef = useRef<HTMLDivElement>(null)
+  const pendingVisualizationFocus = useRef<string | null>(null)
 
   useEffect(() => {
     if (!queryMode || !available.includes(queryMode) || queryMode === view.visualization) return
@@ -45,6 +48,7 @@ export function EntityWorkspace<T extends BaseRecord>(props: Props<T>) {
 
   const selectVisualization = (mode: string) => {
     if (!available.includes(mode)) return
+    if (visualizationSwitchRef.current?.contains(document.activeElement)) pendingVisualizationFocus.current = mode
     setView(current => ({ ...current, visualization: mode }))
     setParams(current => {
       const next = new URLSearchParams(current)
@@ -53,6 +57,12 @@ export function EntityWorkspace<T extends BaseRecord>(props: Props<T>) {
       return next
     })
   }
+
+  useEffect(() => {
+    if (pendingVisualizationFocus.current !== view.visualization) return
+    visualizationSwitchRef.current?.querySelector<HTMLButtonElement>('button[aria-pressed="true"]')?.focus()
+    pendingVisualizationFocus.current = null
+  }, [view.visualization])
 
   const applyView = (saved: ViewRead) => {
     const nextView = sanitizeWorkspaceView(props.adapter.definition, available, saved.definition, props.defaultDensity)
@@ -67,9 +77,9 @@ export function EntityWorkspace<T extends BaseRecord>(props: Props<T>) {
     })
   }
 
-  const projectionSwitch = available.length > 1 ? <div className="segmented visualization-switch" aria-label="Visualization">
+  const projectionSwitch = available.length > 1 ? <div ref={visualizationSwitchRef} className="visualization-switch-scroll" role="group" aria-label="Visualization" onFocusCapture={event => { if (event.target instanceof HTMLElement) revealHorizontalFocus(event.currentTarget, event.target) }}><div className="segmented visualization-switch">
     {available.map(mode => <button key={mode} aria-pressed={view.visualization === mode} onClick={() => selectVisualization(mode)}>{mode[0]?.toUpperCase()}{mode.slice(1)}</button>)}
-  </div> : undefined
+  </div></div> : undefined
 
   const viewTools = <div className="workspace-view-tools">
     {projectionSwitch}

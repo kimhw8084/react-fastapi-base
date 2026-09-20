@@ -45,6 +45,8 @@ def main():
     api_port=free_port();frontend_port=free_port()
     performance_source_commit, performance_source_digest = performance_source_binding(ROOT)
     provenance = source_provenance(ROOT)
+    candidate_tree = subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], cwd=ROOT, text=True).strip()
+    candidate_version = (ROOT/'VERSION').read_text(encoding='utf-8').strip()
     with tempfile.TemporaryDirectory(prefix='golden-e2e-') as temp:
         folder=Path(temp);data=folder/'data';runtime=folder/'runtime.json'
         runtime.write_text(json.dumps({'schemaVersion':1,'apiBase':f'http://127.0.0.1:{api_port}','defaultTheme':'operations','titleOverride':'Golden browser acceptance'}))
@@ -58,6 +60,8 @@ def main():
             UIQA_SOURCE_COMMIT=provenance['executable_source_commit'],
             UIQA_EXECUTABLE_SOURCE_COMMIT=provenance['executable_source_commit'],
             UIQA_SOURCE_DIGEST=provenance['source_digest'],
+            UIQA_CANDIDATE_TREE=candidate_tree,
+            UIQA_CANDIDATE_VERSION=candidate_version,
             PERFORMANCE_OUTPUT=str(ROOT/'evidence/current/performance/browser.json'),
             PERFORMANCE_SOURCE_COMMIT=performance_source_commit,
             PERFORMANCE_SOURCE_DIGEST=performance_source_digest,

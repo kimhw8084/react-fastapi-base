@@ -1,10 +1,10 @@
-> **Implementation addendum (1.0.0-rc.18):** this candidate adds the canonical source-bound operational-reliability contract, deterministic failure-mode harness, safe operator diagnostics and strict external operations-drill evidence on top of RC.17's independent deployment contract. Earlier release artifacts remain immutable historical evidence for their exact sources. The API major/revision compatibility policy and staged frontend/backend bootstrap negotiation remain unchanged. Company qualification remains external and this design is not production evidence.
+> **Implementation addendum (1.0.0-rc.20):** this candidate repairs keyboard focus containment for the shared System section-tab and EntityWorkspace visualization selector at desktop, 390px and 320px, preserving API, authorization, selection, URL and saved-view semantics. RC.19's source-bound responsive-geometry evidence remains immutable historical evidence for its exact source. Company qualification remains external and this design is not production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
 > CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
 
-**Version: 1.0.0-rc.18 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.20 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.

@@ -1,5 +1,5 @@
-  0 git clone --no-local /Users/haewonkim/.codex-fabric/worktrees/CF-0fd93a3c5035a268d7b4a517 clone
-  0 git checkout --detach 7f4f5ce783a01b2fd780067ebeafa587659e19b0
+  0 git clone --no-local /Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c clone
+  0 git checkout --detach bde0ecf67f0f779854f3906f662fc5e11d58eabb
   0 /opt/homebrew/bin/python3.14 dev setup
   0 /opt/homebrew/bin/python3.14 dev seed-demo
   0 .venv/bin/python -c from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.settings import Settings; from pathlib import Path; settings=Settings(environment='development', profile='development', data_root=Path('../.local/development'), dev_user='demo.admin'); app=create_app(settings); client=TestClient(app); payload=client.get('/api/v1/bootstrap').json(); assert payload['profile']=='development' and payload['user_id']=='demo.admin'; assert 'AccessKey' not in str(payload) and 'data_root' not in str(payload) and 'profile_runtime' not in str(payload); client.close()

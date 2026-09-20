@@ -91,10 +91,19 @@ def test_applicable_rows_cannot_lose_executable_coverage(tmp_path: Path):
 
 def test_required_dimension_disappearance_fails_closed(tmp_path: Path):
     matrix = load_matrix()
-    row = next(row for row in matrix['rows'] if 'forced-colors.active' in row['required_dimensions'])
-    row['required_dimensions'].remove('forced-colors.active')
+    row = next(row for row in matrix['rows'] if 'keyboard.escape' in row['required_dimensions'])
+    row['required_dimensions'].remove('keyboard.escape')
     matrix_path, spec_path = write_fixture(tmp_path, matrix)
     with pytest.raises(MatrixContractError, match='required dimension has disappeared'):
+        validate_matrix(matrix_path, spec_path)
+
+
+def test_chg153_visualization_cannot_lose_explicit_forced_colors_proof(tmp_path: Path):
+    matrix = load_matrix()
+    row = next(row for row in matrix['rows'] if row['state_id'] == 'chg153-visualization-responsive-geometry')
+    row['required_dimensions'].remove('forced-colors.active')
+    matrix_path, spec_path = write_fixture(tmp_path, matrix)
+    with pytest.raises(MatrixContractError, match='chg153-visualization-responsive-geometry.*forced-colors.active'):
         validate_matrix(matrix_path, spec_path)
 
 

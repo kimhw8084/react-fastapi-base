@@ -23,6 +23,9 @@ SHA256_PATTERN = re.compile(r'^[0-9a-f]{64}$')
 SECRET_PATTERN = re.compile(r'(?:accesskey|authorization|bearer|credential|password|secret|token)', re.IGNORECASE)
 MATRIX_TEST_PATTERN = re.compile(r"matrixTest\(\s*['\"]([^'\"]+)['\"]\s*,")
 PROOF_MARKER_PATTERN = re.compile(r"proof\.prove\(\s*['\"]([^'\"]+)['\"]")
+REQUIRED_ROW_DIMENSIONS = {
+    'chg153-visualization-responsive-geometry': {'forced-colors.active'},
+}
 
 
 class MatrixContractError(ValueError):
@@ -112,6 +115,9 @@ def _validate_rows(matrix: dict[str, Any]) -> dict[str, dict[str, Any]]:
     _require(represented == REQUIRED_STATE_CLASSES, 'Every material state class must be represented by an applicable row or explicit inapplicability.')
     represented_dimensions = {dimension for row in rows if row['applicability'] == 'applicable' for dimension in row['required_dimensions']}
     _require(represented_dimensions == global_dimensions, 'A required dimension has disappeared from applicable matrix coverage.')
+    for state_id, required in REQUIRED_ROW_DIMENSIONS.items():
+        row = by_state.get(state_id)
+        _require(row is not None and required <= set(row['required_dimensions']), f'{state_id} has lost a required contract dimension: {", ".join(sorted(required - set(row.get("required_dimensions", []))))}.')
     return by_state
 
 

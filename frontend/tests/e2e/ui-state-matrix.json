@@ -25,6 +25,7 @@
     "keyboard.shift-tab",
     "keyboard.space",
     "keyboard.tab",
+    "input.pointer",
     "semantics.role-name-state",
     "focus.recovery",
     "focus.visible",
@@ -230,6 +231,36 @@
         "axe_serious_critical": true
       },
       "browser_test_id": "uiqa-016"
+    },
+    {
+      "state_id": "chg153-system-responsive-geometry",
+      "surface_component_family": "System/shared workspace shell",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "seed-demo admin /system at 390 and 320 CSS px",
+      "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "input.pointer", "keyboard.enter", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["the System tablist has one bounded scroll owner", "first and last sections are pointer and keyboard reachable without document overflow", "active tab state changes once and remains exposed", "no hidden duplicate section controls remain operable"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json", "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.png"],
+        "claims": ["390 and 320 page width invariants", "first/last section interaction and focus", "bounded tablist geometry and negative-control sensitivity"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-017"
+    },
+    {
+      "state_id": "chg153-visualization-responsive-geometry",
+      "surface_component_family": "EntityWorkspace/shared visualization selector",
+      "material_state_class": "normal",
+      "applicability": "applicable",
+      "deterministic_setup_fixture": "seed-demo Planning, Work items and Incidents workspaces at desktop, 390 and 320 CSS px",
+      "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "forced-colors.active", "input.pointer", "keyboard.enter", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
+      "semantic_expectations": ["first, middle and final modes are reachable through the single bounded selector owner", "mode selection preserves aria state, URL query and rendered projection", "active mode/search/filter state survives 390-to-desktop-to-390", "short-height forced-colors focus remains visible and inactive variants are absent"],
+      "required_evidence": {
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json", "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.png"],
+        "claims": ["affected-consumer traversal and mode reachability", "responsive state preservation", "short-height forced-colors focus and negative-control sensitivity"],
+        "axe_serious_critical": true
+      },
+      "browser_test_id": "uiqa-018"
     }
   ]
 }

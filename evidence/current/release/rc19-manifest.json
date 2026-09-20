@@ -1,0 +1,68 @@
+{
+  "api_compatibility_base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "artifact_label": "rc19",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "deployment_qualification": {
+    "locator": "evidence/current/deployment/qualification.json",
+    "required_for": "code",
+    "sha256": "2f4c1c09549e8866ac418368d5be090f94ec39aa9ad81d3e040e2f5937864777"
+  },
+  "evidence_binding": "evidence/current/release/rc19-evidence-binding.json",
+  "evidence_commit": "067af099cebc7f6a334b450b50184e9c54bafa8c",
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "d416f4ed5e450385df4bf201f88d776961d1c011a4181f9337074810e86c2194"
+  },
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc19-readiness-matrix.json",
+    "sha256": "94b326c9b39eb74d6867765dec810e1a525bfc1d7cae7fb1f5921197b1c18e22"
+  },
+  "release_identity": {
+    "locator": "deploy/rc19-release-identity.json"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "repository_operations_qualification": {
+    "company_operations_gate": "BLOCKED_EXTERNAL",
+    "locator": "evidence/current/operations/qualification.json",
+    "repository_status": "PASS",
+    "required_for": "code",
+    "sha256": "c6275acc50d07e7860f445db4f48a9e39c6255f0a00ddd083b4a11846ac2f912"
+  },
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "2b3111d713777891c20c675b99334b5aa2ddb58996c4bb0ff3e25849ad71c4f2"
+  },
+  "schema_version": 2,
+  "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2",
+  "storage_qualification": {
+    "locator": "evidence/current/storage/qualification.json",
+    "required_for": "code",
+    "sha256": "9e09201abb128415dd22185c21f94f542343a7204b3a024b54c3e7aea916e296"
+  },
+  "target_base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "9a38e00de7b0f9d042378b44894c66e42cf89b9477b56183ec2c1a42fcb28e53"
+  },
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
+    "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2"
+  },
+  "verified_source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
+  "version": "1.0.0-rc.19"
+}

@@ -3,14 +3,57 @@
   "result_kind": "browser-computed-uiqa",
   "proof_model": "runtime-assertion-v1",
   "matrix_id": "project-os-ui-state-matrix",
-  "matrix_sha256": "ec6cbaed7def4516d36b89be24afa6b0dba94d4084a5e286b0051d428c3f6687",
-  "checkout_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
-  "candidate_head": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
-  "executable_source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
-  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf",
-  "source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "matrix_sha256": "a8bf2344b8a4f5ea0acc201ccdb25708890f875e6aceccbb91350a642224af24",
+  "checkout_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
   "overall_status": "PASS",
   "results": [
+    {
+      "state_id": "chg153-system-responsive-geometry",
+      "browser_test_id": "uiqa-017",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "focus.visible",
+        "input.pointer",
+        "keyboard.enter",
+        "keyboard.tab",
+        "reflow.320-css-px",
+        "semantics.role-name-state",
+        "viewport.desktop",
+        "viewport.narrow"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json",
+        "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.png"
+      ]
+    },
+    {
+      "state_id": "chg153-visualization-responsive-geometry",
+      "browser_test_id": "uiqa-018",
+      "status": "PASS",
+      "exercised_dimensions": [
+        "axe.serious-critical",
+        "browser-computed",
+        "focus.visible",
+        "forced-colors.active",
+        "input.pointer",
+        "keyboard.enter",
+        "keyboard.tab",
+        "reflow.320-css-px",
+        "semantics.role-name-state",
+        "viewport.desktop",
+        "viewport.narrow"
+      ],
+      "artifact_locators": [
+        "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json",
+        "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.png"
+      ]
+    },
     {
       "state_id": "chg34-dialog-focus-recovery",
       "browser_test_id": "uiqa-013",

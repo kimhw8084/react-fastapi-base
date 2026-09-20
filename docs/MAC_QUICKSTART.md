@@ -1,4 +1,4 @@
-# macOS quickstart — 1.0.0-rc.18
+# macOS quickstart — 1.0.0-rc.20
 
 This is a portable launch procedure. The exact-candidate clean-clone proof and reusable-platform qualification are repository evidence; neither is a company deployment certificate.
 

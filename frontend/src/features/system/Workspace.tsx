@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import type { WorkspaceContext } from '../../platform/workspace/context'
 import { WorkspaceShell } from '../../platform/ui/WorkspaceShell'
+import { revealHorizontalFocus } from '../../platform/ui/focusReveal'
 import { PanelShell } from '../../platform/ui/PanelShell'
 import { Badge, Banner, Button, DefinitionList, EmptyValue, StatusBadge } from '../../platform/ui/primitives'
 import { ErrorNotice, EmptyState } from '../../platform/ui/Notice'
@@ -24,7 +25,7 @@ export function Workspace({api,permissions,user,tenant}:WorkspaceContext){
  const diagnostics=useQuery({queryKey:['system','diagnostics',tenant],queryFn:()=>api.request<Diagnostics>('/api/v1/runtime-diagnostics'),enabled:admin})
  const notifications=useQuery({queryKey:['system','notifications',tenant,user],queryFn:()=>api.request<Notification[]>('/api/v1/notifications')})
  const tabs=useMemo(()=>[{id:'overview',label:'Overview'},...(admin?[{id:'members',label:'Members'},{id:'teams',label:'Teams'},{id:'flags',label:'Feature flags'},{id:'jobs',label:'Jobs'},{id:'events',label:'Events'},{id:'webhooks',label:'Webhooks'},{id:'audit',label:'Audit'}]:[]),{id:'notifications',label:'Notifications'}] as Array<{id:Tab;label:string}>,[admin])
- return <WorkspaceShell eyebrow="Platform operations" title="System workspace" description="Tenant administration, diagnostics, integrations and private notifications use the same bounded API/security contracts as application data." commandBar={<div className="ui-toggle-group" role="tablist" aria-label="System sections">{tabs.map(item=><button key={item.id} role="tab" aria-selected={tab===item.id} className={tab===item.id?'active':''} onClick={()=>setTab(item.id)}>{item.label}</button>)}</div>}>
+ return <WorkspaceShell eyebrow="Platform operations" title="System workspace" description="Tenant administration, diagnostics, integrations and private notifications use the same bounded API/security contracts as application data." commandBar={<div className="ui-toggle-group system-section-tabs" role="tablist" aria-label="System sections" onFocusCapture={event=>{if(event.target instanceof HTMLElement)revealHorizontalFocus(event.currentTarget,event.target)}}>{tabs.map(item=><button key={item.id} role="tab" aria-selected={tab===item.id} className={tab===item.id?'active':''} onClick={()=>setTab(item.id)}>{item.label}</button>)}</div>}>
   {!admin&&<Banner title="Member administration is hidden" tone="info">Your role can use private notifications; administration requires the server-side admin permission.</Banner>}
   {tab==='overview'&&<Overview diagnostics={diagnostics.data} notificationCount={notifications.data?.filter(row=>!row.read_at).length??0} admin={admin}/>}
   {tab==='members'&&admin&&<Members api={api} tenant={tenant} invalidate={()=>void client.invalidateQueries({queryKey:['system','members',tenant]})}/>}

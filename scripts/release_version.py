@@ -415,6 +415,18 @@ def base_version(base_sha: str, root: Path) -> ReleaseVersion:
         raise ReleaseProgressionError(f"The exact release base has an invalid VERSION: {error}") from error
 
 
+def _ancestor_candidate_versions(base_sha: str, root: Path) -> set[str]:
+    """Return candidate versions explicitly preserved in VERSION ancestry after base."""
+    commits = _git(root, "log", "--format=%H", f"{base_sha}..HEAD", "--", "VERSION").splitlines()
+    versions: set[str] = set()
+    for commit in commits:
+        try:
+            versions.add(parse_candidate_version(_git(root, "show", f"{commit}:VERSION")).version)
+        except ReleaseVersionError as error:
+            raise ReleaseProgressionError(f"An ancestor VERSION is invalid at {commit}: {error}") from error
+    return versions
+
+
 def _source_hashes_at_base(base_sha: str, root: Path) -> dict[str, str]:
     # Import lazily so the shared version/path contract remains usable by the
     # backend without importing the tooling module during normal startup.
@@ -494,9 +506,31 @@ def check_candidate_progression(
     if previous.is_stable:
         return ProgressionResult(False, "ordinary_build", previous.version, candidate.version, source_changed, "A stable base cannot be rolled back or reused as a prerelease candidate.")
     expected = ReleaseVersion(previous.major, previous.minor, previous.patch, previous.channel, (previous.ordinal or 0) + 1)
-    if candidate != expected:
-        return ProgressionResult(False, "ordinary_build", previous.version, candidate.version, source_changed, f"Ordinary prerelease progression must advance exactly to {expected.version}.")
-    return ProgressionResult(True, "ordinary_build", previous.version, candidate.version, source_changed, f"Candidate advances exactly from {previous.version} to {candidate.version}.")
+    if candidate == expected:
+        return ProgressionResult(True, "ordinary_build", previous.version, candidate.version, source_changed, f"Candidate advances exactly from {previous.version} to {candidate.version}.")
+    if (
+        candidate.release_train == previous.release_train
+        and candidate.channel == previous.channel
+        and candidate.ordinal is not None
+        and expected.ordinal is not None
+        and candidate.ordinal > expected.ordinal
+    ):
+        preserved = _ancestor_candidate_versions(resolved_base, root)
+        missing = [
+            ReleaseVersion(previous.major, previous.minor, previous.patch, previous.channel, ordinal).version
+            for ordinal in range(expected.ordinal, candidate.ordinal)
+            if ReleaseVersion(previous.major, previous.minor, previous.patch, previous.channel, ordinal).version not in preserved
+        ]
+        if not missing:
+            return ProgressionResult(
+                True,
+                "stacked_ordinary_build",
+                previous.version,
+                candidate.version,
+                source_changed,
+                f"Candidate preserves contiguous prerelease ancestry from {previous.version} through {', '.join(sorted(preserved))} and advances to {candidate.version}.",
+            )
+    return ProgressionResult(False, "ordinary_build", previous.version, candidate.version, source_changed, f"Ordinary prerelease progression must advance exactly to {expected.version}.")
 
 
 def assert_candidate_progression(**kwargs: Any) -> ProgressionResult:
