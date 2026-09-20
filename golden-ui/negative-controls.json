@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "harness": "disposable local Playwright fixture outside Product source/history",
+  "controls": [
+    {
+      "id": "blocked-intercepted-hit-region",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    },
+    {
+      "id": "zero-popup-interior-space",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    },
+    {
+      "id": "permanently-locked-critical-control",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    },
+    {
+      "id": "hidden-validation-feedback",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    },
+    {
+      "id": "transparent-focus-indicator",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    },
+    {
+      "id": "unreadable-text-contrast",
+      "sound_fixture_passed": true,
+      "faulty_fixture_rejected": true,
+      "observed_faulty_result": false,
+      "rule": "sound fixture must pass; faulty fixture must be rejected"
+    }
+  ],
+  "all_sound_pass": true,
+  "all_faulty_rejected": true
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": 2,
+  "source_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "tree_sha": "445a1d3e01f178b4a775a5a3395e4307a48882fd",
+  "preliminary_only": true,
+  "observed_facts_separate_from_interpretation": true,
+  "findings": [
+    {
+      "finding_id": "system-mobile-document-overflow",
+      "classification": "established defect",
+      "preliminary_severity": "P1",
+      "surface_key": "system",
+      "state": "normal",
+      "evidence": {
+        "layer": "canonical",
+        "viewport": "mobile-390x844",
+        "artifact": "visual-atlas/screenshots/system--mobile-390x844.png",
+        "observed_facts": {
+          "viewport_width_css_px": 390,
+          "document_scroll_width_css_px": 775,
+          "body_scroll_width_css_px": 775,
+          "overflow_exceeds_viewport": true
+        }
+      },
+      "user_consequence": "The page has an accidental horizontal scroll range on the supported 390 CSS px profile; content and controls can be displaced outside the intended viewport.",
+      "reproducibility": "Observed in the fresh disposable demo runtime at the exact bound source SHA/tree; reproducible by loading /system at 390x844 DPR 1.",
+      "suspected_root_authority": "shared responsive application-shell/system workspace composition",
+      "prohibited_inference": "This is not evidence of native-device, browser-zoom, RTL, or non-Chromium behavior."
+    },
+    {
+      "finding_id": "mobile-visualization-switch-clipping",
+      "classification": "high-confidence friction hypothesis",
+      "preliminary_severity": "P2",
+      "surface_key": "shared-visualization-switch",
+      "state": "normal",
+      "evidence": {
+        "layer": "canonical",
+        "viewports": [
+          {
+            "surface_key": "work_items",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/work_items--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 529,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "projects",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/projects--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 529,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "knowledge_entries",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/knowledge_entries--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 413,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "investigations",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/investigations--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 491,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "research",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/research--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 467,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "risks",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/risks--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 367,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "plan_tasks",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/plan_tasks--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 613,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "manufacturing_lots",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/manufacturing_lots--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 479,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "equipment_states",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/equipment_states--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 369,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "observability_events",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/observability_events--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 361,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          },
+          {
+            "surface_key": "incidents",
+            "viewport": "mobile-390x844",
+            "artifact": "visual-atlas/screenshots/incidents--mobile-390x844.png",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "segmented visualization-switch",
+                "scrollWidth": 467,
+                "clientWidth": 356,
+                "overflow": "hidden"
+              }
+            ]
+          }
+        ],
+        "observed_facts": {
+          "affected_surface_count": 11,
+          "control_class": "segmented visualization-switch",
+          "clipping_rule": "overflow:hidden",
+          "measured_instances": [
+            {
+              "surface_key": "work_items",
+              "scroll_width_css_px": 529,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 173
+            },
+            {
+              "surface_key": "projects",
+              "scroll_width_css_px": 529,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 173
+            },
+            {
+              "surface_key": "knowledge_entries",
+              "scroll_width_css_px": 413,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 57
+            },
+            {
+              "surface_key": "investigations",
+              "scroll_width_css_px": 491,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 135
+            },
+            {
+              "surface_key": "research",
+              "scroll_width_css_px": 467,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 111
+            },
+            {
+              "surface_key": "risks",
+              "scroll_width_css_px": 367,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 11
+            },
+            {
+              "surface_key": "plan_tasks",
+              "scroll_width_css_px": 613,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 257
+            },
+            {
+              "surface_key": "manufacturing_lots",
+              "scroll_width_css_px": 479,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 123
+            },
+            {
+              "surface_key": "equipment_states",
+              "scroll_width_css_px": 369,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 13
+            },
+            {
+              "surface_key": "observability_events",
+              "scroll_width_css_px": 361,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 5
+            },
+            {
+              "surface_key": "incidents",
+              "scroll_width_css_px": 467,
+              "client_width_css_px": 356,
+              "hidden_width_css_px": 111
+            }
+          ]
+        }
+      },
+      "user_consequence": "On affected mobile projections, the visualization-mode control is narrower than its content and may hide choices or make mode changes difficult to discover and reach.",
+      "reproducibility": "Observed on the fresh exact-source runtime for each listed mobile canonical surface; the measurement is DOM geometry evidence, so interaction reachability should be confirmed by bounded FIX work.",
+      "suspected_root_authority": "shared ProjectionWorkspaceFrame visualization-switch responsive composition",
+      "prohibited_inference": "This is a friction hypothesis, not a claim that every hidden choice is unreachable; no Product source was changed to test a repair."
+    }
+  ],
+  "excluded_diagnostic_patterns": [
+    "sr-only label overflow is intentional hidden-label geometry",
+    "AG Grid internal scroll/virtualization geometry is not page overflow by itself",
+    "request net::ERR_ABORTED events caused by diagnostic page disposal are not Product failures without an independently failed request",
+    "axe zero serious/critical does not certify full conformance"
+  ],
+  "counts": {
+    "established_defect": 1,
+    "high_confidence_friction_hypothesis": 1,
+    "taste_or_optimization_opportunity": 0
+  }
+}
