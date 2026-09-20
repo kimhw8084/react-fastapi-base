@@ -1,132 +1,372 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "accepted_at": "2026-09-20T16:21:29Z",
+  "changed_files": [],
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "command": "/bin/zsh -lc 'rtk tail -10 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk tail -15 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk tail -8 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "command": "/bin/zsh -lc 'rtk tail -12 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true'",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "command": "/bin/zsh -lc \"rtk ls -l /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release | tail -8; rtk ps -Ao pid,etime,command | rg 'reference|verify-release|python' | tail -20\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk ps aux | rg 'reference|verify-release|node|pytest' | tail -30\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 121,
+        "output_sha256": "5d8759c32eb103a1f7017eeeb41d9d7e9c704b49e85cf9c7b277ec45ac81e80e",
+        "summary_detected": false
+      },
+      "type": "command_execution"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "command": "/bin/zsh -lc 'rtk tail -3 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true; rtk git status --short | head -30'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -8 /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>/dev/null || true'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH RELEASE_BASE_SHA=8ebe3e05dd5c1b8abcf67405544dda305e1e448f API_COMPATIBILITY_BASE_SHA= ./dev verify-release > /tmp/golden-ui-v2-rc20-v5.VonKwe/health/verify-release.log 2>&1'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk mkdir -p /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence && rtk cp -R evidence/current/full-stack/. /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence/ && rtk cp -R evidence/current/release /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence-release && rtk jq '{status,source_commit,source_digest,version,counts: {pass: ([.results[]|select(.status==\\\"PASS\\\")]|length), blocked:([.results[]|select(.status==\\\"BLOCKED\\\")]|length), fail:([.results[]|select(.status==\\\"FAIL\\\")]|length)}, results: [.results[]|{name,status,reason}]}' /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.results[] | [.name,.status,(.reason//\\\"\\\")] | @tsv' /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence/verification.json | tail -12; rtk jq '{top_keys: keys, source: .source_commit, digest: .source_digest}' /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{release_status,code_ready,production_ready,checkout_commit,candidate_head,source_commit,executable_source_commit,release_results: (.results|map({name,status,reason})|group_by(.status)|map({status:.[0].status,count:length,names:map(.name)}))}' /tmp/golden-ui-v2-rc20-v5.VonKwe/health/release-evidence/verification.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short | wc -l && rtk git restore --source=8ebe3e05dd5c1b8abcf67405544dda305e1e448f --staged --worktree -- . && rtk git status --short && rtk git diff --stat'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{keys:keys,summary:.}' /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json; rtk jq '{keys:keys,source_sha,tree_sha,version,executable_source_commit,source_digest,node,npm,browser_identity,surface_count,canonical_screenshot_count,stress_case_count,task_oracle_count,holdout_count,negative_control_count}' /tmp/golden-ui-v2-rc20-v5.VonKwe/runtime-identity.json 2>/dev/null || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,240p' /tmp/golden-ui-v2-rc20-v5.VonKwe/runtime-identity.json; rtk sed -n '1,240p' /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -l '8ebe3e05dd5c1b8abcf67405544dda305e1e448f0' /tmp/golden-ui-v2-rc20-v5.VonKwe | sort\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/normalize-identity.mjs && rtk rg -l '\"'8ebe3e05dd5c1b8abcf67405544dda305e1e448f0' /tmp/golden-ui-v2-rc20-v5.VonKwe/visual-atlas /tmp/golden-ui-v2-rc20-v5.VonKwe/golden-ui /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json /tmp/golden-ui-v2-rc20-v5.VonKwe/runtime-identity.json || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/finalize-artifacts.mjs && rtk jq '\"'{status,release_health_result,blockers,requested_source_sha,source_sha}' /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json && rtk jq '{commands}' /tmp/golden-ui-v2-rc20-v5.VonKwe/golden-ui/release-health-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk find /tmp/golden-ui-v2-rc20-v5.VonKwe -maxdepth 3 -type f | sort | sed -n '1,120p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk find /tmp/golden-ui-v2-rc20-v5.VonKwe/visual-atlas -maxdepth 2 -type f -print | sort; rtk find /tmp/golden-ui-v2-rc20-v5.VonKwe/golden-ui -maxdepth 1 -type f -print | sort'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk mkdir -p /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage && rtk cp -R /tmp/golden-ui-v2-rc20-v5.VonKwe/visual-atlas /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/ && rtk cp -R /tmp/golden-ui-v2-rc20-v5.VonKwe/golden-ui /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/ && rtk cp /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/run-summary.json && rtk cp /tmp/golden-ui-v2-rc20-v5.VonKwe/runtime-identity.json /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/runtime-identity.json && rtk cd /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage && rtk zip -X -q -r artifact-bundle.zip visual-atlas golden-ui run-summary.json runtime-identity.json'",
+      "exit_code": 12,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls -ld /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/visual-atlas /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/golden-ui'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk zip -X -q -r artifact-bundle.zip visual-atlas golden-ui run-summary.json runtime-identity.json && rtk sha256sum artifact-bundle.zip'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/make-receipt.mjs && rtk jq '\"'{carrier_ref,source_sha,requested_source_sha,manifest_sha256,bundle_sha256,review_desktop_sha256,review_mobile_sha256,canonical_png_count,git_readback}' visual-atlas/artifact-stage-receipt.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/make-receipt.mjs && rtk jq '\"'{manifest_sha256,bundle_sha256,review_desktop_sha256,review_mobile_sha256,canonical_png_count,first_png:(.canonical_png_sha256|to_entries[0])}' visual-atlas/artifact-stage-receipt.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git remote get-url origin; rtk git ls-remote --heads origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rm -rf /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git && rtk mkdir -p /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git && rtk cp -R /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/. /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git/'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git init --initial-branch=artifact-package && rtk git add . && rtk git commit -m 'CHG-153 golden UI RC.20 verification package' && rtk git rev-parse HEAD && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin HEAD:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 128,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git remote add origin https://github.com/kimhw8084/react-fastapi-base.git && rtk git push origin HEAD:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/verify-remote.mjs 9ee915e6816dd8c39e888e5ed2e9d682a4a95500'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/verify-remote.mjs 9ee915e6816dd8c39e888e5ed2e9d682a4a95500'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/set-published-state.mjs && rtk cp /tmp/golden-ui-v2-rc20-v5.VonKwe/run-summary.json /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/run-summary.json && rtk rm -f artifact-bundle.zip && rtk zip -X -q -r artifact-bundle.zip visual-atlas golden-ui run-summary.json runtime-identity.json && rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/make-receipt.mjs && rtk sha256sum artifact-bundle.zip'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/mark-readback-verified.mjs && rtk cp -R /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/. /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git/ && rtk git add . && rtk git commit -m '\"'Record immutable Git publication readback' && rtk git rev-parse HEAD && rtk git push origin HEAD:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/verify-remote.mjs 256899121e1552303e65fbd36421f03cb370dc35 && rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5 && rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5; rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sha256sum visual-atlas/surface-manifest.json artifact-bundle.zip visual-atlas/review-desktop.pdf visual-atlas/review-mobile.pdf visual-atlas/artifact-stage-receipt.json; rtk jq '{manifest_sha256,bundle_sha256,review_desktop_sha256,review_mobile_sha256,canonical_png_count,git_readback}' visual-atlas/artifact-stage-receipt.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/mark-final-readback.mjs && rtk cp /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-stage/visual-atlas/artifact-stage-receipt.json /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git/visual-atlas/artifact-stage-receipt.json && rtk git add visual-atlas/artifact-stage-receipt.json && rtk git commit -m '\"'Record final carrier readback identity' && rtk git rev-parse HEAD && rtk git push origin HEAD:refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH node /tmp/golden-ui-v2-rc20-v5.VonKwe/verify-remote.mjs bbf9abb371fbb3cdf66b2dd7dd45d1dd7b8861b6 && rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5; rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{source_sha,requested_source_sha,tree_sha,version,manifest_sha256,bundle_sha256,review_desktop_sha256,review_mobile_sha256,canonical_png_count,git_readback}' visual-atlas/artifact-stage-receipt.json; rtk sha256sum visual-atlas/surface-manifest.json artifact-bundle.zip visual-atlas/review-desktop.pdf visual-atlas/review-mobile.pdf visual-atlas/artifact-stage-receipt.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD; rtk git rev-parse HEAD''^{tree}; rtk git rev-parse --abbrev-ref HEAD; rtk git status --porcelain=v1 --untracked-files=all; rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git branch -vv; rtk git remote show origin | rg -n 'codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5|main|HEAD' | head -30\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin HEAD:refs/heads/codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5 && rtk git ls-remote origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5 refs/heads/main'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --porcelain=v1 --untracked-files=all; rtk git rev-parse HEAD; rtk git rev-parse HEAD''^{tree}; rtk git rev-parse origin/main; rtk git ls-remote origin refs/heads/codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5 refs/heads/main refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq '{status,source_sha,requested_source_sha,artifact_publication,release_health_result,source_changed,surface_count,canonical_screenshot_count,stress_case_count,task_oracle_count,holdout_count,negative_control_count,finding_counts_by_class_and_severity,new_material_failure_classes}' run-summary.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short --ignored | rg 'test-results|playwright|CHECKPOINT|evidence/current|frontend/node_modules|backend/.venv' | head -80; rtk pgrep -af 'uvicorn|frontend/server.mjs|vite|playwright' | head -30\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rm -rf frontend/playwright-report frontend/test-results /tmp/golden-ui-v2-rc20-v5.VonKwe/disposable-data && rtk git status --porcelain=v1 --untracked-files=all && rtk git diff --cached --stat && rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git rev-parse origin/main'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk jq -r '.surfaces[] | .surface_key' /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git/visual-atlas/surface-manifest.json; rtk jq '{status,release_health_result,finding_counts_by_class_and_severity,blockers}' /tmp/golden-ui-v2-rc20-v5.VonKwe/artifact-git/run-summary.json; rtk jq '{file_count,all_files_verified,binary_readback,commit}' /tmp/golden-ui-v2-rc20-v5.VonKwe/remote-readback-first.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
     }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 359,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 97.74,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 25176064,
+      "fresh_input_tokens": 580988,
+      "input_tokens": 25757052,
+      "non_reasoning_output_tokens": 54990,
+      "output_tokens": 87786,
+      "reasoning_output_tokens": 32796,
+      "total_processed_tokens": 25844838
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": {
+    "additions": 0,
+    "changed_files": 0,
+    "commit_count": 0,
+    "deletions": 0
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
-    "items": [
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.3-resume-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.3-resume-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-20T17:27:33Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+    "branch": "codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5",
+    "detached_verify": false,
+    "head_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+    "remote_exact_head": true,
+    "remote_head_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-rc20-postfix-perfection-verify-v5",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
       }
-    ]
+    ],
+    "total_bytes": 2593,
+    "warning": null
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "job_id": "CF-9550bdc03600abcd7a090985",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.3-resume-candidate",
+    "policy_sha256": "a642c9f63bab2cb555704bdb0b9d1f28222591f133f934c1d0f93cc5a25ab8a1",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v2-rc20-postfix-perfection-verify-v5",
+  "schema_version": 1,
+  "started_at": "2026-09-20T16:21:29Z",
+  "status": "EXECUTED_NO_CHANGE",
+  "timing": {
+    "execution_seconds": 3964,
+    "queue_seconds": 0,
+    "total_seconds": 3964
+  },
+  "transport": {
+    "bytes": 18398,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 18019,
+    "prompt_sha256": "96b830ef6f977440fde1368e9759d6ea1c79917c1a4ecad23cdcd9da979916bf",
+    "sha256": "9550bdc03600abcd7a0909850ddc7454b45054f2c399281bf99cb80e88a873f7"
+  }
 }
