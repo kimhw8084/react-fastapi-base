@@ -1,30 +1,30 @@
 {
   "schema_version": 2,
-  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "checkout_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
-  "source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "timestamp": "2026-09-20T15:22:33.222512+00:00",
+  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "checkout_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "timestamp": "2026-09-20T19:26:47.530000+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
-    "python": "3.11.7"
+    "python": "3.12.9"
   },
   "hashes": {
-    "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9"
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19"
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "9c9034fb-27e9-4f1a-8bde-f7e6e075d244",
+  "tenant": "7ea5a64b-7fa5-463e-a0ec-b8c1976a96e8",
   "record_type": "work_items",
-  "record_id": "640b4698-ae28-4184-b4ec-6b49010eb458",
-  "object_key": "attachments/d9f6cca3-1ce9-4de7-80de-67f42a4ff942/recovery.txt",
+  "record_id": "44c0ed43-fbb1-4088-bc62-063b19e333ac",
+  "object_key": "attachments/e5e8cad7-e9fe-40ac-97d6-b90d01d4a5dd/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",

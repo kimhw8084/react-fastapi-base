@@ -1,7 +1,7 @@
 {
-  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-  "candidate_version": "1.0.0-rc.20",
-  "checkout_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_version": "1.0.0-rc.21",
+  "checkout_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
   "checks": {
     "clean_clone_bootstrap": true,
     "documentation_and_commands": true,
@@ -57,23 +57,23 @@
     "production_ready": false,
     "status": "BLOCKED_EXTERNAL"
   },
-  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
   "inputs": {
     "clean_clone": {
       "locator": "evidence/current/full-stack/fresh-clone-macos.json",
-      "sha256": "204858165a9938f3b44d4de909b61e839db231a8ebf6a6c74faee2418d579d7c"
+      "sha256": "62db8200f93b99ebb08b1e74d10158937c3bf0d80032c2545cb3902530055c87"
     },
     "reference_apps": {
       "locator": "evidence/current/release/reference-apps.json",
-      "sha256": "2e5bdabba0bd53392710d5da9cac5c044726805a7aebc2e2e73e5cbd7e1a4788"
+      "sha256": "43588d7b8e8a268167e17e4382f891cc81b9a0a7613ebd7b97ecf1570f43c655"
     },
     "storage_qualification": {
       "locator": "evidence/current/storage/qualification.json",
-      "sha256": "14d7f8659a3374ba1833eceab090568c96616bbc194cc485521a8f233f73365a"
+      "sha256": "4e29c80079b61270dfcda533e97c7e0a352f6232989dde4cedc5824f27febeae"
     },
     "upgrade_fixture": {
       "locator": "evidence/current/full-stack/upgrade-fixture.json",
-      "sha256": "9da8c0c44c5b867a2acb49d43023d754ac2ee94d372f46dfa858690451fefa62"
+      "sha256": "0475af39fcd70a597017b4bb3f97480dfbc96bbbfe27c8dbebccc1817ee3a4a6"
     }
   },
   "problems": [],
@@ -84,10 +84,10 @@
   "result": "PASS",
   "schema_version": 1,
   "source_binding": {
-    "candidate_checkout": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
-    "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
-    "verified_executable_source": "bde0ecf67f0f779854f3906f662fc5e11d58eabb"
+    "candidate_checkout": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "verified_executable_source": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f"
   },
-  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
   "status": "PASS"
 }
