@@ -1,17 +1,17 @@
 Collected 31 backend test files into 4 deterministic shards.
---- backend shard 1 (8.4s, exit 0) ---
+--- backend shard 1 (9.9s, exit 0) ---
 ......................................                                   [100%]
-38 passed in 6.95s
---- backend shard 2 (26.4s, exit 0) ---
+38 passed in 6.79s
+--- backend shard 2 (27.5s, exit 0) ---
 ........................................................................ [ 78%]
 ....................                                                     [100%]
-92 passed in 24.88s
---- backend shard 3 (27.9s, exit 0) ---
+92 passed in 25.96s
+--- backend shard 3 (29.1s, exit 0) ---
 ...........s............................................................ [ 72%]
 ............................                                             [100%]
 =========================== short test summary info ============================
 SKIPPED [1] tests/test_company_qualification_contract.py:211: generated repository release identity is not present yet
-99 passed, 1 skipped in 26.37s
---- backend shard 4 (17.3s, exit 0) ---
+99 passed, 1 skipped in 27.44s
+--- backend shard 4 (17.4s, exit 0) ---
 .......................................................................  [100%]
-71 passed in 15.82s
+71 passed in 15.71s

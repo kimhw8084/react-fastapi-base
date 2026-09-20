@@ -1,6 +1,6 @@
 {
-  "candidate_head": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
-  "candidate_version": "1.0.0-rc.18",
+  "candidate_head": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
+  "candidate_version": "1.0.0-rc.19",
   "checks": {
     "api_compatibility_current_pair": {
       "status": "PASS"
@@ -62,8 +62,8 @@
   },
   "company_deployment_status": "BLOCKED_EXTERNAL",
   "company_qualification": "BLOCKED_EXTERNAL",
-  "contract_sha256": "5419e3748b00db9b1569bcb5cb50a4cd8c7651ce137954c0f9a3e651cc6f404e",
-  "executable_source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "contract_sha256": "1e8a76ed5607e215c0ba1c2b6b3fdf97d9fc399713a30ea2706af09c2c81d19f",
+  "executable_source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
   "failure_checks": [],
   "frontend_api_base": "http://127.0.0.1:18000",
   "note": "Repository proof covers independently published software units only; company publication, ingress, session, restart, redeploy and recovery qualification remain external.",
@@ -87,6 +87,6 @@
   "report_type": "repository-independent-deployment-qualification",
   "repository_deployment_status": "PASS",
   "schema_version": 1,
-  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf",
+  "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2",
   "status": "PASS"
 }

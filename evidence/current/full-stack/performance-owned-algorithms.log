@@ -1,11 +1,11 @@
-PASS descriptive-100k: 0.032s <= 1.500s
-PASS imr-100k: 0.014s <= 2.500s
-PASS ewma-100k: 0.007s <= 1.500s
-PASS run-rules-100k: 0.100s <= 2.500s
+PASS descriptive-100k: 0.030s <= 1.500s
+PASS imr-100k: 0.013s <= 2.500s
+PASS ewma-100k: 0.006s <= 1.500s
+PASS run-rules-100k: 0.086s <= 2.500s
 PASS pareto-100k: 0.007s <= 1.500s
-PASS p-chart-100k: 0.035s <= 2.500s
-PASS c-chart-100k: 0.008s <= 1.500s
-PASS cusum-100k: 0.022s <= 2.500s
+PASS p-chart-100k: 0.033s <= 2.500s
+PASS c-chart-100k: 0.007s <= 1.500s
+PASS cusum-100k: 0.020s <= 2.500s
 PASS correlation-100k: 0.023s <= 1.500s
 PASS regression-100k: 0.028s <= 2.500s
-PASS owned algorithm performance regression: /Users/haewonkim/.codex-fabric/worktrees/CF-0fd93a3c5035a268d7b4a517/evidence/current/performance/owned-algorithms.json
+PASS owned algorithm performance regression: /Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/evidence/current/performance/owned-algorithms.json

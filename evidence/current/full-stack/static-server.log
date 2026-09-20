@@ -2,77 +2,92 @@ TAP version 13
 # Subtest: static HTML has CSP and no-store
 ok 1 - static HTML has CSP and no-store
   ---
-  duration_ms: 24.7305
+  duration_ms: 21.526875
+  type: 'test'
   ...
 # Subtest: SPA navigation works but API is never HTML fallback
 ok 2 - SPA navigation works but API is never HTML fallback
   ---
-  duration_ms: 5.532167
+  duration_ms: 6.050625
+  type: 'test'
   ...
 # Subtest: hashed assets are immutable; missing asset is 404
 ok 3 - hashed assets are immutable; missing asset is 404
   ---
-  duration_ms: 4.742333
+  duration_ms: 4.191167
+  type: 'test'
   ...
 # Subtest: invalid host and unsafe method fail
 ok 4 - invalid host and unsafe method fail
   ---
-  duration_ms: 6.668833
+  duration_ms: 4.116958
+  type: 'test'
   ...
 # Subtest: symlink cannot disclose source outside dist
 ok 5 - symlink cannot disclose source outside dist
   ---
-  duration_ms: 3.723125
+  duration_ms: 3.278083
+  type: 'test'
   ...
 # Subtest: runtime config can change without rebuilding; corrupt config fails closed
 ok 6 - runtime config can change without rebuilding; corrupt config fails closed
   ---
-  duration_ms: 4.842834
+  duration_ms: 6.645833
+  type: 'test'
   ...
 # Subtest: hidden files and source maps are not served
 ok 7 - hidden files and source maps are not served
   ---
-  duration_ms: 4.102209
+  duration_ms: 4.598875
+  type: 'test'
   ...
 # Subtest: runtime rejects credentials, scripts, unknown keys and bad version
 ok 8 - runtime rejects credentials, scripts, unknown keys and bad version
   ---
-  duration_ms: 0.267416
+  duration_ms: 0.210167
+  type: 'test'
   ...
 # Subtest: public runtime rejects server profile, storage and identity fields
 ok 9 - public runtime rejects server profile, storage and identity fields
   ---
-  duration_ms: 0.148958
+  duration_ms: 0.232917
+  type: 'test'
   ...
 # Subtest: publisher namespace rejects unknown, case-variant and invalid configuration without values
 ok 10 - publisher namespace rejects unknown, case-variant and invalid configuration without values
   ---
-  duration_ms: 0.457208
+  duration_ms: 0.599625
+  type: 'test'
   ...
 # Subtest: publisher process exceptions reject case-variant names
 ok 11 - publisher process exceptions reject case-variant names
   ---
-  duration_ms: 0.068625
+  duration_ms: 0.075667
+  type: 'test'
   ...
 # Subtest: publisher production routing requires explicit public hosts and absolute runtime override
 ok 12 - publisher production routing requires explicit public hosts and absolute runtime override
   ---
-  duration_ms: 0.353583
+  duration_ms: 0.350333
+  type: 'test'
   ...
 # Subtest: static publisher rejects a relative runtime path
 ok 13 - static publisher rejects a relative runtime path
   ---
-  duration_ms: 1.8435
+  duration_ms: 1.744292
+  type: 'test'
   ...
 # Subtest: publisher never serves runtime values outside the strict browser schema
 ok 14 - publisher never serves runtime values outside the strict browser schema
   ---
-  duration_ms: 2.914041
+  duration_ms: 2.855666
+  type: 'test'
   ...
 # Subtest: embedded lab has a same-origin frame boundary; app remains non-frameable
 ok 15 - embedded lab has a same-origin frame boundary; app remains non-frameable
   ---
-  duration_ms: 3.987959
+  duration_ms: 4.266
+  type: 'test'
   ...
 1..15
 # tests 15
@@ -82,4 +97,4 @@ ok 15 - embedded lab has a same-origin frame boundary; app remains non-frameable
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 102.405958
+# duration_ms 106.555666
