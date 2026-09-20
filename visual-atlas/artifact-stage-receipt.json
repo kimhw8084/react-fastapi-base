@@ -16,7 +16,7 @@
   "native_fabric_audit_identity": null,
   "bundle_members_exclude_self_and_stage_receipt": true,
   "manifest_sha256": "662697db53ef27ca84e4d7df18c43d6233028b6a6db626c2114e6063d04c5f74",
-  "bundle_sha256": "4a243fb3d8ff791c813b5500f4ebb2bfaa7766c9f5e4f1fac6ce8dfffed9e4e0",
+  "bundle_sha256": "93523f50ae230a80ebf631e63c782a310e4390a4566f77e27e9e55de45c30714",
   "review_desktop_sha256": "c928b519325e026cc3b180b6abd989673b5fb3e8ee2241f430a28b9c91884246",
   "review_mobile_sha256": "bdb2d72200cbd2222c3322e24dfe038a7f5ee8fddc32209ec236c6e5621af1c8",
   "canonical_png_count": 42,
@@ -78,7 +78,7 @@
     "golden-ui/state-coverage.json": "2b080caecf0be12bebc1c1be2345ccfd60594326462541b98f0d8d2d05841a77",
     "golden-ui/stress-manifest.json": "9d1e1a3f47061e8931b804a27f85f2c8efc4f6de8326f66ed58191de4605d4f3",
     "golden-ui/task-traces.json": "e2bd773c7f5c0fde66d776c01a7ca0c7b1b017775b98f9368555f88f63475c5e",
-    "run-summary.json": "339803f6e89a72cc22796e5d87ec9ad9c2e41ec7a0b2d91af83883e7f7f9e88a",
+    "run-summary.json": "2c56155b74124ea71e494af0b04e0d7387af5ca556445fbbfcf47a60ea361677",
     "runtime-identity.json": "1f4cc5253470e887096443ea83e955a1fd66c1dda90cdc4be7c3e747d4fd9043",
     "visual-atlas/capture-report.json": "b07fcbae666aa9371ec9111cddaa595218b71a477e99daf2ee418b6249cbffb9",
     "visual-atlas/reader-index.json": "a96ed76951e212c640eea1f84f184ea29ca7201bf40213e1db9f25ed9c615669",
@@ -129,7 +129,24 @@
     "visual-atlas/surface-manifest.json": "662697db53ef27ca84e4d7df18c43d6233028b6a6db626c2114e6063d04c5f74"
   },
   "git_readback": {
-    "status": "PENDING_PUBLICATION",
-    "note": "This receipt is updated after the first immutable Git publication and remote readback; it never impersonates native Fabric audit identity."
+    "status": "VERIFIED",
+    "first_publication_commit": "9ee915e6816dd8c39e888e5ed2e9d682a4a95500",
+    "verified_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5",
+    "all_files_verified": true,
+    "verified_file_count": 64,
+    "package_hashes_verified": true,
+    "binary_readback": [
+      {
+        "path": "visual-atlas/screenshots/work-items--desktop-1440x900.png",
+        "sha256": "8b29aebb727c5ab182b9fb202e56a35746a24f37c424b96baf3e6169726476ea",
+        "bytes": 164143
+      },
+      {
+        "path": "visual-atlas/screenshots/work-items--mobile-390x844.png",
+        "sha256": "f44609f99be31a6d140d10192b976e0b6d2f2f55f5b99cf2c1093f957415c149",
+        "bytes": 60907
+      }
+    ],
+    "note": "Remote readback was performed against the first immutable publication before this receipt was fast-forwarded with the final package metadata. This receipt never impersonates native Fabric audit identity."
   }
 }

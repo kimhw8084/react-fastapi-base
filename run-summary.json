@@ -45,7 +45,7 @@
     "The artifact is evidence-only and awaits independent Project OS staging/pixel audit; no perfection acceptance is asserted."
   ],
   "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5",
-  "status": "AWAITING_ARTIFACT_PUBLICATION",
+  "status": "GIT_PUBLISHED_AWAITING_AUDIT",
   "blockers": [
     "The requested source SHA is 41 hex characters and is not a Git object; package source_sha uses the exact 40-character local/origin/main commit and records the requested value separately.",
     "Release-mode verification is NOT_CERTIFIED solely for company-identity, company-storage and company-deployment external qualifications.",
@@ -54,5 +54,10 @@
     "Perfection verdict intentionally not self-accepted"
   ],
   "requested_source_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f0",
-  "identity_resolution": "The supplied 41-character source SHA is not a Git object; source_sha is normalized to the exact 40-character local/origin/main commit."
+  "identity_resolution": "The supplied 41-character source SHA is not a Git object; source_sha is normalized to the exact 40-character local/origin/main commit.",
+  "artifact_publication": {
+    "carrier_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc20-postfix-perfection-verify-v5",
+    "git_package_verified": true,
+    "carrier_commit": "reported in the final machine receipt and independent Project OS handoff; not a native Fabric audit identity"
+  }
 }
