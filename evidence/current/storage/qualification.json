@@ -1,7 +1,7 @@
 {
-  "candidate_head": "42f73f2bc6d0925f0b378f621acb6f1c15d0dc16",
-  "candidate_version": "1.0.0-rc.17",
-  "checkout_commit": "42f73f2bc6d0925f0b378f621acb6f1c15d0dc16",
+  "candidate_head": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "candidate_version": "1.0.0-rc.18",
+  "checkout_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
   "checks": {
     "database_invariants": true,
     "development_is_qualification_independent": true,
@@ -22,19 +22,19 @@
     "platform": "Darwin",
     "python": "3.11.7"
   },
-  "executable_source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
+  "executable_source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
   "exit_code": 0,
   "hashes": {
-    "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77"
+    "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf"
   },
   "inputs": {
     "qualification_contract": {
       "locator": "deploy/company-qualification.schema.json",
-      "sha256": "61fcabff989734f97af0d2dabd216c4cdc89881008c65ad78682dc5eae0a23d0"
+      "sha256": "20bb2af4adc869ab75c6a0b15e145180e0f8572faa2a088da46007ef97193807"
     },
     "recovery": {
       "locator": "evidence/current/recovery/object-restore.json",
-      "sha256": "48ef09ccea70f9e4e5949c8eca7782849bd43d0018b9d795fd0a131f3d7b1723"
+      "sha256": "13f9894fa281344078adf35a120e553b36854a09a894c542a79159295cda9301"
     }
   },
   "problems": [],
@@ -45,7 +45,7 @@
   "report_type": "repository-storage-qualification",
   "result": "PASS",
   "schema_version": 1,
-  "source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
-  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
+  "source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf",
   "status": "PASS"
 }

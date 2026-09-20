@@ -4,8 +4,8 @@
   "tier_id": "platform-data-volume",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "105fe0510b0638abc94fd744c395ae7e7d19fc52",
-  "source_digest": "8428bc351f13ac0aa83f60ccfef603cde0b4a3794b3821d6c3f7e6505041cc77",
+  "source_commit": "7f4f5ce783a01b2fd780067ebeafa587659e19b0",
+  "source_digest": "455d9420792d57ff4661b390294f148e5f3a9fc4216946a76a9d7aacc8723abf",
   "command": [
     "python3",
     "scripts/performance_stress.py"
@@ -27,7 +27,7 @@
         "elapsed_seconds": 2.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.01149
+        "elapsed_seconds": 0.014962
       },
       "diagnostic_metrics": {
         "result": 100
@@ -44,7 +44,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.000157
+        "elapsed_seconds": 0.000165
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -62,7 +62,7 @@
         "elapsed_seconds": 2.0
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.001525
+        "elapsed_seconds": 0.001581
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -81,7 +81,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.000412
+        "elapsed_seconds": 0.0006
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -98,7 +98,7 @@
         "elapsed_seconds": 1.0
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.001778
+        "elapsed_seconds": 0.002416
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -117,7 +117,7 @@
         "elapsed_seconds": 1.5
       },
       "hard_metrics": {
-        "elapsed_seconds": 0.001685
+        "elapsed_seconds": 0.003747
       },
       "diagnostic_metrics": {
         "result": 100
@@ -134,7 +134,7 @@
         "elapsed_seconds": 0.75
       },
       "hard_metrics": {
-        "elapsed_seconds": 3.1e-05
+        "elapsed_seconds": 4.8e-05
       },
       "diagnostic_metrics": {
         "result": 86
