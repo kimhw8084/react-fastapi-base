@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "candidate_head": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
-  "checkout_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
-  "executable_source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
-  "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2",
-  "source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
-  "created_at": "2026-09-20T14:20:32Z",
-  "timestamp": "2026-09-20T14:20:32Z",
+  "candidate_head": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "checkout_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "created_at": "2026-09-20T15:22:32Z",
+  "timestamp": "2026-09-20T15:22:32Z",
   "command": [
     "python3",
     "scripts/upgrade_fixture.py"
@@ -18,28 +18,28 @@
     "profile": "development"
   },
   "hashes": {
-    "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2"
+    "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9"
   },
   "profile": "development",
   "application_owned_preserved": true,
   "result": "PASS",
-  "duration_seconds": 22.211,
+  "duration_seconds": 20.194,
   "steps": [
     {
       "name": "application-data-seed",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
         "-c",
         "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); database=Database(settings); tenant=provision(database, 'Upgrade fixture tenant', 'alice'); database.close(); app=create_app(settings); client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development' and bootstrap['user_id']=='alice'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); created=client.post('/api/v1/projects', json={'title':'Application-owned project','summary':'survives managed core upgrade','status':'active','owner':'alice'}); assert created.status_code==201; print(json.dumps({'tenant_id':tenant,'project_id':created.json()['id'],'title':created.json()['title']})); client.close()"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/backend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/backend",
       "exit_code": 0,
-      "duration_seconds": 1.124,
-      "stdout_tail": "{\"tenant_id\": \"38c47f3a-ee49-459b-9c71-fb32020462ba\", \"project_id\": \"15ecd2d3-07e9-4c08-b777-60e99f427887\", \"title\": \"Application-owned project\"}\n",
+      "duration_seconds": 1.107,
+      "stdout_tail": "{\"tenant_id\": \"bc33083e-e4df-4377-95cd-19d8c4bf8e1a\", \"project_id\": \"660ffe3d-1aed-4435-bb32-fbbf18b1ae95\", \"title\": \"Application-owned project\"}\n",
       "stderr_tail": "",
       "record": {
-        "tenant_id": "38c47f3a-ee49-459b-9c71-fb32020462ba",
-        "project_id": "15ecd2d3-07e9-4c08-b777-60e99f427887",
+        "tenant_id": "bc33083e-e4df-4377-95cd-19d8c4bf8e1a",
+        "project_id": "660ffe3d-1aed-4435-bb32-fbbf18b1ae95",
         "title": "Application-owned project"
       }
     },
@@ -50,15 +50,15 @@
       "changes": 1,
       "conflicts": 0,
       "source_provenance": {
-        "platform_version": "1.0.0-rc.19",
-        "executable_source_commit": "50ff7adc9e641830f6c13f2e3ba2c02573febda8",
-        "source_digest": "b0c251a509fe0ffa7f8954dbe2ec9a8d3117b1c93e78233939e8eaf71bad7dd2"
+        "platform_version": "1.0.0-rc.20",
+        "executable_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+        "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9"
       }
     },
     {
       "name": "upgrade-apply",
       "exit_code": 0,
-      "journal": "../../../../../../../private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/.template-upgrades/20260920T142013Z-dc98710fa718/journal.json"
+      "journal": "../../../../../../../../private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/.template-upgrades/20260920T152215Z-dc98710fa718/journal.json"
     },
     {
       "name": "application-config-preserved-after-apply",
@@ -68,31 +68,31 @@
     {
       "name": "application-data-preserved-after-apply",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
         "-c",
-        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='38c47f3a-ee49-459b-9c71-fb32020462ba'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
+        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='bc33083e-e4df-4377-95cd-19d8c4bf8e1a'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/backend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/backend",
       "exit_code": 0,
-      "duration_seconds": 0.864,
-      "stdout_tail": "{\"tenant_id\": \"38c47f3a-ee49-459b-9c71-fb32020462ba\", \"project_id\": \"15ecd2d3-07e9-4c08-b777-60e99f427887\", \"title\": \"Application-owned project\"}\n",
+      "duration_seconds": 0.792,
+      "stdout_tail": "{\"tenant_id\": \"bc33083e-e4df-4377-95cd-19d8c4bf8e1a\", \"project_id\": \"660ffe3d-1aed-4435-bb32-fbbf18b1ae95\", \"title\": \"Application-owned project\"}\n",
       "stderr_tail": "",
       "record": {
-        "tenant_id": "38c47f3a-ee49-459b-9c71-fb32020462ba",
-        "project_id": "15ecd2d3-07e9-4c08-b777-60e99f427887",
+        "tenant_id": "bc33083e-e4df-4377-95cd-19d8c4bf8e1a",
+        "project_id": "660ffe3d-1aed-4435-bb32-fbbf18b1ae95",
         "title": "Application-owned project"
       }
     },
     {
       "name": "migration",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
         "-c",
-        "from app.platform.settings import Settings; from app.platform.database import Database; from app.platform.migrations import migrate, assert_revision; s=Settings(environment=\"test\", profile=\"development\"); d=Database(s); migrate(d); migrate(d, \"38c47f3a-ee49-459b-9c71-fb32020462ba\"); assert_revision(d); assert_revision(d, \"38c47f3a-ee49-459b-9c71-fb32020462ba\")"
+        "from app.platform.settings import Settings; from app.platform.database import Database; from app.platform.migrations import migrate, assert_revision; s=Settings(environment=\"test\", profile=\"development\"); d=Database(s); migrate(d); migrate(d, \"bc33083e-e4df-4377-95cd-19d8c4bf8e1a\"); assert_revision(d); assert_revision(d, \"bc33083e-e4df-4377-95cd-19d8c4bf8e1a\")"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/backend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/backend",
       "exit_code": 0,
-      "duration_seconds": 0.309,
+      "duration_seconds": 0.257,
       "stdout_tail": "",
       "stderr_tail": ""
     },
@@ -103,20 +103,20 @@
         "ci",
         "--ignore-scripts"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 1.939,
+      "duration_seconds": 1.668,
       "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
       "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
     },
     {
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
         "scripts/generate_contracts.py"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app",
       "exit_code": 0,
-      "duration_seconds": 1.447,
+      "duration_seconds": 1.454,
       "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
       "stderr_tail": "",
       "name": "contracts"
@@ -127,10 +127,10 @@
         "run",
         "typecheck"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 3.417,
-      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.19 typecheck\n> tsc --noEmit\n\n",
+      "duration_seconds": 3.446,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.20 typecheck\n> tsc --noEmit\n\n",
       "stderr_tail": "",
       "name": "frontend-typecheck"
     },
@@ -139,10 +139,10 @@
         "npm",
         "test"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 3.521,
-      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.19 test\n> vitest run\n\n\n RUN  v4.1.11 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/frontend\n\n\n Test Files  18 passed (18)\n      Tests  50 passed (50)\n   Start at  09:20:23\n   Duration  2.04s (transform 1.03s, setup 3.25s, import 1.21s, tests 957ms, environment 11.74s)\n\n",
+      "duration_seconds": 3.1,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.20 test\n> vitest run\n\n\n RUN  v4.1.11 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/frontend\n\n\n Test Files  18 passed (18)\n      Tests  50 passed (50)\n   Start at  10:22:23\n   Duration  2.06s (transform 844ms, setup 3.65s, import 1.11s, tests 657ms, environment 12.42s)\n\n",
       "stderr_tail": "",
       "name": "frontend-tests"
     },
@@ -152,10 +152,10 @@
         "run",
         "build"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/frontend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/frontend",
       "exit_code": 0,
-      "duration_seconds": 4.857,
-      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.19 prebuild\n> node scripts/prepare-lab.mjs\n\n\n> react-fastapi-base-frontend@1.0.0-rc.19 build\n> tsc --noEmit && vite build\n\nvite v8.2.2 building client environment for production...\ntransforming...\n\u2713 195 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.40 kB \u2502 gzip:   0.28 kB\ndist/assets/index-BF8YgoaJ.css             101.92 kB \u2502 gzip:  17.35 kB\ndist/assets/WorkspaceShell-CJ70MoG4.js       1.01 kB \u2502 gzip:   0.42 kB\ndist/assets/model-Dp3BhK-X.js                1.19 kB \u2502 gzip:   0.60 kB\ndist/assets/Workspace-C_efPxbf.js            1.45 kB \u2502 gzip:   0.73 kB\ndist/assets/model-DYk614PN.js                1.49 kB \u2502 gzip:   0.61 kB\ndist/assets/Workspace-BkWU91yL.js            1.79 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-BeCDRWg1.js            1.84 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-DlsoPjN2.js            2.16 kB \u2502 gzip:   0.94 kB\ndist/assets/useMutation-CObuizlI.js          2.30 kB \u2502 gzip:   0.94 kB\ndist/assets/Workspace-CDpC2BhP.js            3.80 kB \u2502 gzip:   1.46 kB\ndist/assets/Workspace-sTdMBMt6.js            4.72 kB \u2502 gzip:   1.78 kB\ndist/assets/Workspace-CHU-bYqt.js            5.26 kB \u2502 gzip:   1.92 kB\ndist/assets/Workspace-DnNCAj_i.js            5.29 kB \u2502 gzip:   1.92 kB\ndist/assets/Workspace-8DWOTsfs.js            5.33 kB \u2502 gzip:   1.83 kB\ndist/assets/Workspace-BOwr15Zd.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-KZf5sLok.js            5.62 kB \u2502 gzip:   1.99 kB\ndist/assets/Workspace-BxSp1kUV.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-DBcpOayV.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-C-q71Ta9.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-CCx7hb6l.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-CbYvAvSW.js            6.76 kB \u2502 gzip:   2.29 kB\ndist/assets/Workspace-DAVVW4U9.js            7.31 kB \u2502 gzip:   2.31 kB\ndist/assets/primitives-BCtm9Xtx.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-CZc04D6g.js            9.38 kB \u2502 gzip:   3.23 kB\ndist/assets/Workspace-CoLbdbUS.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-DcjO14vM.js           12.35 kB \u2502 gzip:   4.27 kB\ndist/assets/Workspace-tIrPXqHO.js           13.49 kB \u2502 gzip:   3.89 kB\ndist/assets/ExperienceLab-bLXFF5F-.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-CYHgGl_1.js    103.85 kB \u2502 gzip:  27.14 kB\ndist/assets/index-DoQUmFib.js              260.02 kB \u2502 gzip:  80.37 kB\ndist/assets/FieldInput-CaGkj5MG.js       1,161.23 kB \u2502 gzip: 320.91 kB\n\n\u2713 built in 887ms\n",
+      "duration_seconds": 4.21,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.20 prebuild\n> node scripts/prepare-lab.mjs\n\n\n> react-fastapi-base-frontend@1.0.0-rc.20 build\n> tsc --noEmit && vite build\n\nvite v8.2.2 building client environment for production...\ntransforming...\n\u2713 196 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.40 kB \u2502 gzip:   0.28 kB\ndist/assets/index-CT1t36U6.css             101.92 kB \u2502 gzip:  17.35 kB\ndist/assets/WorkspaceShell-DQQySaXi.js       1.01 kB \u2502 gzip:   0.42 kB\ndist/assets/model-Dp3BhK-X.js                1.19 kB \u2502 gzip:   0.60 kB\ndist/assets/Workspace-NA18C2BQ.js            1.45 kB \u2502 gzip:   0.73 kB\ndist/assets/model-DYk614PN.js                1.49 kB \u2502 gzip:   0.61 kB\ndist/assets/Workspace-CA4J6850.js            1.79 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-fIC1BVvP.js            1.84 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-D_O5564v.js            2.16 kB \u2502 gzip:   0.94 kB\ndist/assets/focusReveal-DSST5fS5.js          3.05 kB \u2502 gzip:   1.27 kB\ndist/assets/Workspace-BMF5GHsV.js            3.80 kB \u2502 gzip:   1.46 kB\ndist/assets/Workspace-f242uDQn.js            4.72 kB \u2502 gzip:   1.78 kB\ndist/assets/Workspace-DHNaCl-i.js            5.26 kB \u2502 gzip:   1.92 kB\ndist/assets/Workspace-CqlHFDUF.js            5.29 kB \u2502 gzip:   1.92 kB\ndist/assets/Workspace-GemJILa9.js            5.33 kB \u2502 gzip:   1.83 kB\ndist/assets/Workspace-mHcTEW8M.js            5.38 kB \u2502 gzip:   2.08 kB\ndist/assets/Workspace-DqgJJbk1.js            5.62 kB \u2502 gzip:   2.00 kB\ndist/assets/Workspace-BH0_2rQT.js            5.64 kB \u2502 gzip:   1.96 kB\ndist/assets/Workspace-D22xr3Ap.js            5.93 kB \u2502 gzip:   2.10 kB\ndist/assets/Workspace-0zxcBQOt.js            6.22 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-BPwwRxp0.js            6.43 kB \u2502 gzip:   2.32 kB\ndist/assets/Workspace-DQxCl9w3.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-BQovXiUm.js            7.31 kB \u2502 gzip:   2.32 kB\ndist/assets/primitives-D87gTg09.js           8.02 kB \u2502 gzip:   2.56 kB\ndist/assets/Workspace-DWHhyJzH.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-B7ezGfJ9.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-DJnUErFH.js           12.35 kB \u2502 gzip:   4.28 kB\ndist/assets/Workspace-B1T8fs4H.js           13.57 kB \u2502 gzip:   3.94 kB\ndist/assets/ExperienceLab-DZwB4npP.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-BGFZqeuR.js    103.96 kB \u2502 gzip:  27.21 kB\ndist/assets/index-BESUCX90.js              260.02 kB \u2502 gzip:  80.38 kB\ndist/assets/FieldInput-B7HjwlTC.js       1,161.23 kB \u2502 gzip: 320.91 kB\n\n\u2713 built in 701ms\n",
       "stderr_tail": "",
       "name": "frontend-build"
     },
@@ -172,18 +172,18 @@
     {
       "name": "application-data-preserved-after-rollback",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-52c4166cdc70089e98abc2b4/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-1a19ce1aeda032abc39a148c/backend/.venv/bin/python",
         "-c",
-        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='38c47f3a-ee49-459b-9c71-fb32020462ba'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
+        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='bc33083e-e4df-4377-95cd-19d8c4bf8e1a'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
       ],
-      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-xdlj_uua/old-generated-app/backend",
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/com.apple.shortcuts.mac-helper/react-fastapi-upgrade-drt1c_92/old-generated-app/backend",
       "exit_code": 0,
-      "duration_seconds": 0.862,
-      "stdout_tail": "{\"tenant_id\": \"38c47f3a-ee49-459b-9c71-fb32020462ba\", \"project_id\": \"15ecd2d3-07e9-4c08-b777-60e99f427887\", \"title\": \"Application-owned project\"}\n",
+      "duration_seconds": 1.071,
+      "stdout_tail": "{\"tenant_id\": \"bc33083e-e4df-4377-95cd-19d8c4bf8e1a\", \"project_id\": \"660ffe3d-1aed-4435-bb32-fbbf18b1ae95\", \"title\": \"Application-owned project\"}\n",
       "stderr_tail": "",
       "record": {
-        "tenant_id": "38c47f3a-ee49-459b-9c71-fb32020462ba",
-        "project_id": "15ecd2d3-07e9-4c08-b777-60e99f427887",
+        "tenant_id": "bc33083e-e4df-4377-95cd-19d8c4bf8e1a",
+        "project_id": "660ffe3d-1aed-4435-bb32-fbbf18b1ae95",
         "title": "Application-owned project"
       }
     }

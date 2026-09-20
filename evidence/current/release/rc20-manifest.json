@@ -1,0 +1,67 @@
+{
+  "api_compatibility_base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "artifact_label": "rc20",
+  "blocking_gates": [
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations"
+  ],
+  "code_ready": true,
+  "deployment_qualification": {
+    "locator": "evidence/current/deployment/qualification.json",
+    "required_for": "code",
+    "sha256": "6644f81977bd661682fde45cb12a007d8bd69e2d1f9fba33e80e7f1099ad3ffd"
+  },
+  "evidence_commit": null,
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "db9d5e4dfa1c40547a315819929ec83427a78957f0976303a71922c7d32db52e"
+  },
+  "product": "react-fastapi-base",
+  "production_ready": false,
+  "profile": "company",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc20-readiness-matrix.json",
+    "sha256": "c42af499b4fa4cb3c5f1ac2b3760fe1e4f2671acb6e9e3dd3dc96f6d61e879bb"
+  },
+  "release_identity": {
+    "locator": "deploy/rc20-release-identity.json"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "repository_operations_qualification": {
+    "company_operations_gate": "BLOCKED_EXTERNAL",
+    "locator": "evidence/current/operations/qualification.json",
+    "repository_status": "PASS",
+    "required_for": "code",
+    "sha256": "bd8276da5fb2f6f5c8f054960efbbd90e44a687126ba7bcc784d107a6144b9c6"
+  },
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "3849f256670cca34d4999b57bb1b0dac73b2c18b1cd1ffa9b804de60a339903a"
+  },
+  "schema_version": 2,
+  "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9",
+  "storage_qualification": {
+    "locator": "evidence/current/storage/qualification.json",
+    "required_for": "code",
+    "sha256": "14d7f8659a3374ba1833eceab090568c96616bbc194cc485521a8f233f73365a"
+  },
+  "target_base_sha": "e96f22df30bba6733d6c86c1900ad8af159a6613",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "9db56244b810ec0b7962068e24fb8cc75f437e75540d9bfcbd73555c23584954"
+  },
+  "verification": {
+    "locator": "evidence/current/full-stack/verification.json",
+    "source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+    "source_digest": "5a9e145a97dab315832e8dd9f17673ee4f18873abd5a0e92f2634a49826264b9"
+  },
+  "verified_source_commit": "bde0ecf67f0f779854f3906f662fc5e11d58eabb",
+  "version": "1.0.0-rc.20"
+}
