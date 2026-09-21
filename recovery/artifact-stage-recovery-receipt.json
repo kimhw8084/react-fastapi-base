@@ -1,0 +1,38 @@
+{
+  "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+  "change": "CHG-153",
+  "operation": "VERIFY",
+  "project": "react-fastapi-base",
+  "publication": {
+    "artifact_bundle_copied": false,
+    "canonical_pdfs_copied": false,
+    "canonical_screenshots_copied": false,
+    "carrier_paths": [
+      "recovery/artifact-stage-recovery-receipt.json",
+      "recovery/r7-carrier-readback.json",
+      "recovery/release-health-recovery.json",
+      "recovery/recovery-summary.json"
+    ],
+    "payload_commit": "a281915c8052f2cac1f46326b54e41c13ea8abcc",
+    "payload_paths": [
+      "recovery/r7-carrier-readback.json",
+      "recovery/release-health-recovery.json",
+      "recovery/recovery-summary.json"
+    ],
+    "payload_tree": "b7b3296667df1099138f6a8e25219c789ebbc494",
+    "transport": "qualified Git-first supplemental recovery publisher"
+  },
+  "readback_contract": {
+    "native_fabric_identity": "not impersonated; this supplemental publisher is artifact-only",
+    "payload_git_readback_verified_before_receipt_binding": true,
+    "receipt_commit": "resolved after this receipt is committed",
+    "terminal_readback_update": "A terminal child updates only this receipt after the first carrier commit is remotely read back. The terminal commit/tree are intentionally resolved from the Git ref to avoid a self-reference paradox."
+  },
+  "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+  "schema": "project-os-golden-ui-recovery-artifact-stage-receipt-v1",
+  "source": {
+    "source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree_sha": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  }
+}
