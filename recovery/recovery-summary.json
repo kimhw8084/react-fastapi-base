@@ -1,0 +1,138 @@
+{
+  "blockers": [
+    {
+      "name": "company-identity",
+      "reason": "Two actual company users and the PaaS execution/ingress contract must be verified.",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "company-storage",
+      "reason": "Provider-supported SQLite semantics, topology and durability are unverified; a probe cannot certify an S3 mount.",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "company-deployment",
+      "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here.",
+      "status": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "change": "CHG-153",
+  "operation": "VERIFY",
+  "preserved_r7_truth_state": {
+    "finding_counts": {
+      "established_defect": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      },
+      "external_unproven_evidence_gap": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 4
+      },
+      "high_confidence_friction_hypothesis": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      },
+      "taste_optimization_opportunity": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0
+      }
+    },
+    "findings_reference": {
+      "interpretation": "preserved reference; no Product defects in executed scope; external limitations remain",
+      "path": "golden-ui/findings.json",
+      "sha256": "73525d084a165865de936e3f025cb4e95ba5f59e5d816286da09945747eb99ee"
+    },
+    "holdouts": {
+      "reference": {
+        "path": "golden-ui/holdout-report.json",
+        "sha256": "98ee317a8b232adefccbcb0f67e17ba5401aaeea76f473929c8b76f299ae1865"
+      },
+      "selected": [
+        {
+          "executed": "covered by fresh canonical/stress evidence",
+          "id": "responsive-lifetime-planning",
+          "ordinary_matrix_shaping": false,
+          "status": "PASS",
+          "stress": "visualization/search/filter state",
+          "surface": "plan_tasks",
+          "viewport": "390\u21921440\u2192390"
+        },
+        {
+          "executed": "covered by fresh canonical/stress evidence",
+          "id": "mobile-shell-closed-open",
+          "ordinary_matrix_shaping": false,
+          "status": "PASS",
+          "stress": "navigation lifecycle",
+          "surface": "work_items",
+          "viewport": "390x844"
+        }
+      ]
+    },
+    "limitations_reference": {
+      "no_limitation_promoted_to_pass": true,
+      "path": "golden-ui/limitations.json",
+      "sha256": "2b765067ddeba1e18b192952c2fbbb7fbe44900772652465e347d408b8745a4f",
+      "statuses_preserved_by_reference": true
+    },
+    "negative_controls_reference": {
+      "path": "golden-ui/negative-controls.json",
+      "sha256": "d9417335d09c6aeb49ca4e69dece0f31d2299e243856849ec124a11444525dad"
+    },
+    "objective_diagnostics_reference": {
+      "path": "golden-ui/objective-diagnostics.json",
+      "sha256": "3978d738c64f2e2b331427816b20737409e7c417380952817443843ccea5d322"
+    },
+    "stress_reference": {
+      "path": "golden-ui/stress-manifest.json",
+      "sha256": "28564077d15019027d9e19c1b809f645e819e8e1a702f63d942aa7389f694ed1"
+    },
+    "task_oracles": {
+      "pass": 9,
+      "reference": {
+        "path": "golden-ui/task-traces.json",
+        "sha256": "8089feb521b8af8d4b2068dd1297717d160909f72865ac419ef6ad8a45d1bbba"
+      },
+      "total": 10,
+      "unproven": [
+        "file-attachment-lifecycle"
+      ]
+    }
+  },
+  "project": "react-fastapi-base",
+  "r7": {
+    "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7",
+    "final_artifact_commit": "77bb9f5982bf51ddc837a0fee37806eafc929738",
+    "final_artifact_tree": "4a65d312b9ec2a74f9e352af79d63a2b4357a09f",
+    "job_id": "CF-3ccab70c243452c5d55b9bd7",
+    "native_audit": "dc13476fb9e4dc910b45c4a8fe0a07aaaaf91890",
+    "payload_commit": "286e82ac9bba138393c943814a0c9d51ed090723",
+    "receipt_binding_commit": "ebd34b6ecdd1ebfe6a6a4759ab456f0da7ba4ec4"
+  },
+  "recovery_scope": {
+    "canonical_screenshots_copied_to_r8": false,
+    "carrier_readback_recovery": "PASS",
+    "product_source_changed": false,
+    "qualification_recovery": "PASS",
+    "r7_bytes_mutated": false,
+    "recapture_performed": false,
+    "review_pdfs_regenerated": false
+  },
+  "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+  "schema": "golden-ui-v2-rc21-postfix-evidence-recovery-summary-v1",
+  "source": {
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_changed": false,
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree_sha": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  }
+}

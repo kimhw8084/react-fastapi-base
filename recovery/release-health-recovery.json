@@ -1,0 +1,362 @@
+{
+  "bindings": {
+    "API_COMPATIBILITY_BASE_SHA": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "RELEASE_BASE_SHA": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "api_compatibility_resolved_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "api_compatibility_result": "PASS"
+  },
+  "canonical_verify_release": {
+    "code_ready": true,
+    "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae PATH=<node22> python3 dev verify-release",
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "exit_code": 0,
+    "finalization": "PASS",
+    "production_ready": false,
+    "release_status": "NOT_CERTIFIED",
+    "result": "PASS_FOR_CODE_READINESS",
+    "results": [
+      {
+        "exit_code": 0,
+        "name": "performance-contract",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "backend-tests",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "tooling-tests",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "operational-reliability-qualification",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "architecture",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "security-source",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "configuration-contract",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "operational-reliability-contract",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "checkpoint-manifest",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "version-metadata",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "candidate-progression",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "performance-owned-algorithms",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "performance-stress",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "generated-contracts",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "ui-state-matrix-contract",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "api-compatibility",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "typescript-syntax-and-pure-client",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "static-server",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "localhost-http",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "independent-deployment-qualification",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "deployment-contract",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "engineering-widget-layer",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "required-catalog-completeness",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "upgrade-fixture",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "object-inclusive-backup-restore",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "storage-qualification",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "reference-apps",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "macos-fresh-install",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "frontend-typecheck",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "frontend-unit",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "frontend-build",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "frontend-storybook",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "browser-e2e-accessibility",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "ui-state-matrix-results",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "npm-advisories",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "performance-results",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "python-advisories",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "reusable-platform-qualification",
+        "status": "PASS"
+      },
+      {
+        "exit_code": null,
+        "name": "company-identity",
+        "status": "BLOCKED_EXTERNAL"
+      },
+      {
+        "exit_code": null,
+        "name": "company-storage",
+        "status": "BLOCKED_EXTERNAL"
+      },
+      {
+        "exit_code": null,
+        "name": "company-deployment",
+        "status": "BLOCKED_EXTERNAL"
+      }
+    ],
+    "source_commit": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "verification_report": "evidence/current/full-stack/verification.json (read before restoration)"
+  },
+  "change": "CHG-153",
+  "explicit_health_runs": [
+    {
+      "category": "frontend_unit",
+      "command": "PATH=<node22> npm test",
+      "cwd": "frontend",
+      "details": "18 test files, 50 tests",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "frontend_typecheck",
+      "command": "PATH=<node22> npm run typecheck",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "frontend_build",
+      "command": "PATH=<node22> npm run build",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "storybook",
+      "command": "PATH=<node22> npm run build:storybook",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "browser_e2e_accessibility",
+      "command": "PATH=<node22> python3 scripts/e2e_runner.py",
+      "details": "31/31 Chromium tests passed",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "ui_state_matrix_chg34_chg153",
+      "command": "canonical verifier ui-state-matrix-results plus CHG-34/CHG-153 browser rows",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "chg35_performance_virtualization",
+      "command": "canonical browser performance cases plus performance-stress/performance-results",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "architecture",
+      "command": "python3 dev architecture",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "contracts_generated_output",
+      "command": "python3 dev contracts",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "npm_audit",
+      "command": "PATH=<node22> npm audit --audit-level=high",
+      "cwd": "frontend",
+      "details": "0 vulnerabilities",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "category": "repository_tooling_tests",
+      "command": "canonical verify-release backend-tests + tooling-tests",
+      "exit_code": 0,
+      "result": "PASS"
+    }
+  ],
+  "external_blockers": [
+    {
+      "name": "company-identity",
+      "reason": "Two actual company users and the PaaS execution/ingress contract must be verified.",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "company-storage",
+      "reason": "Provider-supported SQLite semantics, topology and durability are unverified; a probe cannot certify an S3 mount.",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "company-deployment",
+      "reason": "Separate frontend/backend publishes and real browser routing have not been exercised here.",
+      "status": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "operation": "VERIFY",
+  "project": "react-fastapi-base",
+  "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+  "runtime": {
+    "browser": {
+      "device_scale_factor": 1,
+      "engine": "Chromium",
+      "headless": true,
+      "project": "chromium"
+    },
+    "node": {
+      "binary": "/Users/haewonkim/.nvm/versions/node/v22.13.0/bin/node",
+      "version": "v22.13.0"
+    },
+    "node_playwright": {
+      "binary": "/Users/haewonkim/.codex-fabric/worktrees/CF-22d3ecf055f4c1d8b040aff4/frontend/node_modules/.bin/playwright",
+      "version": "1.63.0"
+    },
+    "npm": {
+      "binary": "/Users/haewonkim/.nvm/versions/node/v22.13.0/bin/npm",
+      "version": "10.9.2"
+    },
+    "python": {
+      "binary": "/Users/haewonkim/.codex-fabric/worktrees/CF-22d3ecf055f4c1d8b040aff4/backend/.venv/bin/python",
+      "version": "3.11.7"
+    },
+    "python_playwright": {
+      "import": "backend/.venv/lib/python3.11/site-packages/playwright",
+      "version": "1.57.0"
+    }
+  },
+  "schema": "golden-ui-v2-release-health-recovery-v1",
+  "source": {
+    "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+    "source_changed": false,
+    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+    "source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree_sha": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  }
+}
