@@ -1,0 +1,170 @@
+{
+  "board_count": 21,
+  "board_index_sha256": "de12495736efb25944010a303df1aedc4c96909a1f7344ba3330d3123ff86240",
+  "boards": {
+    "visual-audit-bridge/boards/board-01.jpg": {
+      "bytes": 24504,
+      "sha256": "362a9b8804da46072d03f3a39ca586f54a00a95e6fabaef35a8c055f8fbdb596"
+    },
+    "visual-audit-bridge/boards/board-02.jpg": {
+      "bytes": 21582,
+      "sha256": "a681d84e318395479dd4f9c81deab8aafadbb27c41031a71e115be2148683e6a"
+    },
+    "visual-audit-bridge/boards/board-03.jpg": {
+      "bytes": 20975,
+      "sha256": "5556707a70854b5299a658c486dce31e93efcefd8308b1db8f7b300df9beb843"
+    },
+    "visual-audit-bridge/boards/board-04.jpg": {
+      "bytes": 21822,
+      "sha256": "93674936fe359672b6d4b9de0d65bd55ea61f847e79cc478f56451b71410d213"
+    },
+    "visual-audit-bridge/boards/board-05.jpg": {
+      "bytes": 22885,
+      "sha256": "e12492120991a7d7580cee2bf3ed2756917c094822a1c34510a172e8fe5f6e39"
+    },
+    "visual-audit-bridge/boards/board-06.jpg": {
+      "bytes": 22125,
+      "sha256": "e0eb47819b19ee3da46f17c3fd2392d5b218898d06e3a9809aadac10c5662118"
+    },
+    "visual-audit-bridge/boards/board-07.jpg": {
+      "bytes": 21698,
+      "sha256": "afc3632b90693568244786537c039d2b8aa6864403cff3ba0e6c54a3a7a7ce95"
+    },
+    "visual-audit-bridge/boards/board-08.jpg": {
+      "bytes": 20991,
+      "sha256": "6c09481484de6cde65e25efec8318d05cdcbbcc1b602718341d02302069c3b80"
+    },
+    "visual-audit-bridge/boards/board-09.jpg": {
+      "bytes": 21756,
+      "sha256": "aa3d81a1294b270356a7335e8b0426e844a4392c3191a838c0ee4770c9db9f96"
+    },
+    "visual-audit-bridge/boards/board-10.jpg": {
+      "bytes": 22475,
+      "sha256": "784814cccdb7dec7c8b109bb86f3e2800e2aca2b26846f11b488a33993cd9bf3"
+    },
+    "visual-audit-bridge/boards/board-11.jpg": {
+      "bytes": 22642,
+      "sha256": "2dbb74719858acbf250bc6578f106363be69c2733419c46faa680f3ecb212d4f"
+    },
+    "visual-audit-bridge/boards/board-12.jpg": {
+      "bytes": 21191,
+      "sha256": "c9376b56182108fa3e50396e000751d367ef34f185af9805fa8172909fef7575"
+    },
+    "visual-audit-bridge/boards/board-13.jpg": {
+      "bytes": 21997,
+      "sha256": "79014674e0dd561c8808580d64c8c74225e1c1a8b6e9c0883810a8c776487f2f"
+    },
+    "visual-audit-bridge/boards/board-14.jpg": {
+      "bytes": 22693,
+      "sha256": "79fdc1f075c6c1e12c58bd5fbd50310a7f9a20dbb773a49aea410b92bb2154df"
+    },
+    "visual-audit-bridge/boards/board-15.jpg": {
+      "bytes": 21579,
+      "sha256": "cf5f8cd53ce4691d4e07620efd42c349331464fcea1cecf92df95cd5820abcdb"
+    },
+    "visual-audit-bridge/boards/board-16.jpg": {
+      "bytes": 22778,
+      "sha256": "ab37a0f5e238b9995100295e3ec746bffa5a82fdb75c03ffc6a80eb98b4c4a5c"
+    },
+    "visual-audit-bridge/boards/board-17.jpg": {
+      "bytes": 21813,
+      "sha256": "186c3f367b5ceff06d81e012147daafa84d7d5f886d6992ac26e8f6a21e42fca"
+    },
+    "visual-audit-bridge/boards/board-18.jpg": {
+      "bytes": 22460,
+      "sha256": "17a15e519e8cd4a8f26b7343ac4ac3cc9d9fce2f32c4c4ff210062218309e44e"
+    },
+    "visual-audit-bridge/boards/board-19.jpg": {
+      "bytes": 21759,
+      "sha256": "cc28d72eb8f9efe486045826138ab323e9931fed4ccdb502b958e6695989fe3e"
+    },
+    "visual-audit-bridge/boards/board-20.jpg": {
+      "bytes": 21805,
+      "sha256": "e1e47d9b68b53bafa439b7453f803f384bbf5f338979e08fc138ddbd2a65ee01"
+    },
+    "visual-audit-bridge/boards/board-21.jpg": {
+      "bytes": 21231,
+      "sha256": "4716ace1d67fbbf1e1a2dbbd16bf53641b52369b1bc77d7bfdb9122cf3ce2055"
+    }
+  },
+  "browser_capture_launched": false,
+  "change": "CHG-153",
+  "coverage": {
+    "all_desktop_mobile_pairs_bound": true,
+    "all_surfaces_exactly_once": true,
+    "canonical_png_count": 42,
+    "surface_count": 21,
+    "surface_keys_in_manifest_order": [
+      "work_items",
+      "projects",
+      "racks",
+      "equipment",
+      "knowledge_entries",
+      "investigations",
+      "research",
+      "risks",
+      "plan_tasks",
+      "diagram_documents",
+      "process_measurements",
+      "wafer_runs",
+      "manufacturing_lots",
+      "equipment_states",
+      "process_recipes",
+      "software_services",
+      "delivery_runs",
+      "observability_events",
+      "incidents",
+      "service_objectives",
+      "system"
+    ]
+  },
+  "derived_images_promotion_authority": false,
+  "fabric_job": "CF-20eb1fb2540867c16e45a151",
+  "operation": "VERIFY",
+  "original_r7_pixels_authority": true,
+  "predecessors": {
+    "r7": {
+      "artifact_commit": "77bb9f5982bf51ddc837a0fee37806eafc929738",
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7",
+      "artifact_tree": "4a65d312b9ec2a74f9e352af79d63a2b4357a09f",
+      "fabric_job": "CF-3ccab70c243452c5d55b9bd7",
+      "native_audit": "dc13476fb9e4dc910b45c4a8fe0a07aaaaf91890",
+      "request": "golden-ui-v2-rc21-postfix-perfection-verify-v7"
+    },
+    "r8": {
+      "artifact_commit": "efa82d73cf8bba2a2d0c7261c8a9f724172c6091",
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+      "artifact_tree": "3cb9f03a9fe55cfaee3942241d97893ded03cc1e",
+      "carrier_readback_recovery": "PASS",
+      "fabric_job": "CF-22d3ecf055f4c1d8b040aff4",
+      "native_audit": "1f43ee672d343f6a8a7f4c5471ba5533cb57cfc4",
+      "product_source_changed": false,
+      "qualification_recovery": "PASS",
+      "r7_bytes_mutated": false,
+      "recapture_performed": false,
+      "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8"
+    },
+    "r9": {
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-vision-bridge-v9",
+      "artifact_ref_present": false,
+      "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-vision-bridge-v9",
+      "fabric_job": "CF-f577b7eadd19ddb65ab9ba03",
+      "native_audit": "6773614b6cdf10d8a1b61ba5e5f392ea21cd7097",
+      "request": "golden-ui-v2-rc21-postfix-vision-bridge-v9"
+    }
+  },
+  "product_changed_files": 0,
+  "product_commits": 0,
+  "project": "react-fastapi-base",
+  "project_os_visual_audit_bridge": 1,
+  "publication_status": "VISUAL_AUDIT_BRIDGE_GIT_PUBLISHED_AWAITING_AUDIT",
+  "request": "golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+  "schema": "project-os-visual-audit-bridge-receipt-v1",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  },
+  "source_changed": false,
+  "structured_facts_sha256": "59c51a9c41ad2020d248e4f63a121ccc3d0c9f5c03db327e83c2db8e041fb76a"
+}

@@ -1,0 +1,68 @@
+{
+  "artifact_commit": "bedad324e8e7cb3cbd2d74887dd587cdcc7fbfd8",
+  "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+  "artifact_tree": "74c6c4c512887e139bbe494db18210d53acdf5a9",
+  "base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+  "base_tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+  "browser_capture_launched": false,
+  "change": "CHG-153",
+  "current_fabric_job_id": "CF-20eb1fb2540867c16e45a151",
+  "derived_images_promotion_authority": false,
+  "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+  "execution_guard": {
+    "ambient_processes_ignored": true,
+    "attribution_rule": "Only R10 command/process-tree descendants would fail this guard; ambient processes are diagnostic only.",
+    "browser_server_capture_invocations_in_r10": false,
+    "new_matching_process_rows": [],
+    "post_matching_process_count": 40,
+    "pre_matching_process_count": 40,
+    "process_snapshot_diff_sha256": "4af04eb181a2d32ac0fa663a8b5e21cb395b10d8d0b7b4a22a62e66fbcc4e4a5",
+    "process_snapshot_post_sha256": "2542a23198e4e61b578eb6a1425a226034beb41b7877f026cdc8b7e2927b4c86",
+    "process_snapshot_pre_sha256": "0eee29b5574c5294aa1bee087be89ad9b4909442ff9e32ce096dec121d9f8966",
+    "r10_attributable_descendant_launches": []
+  },
+  "job_id": "CF-20eb1fb2540867c16e45a151",
+  "kind": "codex-fabric-audit-evidence",
+  "operation": "VERIFY",
+  "original_r7_pixels_authority": true,
+  "predecessors": {
+    "r7": {
+      "artifact_commit": "77bb9f5982bf51ddc837a0fee37806eafc929738",
+      "artifact_tree": "4a65d312b9ec2a74f9e352af79d63a2b4357a09f",
+      "fabric_job": "CF-3ccab70c243452c5d55b9bd7",
+      "native_audit": "dc13476fb9e4dc910b45c4a8fe0a07aaaaf91890",
+      "request": "golden-ui-v2-rc21-postfix-perfection-verify-v7"
+    },
+    "r8": {
+      "artifact_commit": "efa82d73cf8bba2a2d0c7261c8a9f724172c6091",
+      "artifact_tree": "3cb9f03a9fe55cfaee3942241d97893ded03cc1e",
+      "fabric_job": "CF-22d3ecf055f4c1d8b040aff4",
+      "native_audit": "1f43ee672d343f6a8a7f4c5471ba5533cb57cfc4",
+      "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8"
+    },
+    "r9": {
+      "fabric_job": "CF-f577b7eadd19ddb65ab9ba03",
+      "native_audit": "6773614b6cdf10d8a1b61ba5e5f392ea21cd7097",
+      "request": "golden-ui-v2-rc21-postfix-vision-bridge-v9"
+    }
+  },
+  "product_changed_files": 0,
+  "product_commits": 0,
+  "project": "react-fastapi-base",
+  "project_id": "react-fastapi-base",
+  "publication": {
+    "artifact_commit_contains_only_derived_package": true,
+    "artifact_package_sha256": "195d1a9f712001dc423f56cbd6d01c3e15e80e067be22212a416e1677bad1faa",
+    "evidence_commit_contains_only_derived_package_and_this_audit": true
+  },
+  "request": "golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+  "schema_version": 1,
+  "source_changed": false,
+  "source_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+  "source_tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+  "status": "VISUAL_AUDIT_BRIDGE_GIT_PUBLISHED_AWAITING_AUDIT",
+  "target_branch": "main",
+  "version": "1.0.0-rc.21",
+  "work_branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+  "worktree_clean": true
+}
