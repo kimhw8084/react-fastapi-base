@@ -20,13 +20,33 @@
       "recovery/recovery-summary.json"
     ],
     "payload_tree": "b7b3296667df1099138f6a8e25219c789ebbc494",
+    "readback_status": "PASS",
     "transport": "qualified Git-first supplemental recovery publisher"
   },
   "readback_contract": {
     "native_fabric_identity": "not impersonated; this supplemental publisher is artifact-only",
     "payload_git_readback_verified_before_receipt_binding": true,
-    "receipt_commit": "resolved after this receipt is committed",
-    "terminal_readback_update": "A terminal child updates only this receipt after the first carrier commit is remotely read back. The terminal commit/tree are intentionally resolved from the Git ref to avoid a self-reference paradox."
+    "terminal_commit_resolution": "Resolve the requested artifact ref directly in Git; the terminal commit is this receipt-only update and is not embedded in its own bytes.",
+    "terminal_commit_self_reference_avoided": true,
+    "terminal_receipt_update_changed_paths": [
+      "recovery/artifact-stage-recovery-receipt.json"
+    ],
+    "terminal_receipt_update_parent": "2524caf61cfbf2b927a5e7bdc016c2e91cced986",
+    "verified_carrier_commit": "2524caf61cfbf2b927a5e7bdc016c2e91cced986",
+    "verified_carrier_path_sha256": {
+      "recovery/artifact-stage-recovery-receipt.json": "13e26a6ee118eb061aebe75935d53cb1390bf639e3108b5c0e976fa3897494bd",
+      "recovery/r7-carrier-readback.json": "a6a023fff57e681ff51c5496d86b25405f899e841cd76ef92aaa1f6f42a0175d",
+      "recovery/recovery-summary.json": "20a43b35c756e89e0c6e58ad3fe8f41c7d0e9a213078069c58d9d64b187175b5",
+      "recovery/release-health-recovery.json": "e254fb3afd10842effa14abad01e9540021cae91d916ac530bc2df8b00e134a3"
+    },
+    "verified_carrier_paths": [
+      "recovery/artifact-stage-recovery-receipt.json",
+      "recovery/r7-carrier-readback.json",
+      "recovery/release-health-recovery.json",
+      "recovery/recovery-summary.json"
+    ],
+    "verified_carrier_remote_readback": true,
+    "verified_carrier_tree": "fbcebc7473a708d0f0145794dd5aabc31c71af97"
   },
   "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
   "schema": "project-os-golden-ui-recovery-artifact-stage-receipt-v1",
