@@ -13,6 +13,8 @@
       "recovery/release-health-recovery.json",
       "recovery/recovery-summary.json"
     ],
+    "carrier_revision_commit": "b86cd3582e20e7d16bfe0f8706956e8dce2fb648",
+    "carrier_revision_tree": "18385554cd97b3b42b21780c43c33e6e809e70a5",
     "payload_commit": "a281915c8052f2cac1f46326b54e41c13ea8abcc",
     "payload_paths": [
       "recovery/r7-carrier-readback.json",
@@ -24,6 +26,7 @@
     "transport": "qualified Git-first supplemental recovery publisher"
   },
   "readback_contract": {
+    "carrier_revision_parent": "a959a361c61f922b641473dab3faee12ce06a010",
     "native_fabric_identity": "not impersonated; this supplemental publisher is artifact-only",
     "payload_git_readback_verified_before_receipt_binding": true,
     "terminal_commit_resolution": "Resolve the requested artifact ref directly in Git; the terminal commit is this receipt-only update and is not embedded in its own bytes.",
@@ -31,11 +34,10 @@
     "terminal_receipt_update_changed_paths": [
       "recovery/artifact-stage-recovery-receipt.json"
     ],
-    "terminal_receipt_update_parent": "2524caf61cfbf2b927a5e7bdc016c2e91cced986",
-    "verified_carrier_commit": "2524caf61cfbf2b927a5e7bdc016c2e91cced986",
+    "verified_carrier_commit": "b86cd3582e20e7d16bfe0f8706956e8dce2fb648",
     "verified_carrier_path_sha256": {
-      "recovery/artifact-stage-recovery-receipt.json": "13e26a6ee118eb061aebe75935d53cb1390bf639e3108b5c0e976fa3897494bd",
-      "recovery/r7-carrier-readback.json": "a6a023fff57e681ff51c5496d86b25405f899e841cd76ef92aaa1f6f42a0175d",
+      "recovery/artifact-stage-recovery-receipt.json": "d13ec25109763ada857acc12819ae950d9b08ddfd950b0df8cdbe269c5d6249e",
+      "recovery/r7-carrier-readback.json": "6a256beadc86d921850a89da21130859d6a408b74f11be2c30c00ce1bef6160d",
       "recovery/recovery-summary.json": "20a43b35c756e89e0c6e58ad3fe8f41c7d0e9a213078069c58d9d64b187175b5",
       "recovery/release-health-recovery.json": "e254fb3afd10842effa14abad01e9540021cae91d916ac530bc2df8b00e134a3"
     },
@@ -46,7 +48,7 @@
       "recovery/recovery-summary.json"
     ],
     "verified_carrier_remote_readback": true,
-    "verified_carrier_tree": "fbcebc7473a708d0f0145794dd5aabc31c71af97"
+    "verified_carrier_tree": "18385554cd97b3b42b21780c43c33e6e809e70a5"
   },
   "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
   "schema": "project-os-golden-ui-recovery-artifact-stage-receipt-v1",
