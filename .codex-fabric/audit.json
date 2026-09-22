@@ -61,13 +61,16 @@
   },
   "publication": {
     "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
-    "artifact_commit": "7fed02d48f071781b17162a2ce6273528dbf0530",
-    "artifact_tree": "7468427418d0366a1d162b102c632d470a0d805b",
+    "artifact_commit": "70d7e20163c99ca2e0a0ef7f81c06d685b677671",
+    "artifact_tree": "16b98cdfd1abee5b00793ed157f4cf0e3b554510",
     "visual_microbridge_tree": "39e432f7b607d1dddb6f5344bcab8ca12a051134",
     "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
     "evidence_commit": null,
     "artifact_contains_only_visual_microbridge": true,
-    "evidence_contains_visual_microbridge_plus_native_audit": true
+    "evidence_contains_visual_microbridge_plus_native_audit": true,
+    "readback_artifact_commit": "7fed02d48f071781b17162a2ce6273528dbf0530",
+    "readback_evidence_commit": "2710fd93c6d24f702556a7e928ee2f1863a62fa0",
+    "final_receipt_bound": true
   },
   "coverage": {
     "surface_count": 21,
