@@ -98,11 +98,14 @@
   "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
   "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
   "publication": {
-    "status": "PENDING_PUBLICATION_READBACK",
-    "artifact_commit": null,
-    "evidence_commit": null,
-    "terminal_commit_ids_bound_in_native_audit": true,
-    "visual_microbridge_tree_shared": true
+    "status": "VISUAL_MICROBRIDGE_GIT_PUBLISHED_AWAITING_AUDIT",
+    "artifact_commit": "7fed02d48f071781b17162a2ce6273528dbf0530",
+    "evidence_commit": "2710fd93c6d24f702556a7e928ee2f1863a62fa0",
+    "artifact_tree": "7468427418d0366a1d162b102c632d470a0d805b",
+    "evidence_tree": "289a27f81820ec5874b7cc98d97e14b8f46dfe82",
+    "remote_readback": "PASS",
+    "visual_microbridge_tree_shared": true,
+    "terminal_commit_ids_are_remote_readback_commits": true
   },
   "original_r7_pixels_authority": true,
   "derived_images_promotion_authority": false
