@@ -1,0 +1,109 @@
+{
+  "project_os_visual_microbridge": 1,
+  "schema": "project-os-visual-microbridge-receipt-v1",
+  "fabric_job": "CF-f052914c877f8acb5d4a4290",
+  "project": "react-fastapi-base",
+  "project_id": "react-fastapi-base",
+  "change": "CHG-153",
+  "request": "golden-ui-v2-rc21-postfix-microvision-bridge-v11",
+  "operation": "VERIFY",
+  "base": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "target_branch": "main"
+  },
+  "work_branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-microvision-bridge-v11",
+  "source": {
+    "sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "version": "1.0.0-rc.21"
+  },
+  "source_changed": false,
+  "browser_capture_launched": false,
+  "product_commits": 0,
+  "product_changed_files": 0,
+  "predecessors": {
+    "r7": {
+      "request": "golden-ui-v2-rc21-postfix-perfection-verify-v7",
+      "fabric_job": "CF-3ccab70c243452c5d55b9bd7",
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-perfection-verify-v7",
+      "artifact_commit": "77bb9f5982bf51ddc837a0fee37806eafc929738",
+      "artifact_tree": "4a65d312b9ec2a74f9e352af79d63a2b4357a09f",
+      "native_evidence_commit": "dc13476fb9e4dc910b45c4a8fe0a07aaaaf91890",
+      "surface_manifest_path": "visual-atlas/surface-manifest.json",
+      "surface_manifest_sha256": "6c18938e8e889ebb4d69fb24ddb4de1e5474ad88a1b855f3f64178359fc4252d",
+      "reader_index_path": "visual-atlas/reader-index.json",
+      "reader_index_sha256": "3c6759359f3dd4b7a0b34e8434d3673227652a0ec7d03507ec142722ea9f76f4",
+      "canonical_png_count": 42,
+      "visual_authority": true
+    },
+    "r8": {
+      "request": "golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+      "fabric_job": "CF-22d3ecf055f4c1d8b040aff4",
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-evidence-recovery-v8",
+      "artifact_commit": "efa82d73cf8bba2a2d0c7261c8a9f724172c6091",
+      "artifact_tree": "3cb9f03a9fe55cfaee3942241d97893ded03cc1e",
+      "native_evidence_commit": "1f43ee672d343f6a8a7f4c5471ba5533cb57cfc4",
+      "qualification_recovery": "PASS",
+      "carrier_readback": "PASS",
+      "source_changed": false,
+      "recapture_performed": false,
+      "r7_bytes_mutated": false
+    },
+    "r10": {
+      "request": "golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+      "fabric_job": "CF-20eb1fb2540867c16e45a151",
+      "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-vision-bridge-publish-recovery-v10",
+      "artifact_commit": "bedad324e8e7cb3cbd2d74887dd587cdcc7fbfd8",
+      "artifact_tree": "74c6c4c512887e139bbe494db18210d53acdf5a9",
+      "native_evidence_commit": "d14b86009894dd29139401e0ec952fe46e53b08f",
+      "board_index_sha256": "de12495736efb25944010a303df1aedc4c96909a1f7344ba3330d3123ff86240",
+      "structured_facts_sha256": "59c51a9c41ad2020d248e4f63a121ccc3d0c9f5c03db327e83c2db8e041fb76a",
+      "source_changed": false,
+      "browser_capture_launched": false
+    }
+  },
+  "index_sha256": "d7daa02ecd982a4a696e19d6cac488813b7675f6874fc7ad9156f5daf8fb7d50",
+  "structured_facts_sha256": "59c51a9c41ad2020d248e4f63a121ccc3d0c9f5c03db327e83c2db8e041fb76a",
+  "coverage": {
+    "surface_count": 21,
+    "source_png_count": 42,
+    "derived_image_count": 42,
+    "all_surfaces_exactly_once_per_viewport": true,
+    "every_derived_image_le_7000_bytes": true,
+    "surface_keys_in_manifest_order": [
+      "work_items",
+      "projects",
+      "racks",
+      "equipment",
+      "knowledge_entries",
+      "investigations",
+      "research",
+      "risks",
+      "plan_tasks",
+      "diagram_documents",
+      "process_measurements",
+      "wafer_runs",
+      "manufacturing_lots",
+      "equipment_states",
+      "process_recipes",
+      "software_services",
+      "delivery_runs",
+      "observability_events",
+      "incidents",
+      "service_objectives",
+      "system"
+    ]
+  },
+  "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
+  "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11",
+  "publication": {
+    "status": "PENDING_PUBLICATION_READBACK",
+    "artifact_commit": null,
+    "evidence_commit": null,
+    "terminal_commit_ids_bound_in_native_audit": true,
+    "visual_microbridge_tree_shared": true
+  },
+  "original_r7_pixels_authority": true,
+  "derived_images_promotion_authority": false
+}
