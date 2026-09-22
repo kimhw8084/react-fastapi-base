@@ -1,132 +1,139 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "accepted_at": "2026-09-22T21:00:46Z",
+  "changed_files": [],
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' /Users/haewonkim/.codex/RTK.md && sed -n '1,260p' /Users/haewonkim/.codex/law.md && printf '\\\\n--- README ---\\\\n' && sed -n '1,240p' README.md && printf '\\\\n--- RELEASE STATUS ---\\\\n' && sed -n '1,240p' docs/RELEASE_STATUS.md && printf '\\\\n--- MASTER DESIGN ---\\\\n' && sed -n '1,260p' docs/MASTER_DESIGN.md && printf '\\\\n--- requirements status ---\\\\n' && sed -n '1,240p' docs/requirements-status.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk --version && rtk git status --short --branch && rtk git remote -v && rtk git branch --show-current && rtk git log -1 --format='%H%n%T%n%an%n%s' && rtk gh --version && rtk gh auth status\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v2-rc21-postfix-actions-transfer-v12 refs/heads/project-os/r11-microbridge-transfer-v12 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-actions-transfer-v12 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11 && printf '\\\\n--- version ---\\\\n' && rtk rg -n '1\\\\.0\\\\.0-rc\\\\.21|version' pyproject.toml package.json frontend/package.json backend/pyproject.toml 2>/dev/null | head -80 && printf '\\\\n--- env candidates ---\\\\n' && rtk env | rtk rg -i 'fabric|job|change|request|worktree' || true\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "command": "/bin/zsh -lc \"rtk git fetch --no-tags origin 7fed02d48f071781b17162a2ce6273528dbf0530 2710fd93c6d24f702556a7e928ee2f1863a62fa0 && printf '%s\\\\n' '--- expected R11 artifact commit ---' && rtk git cat-file -p 7fed02d48f071781b17162a2ce6273528dbf0530 | head -20 && printf '%s\\\\n' '--- expected R11 artifact tree ---' && rtk git show -s --format='%T' 7fed02d48f071781b17162a2ce6273528dbf0530 && printf '%s\\\\n' '--- current artifact ref commit/tree ---' && rtk git show -s --format='%H%n%T%n%P%n%s' 70d7e20163c99ca2e0a0ef7f81c06d685b677671 && printf '%s\\\\n' '--- current evidence ref commit/tree ---' && rtk git show -s --format='%H%n%T%n%P%n%s' 05e7ceff14e1ca2e2ae72e7184e69a8a9db33c80\"",
+      "exit_code": 0,
+      "type": "command_execution"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
-    },
-    {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
-    },
-    {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "command": "/bin/zsh -lc \"printf '%s\\\\n' '--- final remote refs ---' && rtk git ls-remote origin refs/heads/main refs/heads/project-os/r11-microbridge-transfer-v12 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-actions-transfer-v12 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v2-rc21-postfix-microvision-bridge-v11 && printf '%s\\\\n' '--- final worktree ---' && rtk git status --short --branch && printf '%s\\\\n' '--- final source identity ---' && rtk git show -s --format='%H%n%T' HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
     }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-5.6-luna",
+    "event_count": 17,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 70.5,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 101888,
+      "fresh_input_tokens": 42634,
+      "input_tokens": 144522,
+      "non_reasoning_output_tokens": 1909,
+      "output_tokens": 5115,
+      "reasoning_output_tokens": 3206,
+      "total_processed_tokens": 149637
+    },
+    "warnings": []
+  },
+  "commits": [],
+  "diff": {
+    "additions": 0,
+    "changed_files": 0,
+    "commit_count": 0,
+    "deletions": 0
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
-    "items": [
+    "count": 0,
+    "items": [],
+    "version": 1
+  },
+  "evidence_publisher_release": "1.2.4-quota-recovery-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
+  },
+  "fabric_release": "1.2.4-quota-recovery-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-22T21:02:50Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-actions-transfer-v12",
+    "detached_verify": false,
+    "head_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "remote_exact_head": true,
+    "remote_head_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v2-rc21-postfix-actions-transfer-v12",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
       }
-    ]
+    ],
+    "total_bytes": 2593,
+    "warning": null
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "job_id": "CF-a8b8556a1075f5016f9b13a7",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-actions-transfer-v12",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v2-rc21-postfix-actions-transfer-v12"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "operation": "VERIFY",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.4-quota-recovery-candidate",
+    "policy_sha256": "e15738f2a5e7b3c5d2ef9bdf9a19d03b9d73708b3639eb6b188f414c330007d6",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v2-rc21-postfix-actions-transfer-v12",
+  "schema_version": 1,
+  "started_at": "2026-09-22T21:00:46Z",
+  "status": "EXECUTED_NO_CHANGE",
+  "timing": {
+    "execution_seconds": 124,
+    "queue_seconds": 0,
+    "total_seconds": 124
+  },
+  "transport": {
+    "bytes": 8124,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 7746,
+    "prompt_sha256": "8337aaf6a5a40a85829f3937f83bf1005b777fae9eb906dcc78d749a46690d5c",
+    "sha256": "a8b8556a1075f5016f9b13a7ad7faf845b138c69af5fcd79dec1d71ccc611248"
+  }
 }
