@@ -3,22 +3,22 @@
   "result_kind": "aggregate-performance-qualification",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
-  "candidate_version": "1.0.0-rc.21",
+  "source_commit": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
+  "candidate_version": "1.0.0-rc.22",
   "overall_status": "PASS",
   "reports": {
     "owned-pure-algorithms": {
       "locator": "evidence/current/performance/owned-algorithms.json",
-      "sha256": "243c9db85fd4fbee9b2039a39aa69c008887c7cf5dd6f00f5f1e747be9ae6e6f"
+      "sha256": "377878bf5318cc0d98f3c9e1c42ecc54a1cc8945b16219a3f11e1d6196b4fe4d"
     },
     "platform-data-volume": {
       "locator": "evidence/current/performance/stress.json",
-      "sha256": "810118939142f47c0edd8f1fcbbe91fc697652324bfc922ed40f038273034dd1"
+      "sha256": "46d477b31f6421bab033cd24419ca2212b1c33e4b82d32097c1ed83a2212fc0f"
     },
     "browser-ag-grid-scale": {
       "locator": "evidence/current/performance/browser.json",
-      "sha256": "c209bcc40de1967ac41013f25d832c65f1893d20021687d30fc4f8fd0c3861fb"
+      "sha256": "5e983d1ba2680bb07eff78be38434573b5bd4c3671bee1836620629d977804a2"
     }
   },
   "required_workload_ids": [
@@ -54,7 +54,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.030627
+        "elapsed_seconds": 0.030016
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -72,7 +72,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.011497
+        "elapsed_seconds": 0.013748
       },
       "diagnostic_metrics": {
         "result": 99999
@@ -90,7 +90,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.005789
+        "elapsed_seconds": 0.006491
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -108,7 +108,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.088819
+        "elapsed_seconds": 0.091938
       },
       "diagnostic_metrics": {
         "result": 180411
@@ -127,7 +127,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.007442
+        "elapsed_seconds": 0.00693
       },
       "diagnostic_metrics": {
         "result": 17
@@ -146,7 +146,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.034061
+        "elapsed_seconds": 0.038292
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -164,7 +164,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.00586
+        "elapsed_seconds": 0.007897
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -182,7 +182,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.021183
+        "elapsed_seconds": 0.031268
       },
       "diagnostic_metrics": {
         "result": 100000
@@ -200,7 +200,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.021464
+        "elapsed_seconds": 0.025573
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -218,7 +218,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.026681
+        "elapsed_seconds": 0.030321
       },
       "diagnostic_metrics": {
         "result": 1.0
@@ -237,7 +237,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.018862
+        "elapsed_seconds": 0.014412
       },
       "diagnostic_metrics": {
         "result": 100
@@ -255,7 +255,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000198
+        "elapsed_seconds": 0.000177
       },
       "diagnostic_metrics": {
         "result": 4999
@@ -274,7 +274,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001808
+        "elapsed_seconds": 0.001583
       },
       "diagnostic_metrics": {
         "result": 10000
@@ -294,7 +294,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.000502
+        "elapsed_seconds": 0.000476
       },
       "diagnostic_metrics": {
         "result": 20000
@@ -312,7 +312,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.001996
+        "elapsed_seconds": 0.001929
       },
       "diagnostic_metrics": {
         "result": 94117
@@ -332,7 +332,7 @@
       },
       "status": "PASS",
       "hard_metrics": {
-        "elapsed_seconds": 0.003288
+        "elapsed_seconds": 0.003223
       },
       "diagnostic_metrics": {
         "result": 100
@@ -374,11 +374,11 @@
         "loaded_rows": 50,
         "rendered_rows_before_deep_scroll": 20,
         "rendered_rows_after_deep_scroll": 20,
-        "initial_readiness_ms": 386
+        "initial_readiness_ms": 232
       },
       "diagnostic_metrics": {
         "rendered_row_ratio": null,
-        "used_js_heap_bytes": 11900000
+        "used_js_heap_bytes": 14300000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "production-shaped-server-page",
@@ -411,12 +411,12 @@
         "reached_target_row": true,
         "selection_or_keyboard_works": true,
         "representative_sort_works": true,
-        "initial_readiness_ms": 281,
-        "deep_scroll_settle_ms": 45,
-        "sort_interaction_ms": 214
+        "initial_readiness_ms": 274,
+        "deep_scroll_settle_ms": 49,
+        "sort_interaction_ms": 201
       },
       "diagnostic_metrics": {
-        "used_js_heap_bytes": 37300000
+        "used_js_heap_bytes": 29400000
       },
       "evidence_locator": "evidence/current/performance/browser.json",
       "fixture_kind": "synthetic-test-only",

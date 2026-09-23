@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "limits": {
+    "task_start_top_max_px": 180,
+    "primary_action_bottom_max_px": 300
+  },
+  "budgets": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "task_start_top": 141,
+      "task_start_bottom": 293.296875,
+      "action_top": 253.296875,
+      "action_bottom": 293.296875,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "document_scroll_width": 390,
+      "body_scroll_width": 390
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "task_start_top": 141,
+      "task_start_bottom": 293.296875,
+      "action_top": 253.296875,
+      "action_bottom": 293.296875,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "document_scroll_width": 320,
+      "body_scroll_width": 320
+    }
+  ],
+  "faulted_shell": {
+    "mutation": "mobile .shell-header min-height 240px, vertical padding 72px",
+    "measurement": {
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "task_start_top": 332,
+      "task_start_bottom": 484.296875,
+      "action_top": 444.296875,
+      "action_bottom": 484.296875,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "document_scroll_width": 320,
+      "body_scroll_width": 320
+    },
+    "oracle_rejected": true
+  }
+}

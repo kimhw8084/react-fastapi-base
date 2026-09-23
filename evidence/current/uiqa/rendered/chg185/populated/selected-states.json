@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "fixture": "local_synthetic_demo",
+  "rack": {
+    "devices": 4,
+    "selected": true,
+    "connected": true,
+    "trace": true,
+    "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png"
+  },
+  "planning": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+  "diagram": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+  "spc": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+  "system": {
+    "local_members": true,
+    "events": true,
+    "notifications": true,
+    "screenshots": [
+      "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png"
+    ]
+  }
+}

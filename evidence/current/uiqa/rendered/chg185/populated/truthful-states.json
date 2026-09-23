@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "empty": {
+    "title": "No active work items yet",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png"
+  },
+  "archived_empty": {
+    "title": "No archived work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png"
+  },
+  "no_match": {
+    "title": "No matching work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png"
+  },
+  "request_error": {
+    "alert": "Qualification fixture request failure",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png"
+  },
+  "read_only": {
+    "permission": "read-only bootstrap permissions",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png"
+  }
+}

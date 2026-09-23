@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "system_sections": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "final_section": "Notifications",
+      "focus_revealed": true,
+      "scroll_owner_width": {
+        "clientWidth": 266,
+        "scrollWidth": 797
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "final_section": "Notifications",
+      "focus_revealed": true,
+      "scroll_owner_width": {
+        "clientWidth": 336,
+        "scrollWidth": 797
+      }
+    }
+  ],
+  "large_text_rtl": {
+    "viewport": {
+      "width": 320,
+      "height": 800
+    },
+    "task_start_top": 154.5,
+    "task_start_bottom": 327.796875,
+    "action_top": 287.796875,
+    "action_bottom": 327.796875,
+    "task_start_visible": true,
+    "action_reachable": true,
+    "document_scroll_width": 320,
+    "body_scroll_width": 320
+  },
+  "media": {
+    "reducedMotion": true,
+    "forcedColors": true
+  },
+  "scope": "Chromium only; no physical device, screen-reader, IME or non-Chromium claim"
+}

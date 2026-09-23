@@ -1,0 +1,99 @@
+{
+  "artifact_label": "rc22",
+  "candidate_version": "1.0.0-rc.22",
+  "code_ready": true,
+  "deployment_id": null,
+  "gates": [
+    {
+      "evidence_state": "repository_verification",
+      "id": "technical_release",
+      "reason": "Repository-owned code and release checks passed for the exact candidate.",
+      "status": "PASS"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "identity",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Authentic company per-user identity and simultaneous real-user evidence is unavailable.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "storage",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Provider-supported SQLite locking, durability, persistence and restore evidence is unavailable.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "deployment",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Company publication, ingress, restart, redeploy and recovery evidence is unavailable.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "ui_accessibility",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Local browser and axe checks do not establish applicable company/profile accessibility evidence.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "performance",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Local stress checks do not establish applicable company/profile performance evidence.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "external_unproven",
+      "id": "operations",
+      "qualification_status": "BLOCKED_EXTERNAL",
+      "reason": "Applicable company/profile operational readiness evidence is unavailable.",
+      "status": "BLOCKED"
+    },
+    {
+      "evidence_state": "repository_verification",
+      "id": "release_evidence",
+      "reason": "Immutable source/version/digest binding metadata and this matrix are repository-bound.",
+      "status": "PASS"
+    }
+  ],
+  "mandatory_gate_ids": [
+    "technical_release",
+    "identity",
+    "storage",
+    "deployment",
+    "ui_accessibility",
+    "performance",
+    "operations",
+    "release_evidence"
+  ],
+  "note": "Repository evidence is not an operator-approved CompanyQualification and does not certify company infrastructure.",
+  "persistent_root": null,
+  "production_ready": false,
+  "profile": "company",
+  "project": "react-fastapi-base",
+  "release_artifacts": {
+    "evidence_binding": "evidence/current/release/rc22-evidence-binding.json",
+    "identity": "deploy/rc22-release-identity.json",
+    "manifest": "evidence/current/release/rc22-manifest.json",
+    "readiness_matrix": "evidence/current/release/rc22-readiness-matrix.json"
+  },
+  "release_status": "NOT_CERTIFIED",
+  "report_type": "repository-readiness-matrix",
+  "repository_deployment": {
+    "locator": "evidence/current/deployment/qualification.json",
+    "qualification_status": "REPOSITORY_ONLY",
+    "status": "PASS"
+  },
+  "repository_operations": {
+    "company_operations_gate": "BLOCKED_EXTERNAL",
+    "locator": "evidence/current/operations/qualification.json",
+    "qualification_status": "REPOSITORY_ONLY",
+    "status": "PASS"
+  },
+  "schema_version": 1,
+  "source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
+  "verified_source_commit": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce"
+}

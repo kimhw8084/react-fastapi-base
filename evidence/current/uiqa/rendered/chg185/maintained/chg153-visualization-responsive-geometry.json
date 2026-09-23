@@ -1,0 +1,1228 @@
+{
+  "state_id": "chg153-visualization-responsive-geometry",
+  "material_state_class": "normal",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "candidate_tree": "2840a0733f009151e92f52ec8caf788bce601e39",
+  "candidate_version": "1.0.0-rc.22",
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36",
+  "surface": "EntityWorkspace visualization selector",
+  "consumers": [
+    "Planning",
+    "Work items",
+    "Incident command"
+  ],
+  "captures": [
+    {
+      "consumer": "Planning",
+      "route": "/plan-tasks",
+      "width": 1440,
+      "height": 900,
+      "page": {
+        "viewport_css_px": 1440,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440
+      },
+      "owned_scroller": {
+        "clientWidth": 631,
+        "scrollWidth": 631,
+        "overflowX": "auto"
+      },
+      "available_modes": [
+        "Planning",
+        "Table",
+        "Board",
+        "Gantt",
+        "Calendar",
+        "Timeline",
+        "Dashboard",
+        "Graph"
+      ],
+      "active_mode": "Planning"
+    },
+    {
+      "consumer": "Planning",
+      "route": "/plan-tasks",
+      "width": 390,
+      "height": 844,
+      "available_modes": [
+        "Planning",
+        "Table",
+        "Board",
+        "Gantt",
+        "Calendar",
+        "Timeline",
+        "Dashboard",
+        "Graph"
+      ],
+      "active_mode": "Graph",
+      "url": "http://127.0.0.1:60138/plan-tasks?visualization=graph",
+      "page": {
+        "viewport_css_px": 390,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 366,
+          "scrollWidth": 631,
+          "left": 12,
+          "right": 378,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 8,
+          "operableButtons": 8,
+          "scrollLeft": 0,
+          "scrollWidth": 631,
+          "clientWidth": 366
+        }
+      },
+      "pointer": {
+        "first": "Planning",
+        "middle": "Calendar",
+        "last": "Graph",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Planning",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 105.515625,
+              "top": 797.15625,
+              "bottom": 837.15625
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 111.515625,
+              "top": 791.15625,
+              "bottom": 843.15625
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 788.15625,
+              "bottom": 846.15625
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Calendar",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 277.390625,
+              "right": 364.203125,
+              "top": 797.15625,
+              "bottom": 837.15625
+            },
+            "focus_bounds": {
+              "left": 271.390625,
+              "right": 370.203125,
+              "top": 791.15625,
+              "bottom": 843.15625
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 788.15625,
+              "bottom": 846.15625
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/plan-tasks?visualization=calendar"
+          }
+        },
+        "final": {
+          "mode": "Graph",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 302.09375,
+              "right": 369.296875,
+              "top": 664.78125,
+              "bottom": 704.78125
+            },
+            "focus_bounds": {
+              "left": 296.09375,
+              "right": 375.296875,
+              "top": 658.78125,
+              "bottom": 710.78125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 655.78125,
+              "bottom": 713.78125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/plan-tasks?visualization=graph"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 8,
+        "operableButtons": 8,
+        "scrollLeft": 0,
+        "scrollWidth": 631,
+        "clientWidth": 366
+      }
+    },
+    {
+      "consumer": "Planning",
+      "route": "/plan-tasks",
+      "width": 320,
+      "height": 800,
+      "available_modes": [
+        "Planning",
+        "Table",
+        "Board",
+        "Gantt",
+        "Calendar",
+        "Timeline",
+        "Dashboard",
+        "Graph"
+      ],
+      "active_mode": "Graph",
+      "url": "http://127.0.0.1:60138/plan-tasks?visualization=graph",
+      "page": {
+        "viewport_css_px": 320,
+        "document_scroll_width": 320,
+        "document_client_width": 320,
+        "body_scroll_width": 320
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 296,
+          "scrollWidth": 631,
+          "left": 12,
+          "right": 308,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 8,
+          "operableButtons": 8,
+          "scrollLeft": 0,
+          "scrollWidth": 631,
+          "clientWidth": 296
+        }
+      },
+      "pointer": {
+        "first": "Planning",
+        "middle": "Calendar",
+        "last": "Graph",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Planning",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 105.515625,
+              "top": 380.15625,
+              "bottom": 420.15625
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 111.515625,
+              "top": 374.15625,
+              "bottom": 426.15625
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 371.15625,
+              "bottom": 429.15625
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Calendar",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 207.390625,
+              "right": 294.203125,
+              "top": 380.15625,
+              "bottom": 420.15625
+            },
+            "focus_bounds": {
+              "left": 201.390625,
+              "right": 300.203125,
+              "top": 374.15625,
+              "bottom": 426.15625
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 371.15625,
+              "bottom": 429.15625
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/plan-tasks?visualization=calendar"
+          }
+        },
+        "final": {
+          "mode": "Graph",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 232.09375,
+              "right": 299.296875,
+              "top": 513.78125,
+              "bottom": 553.78125
+            },
+            "focus_bounds": {
+              "left": 226.09375,
+              "right": 305.296875,
+              "top": 507.78125,
+              "bottom": 559.78125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 504.78125,
+              "bottom": 562.78125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/plan-tasks?visualization=graph"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 8,
+        "operableButtons": 8,
+        "scrollLeft": 0,
+        "scrollWidth": 631,
+        "clientWidth": 296
+      }
+    },
+    {
+      "consumer": "Work items",
+      "route": "/work-items",
+      "width": 390,
+      "height": 844,
+      "available_modes": [
+        "Table",
+        "Board",
+        "Dashboard",
+        "Timeline",
+        "Calendar",
+        "Gantt",
+        "Graph"
+      ],
+      "active_mode": "Graph",
+      "url": "http://127.0.0.1:60138/work-items?visualization=graph",
+      "page": {
+        "viewport_css_px": 390,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 366,
+          "scrollWidth": 547,
+          "left": 12,
+          "right": 378,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 7,
+          "operableButtons": 7,
+          "scrollLeft": 0,
+          "scrollWidth": 547,
+          "clientWidth": 366
+        }
+      },
+      "pointer": {
+        "first": "Table",
+        "middle": "Timeline",
+        "last": "Graph",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Table",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 83.265625,
+              "top": 768.28125,
+              "bottom": 808.28125
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 89.265625,
+              "top": 762.28125,
+              "bottom": 814.28125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 759.28125,
+              "bottom": 817.28125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Timeline",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 248.890625,
+              "right": 332.171875,
+              "top": 768.28125,
+              "bottom": 808.28125
+            },
+            "focus_bounds": {
+              "left": 242.890625,
+              "right": 338.171875,
+              "top": 762.28125,
+              "bottom": 814.28125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 759.28125,
+              "bottom": 817.28125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/work-items?visualization=timeline"
+          }
+        },
+        "final": {
+          "mode": "Graph",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 301.578125,
+              "right": 368.78125,
+              "top": 737.28125,
+              "bottom": 777.28125
+            },
+            "focus_bounds": {
+              "left": 295.578125,
+              "right": 374.78125,
+              "top": 731.28125,
+              "bottom": 783.28125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 728.28125,
+              "bottom": 786.28125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/work-items?visualization=graph"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 7,
+        "operableButtons": 7,
+        "scrollLeft": 0,
+        "scrollWidth": 547,
+        "clientWidth": 366
+      }
+    },
+    {
+      "consumer": "Work items",
+      "route": "/work-items",
+      "width": 320,
+      "height": 800,
+      "available_modes": [
+        "Table",
+        "Board",
+        "Dashboard",
+        "Timeline",
+        "Calendar",
+        "Gantt",
+        "Graph"
+      ],
+      "active_mode": "Graph",
+      "url": "http://127.0.0.1:60138/work-items?visualization=graph",
+      "page": {
+        "viewport_css_px": 320,
+        "document_scroll_width": 320,
+        "document_client_width": 320,
+        "body_scroll_width": 320
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 296,
+          "scrollWidth": 547,
+          "left": 12,
+          "right": 308,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 7,
+          "operableButtons": 7,
+          "scrollLeft": 0,
+          "scrollWidth": 547,
+          "clientWidth": 296
+        }
+      },
+      "pointer": {
+        "first": "Table",
+        "middle": "Timeline",
+        "last": "Graph",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Table",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 83.265625,
+              "top": 379.78125,
+              "bottom": 419.78125
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 89.265625,
+              "top": 373.78125,
+              "bottom": 425.78125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 370.78125,
+              "bottom": 428.78125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Timeline",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 210.890625,
+              "right": 294.171875,
+              "top": 379.78125,
+              "bottom": 419.78125
+            },
+            "focus_bounds": {
+              "left": 204.890625,
+              "right": 300.171875,
+              "top": 373.78125,
+              "bottom": 425.78125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 370.78125,
+              "bottom": 428.78125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/work-items?visualization=timeline"
+          }
+        },
+        "final": {
+          "mode": "Graph",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 231.578125,
+              "right": 298.78125,
+              "top": 514.28125,
+              "bottom": 554.28125
+            },
+            "focus_bounds": {
+              "left": 225.578125,
+              "right": 304.78125,
+              "top": 508.28125,
+              "bottom": 560.28125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 505.28125,
+              "bottom": 563.28125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/work-items?visualization=graph"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 7,
+        "operableButtons": 7,
+        "scrollLeft": 0,
+        "scrollWidth": 547,
+        "clientWidth": 296
+      }
+    },
+    {
+      "consumer": "Incident command",
+      "route": "/incidents",
+      "width": 390,
+      "height": 844,
+      "available_modes": [
+        "Incident_command",
+        "Table",
+        "Board",
+        "Timeline",
+        "Dashboard"
+      ],
+      "active_mode": "Dashboard",
+      "url": "http://127.0.0.1:60138/incidents?visualization=dashboard",
+      "page": {
+        "viewport_css_px": 390,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 366,
+          "scrollWidth": 485,
+          "left": 12,
+          "right": 378,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 5,
+          "operableButtons": 5,
+          "scrollLeft": 0,
+          "scrollWidth": 485,
+          "clientWidth": 366
+        }
+      },
+      "pointer": {
+        "first": "Incident_command",
+        "middle": "Board",
+        "last": "Dashboard",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Incident_command",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 176.609375,
+              "top": 797.375,
+              "bottom": 837.375
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 182.609375,
+              "top": 791.375,
+              "bottom": 843.375
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 788.375,
+              "bottom": 846.375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Board",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 238.875,
+              "right": 304.890625,
+              "top": 797.375,
+              "bottom": 837.375
+            },
+            "focus_bounds": {
+              "left": 232.875,
+              "right": 310.890625,
+              "top": 791.375,
+              "bottom": 843.375
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 788.375,
+              "bottom": 846.375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/incidents?visualization=board"
+          }
+        },
+        "final": {
+          "mode": "Dashboard",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 269.171875,
+              "right": 368.78125,
+              "top": 778.78125,
+              "bottom": 818.78125
+            },
+            "focus_bounds": {
+              "left": 263.171875,
+              "right": 374.78125,
+              "top": 772.78125,
+              "bottom": 824.78125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 378,
+              "top": 769.78125,
+              "bottom": 827.78125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/incidents?visualization=dashboard"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 5,
+        "operableButtons": 5,
+        "scrollLeft": 0,
+        "scrollWidth": 485,
+        "clientWidth": 366
+      }
+    },
+    {
+      "consumer": "Incident command",
+      "route": "/incidents",
+      "width": 320,
+      "height": 800,
+      "available_modes": [
+        "Incident_command",
+        "Table",
+        "Board",
+        "Timeline",
+        "Dashboard"
+      ],
+      "active_mode": "Dashboard",
+      "url": "http://127.0.0.1:60138/incidents?visualization=dashboard",
+      "page": {
+        "viewport_css_px": 320,
+        "document_scroll_width": 320,
+        "document_client_width": 320,
+        "body_scroll_width": 320
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 296,
+          "scrollWidth": 485,
+          "left": 12,
+          "right": 308,
+          "overflowX": "auto"
+        },
+        "after": {
+          "ownerCount": 1,
+          "buttonCount": 5,
+          "operableButtons": 5,
+          "scrollLeft": 0,
+          "scrollWidth": 485,
+          "clientWidth": 296
+        }
+      },
+      "pointer": {
+        "first": "Incident_command",
+        "middle": "Board",
+        "last": "Dashboard",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Incident_command",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 21,
+              "right": 176.609375,
+              "top": 380.375,
+              "bottom": 420.375
+            },
+            "focus_bounds": {
+              "left": 15,
+              "right": 182.609375,
+              "top": 374.375,
+              "bottom": 426.375
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 371.375,
+              "bottom": 429.375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Board",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 227.875,
+              "right": 293.890625,
+              "top": 380.375,
+              "bottom": 420.375
+            },
+            "focus_bounds": {
+              "left": 221.875,
+              "right": 299.890625,
+              "top": 374.375,
+              "bottom": 426.375
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 371.375,
+              "bottom": 429.375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/incidents?visualization=board"
+          }
+        },
+        "final": {
+          "mode": "Dashboard",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 199.171875,
+              "right": 298.78125,
+              "top": 512.28125,
+              "bottom": 552.28125
+            },
+            "focus_bounds": {
+              "left": 193.171875,
+              "right": 304.78125,
+              "top": 506.28125,
+              "bottom": 558.28125
+            },
+            "owner_bounds": {
+              "left": 12,
+              "right": 308,
+              "top": 503.28125,
+              "bottom": 561.28125
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          },
+          "activation": {
+            "click_count": 1,
+            "history_change_count": 1,
+            "url": "http://127.0.0.1:60138/incidents?visualization=dashboard"
+          }
+        }
+      },
+      "hidden_responsive_controls": {
+        "ownerCount": 1,
+        "buttonCount": 5,
+        "operableButtons": 5,
+        "scrollLeft": 0,
+        "scrollWidth": 485,
+        "clientWidth": 296
+      }
+    }
+  ],
+  "responsive_state_preservation": {
+    "mode": "true",
+    "search": "task",
+    "filter": "planned",
+    "url": "http://127.0.0.1:60138/plan-tasks?visualization=gantt",
+    "summary": true
+  },
+  "short_height_forced_colors": {
+    "viewport": {
+      "width": 390,
+      "height": 420
+    },
+    "geometry": {
+      "viewport_css_px": 390,
+      "document_scroll_width": 390,
+      "document_client_width": 390,
+      "body_scroll_width": 390
+    },
+    "focus": {
+      "active": true,
+      "focusVisible": true,
+      "outline": "rgba(5, 0, 73, 0.8) solid 3px",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineOffset": "3px",
+      "bounds": {
+        "left": 302.09375,
+        "right": 369.296875,
+        "top": 190.15625,
+        "bottom": 230.15625
+      },
+      "focus_bounds": {
+        "left": 296.09375,
+        "right": 375.296875,
+        "top": 184.15625,
+        "bottom": 236.15625
+      },
+      "owner_bounds": {
+        "left": 12,
+        "right": 378,
+        "top": 181.15625,
+        "bottom": 239.15625
+      },
+      "viewport_bounds": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 420
+      },
+      "viewport_tolerance_device_px": 1,
+      "fully_inside_owner": true,
+      "fully_inside_viewport": true,
+      "forcedColors": true
+    }
+  },
+  "hidden_responsive_controls": "single owner; inactive modes are not duplicated or aria-hidden operable",
+  "negative_control_sensitivity": {
+    "selector_contract_failed_on_clipped_switch": true,
+    "focus_containment_assertion_failed_on_faulty_fixture": true,
+    "focus_containment_sound_fixture_passed": true,
+    "fixture": {
+      "system": {
+        "viewport": 390,
+        "documentScrollWidth": 781,
+        "bodyScrollWidth": 390
+      },
+      "visualization": {
+        "ownerClientWidth": 98,
+        "ownerScrollWidth": 319,
+        "lastFullyInside": false
+      },
+      "focusContainment": {
+        "faulty": {
+          "ownerClientWidth": 258,
+          "ownerScrollWidth": 372,
+          "focused": true,
+          "focusBounds": {
+            "left": 194,
+            "right": 320,
+            "top": -6,
+            "bottom": 46
+          },
+          "fullyInsideOwner": false,
+          "partlyOutsideOwner": true,
+          "pageLevelOverflowGreen": true
+        },
+        "sound": {
+          "ownerClientWidth": 258,
+          "ownerScrollWidth": 372,
+          "focused": true,
+          "focusBounds": {
+            "left": 130,
+            "right": 256,
+            "top": 44,
+            "bottom": 96
+          },
+          "fullyInsideOwner": true,
+          "pageLevelOverflowGreen": true
+        }
+      }
+    }
+  },
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}

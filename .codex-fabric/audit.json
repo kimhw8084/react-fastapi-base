@@ -1,132 +1,316 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
+  "authority": {
+    "active_project_os_law": "Golden UI v2",
+    "project_os_go": false,
+    "project_os_lawbook_modified": false,
+    "review_overlay": "Golden UI v3.0.0-rc.2 provisional acceptance principles for CHG-185 only"
   },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "change_id": "CHG-185",
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
-    },
-    {
-      "name": "contracts",
       "command": "./dev contracts",
+      "name": "contracts",
       "status": "PASS"
     },
     {
-      "name": "architecture",
       "command": "./dev architecture",
+      "name": "architecture",
       "status": "PASS"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
       "code_ready": true,
-      "production_ready": false
+      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify",
+      "name": "verify",
+      "production_ready": false,
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
       "code_ready": true,
+      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify-release",
+      "name": "verify-release",
       "production_ready": false,
       "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
+      "detail": "302 passed, 1 skipped (company qualification identity fixture).",
+      "evidence": "evidence/current/full-stack/backend-junit.xml",
+      "name": "backend-tests",
       "status": "PASS"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+      "detail": "74 passed across 22 files.",
+      "evidence": "evidence/current/full-stack/frontend-unit.log",
+      "name": "frontend-unit",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "evidence/current/full-stack/frontend-typecheck.log",
+        "evidence/current/full-stack/frontend-build.log",
+        "evidence/current/full-stack/frontend-storybook.log"
+      ],
+      "name": "frontend-build-typecheck-storybook",
+      "status": "PASS"
+    },
+    {
+      "detail": "38 Chromium Playwright cases passed; 16 UI state matrix rows passed.",
+      "evidence": [
+        "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "evidence/current/uiqa/ui-state-matrix-results.json"
+      ],
+      "name": "browser-e2e-accessibility",
+      "status": "PASS"
+    },
+    {
+      "detail": "10 compatible additive classifications; 0 breaking changes against the exact bound base.",
+      "evidence": "evidence/current/full-stack/api-compatibility.json",
+      "name": "api-compatibility",
+      "status": "PASS"
+    },
+    {
+      "detail": "All 14 isolated clean-clone commands passed on Darwin against the exact source.",
+      "evidence": "evidence/current/full-stack/fresh-clone-macos.json",
+      "name": "macos-fresh-clone",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "evidence/current/full-stack/upgrade-fixture.json",
+        "evidence/current/recovery/object-restore.json",
+        "evidence/current/storage/qualification.json",
+        "evidence/current/release/reference-apps.json"
+      ],
+      "name": "release-only-upgrade-recovery-storage-reference-apps",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/current/reuse/qualification.json",
+      "name": "reusable-platform-qualification",
+      "status": "PASS"
+    },
+    {
+      "detail": "80 PNGs total: 42 canonical route captures (21 workspaces \u00d7 desktop/mobile), plus selected and stress states.",
+      "evidence": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "name": "populated-visual-package",
+      "status": "CAPTURED_AND_PIXEL_REVIEWED"
+    },
+    {
+      "detail": "100,000 logical rows; 5,000 loaded; 20 rendered before/after deep scroll; 0.004 rendered ratio; deep scroll 49ms; sort 201ms.",
+      "evidence": "evidence/current/performance/browser.json",
+      "name": "browser-virtualization",
       "status": "PASS"
     }
   ],
   "evidence_manifest": {
-    "version": 1,
+    "cycle_policy": "CHECKPOINT_MANIFEST, rc22 identity/binding, and this audit record are not self-listed; their integrity is carried by the checkpoint and release-binding tools.",
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
+        "bytes": 17309,
         "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "sha256": "e1fc6614f9e1c4d418bf7fc89cb9f6541839777f9f322d2bce4ff434c476f853"
       },
       {
+        "bytes": 74903,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "fca18b6d0c697b47cf8a06da22f447f0aa48372b247e581e881b175f8d424c50"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 3255,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "9a2d120449f50acc88c68be1472718ba804a2bee21bdd0cae8862ed74e637648"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 38072,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "e3c7501f142959d37b682a7405c15c7a7088bc71729a65bc807b8ddba51a4e65"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 52592,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "73f309e154fa38bfda55a4dbd846fda23e1f83ec10821d830610b4fb8e91bb01"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 13729,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "415f90aad224c9cf69e2f79fdf66b62eb5281c6c9c04ba7dfab78f64f8f4cd6b"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "c4672570882c4697420af6bb13ea7289b8056506b69d3dd153cfdbc55db28020"
+      },
+      {
+        "bytes": 13915,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "1a9e0bfbddeee4d56d5eb0ac895e2e8c00fb07dd0310305f80a012ea1d38a561"
+      },
+      {
+        "bytes": 1028,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+        "sha256": "dc8fa92ef491ca85e976c8ef34aa4cfb1a1e2437cdce22dd933c09319e4c97f0"
+      },
+      {
+        "bytes": 924,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+        "sha256": "ca2757e71d4701a3e252fc937a69bc96f91467bc3cd6f35d9da5a151c9028a25"
+      },
+      {
+        "bytes": 1436,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "16af19183c80d819f2d80957ba7df4a98f9a107e06d8dd72f84215e6f6717c46"
+      },
+      {
+        "bytes": 1144,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+        "sha256": "5fca8b71e178f6a3957494a1a29b86c5e3595582e6d275750d1e4087f4a7796b"
+      },
+      {
+        "bytes": 706,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+        "sha256": "f51f5e0b098d299a4d2aaab0a588bd1a756bf7770a35cdaf7ca15f1f4a8e6f44"
+      },
+      {
+        "bytes": 123940,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+        "sha256": "320baee17e6ec0dee6c5833a62e2a6964d47d2ff64c1fc00f8474394e3926db0"
+      },
+      {
+        "bytes": 159006,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+        "sha256": "196c1b180a36f4854c224175fe8f49d85dda7089ecd2824abde6374b74e3af01"
+      },
+      {
+        "bytes": 163924,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+        "sha256": "f407559eadb0a0ae037be3e5606c25052472080870ed5a24d1deac3ed6fab83f"
+      },
+      {
+        "bytes": 150555,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+        "sha256": "020ea2a7b0e7ad5e7700e953c41b690258eb6e59cd907fd6b9d0c3911825384d"
+      },
+      {
+        "bytes": 52037,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+        "sha256": "becea72f9a0ac7a126c6939167a3506be7cd102e48059c02c36b940afee69ed4"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "5e983d1ba2680bb07eff78be38434573b5bd4c3671bee1836620629d977804a2"
+      },
+      {
+        "bytes": 11935,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "bece6d26045e0e7e1efd1a5f3e138c391c42a08cf9f1ee5e65dde9c33ec33c36"
+      },
+      {
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "05a5689ebf26ae49c9cee2708e3384c7bb95caeb273b367ee73a83c974476547"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "aa7bbd4d702e95c12339d44a0e03ff3240fb507b02c18e1295a6a651707ed646"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "a15ddf3d04758668d43c42d2982802f0784b3672bac0a72e30212c9593c4c1b4"
+      },
+      {
+        "bytes": 174363,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "dca41d62197c13f6a84fafe538055883bcc420c8f8dcbaa27efff06a7a108ad9"
       }
-    ]
+    ],
+    "version": 1
   },
+  "external_blockers": [
+    "Company identity and multi-user qualification",
+    "Company provider storage and durability qualification",
+    "Company deployment and ingress qualification",
+    "Applicable company UI accessibility, performance, and operations evidence",
+    "Independent Project OS audit and acceptance"
+  ],
+  "fabric_job_id": "CF-6d4fb3c6392a8cfe3666a6c0",
+  "git": {
+    "base_ancestry_verified": true,
+    "branch": "codex/react-fastapi-base-golden-ui-v3-populated-remediation-v1",
+    "integration_claimed": false,
+    "merged": false,
+    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; independent Project OS audit, acceptance, merge, and repository integration are not claimed.",
+    "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_branch": "main",
+    "target_changed": false,
+    "terminal_candidate": {
+      "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+      "candidate_tree": "2840a0733f009151e92f52ec8caf788bce601e39",
+      "source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
+      "version": "1.0.0-rc.22"
+    }
+  },
+  "historical_evidence": {
+    "chg153_r7_ar44": "Preserved as historical source-bound evidence; no screenshots were overwritten or relabelled as CHG-185."
+  },
+  "kind": "codex-fabric-audit-evidence",
+  "negative_controls": [
+    {
+      "id": "false-success-status",
+      "result": "\"not ready\" is neutral; explicit danger tone remains danger.",
+      "status": "PASS",
+      "test": "frontend/src/platform/ui/primitives.test.tsx"
+    },
+    {
+      "id": "focus-restoration-ineligible-invoker",
+      "result": "Disabled, removed, display-hidden, visibility-hidden, aria-hidden, and inert invokers fall back to main; nested child overlay returns to eligible parent.",
+      "status": "PASS",
+      "test": "frontend/src/platform/ui/Dialog.test.tsx"
+    },
+    {
+      "id": "form-summary-without-focus-target",
+      "result": "Pending and form-level errors stay unlinked; actionable field summary focuses the corresponding eligible input.",
+      "status": "PASS",
+      "test": "frontend/src/platform/workspace/FormEngine.test.tsx"
+    },
+    {
+      "evidence": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "id": "empty-vs-no-match",
+      "result": "True active empty rejects the no-match heading; filtered no-match has a clear-search recovery; request failure is rendered separately.",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "id": "mobile-shell-task-economy",
+      "result": "Faulted 240px shell puts task start at 332px and action bottom at 484.3px; oracle rejects the 180px/300px budgets.",
+      "status": "PASS"
+    }
+  ],
+  "note": "Candidate is prepared for independent Project OS audit. This BUILD makes no Project OS acceptance, production-readiness, company qualification, or integration claim.",
+  "operation": "BUILD",
+  "project_id": "react-fastapi-base",
   "release": {
-    "version": "1.0.0-rc.11",
     "code_ready": true,
     "production_ready": false,
-    "project_os_go": false
+    "project_os_go": false,
+    "version": "1.0.0-rc.22"
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "request": "golden-ui-v3-populated-remediation-v1",
+  "ready_for_independent_project_os_audit": true,
+  "schema_version": 1,
+  "source_anchor": {
+    "code_ready": true,
+    "identity_locator": "deploy/rc22-release-identity.json",
+    "production_ready": false,
+    "profile": "company",
+    "project": "react-fastapi-base",
+    "release_status": "NOT_CERTIFIED",
+    "source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
+    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
+    "verified_executable_source_commit": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+    "version": "1.0.0-rc.22"
+  },
+  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS"
 }

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+  "precondition": "revision-backed work item dossier opened",
+  "input": "changed title",
+  "visible_result": "server revision conflict",
+  "correct_object": "same work item edit form",
+  "forbidden_effect": "draft is not discarded or persisted over revision 2",
+  "recovery": "review latest revision and retry after reconciling",
+  "next_legitimate_action": "keep or close the preserved draft",
+  "draft_retained": true,
+  "screenshot": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png"
+}

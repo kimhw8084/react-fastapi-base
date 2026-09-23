@@ -1,0 +1,46 @@
+{
+  "state_id": "chg34-grid-semantic-theme-modes",
+  "material_state_class": "normal",
+  "computed_modes": {
+    "light": {
+      "root": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 36, 56)"
+      },
+      "header": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(67, 84, 109)"
+      },
+      "row": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 36, 56)"
+      },
+      "rows": 3
+    },
+    "dark": {
+      "root": {
+        "background": "rgb(23, 31, 43)",
+        "color": "rgb(238, 243, 250)"
+      },
+      "header": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(183, 195, 211)"
+      },
+      "row": {
+        "background": "rgb(23, 31, 43)",
+        "color": "rgb(238, 243, 250)"
+      },
+      "rows": 3
+    }
+  },
+  "computed_high_contrast": {
+    "background": "rgb(0, 0, 0)",
+    "color": "rgb(255, 255, 255)"
+  },
+  "grid_role": null,
+  "grid_name": "Work items data grid",
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}
