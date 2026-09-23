@@ -14,6 +14,17 @@ import { revealHorizontalFocus } from '../ui/focusReveal'
 
 type DossierTab='overview'|'fields'|'relationships'|'activity'|'history'|'compare'|'comments'|'files'|'audit'|'actions'
 
+export function dossierTabFallbackText(name:'activity'|'comments'|'files'|'audit'|'actions'):string{
+ const copy={
+  activity:'No additional record-specific activity is available.',
+  comments:'No record-specific comments are available.',
+  files:'No record-specific files are available.',
+  audit:'No record-specific audit entries are available.',
+  actions:'No additional record-specific actions are available.',
+ }
+ return copy[name]
+}
+
 export function formatComparisonValue(value: unknown): { kind: 'empty'|'text'|'structured'; text: string } {
   if (value === null || value === undefined || value === '') return { kind: 'empty', text: '—' }
   if (typeof value === 'string') return { kind: 'text', text: value }
@@ -51,7 +62,7 @@ export function Dossier<T extends BaseRecord>({ adapter, api, row, tenant, user,
   const left=snapshot(leftRevision)
   const right=snapshot(rightRevision??row.revision)
   const changedFields=useMemo(()=>[...new Set([...Object.keys(left),...Object.keys(right)])].filter(key=>JSON.stringify(left[key])!==JSON.stringify(right[key])&&!['created_at','updated_at','revision','id'].includes(key)),[left,right])
-  const customTab=(name:'activity'|'comments'|'files'|'audit'|'actions')=>adapter.renderDossierTab?.(name,row)??<p className="muted">This record type has no {name} adapter enabled.</p>
+  const customTab=(name:'activity'|'comments'|'files'|'audit'|'actions')=>adapter.renderDossierTab?.(name,row)??<p className="muted">{dossierTabFallbackText(name)}</p>
   const comments=useQuery({queryKey:['comments',user,tenant,adapter.entityKey??adapter.key,row.id],queryFn:()=>api.request<CommentRead[]>(`/api/v1/records/${encodeURIComponent(adapter.entityKey??adapter.key)}/${encodeURIComponent(row.id)}/comments`),enabled:tab==='comments'&&Boolean(adapter.entityKey)})
   const [comment,setComment]=useState('')
   const addComment=useMutation({mutationFn:()=>api.json<CommentRead>(`/api/v1/records/${encodeURIComponent(adapter.entityKey??adapter.key)}/${encodeURIComponent(row.id)}/comments`,'POST',{body:comment}),onSuccess:()=>{setComment('');void comments.refetch()}})

@@ -2,7 +2,7 @@
 
 ## Decision
 
-**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.22 is CHG-185, the first source-changing Golden UI v3 populated-remediation candidate, based on `6204c307cd8a59228c2b00b561a9946fc4c5eaae`. Golden UI v2 remains Project OS law; v3.0.0-rc.2 is applied only as a provisional review overlay, and this Product Change does not promote or edit lawbook authority. RC.21 / CHG-153 R7 and AR-44 remain historical evidence for their exact source and are not relabelled as RC.22 proof. This candidate is not a company production certificate.
+**V1 LOCAL CODE COMPLETE — COMPANY QUALIFICATION PENDING.** RC.22 is CHG-185, the first source-changing Golden UI v3 populated-remediation candidate, based on `6204c307cd8a59228c2b00b561a9946fc4c5eaae`. CHG-185 R3 is the single canonical continuation of R1: it carries forward R1 source candidate `e5b0a19fd61d1a6f0948237f1356889b43b6b5ce` and addresses only the independently confirmed residuals recorded below. The three undelivered R2 draft bindings were superseded before execution and are not release candidates. Golden UI v2 remains Project OS law; v3.0.0-rc.2 is applied only as a provisional review overlay, and this Product Change does not promote or edit lawbook authority. RC.21 / CHG-153 R7 and AR-44 remain historical evidence for their exact source and are not relabelled as RC.22 proof. This candidate is not a company production certificate.
 
 RC.10 configuration/secrets and earlier release evidence remain immutable historical evidence for their exact sources. RC.11 does not rewrite or relabel those reports.
 
@@ -47,6 +47,14 @@ Evidence gaps addressed: populated exact-candidate pixels for all 21 routes at d
 Verified already-correct behavior retained with regression evidence: System's long section list already had a deliberate bounded horizontal scroll owner and focus reveal from RC.19/RC.20; CHG-185 adds narrow, short-height and focus coverage instead of replacing that control. The existing 5,000-row AG Grid virtualization and deep-scroll contract remains in place and is rerun against this content-aware container.
 
 Golden UI v3 is a provisional acceptance overlay for this Change only. The executed commands, exact candidate identity, visual review results, negative controls, performance results and any unavailable evidence layers are recorded below after qualification; `production_ready` remains false unless separate authentic company qualification exists.
+
+### CHG-185 R3 bounded continuation
+
+R3 keeps visualization IDs canonical while using one shared human-label authority in selectors, projection summaries and accessible search/loading text. Incident severity retains `sev_*` logic keys while field-aware labels show `SEV-1` through `SEV-4`; Incident and Equipment State enum/datetime values use the existing field presentation helpers. Optional Dossier sections use product language for unavailable actions and other custom sections.
+
+The shared workspace toolbar keeps search and Active/Archived scope visible on mobile. Filters, sort, display, visualization and saved views share one compact disclosure whose summary exposes current filter, sort and display state. The populated mobile oracle now measures an actual primary material block and requires a 64 CSS-pixel viewport intersection at 390×844 for every routed workspace. Desktop navigation minimally reveals an off-screen active destination in the sidebar scrollport without moving focus.
+
+R3 read-only evidence waits for settled populated records and proves access scope plus absent write/create controls before capture. Rack evidence separates a selected occupied-estate frame from the selected/connected/trace interaction frame. Exact-source qualification, captured evidence and any remaining debt are recorded in the R3 release evidence below; predecessor R1/R7 artifacts remain historical.
 
 Current machine-readable evidence is under `evidence/current/`, especially [verification.json](../evidence/current/full-stack/verification.json), [backend-junit.xml](../evidence/current/full-stack/backend-junit.xml), [object-restore.json](../evidence/current/recovery/object-restore.json), [storage qualification](../evidence/current/storage/qualification.json), [browser-e2e-accessibility.log](../evidence/current/full-stack/browser-e2e-accessibility.log), [qualification.json](../evidence/current/performance/qualification.json), [browser.json](../evidence/current/performance/browser.json), [reference-apps.json](../evidence/current/release/reference-apps.json), and [fresh-clone-macos.json](../evidence/current/full-stack/fresh-clone-macos.json).
 

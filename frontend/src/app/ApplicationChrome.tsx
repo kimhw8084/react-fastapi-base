@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useLayoutEffect, useRef, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import type { TenantInfo, WorkspaceDefinition } from '../generated/schema'
 import type { ApplicationConfig } from '../generated/schema'
 import type { ThemeName } from '../platform/api/runtime'
 import type { ColorModePreference } from '../platform/ui/theme'
 import { Dialog } from '../platform/ui/Dialog'
 import { Icon, type IconKey } from '../platform/ui/Icon'
+import { activeNavigationScrollAdjustment } from '../platform/ui/activeNavigationReveal'
 
 export function WorkspaceNavigation({application,definitions}:{application:ApplicationConfig;definitions:WorkspaceDefinition[]}){
+ const location=useLocation()
+ const navigationRef=useRef<HTMLElement>(null)
+ const activeLinkRef=useRef<HTMLAnchorElement>(null)
  const definitionsByKey=new Map(definitions.map(definition=>[definition.key,definition]))
  const groups=new Map<string,Array<{workspace:string;label:string;icon:IconKey}>>()
  for(const item of application.navigation){
@@ -18,7 +22,14 @@ export function WorkspaceNavigation({application,definitions}:{application:Appli
   entries.push({workspace:item.workspace,label:item.label||definition.label,icon:(item.icon||'work-items') as IconKey})
   groups.set(group,entries)
  }
- return <nav aria-label="Main navigation">{[...groups].map(([group,items])=><section className="sidebar-nav-section" key={group}><h2>{group}</h2><div className="sidebar-nav-group">{items.map(item=><NavLink key={item.workspace} to={`/${item.workspace.replaceAll('_','-')}`}><Icon name={item.icon}/><span className="nav-item-label">{item.label}</span></NavLink>)}</div></section>)}</nav>
+ useLayoutEffect(()=>{
+  if(window.matchMedia('(max-width: 760px)').matches)return
+  const scrollport=navigationRef.current,active=activeLinkRef.current
+  if(!scrollport||!active)return
+  const adjustment=activeNavigationScrollAdjustment(scrollport.getBoundingClientRect(),active.getBoundingClientRect())
+  if(adjustment!==0)scrollport.scrollTop+=adjustment
+ },[location.pathname])
+ return <nav ref={navigationRef} aria-label="Main navigation">{[...groups].map(([group,items])=><section className="sidebar-nav-section" key={group}><h2>{group}</h2><div className="sidebar-nav-group">{items.map(item=>{const path=`/${item.workspace.replaceAll('_','-')}`;return <NavLink key={item.workspace} to={path} ref={location.pathname===path?activeLinkRef:undefined}><Icon name={item.icon}/><span className="nav-item-label">{item.label}</span></NavLink>})}</div></section>)}</nav>
 }
 
 function DisplayControls({idPrefix,theme,onTheme,mode,onMode,contrast,onContrast}:{idPrefix:string;theme:ThemeName;onTheme:(value:ThemeName)=>void;mode:ColorModePreference;onMode:(value:ColorModePreference)=>void;contrast:'normal'|'high';onContrast:(value:'normal'|'high')=>void}){

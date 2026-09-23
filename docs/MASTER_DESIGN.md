@@ -1,4 +1,6 @@
 > **Implementation addendum (1.0.0-rc.22):** CHG-185 is the first source-changing Golden UI v3 populated-remediation candidate. Golden UI v3.0.0-rc.2 is applied only as a provisional review overlay; Golden UI v2 remains Project OS law and no lawbook authority is changed. Company qualification remains external and this design is not production evidence.
+>
+> **R3 continuation:** CHG-185 R3 carries forward R1 source candidate `e5b0a19fd61d1a6f0948237f1356889b43b6b5ce` on the exact `6204c307cd8a59228c2b00b561a9946fc4c5eaae` base. It repairs shared visualization labels, field-aware Incident/Equipment State presentation, Dossier fallback copy, compact mobile workspace controls with measured populated-content reachability, and desktop active-navigation reveal. R1 and R7 evidence remain bound to their original sources; R3 regenerates its exact-source evidence without changing Golden UI law or production qualification.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
