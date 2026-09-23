@@ -228,7 +228,7 @@
             "type": "integer"
           },
           "api_revision": {
-            "default": 1,
+            "default": 2,
             "title": "Api Revision",
             "type": "integer"
           },
@@ -4976,9 +4976,7 @@
         },
         "required": [
           "workspace",
-          "label",
-          "group",
-          "icon"
+          "label"
         ],
         "title": "NavigationItem",
         "type": "object"
@@ -11632,7 +11630,7 @@
   "info": {
     "title": "Engineering Workspace",
     "version": "1.0.0-rc.22",
-    "x-api-contract-revision": 1,
+    "x-api-contract-revision": 2,
     "x-api-major": 1,
     "x-api-prefix": "/api/v1"
   },

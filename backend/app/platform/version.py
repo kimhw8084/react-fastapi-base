@@ -11,7 +11,7 @@ if not VERSION:
 # API compatibility is deliberately independent from application semver. This
 # is the single repository-owned source for the public API family and revision.
 API_MAJOR = 1
-API_CONTRACT_REVISION = 1
+API_CONTRACT_REVISION = 2
 API_PREFIX = f'/api/v{API_MAJOR}'
 
 if API_MAJOR < 1 or API_CONTRACT_REVISION < 1:

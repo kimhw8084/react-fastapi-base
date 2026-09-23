@@ -67,7 +67,7 @@ def validate_contract(document: Any) -> None:
     _require(
         isinstance(compatibility, dict)
         and compatibility.get('major') == 1
-        and compatibility.get('frontend_compiled_revision') == 1
+        and compatibility.get('frontend_compiled_revision') == 2
         and compatibility.get('backend_overlap_rule') == 'same_major_and_backend_revision_greater_than_or_equal_to_frontend_compiled_revision'
         and compatibility.get('rollout_order') == 'backend_first'
         and compatibility.get('bootstrap_failure') == 'missing_incompatible_or_older_backend_fails_closed',

@@ -59,7 +59,7 @@ def validate_repository_contract() -> dict[str, object]:
     _assert(document['candidate_version'] == version, 'Independent deployment contract candidate version is stale.')
     compatibility = document['api_compatibility']
     _assert(compatibility['major'] == API_MAJOR == 1, 'Independent deployment API major drifted.')
-    _assert(compatibility['frontend_compiled_revision'] == API_CONTRACT_REVISION == 1, 'Independent deployment API revision drifted.')
+    _assert(compatibility['frontend_compiled_revision'] == API_CONTRACT_REVISION, 'Independent deployment API revision drifted.')
 
     runtime_source = (ROOT / 'frontend/src/platform/api/runtime.ts').read_text(encoding='utf-8')
     _assert(all(f"'{key}'" in runtime_source for key in ('schemaVersion', 'apiBase', 'defaultTheme', 'titleOverride')), 'Frontend runtime schema source drifted.')

@@ -233,6 +233,30 @@ def _schema_compare(
     for key in sorted(constraint_keys):
         if old.get(key) == new.get(key):
             continue
+        revision_metadata_locations = {
+            'GET /api/v1/bootstrap response 200 application/json.api_revision',
+            'components.schemas.Bootstrap.api_revision',
+        }
+        if key == 'default' and location in revision_metadata_locations:
+            base_major, base_revision, _ = _metadata(old_document)
+            candidate_major, candidate_revision, _ = _metadata(new_document)
+            if (
+                isinstance(old.get(key), int)
+                and isinstance(new.get(key), int)
+                and base_major == candidate_major
+                and base_revision is not None
+                and candidate_revision is not None
+                and candidate_revision > base_revision
+                and old[key] == base_revision
+                and new[key] == candidate_revision
+            ):
+                changes.append(_change(
+                    'compatible_additive',
+                    'api-revision-metadata-bump',
+                    location,
+                    'The bootstrap revision metadata advances monotonically with the unchanged API major.',
+                ))
+                continue
         if direction == 'request' and key in {'minLength', 'minimum', 'minItems'}:
             if (new.get(key) is None and old.get(key) is not None) or (new.get(key) is not None and old.get(key) is not None and new[key] < old[key]):
                 changes.append(_change('compatible_additive', 'request-constraint-widening', location, f'Request constraint {key} was widened.'))
