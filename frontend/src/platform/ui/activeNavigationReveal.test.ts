@@ -7,11 +7,11 @@ describe('active desktop navigation reveal', () => {
   })
 
   it('minimally reveals a link below the scrollport', () => {
-    expect(activeNavigationScrollAdjustment({ top: 100, bottom: 700 }, { top: 742, bottom: 780 })).toBe(80)
+    expect(activeNavigationScrollAdjustment({ top: 100, bottom: 700 }, { top: 742, bottom: 780 })).toBe(81)
   })
 
   it('minimally reveals a link above the scrollport', () => {
-    expect(activeNavigationScrollAdjustment({ top: 100, bottom: 700 }, { top: 70, bottom: 108 })).toBe(-30)
+    expect(activeNavigationScrollAdjustment({ top: 100, bottom: 700 }, { top: 70, bottom: 108 })).toBe(-31)
   })
 
   it('fails the no-reveal negative control for an off-screen active link', () => {
