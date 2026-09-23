@@ -1,103 +1,2093 @@
 {
-  "change_id": "CHG-185",
-  "checks": [
+  "accepted_at": "2026-09-23T20:57:54Z",
+  "changed_files": [
     {
-      "command": "npm run typecheck",
-      "evidence": "./dev verify-release exact-source frontend-typecheck",
-      "name": "focused-frontend-typecheck",
-      "status": "PASS"
+      "additions": 180,
+      "deletions": 81,
+      "path": ".codex-fabric/audit.json",
+      "status": "M"
     },
     {
-      "command": "npm test -- --run",
-      "evidence": "26 files, 85 tests; exact-source frontend-unit gate",
-      "name": "focused-frontend-unit",
-      "status": "PASS"
+      "additions": 5,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "evidence": "./dev verify-release exact-source frontend-build and frontend-storybook",
-      "name": "frontend-production-build-and-storybook",
-      "status": "PASS"
+      "additions": 83,
+      "deletions": 61,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "evidence": "40 Chromium tests passed; UI state matrix 16/16; exact source digest",
-      "name": "browser-e2e-accessibility-uiqa",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "evidence": "./dev verify and ./dev verify-release exact-source reports",
-      "name": "architecture-performance-security-contracts",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "evidence": "./dev verify-release exact-source report",
-      "name": "release-only-upgrade-backup-storage-reference-apps",
-      "status": "PASS"
+      "additions": 3,
+      "deletions": 5,
+      "path": "backend/app/cli.py",
+      "status": "M"
     },
     {
-      "code_ready": true,
-      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify",
-      "exit_code": 0,
-      "name": "verify",
-      "production_ready": false,
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
+      "additions": 63,
+      "deletions": 21,
+      "path": "backend/app/config/application.json",
+      "status": "M"
     },
     {
-      "code_ready": true,
-      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify-release",
-      "exit_code": 0,
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ],
-      "name": "verify-release",
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
+      "additions": 6,
+      "deletions": 1,
+      "path": "backend/app/platform/configuration.py",
+      "status": "M"
     },
     {
-      "command": "python scripts/bind_release_evidence.py --verified-source-commit 7adafba654a20e84d9013f52e1fdd65951314410 --evidence-commit aff9f04f1778292f72af56f2400851c623d85eec --target-base-sha 6204c307cd8a59228c2b00b561a9946fc4c5eaae",
-      "evidence_binding_head": "3261b95add2f5c588425d24b0bd045da2a211bca",
-      "name": "release-evidence-binding",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/app/platform/deployment_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/app/platform/version.py",
+      "status": "M"
+    },
+    {
+      "additions": 229,
+      "deletions": 0,
+      "path": "backend/app/tooling/demo_qualification.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 1,
+      "path": "backend/tests/test_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 49,
+      "deletions": 0,
+      "path": "backend/tests/test_demo_qualification_fixture.py",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
+    },
+    {
+      "additions": 46,
+      "deletions": 3,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc22-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/API_COMPATIBILITY.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 3,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/deployment/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 69,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1687,
+      "deletions": 1075,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/deployment-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 33,
+      "deletions": 33,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 79,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 28,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 380,
+      "deletions": 289,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 69,
+      "deletions": 48,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 60,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 102,
+      "deletions": 102,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/performance/browser.json",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 23,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 29,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 68,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 380,
+      "deletions": 289,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/reuse/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 5912,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+      "status": "A"
+    },
+    {
+      "additions": 538,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 1280,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 5653,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 70,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 522,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+      "status": "A"
+    },
+    {
+      "additions": 75,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 58,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 2,
+      "path": "frontend/src/app/Application.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 61,
+      "deletions": 0,
+      "path": "frontend/src/app/ApplicationChrome.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/src/generated/schema.ts",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 0,
+      "path": "frontend/src/packs/semiconductor/equipmentStatePresentation.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 16,
+      "deletions": 0,
+      "path": "frontend/src/packs/semiconductor/equipmentStatePresentation.ts",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/software-engineering/IncidentWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 38,
+      "deletions": 0,
+      "path": "frontend/src/packs/software-engineering/incidentPresentation.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "frontend/src/packs/software-engineering/incidentPresentation.ts",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 13,
+      "path": "frontend/src/platform/grid/DataGrid.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 0,
+      "path": "frontend/src/platform/grid/gridLayout.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "frontend/src/platform/grid/gridLayout.ts",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/AppShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/Dialog.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/Icon.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/Notice.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "frontend/src/platform/ui/OverlayShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/WorkspaceShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/activeNavigationReveal.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/activeNavigationReveal.ts",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/focus.ts",
+      "status": "A"
+    },
+    {
+      "additions": 6,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/focusReveal.ts",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/primitives.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 15,
+      "deletions": 9,
+      "path": "frontend/src/platform/ui/primitives.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/BoardWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/CalendarWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/DashboardWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/Dossier.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 26,
+      "deletions": 7,
+      "path": "frontend/src/platform/workspace/Dossier.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/EntityWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 49,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/FieldValue.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 67,
+      "deletions": 14,
+      "path": "frontend/src/platform/workspace/FieldValue.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/FormEngine.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/FormEngine.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/HoverRecordPreview.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 8,
+      "path": "frontend/src/platform/workspace/ProjectionWorkspaceFrame.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/ResponsiveWorkspaceControls.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 4,
+      "path": "frontend/src/platform/workspace/TableDisplayControls.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 10,
+      "path": "frontend/src/platform/workspace/TableWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 27,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/WorkspaceEmptyState.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/WorkspaceEmptyState.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/visualizationDisplay.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/visualizationDisplay.ts",
+      "status": "A"
+    },
+    {
+      "additions": 92,
+      "deletions": 1,
+      "path": "frontend/src/theme/application.css",
+      "status": "M"
+    },
+    {
+      "additions": 184,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/golden-ui-v3.spec.ts",
+      "status": "A"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "frontend/tests/e2e/ui-state-matrix.json",
+      "status": "M"
+    },
+    {
+      "additions": 65,
+      "deletions": 33,
+      "path": "frontend/tests/e2e/uiqa.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "frontend/tests/e2e/workspace.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 0,
+      "path": "scripts/check_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "scripts/check_deployment_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "scripts/fresh_clone_check.py",
+      "status": "M"
+    },
+    {
+      "additions": 27,
+      "deletions": 0,
+      "path": "tests/test_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 0,
+      "deletions": 4,
+      "path": "tests/test_ui_state_matrix.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "tests/test_verification_contract.py",
+      "status": "M"
     }
   ],
-  "evidence": {
-    "desktop_navigation": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
-    "full_stack_verification": "evidence/current/full-stack/verification.json",
-    "mobile_material_budget_css_px": 64,
-    "mobile_material_min_visible_css_px": 150,
-    "negative_controls": "Passed for raw visualization labels, mobile material-content budget, active-navigation reveal, and disclosure state retention.",
-    "populated_surface_count": 21,
-    "populated_visual_manifest": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
-    "rack_geometry": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
-    "rack_interaction": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
-    "read_only": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
-    "screenshot_count": 42,
-    "viewports": [
-      "1440x900 DPR1",
-      "390x844 DPR1"
-    ]
-  },
-  "evidence_debt": [
-    "No screen-reader or physical-device qualification was executed.",
-    "No real IME or non-Chromium browser qualification was executed.",
-    "Company identity, storage, deployment, company UI accessibility, performance and operations evidence remain external."
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk python - <<'PY'\nfrom pathlib import Path\npath=Path('frontend/src/platform/workspace/BoardWorkspace.tsx')\ntext=path.read_text()\nstart=text.index(' commandBar={')\nend=text.index(' secondaryBar={', start)\ntext=text[:start]+' commandBar={controls}'+text[end:]\ntext=text.replace('secondaryBar={<>{viewTools}<div className=\\\"toolbar-actions\\\">','secondaryBar={<><div className=\\\"toolbar-actions\\\">',1)\npath.write_text(text)\nPY\nrtk nl -ba frontend/src/platform/workspace/BoardWorkspace.tsx | rtk sed -n '55,80p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH npm test -- --run'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH npm run typecheck'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH npm run build && rtk git diff --check && rtk git add frontend/src/platform/workspace/BoardWorkspace.tsx && rtk git commit -m '\"'CHG-185 disclose board controls on compact screens' && rtk git rev-parse HEAD\"",
+      "exit_code": 128,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add frontend/src/platform/workspace/BoardWorkspace.tsx && rtk git commit -m 'CHG-185 disclose board controls on compact screens' && rtk git rev-parse HEAD && rtk git status --short | head -15\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -35 /tmp/chg185-e2e-49.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH backend/.venv/bin/python scripts/e2e_runner.py > /tmp/chg185-e2e-49.log 2>&1'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -90 /tmp/chg185-e2e-49.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,56p' frontend/test-results/uiqa-uiqa-018-chg153-visualization-responsive-geometry-chromium/error-context.md\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '170,190p' frontend/tests/e2e/uiqa.spec.ts && rtk rg -n 'data-projection' frontend/src\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH npm test -- --run'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH npm run typecheck'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --stat && rtk git diff -- frontend/src/platform/workspace/BoardWorkspace.tsx frontend/tests/e2e/uiqa.spec.ts | rtk sed -n '1,180p' && rtk git diff --check\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add frontend/tests/e2e/uiqa.spec.ts && rtk git commit -m 'CHG-185 qualify human visualization labels in responsive UIQA' && rtk git rev-parse HEAD && rtk git status --short | tail -5\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python scripts/generate_checkpoint_manifest.py && rtk python scripts/checkpoint.py && rtk git add CHECKPOINT_MANIFEST.json && rtk git commit -m 'CHG-185 refresh source checkpoint for board controls' && rtk git rev-parse HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -5 /tmp/chg185-e2e-226.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH backend/.venv/bin/python scripts/e2e_runner.py > /tmp/chg185-e2e-226.log 2>&1'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -95 /tmp/chg185-e2e-226.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add frontend/tests/e2e/uiqa.spec.ts && rtk git commit -m 'CHG-185 verify compacted view state disclosure' && rtk python scripts/generate_checkpoint_manifest.py && rtk python scripts/checkpoint.py && rtk git add CHECKPOINT_MANIFEST.json && rtk git commit -m 'CHG-185 refresh source checkpoint for responsive view proof' && rtk git rev-parse HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -8 /tmp/chg185-e2e-d144.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH backend/.venv/bin/python scripts/e2e_runner.py > /tmp/chg185-e2e-d144.log 2>&1'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -75 /tmp/chg185-e2e-d144.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git add frontend/tests/e2e/uiqa.spec.ts && rtk git commit -m 'CHG-185 reopen remounted controls in forced-colors UIQA' && rtk python scripts/generate_checkpoint_manifest.py && rtk python scripts/checkpoint.py && rtk git add CHECKPOINT_MANIFEST.json && rtk git commit -m 'CHG-185 refresh source checkpoint for accessibility proof' && rtk git rev-parse HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH backend/.venv/bin/python scripts/e2e_runner.py > /tmp/chg185-e2e-256.log 2>&1'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'import json,pathlib; files=[\\\"evidence/current/uiqa/ui-state-matrix-results.json\\\",\\\"evidence/current/uiqa/rendered/chg185/256da2f/populated/manifest.json\\\",\\\"evidence/current/uiqa/rendered/chg185/populated/manifest.json\\\",\\\"evidence/current/performance/browser.json\\\"]; \nfor p in files:\n q=pathlib.Path(p); print(\\\"\\\\n\\\",p,\\\"exists\\\",q.exists());\n if q.exists():\n  d=json.loads(q.read_text()); print(\\\"candidate\\\",d.get(\\\"candidate_head\\\",d.get(\\\"candidate_sha\\\")),\\\"digest\\\",d.get(\\\"source_digest\\\"),\\\"status\\\",d.get(\\\"overall_status\\\"),\\\"surfaces\\\",d.get(\\\"surface_count\\\"),\\\"shots\\\",d.get(\\\"screenshot_count\\\"),\\\"count\\\",len(d.get(\\\"results\\\",[]))); print(\\\"nonpass\\\",[(x.get(\\\"browser_test_id\\\"),x.get(\\\"status\\\")) for x in d.get(\\\"results\\\",[]) if x.get(\\\"status\\\")\"'!=\"PASS\"]); print(\"keys\",list(d.keys()))'\"'\nrtk rg --files evidence/current/uiqa/rendered/chg185 | rtk rg '256da2f|populated/manifest|read-only|rack-|desktop-nav|mobile-task-economy' | tail -45\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'import json,pathlib; d=json.loads(pathlib.Path(\\\"evidence/current/uiqa/rendered/chg185/populated/manifest.json\\\").read_text()); print(\\\"min_mobile_material\\\",min((x[\\\"material_visible_px\\\"],x[\\\"workspace\\\"],x[\\\"path\\\"]) for x in d[\\\"screenshots\\\"] if x[\\\"viewport\\\"].startswith(\\\"mobile\\\"))); print(\\\"mobile_material\\\",[(x[\\\"workspace\\\"],x[\\\"material_visible_px\\\"]) for x in d[\\\"screenshots\\\"] if x[\\\"viewport\\\"].startswith(\\\"mobile\\\")]); print(\\\"mobile_below_64\\\",[(x[\\\"workspace\\\"],x[\\\"material_visible_px\\\"]) for x in d[\\\"screenshots\\\"] if x[\\\"viewport\\\"].startswith(\\\"mobile\\\") and x[\\\"material_visible_px\\\"]<64]); print(\\\"selected\\\",[(x[\\\"workspace\\\"],x[\\\"viewport\\\"],x[\\\"path\\\"],x[\\\"material_visible_px\\\"]) for x in d[\\\"screenshots\\\"] if x[\\\"workspace\\\"] in [\\\"incidents\\\",\\\"equipment_states\\\",\\\"process_measurements\\\",\\\"service_objectives\\\"]]); print(\\\"screens\\\",[p.name for p in pathlib.Path(\\\"evidence/current/uiqa/rendered/chg185/populated\\\").iterdir() if p.is_file()]);'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'import json,pathlib; base=pathlib.Path(\\\"evidence/current/uiqa/rendered/chg185/populated\\\"); names=[\\\"mobile-task-economy.json\\\",\\\"desktop-active-nav.json\\\",\\\"responsive-stress.json\\\",\\\"selected-states.json\\\",\\\"dossier-sections.json\\\",\\\"truthful-states.json\\\",\\\"mobile-controls.json\\\",\\\"revision-conflict.json\\\"]; \nfor name in names:\n p=base/name; d=json.loads(p.read_text()); print(\\\"\\\\n###\\\",name); print(json.dumps(d,indent=2)[:3500])'\nrtk python -c 'import json,pathlib; d=json.loads(pathlib.Path(\\\"evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.json\\\").read_text()) if pathlib.Path(\\\"evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.json\\\").exists() else {}; print(json.dumps(d,indent=2)[:2000])'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ps -axo pid,etime,command | rtk rg 'verify|fresh|react-fastapi|python3.14|playwright' | tail -25\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ps -axo pid,etime,command | tail -60'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify-release'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n 'evidence_commit|PENDING_EVIDENCE_COMMIT|finalize_release|evidence-binding' scripts docs deploy\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'import json,pathlib; files=[\\\"evidence/current/full-stack/verification.json\\\",\\\"evidence/current/fresh-clone-macos.json\\\",\\\"evidence/current/release/rc22-manifest.json\\\",\\\"evidence/current/release/rc22-evidence-binding.json\\\",\\\"evidence/current/release/rc22-readiness-matrix.json\\\",\\\"evidence/current/uiqa/ui-state-matrix-results.json\\\",\\\"evidence/current/uiqa/rendered/chg185/populated/manifest.json\\\",\\\".codex-fabric/audit.json\\\"]; \nfor n in files:\n p=pathlib.Path(n); print(\\\"\\\\n###\\\",n,\\\"exists\\\",p.exists());\n if p.exists():\n  try:\n   d=json.loads(p.read_text()); print(json.dumps(d,indent=2)[:5000])\n  except Exception: print(p.read_text()[:1000])'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk git log --oneline --decorate -12 && rtk git diff --stat'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk cat scripts/finalize_release.py && rtk cat scripts/bind_release_evidence.py && rtk sed -n '68,90p' docs/TESTING.md && rtk git check-ignore -v .codex-fabric/audit.json && rtk git ls-files -- .codex-fabric/audit.json\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat scripts/generate_checkpoint_manifest.py && rtk git status --short --untracked-files=all | tail -35 && rtk git check-ignore -v .codex-fabric/audit.json; rtk git status --short --ignored -- .codex-fabric/audit.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg --files evidence/current/uiqa/rendered/chg185/9d23bba && rtk git status --short --ignored -- .codex-fabric/audit.json && rtk git check-ignore --no-index -v .codex-fabric/audit.json'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'import json,pathlib; p=pathlib.Path(\\\"evidence/current/full-stack/verification.json\\\"); d=json.loads(p.read_text()); print(\\\"verify-release candidate\\\",d[\\\"candidate_head\\\"],\\\"source\\\",d[\\\"executable_source_commit\\\"],\\\"digest\\\",d[\\\"source_digest\\\"],\\\"code_ready\\\",d[\\\"code_ready\\\"],\\\"production_ready\\\",d[\\\"production_ready\\\"],\\\"exit\\\",d[\\\"exit_code\\\"]); print(\\\"gate_counts\\\",{s:sum(1 for x in d[\\\"results\\\"] if x[\\\"status\\\"]==s) for s in sorted({x[\\\"status\\\"] for x in d[\\\"results\\\"]})}); print(\\\"failed\\\",[(x[\\\"name\\\"],x.get(\\\"log\\\")) for x in d[\\\"results\\\"] if x[\\\"status\\\"]==\\\"FAIL\\\"]); print(\\\"blocked\\\",[(x[\\\"name\\\"],x.get(\\\"reason\\\")) for x in d[\\\"results\\\"] if x[\\\"status\\\"]==\\\"BLOCKED\\\"]); u=json.loads(pathlib.Path(\\\"evidence/current/uiqa/ui-state-matrix-results.json\\\").read_text()); print(\\\"uiqa\\\",u[\\\"overall_status\\\"],len(u[\\\"results\\\"]),sum(x[\\\"status\\\"]==\\\"PASS\\\" for x in u[\\\"results\\\"])); print(\\\"uiqa_notpass\\\",[(x[\\\"browser_test_id\\\"],x[\\\"status\\\"]) for x in u[\\\"results\\\"] if x[\\\"status\\\"]\"'!=\"PASS\"]); f=json.loads(pathlib.Path(\"evidence/current/full-stack/fresh-clone-macos.json\").read_text()); print(\"fresh_clone\",f[\"candidate_result\"],f[\"exit_code\"],f[\"candidate_head\"],f[\"source_digest\"]); print(\"source\",pathlib.Path(\"deploy/rc22-release-identity.json\").read_text())'\"'\nrtk git branch --show-current && rtk git rev-parse HEAD && rtk git rev-parse HEAD\"'^{tree} && rtk git rev-parse 7adafba''^{tree} && rtk git merge-base --is-ancestor e5b0a19fd61d1a6f0948237f1356889b43b6b5ce HEAD; rtk git merge-base --is-ancestor 6204c307cd8a59228c2b00b561a9946fc4c5eaae HEAD; rtk git rev-parse main && rtk git check-ignore -v .codex-fabric/audit.json && rtk git status --short --ignored -- .codex-fabric/audit.json'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --ignored -- .codex-fabric/audit.json && rtk git config --get core.excludesfile && rtk cat .git/info/exclude && rtk cat .gitignore'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat /Users/haewonkim/.gitignore_global'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat .gitignore'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --untracked-files=all -- .codex-fabric && rtk git ls-files --stage -- .codex-fabric/audit.json && rtk git check-ignore -v -- .codex-fabric/audit.json'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --check && rtk git add CHECKPOINT_MANIFEST.json deploy/rc22-release-identity.json evidence/current && rtk git diff --cached --stat && rtk git commit -m 'CHG-185 publish exact R3 verification and visual evidence' && rtk git rev-parse HEAD && rtk git status --short | head -30\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:$PATH backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 7adafba654a20e84d9013f52e1fdd65951314410 --evidence-commit aff9f04f1778292f72af56f2400851c623d85eec --target-base-sha 6204c307cd8a59228c2b00b561a9946fc4c5eaae && rtk git diff --stat -- evidence/current/release && rtk git add evidence/current/release/rc22-manifest.json evidence/current/release/rc22-evidence-binding.json && rtk git commit -m '\"'CHG-185 bind R3 evidence to exact source and commit' && rtk git rev-parse HEAD\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python - <<'PY'\nimport hashlib,json,pathlib,subprocess\nroot=pathlib.Path.cwd()\naudit_path=root/'.codex-fabric/audit.json'\nprevious=json.loads(audit_path.read_text())\nprevious_bytes=audit_path.read_bytes()\ndef git(*args):\n    return subprocess.check_output(['git',*args],text=True,cwd=root).strip()\ndef sha(path):\n    data=(root/path).read_bytes()\n    return {'path':path,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}\nsource='7adafba654a20e84d9013f52e1fdd65951314410'\nevidence='aff9f04f1778292f72af56f2400851c623d85eec'\nbinding='3261b95add2f5c588425d24b0bd045da2a211bca'\nbase='6204c307cd8a59228c2b00b561a9946fc4c5eaae'\nsource_tree=git('rev-parse',f'{source}\"'^{{tree}}'\"')\ncandidate='256da2fa0c6df8d3452c8b75821cc6bb143be7d8'\ncandidate_tree=git('rev-parse',f'{candidate}\"'^{{tree}}'\"')\nprevious_commit=git('log','-1','--format=%H','--','.codex-fabric/audit.json')\ndigest='86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3'\nitems=[\n 'deploy/rc22-release-identity.json',\n 'evidence/current/full-stack/verification.json',\n 'evidence/current/full-stack/source-hashes.json',\n 'evidence/current/release/rc22-manifest.json',\n 'evidence/current/release/rc22-evidence-binding.json',\n 'evidence/current/release/rc22-readiness-matrix.json',\n 'evidence/current/uiqa/ui-state-matrix-results.json',\n 'evidence/current/uiqa/rendered/chg185/populated/manifest.json',\n 'evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json',\n 'evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json',\n 'evidence/current/uiqa/rendered/chg185/populated/selected-states.json',\n 'evidence/current/uiqa/rendered/chg185/populated/truthful-states.json',\n]\nchecks=[\n {'name':'focused-frontend-typecheck','command':'npm run typecheck','status':'PASS','evidence':'./dev verify-release exact-source frontend-typecheck'},\n {'name':'focused-frontend-unit','command':'npm test -- --run','status':'PASS','evidence':'26 files, 85 tests; exact-source frontend-unit gate'},\n {'name':'frontend-production-build-and-storybook','status':'PASS','evidence':'./dev verify-release exact-source frontend-build and frontend-storybook'},\n {'name':'browser-e2e-accessibility-uiqa','status':'PASS','evidence':'40 Chromium tests passed; UI state matrix 16/16; exact source digest'},\n {'name':'architecture-performance-security-contracts','status':'PASS','evidence':'./dev verify and ./dev verify-release exact-source reports'},\n {'name':'release-only-upgrade-backup-storage-reference-apps','status':'PASS','evidence':'./dev verify-release exact-source report'},\n {'name':'verify','command':'RELEASE_BASE_SHA='+base+' API_COMPATIBILITY_BASE_SHA='+base+' ./dev verify','status':'PASS_WITH_EXTERNAL_BLOCKERS','exit_code':0,'code_ready':True,'production_ready':False},\n {'name':'verify-release','command':'RELEASE_BASE_SHA='+base+' API_COMPATIBILITY_BASE_SHA='+base+' ./dev verify-release','status':'PASS_WITH_EXTERNAL_BLOCKERS','exit_code':0,'code_ready':True,'production_ready':False,'release_status':'NOT_CERTIFIED','external_blockers':['identity','storage','deployment','ui_accessibility','performance','operations']},\n {'name':'release-evidence-binding','command':'python scripts/bind_release_evidence.py --verified-source-commit '+source+' --evidence-commit '+evidence+' --target-base-sha '+base,'status':'PASS','evidence_binding_head':binding},\n]\naudit={\n 'schema_version':1,\n 'kind':'codex-fabric-audit-evidence',\n 'operation':'FIX',\n 'status':'READY_FOR_INDEPENDENT_PROJECT_OS_AUDIT_WITH_EXTERNAL_BLOCKERS',\n 'change_id':'CHG-185',\n 'project_id':'react-fastapi-base',\n 'repository':'kimhw8084/react-fastapi-base',\n 'request':'golden-ui-v3-populated-perfection-fix-v3',\n 'fabric':{'job_id':'CF-d5aceeea7f9650051caa1068','worktree':'CF-d5aceeea7f9650051caa1068'},\n 'git':{\n   'target_branch':'main','target_base_sha':base,\n   'branch':'codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3',\n   'verified_executable_source_commit':source,'verified_source_tree':source_tree,\n   'source_digest':digest,'version':'1.0.0-rc.22',\n   'candidate_checkout_head':candidate,'candidate_checkout_tree':candidate_tree,\n   'evidence_commit':evidence,'evidence_binding_head':binding,\n   'target_changed':False,'main_merged':False,\n   'r1_source_candidate_is_ancestor':True,\n   'r1_source_candidate':'e5b0a19fd61d1a6f0948237f1356889b43b6b5ce',\n },\n 'source_anchor':{\n   'identity_locator':'deploy/rc22-release-identity.json','project':'react-fastapi-base','profile':'company',\n   'version':'1.0.0-rc.22','verified_executable_source_commit':source,'source_tree':source_tree,\n   'source_digest':digest,'source_evidence_locator':'evidence/current/full-stack/source-hashes.json',\n   'code_ready':True,'production_ready':False,'release_status':'NOT_CERTIFIED'\n },\n 'predecessor_authority':{\n   'r1_fabric_job':'CF-6d4fb3c6392a8cfe3666a6c0',\n   'r1_executable_source_candidate':'e5b0a19fd61d1a6f0948237f1356889b43b6b5ce',\n   'r1_source_tree':'2840a0733f009151e92f52ec8caf788bce601e39',\n   'r1_source_digest':'cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37',\n   'r1_version':'1.0.0-rc.22','r1_evidence_binding_head':'87f3e5f899c4a26b90fbc35f4e7319bfee7fcbd8',\n   'carry_forward':'R1 executable source is an ancestor; valid R1 repairs remain in source. R3 continues from that source after bounded residual fixes.',\n   'r2_reconciliation':{'superseded_before_execution':3,'used_or_created_by_r3':False},\n   'historical_evidence':'R1/R7 history remains in repository history; R3 records new evidence without relabeling historical evidence current.'\n },\n 'checks':checks,\n 'evidence_manifest':{'version':1,'items':[sha(path) for path in items]},\n 'evidence':{\n   'full_stack_verification':'evidence/current/full-stack/verification.json',\n   'populated_visual_manifest':'evidence/current/uiqa/rendered/chg185/populated/manifest.json',\n   'populated_surface_count':21,'viewports':['1440x900 DPR1','390x844 DPR1'],\n   'screenshot_count':42,'mobile_material_min_visible_css_px':150,'mobile_material_budget_css_px':64,\n   'rack_geometry':'evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png',\n   'rack_interaction':'evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png',\n   'read_only':'evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png',\n   'desktop_navigation':'evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json',\n   'negative_controls':'Passed for raw visualization labels, mobile material-content budget, active-navigation reveal, and disclosure state retention.'\n },\n 'release':{\n   'version':'1.0.0-rc.22','code_ready':True,'production_ready':False,\n   'release_status':'NOT_CERTIFIED','project_os_acceptance':False,\n   'external_blockers':['company_identity','company_storage','company_deployment','company_ui_accessibility','company_performance','company_operations']\n },\n 'evidence_debt':[\n   'No screen-reader or physical-device qualification was executed.',\n   'No real IME or non-Chromium browser qualification was executed.',\n   'Company identity, storage, deployment, company UI accessibility, performance and operations evidence remain external.'\n ],\n 'prior_audit_history':{\n   'previous_audit_commit':previous_commit,\n   'previous_audit_sha256':hashlib.sha256(previous_bytes).hexdigest(),\n   'previous_audit_record_retained_in_git_history':True\n },\n 'note':'Repository source and evidence are ready for independent Project OS audit. This record does not claim Project OS acceptance, main integration, or production readiness.'\n}\naudit_path.write_text(json.dumps(audit,indent=2,sort_keys=True)+'\\\\n')\nprint(json.dumps({'audit':str(audit_path),'previous_audit_commit':previous_commit,'source_tree':source_tree,'candidate_tree':candidate_tree,'evidence_commit':evidence,'evidence_binding_head':binding,'evidence_items':len(items)}))\nPY\nrtk git diff -- .codex-fabric/audit.json | rtk sed -n '1,150p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c 'from scripts.source_manifest import source_digest,source_hashes; print(source_digest(source_hashes()))' && rtk git diff --check && rtk git merge-base --is-ancestor e5b0a19fd61d1a6f0948237f1356889b43b6b5ce HEAD && rtk git merge-base --is-ancestor 6204c307cd8a59228c2b00b561a9946fc4c5eaae HEAD && rtk git show -s --format='%H %T %P' 3bdc4f1 && rtk git add .codex-fabric/audit.json && rtk git commit -m 'CHG-185 record independent Project OS audit handoff' && rtk git rev-parse HEAD && rtk git status --short --untracked-files=all | head -20\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python scripts/generate_checkpoint_manifest.py && rtk python scripts/generate_checkpoint_manifest.py --check && rtk git add CHECKPOINT_MANIFEST.json && rtk git commit -m 'CHG-185 refresh checkpoint for audit handoff' && rtk python scripts/checkpoint.py r3-terminal && rtk git rev-parse HEAD && rtk git status --short --untracked-files=all\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python - <<'PY'\nimport json,pathlib,subprocess\nroot=pathlib.Path.cwd()\ndef git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()\nsource='7adafba654a20e84d9013f52e1fdd65951314410'\nbase='6204c307cd8a59228c2b00b561a9946fc4c5eaae'\nhead=git('rev-parse','HEAD')\nsource_digest='86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3'\nmanifest=json.loads((root/'evidence/current/release/rc22-manifest.json').read_text())\nbinding=json.loads((root/'evidence/current/release/rc22-evidence-binding.json').read_text())\nverify=json.loads((root/'evidence/current/full-stack/verification.json').read_text())\nvisual=json.loads((root/'evidence/current/uiqa/rendered/chg185/populated/manifest.json').read_text())\naudit=json.loads((root/'.codex-fabric/audit.json').read_text())\nfrom scripts.source_manifest import source_digest as digest,source_hashes\nchecks={\n 'branch':git('branch','--show-current'),\n 'terminal_branch_head':head,\n 'executable_source_commit':git('log','-1','--format=%H','--','backend','frontend','contracts','scripts','tests','experience-lab','catalog','dev'),\n 'source_tree':git('rev-parse',f'{source}\"'^{{tree}}'\"'),\n 'source_digest_matches':digest(source_hashes())==source_digest,\n 'r1_source_ancestor':subprocess.call(['git','merge-base','--is-ancestor','e5b0a19fd61d1a6f0948237f1356889b43b6b5ce','HEAD'],cwd=root)==0,\n 'r1_start_parent':git('show','-s','--format=%P','3bdc4f12742c6e207073096ec5185002a7e64542'),\n 'requested_base_ancestor':subprocess.call(['git','merge-base','--is-ancestor',base,'HEAD'],cwd=root)==0,\n 'verify_exit':verify['exit_code'],'verify_code_ready':verify['code_ready'],'production_ready':verify['production_ready'],\n 'verify_digest':verify['source_digest'],'visual_candidate':visual['candidate_sha'],'visual_source':visual['executable_source_commit'],'visual_digest':visual['source_digest'],'visual_counts':[visual['surface_count'],visual['viewport_count'],visual['screenshot_count']],\n 'release_binding':binding['binding_status'],'release_result':binding['result'],'evidence_commit':binding['evidence_commit'],'evidence_binding_head':head if binding.get('evidence_commit') else None,\n 'manifest_source':manifest['verified_source_commit'],'manifest_evidence_commit':manifest['evidence_commit'],'manifest_base':manifest['target_base_sha'],\n 'audit_job':audit['fabric']['job_id'],'audit_request':audit['request'],'audit_operation':audit['operation'],'audit_source':audit['git']['verified_executable_source_commit'],'audit_evidence':audit['git']['evidence_commit'],'audit_binding':audit['git']['evidence_binding_head'],\n 'worktree_status':git('status','--porcelain')\n}\nprint(json.dumps(checks,indent=2))\nif checks['worktree_status']:raise SystemExit('working tree is not clean')\nif not checks['source_digest_matches'] or not checks['r1_source_ancestor'] or not checks['requested_base_ancestor']:raise SystemExit('identity check failed')\nif verify['exit_code']\"'!=0 or binding['\"'binding_status']\"'!='\"'PASS' or manifest['evidence_commit']\"'!='\"'aff9f04f1778292f72af56f2400851c623d85eec':raise SystemExit('evidence binding check failed')\nPY\nrtk git diff --check && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push -u origin codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --name-only e5b0a19fd61d1a6f0948237f1356889b43b6b5ce 7adafba654a20e84d9013f52e1fdd65951314410 && rtk git status --short && rtk git rev-parse HEAD && rtk git ls-remote --heads origin codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3 && rtk git rev-parse --abbrev-ref --symbolic-full-name @{u} && rtk git merge-base --is-ancestor 6204c307cd8a59228c2b00b561a9946fc4c5eaae HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
   ],
+  "codex": {
+    "cli_version": "codex-cli 0.155.1",
+    "configured_model": "gpt-6-luna",
+    "event_count": 680,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.38,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 56419712,
+      "fresh_input_tokens": 928404,
+      "input_tokens": 57348116,
+      "non_reasoning_output_tokens": 86942,
+      "output_tokens": 220653,
+      "reasoning_output_tokens": 133711,
+      "total_processed_tokens": 57568769
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "70f303a64745d082aacb6c8b552665dd7830a6da",
+      "subject": "CHG-185 refresh checkpoint for audit handoff"
+    },
+    {
+      "sha": "e7b6c542b48bdbf38d0b2c421e7ac0a3ccbcb3b3",
+      "subject": "CHG-185 record independent Project OS audit handoff"
+    },
+    {
+      "sha": "3261b95add2f5c588425d24b0bd045da2a211bca",
+      "subject": "CHG-185 bind R3 evidence to exact source and commit"
+    },
+    {
+      "sha": "aff9f04f1778292f72af56f2400851c623d85eec",
+      "subject": "CHG-185 publish exact R3 verification and visual evidence"
+    },
+    {
+      "sha": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
+      "subject": "CHG-185 refresh source checkpoint for accessibility proof"
+    },
+    {
+      "sha": "7adafba654a20e84d9013f52e1fdd65951314410",
+      "subject": "CHG-185 reopen remounted controls in forced-colors UIQA"
+    },
+    {
+      "sha": "d144e243582a8c251cd344cdedf1e55e91d1a5fc",
+      "subject": "CHG-185 refresh source checkpoint for responsive view proof"
+    },
+    {
+      "sha": "b6423e96c268b2e46e06b8d9ad31c863bebf1bce",
+      "subject": "CHG-185 verify compacted view state disclosure"
+    },
+    {
+      "sha": "2265895a68fddb18463d764b42050a1b462a29a5",
+      "subject": "CHG-185 refresh source checkpoint for board controls"
+    },
+    {
+      "sha": "bb0e443ed583191bb7a7e653b9daf30dc58a8b07",
+      "subject": "CHG-185 qualify human visualization labels in responsive UIQA"
+    },
+    {
+      "sha": "49cf4b221998226e64b469dcaaabf7554ebdcf29",
+      "subject": "CHG-185 disclose board controls on compact screens"
+    },
+    {
+      "sha": "8e70295bb04ade84f750e0ca774c596998312c57",
+      "subject": "CHG-185 refresh source checkpoint manifest"
+    },
+    {
+      "sha": "1fb2cbbcf8cc9eba6f83459e99f4844d5f8fa8d2",
+      "subject": "CHG-185 open compact visualization controls in UIQA"
+    },
+    {
+      "sha": "9d23bba86a7d9e1e9d733ec62d33dbd92e2540e2",
+      "subject": "CHG-185 keep visualization ids testable behind human labels"
+    },
+    {
+      "sha": "721b0b590f0c6558e766ba36335a5b7488ced8b6",
+      "subject": "CHG-185 reveal active links with pixel-safe scroll margin"
+    },
+    {
+      "sha": "6efe07ed31c664ba14a8cfe2abd0e8437b549a31",
+      "subject": "CHG-185 align responsive visual oracles with disclosure"
+    },
+    {
+      "sha": "f7fca99dab2938183f4cdb2eda6eef540fdbe2b8",
+      "subject": "CHG-185 qualify stabilized navigation and mobile disclosure"
+    },
+    {
+      "sha": "3bdc4f12742c6e207073096ec5185002a7e64542",
+      "subject": "CHG-185 R3 repair shared workspace residuals"
+    },
+    {
+      "sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+      "subject": "Fix isolated Playwright bootstrap command"
+    },
+    {
+      "sha": "26f5ea42d527632c2658831db8e35f4b486447f2",
+      "subject": "Preserve navigation API compatibility"
+    },
+    {
+      "sha": "a930923d3f1a855a210b6faadf9851ede2500ec4",
+      "subject": "Complete CHG-185 responsive evidence fixes"
+    },
+    {
+      "sha": "4e92d0ce535ef31310b7318d8d6aa4a4e3ef771f",
+      "subject": "Fix CHG-185 qualification edge cases"
+    },
+    {
+      "sha": "a121aef80184d14ee61f594fed81d2d5a11692c5",
+      "subject": "Build CHG-185 Golden UI v3 populated remediation"
+    }
+  ],
+  "diff": {
+    "additions": 20089,
+    "changed_files": 246,
+    "commit_count": 23,
+    "deletions": 2668
+  },
+  "error_code": null,
   "evidence_manifest": {
+    "count": 182,
     "items": [
+      {
+        "bytes": 9775,
+        "path": ".codex-fabric/audit.json",
+        "sha256": "95dfca4000b214b0494d41a3aa2e03a1930235e660be68b6593f2e60f9df6c2f"
+      },
+      {
+        "bytes": 15611,
+        "path": "CHANGELOG.md",
+        "sha256": "c2ba2e04a475feb35acef0e6a59b050dcf742c22246c6ea6b165761f6a58dfb8"
+      },
+      {
+        "bytes": 84431,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "e4c619a59ba3433265ec1ac7de982a9ba103d4956ebbb7fe86814b9299451f1b"
+      },
+      {
+        "bytes": 4092,
+        "path": "README.md",
+        "sha256": "9f9e15b6f33bf40324f760697be8ec0ccfcef0ab701cc71c36fbee56fa978ba1"
+      },
+      {
+        "bytes": 3221,
+        "path": "backend/app/config/application.json",
+        "sha256": "e405cdbefb0bbc29aa0d64c79384d4f378c0cee6055497a322bf06a296d90f69"
+      },
+      {
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "22190b818e2ce57581b7ed5b2ae9f2aeb9bbd9358c983364b2a66becd611d473"
+      },
+      {
+        "bytes": 1252537,
+        "path": "contracts/openapi.json",
+        "sha256": "be698b0c87dd139b798176ad12564e085a5bc663d91703c9b593e16242ecac21"
+      },
       {
         "bytes": 643,
         "path": "deploy/rc22-release-identity.json",
         "sha256": "39bdeae0da36302825e09a0aa48cb9a3d382b7d413d13e9aecae98ad8af624ba"
       },
       {
-        "bytes": 17313,
-        "path": "evidence/current/full-stack/verification.json",
-        "sha256": "e00d9ae799f6bc01c2f07ac69d78f85db93bd4dfbaa2d805285f7de786715209"
+        "bytes": 3486,
+        "path": "docs/API_COMPATIBILITY.md",
+        "sha256": "3e5eba96f891c12c50a1f52464ba999b2c73dccc3a6a7f9f3b2c30ccbecb4c9b"
+      },
+      {
+        "bytes": 4680,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "68b188fb51778afedba44a589269ba7214c4d9e8660546a788c4dc5a62c9cd7c"
+      },
+      {
+        "bytes": 8674,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "6779caa69385f4e2fbcd99a52ff401fda11e0ab382624e5d674599a587afcf32"
+      },
+      {
+        "bytes": 3167,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "bb7598b791549ab061338d6ec28a4973b7df33602f4a201ebf1b9c4d2ddad958"
+      },
+      {
+        "bytes": 45793,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "0838fd338fdf7a5b768caa87aa17c3494d720f0bbe51664996555dbc7a723a2a"
+      },
+      {
+        "bytes": 16209,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "0efbb9fa04d869780bf6d57dc8084d824fb5953a81a51708f4ddd5d421c6970e"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "6e060f5e525c44a9cf16b4f31aadc490cec1381e26c7f6d9e0e2229fe87a244f"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "975d73b26e1a43aebac545172b89d7bf8a40047a190c52d26122515321efdb7e"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "b6ce2895008797ff117c3d676e2ed1dec6931da7cc975b2b617c8c5d88f2e9ce"
+      },
+      {
+        "bytes": 2590,
+        "path": "evidence/current/deployment/qualification.json",
+        "sha256": "67761a8216e09226bec3e17367598b9c06ab1fe803f503aa14f8d32fbb8d13ba"
+      },
+      {
+        "bytes": 3255,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "989c716a5abc55db000dfb4b5dbf824ed0cd1baaf8c6218a42337cbfd029b644"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "51bb1048f60e2912b2797bfb65caaf084545373adde349401597dd7159017a7b"
+      },
+      {
+        "bytes": 8351,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "59ae05b030404df2f7d4661b00448c9bef313a625859426d15d6093eb6599de0"
+      },
+      {
+        "bytes": 4978,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "1133449d830e69969b935406d973e71c93f63de215c135ef75936fd4b9b252f5"
+      },
+      {
+        "bytes": 13496,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "b054b4ffe35aa2ef107a44c7a468cbc32921871430a8163b36f41bafbc5a00b5"
+      },
+      {
+        "bytes": 12133,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "c9133de8f304097e6bb3a91106a81c20c71b6f933e119ce2db726d3b1c4c83fc"
+      },
+      {
+        "bytes": 38074,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "5c95afa0d991dffa99d564e3bc3e083f1714c3fcf24580bb5360719b8655ba67"
+      },
+      {
+        "bytes": 992,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "6b4cbf89c46773f1f00c9d1ee9e8c7eca7544534ffd9a64d2ac4a9784a3d6ab6"
+      },
+      {
+        "bytes": 158989,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "a1254dae4bc05df959d86850bb8fd5e6c39cb529b32e614746e453eb999a0d3b"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "b83d0f44eed5d793845fc42ead8f557f70ef7c64b57ab140bf9c1a95ac56194f"
+      },
+      {
+        "bytes": 156,
+        "path": "evidence/current/full-stack/deployment-contract.log",
+        "sha256": "c4ca405659064946d0f8af04bf1449cb758fb98448190e2c3a69d1586abccf99"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "4470d18caccff207edd2673074a02116aee639e5dfe0230d23b6fa2ec7324f56"
+      },
+      {
+        "bytes": 52731,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "0b835ae0febc17e9dc0bb4410d6e04a1c6ac13ed680efa230fb574a34367fb02"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "5bbfd36edf58c8a872cf6269b171a3adf82bab03118fc96a38fb69cf2dc81ee5"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "7730aaf4584a61efd15e04dc3555b60a7067691d0f706d5486b0598718aa6da7"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "c7f5a08d52ef7bbc57e4d6eb6a9deab95723f95ab8a4a6c13cf64b4cef1cedc9"
+      },
+      {
+        "bytes": 333,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "fe985d6cee4e06850613817f698073d66e210ec0539ea8fdce3d802745193e4d"
+      },
+      {
+        "bytes": 159,
+        "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+        "sha256": "dbceca8dcb8087ab0aefddd97e8a5d1a596db9917eca7225063280f815b2727e"
+      },
+      {
+        "bytes": 1238,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "27ab99434611db34b85f82c2348fcac77a26b75424f2ceab06a195ad21c1865a"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "8ed47d74b10e2ea3082e3fc58673a9ba468efb8c57f6d899b2059b59f8d39eed"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "eb0c31e21875bd7a22425eb1064950c03a51895314a4234a0f02436d1f7711e3"
+      },
+      {
+        "bytes": 7036,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "a21879425e8d0ee625d2b81f427fe0aeedc51e1bbba140badec24f448acbc183"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "9adada2ddcc4fc483db14701531046035fb81f8cc3c0d9ce346ebb1163194281"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "fc0d209d4fd3e6bd67f792dde47e7c846303187b68ac685766847ea59ba50a34"
+      },
+      {
+        "bytes": 696,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "250fcf227f48196c7fb0b912b2b9e96a9cd307d2bddf702d725fe507376667df"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "392f55e0f2fce064da5b76aa36861ba7908c47822c1a28a3d27f8657ac673b83"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "91bf8c993d68845b2eed9fa8983c6671abd2e2c8d23047b9b07c09a776da53f8"
+      },
+      {
+        "bytes": 179431,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "a08d828cf6f2bea71ed85ed3374a45df8771ca2217aecb16526ebba0d4a87e0f"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "b3300d57d0b8f74fad27ba384e1d58af3f674c41b5f585c49f92b89b16ea1902"
       },
       {
         "bytes": 76112,
@@ -105,9 +2095,74 @@
         "sha256": "78547c63ac43fca597e0f01feea8479412be6e7da1e001778c8289b21f43009e"
       },
       {
-        "bytes": 2659,
-        "path": "evidence/current/release/rc22-manifest.json",
-        "sha256": "4723351e3141fbe231a986e78c43cfeeafde192e0ae9945fccccf0354821aebe"
+        "bytes": 2952,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "0939f2ff2037c3b83663dbb4fc36b8cdae4e3d93a2727cc318aacf63840ab8f4"
+      },
+      {
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "8700032f6c516f403b81a37c722e5b71d95f6b15e00678c9cf32bce0e029ab48"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "353a27cc45915b1e30adda56bdac6fc60f7258a3b888c9e7abd1bdec8364f21a"
+      },
+      {
+        "bytes": 6160,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "a1e183551f1e99fc3872b6ea882745ac5611e9e3d7c8bcf4ee45f20b63e74930"
+      },
+      {
+        "bytes": 14072,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "8a545b4864e4de0a44b6440bb13896780cdda6e18c1552d6a37bc96526ca47ff"
+      },
+      {
+        "bytes": 14072,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "8a545b4864e4de0a44b6440bb13896780cdda6e18c1552d6a37bc96526ca47ff"
+      },
+      {
+        "bytes": 17313,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "e00d9ae799f6bc01c2f07ac69d78f85db93bd4dfbaa2d805285f7de786715209"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "bd8cbbabb40f53930d6541997c922db63f2717e6d9f71c3ecadece7aa156db5c"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "4d3cd5189481c4319c34384f00f84eec96013f8aa6b110d829169b0a22cce66c"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "3ae0fcb360a850f52fb6dca0c7d57cc379370391b563462a2f5ccd79cbfc32c1"
+      },
+      {
+        "bytes": 6125,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "a999e9442d1e9a3fc209ac204b3a2c07da26698d8f4297110c292d5433d1eeea"
+      },
+      {
+        "bytes": 11936,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "09f79461ad092da81ee9f0fe4a4cafb47104c897a12486932f230162a2450c1e"
+      },
+      {
+        "bytes": 3493,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "2b1f13c1171c0a062d32c564d257cc36f7a5ed8b20e793ba49ee8ef96e28e42b"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "fc0d209d4fd3e6bd67f792dde47e7c846303187b68ac685766847ea59ba50a34"
       },
       {
         "bytes": 2387,
@@ -115,24 +2170,229 @@
         "sha256": "7ecffe32b67b8cc0c603e0c723647866af0d9751052e49fd74b39ec686878e67"
       },
       {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc22-manifest.json",
+        "sha256": "4723351e3141fbe231a986e78c43cfeeafde192e0ae9945fccccf0354821aebe"
+      },
+      {
         "bytes": 3559,
         "path": "evidence/current/release/rc22-readiness-matrix.json",
         "sha256": "a2393c49148068bb097b82888397f7d160d4ff75d724accf95a142c2c6dc9ccb"
       },
       {
-        "bytes": 8848,
-        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
-        "sha256": "4c22576973a8821ab05618dcf0154c463ae4ce02c01eb7e7dc2efbe03cf4cbc7"
+        "bytes": 179431,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "a08d828cf6f2bea71ed85ed3374a45df8771ca2217aecb16526ebba0d4a87e0f"
       },
       {
-        "bytes": 19913,
-        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
-        "sha256": "b41f8caa3b8ac222f8ccd371c65bd3cc825bf5fc4dec625a5185e711f288b182"
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "cf20aa36879e3f540d2fc3742f708d743103129eb7140700e372794b08e63d49"
       },
       {
-        "bytes": 2294,
-        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
-        "sha256": "4553d4b1d26ae8f8379544cc37967c2d4b16dda2f53eb6608ba7bc529919a086"
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "ee8688bd75bc616d6e49dbac18917bf3a55f2a9e6e83e69b16d6139d76fbbbcc"
+      },
+      {
+        "bytes": 192875,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+        "sha256": "d80e100e0ec5bb2fe4f2e88b7aa8d9fb3927ba9ccbb8a1341e4338cb750df4d6"
+      },
+      {
+        "bytes": 143051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+        "sha256": "dff6a288273b8bbea6e92f5865982332890210d8e3dfd0a6929ed3ddaa7e236d"
+      },
+      {
+        "bytes": 15142,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+        "sha256": "a637c73d6fc2f9f7812e4a6b756d808aec2fab68ea370291f16ee3b35ae067d1"
+      },
+      {
+        "bytes": 60112,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+        "sha256": "be725ee71f5578b583f1d62912349ca7576f7f8583e9cd085f368c385460d36c"
+      },
+      {
+        "bytes": 35182,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+        "sha256": "11a616c2afd2850f343978cf141b344e68776fd36a6c1c34e6249b437239ee9e"
+      },
+      {
+        "bytes": 70094,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+        "sha256": "90c84bb9bfc6d35dfae9a5b3d94dacdf35af63bc69357f94d90ef57b21399edb"
+      },
+      {
+        "bytes": 904,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+        "sha256": "97620e0ef235787ddcdc28992a42c8e1e02a1d5f33989ab86b63cae4154c645b"
+      },
+      {
+        "bytes": 532,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+        "sha256": "0619824df4cf1b28b3c1673289be466b35c107570e9cb4bd9f8569bd1c4fdef8"
+      },
+      {
+        "bytes": 136282,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+        "sha256": "2ea193ec5e8c90be1eb72f46bba45d78b05d3f90d53c69923127befc5c366cd2"
+      },
+      {
+        "bytes": 699,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+        "sha256": "0ea6d04084b234e7ca51c05eaf44711650c4362eab7b08bad6dab3677ec5b80d"
+      },
+      {
+        "bytes": 161211,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+        "sha256": "c1fc6c9f5c49a1e38a7d896c50ba3fe155dbce514ce5126272239e23058558a8"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+        "sha256": "d96e964f8633ffb9bb2b565a2bc122b008e50454fa32459f79e5d73658ff3e92"
+      },
+      {
+        "bytes": 131309,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+        "sha256": "e18054492bc9b8e2d7a08c8b9a4201e5cf773b781ce0813fd383517b426c8a4c"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 410,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+        "sha256": "6a3c84c6240e813bde5734071902d81516db8861eef89ead1f2a4fa4c07e1cfd"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 155837,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+        "sha256": "0e46179b4b38b3322cb9fcb6f570da5db5690453803710995d759b043487072f"
+      },
+      {
+        "bytes": 253,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+        "sha256": "4ce6146b0e32c27a83dd7ee2a1e91a4124944c61892eb1c8555bf4159b470cbe"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 174117,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+        "sha256": "d26fa1c6f5f70f65509cd88c0d87e83b85891c23c10551b78c16749af63b5bde"
+      },
+      {
+        "bytes": 55485,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+        "sha256": "feb62f6dabb736688bda23b3f6f320268ef45f1211eddeaabcd8e0f4af3866da"
+      },
+      {
+        "bytes": 58331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+        "sha256": "f5a4ed70c03f5e755525d1f2145ba56fa33c8045d2f2262a1a7ec40ec9e62769"
+      },
+      {
+        "bytes": 76331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+        "sha256": "3d5d6d8f826e5738eafdb09b469617ed2e7d3db227889f0d33162fdd91ae3292"
+      },
+      {
+        "bytes": 79915,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+        "sha256": "29363bbdda2dcdd39f2e0d0794ac06deb73123dd79c8b620d9e610194082b5c0"
+      },
+      {
+        "bytes": 58128,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+        "sha256": "c192931d94ebeb1a0982f55c1d400596f6412f3fef8f74e057ca17e26cdff17f"
+      },
+      {
+        "bytes": 60487,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+        "sha256": "40dfcb7b1cb447430588b7244d8497be66432991e08a0f92416cc95ba0f04f2c"
+      },
+      {
+        "bytes": 81321,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+        "sha256": "3d59a8ce121cd4e45fc115af4a5af5ede2ff4c543627cdf1e50f659178a82d6e"
+      },
+      {
+        "bytes": 78557,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+        "sha256": "fc932940224cf47f2ba47942e5a63fdfdc4082600b4c21488692c47d10eea751"
+      },
+      {
+        "bytes": 84976,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+        "sha256": "d4e0bdbd53c2d3e811e04f166188e2d9784ce35bd353b493e11ae299e3d6f86a"
+      },
+      {
+        "bytes": 165755,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+        "sha256": "5bf9651379043257345671c90f6cb60408ee11e5a02d3061b675eeeaebc9ca2a"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 64745,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+        "sha256": "1c49dbf68a6572da567040f8c584f30cbeee843482c329c33d26662af2c112fd"
+      },
+      {
+        "bytes": 93564,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+        "sha256": "da77f768752f03fa43bab37775afde7291ca570134c9543240ccde11564f82a7"
+      },
+      {
+        "bytes": 155295,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+        "sha256": "31eedcd122bcccc5f95862b523f709e7f60a31ad710cbccd74cca629135ea38c"
+      },
+      {
+        "bytes": 71302,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+        "sha256": "9693d25eaf2a24464c903c644b2c34f29d1688cab6d57991c207d7932bee642a"
       },
       {
         "bytes": 1871,
@@ -140,92 +2400,446 @@
         "sha256": "0c1afc73f001351207440bb44ceab904bed3aaa68e35e89c040ba57782c400c8"
       },
       {
+        "bytes": 161314,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+        "sha256": "157ee4465d42dda807f80f072b94270b04adfa961615091d23227d11a44ab16e"
+      },
+      {
+        "bytes": 141769,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+        "sha256": "cdb0221ec8d18fd637387260800559b12feeff18479be1b551fcfb485e7a6032"
+      },
+      {
+        "bytes": 151863,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+        "sha256": "00c6294c815fe29724a2d572785fbff4ef31177b17798b516c0e55737007c2f9"
+      },
+      {
+        "bytes": 162625,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+        "sha256": "5f212115a11fa675d1d1ddb8f964fc190320c5d885fd3e9b7de1fb29eeb30499"
+      },
+      {
+        "bytes": 73855,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+        "sha256": "7ae1a3a9dddd3231e2c32f4e2ca32ce3e950dcf2afbd796eacf149484314b625"
+      },
+      {
+        "bytes": 68730,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+        "sha256": "7bd39fff491117c188527884934e1708652e2112de2a888ce0ebbe4807470e18"
+      },
+      {
+        "bytes": 65724,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+        "sha256": "585a5897271b14a27d16a960228d3a9c1aefe2c718af908c2f90994a45162753"
+      },
+      {
+        "bytes": 969,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+        "sha256": "756410ba680889746317f115a53b9857fb93340c378ba74f80097d3e246b98c1"
+      },
+      {
+        "bytes": 154182,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+        "sha256": "5c69de22b1c7544a5b29486cb68e792a00da8e237e2ee577034717fa69549fea"
+      },
+      {
+        "bytes": 66325,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+        "sha256": "f1cc6d223653e1198b5cfdff8c26422006d35c070465116ffe50ad57835b235c"
+      },
+      {
+        "bytes": 166127,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+        "sha256": "222e8e5e4373abd306af57041d877d1d415c4f7441bad05da226aae7c0fb9b2a"
+      },
+      {
+        "bytes": 68499,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+        "sha256": "d3490ed84de2c053f058cb623bf8e8dc2966d68aca50ce82684f5e65d10d5657"
+      },
+      {
+        "bytes": 161314,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+        "sha256": "157ee4465d42dda807f80f072b94270b04adfa961615091d23227d11a44ab16e"
+      },
+      {
+        "bytes": 73470,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+        "sha256": "31f40d96738ef74a2a4a9cd065894273294b312833530c95e0786e2e891c50b7"
+      },
+      {
+        "bytes": 163299,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+        "sha256": "a73c9f1609e9412ec8c03ed00589cdd74f77523a81c78179e621c6ea2318e791"
+      },
+      {
+        "bytes": 73019,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+        "sha256": "2edfe61f647a983ff32aa7f5b9b9ed88d263e20c12a6771f667f18e5c3145537"
+      },
+      {
+        "bytes": 149322,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+        "sha256": "7d779d1b63c766526c507110045a7ecc560a1bce2554ed2c58d4b58864f94f21"
+      },
+      {
+        "bytes": 70281,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+        "sha256": "b333f13d6de4f456e72d00d9624456db566e6dce0ace36948121e66f32f00a08"
+      },
+      {
+        "bytes": 19913,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "b41f8caa3b8ac222f8ccd371c65bd3cc825bf5fc4dec625a5185e711f288b182"
+      },
+      {
+        "bytes": 155697,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+        "sha256": "34fc1b36a074f6653d4806cabe85838a1d1de899761b7bafd322225a63b2dbea"
+      },
+      {
+        "bytes": 69196,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+        "sha256": "a9b520d31ee677d35f44fdc1cbd5f18f4b49d95291e457dc3bbcfdd8f03413e8"
+      },
+      {
+        "bytes": 872,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+        "sha256": "1ce633595b1f9db4385402212df9d110072983f516d7a68f58668657e6af5f06"
+      },
+      {
+        "bytes": 2294,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "4553d4b1d26ae8f8379544cc37967c2d4b16dda2f53eb6608ba7bc529919a086"
+      },
+      {
+        "bytes": 150364,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+        "sha256": "c646379e25d7cea5de982adeadab5b858011c7e25b9449e457c85dc663fcc785"
+      },
+      {
+        "bytes": 70235,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+        "sha256": "e17075a637c05c42c0a6efe78aca1385777957847ac3ef3ceec8b8f880c174a4"
+      },
+      {
+        "bytes": 157799,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+        "sha256": "066d5f239b74316c45f5a5392de65eadd16a2dfd3720fae9a02db403e8fcc6df"
+      },
+      {
+        "bytes": 62326,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+        "sha256": "9dca6f02f081bbaf0050488da83091a2ed4526955a3d56ef60b446fb04b5a50d"
+      },
+      {
+        "bytes": 157799,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+        "sha256": "066d5f239b74316c45f5a5392de65eadd16a2dfd3720fae9a02db403e8fcc6df"
+      },
+      {
+        "bytes": 152558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+        "sha256": "7e996ac54135782701c0c688b864423312055101dc94c663c7f9504422217efb"
+      },
+      {
+        "bytes": 72511,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+        "sha256": "c609fb50ebb31a7fdc143e5d9a749fe34f1d99f46dd7dc13152b4ac0f1a20a6b"
+      },
+      {
+        "bytes": 146548,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+        "sha256": "73c6a53180352b2f8a7ea897f6243c829000a66cad0c8ca00476f2f6af798630"
+      },
+      {
+        "bytes": 71613,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+        "sha256": "f0635f215a3bb71125240f121db1d52c607d742069062f15bd04477d1a369564"
+      },
+      {
+        "bytes": 151662,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+        "sha256": "5f105f1cfba3a100124ceaa7a2cb7aacc816e26625e03936341c230198befc3d"
+      },
+      {
+        "bytes": 63596,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+        "sha256": "4af8d539507de6bb4d63d1496d40c3b4038a2bf81f8a8c62d6f22f77cb930bfa"
+      },
+      {
+        "bytes": 84544,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+        "sha256": "2cbfc4f379419a8d25ba3b76be07846f7bece8504ae3b7a98ed6ac167c65fa35"
+      },
+      {
+        "bytes": 123940,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+        "sha256": "320baee17e6ec0dee6c5833a62e2a6964d47d2ff64c1fc00f8474394e3926db0"
+      },
+      {
+        "bytes": 141260,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+        "sha256": "0880cc79c5e07f5281add94524243eb413914e30efd670ad570cef527e67698f"
+      },
+      {
+        "bytes": 56768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+        "sha256": "93bd59b82e3fa8992543ffd0900cc8f0c1e59d033ce0c1b4f526a074689dbd33"
+      },
+      {
+        "bytes": 158274,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+        "sha256": "12ac10625c0eae61fb12d288026c142ba783bf4eab75c48dea41d65bfed7c9e2"
+      },
+      {
+        "bytes": 70150,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+        "sha256": "d048b8a1b1aca041b91259dfd8ffbdd3df34eb14df2cf9c47b4dcdee79f2f6d0"
+      },
+      {
+        "bytes": 1569,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+        "sha256": "ca5d6b75106b01343c06ac7922a7ccf33e51ee4963ed44c300eeee502b7116fc"
+      },
+      {
+        "bytes": 918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+        "sha256": "3948871ae1e68eee3d0724068ce4256f8ce3bac56b5557a25d317240c059c5d1"
+      },
+      {
+        "bytes": 168681,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+        "sha256": "99d517d205b921669436e3963ce71bce4650175f14f86b9692e4d613ab2aa58c"
+      },
+      {
+        "bytes": 71158,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+        "sha256": "749587e03fcbbe67d9f872f2f4acd857807a2789d2dfa1416120817272d13722"
+      },
+      {
         "bytes": 1558,
         "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
         "sha256": "852bdec386de0aa660bff69d1d64e1bd6a4f347603d03b753ecbb47b80a43231"
       },
       {
+        "bytes": 148457,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+        "sha256": "b39c8ba04096b7238b2b7dd5efb7029bf072d34ee8574e50ec1b6841e75f28f2"
+      },
+      {
+        "bytes": 64216,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+        "sha256": "c7fb8e7d20b38c0f1f0702f4f27139d52b5495ca02fe55103a67e52051b56d9f"
+      },
+      {
+        "bytes": 150074,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+        "sha256": "3448e48006ef94f28e08b96389a0f5d1f3da35578380c21b3f1c5b8df998ed69"
+      },
+      {
+        "bytes": 66708,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+        "sha256": "0df710a2d8f5d6c679090c0167094f21ecb2a9a32f2397bc296a1bb6ca4cdff3"
+      },
+      {
+        "bytes": 152558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+        "sha256": "7e996ac54135782701c0c688b864423312055101dc94c663c7f9504422217efb"
+      },
+      {
+        "bytes": 127954,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+        "sha256": "45980c8b74b506b0f33ba2f7c2dbe38d0d40c2cfdd9a35bd3748903c07f9bb30"
+      },
+      {
+        "bytes": 128416,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+        "sha256": "a28a337ca4b62ce58c7949b480232e269cadc37f601f7f7e21f380c80a56f75f"
+      },
+      {
+        "bytes": 129487,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+        "sha256": "ec02e3b77d2f64b7b934ce4838b906cb4c17a348c0e6709d1fddb1662ada1169"
+      },
+      {
+        "bytes": 145316,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+        "sha256": "7d7992d0255ef2bcc8eb033db7901072fd8fe1f62de78d9ba39b9085b6f35db1"
+      },
+      {
+        "bytes": 139585,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+        "sha256": "63908844f4727568eddf1808bb783c4e50fcc95f59fc8170c54a354f8e92cbf5"
+      },
+      {
+        "bytes": 159332,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+        "sha256": "b16cc294a6e8c270026a1efe0d8b6c814869a43984c2f324a817ed45a0ab6690"
+      },
+      {
+        "bytes": 173610,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+        "sha256": "a8273c71abdf73974b8cc80e3592caf0b121e023c0d51552a1fc40bdd5d8cba7"
+      },
+      {
+        "bytes": 124692,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+        "sha256": "bb5c9a1175a1b1be7fd9f21c64e0a7debefb46b135beedf56fa54daacfe77c5a"
+      },
+      {
+        "bytes": 135324,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+        "sha256": "fc6522f9f50ca69ff5e3fcf9a9ddc7e04fb614b1141868a3917fb4dccfbdd51e"
+      },
+      {
+        "bytes": 141769,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+        "sha256": "cdb0221ec8d18fd637387260800559b12feeff18479be1b551fcfb485e7a6032"
+      },
+      {
+        "bytes": 61203,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+        "sha256": "0e8eabd41cdc8c8e7d278bc50cf935b319af893f9a17190d749bad01d32fb252"
+      },
+      {
         "bytes": 1367,
         "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
         "sha256": "b68e95a5da5f83c53acddca0ebceaa515632ca3515330a6140e0b154c2e93971"
+      },
+      {
+        "bytes": 163673,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+        "sha256": "0049e580326a19450300a9e323571625378452e007da20a0c266a6820d0de08d"
+      },
+      {
+        "bytes": 73292,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+        "sha256": "d3ac5db74254757a5ceb1b7c11d42094d81f5b0f2039e0d47cfbc42f074d34fd"
+      },
+      {
+        "bytes": 57127,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+        "sha256": "baaead1d4592a79a1dd2400485745d2489cd0bb6715c9f039393ceab6e4f5f98"
+      },
+      {
+        "bytes": 59746,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+        "sha256": "f38394e17b795241488aa88afa719f103666fae7e023217005733c1d1ca7b48d"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 142674,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+        "sha256": "64beb5af04f0dbf861915b507fd206019fe22cbf533db64cb49a8b0d9e08effb"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "4c22576973a8821ab05618dcf0154c463ae4ce02c01eb7e7dc2efbe03cf4cbc7"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "a17e598fcb77a98a28696cee5e992e453fea746e03b5da318cf650423c10e462"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "952c40aea8d38de9b4fa6b1fb4f78fe485b1dfc41fb0cf94d878c624d820b7e9"
+      },
+      {
+        "bytes": 17744,
+        "path": "frontend/tests/e2e/ui-state-matrix.json",
+        "sha256": "8127b4b7b6216aa927595d984cb3f54d892b5924c5ba5330bd2214220561ba76"
       }
     ],
     "version": 1
   },
-  "fabric": {
-    "job_id": "CF-d5aceeea7f9650051caa1068",
-    "worktree": "CF-d5aceeea7f9650051caa1068"
-  },
-  "git": {
-    "branch": "codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3",
-    "candidate_checkout_head": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
-    "candidate_checkout_tree": "e0aa5e57a71d5ddff6b22065c5383442482254c6",
-    "evidence_binding_head": "3261b95add2f5c588425d24b0bd045da2a211bca",
-    "evidence_commit": "aff9f04f1778292f72af56f2400851c623d85eec",
-    "main_merged": false,
-    "r1_source_candidate": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
-    "r1_source_candidate_is_ancestor": true,
-    "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
-    "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
-    "target_branch": "main",
-    "target_changed": false,
-    "verified_executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
-    "verified_source_tree": "49e4db282753016502cd751d064576c40dfb3c4d",
-    "version": "1.0.0-rc.22"
-  },
-  "kind": "codex-fabric-audit-evidence",
-  "note": "Repository source and evidence are ready for independent Project OS audit. This record does not claim Project OS acceptance, main integration, or production readiness.",
-  "operation": "FIX",
-  "predecessor_authority": {
-    "carry_forward": "R1 executable source is an ancestor; valid R1 repairs remain in source. R3 continues from that source after bounded residual fixes.",
-    "historical_evidence": "R1/R7 history remains in repository history; R3 records new evidence without relabeling historical evidence current.",
-    "r1_evidence_binding_head": "87f3e5f899c4a26b90fbc35f4e7319bfee7fcbd8",
-    "r1_executable_source_candidate": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
-    "r1_fabric_job": "CF-6d4fb3c6392a8cfe3666a6c0",
-    "r1_source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
-    "r1_source_tree": "2840a0733f009151e92f52ec8caf788bce601e39",
-    "r1_version": "1.0.0-rc.22",
-    "r2_reconciliation": {
-      "superseded_before_execution": 3,
-      "used_or_created_by_r3": false
+  "evidence_publisher_release": "1.2.5-dashboard-controls-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
     }
   },
-  "prior_audit_history": {
-    "previous_audit_commit": "e767ee912341f80000ab6b0dd0cc16d6e00914a5",
-    "previous_audit_record_retained_in_git_history": true,
-    "previous_audit_sha256": "7f41cf7a67cc442d6a6e95d5bcf817636561eeed77fc6457ff4f91ad0dc3e8c9"
+  "fabric_release": "1.2.5-dashboard-controls-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-23T23:17:51Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "branch": "codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3",
+    "detached_verify": false,
+    "head_sha": "70f303a64745d082aacb6c8b552665dd7830a6da",
+    "remote_exact_head": true,
+    "remote_head_sha": "70f303a64745d082aacb6c8b552665dd7830a6da",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-d5aceeea7f9650051caa1068",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v3-populated-perfection-fix-v3",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-populated-perfection-fix-v3"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.5-dashboard-controls-candidate",
+    "policy_sha256": "123615bf2f6e57dcac197e49ca98ceac59ada86a55e2c84445ea5d00812c0833",
+    "registry_sha256": "cfc765f3211c37c7967a138f3b2d89a99341939b15b2623f92744d007f625d6f"
   },
   "project_id": "react-fastapi-base",
-  "release": {
-    "code_ready": true,
-    "external_blockers": [
-      "company_identity",
-      "company_storage",
-      "company_deployment",
-      "company_ui_accessibility",
-      "company_performance",
-      "company_operations"
-    ],
-    "production_ready": false,
-    "project_os_acceptance": false,
-    "release_status": "NOT_CERTIFIED",
-    "version": "1.0.0-rc.22"
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
   },
-  "repository": "kimhw8084/react-fastapi-base",
   "request": "golden-ui-v3-populated-perfection-fix-v3",
   "schema_version": 1,
-  "source_anchor": {
-    "code_ready": true,
-    "identity_locator": "deploy/rc22-release-identity.json",
-    "production_ready": false,
-    "profile": "company",
-    "project": "react-fastapi-base",
-    "release_status": "NOT_CERTIFIED",
-    "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "source_tree": "49e4db282753016502cd751d064576c40dfb3c4d",
-    "verified_executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
-    "version": "1.0.0-rc.22"
+  "started_at": "2026-09-23T20:57:55Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 8396,
+    "queue_seconds": 1,
+    "total_seconds": 8397
   },
-  "status": "READY_FOR_INDEPENDENT_PROJECT_OS_AUDIT_WITH_EXTERNAL_BLOCKERS"
+  "transport": {
+    "bytes": 16497,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 16133,
+    "prompt_sha256": "ac58cd9d5e8ed23b15dd933eaf77da848ca18d40671d757474d1113869be6b36",
+    "sha256": "d5aceeea7f9650051caa10682a2efb4312b0b351d1810be736c1af1846f2eb27"
+  }
 }
