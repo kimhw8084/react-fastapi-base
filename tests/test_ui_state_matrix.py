@@ -28,10 +28,6 @@ def write_fixture(tmp_path: Path, matrix: dict, spec: str | None = None) -> tupl
 
 def write_result_fixture(tmp_path: Path) -> tuple[Path, Path, Path, dict]:
     matrix = load_matrix()
-    for row in matrix['rows']:
-        row['required_evidence']['artifact_locators'] = [
-            locator for locator in row['required_evidence']['artifact_locators'] if (ROOT / locator).is_file()
-        ]
     matrix_path, spec_path = write_fixture(tmp_path, matrix)
     results = {
         'schema_version': 1,

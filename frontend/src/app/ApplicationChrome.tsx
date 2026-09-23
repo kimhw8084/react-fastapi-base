@@ -24,10 +24,15 @@ export function WorkspaceNavigation({application,definitions}:{application:Appli
  }
  useLayoutEffect(()=>{
   if(window.matchMedia('(max-width: 760px)').matches)return
-  const scrollport=navigationRef.current,active=activeLinkRef.current
-  if(!scrollport||!active)return
-  const adjustment=activeNavigationScrollAdjustment(scrollport.getBoundingClientRect(),active.getBoundingClientRect())
-  if(adjustment!==0)scrollport.scrollTop+=adjustment
+  const reveal=()=>{
+   const scrollport=navigationRef.current,active=activeLinkRef.current
+   if(!scrollport||!active)return
+   const adjustment=activeNavigationScrollAdjustment(scrollport.getBoundingClientRect(),active.getBoundingClientRect())
+   if(adjustment!==0)scrollport.scrollTop+=adjustment
+  }
+  reveal()
+  const frame=requestAnimationFrame(reveal)
+  return ()=>cancelAnimationFrame(frame)
  },[location.pathname])
  return <nav ref={navigationRef} aria-label="Main navigation">{[...groups].map(([group,items])=><section className="sidebar-nav-section" key={group}><h2>{group}</h2><div className="sidebar-nav-group">{items.map(item=>{const path=`/${item.workspace.replaceAll('_','-')}`;return <NavLink key={item.workspace} to={path} ref={location.pathname===path?activeLinkRef:undefined}><Icon name={item.icon}/><span className="nav-item-label">{item.label}</span></NavLink>})}</div></section>)}</nav>
 }
