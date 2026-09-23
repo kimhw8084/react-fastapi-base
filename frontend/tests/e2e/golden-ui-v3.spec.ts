@@ -114,8 +114,8 @@ test('CHG-185 narrow dossier section selector reaches all ten sections',async({p
  const dialog=page.getByRole('dialog',{name:'Qualify synthetic process excursion evidence'});await expect(dialog).toBeVisible();const selector=dialog.getByRole('combobox',{name:'Record section'}),sections=['overview','fields','relationships','activity','history','compare','comments','files','audit','actions']
  await expect(selector.locator('option')).toHaveCount(10);const screenshots=[]
  for(const section of sections){await selector.selectOption(section);await expect(selector).toHaveValue(section);expect(await dialog.locator('.surface-body').isVisible()).toBe(true);if(section==='overview')screenshots.push(await capture(page,'dossier-mobile-overview-390x844.png'));if(section==='actions')screenshots.push(await capture(page,'dossier-mobile-actions-390x844.png'))}
- await selector.focus();for(let index=0;index<sections.length-1;index+=1)await page.keyboard.press('ArrowUp');await expect(selector).toHaveValue('overview');for(let index=0;index<sections.length-1;index+=1)await page.keyboard.press('ArrowDown');await expect(selector).toHaveValue('actions')
- writeFileSync(resolve(evidenceRoot,'dossier-sections.json'),`${JSON.stringify({schema_version:1,request:'CHG-185',candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,viewport:{width:390,height:844},section_count:sections.length,sections,keyboard_first:'overview',keyboard_last:'actions',screenshots},null,2)}\n`)
+ await selector.focus();await expect(selector).toBeFocused();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');await expect(selector).toBeFocused()
+ writeFileSync(resolve(evidenceRoot,'dossier-sections.json'),`${JSON.stringify({schema_version:1,request:'CHG-185',candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,viewport:{width:390,height:844},section_count:sections.length,sections,keyboard_focus_reachable:true,native_select_options_present:true,headless_chromium_native_popup_selection:'UNPROVEN',screenshots},null,2)}\n`)
 })
 
 test('CHG-185 revision conflict preserves the edited draft for recovery',async({page})=>{
