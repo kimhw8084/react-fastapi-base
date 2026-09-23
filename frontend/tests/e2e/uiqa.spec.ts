@@ -99,7 +99,6 @@ async function workItemPage(page:Page):Promise<void>{
 
 async function revealResponsiveWorkspaceOptions(page:Page):Promise<void>{
  const selector=page.locator('.visualization-switch')
- if(await selector.isVisible())return
  const disclosure=page.locator('.workspace-controls-disclosure')
  await expect(disclosure).toBeVisible()
  const open=await disclosure.evaluate(element=>element instanceof HTMLDetailsElement&&element.open)
