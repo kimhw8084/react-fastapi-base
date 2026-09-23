@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
+  "candidate_tree": "e0aa5e57a71d5ddff6b22065c5383442482254c6",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
+  "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
+  "system_sections": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "final_section": "Notifications",
+      "focus_revealed": true,
+      "scroll_owner_width": {
+        "clientWidth": 270,
+        "scrollWidth": 797
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "final_section": "Notifications",
+      "focus_revealed": true,
+      "scroll_owner_width": {
+        "clientWidth": 340,
+        "scrollWidth": 797
+      }
+    }
+  ],
+  "large_text_rtl": {
+    "viewport": {
+      "width": 320,
+      "height": 800
+    },
+    "task_start_top": 152.5,
+    "task_start_bottom": 282.984375,
+    "action_top": 242.984375,
+    "action_bottom": 282.984375,
+    "task_start_visible": true,
+    "action_reachable": true,
+    "material_selector": ".workspace-primary > div.loading-state",
+    "material_top": 596.3125,
+    "material_bottom": 759.3125,
+    "material_visible_px": 163,
+    "document_scroll_width": 320,
+    "body_scroll_width": 320
+  },
+  "media": {
+    "reducedMotion": true,
+    "forcedColors": true
+  },
+  "scope": "Chromium only; no physical device, screen-reader, IME or non-Chromium claim"
+}

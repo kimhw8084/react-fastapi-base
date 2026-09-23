@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
+  "candidate_tree": "e0aa5e57a71d5ddff6b22065c5383442482254c6",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
+  "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "scroll_owner": ".sidebar nav",
+  "service_operations": {
+    "before": {
+      "label": "Incidents",
+      "top": 1073,
+      "bottom": 1111,
+      "nav_top": 161,
+      "nav_bottom": 789.515625,
+      "scroll_top": 0,
+      "scroll_height": 1062,
+      "client_height": 629,
+      "inside": false
+    },
+    "after": {
+      "label": "Incidents",
+      "top": 751,
+      "bottom": 789,
+      "nav_top": 161,
+      "nav_bottom": 789.515625,
+      "scroll_top": 322,
+      "scroll_height": 1062,
+      "client_height": 629,
+      "inside": true
+    },
+    "screenshot": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png"
+  },
+  "system": {
+    "before": {
+      "label": "System",
+      "top": 1184.5,
+      "bottom": 1222.5,
+      "nav_top": 161,
+      "nav_bottom": 789.515625,
+      "scroll_top": 0,
+      "scroll_height": 1062,
+      "client_height": 629,
+      "inside": false
+    },
+    "after": {
+      "label": "System",
+      "top": 751.5,
+      "bottom": 789.5,
+      "nav_top": 161,
+      "nav_bottom": 789.515625,
+      "scroll_top": 433,
+      "scroll_height": 1062,
+      "client_height": 629,
+      "inside": true
+    },
+    "screenshot": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png"
+  },
+  "already_visible": {
+    "destination": "Projects",
+    "scroll_top_after_route": 0,
+    "no_unnecessary_scroll": true
+  },
+  "focus_stolen": false
+}

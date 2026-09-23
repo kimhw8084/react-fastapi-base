@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
+  "candidate_tree": "e0aa5e57a71d5ddff6b22065c5383442482254c6",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
+  "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
+  "precondition": "revision-backed work item dossier opened",
+  "input": "changed title",
+  "visible_result": "server revision conflict",
+  "correct_object": "same work item edit form",
+  "forbidden_effect": "draft is not discarded or persisted over revision 2",
+  "recovery": "review latest revision and retry after reconciling",
+  "next_legitimate_action": "keep or close the preserved draft",
+  "draft_retained": true,
+  "screenshot": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png"
+}
