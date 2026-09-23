@@ -42,7 +42,7 @@
       "required_dimensions": ["theme.dark", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["primary action retains an accessible name", "dark accent text has at least 4.5:1 computed contrast"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.json", "evidence/current/uiqa/rendered/chg34-theme-operations-primary-action.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json", "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png"],
         "claims": ["browser-computed contrast", "rendered dark-theme action"],
         "axe_serious_critical": true
       },
@@ -58,7 +58,7 @@
       "required_dimensions": ["theme.light", "theme.dark", "contrast.high", "viewport.desktop", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["grid has an accessible label", "virtualized rendering remains bounded", "row text remains visible in light, dark and high contrast"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.json", "evidence/current/uiqa/rendered/chg34-grid-semantic-theme-modes.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json", "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png"],
         "claims": ["browser-computed grid colors", "bounded rendered rows", "rendered high-contrast grid"],
         "axe_serious_critical": true
       },
@@ -74,7 +74,7 @@
       "required_dimensions": ["keyboard.space", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["Favorite and Default controls are native checkboxes", "Space toggles checked state", "checkboxes expose stable accessible names"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-saved-view-checkbox-selection.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json"],
         "claims": ["native checkbox semantics", "computed control geometry", "keyboard selection"],
         "axe_serious_critical": true
       },
@@ -90,7 +90,7 @@
       "required_dimensions": ["theme.light", "theme.dark", "contrast.high", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["notification timestamp text remains visible on every supported color mode", "notification list remains a named tab surface"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-notification-timestamp-contrast.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json"],
         "claims": ["browser-computed timestamp contrast"],
         "axe_serious_critical": true
       },
@@ -106,7 +106,7 @@
       "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["loading status is intentional and named", "essential workspace shell remains available while records are pending"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-loading.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json"],
         "claims": ["deterministic loading status", "semantic status role"],
         "axe_serious_critical": true
       },
@@ -121,7 +121,7 @@
       "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["empty result is distinguished from loading and error", "empty message explains the next action without exposing a fake record"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-empty.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json"],
         "claims": ["deterministic empty state", "semantic empty heading"],
         "axe_serious_critical": true
       },
@@ -136,7 +136,7 @@
       "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["error is exposed through an alert", "error state is not rendered as an empty dataset", "retry action is named"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-error.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json"],
         "claims": ["deterministic error alert", "named retry action"],
         "axe_serious_critical": true
       },
@@ -151,7 +151,7 @@
       "required_dimensions": ["viewport.desktop", "semantics.role-name-state", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["Access is announced as Read only", "write actions are absent rather than misleadingly interactive", "records remain readable"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-work-items-permission-readonly.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json"],
         "claims": ["read-only action visibility", "computed visibility of primary write action"],
         "axe_serious_critical": true
       },
@@ -166,7 +166,7 @@
       "required_dimensions": ["viewport.desktop", "keyboard.shift-tab", "keyboard.space", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["selection uses the platform checkbox semantics", "selected action region appears only after actual selection", "focus remains visible on the active control"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-grid-row-selection.json", "evidence/current/uiqa/rendered/chg34-grid-row-selection.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json", "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png"],
         "claims": ["actual selection state", "selected action region", "computed focus outline"],
         "axe_serious_critical": true
       },
@@ -181,7 +181,7 @@
       "required_dimensions": ["keyboard.enter", "keyboard.escape", "keyboard.shift-tab", "keyboard.tab", "semantics.role-name-state", "focus.visible", "focus.recovery", "axe.serious-critical"],
       "semantic_expectations": ["dialog has a stable accessible name", "Escape closes the overlay", "focus returns to the logical Save view invoker"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-dialog-focus-recovery.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json"],
         "claims": ["visible focus", "Escape close", "focus restoration"],
         "axe_serious_critical": true
       },
@@ -196,7 +196,7 @@
       "required_dimensions": ["viewport.narrow", "reflow.320-css-px", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["essential heading, search and workspace action remain available", "page does not require inappropriate two-dimensional scrolling"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-reflow-320-css-px.json", "evidence/current/uiqa/rendered/chg34-reflow-320-css-px.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json", "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png"],
         "claims": ["320 CSS px reflow", "horizontal and vertical overflow dimensions", "rendered narrow layout"],
         "axe_serious_critical": true
       },
@@ -211,7 +211,7 @@
       "required_dimensions": ["motion.reduced", "browser-computed", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["reduced-motion media query is active", "shared transitions are effectively disabled", "essential content is present without waiting for animation"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-reduced-motion.json"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json"],
         "claims": ["reduced-motion media emulation", "computed transition duration"],
         "axe_serious_critical": true
       },
@@ -226,7 +226,7 @@
       "required_dimensions": ["forced-colors.active", "keyboard.shift-tab", "keyboard.tab", "browser-computed", "focus.visible", "semantics.role-name-state", "axe.serious-critical"],
       "semantic_expectations": ["forced-colors media query is active", "named action remains visible and focusable", "computed foreground/background are not transparent"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg34-forced-colors.json", "evidence/current/uiqa/rendered/chg34-forced-colors.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json", "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png"],
         "claims": ["forced-colors media emulation", "browser-computed rendered action"],
         "axe_serious_critical": true
       },
@@ -241,7 +241,7 @@
       "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "input.pointer", "keyboard.enter", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["the System tablist has one bounded scroll owner", "first and last sections are pointer and keyboard reachable without document overflow", "active tab state changes once and remains exposed", "no hidden duplicate section controls remain operable"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-system-responsive-geometry.json", "evidence/current/uiqa/rendered/chg153-system-responsive-geometry.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json", "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png"],
         "claims": ["390 and 320 page width invariants", "first/last section interaction and focus", "bounded tablist geometry and negative-control sensitivity"],
         "axe_serious_critical": true
       },
@@ -256,7 +256,7 @@
       "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "forced-colors.active", "input.pointer", "keyboard.enter", "keyboard.tab", "semantics.role-name-state", "focus.visible", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["first, middle and final modes are reachable through the single bounded selector owner", "mode selection preserves aria state, URL query and rendered projection", "active mode/search/filter state survives 390-to-desktop-to-390", "short-height forced-colors focus remains visible and inactive variants are absent"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.json", "evidence/current/uiqa/rendered/chg153-visualization-responsive-geometry.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json", "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png"],
         "claims": ["affected-consumer traversal and mode reachability", "responsive state preservation", "short-height forced-colors focus and negative-control sensitivity"],
         "axe_serious_critical": true
       },
@@ -271,7 +271,7 @@
       "required_dimensions": ["viewport.desktop", "viewport.narrow", "reflow.320-css-px", "input.pointer", "keyboard.enter", "keyboard.escape", "keyboard.tab", "semantics.role-name-state", "focus.visible", "focus.recovery", "browser-computed", "axe.serious-critical"],
       "semantic_expectations": ["all 21 frozen workspace destinations remain actual links", "closed mobile navigation leaves each heading and material task-start element in the initial viewport", "the single open navigation owner exposes active location and fully reveals the final destination to pointer and keyboard", "route activation closes the disclosure and restores focus to its visible trigger", "desktop keeps one permanent sidebar and no mobile-only control in focus order"],
       "required_evidence": {
-        "artifact_locators": ["evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.json", "evidence/current/uiqa/rendered/chg153-mobile-navigation-shell.png"],
+        "artifact_locators": ["evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json", "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png"],
         "claims": ["all-21 390/320 heading and task-start geometry", "closed/open Work items and Planning renders", "short-height final-link focus containment", "deep-link/history/skip-link/state preservation", "negative-control sensitivity"],
         "axe_serious_critical": true
       },

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.22 — CHG-185 populated Golden UI v3 review overlay
+
+- Adds the deterministic linked synthetic qualification fixture, shared field-aware values, truthful workspace empty/no-match states, compact mobile display preferences, configured navigation groups/icons, eligible overlay focus recovery, explicit status/trend semantics, form validation recovery, responsive dossier sections and content-aware grid geometry.
+- Adds candidate-bound desktop/mobile populated route captures and task-economy, fault-sensitivity, and state-recovery browser oracles. Golden UI v3 remains a provisional review overlay; Project OS v2 law and company qualification authority are unchanged.
+
 ## 1.0.0-rc.21 — Golden UI v2 mobile navigation-shell repair
 
 - Replaced the mobile in-flow 21-destination navigation wrap with a compact, bounded disclosure owned by the shared AppShell while preserving semantic links, active-location cues, deep links, history and desktop sidebar geometry.

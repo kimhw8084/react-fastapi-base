@@ -1,10 +1,10 @@
-> **Implementation addendum (1.0.0-rc.21):** this candidate repairs the shared mobile application navigation shell at AppShell authority, preserving all 21 semantic destinations, route/history semantics, task state, desktop sidebar geometry and RC.20 focus behavior. RC.20's source-bound horizontal-focus evidence remains immutable historical evidence for its exact source. Company qualification remains external and this design is not production evidence.
+> **Implementation addendum (1.0.0-rc.22):** CHG-185 is the first source-changing Golden UI v3 populated-remediation candidate. Golden UI v3.0.0-rc.2 is applied only as a provisional review overlay; Golden UI v2 remains Project OS law and no lawbook authority is changed. Company qualification remains external and this design is not production evidence.
 
 # React-FastAPI Base Platform — master design and implementation contract
 
 > CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
 
-**Version: 1.0.0-rc.21 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.22 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.

@@ -5,12 +5,15 @@ import type { ViewDefinition } from '../../generated/schema'
 import type { WorkspaceContext } from './context'
 import type { BaseRecord, WorkspaceAdapter } from './types'
 import { WorkspaceShell } from '../ui/WorkspaceShell'
-import { ErrorNotice, EmptyState } from '../ui/Notice'
+import { ErrorNotice } from '../ui/Notice'
 import { Dialog } from '../ui/Dialog'
 import { Dossier } from './Dossier'
 import { RecordForm } from './RecordForm'
 import { RecordPeek } from './RecordPeek'
 import { viewToListQuery } from './query'
+import { WorkspaceEmptyState } from './WorkspaceEmptyState'
+import { fieldDisplayText } from './FieldValue'
+import { Icon } from '../ui/Icon'
 
 export interface ProjectionRenderContext<T extends BaseRecord> {
   openRow: (row:T)=>void
@@ -49,13 +52,13 @@ export function ProjectionWorkspaceFrame<T extends BaseRecord>({adapter,api,user
   const closeRow=()=>setParams(current=>{const next=new URLSearchParams(current);next.delete('item');return next})
   const rows=records.data?.items??[]
   const metrics=[{label:'Matching records',value:records.data?.total??'—'},{label:'Visualization',value:projectionKey,className:'summary-word'},{label:'Dataset',value:view.archived?'Archived':'Active',className:'summary-word'},{label:'Access',value:canWrite?'Editor':'Read only',className:'summary-word'},...(extraMetrics?.(rows)??[])]
-  return <WorkspaceShell eyebrow="Canonical projection" title={title} description={description} actions={<><button onClick={refresh}>↻ Refresh</button>{canWrite&&<button className="primary" onClick={()=>setForm('new')}>＋ New {adapter.singular}</button>}</>} metrics={metrics} commandBar={<>
-    <label className="search-field"><span className="sr-only">Search records</span><span aria-hidden="true">⌕</span><input value={searchInput} maxLength={200} aria-label={`Search ${projectionKey} records`} placeholder={`Search ${adapter.definition.label.toLowerCase()}…`} onChange={event=>onSearchInput(event.target.value)}/></label>
+  return <WorkspaceShell eyebrow="Canonical projection" title={title} description={description} actions={<><button onClick={refresh}><Icon name="refresh"/> Refresh</button>{canWrite&&<button className="primary" onClick={()=>setForm('new')}><Icon name="add"/> New {adapter.singular}</button>}</>} metrics={metrics} commandBar={<>
+    <label className="search-field"><span className="sr-only">Search records</span><span aria-hidden="true"><Icon name="search"/></span><input value={searchInput} maxLength={200} aria-label={`Search ${projectionKey} records`} placeholder={`Search ${adapter.definition.label.toLowerCase()}…`} onChange={event=>onSearchInput(event.target.value)}/></label>
     <div className="segmented" aria-label="Dataset"><button aria-pressed={!view.archived} onClick={()=>onViewChange(current=>({...current,archived:false}))}>Active</button><button aria-pressed={view.archived} onClick={()=>onViewChange(current=>({...current,archived:true}))}>Archived</button></div>
-    {adapter.definition.filter_keys.map(key=>{const field=adapter.definition.fields.find(value=>value.key===key);return field&&field.choices.length?<label key={key}>{field.label}<select aria-label={`Filter ${projectionKey} by ${field.label.toLowerCase()}`} value={view.filters[key]??''} onChange={event=>onViewChange(current=>{const filters={...current.filters};if(event.target.value)filters[key]=event.target.value;else delete filters[key];return {...current,filters}})}><option value="">All {field.label.toLowerCase()}</option>{field.choices.map(value=><option key={value} value={value}>{value.replaceAll('_',' ')}</option>)}</select></label>:null})}
+    {adapter.definition.filter_keys.map(key=>{const field=adapter.definition.fields.find(value=>value.key===key);return field&&field.choices.length?<label key={key}>{field.label}<select aria-label={`Filter ${projectionKey} by ${field.label.toLowerCase()}`} value={view.filters[key]??''} onChange={event=>onViewChange(current=>{const filters={...current.filters};if(event.target.value)filters[key]=event.target.value;else delete filters[key];return {...current,filters}})}><option value="">All {field.label.toLowerCase()}</option>{field.choices.map(value=><option key={value} value={value}>{fieldDisplayText(field,value)}</option>)}</select></label>:null})}
   </>} secondaryBar={viewTools}>
     {records.isError&&<ErrorNotice error={records.error} retry={()=>{void records.refetch()}}/>}
-    {records.isPending?<div className="loading-state" role="status">Loading {projectionKey}…</div>:!records.isError&&rows.length===0?<EmptyState title="No matching records" description="Adjust the shared workspace filters or create the first record."/>:!records.isError&&children(rows,{openRow,peekRow:setPeek,canWrite,refresh})}
+    {records.isPending?<div className="loading-state" role="status">Loading {projectionKey}…</div>:!records.isError&&rows.length===0?<WorkspaceEmptyState label={adapter.definition.label} singular={adapter.singular} view={view} searchInput={searchInput} canWrite={canWrite} onViewChange={onViewChange} onSearchInput={onSearchInput} onCreate={()=>setForm('new')}/>:!records.isError&&children(rows,{openRow,peekRow:setPeek,canWrite,refresh})}
     {records.data&&records.data.total>records.data.items.length&&<div className="notice">Showing {records.data.items.length} of {records.data.total} records in this projection. Narrow shared filters for complete scope.</div>}
     <RecordPeek adapter={adapter} row={peek} onClose={()=>setPeek(null)} onOpen={row=>{setPeek(null);openRow(row)}} onEdit={canWrite?row=>{setPeek(null);setForm(row)}:undefined}/>
     {itemId&&detail.isError&&<Dialog title="Record unavailable" onClose={closeRow}><ErrorNotice error={detail.error}/></Dialog>}

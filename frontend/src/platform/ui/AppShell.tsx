@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react'
 import { SurfaceManagerProvider } from './SurfaceManager'
+import { Icon } from './Icon'
 
 type AppShellProps={sidebar:ReactNode;header:ReactNode;release?:ReactNode;children:ReactNode;mobileNavigationLabel?:string;mobileNavigationResetKey?:string}
 
@@ -27,7 +28,7 @@ export function AppShell({sidebar,header,release,children,mobileNavigationLabel=
     if(!panel)return
     const updateCurrentLabel=()=>{
       const active=panel.querySelector<HTMLElement>('[aria-current="page"],.active')
-      const label=active?.textContent?.replace('▦','').trim()
+      const label=active?.querySelector<HTMLElement>('.nav-item-label')?.textContent?.trim()??active?.textContent?.trim()
       if(label&&label!==currentNavigationLabel){
         setCurrentNavigationLabel(label)
       }
@@ -40,5 +41,5 @@ export function AppShell({sidebar,header,release,children,mobileNavigationLabel=
   const onSidebarClick=(event:MouseEvent<HTMLElement>)=>{
     if(window.matchMedia('(max-width: 760px)').matches&&(event.target as HTMLElement).closest('a,button'))closeMobileNavigation()
   }
-  return <SurfaceManagerProvider><div className="application-shell"><a className="skip-link" href="#main-content">Skip to content</a><div className="mobile-navigation"><button ref={triggerRef} type="button" className="mobile-navigation-toggle" aria-controls="mobile-navigation-panel" aria-expanded={mobileNavigationOpen} onClick={()=>mobileNavigationOpen?closeMobileNavigation():setMobileNavigationOpen(true)}><span className="mobile-navigation-label">Navigation</span><strong>{currentNavigationLabel}</strong><span className="mobile-navigation-caret" aria-hidden="true">⌄</span></button><aside id="mobile-navigation-panel" className={`sidebar${mobileNavigationOpen?' mobile-navigation-open':''}`} onClick={onSidebarClick}>{sidebar}</aside></div><div className="application-content"><header className="shell-header">{header}</header>{release&&<div className="release-strip">{release}</div>}<main id="main-content" tabIndex={-1}>{children}</main></div></div></SurfaceManagerProvider>
+  return <SurfaceManagerProvider><div className="application-shell"><a className="skip-link" href="#main-content">Skip to content</a><div className="mobile-navigation"><button ref={triggerRef} type="button" className="mobile-navigation-toggle" aria-controls="mobile-navigation-panel" aria-expanded={mobileNavigationOpen} onClick={()=>mobileNavigationOpen?closeMobileNavigation():setMobileNavigationOpen(true)}><span className="mobile-navigation-label">Navigation</span><strong>{currentNavigationLabel}</strong><span className="mobile-navigation-caret"><Icon name="chevron"/></span></button><aside id="mobile-navigation-panel" className={`sidebar${mobileNavigationOpen?' mobile-navigation-open':''}`} onClick={onSidebarClick}>{sidebar}</aside></div><div className="application-content"><header className="shell-header">{header}</header>{release&&<div className="release-strip">{release}</div>}<main id="main-content" tabIndex={-1}>{children}</main></div></div></SurfaceManagerProvider>
 }

@@ -4919,6 +4919,49 @@
       "NavigationItem": {
         "additionalProperties": false,
         "properties": {
+          "group": {
+            "default": "Workspaces",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Group",
+            "type": "string"
+          },
+          "icon": {
+            "default": "work-items",
+            "enum": [
+              "work-items",
+              "projects",
+              "racks",
+              "equipment",
+              "knowledge",
+              "investigations",
+              "research",
+              "risks",
+              "planning",
+              "diagrams",
+              "measurements",
+              "wafers",
+              "lots",
+              "equipment-states",
+              "recipes",
+              "services",
+              "delivery",
+              "observability",
+              "incidents",
+              "objectives",
+              "system",
+              "command",
+              "refresh",
+              "add",
+              "quick-look",
+              "close",
+              "expand",
+              "chevron",
+              "search"
+            ],
+            "title": "Icon",
+            "type": "string"
+          },
           "label": {
             "maxLength": 60,
             "minLength": 1,
@@ -4933,7 +4976,9 @@
         },
         "required": [
           "workspace",
-          "label"
+          "label",
+          "group",
+          "icon"
         ],
         "title": "NavigationItem",
         "type": "object"
@@ -11586,7 +11631,7 @@
   },
   "info": {
     "title": "Engineering Workspace",
-    "version": "1.0.0-rc.21",
+    "version": "1.0.0-rc.22",
     "x-api-contract-revision": 1,
     "x-api-major": 1,
     "x-api-prefix": "/api/v1"

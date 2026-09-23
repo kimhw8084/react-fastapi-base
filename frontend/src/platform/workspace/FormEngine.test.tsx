@@ -22,5 +22,34 @@ describe('definition-driven form extensions',()=>{
     rerender(<FormEngine formId="dependent" fields={fields} draft={draft} initial={{category:'',part:''}} onChange={onChange} onSubmit={()=>{}} resolveChoices={(field,current)=>field.key==='part'?(current.category==='hardware'?['cpu','disk']:['api','queue']):undefined} validateFieldAsync={validateFieldAsync}/>)
     expect(screen.getByRole('option',{name:'api'})).toBeInTheDocument()
     expect(screen.queryByRole('option',{name:'cpu'})).not.toBeInTheDocument()
-  })
+ })
+})
+
+describe('form validation recovery',()=>{
+ it('keeps pending async field checks out of the linked error summary',async()=>{
+  let finish:(message:string|undefined)=>void=()=>{}
+  const validateFieldAsync=vi.fn(()=>new Promise<string|undefined>(resolve=>{finish=resolve}))
+  const draft={category:'hardware',part:'cpu'}
+  render(<FormEngine formId="pending" fields={fields} draft={draft} initial={draft} onChange={()=>{}} onSubmit={()=>{}} validateFieldAsync={validateFieldAsync}/> )
+  fireEvent.blur(document.getElementById('record-field-category')!)
+  fireEvent.submit(screen.getByRole('form',{name:'Record form'}))
+  expect(await screen.findByText('Wait for field validation to finish before saving.')).toBeVisible()
+  expect(screen.queryByRole('button',{name:/Wait for field validation/})).not.toBeInTheDocument()
+  expect(screen.queryByRole('region',{name:'Form errors'})).not.toBeInTheDocument()
+  finish(undefined)
+ })
+ it('routes field summary actions to an eligible input and keeps form-level errors unlinked',async()=>{
+  const draft={category:'hardware',part:'cpu'}
+  const {rerender}=render(<FormEngine formId="summary" fields={fields} draft={draft} initial={draft} onChange={()=>{}} onSubmit={()=>{}} validateAsync={async()=>({part:'Choose a supported part.'})}/> )
+  fireEvent.submit(screen.getByRole('form',{name:'Record form'}))
+  const summaryAction=await screen.findByRole('button',{name:'Choose a supported part.'})
+  const target=document.getElementById('record-field-part')!
+  target.getClientRects=()=>[{width:10,height:10} as DOMRect] as unknown as DOMRectList
+  fireEvent.click(summaryAction)
+  expect(target).toHaveFocus()
+  rerender(<FormEngine formId="summary" fields={fields} draft={draft} initial={draft} onChange={()=>{}} onSubmit={()=>{}} validateAsync={async()=>({__form:'This combination needs a policy review.'})}/> )
+  fireEvent.submit(screen.getByRole('form',{name:'Record form'}))
+  expect(await screen.findByRole('alert',{name:'Form-level errors'})).toHaveTextContent('policy review')
+  expect(screen.queryByRole('button',{name:/policy review/})).not.toBeInTheDocument()
+ })
 })
