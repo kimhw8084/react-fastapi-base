@@ -1,67 +1,50 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
+  "change_id": "CHG-185",
   "checks": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
-    },
-    {
-      "name": "contracts",
-      "command": "./dev contracts",
+      "command": "npm run typecheck",
+      "evidence": "./dev verify-release exact-source frontend-typecheck",
+      "name": "focused-frontend-typecheck",
       "status": "PASS"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
+      "command": "npm test -- --run",
+      "evidence": "26 files, 85 tests; exact-source frontend-unit gate",
+      "name": "focused-frontend-unit",
       "status": "PASS"
     },
     {
+      "evidence": "./dev verify-release exact-source frontend-build and frontend-storybook",
+      "name": "frontend-production-build-and-storybook",
+      "status": "PASS"
+    },
+    {
+      "evidence": "40 Chromium tests passed; UI state matrix 16/16; exact source digest",
+      "name": "browser-e2e-accessibility-uiqa",
+      "status": "PASS"
+    },
+    {
+      "evidence": "./dev verify and ./dev verify-release exact-source reports",
+      "name": "architecture-performance-security-contracts",
+      "status": "PASS"
+    },
+    {
+      "evidence": "./dev verify-release exact-source report",
+      "name": "release-only-upgrade-backup-storage-reference-apps",
+      "status": "PASS"
+    },
+    {
+      "code_ready": true,
+      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify",
+      "exit_code": 0,
       "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "production_ready": false,
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
       "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
+      "command": "RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae ./dev verify-release",
+      "exit_code": 0,
       "external_blockers": [
         "identity",
         "storage",
@@ -69,64 +52,180 @@
         "ui_accessibility",
         "performance",
         "operations"
-      ]
+      ],
+      "name": "verify-release",
+      "production_ready": false,
+      "release_status": "NOT_CERTIFIED",
+      "status": "PASS_WITH_EXTERNAL_BLOCKERS"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
-    },
-    {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
+      "command": "python scripts/bind_release_evidence.py --verified-source-commit 7adafba654a20e84d9013f52e1fdd65951314410 --evidence-commit aff9f04f1778292f72af56f2400851c623d85eec --target-base-sha 6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+      "evidence_binding_head": "3261b95add2f5c588425d24b0bd045da2a211bca",
+      "name": "release-evidence-binding",
       "status": "PASS"
     }
   ],
-  "evidence_manifest": {
-    "version": 1,
-    "items": [
-      {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
-      },
-      {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
-      },
-      {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
-      },
-      {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
-      },
-      {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
-      },
-      {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
-      },
-      {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
-      }
+  "evidence": {
+    "desktop_navigation": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+    "full_stack_verification": "evidence/current/full-stack/verification.json",
+    "mobile_material_budget_css_px": 64,
+    "mobile_material_min_visible_css_px": 150,
+    "negative_controls": "Passed for raw visualization labels, mobile material-content budget, active-navigation reveal, and disclosure state retention.",
+    "populated_surface_count": 21,
+    "populated_visual_manifest": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+    "rack_geometry": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+    "rack_interaction": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+    "read_only": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+    "screenshot_count": 42,
+    "viewports": [
+      "1440x900 DPR1",
+      "390x844 DPR1"
     ]
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_debt": [
+    "No screen-reader or physical-device qualification was executed.",
+    "No real IME or non-Chromium browser qualification was executed.",
+    "Company identity, storage, deployment, company UI accessibility, performance and operations evidence remain external."
+  ],
+  "evidence_manifest": {
+    "items": [
+      {
+        "bytes": 643,
+        "path": "deploy/rc22-release-identity.json",
+        "sha256": "39bdeae0da36302825e09a0aa48cb9a3d382b7d413d13e9aecae98ad8af624ba"
+      },
+      {
+        "bytes": 17313,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "e00d9ae799f6bc01c2f07ac69d78f85db93bd4dfbaa2d805285f7de786715209"
+      },
+      {
+        "bytes": 76112,
+        "path": "evidence/current/full-stack/source-hashes.json",
+        "sha256": "78547c63ac43fca597e0f01feea8479412be6e7da1e001778c8289b21f43009e"
+      },
+      {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc22-manifest.json",
+        "sha256": "4723351e3141fbe231a986e78c43cfeeafde192e0ae9945fccccf0354821aebe"
+      },
+      {
+        "bytes": 2387,
+        "path": "evidence/current/release/rc22-evidence-binding.json",
+        "sha256": "7ecffe32b67b8cc0c603e0c723647866af0d9751052e49fd74b39ec686878e67"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc22-readiness-matrix.json",
+        "sha256": "a2393c49148068bb097b82888397f7d160d4ff75d724accf95a142c2c6dc9ccb"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "4c22576973a8821ab05618dcf0154c463ae4ce02c01eb7e7dc2efbe03cf4cbc7"
+      },
+      {
+        "bytes": 19913,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "b41f8caa3b8ac222f8ccd371c65bd3cc825bf5fc4dec625a5185e711f288b182"
+      },
+      {
+        "bytes": 2294,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "4553d4b1d26ae8f8379544cc37967c2d4b16dda2f53eb6608ba7bc529919a086"
+      },
+      {
+        "bytes": 1871,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+        "sha256": "0c1afc73f001351207440bb44ceab904bed3aaa68e35e89c040ba57782c400c8"
+      },
+      {
+        "bytes": 1558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+        "sha256": "852bdec386de0aa660bff69d1d64e1bd6a4f347603d03b753ecbb47b80a43231"
+      },
+      {
+        "bytes": 1367,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+        "sha256": "b68e95a5da5f83c53acddca0ebceaa515632ca3515330a6140e0b154c2e93971"
+      }
+    ],
+    "version": 1
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric": {
+    "job_id": "CF-d5aceeea7f9650051caa1068",
+    "worktree": "CF-d5aceeea7f9650051caa1068"
+  },
+  "git": {
+    "branch": "codex/react-fastapi-base-golden-ui-v3-populated-perfection-fix-v3",
+    "candidate_checkout_head": "256da2fa0c6df8d3452c8b75821cc6bb143be7d8",
+    "candidate_checkout_tree": "e0aa5e57a71d5ddff6b22065c5383442482254c6",
+    "evidence_binding_head": "3261b95add2f5c588425d24b0bd045da2a211bca",
+    "evidence_commit": "aff9f04f1778292f72af56f2400851c623d85eec",
+    "main_merged": false,
+    "r1_source_candidate": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+    "r1_source_candidate_is_ancestor": true,
+    "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
+    "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_branch": "main",
+    "target_changed": false,
+    "verified_executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
+    "verified_source_tree": "49e4db282753016502cd751d064576c40dfb3c4d",
+    "version": "1.0.0-rc.22"
+  },
+  "kind": "codex-fabric-audit-evidence",
+  "note": "Repository source and evidence are ready for independent Project OS audit. This record does not claim Project OS acceptance, main integration, or production readiness.",
+  "operation": "FIX",
+  "predecessor_authority": {
+    "carry_forward": "R1 executable source is an ancestor; valid R1 repairs remain in source. R3 continues from that source after bounded residual fixes.",
+    "historical_evidence": "R1/R7 history remains in repository history; R3 records new evidence without relabeling historical evidence current.",
+    "r1_evidence_binding_head": "87f3e5f899c4a26b90fbc35f4e7319bfee7fcbd8",
+    "r1_executable_source_candidate": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+    "r1_fabric_job": "CF-6d4fb3c6392a8cfe3666a6c0",
+    "r1_source_digest": "cc4e2f8ea5cc449a0708fec16c46b6deaed298f6f4945260d93eb8da5dc61c37",
+    "r1_source_tree": "2840a0733f009151e92f52ec8caf788bce601e39",
+    "r1_version": "1.0.0-rc.22",
+    "r2_reconciliation": {
+      "superseded_before_execution": 3,
+      "used_or_created_by_r3": false
+    }
+  },
+  "prior_audit_history": {
+    "previous_audit_commit": "e767ee912341f80000ab6b0dd0cc16d6e00914a5",
+    "previous_audit_record_retained_in_git_history": true,
+    "previous_audit_sha256": "7f41cf7a67cc442d6a6e95d5bcf817636561eeed77fc6457ff4f91ad0dc3e8c9"
+  },
+  "project_id": "react-fastapi-base",
+  "release": {
+    "code_ready": true,
+    "external_blockers": [
+      "company_identity",
+      "company_storage",
+      "company_deployment",
+      "company_ui_accessibility",
+      "company_performance",
+      "company_operations"
+    ],
+    "production_ready": false,
+    "project_os_acceptance": false,
+    "release_status": "NOT_CERTIFIED",
+    "version": "1.0.0-rc.22"
+  },
+  "repository": "kimhw8084/react-fastapi-base",
+  "request": "golden-ui-v3-populated-perfection-fix-v3",
+  "schema_version": 1,
+  "source_anchor": {
+    "code_ready": true,
+    "identity_locator": "deploy/rc22-release-identity.json",
+    "production_ready": false,
+    "profile": "company",
+    "project": "react-fastapi-base",
+    "release_status": "NOT_CERTIFIED",
+    "source_digest": "86320166d7e0849199cc657f8806c50d9ffe75ab7bcfb578055d850fb23357b3",
+    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
+    "source_tree": "49e4db282753016502cd751d064576c40dfb3c4d",
+    "verified_executable_source_commit": "7adafba654a20e84d9013f52e1fdd65951314410",
+    "version": "1.0.0-rc.22"
+  },
+  "status": "READY_FOR_INDEPENDENT_PROJECT_OS_AUDIT_WITH_EXTERNAL_BLOCKERS"
 }
