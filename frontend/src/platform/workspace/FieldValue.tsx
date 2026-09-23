@@ -1,7 +1,12 @@
 import type { ReactNode } from 'react'
 import type { FieldDefinition, WorkspaceDefinition } from '../../generated/schema'
 
-export function fieldLabel(definition:WorkspaceDefinition,key:string){return definition.fields.find(field=>field.key===key)?.label??key.replaceAll('_',' ')}
+type ValueField=Pick<FieldDefinition,'kind'|'precision'|'unit'>
+const systemFieldLabels:Record<string,string>={id:'ID',revision:'Revision',archived:'Archive status',created_by:'Created by',updated_by:'Updated by',created_at:'Created',updated_at:'Last updated'}
+const systemFieldKinds:Record<string,ValueField['kind']>={id:'text',revision:'integer',archived:'boolean',created_by:'text',updated_by:'text',created_at:'datetime',updated_at:'datetime'}
+
+export function fieldLabel(definition:WorkspaceDefinition,key:string){return definition.fields.find(field=>field.key===key)?.label??systemFieldLabels[key]??key.replaceAll('_',' ')}
+export function fieldPresentation(definition:WorkspaceDefinition,key:string):ValueField|undefined{return definition.fields.find(field=>field.key===key)??(systemFieldKinds[key]?{kind:systemFieldKinds[key]!,precision:null,unit:null}:undefined)}
 
 function humanize(value:string){return value.replaceAll('_',' ').replace(/\b\p{L}/gu,letter=>letter.toLocaleUpperCase())}
 
@@ -14,7 +19,7 @@ function validDate(value:unknown):Date|null{
  return Number.isNaN(result.getTime())?null:result
 }
 
-function displayNumber(value:unknown,field:FieldDefinition):string{
+function displayNumber(value:unknown,field:ValueField):string{
  const numeric=typeof value==='number'?value:typeof value==='string'&&value.trim()!==''?Number(value):Number.NaN
  if(!Number.isFinite(numeric))return String(value??'—')
  if(field.kind==='scientific')return numeric.toExponential(field.precision??4)
@@ -25,7 +30,15 @@ function displayNumber(value:unknown,field:FieldDefinition):string{
  return formatted
 }
 
-export function fieldDisplayText(field:FieldDefinition,value:unknown):string{
+function fallbackText(value:unknown):string{
+ if(value==null||value==='')return '—'
+ if(typeof value==='boolean')return value?'Yes':'No'
+ if(typeof value==='object')return parseStructured(value)
+ return String(value)
+}
+
+export function fieldDisplayText(field:ValueField|undefined,value:unknown):string{
+ if(!field)return fallbackText(value)
  if(value==null||value==='')return '—'
  if(field.kind==='boolean')return value===true||value==='true'||value===1?'Yes':value===false||value==='false'||value===0?'No':'—'
  if(field.kind==='select')return humanize(String(value))
@@ -40,8 +53,9 @@ export function fieldDisplayText(field:FieldDefinition,value:unknown):string{
  return String(value)
 }
 
-export function formatFieldValue(field:FieldDefinition,value:unknown):ReactNode{
+export function formatFieldValue(field:ValueField|undefined,value:unknown):ReactNode{
  if(value==null||value==='')return <span className="muted" aria-label="No value">—</span>
+ if(!field){if(typeof value==='boolean')return <span>{value?'Yes':'No'}</span>;if(typeof value==='object')return <pre className="field-structured-value"><code>{parseStructured(value)}</code></pre>;return <span>{String(value)}</span>}
  if(field.kind==='boolean')return <span>{value===true||value==='true'||value===1?'Yes':value===false||value==='false'||value===0?'No':'—'}</span>
  if(field.kind==='select')return <span>{humanize(String(value))}</span>
  if(field.kind==='json'||field.kind==='object'||field.kind==='array'||field.kind==='formula'||field.kind==='computed')return <pre className="field-structured-value"><code>{parseStructured(value)}</code></pre>
@@ -59,4 +73,4 @@ export function formatFieldValue(field:FieldDefinition,value:unknown):ReactNode{
  return <span>{String(value)}</span>
 }
 
-export function FieldValue({field,value}:{field:FieldDefinition;value:unknown}){return <>{formatFieldValue(field,value)}</>}
+export function FieldValue({field,value}:{field?:ValueField;value:unknown}){return <>{formatFieldValue(field,value)}</>}

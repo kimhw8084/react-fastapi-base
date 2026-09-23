@@ -98,22 +98,23 @@ async function workItemPage(page:Page):Promise<void>{
 }
 
 async function displayPreferenceControl(page:Page,label:string):Promise<Locator>{
- if(await page.evaluate(()=>innerWidth<=760)){
+ const mobileTrigger=page.getByRole('button',{name:'Display',exact:true})
+ if(await mobileTrigger.isVisible()){
   const dialog=page.getByRole('dialog',{name:'Display preferences'})
-  if(!(await dialog.count()))await page.getByRole('button',{name:'Display',exact:true}).click()
+  if(!(await dialog.isVisible()))await mobileTrigger.click()
   return dialog.getByLabel(label,{exact:true})
  }
- return page.getByLabel(label,{exact:true})
+ return page.locator('.desktop-display-controls').getByLabel(label,{exact:true})
 }
 
 async function setDisplayPreference(page:Page,label:string,value:string):Promise<void>{
  const control=await displayPreferenceControl(page,label);await control.selectOption(value)
- if(await page.evaluate(()=>innerWidth<=760))await page.getByRole('button',{name:'Close Display preferences'}).click()
+ if(await page.getByRole('button',{name:'Close Display preferences'}).isVisible())await page.getByRole('button',{name:'Close Display preferences'}).click()
 }
 
 async function readDisplayPreference(page:Page,label:string):Promise<string>{
  const control=await displayPreferenceControl(page,label);const value=await control.inputValue()
- if(await page.evaluate(()=>innerWidth<=760))await page.getByRole('button',{name:'Close Display preferences'}).click()
+ if(await page.getByRole('button',{name:'Close Display preferences'}).isVisible())await page.getByRole('button',{name:'Close Display preferences'}).click()
  return value
 }
 
@@ -436,8 +437,8 @@ async function navigationNegativeControl(page:Page){
 matrixTest('chg153-mobile-navigation-shell',async({page,proof})=>{
  test.setTimeout(180000)
  const candidate={candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,candidate_tree:process.env.UIQA_CANDIDATE_TREE??null,candidate_version:process.env.UIQA_CANDIDATE_VERSION??null,executable_source_commit:process.env.UIQA_EXECUTABLE_SOURCE_COMMIT??null,source_digest:process.env.UIQA_SOURCE_DIGEST??null,browser:await page.evaluate(()=>navigator.userAgent)}
- const evidenceDir=resolve(renderedRoot,'chg153');mkdirSync(evidenceDir,{recursive:true})
- const screenshot=async(name:string)=>{await page.screenshot({path:resolve(evidenceDir,name),fullPage:true});return `evidence/current/uiqa/rendered/chg185/navigation-shell/${name}`}
+  const evidenceDir=resolve(renderedRoot,'chg185','navigation-shell');mkdirSync(evidenceDir,{recursive:true})
+  const screenshot=async(name:string)=>{await page.screenshot({path:resolve(evidenceDir,name),fullPage:true});return `evidence/current/uiqa/rendered/chg185/navigation-shell/${name}`}
  const initial:Record<string,Record<string,unknown>>={}
  const checkClosed=async(surface:typeof chg153Surfaces[number],width:390|320)=>{
   const height=width===390?844:800;await page.setViewportSize({width,height});await navigateChg153Surface(page,surface.path);const heading=page.getByRole('heading',{name:surface.heading,exact:true});await expect(heading).toBeVisible();const material=page.locator('.workspace-summary:visible, .command-bar:visible, .workspace-primary > *:visible').first();await expect(material).toBeVisible();const headingBounds=await heading.boundingBox(),materialBounds=await material.boundingBox();const geometry=await pageGeometry(page);const trigger=page.getByRole('button',{name:/Navigation/});await expect(trigger).toBeVisible();await expect(trigger).toHaveAttribute('aria-expanded','false');expect(await navigationVisibleCount(page)).toBe(0);const active=page.locator('#mobile-navigation-panel a[aria-current="page"]');await expect(active).toHaveCount(1);const result={surface_key:surface.key,path:surface.path,heading:surface.heading,width,height,heading_bounds:headingBounds,material_task_start_bounds:materialBounds,heading_intersects_initial_viewport:!!headingBounds&&headingBounds.y<height&&headingBounds.y+headingBounds.height>0,material_intersects_initial_viewport:!!materialBounds&&materialBounds.y<height&&materialBounds.y+materialBounds.height>0,trigger_visible:await trigger.isVisible(),trigger_label:await trigger.textContent(),navigation_expanded:await trigger.getAttribute('aria-expanded'),visible_destination_count:await navigationVisibleCount(page),active_destination:await active.getAttribute('href'),page_geometry:geometry,document_width_bounded:geometry.document_scroll_width<=width&&geometry.body_scroll_width<=width};expect(result.heading_intersects_initial_viewport).toBe(true);expect(result.material_intersects_initial_viewport).toBe(true);expect(result.document_width_bounded).toBe(true);initial[`${surface.key}@${width}`]=result;return result

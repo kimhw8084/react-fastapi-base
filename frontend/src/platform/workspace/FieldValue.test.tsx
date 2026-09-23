@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import type { FieldDefinition, WorkspaceDefinition } from '../../generated/schema'
-import { FieldValue, fieldDisplayText, fieldLabel } from './FieldValue'
+import { FieldValue, fieldDisplayText, fieldLabel, fieldPresentation } from './FieldValue'
 
 const definition=(key:string,kind:FieldDefinition['kind'],extra:Partial<FieldDefinition>={}):FieldDefinition=>({key,label:key.replaceAll('_',' '),kind,required:false,nullable:true,max_length:null,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false,...extra})
 
@@ -37,5 +37,13 @@ describe('shared field-aware record presentation',()=>{
   expect(fieldDisplayText(definition('status','select'),'in_progress')).toBe('In Progress')
   expect(fieldDisplayText(definition('enabled','boolean'),false)).toBe('No')
   expect(fieldDisplayText(definition('load','unit_number',{unit:'kg',precision:1}),2.4)).toBe('2.4 kg')
+ })
+ it('presents standard system columns omitted from editable feature fields',()=>{
+  const workspace={fields:[]} as unknown as WorkspaceDefinition
+  expect(fieldPresentation(workspace,'created_at')?.kind).toBe('datetime')
+  expect(fieldPresentation(workspace,'revision')?.kind).toBe('integer')
+  expect(fieldLabel(workspace,'created_at')).toBe('Created')
+  expect(fieldDisplayText(undefined,false)).toBe('No')
+  expect(fieldDisplayText(undefined,{source:'fixture'})).toContain('fixture')
  })
 })

@@ -5,7 +5,7 @@ import type { ColDef, ColumnState, GridApi, GridReadyEvent } from 'ag-grid-commu
 import type { ViewColumn, WorkspaceDefinition } from '../../generated/schema'
 import type { BaseRecord } from '../workspace/types'
 import { groupRows, materializeColumns, visibleColumnIds } from '../workspace/tableModel'
-import { FieldValue, fieldDisplayText, fieldLabel } from '../workspace/FieldValue'
+import { FieldValue, fieldDisplayText, fieldLabel, fieldPresentation } from '../workspace/FieldValue'
 import { Icon } from '../ui/Icon'
 import { gridHeightForRows } from './gridLayout'
 
@@ -56,7 +56,7 @@ function GroupedSemanticGrid<T extends BaseRecord>({rows,definition,density,colu
    </header>
    {!isCollapsed&&<div className="grouped-table-scroll"><table><thead><tr><th className="selection-cell">Select</th>{visible.map(key=><th key={key} style={{width:state.get(key)?.width}}>{fieldLabel(definition,key)}</th>)}<th className="row-utility">Quick</th></tr></thead><tbody>{group.rows.map(row=><tr key={row.id} className={selected.has(row.id)?'selected':''} onDoubleClick={()=>onOpen(row)} onContextMenu={event=>{event.preventDefault();onContext?.(row,{x:event.clientX,y:event.clientY})}}>
     <td className="selection-cell"><input type="checkbox" aria-label={`Select ${identityLabel(row,definition)}`} checked={selected.has(row.id)} onChange={event=>toggleRow(row,event.target.checked)}/></td>
-    {visible.map(key=><td key={key}>{key===definition.primary_field?<button className="cell-link" onMouseEnter={event=>onHover?.(row,hoverAnchor(event))} onMouseLeave={()=>onHover?.(row,null)} onClick={()=>onOpen(row)}>{identityLabel(row,definition)}</button>:<FieldValue field={definition.fields.find(field=>field.key===key)!} value={row[key as keyof T]}/>}</td>)}
+    {visible.map(key=><td key={key}>{key===definition.primary_field?<button className="cell-link" onMouseEnter={event=>onHover?.(row,hoverAnchor(event))} onMouseLeave={()=>onHover?.(row,null)} onClick={()=>onOpen(row)}>{identityLabel(row,definition)}</button>:<FieldValue field={fieldPresentation(definition,key)} value={row[key as keyof T]}/>}</td>)}
     <td className="row-utility">{onPeek&&<button className="peek-button" onClick={()=>onPeek(row)} aria-label={`Quick look ${identityLabel(row,definition)}`}><Icon name="quick-look"/></button>}</td>
    </tr>)}</tbody></table></div>}
   </section>})}
@@ -79,7 +79,7 @@ function StandardDataGrid<T extends BaseRecord>({rows,definition,density,columns
       valueGetter:params=>params.data?(params.data as unknown as Record<string,unknown>)[key]??null:null,
       minWidth:key===definition.primary_field?240:110,width:key===definition.primary_field?320:160,
       resizable:true,sortable:true,
-      ...(key===definition.primary_field?{cellRenderer:(params:{data?:T})=>params.data?<div className="cell-identity-actions" onMouseEnter={event=>{if(params.data)onHover?.(params.data,hoverAnchor(event))}} onMouseLeave={()=>{if(params.data)onHover?.(params.data,null)}}><button className="cell-link" onClick={event=>{event.stopPropagation();if(params.data)onOpen(params.data)}}>{identityLabel(params.data,definition)}</button>{onPeek&&<button className="peek-button" title="Quick look" aria-label={`Quick look ${identityLabel(params.data,definition)}`} onClick={event=>{event.stopPropagation();if(params.data)onPeek(params.data)}}><Icon name="quick-look"/></button>}</div>:null}:{cellRenderer:(params:{data?:T;value?:unknown})=>params.data?<FieldValue field={definition.fields.find(field=>field.key===key)!} value={params.value}/>:null}),
+      ...(key===definition.primary_field?{cellRenderer:(params:{data?:T})=>params.data?<div className="cell-identity-actions" onMouseEnter={event=>{if(params.data)onHover?.(params.data,hoverAnchor(event))}} onMouseLeave={()=>{if(params.data)onHover?.(params.data,null)}}><button className="cell-link" onClick={event=>{event.stopPropagation();if(params.data)onOpen(params.data)}}>{identityLabel(params.data,definition)}</button>{onPeek&&<button className="peek-button" title="Quick look" aria-label={`Quick look ${identityLabel(params.data,definition)}`} onClick={event=>{event.stopPropagation();if(params.data)onPeek(params.data)}}><Icon name="quick-look"/></button>}</div>:null}:{cellRenderer:(params:{data?:T;value?:unknown})=>params.data?<FieldValue field={fieldPresentation(definition,key)} value={params.value}/>:null}),
     })),
   ],[definition,onOpen,onPeek,onHover])
   const apply=(api:GridApi<T>)=>{

@@ -14,12 +14,12 @@ test('create, reload and retrieve revision-backed details',async({page})=>{
  await page.reload()
  await expect(page.getByRole('dialog',{name:title})).toBeVisible()
  for(const tab of ['Relationships','Activity','History','Compare','Comments','Files','Audit','Actions']){
-  await page.getByRole('button',{name:tab,exact:true}).click()
+  await page.getByRole('tab',{name:tab,exact:true}).click()
   await expect(page.getByRole('dialog',{name:title})).toBeVisible()
  }
- await page.getByRole('button',{name:'History',exact:true}).click()
+ await page.getByRole('tab',{name:'History',exact:true}).click()
  await expect(page.getByRole('region',{name:'Version history'})).toContainText('Revision 1')
- await page.getByRole('button',{name:'Compare',exact:true}).click()
+ await page.getByRole('tab',{name:'Compare',exact:true}).click()
  await expect(page.getByRole('region',{name:'Compare revisions'})).toBeVisible()
 })
 
@@ -37,7 +37,7 @@ test('read-only viewer dossier comments do not expose a composer',async({page})=
   await route.fulfill({response,json:body})
  })
  await page.reload()
- await page.getByRole('button',{name:'Comments',exact:true}).click()
+  await page.getByRole('tab',{name:'Comments',exact:true}).click()
  await expect(page.getByText('Comments are read-only for this record.',{exact:true})).toBeVisible()
  await expect(page.getByRole('textbox',{name:'Add comment'})).toHaveCount(0)
 })

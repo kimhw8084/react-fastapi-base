@@ -12,7 +12,7 @@ const expectedSamples:Record<string,string>={
  work_items:'Qualify synthetic process excursion evidence',projects:'Process capability recovery',racks:'FAB-A · Bay 04 · Rack R12',equipment:'CAP-7 chamber controller',
  knowledge_entries:'Runbook · chamber drift triage',investigations:'Uniformity drift after PM-204',research:'Can pressure compensation recover',risks:'Unreviewed pressure correction',plan_tasks:'Chamber capability recovery',
  diagram_documents:'Chamber 5N process and telemetry flow',process_measurements:'Within-wafer uniformity',wafer_runs:'WFR-SYN-204-03',manufacturing_lots:'LOT-SYN-204',equipment_states:'CAP-7 deposition chamber',
- process_recipes:'Uniformity recovery',software_services:'wafer-telemetry-api',delivery_runs:'deploy-syn-2041',observability_events:'evt-syn-5001',incidents:'INC-SYN-204',service_objectives:'Telemetry ingest availability',system:'System workspace',
+ process_recipes:'Uniformity recovery',software_services:'wafer-telemetry-api',delivery_runs:'deploy-syn-2041',observability_events:'P95 sample latency crossed the local warning threshold.',incidents:'INC-SYN-204',service_objectives:'Telemetry ingest availability',system:'System workspace',
 }
 
 async function capture(page:Page,name:string){
@@ -51,7 +51,7 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
 test('CHG-185 rack, planning, diagram, SPC and system data states',async({page})=>{
  test.setTimeout(120000)
  await page.setViewportSize({width:1440,height:900})
- await page.goto('/racks');const devices=page.locator('.rack-device');await expect(devices).toHaveCount(4);await page.getByRole('button',{name:/CAP-7 chamber controller/}).click()
+ await page.goto('/racks');await page.getByRole('button',{name:'Rack',exact:true}).click();const devices=page.locator('.rack-device');await expect(devices).toHaveCount(4);await page.getByRole('button',{name:/CAP-7 chamber controller/}).click()
  await expect(page.locator('.rack-inspector')).toContainText('CAP-7 chamber controller');await expect(page.locator('.rack-inspector')).toContainText('CAB-SYN-1001')
  const traceSearch=page.locator('.rack-trace-tools input');await traceSearch.fill('NW-24 dual-fabric leaf switch');await page.getByRole('button',{name:'Trace to NW-24 dual-fabric leaf switch'}).click();await expect(page.locator('.rack-trace-banner.active')).toBeVisible()
  const rackShot=await capture(page,'rack-selected-connected-trace-1440x900.png')
@@ -110,17 +110,17 @@ test('CHG-185 responsive stress preserves task access and section reachability',
 
 test('CHG-185 narrow dossier section selector reaches all ten sections',async({page})=>{
  test.setTimeout(90000);await page.setViewportSize({width:390,height:844});await page.goto('/work-items')
- const record=page.getByRole('button',{name:'Qualify synthetic process excursion evidence'});await expect(record).toBeVisible();await record.click()
+ const record=page.getByRole('button',{name:'Qualify synthetic process excursion evidence',exact:true});await expect(record).toBeVisible();await record.click()
  const dialog=page.getByRole('dialog',{name:'Qualify synthetic process excursion evidence'});await expect(dialog).toBeVisible();const selector=dialog.getByRole('combobox',{name:'Record section'}),sections=['overview','fields','relationships','activity','history','compare','comments','files','audit','actions']
  await expect(selector.locator('option')).toHaveCount(10);const screenshots=[]
  for(const section of sections){await selector.selectOption(section);await expect(selector).toHaveValue(section);expect(await dialog.locator('.surface-body').isVisible()).toBe(true);if(section==='overview')screenshots.push(await capture(page,'dossier-mobile-overview-390x844.png'));if(section==='actions')screenshots.push(await capture(page,'dossier-mobile-actions-390x844.png'))}
- await selector.focus();await page.keyboard.press('Home');await expect(selector).toHaveValue('overview');await page.keyboard.press('End');await expect(selector).toHaveValue('actions')
+ await selector.focus();for(let index=0;index<sections.length-1;index+=1)await page.keyboard.press('ArrowUp');await expect(selector).toHaveValue('overview');for(let index=0;index<sections.length-1;index+=1)await page.keyboard.press('ArrowDown');await expect(selector).toHaveValue('actions')
  writeFileSync(resolve(evidenceRoot,'dossier-sections.json'),`${JSON.stringify({schema_version:1,request:'CHG-185',candidate_sha:process.env.UIQA_CHECKOUT_COMMIT??null,viewport:{width:390,height:844},section_count:sections.length,sections,keyboard_first:'overview',keyboard_last:'actions',screenshots},null,2)}\n`)
 })
 
 test('CHG-185 revision conflict preserves the edited draft for recovery',async({page})=>{
  test.setTimeout(90000);await page.setViewportSize({width:1440,height:900});await page.goto('/work-items')
- await page.getByRole('button',{name:'Qualify synthetic process excursion evidence'}).click();const dossier=page.getByRole('dialog',{name:'Qualify synthetic process excursion evidence'});await dossier.getByRole('menuitem',{name:'Edit'}).click()
+ await page.getByRole('button',{name:'Qualify synthetic process excursion evidence',exact:true}).click();const dossier=page.getByRole('dialog',{name:'Qualify synthetic process excursion evidence'});await dossier.getByRole('menuitem',{name:'Edit'}).click()
  const form=page.getByRole('dialog',{name:'Edit work item'}),title=form.getByRole('textbox',{name:'Title'});await title.fill('Updated synthetic process qualification title')
  await page.route('**/api/v1/work-items/*',async route=>{if(route.request().method()!=='PUT')return route.fallback();await route.fulfill({status:409,contentType:'application/json',body:JSON.stringify({error:{code:'revision_conflict',message:'This record changed. Review the current revision before saving again.',request_id:'chg185-conflict',details:{current:{revision:2}}}})})})
  await form.getByRole('button',{name:'Save changes'}).click();await expect(form.getByRole('alert')).toContainText('This record changed');await expect(title).toHaveValue('Updated synthetic process qualification title')
