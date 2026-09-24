@@ -1,0 +1,21 @@
+{
+  "schema": "project-os-visual-atlas-artifact-stage-receipt-v2",
+  "project": "react-fastapi-base",
+  "request": "golden-ui-v3-custom-projection-evidence-verify-v5",
+  "operation": "VERIFY",
+  "project_os_visual_atlas": 2,
+  "artifact_ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v3-custom-projection-evidence-verify-v5",
+  "source": {
+    "sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "tree": "65be22944b94a86338dc51ee9527d9b78bb51e10",
+    "executable_source_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+    "version": "1.0.0-rc.22"
+  },
+  "evidence_commit": "396ed1c56e2e761c6fd998de9f61df4113b378f6",
+  "evidence_head": "5976a645a84d287c95bf3671375e4af131e34387",
+  "upstream_manifest_sha256": "78c551592789d70987e4fdab1335f895b016d04645d53f16347de9f674422123",
+  "canonical_screenshot_count": 42,
+  "native_fabric_audit_identity": "delegated to native Fabric audit; not impersonated in this carrier",
+  "carrier_parent_sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d"
+}

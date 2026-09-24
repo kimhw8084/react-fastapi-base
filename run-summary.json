@@ -1,0 +1,91 @@
+{
+  "schema": "project-os-evidence-carrier-v1",
+  "project": "react-fastapi-base",
+  "request": "golden-ui-v3-custom-projection-evidence-verify-v5",
+  "change": "CHG-185",
+  "operation": "VERIFY",
+  "carrier_status": "EVIDENCE_ONLY",
+  "verify_work_branch": {
+    "name": "codex/react-fastapi-base-golden-ui-v3-custom-projection-evidence-verify-v5",
+    "head": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "tree": "a83c00bc8d7752e5e84b208d5eaa135148ade6c8",
+    "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "source_changed": false
+  },
+  "candidate": {
+    "sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "tree": "65be22944b94a86338dc51ee9527d9b78bb51e10",
+    "version": "1.0.0-rc.22",
+    "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+    "r3_parent": "7adafba654a20e84d9013f52e1fdd65951314410",
+    "base_main_ancestor": "6204c307cd8a59228c2b00b561a9946fc4c5eaae"
+  },
+  "source_identity": {
+    "verified_source_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "version": "1.0.0-rc.22",
+    "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+    "code_ready": true,
+    "production_ready": false,
+    "release_status": "NOT_CERTIFIED"
+  },
+  "r4_evidence": {
+    "evidence_commit": "396ed1c56e2e761c6fd998de9f61df4113b378f6",
+    "evidence_head": "5976a645a84d287c95bf3671375e4af131e34387",
+    "evidence_branch": "codex/react-fastapi-base-golden-ui-v3-custom-projection-presentation-fix-v4",
+    "binding_status": "PASS",
+    "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "source_bound_verification": {
+      "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
+      "exit_code": 0,
+      "code_ready": true,
+      "production_ready": false,
+      "status_counts": {
+        "PASS": 38,
+        "BLOCKED": 3
+      }
+    },
+    "rendered_manifest_path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+    "rendered_manifest_sha256": "78c551592789d70987e4fdab1335f895b016d04645d53f16347de9f674422123",
+    "surface_count": 21,
+    "viewport_count": 2,
+    "screenshot_count": 42
+  },
+  "review": {
+    "result": "R4 source identity and inspected rendered evidence are coherent",
+    "targeted_projections": [
+      "manufacturing_lots",
+      "process_recipes",
+      "wafer_runs",
+      "delivery_runs",
+      "observability_events",
+      "service_objectives"
+    ],
+    "regression_baselines": [
+      "incidents",
+      "equipment_states"
+    ],
+    "raw_iso_schedule_timestamps_absent": true,
+    "governed_snake_case_status_or_severity_leakage_absent": true,
+    "technical_identifiers_preserved": true,
+    "incident_and_equipment_state_baselines_preserved": true,
+    "unexecuted_claims": [
+      "screen reader",
+      "IME",
+      "physical device",
+      "non-Chromium",
+      "company environment"
+    ]
+  },
+  "external_gates": {
+    "company_identity": "BLOCKED_EXTERNAL",
+    "company_storage": "BLOCKED_EXTERNAL",
+    "company_deployment": "BLOCKED_EXTERNAL",
+    "production_ready": false
+  },
+  "native_fabric_audit": {
+    "authority": "Fabric",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-custom-projection-evidence-verify-v5",
+    "job_identity": "delegated to native Fabric audit"
+  },
+  "carrier_parent_sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d"
+}

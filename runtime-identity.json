@@ -1,0 +1,34 @@
+{
+  "schema": "project-os-golden-ui-runtime-identity-v2",
+  "source": {
+    "sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "tree": "65be22944b94a86338dc51ee9527d9b78bb51e10",
+    "executable_source_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+    "version": "1.0.0-rc.22"
+  },
+  "source_evidence": {
+    "commit": "396ed1c56e2e761c6fd998de9f61df4113b378f6",
+    "head": "5976a645a84d287c95bf3671375e4af131e34387",
+    "branch": "codex/react-fastapi-base-golden-ui-v3-custom-projection-presentation-fix-v4"
+  },
+  "fixture": {
+    "kind": "local_synthetic_demo",
+    "production_evidence": false
+  },
+  "capture": {
+    "reused_existing_r4_artifacts": true,
+    "recaptured_by_verify": false,
+    "viewport_dpr": 1,
+    "viewport_count": 2,
+    "surface_count": 21,
+    "screenshot_count": 42
+  },
+  "claims": {
+    "screen_reader": false,
+    "IME": false,
+    "physical_device": false,
+    "non_chromium": false,
+    "company_environment": false
+  }
+}
