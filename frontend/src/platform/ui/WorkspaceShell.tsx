@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 export interface WorkspaceMetric { label:string; value:ReactNode; className?:string }
-export function WorkspaceShell({eyebrow,title,description,actions,metrics,commandBar,secondaryBar,toolbar,notice,children,footer}:{eyebrow?:ReactNode;title:ReactNode;description?:ReactNode;actions?:ReactNode;metrics?:WorkspaceMetric[];commandBar?:ReactNode;secondaryBar?:ReactNode;toolbar?:ReactNode;notice?:ReactNode;children:ReactNode;footer?:ReactNode}){
- return <div className="workspace">
+export function WorkspaceShell({eyebrow,title,description,actions,metrics,commandBar,secondaryBar,toolbar,notice,children,footer,density='default'}:{eyebrow?:ReactNode;title:ReactNode;description?:ReactNode;actions?:ReactNode;metrics?:WorkspaceMetric[];commandBar?:ReactNode;secondaryBar?:ReactNode;toolbar?:ReactNode;notice?:ReactNode;children:ReactNode;footer?:ReactNode;density?:'default'|'compact'}){
+ return <div className={density==='compact'?'workspace workspace--compact':'workspace'}>
    <section className="page-heading" data-testid="workspace-task-start"><div>{eyebrow&&<span className="eyebrow">{eyebrow}</span>}<h1>{title}</h1>{description&&<p>{description}</p>}</div>{actions&&<div className="header-actions" data-testid="workspace-primary-actions">{actions}</div>}</section>
    {metrics?.length?<section className="workspace-summary" aria-label="Workspace summary">{metrics.map(metric=><div key={metric.label}><span>{metric.label}</span><strong className={metric.className}>{metric.value}</strong></div>)}</section>:null}
    {toolbar}
