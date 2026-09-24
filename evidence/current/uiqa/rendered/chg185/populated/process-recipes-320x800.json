@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+  "candidate_tree": "092a56eb25dab69d1bdcce74f66af4b2dff8dad1",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+  "fixture": "local_synthetic_demo",
+  "viewport": {
+    "width": 320,
+    "height": 800,
+    "dpr": 1
+  },
+  "document_geometry": {
+    "viewport_css_px": 320,
+    "document_scroll_width": 320,
+    "body_scroll_width": 320
+  },
+  "local_recipe_list": {
+    "client_width": 298,
+    "scroll_width": 340,
+    "left": 10,
+    "right": 310,
+    "keyboard_reachability": {
+      "scroll_left": 42,
+      "client_width": 298,
+      "scroll_width": 340
+    }
+  },
+  "controls": {
+    "quick_look": true,
+    "dossier_opened": true,
+    "compare_select": true,
+    "parameters": true,
+    "limits": true,
+    "exact_version": "2.4.1"
+  },
+  "screenshot": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png"
+}

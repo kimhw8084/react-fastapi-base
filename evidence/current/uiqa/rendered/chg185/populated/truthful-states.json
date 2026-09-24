@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "request": "CHG-185",
+  "candidate_sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+  "candidate_tree": "092a56eb25dab69d1bdcce74f66af4b2dff8dad1",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+  "empty": {
+    "title": "No active work items yet",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png"
+  },
+  "archived_empty": {
+    "title": "No archived work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png"
+  },
+  "no_match": {
+    "title": "No matching work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png"
+  },
+  "request_error": {
+    "alert": "Qualification fixture request failure",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png"
+  },
+  "read_only": {
+    "permission": "read-only bootstrap permissions",
+    "access": "Read only",
+    "settled_populated": true,
+    "representative_record": "Qualify synthetic process excursion evidence",
+    "write_or_create_controls_absent": true,
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png"
+  }
+}

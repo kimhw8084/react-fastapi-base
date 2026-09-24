@@ -1,0 +1,538 @@
+{
+  "state_id": "chg153-system-responsive-geometry",
+  "material_state_class": "normal",
+  "candidate_sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+  "candidate_tree": "092a56eb25dab69d1bdcce74f66af4b2dff8dad1",
+  "candidate_version": "1.0.0-rc.22",
+  "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36",
+  "surface": "/system",
+  "captures": [
+    {
+      "width": 1440,
+      "height": 900,
+      "role": "admin",
+      "active_section": "Notifications",
+      "page": {
+        "viewport_css_px": 1440,
+        "document_scroll_width": 1440,
+        "document_client_width": 1440,
+        "body_scroll_width": 1440
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 1126,
+          "scrollWidth": 1126,
+          "left": 271,
+          "right": 1397,
+          "overflowX": "auto"
+        },
+        "after": {
+          "scrollLeft": 0,
+          "clientWidth": 1126,
+          "scrollWidth": 1126,
+          "overflowX": "auto"
+        }
+      },
+      "pointer": {
+        "first": "Overview",
+        "last": "Notifications",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Overview",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 279,
+              "right": 370.140625,
+              "top": 282.796875,
+              "bottom": 322.796875
+            },
+            "focus_bounds": {
+              "left": 273,
+              "right": 376.140625,
+              "top": 276.796875,
+              "bottom": 328.796875
+            },
+            "owner_bounds": {
+              "left": 271,
+              "right": 1397,
+              "top": 274.796875,
+              "bottom": 330.796875
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 1440,
+              "top": 0,
+              "bottom": 900
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Jobs",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 649.71875,
+              "right": 710.34375,
+              "top": 282.796875,
+              "bottom": 322.796875
+            },
+            "focus_bounds": {
+              "left": 643.71875,
+              "right": 716.34375,
+              "top": 276.796875,
+              "bottom": 328.796875
+            },
+            "owner_bounds": {
+              "left": 271,
+              "right": 1397,
+              "top": 274.796875,
+              "bottom": 330.796875
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 1440,
+              "top": 0,
+              "bottom": 900
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "final": {
+          "mode": "Notifications",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 946,
+              "right": 1060.328125,
+              "top": 282.796875,
+              "bottom": 322.796875
+            },
+            "focus_bounds": {
+              "left": 940,
+              "right": 1066.328125,
+              "top": 276.796875,
+              "bottom": 328.796875
+            },
+            "owner_bounds": {
+              "left": 271,
+              "right": 1397,
+              "top": 274.796875,
+              "bottom": 330.796875
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 1440,
+              "top": 0,
+              "bottom": 900
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "enter_click_count": 1,
+        "selected_tab": "Notifications"
+      },
+      "controls": {
+        "tablistCount": 1,
+        "tabCount": 9,
+        "visibleTabCount": 9,
+        "selected": [
+          "Notifications"
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "role": "admin",
+      "active_section": "Notifications",
+      "page": {
+        "viewport_css_px": 390,
+        "document_scroll_width": 390,
+        "document_client_width": 390,
+        "body_scroll_width": 390
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 340,
+          "scrollWidth": 797,
+          "left": 25,
+          "right": 365,
+          "overflowX": "auto"
+        },
+        "after": {
+          "scrollLeft": 457,
+          "clientWidth": 340,
+          "scrollWidth": 797,
+          "overflowX": "auto"
+        }
+      },
+      "pointer": {
+        "first": "Overview",
+        "last": "Notifications",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Overview",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 33,
+              "right": 124.140625,
+              "top": 216.484375,
+              "bottom": 256.484375
+            },
+            "focus_bounds": {
+              "left": 27,
+              "right": 130.140625,
+              "top": 210.484375,
+              "bottom": 262.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 365,
+              "top": 208.484375,
+              "bottom": 264.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Jobs",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 221.71875,
+              "right": 282.34375,
+              "top": 154.484375,
+              "bottom": 194.484375
+            },
+            "focus_bounds": {
+              "left": 215.71875,
+              "right": 288.34375,
+              "top": 148.484375,
+              "bottom": 200.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 365,
+              "top": 146.484375,
+              "bottom": 202.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "final": {
+          "mode": "Notifications",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 243,
+              "right": 357.328125,
+              "top": 112.484375,
+              "bottom": 152.484375
+            },
+            "focus_bounds": {
+              "left": 237,
+              "right": 363.328125,
+              "top": 106.484375,
+              "bottom": 158.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 365,
+              "top": 104.484375,
+              "bottom": 160.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 390,
+              "top": 0,
+              "bottom": 844
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "enter_click_count": 1,
+        "selected_tab": "Notifications"
+      },
+      "controls": {
+        "tablistCount": 1,
+        "tabCount": 9,
+        "visibleTabCount": 9,
+        "selected": [
+          "Notifications"
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "height": 800,
+      "role": "admin",
+      "active_section": "Notifications",
+      "page": {
+        "viewport_css_px": 320,
+        "document_scroll_width": 320,
+        "document_client_width": 320,
+        "body_scroll_width": 320
+      },
+      "owned_scroller": {
+        "before": {
+          "clientWidth": 270,
+          "scrollWidth": 797,
+          "left": 25,
+          "right": 295,
+          "overflowX": "auto"
+        },
+        "after": {
+          "scrollLeft": 527,
+          "clientWidth": 270,
+          "scrollWidth": 797,
+          "overflowX": "auto"
+        }
+      },
+      "pointer": {
+        "first": "Overview",
+        "last": "Notifications",
+        "last_fully_visible_after_pointer_scroll": true
+      },
+      "keyboard": {
+        "first": {
+          "mode": "Overview",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 33,
+              "right": 124.140625,
+              "top": 220.484375,
+              "bottom": 260.484375
+            },
+            "focus_bounds": {
+              "left": 27,
+              "right": 130.140625,
+              "top": 214.484375,
+              "bottom": 266.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 295,
+              "top": 212.484375,
+              "bottom": 268.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "middle": {
+          "mode": "Jobs",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 149.71875,
+              "right": 210.34375,
+              "top": 163.484375,
+              "bottom": 203.484375
+            },
+            "focus_bounds": {
+              "left": 143.71875,
+              "right": 216.34375,
+              "top": 157.484375,
+              "bottom": 209.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 295,
+              "top": 155.484375,
+              "bottom": 211.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "final": {
+          "mode": "Notifications",
+          "focus": {
+            "active": true,
+            "focusVisible": true,
+            "outline": "rgb(21, 88, 168) solid 3px",
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "outlineOffset": "3px",
+            "bounds": {
+              "left": 173,
+              "right": 287.328125,
+              "top": 130.484375,
+              "bottom": 170.484375
+            },
+            "focus_bounds": {
+              "left": 167,
+              "right": 293.328125,
+              "top": 124.484375,
+              "bottom": 176.484375
+            },
+            "owner_bounds": {
+              "left": 25,
+              "right": 295,
+              "top": 122.484375,
+              "bottom": 178.484375
+            },
+            "viewport_bounds": {
+              "left": 0,
+              "right": 320,
+              "top": 0,
+              "bottom": 800
+            },
+            "viewport_tolerance_device_px": 1,
+            "fully_inside_owner": true,
+            "fully_inside_viewport": true
+          }
+        },
+        "enter_click_count": 1,
+        "selected_tab": "Notifications"
+      },
+      "controls": {
+        "tablistCount": 1,
+        "tabCount": 9,
+        "visibleTabCount": 9,
+        "selected": [
+          "Notifications"
+        ]
+      }
+    }
+  ],
+  "negative_control_sensitivity": {
+    "page_contract_failed_on_unbounded_tablist": true,
+    "selector_contract_failed_on_clipped_switch": true,
+    "focus_containment_assertion_failed_on_faulty_fixture": true,
+    "focus_containment_sound_fixture_passed": true,
+    "fixture": {
+      "system": {
+        "viewport": 320,
+        "documentScrollWidth": 781,
+        "bodyScrollWidth": 320
+      },
+      "visualization": {
+        "ownerClientWidth": 98,
+        "ownerScrollWidth": 319,
+        "lastFullyInside": false
+      },
+      "focusContainment": {
+        "faulty": {
+          "ownerClientWidth": 258,
+          "ownerScrollWidth": 372,
+          "focused": true,
+          "focusBounds": {
+            "left": 194,
+            "right": 320,
+            "top": -6,
+            "bottom": 46
+          },
+          "fullyInsideOwner": false,
+          "partlyOutsideOwner": true,
+          "pageLevelOverflowGreen": true
+        },
+        "sound": {
+          "ownerClientWidth": 258,
+          "ownerScrollWidth": 372,
+          "focused": true,
+          "focusBounds": {
+            "left": 130,
+            "right": 256,
+            "top": 44,
+            "bottom": 96
+          },
+          "fullyInsideOwner": true,
+          "pageLevelOverflowGreen": true
+        }
+      }
+    }
+  },
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}

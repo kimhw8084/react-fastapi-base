@@ -1,7 +1,7 @@
 PASS    OR-STARTUP-INVALID-PROFILE
 PASS    OR-STARTUP-NO-DEV-FALLBACK
 PASS    OR-READINESS-DEPENDENCY-UNAVAILABLE
-Database operation unavailable; request_id=0b25b06c-319b-4eb5-8562-0bf13da36f47
+Database operation unavailable; request_id=cbee3fe2-c2a5-4071-8fcd-b2d02d9c735e
 PASS    OR-DATABASE-SAFE-503
 PASS    OR-ATTACHMENT-SCANNER-FAIL-CLOSED
 PASS    OR-ATTACHMENT-STORAGE-FAIL-CLOSED
@@ -12,4 +12,4 @@ PASS    OR-WEBHOOK-UNSAFE-DESTINATION
 PASS    OR-WEBHOOK-DURABLE-RETRY
 PASS    OR-RECOVERY-INVALID-SNAPSHOT
 PASS    OR-DIAGNOSTICS-SAFE-REDACTION
-Operational-reliability qualification PASS: /Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/evidence/current/operations/qualification.json
+Operational-reliability qualification PASS: /Users/haewonkim/.codex-fabric/worktrees/CF-4bb0895d7f885ed5cd097832/evidence/current/operations/qualification.json

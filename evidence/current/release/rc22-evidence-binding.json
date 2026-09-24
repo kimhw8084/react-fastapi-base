@@ -1,0 +1,57 @@
+{
+  "artifact_label": "rc22",
+  "binding_status": "PENDING_EVIDENCE_COMMIT",
+  "deployment_qualification": {
+    "locator": "evidence/current/deployment/qualification.json",
+    "required_for": "code",
+    "sha256": "7679b6840ed5db1d5861e8724056251989cd9d022211938856c34d1045ca941b"
+  },
+  "evidence_commit": null,
+  "manifest": {
+    "locator": "evidence/current/release/rc22-manifest.json",
+    "sha256": "6cb8a973699e506a16e288e0dbb76e739eff39603a1045e5aaa533efe82505d6"
+  },
+  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "performance_qualification": {
+    "locator": "evidence/current/performance/qualification.json",
+    "required_for": "code",
+    "sha256": "4d9c94118b9a51d87ba0af3b9ebfbcd2e3c9c4461736dcd0db3a8e36c0e04cb5"
+  },
+  "profile": "company",
+  "project": "react-fastapi-base",
+  "readiness_matrix": {
+    "locator": "evidence/current/release/rc22-readiness-matrix.json",
+    "sha256": "9000ef7b74be764a81ce6821c9afa9db2eb7b2bc926dcba0fcead7dda5b960c8"
+  },
+  "release_identity": {
+    "locator": "deploy/rc22-release-identity.json"
+  },
+  "repository_operations_qualification": {
+    "company_operations_gate": "BLOCKED_EXTERNAL",
+    "locator": "evidence/current/operations/qualification.json",
+    "repository_status": "PASS",
+    "required_for": "code",
+    "sha256": "a339140762c77a3cc4c91a7bb7bc55cd001d9ef220be6c6fbf567dd42467532b"
+  },
+  "result": "NOT_CERTIFIED",
+  "reusable_platform_qualification": {
+    "locator": "evidence/current/reuse/qualification.json",
+    "required_for": "code",
+    "sha256": "364449bddcb2df736ebc6b4e4cc2490ac72691417e2331c209d2800acc3d03b5"
+  },
+  "schema_version": 2,
+  "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+  "storage_qualification": {
+    "locator": "evidence/current/storage/qualification.json",
+    "required_for": "code",
+    "sha256": "e8b82baab9db2fc991397544a8a6606c3499c62c59074250abdfd231c9769956"
+  },
+  "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+  "uiqa_matrix": {
+    "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
+    "required_for": "code",
+    "sha256": "76cecdc7e417e2e98970335a41b9705df531b97aa0304d814f24611f256a22b3"
+  },
+  "verified_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "version": "1.0.0-rc.22"
+}
