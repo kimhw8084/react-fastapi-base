@@ -1,0 +1,48 @@
+{
+  "historical_refs_mutated": false,
+  "r4": {
+    "binding_status": "PASS",
+    "evidence_commit": "396ed1c56e2e761c6fd998de9f61df4113b378f6",
+    "evidence_head": "5976a645a84d287c95bf3671375e4af131e34387",
+    "evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-custom-projection-presentation-fix-v4",
+    "rendered_manifest": {
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "screenshot_count": 42,
+      "sha256": "78c551592789d70987e4fdab1335f895b016d04645d53f16347de9f674422123",
+      "surface_count": 21,
+      "viewport_count": 2
+    },
+    "source_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+    "source_tree": "65be22944b94a86338dc51ee9527d9b78bb51e10",
+    "version": "1.0.0-rc.22"
+  },
+  "r5": {
+    "carrier": {
+      "candidate_head": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+      "candidate_tree": "65be22944b94a86338dc51ee9527d9b78bb51e10",
+      "commit": "813e8988a9f3da903d934efe3bb137860603c3b5",
+      "parent_shas": [
+        "76990519b339f8b1a4e0e317ca4e3416af48c59d"
+      ],
+      "ref": "refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v3-custom-projection-evidence-verify-v5",
+      "screenshot_count": 42,
+      "source_digest": "4bbdd8a4d0c22db5239e8756f1a4c1a42f48692d44a452791ca9144dde4247b3",
+      "surface_count": 21,
+      "version": "1.0.0-rc.22"
+    },
+    "native_evidence": {
+      "commit": "b510e2368f572eb031ce600f38eefbb9398f5aaf",
+      "parent_shas": [
+        "6204c307cd8a59228c2b00b561a9946fc4c5eaae"
+      ],
+      "promotion_suitable_parentage": false,
+      "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-custom-projection-evidence-verify-v5"
+    },
+    "reconciliation": "R5 history is preserved; only its native evidence parentage was unsuitable for promotion.",
+    "request": "golden-ui-v3-custom-projection-evidence-verify-v5",
+    "verify_job_id": "CF-292f76275c11afab8e294e3f"
+  },
+  "recovered_from_only": true,
+  "schema": "project-os-promotion-evidence-recovered-authorities-v1"
+}
