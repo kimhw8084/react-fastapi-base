@@ -1,5 +1,5 @@
-  0 git clone --no-local /Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556 clone
-  0 git checkout --detach aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f
+  0 git clone --no-local /Users/haewonkim/.codex-fabric/worktrees/CF-b0dd765f76aa9379bea74366 clone
+  0 git checkout --detach 76990519b339f8b1a4e0e317ca4e3416af48c59d
   0 /opt/homebrew/bin/python3.14 dev setup
   0 /opt/homebrew/bin/python3.14 dev seed-demo
   0 .venv/bin/python -c from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.settings import Settings; from pathlib import Path; settings=Settings(environment='development', profile='development', data_root=Path('../.local/development'), dev_user='demo.admin'); app=create_app(settings); client=TestClient(app); payload=client.get('/api/v1/bootstrap').json(); assert payload['profile']=='development' and payload['user_id']=='demo.admin'; assert 'AccessKey' not in str(payload) and 'data_root' not in str(payload) and 'profile_runtime' not in str(payload); client.close()
@@ -10,5 +10,5 @@
   0 npm run typecheck
   0 npm run build
   0 npm run build:storybook
-  0 npx playwright install chromium
+  0 npm exec -- playwright install chromium
   0 /opt/homebrew/bin/python3.14 scripts/e2e_runner.py

@@ -1,8 +1,8 @@
-PASS table-100k-filter-sort: 0.019s <= 2.500s
+PASS table-100k-filter-sort: 0.012s <= 2.500s
 PASS planning-5000-dependencies: 0.000s <= 1.500s
 PASS graph-10000-nodes-20000-edges: 0.002s <= 2.000s
 PASS rack-100-racks-20000-connections: 0.001s <= 1.500s
 PASS wafer-100k-die-map: 0.002s <= 1.000s
 PASS observability-100k-events: 0.003s <= 1.500s
 PASS dashboard-1000-widgets-layout: 0.000s <= 0.750s
-PASS platform data-volume performance regression: /Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/evidence/current/performance/stress.json
+PASS platform data-volume performance regression: /Users/haewonkim/.codex-fabric/worktrees/CF-b0dd765f76aa9379bea74366/evidence/current/performance/stress.json

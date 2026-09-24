@@ -3,17 +3,78 @@
   "base_api_major": 1,
   "base_contract_revision": 1,
   "base_metadata_source": "explicit OpenAPI metadata",
-  "base_ref": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "base_ref": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
   "breaking_changes": 0,
   "candidate_contract": "contracts/openapi.json",
-  "candidate_contract_sha256": "1ffe29bba77d2a31b39d30bfe42a25815525abc782abc63c99ca815479b08c01",
+  "candidate_contract_sha256": "be698b0c87dd139b798176ad12564e085a5bc663d91703c9b593e16242ecac21",
   "candidate_metadata_source": "explicit OpenAPI metadata",
-  "changes": [],
-  "compatible_changes": 0,
-  "contract_revision": 1,
-  "created_at": "2026-09-20T19:25:49.144434+00:00",
-  "resolved_base_sha": "8ebe3e05dd5c1b8abcf67405544dda305e1e448f",
+  "changes": [
+    {
+      "classification": "compatible_additive",
+      "kind": "api-revision-metadata-bump",
+      "location": "GET /api/v1/bootstrap response 200 application/json.api_revision",
+      "message": "The bootstrap revision metadata advances monotonically with the unchanged API major."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "GET /api/v1/bootstrap response 200 application/json.application.navigation[].group",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "GET /api/v1/bootstrap response 200 application/json.application.navigation[].icon",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.ApplicationConfig.navigation[].group",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.ApplicationConfig.navigation[].icon",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "api-revision-metadata-bump",
+      "location": "components.schemas.Bootstrap.api_revision",
+      "message": "The bootstrap revision metadata advances monotonically with the unchanged API major."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.Bootstrap.application.navigation[].group",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.Bootstrap.application.navigation[].icon",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.NavigationItem.group",
+      "message": "An optional request/response field was added."
+    },
+    {
+      "classification": "compatible_additive",
+      "kind": "optional-field-addition",
+      "location": "components.schemas.NavigationItem.icon",
+      "message": "An optional request/response field was added."
+    }
+  ],
+  "compatible_changes": 10,
+  "contract_revision": 2,
+  "created_at": "2026-09-24T02:41:28.897167+00:00",
+  "resolved_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
   "result": "PASS",
   "schema_version": 1,
-  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f"
+  "source_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d"
 }
