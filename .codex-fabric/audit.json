@@ -1,132 +1,2993 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-24T17:26:29Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 5,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 91,
+      "deletions": 67,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 3,
+      "deletions": 5,
+      "path": "backend/app/cli.py",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 63,
+      "deletions": 21,
+      "path": "backend/app/config/application.json",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 6,
+      "deletions": 1,
+      "path": "backend/app/platform/configuration.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/app/platform/deployment_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/app/platform/version.py",
+      "status": "M"
+    },
+    {
+      "additions": 229,
+      "deletions": 0,
+      "path": "backend/app/tooling/demo_qualification.py",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 1,
+      "path": "backend/tests/test_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 49,
+      "deletions": 0,
+      "path": "backend/tests/test_demo_qualification_fixture.py",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
+    },
+    {
+      "additions": 46,
+      "deletions": 3,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc22-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/API_COMPATIBILITY.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DELIVERY_VERIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 3,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/v1-completion-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/deployment/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 69,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1723,
+      "deletions": 1075,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/deployment-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 33,
+      "deletions": 33,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 79,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 28,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 399,
+      "deletions": 294,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 78,
+      "deletions": 55,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 60,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 102,
+      "deletions": 102,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/performance/browser.json",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 23,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 29,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 57,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 67,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc22-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 399,
+      "deletions": 294,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/reuse/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 5912,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+      "status": "A"
+    },
+    {
+      "additions": 538,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 1280,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 5653,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 70,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 564,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+      "status": "A"
+    },
+    {
+      "additions": 75,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": 40,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 58,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 2,
+      "path": "frontend/src/app/Application.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 61,
+      "deletions": 0,
+      "path": "frontend/src/app/ApplicationChrome.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/src/generated/schema.ts",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/semiconductor/EquipmentStateWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/semiconductor/LotTravelerWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/semiconductor/RecipeWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/semiconductor/WaferWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 0,
+      "path": "frontend/src/packs/semiconductor/equipmentStatePresentation.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 16,
+      "deletions": 0,
+      "path": "frontend/src/packs/semiconductor/equipmentStatePresentation.ts",
+      "status": "A"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/src/packs/software-engineering/DeliveryWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/software-engineering/IncidentWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/software-engineering/ObservabilityWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/packs/software-engineering/SloWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 38,
+      "deletions": 0,
+      "path": "frontend/src/packs/software-engineering/incidentPresentation.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "frontend/src/packs/software-engineering/incidentPresentation.ts",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 13,
+      "path": "frontend/src/platform/grid/DataGrid.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 0,
+      "path": "frontend/src/platform/grid/gridLayout.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "frontend/src/platform/grid/gridLayout.ts",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/AppShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/Dialog.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/Icon.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/ui/Notice.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "frontend/src/platform/ui/OverlayShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/WorkspaceShell.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "frontend/src/platform/ui/WorkspaceShell.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/activeNavigationReveal.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/activeNavigationReveal.ts",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/focus.ts",
+      "status": "A"
+    },
+    {
+      "additions": 6,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/focusReveal.ts",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "frontend/src/platform/ui/primitives.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 15,
+      "deletions": 9,
+      "path": "frontend/src/platform/ui/primitives.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/BoardWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/CalendarWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/DashboardWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/DiagramDesignerWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/Dossier.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 26,
+      "deletions": 7,
+      "path": "frontend/src/platform/workspace/Dossier.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/EntityWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 60,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/FieldValue.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 73,
+      "deletions": 14,
+      "path": "frontend/src/platform/workspace/FieldValue.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 30,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/FormEngine.test.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 3,
+      "path": "frontend/src/platform/workspace/FormEngine.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 1,
+      "path": "frontend/src/platform/workspace/HoverRecordPreview.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 8,
+      "path": "frontend/src/platform/workspace/ProjectionWorkspaceFrame.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/ResponsiveWorkspaceControls.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 3,
+      "deletions": 4,
+      "path": "frontend/src/platform/workspace/TableDisplayControls.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 10,
+      "path": "frontend/src/platform/workspace/TableWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 2,
+      "path": "frontend/src/platform/workspace/TimelineWorkspace.tsx",
+      "status": "M"
+    },
+    {
+      "additions": 27,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/WorkspaceEmptyState.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/WorkspaceEmptyState.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 114,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/customProjectionPresentation.test.tsx",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/visualizationDisplay.test.ts",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "frontend/src/platform/workspace/visualizationDisplay.ts",
+      "status": "A"
+    },
+    {
+      "additions": 118,
+      "deletions": 1,
+      "path": "frontend/src/theme/application.css",
+      "status": "M"
+    },
+    {
+      "additions": 317,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/golden-ui-v3.spec.ts",
+      "status": "A"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "frontend/tests/e2e/ui-state-matrix.json",
+      "status": "M"
+    },
+    {
+      "additions": 65,
+      "deletions": 33,
+      "path": "frontend/tests/e2e/uiqa.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "frontend/tests/e2e/workspace.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 24,
+      "deletions": 0,
+      "path": "scripts/check_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "scripts/check_deployment_contract.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "scripts/fresh_clone_check.py",
+      "status": "M"
+    },
+    {
+      "additions": 27,
+      "deletions": 0,
+      "path": "tests/test_api_compatibility.py",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "tests/test_checkpoint.py",
+      "status": "M"
+    },
+    {
+      "additions": 0,
+      "deletions": 4,
+      "path": "tests/test_ui_state_matrix.py",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 0,
+      "path": "tests/test_verification_contract.py",
+      "status": "M"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk proxy zsh -lc 'source /Users/haewonkim/.nvm/nvm.sh && nvm use 22.23.2 >/dev/null && export RELEASE_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae API_COMPATIBILITY_BASE_SHA=6204c307cd8a59228c2b00b561a9946fc4c5eaae && ./dev verify-release'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json;from pathlib import Path; v=json.loads(Path('evidence/current/full-stack/verification.json').read_text()); p=Path('evidence/current/uiqa/rendered/chg185/populated');m=json.loads((p/'manifest.json').read_text()); k=next(x for x in m['screenshots'] if x['workspace']=='knowledge_entries' and x['viewport']=='desktop-1440x900'); r=json.loads((p/'process-recipes-320x800.json').read_text()); print({'verification':{'candidate_head':v['candidate_head'],'executable_source_commit':v['executable_source_commit'],'source_digest':v['source_digest'],'code_ready':v['code_ready'],'production_ready':v['production_ready'],'release_status':v['release_status']},'visual':{'candidate_sha':m['candidate_sha'],'candidate_tree':m['candidate_tree'],'candidate_version':m['candidate_version'],'executable_source_commit':m['executable_source_commit'],'source_digest':m['source_digest'],'surface_count':m['surface_count'],'viewport_count':m['viewport_count'],'screenshot_count':m['screenshot_count'],'knowledge':{key:k[key] for key in ['material_visible_px','material_selector','summary_rows']}},'recipe320':{'candidate_sha':r['candidate_sha'],'candidate_tree':r['candidate_tree'],'candidate_version':r['candidate_version'],'executable_source_commit':r['executable_source_commit'],'source_digest':r['source_digest'],'geometry':r['document_geometry'],'local_list':r['local_recipe_list'],'controls':r['controls']}})\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD HEAD''^{tree} f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44''^{tree} && rtk git merge-base 76990519b339f8b1a4e0e317ca4e3416af48c59d HEAD && rtk git log --oneline --decorate -6 && rtk git status --short | head -12'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git diff --name-status 76990519b339f8b1a4e0e317ca4e3416af48c59d HEAD && rtk git show -s --format='predecessor=%H%nparent=%P%ntree=%T' 76990519b339f8b1a4e0e317ca4e3416af48c59d && rtk git show -s --format='terminal=%H%nparent=%P%ntree=%T' HEAD && rtk git merge-base 6204c307cd8a59228c2b00b561a9946fc4c5eaae HEAD && rtk python scripts/generate_checkpoint_manifest.py --check\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git status --short | rtk rg '\"'^( M|'\"\\\\?\\\\?) (backend|frontend|contracts|scripts|tests|experience-lab|catalog|dev|CHECKPOINT_MANIFEST|deploy/rc22)' && rtk python scripts/generate_checkpoint_manifest.py --check && rtk git rev-parse HEAD HEAD\"'^{tree}'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk docker version'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ls /Applications | rtk rg 'OrbStack'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python scripts/generate_checkpoint_manifest.py --check && rtk git rev-parse HEAD HEAD''^{tree} && rtk git status --short | head -5'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk open -a /Applications/OrbStack.app'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk docker info'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker image ls --format '{{.Repository}}:{{.Tag}}' | head -20 && rtk rg -n 'python_requires|requires-python|node' backend/pyproject.toml pyproject.toml frontend/package.json .nvmrc\"",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk node -e \\\"const p=require('./frontend/package.json'); console.log(p.devDependencies['@playwright/test'])\\\" && rtk cat /etc/os-release 2>/dev/null | head -6\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm mcr.microsoft.com/playwright:v1.62.1-noble sh -lc 'node --version; python3 --version; git --version; npx playwright --version'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm --shm-size=1g -v /Users/haewonkim/.codex-fabric/worktrees/CF-4bb0895d7f885ed5cd097832:/source:ro node:22-bookworm bash -lc 'apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv python3-pip git && git clone --no-local /source /tmp/r7-linux-candidate && cd /tmp/r7-linux-candidate && git checkout --detach c632b98e81dd110dd1aa52bf487fe7839108450a && python3 dev setup && cd frontend && npm run build && npm exec -- playwright install --with-deps chromium && cd .. && python3 scripts/generate_checkpoint_manifest.py --check && python3 scripts/e2e_runner.py && python3 -c \\\"import json;from pathlib import Path;p=Path(\\\\\\\"evidence/current/uiqa/rendered/chg185/populated\\\\\\\");m=json.loads((p/\\\\\\\"manifest.json\\\\\\\").read_text());k=next(x for x in m[\\\\\\\"screenshots\\\\\\\"] if x[\\\\\\\"workspace\\\\\\\"]==\\\\\\\"knowledge_entries\\\\\\\" and x[\\\\\\\"viewport\\\\\\\"]==\\\\\\\"desktop-1440x900\\\\\\\");r=json.loads((p/\\\\\\\"process-recipes-320x800.json\\\\\\\").read_text());print({\\\\\\\"candidate\\\\\\\":m[\\\\\\\"candidate_sha\\\\\\\"],\\\\\\\"knowledge_visible_px\\\\\\\":k[\\\\\\\"material_visible_px\\\\\\\"],\\\\\\\"knowledge_selector\\\\\\\":k[\\\\\\\"material_selector\\\\\\\"],\\\\\\\"recipe320\\\\\\\":r[\\\\\\\"document_geometry\\\\\\\"],\\\\\\\"recipe_keyboard_scroll_left\\\\\\\":r[\\\\\\\"local_recipe_list\\\\\\\"][\\\\\\\"keyboard_reachability\\\\\\\"][\\\\\\\"scroll_left\\\\\\\"]})\\\"'\"",
+      "exit_code": 128,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git bundle create /tmp/r7-chg185.bundle refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7 && rtk ls -lh /tmp/r7-chg185.bundle'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,94p' dev && rtk sed -n '1,80p' scripts/setup.py 2>/dev/null\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --platform linux/amd64 --rm --shm-size=1g -v /tmp/r7-chg185.bundle:/source.bundle:ro node:22-bookworm bash -lc 'apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv python3-pip git build-essential && git clone /source.bundle /tmp/r7-linux-candidate && cd /tmp/r7-linux-candidate && git checkout --detach c632b98e81dd110dd1aa52bf487fe7839108450a && python3 scripts/generate_checkpoint_manifest.py --check && python3 dev setup && cd frontend && npm run build && npm exec -- playwright install --with-deps chromium && cd .. && python3 scripts/e2e_runner.py && python3 -c \\\"import json;from pathlib import Path;p=Path(\\\\\\\"evidence/current/uiqa/rendered/chg185/populated\\\\\\\");m=json.loads((p/\\\\\\\"manifest.json\\\\\\\").read_text());k=next(x for x in m[\\\\\\\"screenshots\\\\\\\"] if x[\\\\\\\"workspace\\\\\\\"]==\\\\\\\"knowledge_entries\\\\\\\" and x[\\\\\\\"viewport\\\\\\\"]==\\\\\\\"desktop-1440x900\\\\\\\");r=json.loads((p/\\\\\\\"process-recipes-320x800.json\\\\\\\").read_text());print({\\\\\\\"candidate\\\\\\\":m[\\\\\\\"candidate_sha\\\\\\\"],\\\\\\\"knowledge_visible_px\\\\\\\":k[\\\\\\\"material_visible_px\\\\\\\"],\\\\\\\"knowledge_selector\\\\\\\":k[\\\\\\\"material_selector\\\\\\\"],\\\\\\\"recipe320\\\\\\\":r[\\\\\\\"document_geometry\\\\\\\"],\\\\\\\"recipe_keyboard_scroll_left\\\\\\\":r[\\\\\\\"local_recipe_list\\\\\\\"][\\\\\\\"keyboard_reachability\\\\\\\"][\\\\\\\"scroll_left\\\\\\\"]})\\\"'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm mcr.microsoft.com/playwright:v1.62.1-noble sh -lc 'node --version; python3 --version; env | rg PLAYWRIGHT; ls -1 /ms-playwright 2>/dev/null | head -10'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm --shm-size=1g -v /tmp/r7-chg185.bundle:/source.bundle:ro -v /tmp/react-fastapi-base-r7-linux-check:/out mcr.microsoft.com/playwright:v1.62.1-noble bash -lc 'npm install --global node@22.23.2 && export PATH=/usr/local/lib/node_modules/node/bin:\"'$PATH PLAYWRIGHT_BROWSERS_PATH=/ms-playwright && node --version && git clone /source.bundle /tmp/r7-linux-native && cd /tmp/r7-linux-native && git checkout --detach c632b98e81dd110dd1aa52bf487fe7839108450a && python3 scripts/generate_checkpoint_manifest.py --check && python3 dev setup && cd frontend && npm run build && cd .. && python3 scripts/e2e_runner.py; E2E_CODE=$?; cp -R /tmp/r7-linux-native/frontend/test-results /out/ 2>/dev/null || true; python3 -c \"import json;from pathlib import Path;p=Path('\"\\\\\\\"/tmp/r7-linux-native/evidence/current/uiqa/rendered/chg185/populated\\\\\\\");m=json.loads((p/\\\\\\\"manifest.json\\\\\\\").read_text());k=next(x for x in m[\\\\\\\"screenshots\\\\\\\"] if x[\\\\\\\"workspace\\\\\\\"]==\\\\\\\"knowledge_entries\\\\\\\" and x[\\\\\\\"viewport\\\\\\\"]==\\\\\\\"desktop-1440x900\\\\\\\");r=json.loads((p/\\\\\\\"process-recipes-320x800.json\\\\\\\").read_text());print({\\\\\\\"candidate\\\\\\\":m[\\\\\\\"candidate_sha\\\\\\\"],\\\\\\\"knowledge_visible_px\\\\\\\":k[\\\\\\\"material_visible_px\\\\\\\"],\\\\\\\"knowledge_selector\\\\\\\":k[\\\\\\\"material_selector\\\\\\\"],\\\\\\\"recipe320\\\\\\\":r[\\\\\\\"document_geometry\\\\\\\"],\\\\\\\"recipe_keyboard_scroll_left\\\\\\\":r[\\\\\\\"local_recipe_list\\\\\\\"][\\\\\\\"keyboard_reachability\\\\\\\"][\\\\\\\"scroll_left\\\\\\\"]})\\\" || true; exit \"'$E2E_CODE'\"'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm mcr.microsoft.com/playwright:v1.62.1-noble bash -lc 'npm install --prefix /opt/node22 node@22.23.2 && PATH=/opt/node22/node_modules/node/bin:\"'$PATH node --version'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm --shm-size=1g -v /tmp/r7-chg185.bundle:/source.bundle:ro -v /tmp/react-fastapi-base-r7-linux-check:/out mcr.microsoft.com/playwright:v1.62.1-noble bash -lc 'set -e; npm install --prefix /opt/node22 node@22.23.2; export PATH=/opt/node22/node_modules/node/bin:\"'$PATH PLAYWRIGHT_BROWSERS_PATH=/ms-playwright; node --version; git clone /source.bundle /tmp/r7-linux-native; cd /tmp/r7-linux-native; git checkout --detach c632b98e81dd110dd1aa52bf487fe7839108450a; python3 scripts/generate_checkpoint_manifest.py --check; python3 dev setup; cd frontend; npm run build; cd ..; set +e; python3 scripts/e2e_runner.py; R7_E2E_EXIT=$?; set -e; cp -R frontend/test-results /out/; python3 -c \"import json;from pathlib import Path;p=Path('\"\\\\\\\"evidence/current/uiqa/rendered/chg185/populated\\\\\\\");m=json.loads((p/\\\\\\\"manifest.json\\\\\\\").read_text());k=next(x for x in m[\\\\\\\"screenshots\\\\\\\"] if x[\\\\\\\"workspace\\\\\\\"]==\\\\\\\"knowledge_entries\\\\\\\" and x[\\\\\\\"viewport\\\\\\\"]==\\\\\\\"desktop-1440x900\\\\\\\");r=json.loads((p/\\\\\\\"process-recipes-320x800.json\\\\\\\").read_text());print({\\\\\\\"candidate\\\\\\\":m[\\\\\\\"candidate_sha\\\\\\\"],\\\\\\\"knowledge_visible_px\\\\\\\":k[\\\\\\\"material_visible_px\\\\\\\"],\\\\\\\"knowledge_selector\\\\\\\":k[\\\\\\\"material_selector\\\\\\\"],\\\\\\\"recipe320\\\\\\\":r[\\\\\\\"document_geometry\\\\\\\"],\\\\\\\"recipe_keyboard_scroll_left\\\\\\\":r[\\\\\\\"local_recipe_list\\\\\\\"][\\\\\\\"keyboard_reachability\\\\\\\"][\\\\\\\"scroll_left\\\\\\\"]})\\\"; exit \"'$R7_E2E_EXIT'\"'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk docker run --rm --shm-size=1g -v /tmp/r7-chg185.bundle:/source.bundle:ro -v /tmp/react-fastapi-base-r7-linux-check:/out mcr.microsoft.com/playwright:v1.62.1-noble bash -lc 'set -e; apt-get update -qq; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3.12-venv python3-pip git; npm install --prefix /opt/node22 node@22.23.2; export PATH=/opt/node22/node_modules/node/bin:\"'$PATH PLAYWRIGHT_BROWSERS_PATH=/ms-playwright; node --version; git clone /source.bundle /tmp/r7-linux-native; cd /tmp/r7-linux-native; git checkout --detach c632b98e81dd110dd1aa52bf487fe7839108450a; python3 scripts/generate_checkpoint_manifest.py --check; python3 dev setup; cd frontend; npm run build; cd ..; set +e; python3 scripts/e2e_runner.py; R7_E2E_EXIT=$?; set -e; cp -R frontend/test-results /out/; python3 -c \"import json;from pathlib import Path;p=Path('\"\\\\\\\"evidence/current/uiqa/rendered/chg185/populated\\\\\\\");m=json.loads((p/\\\\\\\"manifest.json\\\\\\\").read_text());k=next(x for x in m[\\\\\\\"screenshots\\\\\\\"] if x[\\\\\\\"workspace\\\\\\\"]==\\\\\\\"knowledge_entries\\\\\\\" and x[\\\\\\\"viewport\\\\\\\"]==\\\\\\\"desktop-1440x900\\\\\\\");r=json.loads((p/\\\\\\\"process-recipes-320x800.json\\\\\\\").read_text());print({\\\\\\\"candidate\\\\\\\":m[\\\\\\\"candidate_sha\\\\\\\"],\\\\\\\"knowledge_visible_px\\\\\\\":k[\\\\\\\"material_visible_px\\\\\\\"],\\\\\\\"knowledge_selector\\\\\\\":k[\\\\\\\"material_selector\\\\\\\"],\\\\\\\"recipe320\\\\\\\":r[\\\\\\\"document_geometry\\\\\\\"],\\\\\\\"recipe_keyboard_scroll_left\\\\\\\":r[\\\\\\\"local_recipe_list\\\\\\\"][\\\\\\\"keyboard_reachability\\\\\\\"][\\\\\\\"scroll_left\\\\\\\"]})\\\"; exit \"'$R7_E2E_EXIT'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7 && rtk git status --short | rtk rg '\"'^( M|'\"\\\\?\\\\?) (backend|frontend|contracts|scripts|tests|experience-lab|catalog|dev|CHECKPOINT_MANIFEST|deploy/rc22)'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git push origin HEAD:refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git ls-remote --heads origin | rtk rg -i '185|r7|evidence|artifact|convergence-fix-v7' && rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7 && rtk git status --short | tail -8\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json;from pathlib import Path;d=json.loads(Path('evidence/current/full-stack/verification.json').read_text());from collections import Counter;c=Counter(x.get('status','?') for x in d.get('results',[]));print({'candidate':d['candidate_head'],'code_ready':d['code_ready'],'production_ready':d['production_ready'],'release_status':d['release_status'],'status_counts':dict(c),'nonpass':[(x.get('name') or x.get('gate') or x.get('id'),x.get('status'),x.get('reason')) for x in d.get('results',[]) if x.get('status') not in ('PASS',None)]})\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-promotion-evidence-bind-verify-v6 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v3-promotion-evidence-bind-verify-v6 refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk gh run list -R kimhw8084/react-fastapi-base --branch codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7 --limit 10 --json name,status,conclusion,headSha,databaseId,event,url'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n 'wafer-main|lot-main|wafer-workbench|lot-workbench' frontend/src/packs\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"wafer-list|wafer-main|lot-list|lot-main|manufacturing-lots|wafer-runs\" frontend/src/packs frontend/src/theme/application.css frontend/tests/e2e'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat frontend/package.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,220p' scripts/e2e_runner.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk git rev-parse HEAD && rtk git status --branch --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk proxy zsh -lc 'source /Users/haewonkim/.nvm/nvm.sh && nvm use 22.23.2 >/dev/null && cd /Users/haewonkim/.codex-fabric/worktrees/CF-4bb0895d7f885ed5cd097832 && PYTHONPATH=/Users/haewonkim/.codex-fabric/worktrees/CF-4bb0895d7f885ed5cd097832 backend/.venv/bin/python /tmp/r7_wafer_lot_e2e.py'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --name-only 76990519b339f8b1a4e1? HEAD'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg --files evidence/current/uiqa/rendered/chg185/c632b98e81dd110dd1aa52bf487fe7839108450a'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --untracked-files=no'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD HEAD''^{tree} && rtk git rev-parse 76990519b339f8b1a4e0e317ca4e3416af48c59d''^{tree} && rtk git merge-base 76990519b339f8b1a4e0e317ca4e3416af48c59d HEAD && rtk git log --oneline --decorate -7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git ls-remote origin refs/heads/main refs/heads/codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7 refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7 refs/heads/project-os-artifacts/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat deploy/rc22-release-identity.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg --files evidence/current/uiqa/rendered/chg185'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json; p='evidence/current/uiqa/ui-state-matrix-results.json'; d=json.load(open(p)); print(json.dumps(d,indent=2)[:10000])\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --name-only 76990519b339f8b1a4e0e317ca4e3416af48c59d HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json,pathlib; p=pathlib.Path('evidence/current/uiqa/rendered/chg185/populated'); print('files',sum(1 for x in p.rglob('*.png'))); [print(x.name, json.dumps(json.load(open(x)),sort_keys=True)[:7000]) for x in [p/'responsive-stress.json',p/'process-recipes-320x800.json',p/'navigation-shell/all-21-initial-view.json',p/'truthful-states.json',p/'mobile-controls.json'] if x.exists()]\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json,pathlib; base=pathlib.Path('evidence/current/uiqa/rendered/chg185/populated'); p=base/'navigation-shell/all-21-initial-view.json'; d=json.load(open(p)); print(json.dumps(d,indent=2)[:10000]); print('surface screenshots',sum(1 for x in base.glob('*/*.png') if x.name in ('desktop-1440x900.png','mobile-390x844.png'))); print('knowledge files:'); [print(x.relative_to(base), json.dumps(json.load(open(x)),sort_keys=True)[:2500]) for x in base.rglob('*.json') if 'knowledge' in x.name.lower() or 'knowledge' in str(x).lower() or ('material_visible_px' in open(x).read())]\\\"\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python -c \\\"import json,pathlib; base=pathlib.Path('evidence/current/uiqa/rendered/chg185'); p=base/'navigation-shell/all-21-initial-view.json'; d=json.load(open(p)); print(json.dumps(d,indent=2)[:10000]); pop=base/'populated'; print('surface screenshots',sum(1 for x in pop.glob('*/*.png') if x.name in ('desktop-1440x900.png','mobile-390x844.png'))); print('knowledge evidence:'); [print(x.relative_to(base), json.dumps(json.load(open(x)),sort_keys=True)[:3000]) for x in base.rglob('*.json') if x.name=='knowledge-initial-view.json' or ('material_visible_px' in open(x).read())]\\\"\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,220p' frontend/tests/e2e/golden-ui-v3.spec.ts && rtk sed -n '1,180p' tests/test_checkpoint.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk proxy rm -f /tmp/r7_wafer_lot_e2e.py && rtk test ! -e frontend/tests/e2e/r7-mobile-projection-geometry.spec.ts && rtk git rev-parse HEAD && rtk git status --short --untracked-files=no | rtk sed -n '\"'1,8p'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.156.1",
+    "configured_model": "gpt-6-luna",
+    "event_count": 572,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.45,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 44844032,
+      "fresh_input_tokens": 707030,
+      "input_tokens": 45551062,
+      "non_reasoning_output_tokens": 51589,
+      "output_tokens": 207128,
+      "reasoning_output_tokens": 155539,
+      "total_processed_tokens": 45758190
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "df2391405f754d24445b8df0b4df60f5e4b9f520",
+      "subject": "fabric: capture completed model changes [CF-4bb0895d7f885ed5cd097832]"
+    },
+    {
+      "sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+      "subject": "CHG-185 R7 bind RC.22 source and checkpoint identity"
+    },
+    {
+      "sha": "993cea7487130c8a25641599598544083f006083",
+      "subject": "CHG-185 R7 refresh checkpoint for terminal source"
+    },
+    {
+      "sha": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+      "subject": "CHG-185 R7 reveal focused mobile recipe navigation"
+    },
+    {
+      "sha": "3e1e8529342e1ca05c5b6304a7e8228fa450e28e",
+      "subject": "CHG-185 R7 refresh source checkpoint manifest"
+    },
+    {
+      "sha": "b18800960e9ba9beecdf79bae631b03489dc3123",
+      "subject": "CHG-185 R7 place Knowledge material in initial view"
+    },
+    {
+      "sha": "f7e0f4717662ad15a5b027d150e635f2f3c27c31",
+      "subject": "CHG-185 R7 compact Knowledge chrome and bound recipe navigation"
+    },
+    {
+      "sha": "dc0cad86274c59a45cab29011f666b1b1bd45d6f",
+      "subject": "CHG-185 R7 repair checkpoint and responsive projection roots"
+    },
+    {
+      "sha": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+      "subject": "CHG-185 R4 field-aware custom projections"
+    },
+    {
+      "sha": "7adafba654a20e84d9013f52e1fdd65951314410",
+      "subject": "CHG-185 reopen remounted controls in forced-colors UIQA"
+    },
+    {
+      "sha": "d144e243582a8c251cd344cdedf1e55e91d1a5fc",
+      "subject": "CHG-185 refresh source checkpoint for responsive view proof"
+    },
+    {
+      "sha": "b6423e96c268b2e46e06b8d9ad31c863bebf1bce",
+      "subject": "CHG-185 verify compacted view state disclosure"
+    },
+    {
+      "sha": "2265895a68fddb18463d764b42050a1b462a29a5",
+      "subject": "CHG-185 refresh source checkpoint for board controls"
+    },
+    {
+      "sha": "bb0e443ed583191bb7a7e653b9daf30dc58a8b07",
+      "subject": "CHG-185 qualify human visualization labels in responsive UIQA"
+    },
+    {
+      "sha": "49cf4b221998226e64b469dcaaabf7554ebdcf29",
+      "subject": "CHG-185 disclose board controls on compact screens"
+    },
+    {
+      "sha": "8e70295bb04ade84f750e0ca774c596998312c57",
+      "subject": "CHG-185 refresh source checkpoint manifest"
+    },
+    {
+      "sha": "1fb2cbbcf8cc9eba6f83459e99f4844d5f8fa8d2",
+      "subject": "CHG-185 open compact visualization controls in UIQA"
+    },
+    {
+      "sha": "9d23bba86a7d9e1e9d733ec62d33dbd92e2540e2",
+      "subject": "CHG-185 keep visualization ids testable behind human labels"
+    },
+    {
+      "sha": "721b0b590f0c6558e766ba36335a5b7488ced8b6",
+      "subject": "CHG-185 reveal active links with pixel-safe scroll margin"
+    },
+    {
+      "sha": "6efe07ed31c664ba14a8cfe2abd0e8437b549a31",
+      "subject": "CHG-185 align responsive visual oracles with disclosure"
+    },
+    {
+      "sha": "f7fca99dab2938183f4cdb2eda6eef540fdbe2b8",
+      "subject": "CHG-185 qualify stabilized navigation and mobile disclosure"
+    },
+    {
+      "sha": "3bdc4f12742c6e207073096ec5185002a7e64542",
+      "subject": "CHG-185 R3 repair shared workspace residuals"
+    },
+    {
+      "sha": "e5b0a19fd61d1a6f0948237f1356889b43b6b5ce",
+      "subject": "Fix isolated Playwright bootstrap command"
+    },
+    {
+      "sha": "26f5ea42d527632c2658831db8e35f4b486447f2",
+      "subject": "Preserve navigation API compatibility"
+    },
+    {
+      "sha": "a930923d3f1a855a210b6faadf9851ede2500ec4",
+      "subject": "Complete CHG-185 responsive evidence fixes"
+    },
+    {
+      "sha": "4e92d0ce535ef31310b7318d8d6aa4a4e3ef771f",
+      "subject": "Fix CHG-185 qualification edge cases"
+    },
+    {
+      "sha": "a121aef80184d14ee61f594fed81d2d5a11692c5",
+      "subject": "Build CHG-185 Golden UI v3 populated remediation"
+    }
+  ],
+  "diff": {
+    "additions": 20421,
+    "changed_files": 257,
+    "commit_count": 27,
+    "deletions": 2617
+  },
+  "error_code": "REMOTE_BRANCH_RACE",
   "evidence_manifest": {
-    "version": 1,
+    "count": 184,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 15611,
+        "path": "CHANGELOG.md",
+        "sha256": "c2ba2e04a475feb35acef0e6a59b050dcf742c22246c6ea6b165761f6a58dfb8"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 84700,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "9a41d2f6e9e6f5a1fea30263d4cfa46b1ecd4a94746440d7741479e040dfcbbf"
       },
       {
+        "bytes": 4092,
+        "path": "README.md",
+        "sha256": "9f9e15b6f33bf40324f760697be8ec0ccfcef0ab701cc71c36fbee56fa978ba1"
+      },
+      {
+        "bytes": 3221,
+        "path": "backend/app/config/application.json",
+        "sha256": "e405cdbefb0bbc29aa0d64c79384d4f378c0cee6055497a322bf06a296d90f69"
+      },
+      {
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "22190b818e2ce57581b7ed5b2ae9f2aeb9bbd9358c983364b2a66becd611d473"
+      },
+      {
+        "bytes": 1252537,
+        "path": "contracts/openapi.json",
+        "sha256": "be698b0c87dd139b798176ad12564e085a5bc663d91703c9b593e16242ecac21"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc22-release-identity.json",
+        "sha256": "15ae825c248981d192784612818bf5827b15c5abd7b073bbd650a47200bb29fe"
+      },
+      {
+        "bytes": 3486,
+        "path": "docs/API_COMPATIBILITY.md",
+        "sha256": "3e5eba96f891c12c50a1f52464ba999b2c73dccc3a6a7f9f3b2c30ccbecb4c9b"
+      },
+      {
+        "bytes": 4680,
+        "path": "docs/DELIVERY_VERIFICATION.md",
+        "sha256": "68b188fb51778afedba44a589269ba7214c4d9e8660546a788c4dc5a62c9cd7c"
+      },
+      {
+        "bytes": 8674,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "6779caa69385f4e2fbcd99a52ff401fda11e0ab382624e5d674599a587afcf32"
+      },
+      {
+        "bytes": 3167,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "bb7598b791549ab061338d6ec28a4973b7df33602f4a201ebf1b9c4d2ddad958"
+      },
+      {
+        "bytes": 45793,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "0838fd338fdf7a5b768caa87aa17c3494d720f0bbe51664996555dbc7a723a2a"
+      },
+      {
+        "bytes": 16209,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "0efbb9fa04d869780bf6d57dc8084d824fb5953a81a51708f4ddd5d421c6970e"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "6e060f5e525c44a9cf16b4f31aadc490cec1381e26c7f6d9e0e2229fe87a244f"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "975d73b26e1a43aebac545172b89d7bf8a40047a190c52d26122515321efdb7e"
+      },
+      {
+        "bytes": 13730,
+        "path": "docs/v1-completion-status.json",
+        "sha256": "b6ce2895008797ff117c3d676e2ed1dec6931da7cc975b2b617c8c5d88f2e9ce"
+      },
+      {
+        "bytes": 2590,
+        "path": "evidence/current/deployment/qualification.json",
+        "sha256": "7679b6840ed5db1d5861e8724056251989cd9d022211938856c34d1045ca941b"
+      },
+      {
+        "bytes": 3255,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "89e2c0a6fb51108e484ed91be097d53fcdc94b561950dea320f3b87382faf5e9"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "1df233534a37c41938635447711b91fc30b0b0c43b2aa94943dc9d9b9ac75cb2"
+      },
+      {
+        "bytes": 8351,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "cb2ae10209621d7fc33aeace5dee2f329fb0b28455c4c0deff4046f96cf5d4fb"
+      },
+      {
+        "bytes": 4978,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "272f29c1e907f782352e99559b5bacf976ce0be1702c430d1819eca67d1a991a"
+      },
+      {
+        "bytes": 13199,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "58acd124db0c2d9cee84b749d931d5d609e6ae22731d8a9c97becddb34926034"
+      },
+      {
+        "bytes": 12132,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "24f89ec85c5e082ab08a57b8940c3c0e4022b8085a0900337fa961e3f3e67072"
+      },
+      {
+        "bytes": 37775,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "23151bdf78c5b81e329b757cf8983b5769af728f6b78d7f25a3f1b6d8d765d60"
+      },
+      {
+        "bytes": 781,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "a79d2e55200d7beffe2ac3f8570f1581f79df42adc5de519be0fa7d4df2bd8cb"
+      },
+      {
+        "bytes": 162571,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "6143a70d0f771edca8c838e63831f0d3363f70298a315185b9c8a10c43e32ac8"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "457c73a752b0b415213cc552c52d00b148f73e51b853130a608d075d8f089719"
+      },
+      {
+        "bytes": 156,
+        "path": "evidence/current/full-stack/deployment-contract.log",
+        "sha256": "d0494427072e37d78256e01f8353eeed73366d4f684f4a9bf7eb5cdd9cb510e1"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "a507807e0b6be547fba270704702c369dadc5fb12251ba67b5c2c629406fcd1b"
+      },
+      {
+        "bytes": 52390,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "ddb4f615c31816aeeb8f088b97d0ea841c6f32b965f3098e834c0d90da8bf8e2"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "3e698ba44ca33145adcc52b2fe8c6bbe9afa688600a6db07a381aae1961abc2c"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "b7731331e756b586f3581e950d04fd6de856c93cd300f2657f6af2a8c0608b70"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "c7f5a08d52ef7bbc57e4d6eb6a9deab95723f95ab8a4a6c13cf64b4cef1cedc9"
+      },
+      {
+        "bytes": 333,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "d962e41b84b5efc0f9143f69e70f9b5b015e9a3d82532df7e606a62470ce5aa3"
+      },
+      {
+        "bytes": 159,
+        "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+        "sha256": "805c6300c0c7b6d2996b47b2506e607d9d6aa1f390034dd20e2c7e78a9a8cd47"
+      },
+      {
+        "bytes": 1238,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "7586d249b7325de65e0b1701c30e43fd1d19358f803db9f53bc617121736f1b1"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "3b00bb1211cca04614a12dc333739e4c034728dc1296094730a19184d00cfbed"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "0632a14e3097c3ced6a07aae5cecd41d171d973e1bd20314597c3359792fb357"
+      },
+      {
+        "bytes": 7024,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "292ecc7309ece72bda8805f834ceb0fa5ad94517944d7be6a8c86f2bd13dc884"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "9330d6b7bc86d9806c387d479668de86af2a0be0d9e8761df5a82ab42cee3592"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "30ff296a93e9b0fcbf7b95703dfb0b0191c7a68189f0d4df54b0087b62dede51"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "d4414a7a24926c5f028b20919c7caf7fc01852ca3f72be81c866447a66534b2a"
+      },
+      {
+        "bytes": 696,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "93ba758471e1595b88262b8925f194d1949cf9cec42d565f5ded15f869780859"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "cdf4982dfef9beeaacbf5cf93e9d185d7e075f9e8d5743c26445dbf09c70d031"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "60d7e40335115dd42378d542ac53413063cc761da3c1bc0e8fdc36416fcd3f71"
+      },
+      {
+        "bytes": 181178,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "5b25fd07592740cb0a5d65bdf0119cf13265ca4bd48cb13e270a170c240e6ab0"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "74e0c1a560133bdd649c72c46010235650b14d87cb809465a22146712e866299"
+      },
+      {
+        "bytes": 76377,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "9833558c152fd6c657764d8adc0b406455973d50d55f9c36a51711e2b444c3bb"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2955,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "2546f4cd82e0c25b34d64c7e0a93bed76cfa4750758a7dfc65d9c64a3a90b649"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "2a2e2874d5acf87cf85c9f7311bfbe1a3817732ee90262f3ab9f7fac5f334e5e"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 181,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "7a867b9c509ce45022ebf64697f0e3771b9791e6bdee02b34328e532cfcc38a9"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 6170,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "3891ffc4d10fec83824141573e45c3a1bd88a78192a93aaf2ae3d66b7ec68001"
+      },
+      {
+        "bytes": 13730,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "dee365b00cdb07ce4bb8cb43c3db2e025f854690e245d41c74fec3c1b0862e47"
+      },
+      {
+        "bytes": 13730,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "dee365b00cdb07ce4bb8cb43c3db2e025f854690e245d41c74fec3c1b0862e47"
+      },
+      {
+        "bytes": 17312,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "0f28ca181973afb441f7aa95534128352240f167a3ad6ad31d617bbe24287288"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "bd8cbbabb40f53930d6541997c922db63f2717e6d9f71c3ecadece7aa156db5c"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "a339140762c77a3cc4c91a7bb7bc55cd001d9ef220be6c6fbf567dd42467532b"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "46d0db354a1d9aa0597f159375b892993b311c7863600b8d55c2735a87a02b11"
+      },
+      {
+        "bytes": 6121,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "0494e05d0bda10e1e5e9ca64e2f7dc87a818f94cf16c8ba3352e88867d20f86a"
+      },
+      {
+        "bytes": 11933,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "4d9c94118b9a51d87ba0af3b9ebfbcd2e3c9c4461736dcd0db3a8e36c0e04cb5"
+      },
+      {
+        "bytes": 3492,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "907e23eddaa33bf655208bae3bd66b405d7b63ca4939a57597ca4fade3dfe16f"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "d4414a7a24926c5f028b20919c7caf7fc01852ca3f72be81c866447a66534b2a"
+      },
+      {
+        "bytes": 2433,
+        "path": "evidence/current/release/rc22-evidence-binding.json",
+        "sha256": "2058d240ced88923f87b04578b4da94ae7f6aff958c7d50183c1511d9644b03c"
+      },
+      {
+        "bytes": 2544,
+        "path": "evidence/current/release/rc22-manifest.json",
+        "sha256": "6cb8a973699e506a16e288e0dbb76e739eff39603a1045e5aaa533efe82505d6"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc22-readiness-matrix.json",
+        "sha256": "9000ef7b74be764a81ce6821c9afa9db2eb7b2bc926dcba0fcead7dda5b960c8"
+      },
+      {
+        "bytes": 181178,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "5b25fd07592740cb0a5d65bdf0119cf13265ca4bd48cb13e270a170c240e6ab0"
+      },
+      {
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "364449bddcb2df736ebc6b4e4cc2490ac72691417e2331c209d2800acc3d03b5"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "e8b82baab9db2fc991397544a8a6606c3499c62c59074250abdfd231c9769956"
+      },
+      {
+        "bytes": 192875,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+        "sha256": "fa0a9c884a909accd50ba0d24c1492881d22e6270e7c90072964b5c2e2377e28"
+      },
+      {
+        "bytes": 143051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+        "sha256": "dff6a288273b8bbea6e92f5865982332890210d8e3dfd0a6929ed3ddaa7e236d"
+      },
+      {
+        "bytes": 15144,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+        "sha256": "5aebdd77ea333bf46b70e4a243108f7a9b6aa66d39bc3f75d82ae0c2636e5131"
+      },
+      {
+        "bytes": 59826,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+        "sha256": "055af7768e3554f831525fe03c39e0d08d764e1dd6cf3b8c07fa7bf6f994b98a"
+      },
+      {
+        "bytes": 35182,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+        "sha256": "b1e8937d19a3d25113524cdf4fee33a09067169f1d752fd98507e0e6348b4bac"
+      },
+      {
+        "bytes": 70094,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+        "sha256": "90c84bb9bfc6d35dfae9a5b3d94dacdf35af63bc69357f94d90ef57b21399edb"
+      },
+      {
+        "bytes": 904,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+        "sha256": "97620e0ef235787ddcdc28992a42c8e1e02a1d5f33989ab86b63cae4154c645b"
+      },
+      {
+        "bytes": 532,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+        "sha256": "0619824df4cf1b28b3c1673289be466b35c107570e9cb4bd9f8569bd1c4fdef8"
+      },
+      {
+        "bytes": 136260,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+        "sha256": "0d90aa22d96aad0404bc1a64f4a159d18219c016fa6fe28334fe256ef228a9f3"
+      },
+      {
+        "bytes": 699,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+        "sha256": "0ea6d04084b234e7ca51c05eaf44711650c4362eab7b08bad6dab3677ec5b80d"
+      },
+      {
+        "bytes": 161313,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+        "sha256": "84cd16f324760b4735a23c8e465f58ae7f6bf3e0520cf27e5097b2302bdb2228"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+        "sha256": "d96e964f8633ffb9bb2b565a2bc122b008e50454fa32459f79e5d73658ff3e92"
+      },
+      {
+        "bytes": 131316,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+        "sha256": "ac414f541bbaf578d8c0dcd3922c4654a0ab15351b6aafe5ecf58b5a7e6a0ea3"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 410,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+        "sha256": "6a3c84c6240e813bde5734071902d81516db8861eef89ead1f2a4fa4c07e1cfd"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 155813,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+        "sha256": "922ded1059472371a29ff56d790802cdc99774aa4df4d3f2905d6ffeec50a1d6"
+      },
+      {
+        "bytes": 253,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+        "sha256": "4ce6146b0e32c27a83dd7ee2a1e91a4124944c61892eb1c8555bf4159b470cbe"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 174117,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+        "sha256": "9df15acabd90d031e806b728da0fb885c6aaca299440e0fb16d5f8515ff730b2"
+      },
+      {
+        "bytes": 55485,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+        "sha256": "feb62f6dabb736688bda23b3f6f320268ef45f1211eddeaabcd8e0f4af3866da"
+      },
+      {
+        "bytes": 58331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+        "sha256": "f5a4ed70c03f5e755525d1f2145ba56fa33c8045d2f2262a1a7ec40ec9e62769"
+      },
+      {
+        "bytes": 76331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+        "sha256": "3d5d6d8f826e5738eafdb09b469617ed2e7d3db227889f0d33162fdd91ae3292"
+      },
+      {
+        "bytes": 79915,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+        "sha256": "29363bbdda2dcdd39f2e0d0794ac06deb73123dd79c8b620d9e610194082b5c0"
+      },
+      {
+        "bytes": 58128,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+        "sha256": "c192931d94ebeb1a0982f55c1d400596f6412f3fef8f74e057ca17e26cdff17f"
+      },
+      {
+        "bytes": 60487,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+        "sha256": "40dfcb7b1cb447430588b7244d8497be66432991e08a0f92416cc95ba0f04f2c"
+      },
+      {
+        "bytes": 81321,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+        "sha256": "3d59a8ce121cd4e45fc115af4a5af5ede2ff4c543627cdf1e50f659178a82d6e"
+      },
+      {
+        "bytes": 78557,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+        "sha256": "fc932940224cf47f2ba47942e5a63fdfdc4082600b4c21488692c47d10eea751"
+      },
+      {
+        "bytes": 84956,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+        "sha256": "3456ddbbf16c47b20d4382ec89dab3f5a13c2765d4443a1f4adaebe87937663f"
+      },
+      {
+        "bytes": 166535,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+        "sha256": "3a66409350a541bd6b5489484bf9be751ed8a204a365d81d653eca6257a7371a"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 64745,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+        "sha256": "1c49dbf68a6572da567040f8c584f30cbeee843482c329c33d26662af2c112fd"
+      },
+      {
+        "bytes": 93564,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+        "sha256": "da77f768752f03fa43bab37775afde7291ca570134c9543240ccde11564f82a7"
+      },
+      {
+        "bytes": 160694,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+        "sha256": "db0e298bee2255c6fc7ff641b0b4bf56536112d09b4f88431ffcdcacfc0dd1d9"
+      },
+      {
+        "bytes": 72328,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+        "sha256": "21f1e12132705c5d0b7c1ba79bfafc420fcf9aa4be4dcac04179d54acf778c6f"
+      },
+      {
+        "bytes": 1871,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+        "sha256": "5cca4a84f2cce9b0a3025040e8f2ee55c3a50be17e1f67e6b5fceab43c114cd6"
+      },
+      {
+        "bytes": 175798,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+        "sha256": "f3229494589475d7bfaedbb53adbb7dc12e6360c157c9f113267b82aee976a3a"
+      },
+      {
+        "bytes": 141769,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+        "sha256": "cdb0221ec8d18fd637387260800559b12feeff18479be1b551fcfb485e7a6032"
+      },
+      {
+        "bytes": 176688,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+        "sha256": "710834c898e4f3a4578954ff1af318b8886500c8fd3ef398d8210425d986c448"
+      },
+      {
+        "bytes": 174870,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+        "sha256": "9f006fcf93232e79b4ead3530ef0e320cf3aca0d80b5e65f44e99d7e8988f623"
+      },
+      {
+        "bytes": 73855,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+        "sha256": "7ae1a3a9dddd3231e2c32f4e2ca32ce3e950dcf2afbd796eacf149484314b625"
+      },
+      {
+        "bytes": 68730,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+        "sha256": "7bd39fff491117c188527884934e1708652e2112de2a888ce0ebbe4807470e18"
+      },
+      {
+        "bytes": 65724,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+        "sha256": "585a5897271b14a27d16a960228d3a9c1aefe2c718af908c2f90994a45162753"
+      },
+      {
+        "bytes": 969,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+        "sha256": "2476e88521cda8729df238115a29a54c1cdf2c9d977110c3511de215c117552a"
+      },
+      {
+        "bytes": 154036,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+        "sha256": "466c11289111558a442cffcff178501e8cb7879dd506879d5345061870a0c87e"
+      },
+      {
+        "bytes": 66325,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+        "sha256": "f1cc6d223653e1198b5cfdff8c26422006d35c070465116ffe50ad57835b235c"
+      },
+      {
+        "bytes": 169590,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+        "sha256": "3483bc55c95fbf3e2239ccff7bc3d94b30a7bb01d9e6f01f65a9879fe99a25c9"
+      },
+      {
+        "bytes": 68540,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+        "sha256": "5989857af5797dbaa89cb05e59717ad418cfdcbf43df51e333528d8401c675a6"
+      },
+      {
+        "bytes": 183251,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+        "sha256": "c0c10b35fad151401fce41be461defbe7533c00a73b3c9bd9e92bf200487df11"
+      },
+      {
+        "bytes": 75521,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+        "sha256": "44913adc1f948be569e8306f8f03403819e7989f0c057cc30ea57932788a3b80"
+      },
+      {
+        "bytes": 179334,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+        "sha256": "861473ac1086632923af94ecf175c1861f77835c46f6dc24edb465eb2c30ed11"
+      },
+      {
+        "bytes": 73019,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+        "sha256": "2edfe61f647a983ff32aa7f5b9b9ed88d263e20c12a6771f667f18e5c3145537"
+      },
+      {
+        "bytes": 193471,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+        "sha256": "4ee4713e516a5236d322b4671822475f804f1ac4fb219d32f430463cbe516c86"
+      },
+      {
+        "bytes": 70554,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+        "sha256": "618c0550bf829ad265e265cde6382178c16292c26d5c852e7f7ba9d8ca125199"
+      },
+      {
+        "bytes": 21059,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "829fb74bcb83f2328667c22e3b225275d701aa1b5792e30a819650b601cb892e"
+      },
+      {
+        "bytes": 162974,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+        "sha256": "e8eacbb2582a5220e9f7a24702dee64d469d80f1b4ac6fabf137cca0db5443b0"
+      },
+      {
+        "bytes": 69245,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+        "sha256": "97b6336dce1c5be1f764c539414a6e2800fdda5305773949174e1c0b90be0202"
+      },
+      {
+        "bytes": 872,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+        "sha256": "9c871afac1fac6ea88abe461993679df8f4e0ec9d837ea7c9d444fb3612b1633"
+      },
+      {
+        "bytes": 2294,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "5c3702ee5219f895aaf43ebf2653814974fb530e28442dc3c8ee6b40fe72f1bc"
+      },
+      {
+        "bytes": 161799,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+        "sha256": "ad10d7c41b87133b2ea888d2f870146759bcff1902c0109d5d24bddaf33b0bff"
+      },
+      {
+        "bytes": 70112,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+        "sha256": "e97b293c0e48a9419e261256499c7bd91eb20c43d202a84ef6c2b7d978aa64b0"
+      },
+      {
+        "bytes": 161044,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+        "sha256": "d9391c1284fa863abc0becedb63497802f85ce0a37f3ef929e5279175595f8ee"
+      },
+      {
+        "bytes": 62326,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+        "sha256": "9dca6f02f081bbaf0050488da83091a2ed4526955a3d56ef60b446fb04b5a50d"
+      },
+      {
+        "bytes": 161044,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+        "sha256": "d9391c1284fa863abc0becedb63497802f85ce0a37f3ef929e5279175595f8ee"
+      },
+      {
+        "bytes": 1103,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+        "sha256": "94fecd03f105171d2658ca3f71d5c161b3b978bf87521da8470eda8ae9573933"
+      },
+      {
+        "bytes": 64600,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+        "sha256": "3328de8b9f3e78ae87fd90a474df5c879713c2a06e8542534e1cceb57afcd48f"
+      },
+      {
+        "bytes": 160929,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+        "sha256": "00e158e42e138bdc77ac24931500e9dc6cc189463e6ed81bcdde20ca5be0b344"
+      },
+      {
+        "bytes": 72511,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+        "sha256": "c609fb50ebb31a7fdc143e5d9a749fe34f1d99f46dd7dc13152b4ac0f1a20a6b"
+      },
+      {
+        "bytes": 153768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+        "sha256": "ab37f60624c8544f617e9446170985f3a7e5011ec445f746becece3ea2f903d6"
+      },
+      {
+        "bytes": 70577,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+        "sha256": "eaab8990c5da20cf0cf1a2120047c01c13a299a6ecbccf83c9547848ccac93e3"
+      },
+      {
+        "bytes": 151787,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+        "sha256": "04e2fca9d7af72007d69ef974a5d8ed8fef7d841bc7b86fbf6825bc2d69595ca"
+      },
+      {
+        "bytes": 63596,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+        "sha256": "4af8d539507de6bb4d63d1496d40c3b4038a2bf81f8a8c62d6f22f77cb930bfa"
+      },
+      {
+        "bytes": 84543,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+        "sha256": "be9efce581e8e8cda1ed7898929a611bb601852049448ceda9d95f661c0e0057"
+      },
+      {
+        "bytes": 123940,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+        "sha256": "320baee17e6ec0dee6c5833a62e2a6964d47d2ff64c1fc00f8474394e3926db0"
+      },
+      {
+        "bytes": 141260,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+        "sha256": "0880cc79c5e07f5281add94524243eb413914e30efd670ad570cef527e67698f"
+      },
+      {
+        "bytes": 56768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+        "sha256": "93bd59b82e3fa8992543ffd0900cc8f0c1e59d033ce0c1b4f526a074689dbd33"
+      },
+      {
+        "bytes": 174148,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+        "sha256": "dccb2bab4b4948117c1166cc44a972bf8998fcb3a6dc27d888fb2a9e11f039de"
+      },
+      {
+        "bytes": 70150,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+        "sha256": "d048b8a1b1aca041b91259dfd8ffbdd3df34eb14df2cf9c47b4dcdee79f2f6d0"
+      },
+      {
+        "bytes": 1567,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+        "sha256": "c92fba3f19ffab14911bb88d353fca9ddd927002e46b6c59bd5a3d50a4d16eab"
+      },
+      {
+        "bytes": 918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+        "sha256": "60aeba3c8270cddfe82c1bf30c59014d3f06b4778f070ef041ca11dfeab5d727"
+      },
+      {
+        "bytes": 172808,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+        "sha256": "4375ae4ae7454573117b22663d5cc8baafdabe826612240111de135c4edb7a69"
+      },
+      {
+        "bytes": 71158,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+        "sha256": "749587e03fcbbe67d9f872f2f4acd857807a2789d2dfa1416120817272d13722"
+      },
+      {
+        "bytes": 1558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+        "sha256": "f27b6ccf27856308907d56591f65b0c5788b586a983df920ed3543c7e94b10b8"
+      },
+      {
+        "bytes": 147832,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+        "sha256": "3deec3a99c7ca855b8210fd8f45b9f3cd7de3861a125faa80393a80037207b11"
+      },
+      {
+        "bytes": 64216,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+        "sha256": "c7fb8e7d20b38c0f1f0702f4f27139d52b5495ca02fe55103a67e52051b56d9f"
+      },
+      {
+        "bytes": 150074,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+        "sha256": "3448e48006ef94f28e08b96389a0f5d1f3da35578380c21b3f1c5b8df998ed69"
+      },
+      {
+        "bytes": 66708,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+        "sha256": "0df710a2d8f5d6c679090c0167094f21ecb2a9a32f2397bc296a1bb6ca4cdff3"
+      },
+      {
+        "bytes": 160929,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+        "sha256": "00e158e42e138bdc77ac24931500e9dc6cc189463e6ed81bcdde20ca5be0b344"
+      },
+      {
+        "bytes": 127954,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+        "sha256": "45980c8b74b506b0f33ba2f7c2dbe38d0d40c2cfdd9a35bd3748903c07f9bb30"
+      },
+      {
+        "bytes": 128416,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+        "sha256": "a28a337ca4b62ce58c7949b480232e269cadc37f601f7f7e21f380c80a56f75f"
+      },
+      {
+        "bytes": 129487,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+        "sha256": "ec02e3b77d2f64b7b934ce4838b906cb4c17a348c0e6709d1fddb1662ada1169"
+      },
+      {
+        "bytes": 145325,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+        "sha256": "42df6fe374a0c6397a84c73ec78929e9ee86eb62f0e4c36eab2f73db7a53c3ae"
+      },
+      {
+        "bytes": 139585,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+        "sha256": "63908844f4727568eddf1808bb783c4e50fcc95f59fc8170c54a354f8e92cbf5"
+      },
+      {
+        "bytes": 159571,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+        "sha256": "139fc8521a8c19f97c8c766fecbb8f1ab2eb63cfe541021bfe08f2c1bd1f328b"
+      },
+      {
+        "bytes": 173192,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+        "sha256": "9c1d24b0250a85a02c6db9a9298551e577eda3961c2b3abafd5bafe72af69b93"
+      },
+      {
+        "bytes": 124692,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+        "sha256": "bb5c9a1175a1b1be7fd9f21c64e0a7debefb46b135beedf56fa54daacfe77c5a"
+      },
+      {
+        "bytes": 135036,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+        "sha256": "cd23fca9405e9b94d274e53c3123a8fef7989733581ad66f06d7905590f00cd5"
+      },
+      {
+        "bytes": 141769,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+        "sha256": "cdb0221ec8d18fd637387260800559b12feeff18479be1b551fcfb485e7a6032"
+      },
+      {
+        "bytes": 61203,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+        "sha256": "0e8eabd41cdc8c8e7d278bc50cf935b319af893f9a17190d749bad01d32fb252"
+      },
+      {
+        "bytes": 1367,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+        "sha256": "081962f35d5d722500ec137e2b25ce649393825d455a0f8b782ba5f36121a1d5"
+      },
+      {
+        "bytes": 165425,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+        "sha256": "045d3fe048de490c3ec0f6174ca5af969d4f9cb8f84d8cbafe7508309e75a4e8"
+      },
+      {
+        "bytes": 73576,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+        "sha256": "8e86082e7c469888a78d69302f74f242343fc4046722d21a1ec63c318ed4a216"
+      },
+      {
+        "bytes": 57127,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+        "sha256": "baaead1d4592a79a1dd2400485745d2489cd0bb6715c9f039393ceab6e4f5f98"
+      },
+      {
+        "bytes": 59746,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+        "sha256": "f38394e17b795241488aa88afa719f103666fae7e023217005733c1d1ca7b48d"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 142732,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+        "sha256": "eec154aadb7050a253557f8cc8d05c8aa4e6c095a59a901fd2f3115e029899c3"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "76cecdc7e417e2e98970335a41b9705df531b97aa0304d814f24611f256a22b3"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "a17e598fcb77a98a28696cee5e992e453fea746e03b5da318cf650423c10e462"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "952c40aea8d38de9b4fa6b1fb4f78fe485b1dfc41fb0cf94d878c624d820b7e9"
+      },
+      {
+        "bytes": 17744,
+        "path": "frontend/tests/e2e/ui-state-matrix.json",
+        "sha256": "8127b4b7b6216aa927595d984cb3f54d892b5924c5ba5330bd2214220561ba76"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.5-dashboard-controls-candidate",
+  "fabric_capture": {
+    "applied": true,
+    "commit_message": "fabric: capture completed model changes [CF-4bb0895d7f885ed5cd097832]",
+    "commit_sha": "df2391405f754d24445b8df0b4df60f5e4b9f520",
+    "paths_before": 54,
+    "status_before": [
+      " M evidence/current/deployment/qualification.json",
+      " M evidence/current/full-stack/api-compatibility.json",
+      " M evidence/current/full-stack/api-compatibility.log",
+      " M evidence/current/full-stack/backend-junit.shard-1.xml",
+      " M evidence/current/full-stack/backend-junit.shard-2.xml",
+      " M evidence/current/full-stack/backend-junit.shard-3.xml",
+      " M evidence/current/full-stack/backend-junit.shard-4.xml",
+      " M evidence/current/full-stack/backend-junit.xml",
+      " M evidence/current/full-stack/backend-tests.log",
+      " M evidence/current/full-stack/browser-e2e-accessibility.log",
+      " M evidence/current/full-stack/checkpoint-manifest.log",
+      " M evidence/current/full-stack/deployment-contract.log",
+      " M evidence/current/full-stack/engineering-widget-layer.log",
+      " M evidence/current/full-stack/fresh-clone-macos.json",
+      " M evidence/current/full-stack/frontend-build.log",
+      " M evidence/current/full-stack/frontend-storybook.log",
+      " M evidence/current/full-stack/frontend-typecheck.log",
+      " M evidence/current/full-stack/frontend-unit.log",
+      " M evidence/current/full-stack/independent-deployment-qualification.log",
+      " M evidence/current/full-stack/macos-fresh-install.log",
+      " M evidence/current/full-stack/native-lab/browser-interactions.log",
+      " M evidence/current/full-stack/native-lab/browser-junit.xml",
+      " M evidence/current/full-stack/native-lab/pure-model-tests.log",
+      " M evidence/current/full-stack/native-lab/static-http-server.log",
+      " M evidence/current/full-stack/native-lab/verification.json",
+      " M evidence/current/full-stack/object-inclusive-backup-restore.log",
+      " M evidence/current/full-stack/operational-reliability-qualification.log",
+      " M evidence/current/full-stack/performance-owned-algorithms.log",
+      " M evidence/current/full-stack/performance-stress.log",
+      " M evidence/current/full-stack/reference-apps.log",
+      " M evidence/current/full-stack/security-source.log",
+      " M evidence/current/full-stack/source-hashes.json",
+      " M evidence/current/full-stack/static-server.log",
+      " M evidence/current/full-stack/storage-qualification.log",
+      " M evidence/current/full-stack/tooling-tests.log",
+      " M evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      " M evidence/current/full-stack/upgrade-fixture.json",
+      " M evidence/current/full-stack/upgrade-fixture.log",
+      " M evidence/current/full-stack/verification.json",
+      " M evidence/current/full-stack/version-metadata.log",
+      " M evidence/current/operations/qualification.json",
+      " M evidence/current/performance/browser.json",
+      " M evidence/current/performance/owned-algorithms.json",
+      " M evidence/current/performance/qualification.json",
+      " M evidence/current/performance/stress.json",
+      " M evidence/current/recovery/object-restore.json",
+      " M evidence/current/release/reference-apps.json",
+      " M evidence/current/reuse/qualification.json",
+      " M evidence/current/storage/qualification.json",
+      " M evidence/current/uiqa/ui-state-matrix-results.json",
+      "?? evidence/current/release/rc22-evidence-binding.json",
+      "?? evidence/current/release/rc22-manifest.json",
+      "?? evidence/current/release/rc22-readiness-matrix.json",
+      "?? evidence/current/uiqa/rendered/chg185/"
+    ],
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.5-dashboard-controls-candidate",
+  "failure_class": "DURABILITY",
+  "finished_at": "2026-09-24T19:29:07Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "branch": "codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7",
+    "detached_verify": false,
+    "head_sha": "df2391405f754d24445b8df0b4df60f5e4b9f520",
+    "remote_exact_head": null,
+    "remote_head_sha": null,
+    "target_branch": "main",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-4bb0895d7f885ed5cd097832",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.5-dashboard-controls-candidate",
+    "policy_sha256": "123615bf2f6e57dcac197e49ca98ceac59ada86a55e2c84445ea5d00812c0833",
+    "registry_sha256": "af81b8552f9d6a33847310e3c6bcd2d48401782b963a58efd2993e93570cb4aa"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": true,
+    "retry_safe": true,
+    "retry_scope": "durability_only",
+    "worktree_retained": true
+  },
+  "request": "golden-ui-v3-pr-ci-convergence-fix-v7",
+  "schema_version": 1,
+  "started_at": "2026-09-24T17:26:29Z",
+  "status": "BLOCKED_DURABILITY",
+  "timing": {
+    "execution_seconds": 7358,
+    "queue_seconds": 0,
+    "total_seconds": 7358
+  },
+  "transport": {
+    "bytes": 12565,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 12207,
+    "prompt_sha256": "73292c549d92d33395b31bd79b0a285eb219b34a253d4fef709b310381577063",
+    "sha256": "4bb0895d7f885ed5cd097832efeef314d2143650fd65ea828fda64c6315aa8a5"
+  }
 }
