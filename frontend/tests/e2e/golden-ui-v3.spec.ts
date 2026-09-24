@@ -37,7 +37,7 @@ async function measureIntersection(page:Page,locator:ReturnType<Page['locator']>
 }
 
 function expectKnowledgeMaterialInInitialView(pixels:number){
- expect(pixels,'Knowledge representative document material should have visible room below its heading').toBeGreaterThanOrEqual(96)
+ expect(pixels,'Knowledge workbench should expose representative material with a 96px initial-view safety margin').toBeGreaterThanOrEqual(96)
 }
 
 function expectDocumentWidthBounded(geometry:{viewport_css_px:number;document_scroll_width:number;body_scroll_width:number}){
@@ -88,6 +88,7 @@ async function assertCustomProjectionPresentation(page:Page,workspace:string){
 
 async function selectCustomProjectionSample(page:Page,workspace:string){
  const rows:Record<string,{selector:string;sample:string}>={
+  knowledge_entries:{selector:'.knowledge-navigator button',sample:'Runbook · chamber drift triage'},
   manufacturing_lots:{selector:'.lot-list button',sample:'LOT-SYN-204'},
   process_recipes:{selector:'.recipe-list button',sample:'Uniformity recovery'},
   wafer_runs:{selector:'.wafer-list button',sample:'WFR-SYN-204-03'},
@@ -115,7 +116,7 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
    await selectCustomProjectionSample(page,workspace)
    await assertCustomProjectionPresentation(page,workspace)
    const knowledgeInitialDesktop=workspace==='knowledge_entries'&&viewport.label==='desktop-1440x900'
-   const material=knowledgeInitialDesktop?page.locator('.knowledge-document .knowledge-markdown'):page.locator('.workspace-primary > :first-child').first()
+   const material=knowledgeInitialDesktop?page.locator('.knowledge-workbench'):page.locator('.workspace-primary > :first-child').first()
    await expect(material).toBeVisible({timeout:15000})
    const taskEconomy=await measureTaskEconomy(page),sampleVisiblePx=await measureIntersection(page,material)
    const summaryRows=workspace==='knowledge_entries'&&viewport.label==='desktop-1440x900'?await page.locator('.workspace-summary').evaluate(element=>getComputedStyle(element).gridTemplateRows.trim().split(/\s+/).length):null
@@ -128,7 +129,7 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
    }
    expect(await page.locator('body').innerText()).not.toMatch(/state_timeline|State_timeline|incident_command|Incident_command/)
    const output=await capture(page,`${workspace}/${viewport.label}.png`)
-   screenshots.push({workspace,label:destination.label,group:destination.group,viewport:viewport.label,path:output,sample_visible:true,sample_visible_px:sampleVisiblePx,material_visible_px:knowledgeInitialDesktop?sampleVisiblePx:taskEconomy.material_visible_px,material_selector:knowledgeInitialDesktop?'.knowledge-document .knowledge-markdown':taskEconomy.material_selector,summary_rows:summaryRows,heading:await task.locator('h1').first().textContent()})
+   screenshots.push({workspace,label:destination.label,group:destination.group,viewport:viewport.label,path:output,sample_visible:true,sample_visible_px:sampleVisiblePx,material_visible_px:knowledgeInitialDesktop?sampleVisiblePx:taskEconomy.material_visible_px,material_selector:knowledgeInitialDesktop?'.knowledge-workbench':taskEconomy.material_selector,summary_rows:summaryRows,heading:await task.locator('h1').first().textContent()})
   }
  }
  const manifest={schema_version:1,request:'CHG-185',...sourceIdentity,fixture:'local_synthetic_demo',fixture_production_evidence:false,viewport_dpr:1,surface_count:destinations.length,viewport_count:2,screenshot_count:screenshots.length,screenshots,matrix_source_sha256:createHash('sha256').update(readFileSync(resolve(process.cwd(),'tests/e2e/ui-state-matrix.json'))).digest('hex')}
@@ -176,9 +177,10 @@ test('CHG-185 Process Recipes remains usable and bounded at 320 CSS px',async({p
 test('CHG-185 initial-view and width oracles reject known layout mutations',async({page})=>{
  await page.setViewportSize({width:1440,height:900})
  await page.goto('/knowledge-entries')
- const knowledgeMaterial=page.locator('.knowledge-document .knowledge-markdown')
+ await selectCustomProjectionSample(page,'knowledge_entries')
+ const knowledgeMaterial=page.locator('.knowledge-workbench')
  await expect(knowledgeMaterial).toBeVisible()
- await page.addStyleTag({content:'.knowledge-document .knowledge-markdown{margin-top:1000px!important}'})
+ await page.addStyleTag({content:'.knowledge-workbench{margin-top:1000px!important}'})
  const pushedMaterial=await measureIntersection(page,knowledgeMaterial)
  expect(pushedMaterial).toBe(0)
  let knowledgeOracleRejected=false
@@ -187,10 +189,12 @@ test('CHG-185 initial-view and width oracles reject known layout mutations',asyn
 
  await page.setViewportSize({width:320,height:800})
  await page.goto('/process-recipes')
+ await expect(page.locator('.recipe-workbench')).toBeVisible()
+ await expect(page.locator('.recipe-main')).toContainText('Uniformity recovery')
  await page.addStyleTag({content:'.recipe-workbench{width:347px!important;min-width:347px!important;max-width:none!important}'})
  const overflowingGeometry=await measureDocumentGeometry(page)
- expect(overflowingGeometry.document_scroll_width).toBeGreaterThan(320)
- expect(overflowingGeometry.body_scroll_width).toBeGreaterThan(320)
+ expect(overflowingGeometry.document_scroll_width,JSON.stringify(overflowingGeometry)).toBeGreaterThan(320)
+ expect(overflowingGeometry.body_scroll_width,JSON.stringify(overflowingGeometry)).toBeGreaterThan(320)
  let widthOracleRejected=false
  try{expectDocumentWidthBounded(overflowingGeometry)}catch{widthOracleRejected=true}
  expect(widthOracleRejected).toBe(true)

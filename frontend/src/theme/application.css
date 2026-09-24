@@ -141,7 +141,7 @@ h1,h2,h3,p{margin:0}h1{font-size:29px;line-height:1.2;letter-spacing:-.04em;font
 @media(min-width:1101px){.workspace-summary{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}
 
 /* Knowledge content shares a compact desktop task shell so its document starts in view. */
-@media(min-width:1101px){.workspace--compact{padding-top:8px;padding-bottom:8px;gap:6px}.workspace--compact .workspace-summary>div{padding-top:6px;padding-bottom:6px}.workspace--compact .responsive-workspace-controls{padding-top:6px;padding-bottom:6px}}
+@media(min-width:1101px){.workspace--compact{padding-top:2px;padding-bottom:8px;gap:2px}.workspace--compact .workspace-summary>div{padding-top:2px;padding-bottom:2px}.workspace--compact .responsive-workspace-controls{display:grid;gap:4px;padding:2px}.workspace--compact .workspace-controls-primary{display:flex;align-items:flex-end;gap:12px;min-width:0}.workspace--compact .workspace-controls-primary>.search-field{flex:1 1 240px;min-width:180px}.workspace--compact .workspace-controls-disclosure{display:block;min-width:0}.workspace--compact .workspace-controls-panel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-width:0}.workspace--compact .workspace-controls-panel>label{min-width:0}.workspace--compact .workspace-controls-panel select{width:100%;min-width:0}.workspace--compact .workspace-view-tools{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;min-width:0}}
 
 /* Mobile custom projections keep their horizontal record navigation inside the local scroller. */
 .wafer-workbench,.lot-workbench,.recipe-workbench{min-width:0;max-width:100%}
