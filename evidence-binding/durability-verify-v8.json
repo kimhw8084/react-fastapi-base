@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "project_id": "react-fastapi-base",
+  "change": "CHG-185",
+  "request": "golden-ui-v3-pr-ci-durability-verify-v8",
+  "operation": "VERIFY",
+  "fabric_job_id": "CF-13ff5cbc958596d8071851a7",
+  "git": {
+    "target_branch": "main",
+    "dispatch_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_observed_after_execution": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+    "target_drifted_since_acceptance": false,
+    "candidate_head": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+    "candidate_tree": "092a56eb25dab69d1bdcce74f66af4b2dff8dad1",
+    "branch": "codex/react-fastapi-base-golden-ui-v3-pr-ci-durability-verify-v8",
+    "work_branch": "codex/react-fastapi-base-golden-ui-v3-pr-ci-durability-verify-v8",
+    "head_sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+    "remote_head_sha": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+    "remote_exact_head": true,
+    "base_is_ancestor": true,
+    "worktree_clean": true
+  },
+  "candidate_identity": {
+    "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+    "executable_source_tree": "c55793b66ece3150bc850f175d45ddd0d18f3438",
+    "required_predecessor_commit": "76990519b339f8b1a4e0e317ca4e3416af48c59d",
+    "version": "1.0.0-rc.22",
+    "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d"
+  },
+  "r8_execution": {
+    "source_changed": false,
+    "product_commits_created": 0,
+    "product_files_changed": 0,
+    "browser_capture_launched": false,
+    "checks": {
+      "checkpoint_manifest": {
+        "status": "PASS",
+        "detail": "Checkpoint manifest is current: 731 source files."
+      },
+      "version_metadata": {
+        "status": "PASS",
+        "detail": "Version metadata is synchronized at 1.0.0-rc.22."
+      },
+      "candidate_source_binding": "PASS"
+    }
+  },
+  "r7_immutable_authority": {
+    "fabric_job_id": "CF-4bb0895d7f885ed5cd097832",
+    "remote_work_branch": "codex/react-fastapi-base-golden-ui-v3-pr-ci-convergence-fix-v7",
+    "remote_work_branch_head": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+    "deterministic_evidence_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-convergence-fix-v7",
+    "evidence_commit": "81b7c6cbac9938c1f321d444012f0ab494a8c730",
+    "capture_commit": "df2391405f754d24445b8df0b4df60f5e4b9f520",
+    "native_evidence_parent": "df2391405f754d24445b8df0b4df60f5e4b9f520",
+    "full_stack_verification": {
+      "candidate_head": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+      "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+      "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+      "exit_code": 0,
+      "code_ready": true,
+      "production_ready": false,
+      "checkpoint_manifest": "PASS",
+      "macos_fresh_install": "PASS",
+      "browser_e2e_accessibility": "PASS"
+    },
+    "release_identity": {
+      "source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+      "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+      "version": "1.0.0-rc.22"
+    },
+    "release_evidence_binding": {
+      "target_base_sha": "6204c307cd8a59228c2b00b561a9946fc4c5eaae",
+      "source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+      "source_digest": "c082ddeec3cafd23f7d2064b7e96e452cb5c20a069868fca592c7242b3d9c73d",
+      "binding_status": "PENDING_EVIDENCE_COMMIT"
+    },
+    "populated_atlas": {
+      "surfaces": 21,
+      "viewports": 2,
+      "screenshots": 42,
+      "knowledge_desktop": {
+        "viewport": "desktop-1440x900",
+        "sample_visible": true,
+        "material_visible_css_px": 406.015625
+      },
+      "process_recipes_320x800": {
+        "candidate_head": "c632b98e81dd110dd1aa52bf487fe7839108450a",
+        "source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+        "viewport_width": 320,
+        "document_scroll_width": 320,
+        "body_scroll_width": 320,
+        "local_recipe_list_client_width": 298,
+        "local_recipe_list_scroll_width": 340,
+        "keyboard_reachable_scroll_left": 42
+      }
+    }
+  },
+  "expected_native_fabric_evidence": {
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/golden-ui-v3-pr-ci-durability-verify-v8",
+    "parent": [
+      "c632b98e81dd110dd1aa52bf487fe7839108450a"
+    ],
+    "exactly_one_parent": true
+  }
+}
