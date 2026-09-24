@@ -36,6 +36,19 @@ async function measureIntersection(page:Page,locator:ReturnType<Page['locator']>
  return locator.evaluate(element=>{const bounds=element.getBoundingClientRect();return Math.max(0,Math.min(bounds.bottom,innerHeight)-Math.max(bounds.top,0))})
 }
 
+function expectKnowledgeMaterialInInitialView(pixels:number){
+ expect(pixels,'Knowledge representative document material should have visible room below its heading').toBeGreaterThanOrEqual(96)
+}
+
+function expectDocumentWidthBounded(geometry:{viewport_css_px:number;document_scroll_width:number;body_scroll_width:number}){
+ expect(geometry.document_scroll_width,'Document width should stay within the CSS viewport').toBeLessThanOrEqual(geometry.viewport_css_px)
+ expect(geometry.body_scroll_width,'Body width should stay within the CSS viewport').toBeLessThanOrEqual(geometry.viewport_css_px)
+}
+
+async function measureDocumentGeometry(page:Page){
+ return page.evaluate(()=>({viewport_css_px:innerWidth,document_scroll_width:document.documentElement.scrollWidth,body_scroll_width:document.body.scrollWidth}))
+}
+
 async function assertCustomProjectionPresentation(page:Page,workspace:string){
  const noRawIso=(value:string)=>expect(value,`${workspace} ordinary presentation must not expose raw ISO timestamps`).not.toMatch(/\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z\b/)
  if(workspace==='manufacturing_lots'){
@@ -91,7 +104,7 @@ async function selectCustomProjectionSample(page:Page,workspace:string){
 test('CHG-185 populated routed product visual qualification',async({page})=>{
  test.setTimeout(300000)
  expect(destinations).toHaveLength(21)
- const screenshots:Array<{workspace:string;label:string;group:string;viewport:string;path:string;sample_visible:boolean;sample_visible_px:number;material_visible_px:number;material_selector:string|null;heading:string|null}> = []
+ const screenshots:Array<{workspace:string;label:string;group:string;viewport:string;path:string;sample_visible:boolean;sample_visible_px:number;material_visible_px:number;material_selector:string|null;summary_rows:number|null;heading:string|null}> = []
  for(const viewport of [{width:1440,height:900,label:'desktop-1440x900'},{width:390,height:844,label:'mobile-390x844'}] as const){
   await page.setViewportSize({width:viewport.width,height:viewport.height})
   for(const destination of destinations){
@@ -101,10 +114,13 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
    await expect(sampleLocator).toBeVisible({timeout:15000})
    await selectCustomProjectionSample(page,workspace)
    await assertCustomProjectionPresentation(page,workspace)
-   const material=page.locator('.workspace-primary > :first-child').first()
+   const knowledgeInitialDesktop=workspace==='knowledge_entries'&&viewport.label==='desktop-1440x900'
+   const material=knowledgeInitialDesktop?page.locator('.knowledge-document .knowledge-markdown'):page.locator('.workspace-primary > :first-child').first()
    await expect(material).toBeVisible({timeout:15000})
    const taskEconomy=await measureTaskEconomy(page),sampleVisiblePx=await measureIntersection(page,material)
+   const summaryRows=workspace==='knowledge_entries'&&viewport.label==='desktop-1440x900'?await page.locator('.workspace-summary').evaluate(element=>getComputedStyle(element).gridTemplateRows.trim().split(/\s+/).length):null
    expect(sampleVisiblePx,`${workspace} representative content must intersect the initial ${viewport.label} viewport`).toBeGreaterThan(0)
+   if(summaryRows!==null){expect(summaryRows,'Knowledge summary metrics should remain in one desktop row').toBe(1);expectKnowledgeMaterialInInitialView(sampleVisiblePx)}
    if(viewport.label==='mobile-390x844')expect(taskEconomy.material_visible_px,`${workspace} populated material content needs at least 64 visible CSS pixels`).toBeGreaterThanOrEqual(64)
    if(['equipment_states','incidents','process_measurements','service_objectives'].includes(workspace)){
     const expectedLabel={equipment_states:'State timeline',incidents:'Incident command',process_measurements:'SPC',service_objectives:'SLO'}[workspace]!
@@ -112,12 +128,68 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
    }
    expect(await page.locator('body').innerText()).not.toMatch(/state_timeline|State_timeline|incident_command|Incident_command/)
    const output=await capture(page,`${workspace}/${viewport.label}.png`)
-   screenshots.push({workspace,label:destination.label,group:destination.group,viewport:viewport.label,path:output,sample_visible:true,sample_visible_px:sampleVisiblePx,material_visible_px:taskEconomy.material_visible_px,material_selector:taskEconomy.material_selector,heading:await task.locator('h1').first().textContent()})
+   screenshots.push({workspace,label:destination.label,group:destination.group,viewport:viewport.label,path:output,sample_visible:true,sample_visible_px:sampleVisiblePx,material_visible_px:knowledgeInitialDesktop?sampleVisiblePx:taskEconomy.material_visible_px,material_selector:knowledgeInitialDesktop?'.knowledge-document .knowledge-markdown':taskEconomy.material_selector,summary_rows:summaryRows,heading:await task.locator('h1').first().textContent()})
   }
  }
  const manifest={schema_version:1,request:'CHG-185',...sourceIdentity,fixture:'local_synthetic_demo',fixture_production_evidence:false,viewport_dpr:1,surface_count:destinations.length,viewport_count:2,screenshot_count:screenshots.length,screenshots,matrix_source_sha256:createHash('sha256').update(readFileSync(resolve(process.cwd(),'tests/e2e/ui-state-matrix.json'))).digest('hex')}
  writeFileSync(resolve(evidenceRoot,'manifest.json'),`${JSON.stringify(manifest,null,2)}\n`)
  expect(screenshots).toHaveLength(42)
+})
+
+test('CHG-185 Process Recipes remains usable and bounded at 320 CSS px',async({page})=>{
+ test.setTimeout(30000)
+ await page.setViewportSize({width:320,height:800})
+ await page.goto('/process-recipes')
+ await expect(page.getByRole('heading',{name:'Recipe compare',exact:true})).toBeVisible()
+ await expect(page.locator('.recipe-main')).toContainText('Uniformity recovery')
+ const geometry=await measureDocumentGeometry(page)
+ expectDocumentWidthBounded(geometry)
+ const recipeList=page.locator('.recipe-list'),listGeometry=await recipeList.evaluate(element=>({client_width:element.clientWidth,scroll_width:element.scrollWidth,left:element.getBoundingClientRect().left,right:element.getBoundingClientRect().right}))
+ expect(listGeometry.right).toBeLessThanOrEqual(geometry.viewport_css_px)
+ expect(listGeometry.scroll_width).toBeGreaterThan(listGeometry.client_width)
+ await expect(recipeList.getByRole('button').first()).toBeVisible()
+ await expect(page.locator('.recipe-main').getByRole('button',{name:'Quick look'})).toBeVisible()
+ await expect(page.locator('.recipe-main').getByRole('button',{name:'Dossier',exact:true})).toBeVisible()
+ await expect(page.getByLabel('Compare with')).toBeVisible()
+ await expect(page.locator('.recipe-columns').getByRole('heading',{name:'Parameters'})).toBeVisible()
+ await expect(page.locator('.recipe-columns').getByRole('heading',{name:'Limits'})).toBeVisible()
+ await expect(page.locator('.recipe-main')).toContainText('2.4.1')
+ const screenshot=await capture(page,'process-recipes-320x800.png')
+ const lastRecipe=recipeList.getByRole('button').last()
+ await lastRecipe.focus()
+ await expect(lastRecipe).toBeFocused()
+ const focusedList=await recipeList.evaluate(element=>({scroll_left:element.scrollLeft,client_width:element.clientWidth,scroll_width:element.scrollWidth}))
+ expect(focusedList.scroll_left).toBeGreaterThan(0)
+ expectDocumentWidthBounded(await measureDocumentGeometry(page))
+ await page.getByLabel('Compare with').selectOption({index:1})
+ await expect(page.locator('.recipe-diff')).toBeVisible()
+ expectDocumentWidthBounded(await measureDocumentGeometry(page))
+ await page.locator('.recipe-main').getByRole('button',{name:'Dossier',exact:true}).click()
+ await expect(page.getByRole('dialog')).toBeVisible()
+ writeFileSync(resolve(evidenceRoot,'process-recipes-320x800.json'),`${JSON.stringify({schema_version:1,request:'CHG-185',...sourceIdentity,fixture:'local_synthetic_demo',viewport:{width:320,height:800,dpr:1},document_geometry:geometry,local_recipe_list:{...listGeometry,keyboard_reachability:focusedList},controls:{quick_look:true,dossier_opened:true,compare_select:true,parameters:true,limits:true,exact_version:'2.4.1'},screenshot},null,2)}\n`)
+})
+
+test('CHG-185 initial-view and width oracles reject known layout mutations',async({page})=>{
+ await page.setViewportSize({width:1440,height:900})
+ await page.goto('/knowledge-entries')
+ const knowledgeMaterial=page.locator('.knowledge-document .knowledge-markdown')
+ await expect(knowledgeMaterial).toBeVisible()
+ await page.addStyleTag({content:'.knowledge-document .knowledge-markdown{margin-top:1000px!important}'})
+ const pushedMaterial=await measureIntersection(page,knowledgeMaterial)
+ expect(pushedMaterial).toBe(0)
+ let knowledgeOracleRejected=false
+ try{expectKnowledgeMaterialInInitialView(pushedMaterial)}catch{knowledgeOracleRejected=true}
+ expect(knowledgeOracleRejected).toBe(true)
+
+ await page.setViewportSize({width:320,height:800})
+ await page.goto('/process-recipes')
+ await page.addStyleTag({content:'.recipe-main{min-width:347px!important}'})
+ const overflowingGeometry=await measureDocumentGeometry(page)
+ expect(overflowingGeometry.document_scroll_width).toBeGreaterThan(320)
+ expect(overflowingGeometry.body_scroll_width).toBeGreaterThan(320)
+ let widthOracleRejected=false
+ try{expectDocumentWidthBounded(overflowingGeometry)}catch{widthOracleRejected=true}
+ expect(widthOracleRejected).toBe(true)
 })
 
 test('CHG-185 rack, planning, diagram, SPC and system data states',async({page})=>{
