@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import type { FieldDefinition, WorkspaceDefinition } from '../../generated/schema'
-import { FieldValue, fieldDisplayText, fieldLabel, fieldPresentation } from './FieldValue'
+import { FieldValue, customProjectionFieldDisplayText, fieldDisplayText, fieldLabel, fieldPresentation } from './FieldValue'
 
 const definition=(key:string,kind:FieldDefinition['kind'],extra:Partial<FieldDefinition>={}):FieldDefinition=>({key,label:key.replaceAll('_',' '),kind,required:false,nullable:true,max_length:null,choices:[],minimum:null,maximum:null,step:null,unit:null,precision:null,display_format:null,searchable:true,filterable:true,sortable:true,exportable:true,computed:false,read_only:false,...extra})
 
@@ -45,5 +45,16 @@ describe('shared field-aware record presentation',()=>{
   expect(fieldLabel(workspace,'created_at')).toBe('Created')
   expect(fieldDisplayText(undefined,false)).toBe('No')
   expect(fieldDisplayText(undefined,{source:'fixture'})).toContain('fixture')
+ })
+ it('formats canonical values for custom projections without mutating source values',()=>{
+  const workspace={fields:[definition('status','select'),definition('scheduled_for','date'),definition('started_at','datetime'),definition('duration','duration',{unit:'min'})]} as unknown as WorkspaceDefinition
+  const record=Object.freeze({status:'awaiting_review',scheduled_for:'2026-09-25',started_at:'2026-09-22T07:30:00Z',duration:90})
+  const displayed={status:customProjectionFieldDisplayText(workspace,'status',record.status),date:customProjectionFieldDisplayText(workspace,'scheduled_for',record.scheduled_for),datetime:customProjectionFieldDisplayText(workspace,'started_at',record.started_at),duration:customProjectionFieldDisplayText(workspace,'duration',record.duration)}
+  expect(displayed.status).toBe('Awaiting Review')
+  expect(displayed.date).not.toBe(record.scheduled_for)
+  expect(displayed.datetime).not.toContain('T')
+  expect(displayed.duration).toBe('1h 30m')
+  expect(JSON.stringify(displayed)).not.toContain('awaiting_review')
+  expect(record).toEqual({status:'awaiting_review',scheduled_for:'2026-09-25',started_at:'2026-09-22T07:30:00Z',duration:90})
  })
 })

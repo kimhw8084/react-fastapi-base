@@ -8,6 +8,12 @@ const systemFieldKinds:Record<string,ValueField['kind']>={id:'text',revision:'in
 export function fieldLabel(definition:WorkspaceDefinition,key:string){return definition.fields.find(field=>field.key===key)?.label??systemFieldLabels[key]??key.replaceAll('_',' ')}
 export function fieldPresentation(definition:WorkspaceDefinition,key:string):ValueField|undefined{return definition.fields.find(field=>field.key===key)??(systemFieldKinds[key]?{kind:systemFieldKinds[key]!,precision:null,unit:null}:undefined)}
 
+export function customProjectionFieldDisplayText(definition:WorkspaceDefinition,key:string,value:unknown):string{
+ if(value==null||value==='')return ''
+ const field=fieldPresentation(definition,key)
+ return field?fieldDisplayText(field,value):String(value)
+}
+
 function humanize(value:string){return value.replaceAll('_',' ').replace(/\b\p{L}/gu,letter=>letter.toLocaleUpperCase())}
 
 function parseStructured(value:unknown):string{

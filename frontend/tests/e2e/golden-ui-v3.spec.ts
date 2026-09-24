@@ -36,6 +36,58 @@ async function measureIntersection(page:Page,locator:ReturnType<Page['locator']>
  return locator.evaluate(element=>{const bounds=element.getBoundingClientRect();return Math.max(0,Math.min(bounds.bottom,innerHeight)-Math.max(bounds.top,0))})
 }
 
+async function assertCustomProjectionPresentation(page:Page,workspace:string){
+ const noRawIso=(value:string)=>expect(value,`${workspace} ordinary presentation must not expose raw ISO timestamps`).not.toMatch(/\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z\b/)
+ if(workspace==='manufacturing_lots'){
+  const list=await page.locator('.lot-list').innerText(),context=await page.locator('.lot-context').innerText()
+  expect(list).toContain('Hold · Hot');expect(list).not.toContain('hold · hot');expect(context).toContain('Hold');noRawIso(context)
+ }
+ if(workspace==='process_recipes'){
+  const list=await page.locator('.recipe-list').innerText()
+  expect(list).toContain('Released');expect(list).not.toContain('released');expect(list).toContain('2.4.1')
+ }
+ if(workspace==='wafer_runs'){
+  const summary=await page.locator('.wafer-summary').innerText(),processStep=await page.locator('.wafer-main header .eyebrow').textContent()
+  expect(summary).toContain('Hold');expect(summary).not.toContain('hold');expect(processStep).toContain('metrology_review')
+ }
+ if(workspace==='delivery_runs'){
+  const list=await page.locator('.delivery-list').innerText(),statuses=await page.locator('.delivery-list b').allTextContents(),main=await page.locator('.delivery-main > header').innerText()
+  expect(list).toContain('Test');expect(statuses).toContain('Failed');expect(list).not.toContain('test');expect(statuses).not.toContain('failed')
+  expect(main).toContain('7f5e11a1d28c');expect(main).toContain('13 min')
+ }
+ if(workspace==='observability_events'){
+  const stream=await page.locator('.log-stream').innerText(),severityLabels=await page.locator('.log-stream b').allTextContents()
+  expect(severityLabels).toContain('Warning');expect(severityLabels).not.toContain('warning');noRawIso(stream)
+ }
+ if(workspace==='service_objectives'){
+  const windows=await page.locator('.slo-card .eyebrow').allTextContents(),statuses=await page.locator('.slo-card > header > b').allTextContents()
+  expect(statuses).toContain('Healthy');expect(statuses).toContain('Exhausted');expect(statuses).not.toContain('healthy');expect(statuses).not.toContain('exhausted');expect(windows).toContain('30 day window')
+ }
+ if(workspace==='equipment_states'){
+  const timeline=await page.locator('.state-timeline-list').innerText(),states=await page.locator('.state-utilization').innerText()
+  expect(states).toContain('Unscheduled Down');expect(states).not.toContain('unscheduled_down');noRawIso(timeline)
+ }
+ if(workspace==='incidents'){
+  const list=await page.locator('.incident-list').innerText(),context=await page.locator('.incident-context').innerText()
+  expect(list).toContain('SEV-2');expect(list).not.toContain('sev_2');expect(context).toContain('Monitoring');noRawIso(context)
+ }
+}
+
+async function selectCustomProjectionSample(page:Page,workspace:string){
+ const rows:Record<string,{selector:string;sample:string}>={
+  manufacturing_lots:{selector:'.lot-list button',sample:'LOT-SYN-204'},
+  process_recipes:{selector:'.recipe-list button',sample:'Uniformity recovery'},
+  wafer_runs:{selector:'.wafer-list button',sample:'WFR-SYN-204-03'},
+  delivery_runs:{selector:'.delivery-list button',sample:'deploy-syn-2041'},
+  incidents:{selector:'.incident-list button',sample:'INC-SYN-204'},
+ }
+ const selection=rows[workspace]
+ if(!selection)return
+ const row=page.locator(selection.selector).filter({hasText:selection.sample})
+ await expect(row,`${workspace} should expose its deterministic representative record`).toHaveCount(1)
+ await row.click()
+}
+
 test('CHG-185 populated routed product visual qualification',async({page})=>{
  test.setTimeout(300000)
  expect(destinations).toHaveLength(21)
@@ -47,6 +99,8 @@ test('CHG-185 populated routed product visual qualification',async({page})=>{
    await page.goto(path);const task=page.locator('[data-testid="workspace-task-start"]');await expect(task).toBeVisible({timeout:15000})
    const sample=expectedSamples[workspace]!;const sampleLocator=workspace==='system'?page.getByRole('heading',{name:'System workspace',exact:true}):page.getByText(sample,{exact:false}).first()
    await expect(sampleLocator).toBeVisible({timeout:15000})
+   await selectCustomProjectionSample(page,workspace)
+   await assertCustomProjectionPresentation(page,workspace)
    const material=page.locator('.workspace-primary > :first-child').first()
    await expect(material).toBeVisible({timeout:15000})
    const taskEconomy=await measureTaskEconomy(page),sampleVisiblePx=await measureIntersection(page,material)
