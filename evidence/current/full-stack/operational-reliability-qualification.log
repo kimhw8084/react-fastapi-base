@@ -1,7 +1,9 @@
+/opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
 PASS    OR-STARTUP-INVALID-PROFILE
 PASS    OR-STARTUP-NO-DEV-FALLBACK
 PASS    OR-READINESS-DEPENDENCY-UNAVAILABLE
-Database operation unavailable; request_id=0b25b06c-319b-4eb5-8562-0bf13da36f47
+Database operation unavailable; request_id=5a5dae02-62c1-4bd6-97d7-123e20c85104
 PASS    OR-DATABASE-SAFE-503
 PASS    OR-ATTACHMENT-SCANNER-FAIL-CLOSED
 PASS    OR-ATTACHMENT-STORAGE-FAIL-CLOSED
@@ -12,4 +14,4 @@ PASS    OR-WEBHOOK-UNSAFE-DESTINATION
 PASS    OR-WEBHOOK-DURABLE-RETRY
 PASS    OR-RECOVERY-INVALID-SNAPSHOT
 PASS    OR-DIAGNOSTICS-SAFE-REDACTION
-Operational-reliability qualification PASS: /Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/evidence/current/operations/qualification.json
+Operational-reliability qualification PASS: /Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/operations/qualification.json

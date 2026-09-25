@@ -36,6 +36,8 @@ def source_hashes(root: Path = ROOT) -> dict[str, str]:
             continue
         for path in sorted(directory_path.rglob('*')):
             relative = path.relative_to(root)
+            if path.is_symlink() and is_source_path(relative):
+                raise ValueError('Executable source includes a symlinked path; refusing to hash content outside the checkout.')
             if path.is_file() and is_source_path(relative):
                 hashes[relative.as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
     dev = root / 'dev'

@@ -55,6 +55,13 @@ def main():
     p=argparse.ArgumentParser(description='react-fastapi-base developer tools')
     sub=p.add_subparsers(dest='command',required=True)
     for name in ('setup','start','seed-demo','contracts','architecture','verify','verify-release','finalize-release','test-backend','preflight','upgrade-fixture','reference-apps','performance-stress','operations'):sub.add_parser(name)
+    wq=sub.add_parser('work-qualify',help='Run or resume the private work-environment qualification harness')
+    wqm=wq.add_mutually_exclusive_group()
+    wqm.add_argument('--resume',action='store_true')
+    wqm.add_argument('--status',action='store_true')
+    wqm.add_argument('--handoff',action='store_true')
+    wqm.add_argument('--plan',action='store_true')
+    wqm.add_argument('--reference',nargs=2,metavar=('PHASE','FILE'))
     c=sub.add_parser('create');c.add_argument('target');c.add_argument('--id',required=True);c.add_argument('--name',required=True);c.add_argument('--theme',default='operations')
     g=sub.add_parser('generate-entity');g.add_argument('spec');g.add_argument('--apply',action='store_true')
     g=sub.add_parser('generate-relationship');g.add_argument('spec');g.add_argument('--apply',action='store_true')
@@ -67,6 +74,10 @@ def main():
     l=sub.add_parser('test-lab');l.add_argument('--mode',choices=['http','in_memory'],default='http')
     sub.add_parser('catalog')
     a=p.parse_args()
+    if a.command=='work-qualify':
+        options=[name for name in ('--resume','--status','--handoff','--plan') if getattr(a,name[2:].replace('-','_'),False)]
+        if a.reference:options.extend(['--reference',*a.reference])
+        return run([PYTHON,'-m','scripts.work_qualification.cli',*options])
     if a.command=='lab':return run([sys.executable,'scripts/lab_server.py','--port',str(a.port)])
     if a.command=='lab-build':
         import shutil

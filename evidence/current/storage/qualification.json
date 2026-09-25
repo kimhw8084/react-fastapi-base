@@ -1,7 +1,7 @@
 {
-  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "candidate_version": "1.0.0-rc.21",
-  "checkout_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "candidate_head": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+  "candidate_version": "1.0.0-rc.23",
+  "checkout_commit": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
   "checks": {
     "database_invariants": true,
     "development_is_qualification_independent": true,
@@ -20,12 +20,12 @@
   },
   "environment": {
     "platform": "Darwin",
-    "python": "3.12.9"
+    "python": "3.11.7"
   },
-  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
+  "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
   "exit_code": 0,
   "hashes": {
-    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19"
+    "source_digest": "67d3f1c9b812a0f50906ed5c31f6523e472a861f3afdaae5f78c2e4244c70faf"
   },
   "inputs": {
     "qualification_contract": {
@@ -34,7 +34,7 @@
     },
     "recovery": {
       "locator": "evidence/current/recovery/object-restore.json",
-      "sha256": "82fd2f4e51ad9ae6e4c4b1ad84d18c4b06c9766e20047bccbea3b49cb69c7cb2"
+      "sha256": "ca4b90d5088ccc82c2ee83e5cae73d5aa887ac36ae5ac4dbf228f7aeeda28286"
     }
   },
   "problems": [],
@@ -45,7 +45,7 @@
   "report_type": "repository-storage-qualification",
   "result": "PASS",
   "schema_version": 1,
-  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
+  "source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "source_digest": "67d3f1c9b812a0f50906ed5c31f6523e472a861f3afdaae5f78c2e4244c70faf",
   "status": "PASS"
 }

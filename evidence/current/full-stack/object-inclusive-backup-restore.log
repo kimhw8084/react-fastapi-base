@@ -1,30 +1,32 @@
+/opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
 {
   "schema_version": 2,
-  "candidate_head": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "checkout_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "executable_source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19",
-  "source_commit": "aab5e17f7e39b5f26dfd2e574bc63c74ea6bae2f",
-  "timestamp": "2026-09-20T19:26:47.530000+00:00",
+  "candidate_head": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+  "checkout_commit": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+  "executable_source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "source_digest": "67d3f1c9b812a0f50906ed5c31f6523e472a861f3afdaae5f78c2e4244c70faf",
+  "source_commit": "f4f1ecc0470b5b80b978aa5a8015a45dfdfdfa44",
+  "timestamp": "2026-09-25T15:25:12.195076+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-186e2b38a29bb47156dd4556/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
-    "python": "3.12.9"
+    "python": "3.11.7"
   },
   "hashes": {
-    "source_digest": "655023eded2a3ae711d37831dba876ad05bd7ecb6877cc4c125e5984b5460c19"
+    "source_digest": "67d3f1c9b812a0f50906ed5c31f6523e472a861f3afdaae5f78c2e4244c70faf"
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "7ea5a64b-7fa5-463e-a0ec-b8c1976a96e8",
+  "tenant": "d0bf2161-6a1c-4106-b697-538ea28a9c0a",
   "record_type": "work_items",
-  "record_id": "44c0ed43-fbb1-4088-bc62-063b19e333ac",
-  "object_key": "attachments/e5e8cad7-e9fe-40ac-97d6-b90d01d4a5dd/recovery.txt",
+  "record_id": "172317fc-ef21-45ef-bdc4-e092c1a0f182",
+  "object_key": "attachments/a8d238ed-c220-4e85-a472-ac543166c702/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
