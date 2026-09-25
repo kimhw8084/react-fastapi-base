@@ -20,7 +20,6 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE_COMMIT = '67ec2ce5ec44d38ee44d22602035c2554a08e00d'
 BASE_TREE = '092a56eb25dab69d1bdcce74f66af4b2dff8dad1'
 CHANGE = 'CHG-235'
-BRANCH = 'codex/react-fastapi-base-work-env-qualification-harness-v1'
 _SECRET_RISK_PATH = re.compile(r'(?i)(?:^|[/_.-])(?:secrets?|credentials?|passwords?|tokens?|sessions?|access[_-]?keys?)(?=$|[/_.-])|(?:^|/)\.env(?:\.|/|$)|(?:^|/)key\.pem$')
 
 
@@ -159,7 +158,7 @@ def repository_identity() -> dict:
     except ValueError:
         base_tree_matches = False
     repository_matches = _repository_matches()
-    if not base_is_ancestor or not base_tree_matches or not repository_matches or branch != BRANCH:
+    if not base_is_ancestor or not base_tree_matches or not repository_matches:
         head_reason = 'SRC_HEAD_MISMATCH'
     else:
         head_reason = None
@@ -192,7 +191,7 @@ def repository_identity() -> dict:
                 'frontend_major': frontend_major, 'frontend_revision': frontend_revision,
                 'compatible': api_compatible},
         'changed_paths': changed, 'changed_path_hashes': path_hashes,
-        'secret_risk_detected': secret_risk,
+        'sensitive_path_risk': secret_risk,
         'reason_codes': codes,
         'status': (
             'FAIL' if any(code in {'SRC_HEAD_MISMATCH', 'SRC_API_INCOMPATIBLE'} for code in codes)

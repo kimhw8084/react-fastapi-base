@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+import subprocess
+from types import SimpleNamespace
 from pathlib import Path
 
 import pytest
@@ -27,7 +29,7 @@ from scripts.work_qualification.assess import (
 )
 from scripts.work_qualification.reasons import GATE_PHASE, GATES, REASONS, STATUSES
 from scripts.work_qualification.safety import UnsafeEvidence, assert_safe, assert_safe_patch, safe_path_name
-from scripts.work_qualification.source import BASE_COMMIT, BASE_TREE, BRANCH, configuration_observations, repository_identity
+from scripts.work_qualification.source import BASE_COMMIT, BASE_TREE, configuration_observations, repository_identity
 from scripts.work_qualification.store import RunStore, compact_status, ensure_private_root
 
 
@@ -192,10 +194,10 @@ def test_repository_identity_is_bound_to_requested_exact_base_and_routes_dirty_t
     assert identity['project'] == 'react-fastapi-base'
     assert identity['target_base_commit'] == BASE_COMMIT
     assert identity['target_base_tree'] == BASE_TREE
-    assert identity['branch'] == BRANCH
     assert identity['target_base_is_ancestor'] is True
     assert identity['target_base_tree_matches'] is True
     assert identity['api']['compatible'] is True
+    assert 'SRC_HEAD_MISMATCH' not in identity['reason_codes']
     assert 'changed_paths' in identity and 'changed_path_hashes' in identity
     if identity['changed_paths']:
         assert identity['status'] == 'ATTENTION'
@@ -203,10 +205,78 @@ def test_repository_identity_is_bound_to_requested_exact_base_and_routes_dirty_t
     assert not any('content' in key for key in identity)
 
 
+def test_repository_identity_creates_and_renders_a_private_run(tmp_path: Path) -> None:
+    identity = repository_identity()
+    assert identity['sensitive_path_risk'] is False
+    assert 'secret_risk_detected' not in identity
+    root = ensure_private_root(tmp_path / 'evidence', ROOT)
+    store = RunStore.create(root, source=identity)
+    report_path = store.directory / 'report.json'
+    rendered_path = store.directory / 'report.md'
+    assert report_path.is_file()
+    assert rendered_path.is_file()
+    report = json.loads(report_path.read_text(encoding='utf-8'))
+    assert report['source']['executable_source_commit'] == identity['executable_source_commit']
+    assert report['production_ready'] is False
+
+
+def test_repository_identity_accepts_integrated_main_branch(monkeypatch) -> None:
+    original_git = source._git
+
+    def integrated_main(*args: str) -> str:
+        if args == ('branch', '--show-current'):
+            return 'main'
+        return original_git(*args)
+
+    monkeypatch.setattr(source, '_git', integrated_main)
+    identity = repository_identity()
+    assert identity['branch'] == 'main'
+    assert identity['target_base_is_ancestor'] is True
+    assert 'SRC_HEAD_MISMATCH' not in identity['reason_codes']
+
+
+def test_repository_identity_still_rejects_wrong_repository_or_lineage(monkeypatch) -> None:
+    monkeypatch.setattr(source, '_repository_matches', lambda: False)
+    wrong_repository = repository_identity()
+    assert wrong_repository['status'] == 'FAIL'
+    assert 'SRC_HEAD_MISMATCH' in wrong_repository['reason_codes']
+
+    original_run = subprocess.run
+
+    def unrelated_lineage(args, *positional, **keywords):
+        if args[:3] == ['git', 'merge-base', '--is-ancestor']:
+            return SimpleNamespace(returncode=1, stdout=b'', stderr=b'')
+        return original_run(args, *positional, **keywords)
+
+    monkeypatch.setattr(subprocess, 'run', unrelated_lineage)
+    wrong_lineage = repository_identity()
+    assert wrong_lineage['target_base_is_ancestor'] is False
+    assert wrong_lineage['status'] == 'FAIL'
+    assert 'SRC_HEAD_MISMATCH' in wrong_lineage['reason_codes']
+
+
+def test_missing_or_stale_release_identity_is_reported(monkeypatch, tmp_path: Path) -> None:
+    identity_path = tmp_path / 'rc23-release-identity.json'
+    monkeypatch.setattr(source, 'current_release_paths', lambda _root: SimpleNamespace(identity=identity_path))
+    missing = repository_identity()
+    assert missing['release_identity']['present'] is False
+    assert 'SRC_RELEASE_IDENTITY_MISMATCH' in missing['reason_codes']
+
+    write_json(identity_path, {
+        'identity_type': 'repository_release', 'project': 'react-fastapi-base',
+        'candidate_version': '1.0.0-rc.22', 'verified_source_commit': '0' * 40,
+        'source_digest': '0' * 64, 'production_ready': False,
+    })
+    stale = repository_identity()
+    assert stale['release_identity']['present'] is True
+    assert stale['release_identity']['matches_current_source'] is False
+    assert 'SRC_RELEASE_IDENTITY_MISMATCH' in stale['reason_codes']
+
+
 def test_sensitive_changed_paths_are_redacted_and_symlink_source_is_rejected(tmp_path: Path) -> None:
     secret_path = safe_path_name('backend/config/customer-credentials.json')
     assert secret_path.startswith('[redacted-path-')
-    classification = assess_customization({'changed_paths': [secret_path], 'secret_risk_detected': True})
+    classification = assess_customization({'changed_paths': [secret_path], 'sensitive_path_risk': True})
     assert classification['classification'] == 'CUST_SECRET_RISK'
     outside = tmp_path / 'outside.py'
     outside.write_text('private source', encoding='utf-8')
@@ -593,6 +663,31 @@ def test_private_source_patch_scanner_rejects_concrete_secrets_and_accepts_safe_
     ):
         with pytest.raises(UnsafeEvidence):
             assert_safe_patch(patch)
+
+
+@pytest.mark.parametrize('material', [
+    'AccessKey=ak_live_example_1234567890',
+    'cookie=sessionid_example_1234567890',
+    'Authorization: Bearer abcdefghijklmnopqrstuvwxyz0123456789',
+    'eyJabcdefghijk.abcdefghijk.abcdefghijk',
+    'csrf_token=csrf_example_1234567890',
+    'password=password_example_1234567890',
+    'session_token=session_example_1234567890',
+    'token=token_example_1234567890',
+    'secret=secret_example_1234567890',
+])
+def test_concrete_credential_material_is_rejected_from_evidence_values(material: str) -> None:
+    with pytest.raises(UnsafeEvidence):
+        assert_safe({'observation': material})
+
+
+@pytest.mark.parametrize('key', [
+    'AccessKey', 'cookie', 'Authorization', 'jwt', 'csrf_token',
+    'password', 'session_token', 'token', 'secret',
+])
+def test_credential_named_evidence_fields_are_rejected(key: str) -> None:
+    with pytest.raises(UnsafeEvidence):
+        assert_safe({key: 'redacted'})
 
 
 def test_customization_source_checks_use_sanitized_environment_and_private_patch(tmp_path: Path, monkeypatch) -> None:

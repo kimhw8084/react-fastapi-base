@@ -2,7 +2,7 @@
 
 ## Current candidate
 
-CHG-235 R1 is the source-changing operator-tooling candidate based on exact `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d` and base tree `092a56eb25dab69d1bdcce74f66af4b2dff8dad1`. It advances the maintained release sequence from RC.22 to RC.23 and adds the private one-command work-environment qualification/customization audit harness. API major 1/revision 2 is unchanged. This candidate does not merge/move `main`, publish evidence, approve a company qualification, or certify production. Exact-candidate verification and release identity determine technical readiness; all real company qualification gates remain external until authentic evidence is provided.
+CHG-235 R2 is a bounded continuation of R1 candidate `b470ded76db726cc5218b421396be0f6ce6e10e7`, whose complete source tree remains in this candidate's ancestry. It repairs qualification evidence serialization, removes temporary branch-name gating while retaining repository/base lineage checks, and completes the maintained RC.23 release lifecycle. API major 1/revision 2 remains unchanged. R2 does not merge or move `main`, approve a company qualification, or certify production. Real company qualification gates remain external until authentic evidence is provided.
 
 The canonical operator workflow is [docs/WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md). Its detailed evidence remains operator-private and offline.
 

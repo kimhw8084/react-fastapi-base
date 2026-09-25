@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.23` — CHG-235 adds private, resumable work-environment qualification and customization-audit tooling. Company qualification remains pending; this operator tooling does not change product behavior or Project OS authority.
+`1.0.0-rc.23` — CHG-235 R2 repairs the private, resumable work-environment qualification harness and completes source-bound release evidence. Company qualification remains pending; this operator tooling does not change product behavior or Project OS authority.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 

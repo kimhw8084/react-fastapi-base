@@ -536,7 +536,7 @@ def assess_customization(identity: dict[str, Any], *, architecture_pass: bool | 
     if not paths:
         return phase_result('PASS', ['CUST_NONE'], {'classification': 'CUST_NONE', 'changed_path_count': 0})
     lower = [str(path).casefold() for path in paths]
-    if identity.get('secret_risk_detected') is True or any(any(marker in path for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in lower):
+    if identity.get('sensitive_path_risk') is True or any(any(marker in path for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in lower):
         return phase_result('FAIL', ['CUST_SECRET_RISK'], {'classification': 'CUST_SECRET_RISK', 'changed_path_count': len(paths)})
     if identity.get('api_contract_changed') is True:
         return phase_result('ATTENTION', ['CUST_API_REVISION_REQUIRED'], {'classification': 'CUST_API_REVISION_REQUIRED', 'changed_path_count': len(paths)})

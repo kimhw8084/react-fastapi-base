@@ -15,7 +15,7 @@ class UnsafeEvidence(ValueError):
 _SECRET_KEY = re.compile(r'(?:access.?key|authorization|bearer|cookie|csrf|jwt|password|credential|session|token|secret|request.?body|raw.?header)', re.I)
 _SECRET_TEXT = re.compile(
     r'(?i)(?:bearer\s+[a-z0-9._~+/-]+=*|eyJ[a-zA-Z0-9_-]{8,}\.[a-zA-Z0-9_-]{8,}\.[a-zA-Z0-9_-]{4,}|'
-    r'(?:accesskey|authorization|csrf[_-]?token|cookie|password|session[_-]?token|secret)\s*[:=]\s*[^\s,;]+|'
+    r'(?:access.?key|authorization|csrf[_-]?token|cookie|jwt|password|credential|session.?token|token|secret)\s*[:=]\s*[^\s,;]+|'
     r'https?://[^\s/?#]+/[^\s?#]*\?[^\s#]+|https?://[^\s/?#]+\?[^\s#]+)'
 )
 _PATCH_JWT = re.compile(r'eyJ[a-zA-Z0-9_-]{8,}\.[a-zA-Z0-9_-]{8,}\.[a-zA-Z0-9_-]{4,}')

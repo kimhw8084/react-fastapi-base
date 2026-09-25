@@ -3,7 +3,8 @@
 ## 1.0.0-rc.23 — CHG-235 private work-environment qualification harness
 
 - Added the resumable `./dev work-qualify` operator harness with source-bound identity, configuration, tenant, storage, deployment, UI/accessibility, performance, operations, customization, and final-gate reporting.
-- Added digest-only external reference capture, strict secret-safe serializers, a deterministic 300-character handoff, and private per-run state/event/report inventory. No API revision, provider action, external evidence transport, approval, or production switch was added.
+- Added digest-only external reference capture, strict secret-safe serializers, a deterministic 300-character handoff, and private per-run state/event/report inventory. R2 accepts the candidate across branch names, rejects concrete credential material, and binds current RC.23 readiness and release evidence to the exact executable source.
+- Added the Project OS Artifact Bridge audit bundle while retaining the native R1 Fabric evidence. No API revision, provider action, external qualification evidence transport, approval, or production switch was added.
 
 ## 1.0.0-rc.22 — CHG-185 populated Golden UI v3 review overlay
 

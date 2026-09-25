@@ -270,7 +270,7 @@ def _run_local_check(name: str, command: list[str], *, cwd: Path, environment: d
 
 
 def _private_change_patch(source: dict[str, Any]) -> bytes | None:
-    if source.get('secret_risk_detected') is True or any(any(marker in path.casefold() for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in source.get('changed_paths', [])):
+    if source.get('sensitive_path_risk') is True or any(any(marker in path.casefold() for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in source.get('changed_paths', [])):
         raise UnsafeEvidence('Source patch has a secret-risk path.')
     tracked = subprocess.run(
         ['git', 'diff', '--binary', source['target_base_commit'], '--'],
@@ -326,7 +326,7 @@ def _source_local_checks(store: RunStore, source: dict[str, Any], previous: dict
     prior_patch = store.evidence / 'customization.patch'
     if prior and prior.get('status') in {'PASS', 'FAIL'} and prior.get('patch_status') in {'PASS', 'FAIL'} and prior_patch.is_file():
         return prior
-    if source.get('secret_risk_detected') is True or any(any(marker in path.casefold() for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in source_paths):
+    if source.get('sensitive_path_risk') is True or any(any(marker in path.casefold() for marker in ('.env', 'secret', 'credential', 'key.pem')) for path in source_paths):
         return {
             'status': 'FAIL', 'source_digest': source['source_digest'], 'checks': [],
             'patch_status': 'FAIL', 'patch_sha256': None,
