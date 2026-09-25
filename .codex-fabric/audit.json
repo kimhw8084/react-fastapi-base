@@ -1,132 +1,2400 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-25T21:23:33Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 6,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 30,
+      "deletions": 18,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 4,
+      "deletions": 2,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc23-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 19,
+      "deletions": 1,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 45,
+      "deletions": 0,
+      "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/deployment/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1733,
+      "deletions": 1075,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/deployment-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 33,
+      "deletions": 33,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 39,
+      "deletions": 39,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 27,
+      "deletions": 27,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 11,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 394,
+      "deletions": 289,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 90,
+      "deletions": 57,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 51,
+      "deletions": 51,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 102,
+      "deletions": 102,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/performance/browser.json",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 23,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 29,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 68,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 394,
+      "deletions": 289,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/reuse/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 5912,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+      "status": "A"
+    },
+    {
+      "additions": 538,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 1280,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 5653,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 70,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 564,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+      "status": "A"
+    },
+    {
+      "additions": 75,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": 40,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 58,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "scripts/source_manifest.py",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "scripts/work_qualification/__init__.py",
+      "status": "A"
+    },
+    {
+      "additions": 586,
+      "deletions": 0,
+      "path": "scripts/work_qualification/assess.py",
+      "status": "A"
+    },
+    {
+      "additions": 65,
+      "deletions": 0,
+      "path": "scripts/work_qualification/browser_probe.js",
+      "status": "A"
+    },
+    {
+      "additions": 184,
+      "deletions": 0,
+      "path": "scripts/work_qualification/cli.py",
+      "status": "A"
+    },
+    {
+      "additions": 759,
+      "deletions": 0,
+      "path": "scripts/work_qualification/engine.py",
+      "status": "A"
+    },
+    {
+      "additions": 136,
+      "deletions": 0,
+      "path": "scripts/work_qualification/reasons.py",
+      "status": "A"
+    },
+    {
+      "additions": 88,
+      "deletions": 0,
+      "path": "scripts/work_qualification/safety.py",
+      "status": "A"
+    },
+    {
+      "additions": 302,
+      "deletions": 0,
+      "path": "scripts/work_qualification/source.py",
+      "status": "A"
+    },
+    {
+      "additions": 441,
+      "deletions": 0,
+      "path": "scripts/work_qualification/store.py",
+      "status": "A"
+    },
+    {
+      "additions": 955,
+      "deletions": 0,
+      "path": "tests/test_work_qualification.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"pwd && git status --short --branch && git branch --show-current && git log -6 --oneline --decorate && cat /Users/haewonkim/.codex/RTK.md && cat /Users/haewonkim/.codex/law.md && sed -n '1,240p' README.md && sed -n '1,240p' docs/RELEASE_STATUS.md && sed -n '1,240p' docs/MASTER_DESIGN.md && cat docs/requirements-status.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files docs/recipes | rg -i 'work|qualif|release|accessibility'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n 'data-contrast=\\\"high\\\"|surface-page|text-primary|major workspaces remain axe clean|work-qualify|RC\\\\.23|rc\\\\.23|1\\\\.0\\\\.0-rc\\\\.23' frontend/src/theme/application.css frontend/tests/e2e scripts dev docs deploy evidence\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git remote -v && rtk git branch -avv'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --porcelain=v1 && rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git merge-base --is-ancestor 16899bd448b7a0afb4782871389e14255fbe1106 HEAD; printf '\"'R2_ANCESTOR_EXIT=%s\\\\n' \\\"\"'$?\" && rtk git show -s --format='\"'%H %T %s' 16899bd448b7a0afb4782871389e14255fbe1106 && rtk git log --oneline --all --decorate --grep='work-qualification\\\\|qualification harness' -20\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files | rg -i 'work[-_]?qualif|qualification|release.*identity|readiness|checkpoint|artifact.bridge|project.os'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' frontend/src/theme/application.css && sed -n '180,215p' frontend/src/theme/application.css && sed -n '100,220p' frontend/tests/e2e/workspace.spec.ts\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n 'prefers-color-scheme|colorScheme|data-theme|data-contrast|reducedMotion|High contrast|high contrast' frontend/src frontend/tests/e2e\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n 'rc\\\\.23|RC\\\\.23|1\\\\.0\\\\.0-rc\\\\.23|1\\\\.0\\\\.0-rc\\\\.24|RC\\\\.24|CHG-235' README.md docs deploy scripts evidence .github dev\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git show -s --format='R2=%H%nTREE=%T%nPARENTS=%P%nSUBJECT=%s' 16899bd448b7a0afb4782871389e14255fbe1106 && rtk git merge-base HEAD 16899bd448b7a0afb4782871389e14255fbe1106 && rtk git log --graph --oneline --decorate --boundary --max-count=30 HEAD 16899bd448b7a0afb4782871389e14255fbe1106\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,90p' frontend/src/theme/tokens.css && sed -n '1,145p' frontend/src/app/Application.tsx && sed -n '1,100p' frontend/src/app/ApplicationChrome.tsx && sed -n '1,220p' frontend/tests/e2e/workspace.spec.ts && rtk git diff --stat HEAD 16899bd448b7a0afb4782871389e14255fbe1106 && rtk git log --stat --oneline HEAD..16899bd448b7a0afb4782871389e14255fbe1106\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' docs/WORK_ENVIRONMENT_QUALIFICATION.md && sed -n '1,240p' scripts/work_qualification/cli.py && sed -n '1,240p' docs/recipes/add-workspace.md\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,220p' scripts/generate_release_identity.py && sed -n '1,240p' scripts/checkpoint.py && sed -n '1,160p' scripts/generate_checkpoint_manifest.py && rtk git status --short --branch\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge --ff-only 16899bd448b7a0afb4782871389e14255fbe1106'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' docs/WORK_ENVIRONMENT_QUALIFICATION.md && sed -n '1,240p' scripts/work_qualification/cli.py && sed -n '1,180p' docs/recipes/add-workspace.md && sed -n '1,180p' frontend/playwright.config.ts && cat frontend/package.json && rg -n 'test:e2e|browser-e2e|work-qualify|finalize|verify-release|api-compat' dev\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,180p' dev && sed -n '1,240p' scripts/source_manifest.py && sed -n '1,240p' scripts/finalize_release.py && sed -n '1,240p' scripts/verify.py && sed -n '1,200p' scripts/e2e_runner.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n 'Platform operations|Page heading|page-heading|System workspace' frontend/src/features/system frontend/src/platform && rg -n 'def test_|work_qualify|Resume|--status' tests/test_work_qualification.py | head -80 && rtk git status --short --branch && rtk ls -d frontend/node_modules backend/.venv\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,200p' docs/recipes/theme.md && sed -n '1,90p' docs/RELEASE_STATUS.md && rg -n 'RC\\\\.23|rc\\\\.23|work-environment qualification' docs/RELEASE_STATUS.md && cat VERSION && sed -n '1,160p' scripts/release_version.py && rtk cat evidence/current/release/rc23-evidence-binding.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev setup'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk node --version && rtk npm --version && rtk which node && rtk which node22 && rtk npx playwright --version && rtk ./backend/.venv/bin/python -c 'from playwright.sync_api import sync_playwright; print(sync_playwright().start().chromium.executable_path)' && rtk rg -n 'application-shell.*background|background.*application-shell' frontend/src/theme\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ls /Users/haewonkim/.nvm/versions/node && rtk rg -n 'application-shell.*background|background.*application-shell' frontend/src/theme && rtk git diff --stat -- frontend/tests/e2e/workspace.spec.ts\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk zsh -c 'export PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:\"'$PATH; rtk node --version; rtk npm --version; rtk npm --prefix frontend run typecheck; rtk npm --prefix frontend exec -- playwright install chromium'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk zsh -c 'export PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:\"'$PATH; rtk ./backend/.venv/bin/python scripts/e2e_runner.py'\"'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk zsh -c 'export PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:\"'$PATH; rtk npm --prefix frontend run build'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk zsh -c 'export PATH=/Users/haewonkim/.nvm/versions/node/v22.23.2/bin:\"'$PATH; rtk ./backend/.venv/bin/python scripts/e2e_runner.py'\"'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk ls frontend/test-results && rtk cat frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/system-high-contrast-computed-styles.json && rtk cat frontend/test-results/workspace-System-high-cont-fe52a-with-dark-system-preference-chromium/system-high-contrast-computed-styles.json && rtk rg -n 'major workspaces remain axe clean|System high contrast stays axe clean|color-contrast|44 passed|2 failed' evidence/current/full-stack/browser-e2e-accessibility.log\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium && rtk ls frontend/test-results/workspace-System-high-cont-fe52a-with-dark-system-preference-chromium && rtk cat frontend/test-results/.last-run.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n 'system-high-contrast-computed-styles|bodyBackground|htmlBackground|negative_control|system_axe|color-contrast|serious_or_critical' frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/error-context.md frontend/test-results/workspace-System-high-cont-fe52a-with-dark-system-preference-chromium/error-context.md frontend/test-results/workspace-major-workspaces-1cee0-ast-reduced-motion-and-zoom-chromium/error-context.md\"",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,90p' frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/error-context.md && rtk rg -n 'color-contrast|serious_or_critical|negative_control|total' frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/error-context.md\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls frontend/playwright-report && rtk unzip -l frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/trace.zip'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import zipfile; z=zipfile.ZipFile(\\\"frontend/test-results/workspace-System-high-cont-dbcbe-ith-light-system-preference-chromium/trace.zip\\\"); [(print(n),print(z.read(n).decode(errors=\\\"replace\\\")[:10000])) for n in z.namelist() if n.endswith(\\\".json\\\") and (b\\\"system_axe\\\" in z.read(n) or b\\\"before_system\\\" in z.read(n))]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -l 'System high contrast stays axe clean' frontend/playwright-report && rtk rg -l 'system-high-contrast-computed-styles' frontend/playwright-report/data\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,180p' frontend/playwright-report/data/93d4d2df44536170773996e87ec1e5e302e37faf.md && rtk sed -n '1,100p' frontend/playwright-report/data/4c050197b8befef4eb123b4f22a38eb0955e4f49.md\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git restore -- frontend/tests/e2e/workspace.spec.ts && rtk git status --short && rtk git rev-parse HEAD && rtk git merge-base --is-ancestor 16899bd448b7a0afb4782871389e14255fbe1106 HEAD; rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git restore -- evidence/current/performance/browser.json evidence/current/uiqa && rtk git status --short --branch && rtk git diff --stat && rtk git rev-parse HEAD''^{tree} && rtk git rev-parse 67ec2ce5ec44d38ee44d22602035c2554a08e00d'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch && rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git rev-parse origin/main && rtk git merge-base --is-ancestor 67ec2ce5ec44d38ee44d22602035c2554a08e00d HEAD && rtk git merge-base --is-ancestor 16899bd448b7a0afb4782871389e14255fbe1106 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.156.1",
+    "configured_model": "gpt-6-luna",
+    "event_count": 93,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 95.66,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 4458752,
+      "fresh_input_tokens": 202354,
+      "input_tokens": 4661106,
+      "non_reasoning_output_tokens": 10108,
+      "output_tokens": 40944,
+      "reasoning_output_tokens": 30836,
+      "total_processed_tokens": 4702050
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+      "subject": "release: finalize RC.23 evidence binding and status"
+    },
+    {
+      "sha": "e7d58c142e316c02dc47f75ed43a2da765d64694",
+      "subject": "evidence: bind RC.23 verification to deterministic resume source"
+    },
+    {
+      "sha": "425d3632c75165fe8f030679910485f5d0196ae0",
+      "subject": "fix: make qualification resume output deterministic"
+    },
+    {
+      "sha": "047c6866cf68888b6b1fa09c0448e2a488499bb0",
+      "subject": "CHG-235 finalize RC.23 evidence binding"
+    },
+    {
+      "sha": "d303de7e4ff3a66278cdc854ed2a5a47a1ecdceb",
+      "subject": "CHG-235 bind RC.23 verification and release identity"
+    },
+    {
+      "sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+      "subject": "CHG-235 R2 repair qualification harness and release binding"
+    },
+    {
+      "sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+      "subject": "fabric: capture completed model changes [CF-a76e16568c01043040d78b6e]"
+    }
+  ],
+  "diff": {
+    "additions": 21832,
+    "changed_files": 195,
+    "commit_count": 7,
+    "deletions": 2351
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 181,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 16461,
+        "path": "CHANGELOG.md",
+        "sha256": "ab43e16a5801d2ce8721ea3d64a0e106de159b102908c414e0e698db0676f6eb"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 86045,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "8cab7f8db93cc522a72bf8ff6678d296c3fe85a3f14c7be7a728580cb73aa097"
       },
       {
+        "bytes": 4531,
+        "path": "README.md",
+        "sha256": "0092afc5ffac9ccbee83a2f43589e262c35aec03d7cd8b001af3cb1fb85fa7aa"
+      },
+      {
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "8710c7e9b5d6cd25717c7759a19a0360387118aacaee3561a801af6ff97bf4be"
+      },
+      {
+        "bytes": 1252537,
+        "path": "contracts/openapi.json",
+        "sha256": "13472853836571eef24b6828091ef510889ed15e5cd9dbe7c9562ea0513f1e1f"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc23-release-identity.json",
+        "sha256": "702de122abde83ff758355adff92afe8dfe82ffe72c10db972c2b32e80d5a85a"
+      },
+      {
+        "bytes": 11165,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "8371d11d131502d72431e61a0e0d60a096b96ed78b48a9d60c109d03d6f68cd7"
+      },
+      {
+        "bytes": 8957,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "076e5b29bd914ecc5b8194b8f2eaeaaf8bdb8ad5e7c6cbd3f63b51d4cb22444b"
+      },
+      {
+        "bytes": 3171,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "437ba1e73c56cff9f67eda1e42f907d2f551d83a08707b9c08ebdc74b0cbe150"
+      },
+      {
+        "bytes": 46146,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "5db6f67720ff9282aefb39d423d9c56b7c7445565f300405c771d12a4f5b307b"
+      },
+      {
+        "bytes": 18861,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "901f4aa49ed1719e0020a36fdc1f94792590399c222ad0e05c72c47c1a5b87fc"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "0694c0f97412eb7edd929084a30c808943b39fabcecd348d75b1962bf9b2c072"
+      },
+      {
+        "bytes": 7726,
+        "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+        "sha256": "07b8839fc765e814adca41f17c6cb366abf73cfeb0af8092f5722b4d78b2e32a"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "7e87ede5cfcc4a03933f6bf8fdc44ca5379b8ec25ca0b0b5f05fa9aac77e9d95"
+      },
+      {
+        "bytes": 2590,
+        "path": "evidence/current/deployment/qualification.json",
+        "sha256": "69b2dfb6b6876906e4d7e4f3d9e35520ea173f88a0bd08b155c9e319d86898c5"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "bd05cf768e7b76c2f3d1210bd23d9763948fd5e69ae5ecb58db23cc5e74e76a6"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "c9b721c024795dcd49db91c4ed06e4674caae656d65c44b37aa31f4442b66fc6"
+      },
+      {
+        "bytes": 8351,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "b7bf4d005e7315e18545888fe35ec9a553f9b3a2e93dda2c2ed9c1c4d3dd9d4e"
+      },
+      {
+        "bytes": 4978,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "4195932bc0190182d9d076d28ef5b237afb8b63c78f8aaf496d6e0ccca30742f"
+      },
+      {
+        "bytes": 13199,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "4b219cd92e42e975405a8b5a801ad22e6f1a31895de858d98a85878a3b5694f8"
+      },
+      {
+        "bytes": 12132,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "19200d013d12f4a2c8967a4510f5d9c421200e2127d31a8afe152191b4b7b8c4"
+      },
+      {
+        "bytes": 37776,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "62e5450fef20748e730bcff5c67eee2d1a656357c30a6a3cb3d062f744495d24"
+      },
+      {
+        "bytes": 781,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "68a428df75befdc394a3ec95d4f41cc922895e4c1b4e5ab4f3ad3f6aec92b9a7"
+      },
+      {
+        "bytes": 163547,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "a9b8db931f09796eae4d4a8e6762814e6b5fa1719b2fcff575860a1a9250c840"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "3f0cc6a50a245c12f8dce5fac6b095028a533e3e40c6222565488be5d7f53d73"
+      },
+      {
+        "bytes": 156,
+        "path": "evidence/current/full-stack/deployment-contract.log",
+        "sha256": "8a6a624d6b18321848f374d98a0ce14ced61e1771a087e266ed61c0b0d57d255"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "10a45c6335f514437908aaccf420bdd6672ef1260e89856be69d8f31018ea379"
+      },
+      {
+        "bytes": 52389,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "46a6140926590569506cf24d58ebd12126a596bde9360053472080e50b3eaf61"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "1c2164da839b9f438a50bae8e4af6fe8e1d8fadbd39017119abc53dfc2054f38"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "a3975a87351c326f81b30537138c8ea00db225bfc88dab8aa4f2c6e16592f901"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "89e01c83fba370075bbed455919856d42ed01eae2809cc1c118c0f2cb999ce12"
+      },
+      {
+        "bytes": 333,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "8e36180aff4cde68ff541a0a2a868d57cbc35b13d8b88ed8197a419a0d25f109"
+      },
+      {
+        "bytes": 159,
+        "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+        "sha256": "d625532978c1267598c94024a43c081a94ab1135dc25beeb1277249d9a324073"
+      },
+      {
+        "bytes": 1238,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "375fe482b02643513b94d25dde5ed2a9e267aa29673d32d66488101cac1f25d2"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "c6c8461ffc5c78f9ef96befc706629cffc39fd32bb9a2bf24a6401651e5fc00e"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "add7770a187bf3c48bb5ae19a4a41efd0f0c72e6227ca79c3b5c601a024e40a5"
+      },
+      {
+        "bytes": 6447,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "1acde6db3a5768125720c5b828320a177df7b78ddf829fb04ae26da0a45da2fc"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "9330d6b7bc86d9806c387d479668de86af2a0be0d9e8761df5a82ab42cee3592"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "ff8cace64e22c0d7b2e50e7f945a814f35d78a42fdb8c7c4d08cb9b57dcfb491"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "379221fb2cdae4b77e70dea12847b8379a74f29c67511aa5db6d44b2337d6d81"
+      },
+      {
+        "bytes": 696,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "5059a7c69f534546fcaf5579b51603950998b62eb3b0fad701199b556ccd1e26"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "ac964062f47b594dca892efc28a3a715ab38de5943884c854cf38adcf8de75bf"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "676edefd07f76d60fdaa31555da21189e63051cbaa5adf58ba940888c7a5c5af"
+      },
+      {
+        "bytes": 181180,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "5e682f3c493b26083119ce6cc15a614d9b4fa581e1cc0a602d2db95cc2021d53"
+      },
+      {
+        "bytes": 161,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "1cf70f4fff2cf24dc8d98f7a1ec1a7726437b646fe629610fb748872d2f33103"
+      },
+      {
+        "bytes": 77479,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "da81056dcb37a853700261154101b77ca710d966097b4a4f26fa222d96f3e2e4"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2727,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "74d06656efc8655e45a3053836de46446e68c848b7d5c95c3981860f76e34e5a"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "61063456b531522bfb969fd776bfaa1112a3066fcf418bb1062d998b0d88537e"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 261,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "35017554b8f2af7abcb77ae7d318f988e75f98131c76460af8a50f16328871c0"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 5733,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "0652e1c4c9e84f508dd4e93b9483ff72b969ac3d36feed17ed899ab6d258f4bf"
+      },
+      {
+        "bytes": 13729,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "a25073c65b96c291a40c3f0c990bc46b3ea58905c3c8d19c021da34eb32f7f49"
+      },
+      {
+        "bytes": 13729,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "a25073c65b96c291a40c3f0c990bc46b3ea58905c3c8d19c021da34eb32f7f49"
+      },
+      {
+        "bytes": 17315,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "6e7a8dbd090fe79381da1ba1d6a96b81842360ad41aaeb3dd96cf42c6860e947"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "ae8f7a758362be5b25c179feb4636dc2af319b782f511df95d49128de09603ec"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "64be954457427c0b0527b1c47df9cfe4bb47417e1dffdc00894e18e42712dfbf"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "36541ebdba1309c6b07dfe9db36a313fa21f4734e9a3adb2b3c1e6f103c05b11"
+      },
+      {
+        "bytes": 6125,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "6bcdacd5c0b3a54a2919a83853c907587d6a97d74a6e7b923ceb8cb3d4b7e59b"
+      },
+      {
+        "bytes": 11935,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "0e3dcc2672e986772f4941473cc0bdec5e53b5f36da550b70e4ef7e4a11260d0"
+      },
+      {
+        "bytes": 3492,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "b7d52b55182c494b19c77ad48f7d0ee753d222ea55b09229e91310e0828486c9"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "379221fb2cdae4b77e70dea12847b8379a74f29c67511aa5db6d44b2337d6d81"
+      },
+      {
+        "bytes": 2387,
+        "path": "evidence/current/release/rc23-evidence-binding.json",
+        "sha256": "b8665b796dc229294d2f5ce4afffbdf3fc08382913388db5575ef7884e2fe936"
+      },
+      {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc23-manifest.json",
+        "sha256": "8b6acc031e23069b8a4d3f865f906790f5181a78927ed03ebd433703745aca12"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc23-readiness-matrix.json",
+        "sha256": "2f6733f39fb9ee896d20924cdb305267e504d26a75618f95633cb35b6e4b0076"
+      },
+      {
+        "bytes": 181180,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "5e682f3c493b26083119ce6cc15a614d9b4fa581e1cc0a602d2db95cc2021d53"
+      },
+      {
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "672fe5ec10e3ce34b6f034e0ea6b750a22147dffd7d1188313dd133ab6d84e1e"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "5fff38d12015b23eadaac6ef43f15a8cd03a85f6055f2659c8d8ba177d88679b"
+      },
+      {
+        "bytes": 192875,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+        "sha256": "d1e1115521b914e38a6c45187d29f9a3d8b2608309c2072f29c6d5a573706238"
+      },
+      {
+        "bytes": 143062,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+        "sha256": "b4f9065800f1e880a599ee090c506721756bdc2474759bf33038f95e7b0862d5"
+      },
+      {
+        "bytes": 15142,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+        "sha256": "94e210f010ac02fc315207ad9acffd5a68cc94c83462ee96c0f8449ab0b12ae7"
+      },
+      {
+        "bytes": 59819,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+        "sha256": "3fb7884d572d8144351a3c373f601e949b93b4dd1eed4d27df8b2321c814a311"
+      },
+      {
+        "bytes": 35182,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+        "sha256": "4fb4920ce2c343c967128e298636840465ed5d3122c5a915482df0406cacce5d"
+      },
+      {
+        "bytes": 70094,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+        "sha256": "90c84bb9bfc6d35dfae9a5b3d94dacdf35af63bc69357f94d90ef57b21399edb"
+      },
+      {
+        "bytes": 904,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+        "sha256": "97620e0ef235787ddcdc28992a42c8e1e02a1d5f33989ab86b63cae4154c645b"
+      },
+      {
+        "bytes": 532,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+        "sha256": "0619824df4cf1b28b3c1673289be466b35c107570e9cb4bd9f8569bd1c4fdef8"
+      },
+      {
+        "bytes": 136122,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+        "sha256": "e3147ef617aedb7b01b966bf49000c2a490712ea467fb1db61a2523eeb63a884"
+      },
+      {
+        "bytes": 699,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+        "sha256": "0ea6d04084b234e7ca51c05eaf44711650c4362eab7b08bad6dab3677ec5b80d"
+      },
+      {
+        "bytes": 161011,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+        "sha256": "bc6ef620ee9cbcc44c23f90219a7f3d87592f5e90a3af52f56548e203b943689"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+        "sha256": "d96e964f8633ffb9bb2b565a2bc122b008e50454fa32459f79e5d73658ff3e92"
+      },
+      {
+        "bytes": 131194,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+        "sha256": "204d49d48fccb59e02d53608da324da4b0aa2b3aaea3393de968613a84c359c1"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 410,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+        "sha256": "6a3c84c6240e813bde5734071902d81516db8861eef89ead1f2a4fa4c07e1cfd"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 155561,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+        "sha256": "b1f968c9e4da26efe45c1a1fa608fa1499b481cf7ceee540f8d2030b2dee887f"
+      },
+      {
+        "bytes": 253,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+        "sha256": "4ce6146b0e32c27a83dd7ee2a1e91a4124944c61892eb1c8555bf4159b470cbe"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 174117,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+        "sha256": "d9858aa615356cdf702600dfcf1621ead70ffe4a485c89ba445f317a8cf653bc"
+      },
+      {
+        "bytes": 55485,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+        "sha256": "feb62f6dabb736688bda23b3f6f320268ef45f1211eddeaabcd8e0f4af3866da"
+      },
+      {
+        "bytes": 58331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+        "sha256": "f5a4ed70c03f5e755525d1f2145ba56fa33c8045d2f2262a1a7ec40ec9e62769"
+      },
+      {
+        "bytes": 76331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+        "sha256": "3d5d6d8f826e5738eafdb09b469617ed2e7d3db227889f0d33162fdd91ae3292"
+      },
+      {
+        "bytes": 79915,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+        "sha256": "29363bbdda2dcdd39f2e0d0794ac06deb73123dd79c8b620d9e610194082b5c0"
+      },
+      {
+        "bytes": 58128,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+        "sha256": "c192931d94ebeb1a0982f55c1d400596f6412f3fef8f74e057ca17e26cdff17f"
+      },
+      {
+        "bytes": 60487,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+        "sha256": "40dfcb7b1cb447430588b7244d8497be66432991e08a0f92416cc95ba0f04f2c"
+      },
+      {
+        "bytes": 81321,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+        "sha256": "3d59a8ce121cd4e45fc115af4a5af5ede2ff4c543627cdf1e50f659178a82d6e"
+      },
+      {
+        "bytes": 78557,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+        "sha256": "fc932940224cf47f2ba47942e5a63fdfdc4082600b4c21488692c47d10eea751"
+      },
+      {
+        "bytes": 84956,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+        "sha256": "3456ddbbf16c47b20d4382ec89dab3f5a13c2765d4443a1f4adaebe87937663f"
+      },
+      {
+        "bytes": 166233,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+        "sha256": "966a32aadac2713ace87582c6c26658010f71b9201c5342be72dbf292f644b2e"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 64745,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+        "sha256": "1c49dbf68a6572da567040f8c584f30cbeee843482c329c33d26662af2c112fd"
+      },
+      {
+        "bytes": 93564,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+        "sha256": "da77f768752f03fa43bab37775afde7291ca570134c9543240ccde11564f82a7"
+      },
+      {
+        "bytes": 160701,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+        "sha256": "33b54c8b93b8ca1f3978357b5578b89f229ac4470b5e3bba78f5702e27785f71"
+      },
+      {
+        "bytes": 72328,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+        "sha256": "21f1e12132705c5d0b7c1ba79bfafc420fcf9aa4be4dcac04179d54acf778c6f"
+      },
+      {
+        "bytes": 1871,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+        "sha256": "a2f9eca69efd4730d644dd950c0610a4f65e5bb4e6fd719c1f7aacd4f04de64f"
+      },
+      {
+        "bytes": 175816,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+        "sha256": "3bb60ef10f39d3dba1dbbfb8b21be4675b4aa601e8046581d5408bb315b9ca98"
+      },
+      {
+        "bytes": 141780,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+        "sha256": "24d4ec1173cbcda4e1cf2b72e9c37aadaab89fcb980d7d87e1ce03b73f1969e1"
+      },
+      {
+        "bytes": 176700,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+        "sha256": "8d5795d21638f52ba052d9c7881de3c3cd3274c73c9efa66b894bbbc58514118"
+      },
+      {
+        "bytes": 174884,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+        "sha256": "e4776c7f02f9deeb449bc1d85d5c93afb6be48f51d2c365c75bcca16c762770e"
+      },
+      {
+        "bytes": 73855,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+        "sha256": "7ae1a3a9dddd3231e2c32f4e2ca32ce3e950dcf2afbd796eacf149484314b625"
+      },
+      {
+        "bytes": 68730,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+        "sha256": "7bd39fff491117c188527884934e1708652e2112de2a888ce0ebbe4807470e18"
+      },
+      {
+        "bytes": 65724,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+        "sha256": "585a5897271b14a27d16a960228d3a9c1aefe2c718af908c2f90994a45162753"
+      },
+      {
+        "bytes": 969,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+        "sha256": "c798a9f97a88f952c6ed74269a0ab83532aff46c50141d0c630418f785f8c84a"
+      },
+      {
+        "bytes": 153860,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+        "sha256": "d6a04c79b6d7bb0cf5713e8402f10f211890e75f731ed41be817f585f6549329"
+      },
+      {
+        "bytes": 66325,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+        "sha256": "f1cc6d223653e1198b5cfdff8c26422006d35c070465116ffe50ad57835b235c"
+      },
+      {
+        "bytes": 169434,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+        "sha256": "9fa18c5167f6b268ad4a9c9232deae17e0705d2555cb59fe9a8f4556306fa6c9"
+      },
+      {
+        "bytes": 68522,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+        "sha256": "4ce7524e41069e87fe01e855e27da3cf45b314e022d8a809d3eb7b30d47af1da"
+      },
+      {
+        "bytes": 183064,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+        "sha256": "abef91eadc2f60b9304004f36f2355039286a1ad06ac85c0f26f27ae5a9e890a"
+      },
+      {
+        "bytes": 75521,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+        "sha256": "44913adc1f948be569e8306f8f03403819e7989f0c057cc30ea57932788a3b80"
+      },
+      {
+        "bytes": 179347,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+        "sha256": "53245f9501a5122d4dc42c9444ef4782d0d1d3963b9354f3f26aeffb46c67cb7"
+      },
+      {
+        "bytes": 73019,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+        "sha256": "2edfe61f647a983ff32aa7f5b9b9ed88d263e20c12a6771f667f18e5c3145537"
+      },
+      {
+        "bytes": 193484,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+        "sha256": "d036d64815de641d75cbfee5864129f9711883e4a5ad7171a2963e5ddf11ce9b"
+      },
+      {
+        "bytes": 70554,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+        "sha256": "618c0550bf829ad265e265cde6382178c16292c26d5c852e7f7ba9d8ca125199"
+      },
+      {
+        "bytes": 21059,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "93d27e8e4897623e0fa29109cd48f62356d2d10e687ec134aafb77451082856a"
+      },
+      {
+        "bytes": 162985,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+        "sha256": "a2d6a107dbd2da9420b14ee0b2cc16ef0da4e1e70879df49549e766515b12b34"
+      },
+      {
+        "bytes": 69245,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+        "sha256": "97b6336dce1c5be1f764c539414a6e2800fdda5305773949174e1c0b90be0202"
+      },
+      {
+        "bytes": 872,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+        "sha256": "9438b23f88fd7e049c900ec5acbcc623439b3523075206f354f5f6476cdfc804"
+      },
+      {
+        "bytes": 2294,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "23fdacc9d19b01eaa177ac5869df307d6fc6e3135b141979144eb0702e0ef112"
+      },
+      {
+        "bytes": 161803,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+        "sha256": "3c65febeb1ec278cb224d16af869bf27168e6d009406adb1e5f0607916ea8f45"
+      },
+      {
+        "bytes": 70112,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+        "sha256": "e97b293c0e48a9419e261256499c7bd91eb20c43d202a84ef6c2b7d978aa64b0"
+      },
+      {
+        "bytes": 161055,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+        "sha256": "564c333b4f1c8e2121d99ef07dd91053a488633a194471e370087922f0b366ca"
+      },
+      {
+        "bytes": 62326,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+        "sha256": "9dca6f02f081bbaf0050488da83091a2ed4526955a3d56ef60b446fb04b5a50d"
+      },
+      {
+        "bytes": 161055,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+        "sha256": "564c333b4f1c8e2121d99ef07dd91053a488633a194471e370087922f0b366ca"
+      },
+      {
+        "bytes": 1103,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+        "sha256": "cb8d7494b7f3ab60b13766c9d80e72727cd6bc2faa6573cb20f8c67794731889"
+      },
+      {
+        "bytes": 64600,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+        "sha256": "3328de8b9f3e78ae87fd90a474df5c879713c2a06e8542534e1cceb57afcd48f"
+      },
+      {
+        "bytes": 160940,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+        "sha256": "339f8bb4df9e244d5ca96fdf49404f7dcca4970c9465934900539e7d85b6c05a"
+      },
+      {
+        "bytes": 72511,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+        "sha256": "c609fb50ebb31a7fdc143e5d9a749fe34f1d99f46dd7dc13152b4ac0f1a20a6b"
+      },
+      {
+        "bytes": 153774,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+        "sha256": "f6534a4e02accbb81ca92e1047fc6cc91d765a2122e729a4b262c7f1c6fc76ad"
+      },
+      {
+        "bytes": 70577,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+        "sha256": "eaab8990c5da20cf0cf1a2120047c01c13a299a6ecbccf83c9547848ccac93e3"
+      },
+      {
+        "bytes": 151549,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+        "sha256": "f2e47e4075e3f0b65cb82a1fe993ea0b6cfd8c0e10a4b2d5572fde40716d1c98"
+      },
+      {
+        "bytes": 63596,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+        "sha256": "4af8d539507de6bb4d63d1496d40c3b4038a2bf81f8a8c62d6f22f77cb930bfa"
+      },
+      {
+        "bytes": 84555,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+        "sha256": "00e36ddafd8daca4c1164de60418850eb5b2942540a6355821b0f6cbcf088d44"
+      },
+      {
+        "bytes": 123953,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+        "sha256": "f2b35e7057d97150a817f8b51a2e151b016e8fe232bdf13991cbd7012547e3a5"
+      },
+      {
+        "bytes": 141271,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+        "sha256": "b65170132957f5953b5e9c212cb892f0a71ce556347342d4e778e8d5166f9bd0"
+      },
+      {
+        "bytes": 56768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+        "sha256": "93bd59b82e3fa8992543ffd0900cc8f0c1e59d033ce0c1b4f526a074689dbd33"
+      },
+      {
+        "bytes": 174162,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+        "sha256": "7e6b86aa5141b116ea1b324c459bf8d5464543d3376f14f55af982b4593b08d7"
+      },
+      {
+        "bytes": 70150,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+        "sha256": "d048b8a1b1aca041b91259dfd8ffbdd3df34eb14df2cf9c47b4dcdee79f2f6d0"
+      },
+      {
+        "bytes": 1567,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+        "sha256": "cda518722c04660f658efee95680dd1e283a6d22c06617bd2ebe96ecb4de5a42"
+      },
+      {
+        "bytes": 918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+        "sha256": "85c8192131d2e92556d2482f1494a20c5fdb195c64342f01e4b90e8b176a46f7"
+      },
+      {
+        "bytes": 172819,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+        "sha256": "8494f1640e75c5c888d92202fbadee152afa9d013df358c5aca64dcacd49d00a"
+      },
+      {
+        "bytes": 71158,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+        "sha256": "749587e03fcbbe67d9f872f2f4acd857807a2789d2dfa1416120817272d13722"
+      },
+      {
+        "bytes": 1558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+        "sha256": "780b3becb683fd1454e08768719bba95d415401afb7947d0ca701f6a5a3950c6"
+      },
+      {
+        "bytes": 147843,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+        "sha256": "a64544026d28eeea427bca0e0aada316566c703558a82d084511e07b91413260"
+      },
+      {
+        "bytes": 64216,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+        "sha256": "c7fb8e7d20b38c0f1f0702f4f27139d52b5495ca02fe55103a67e52051b56d9f"
+      },
+      {
+        "bytes": 150086,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+        "sha256": "f1f1c33565753a7f3b4360bf6bf62905b73a3178c9c361437b6f009867364214"
+      },
+      {
+        "bytes": 66708,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+        "sha256": "0df710a2d8f5d6c679090c0167094f21ecb2a9a32f2397bc296a1bb6ca4cdff3"
+      },
+      {
+        "bytes": 160940,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+        "sha256": "339f8bb4df9e244d5ca96fdf49404f7dcca4970c9465934900539e7d85b6c05a"
+      },
+      {
+        "bytes": 127964,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+        "sha256": "a524006030cc7a77671a7f6220312c8b89a238e2d4b1f4ebcaf622efd864a18b"
+      },
+      {
+        "bytes": 128427,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+        "sha256": "27500f116050d0136db6f02542efda29eef7c85943f0f0e8a0ced5b2e1c35540"
+      },
+      {
+        "bytes": 129499,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+        "sha256": "6627a876c394388bc946ef549a15d1940fc32c24c56e32afa1c066ad42b69192"
+      },
+      {
+        "bytes": 145232,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+        "sha256": "f805c63739e5de9066a3d43b5b21cc2387148a03eb2e152abb6e7369a7cc6f2e"
+      },
+      {
+        "bytes": 139598,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+        "sha256": "c26c48d2369ff2d9210c3822e1241c984d80c3528934821106dfe244a78e8403"
+      },
+      {
+        "bytes": 159246,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+        "sha256": "c27ee6c4142fce31a55974f3c6b10fb28da00784f1f3d18c77560db9e4f1cf2d"
+      },
+      {
+        "bytes": 174519,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+        "sha256": "fff840207241eeb39a5fc7bddc087ab2db2610606823fb848e50db9a5ea4125e"
+      },
+      {
+        "bytes": 124701,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+        "sha256": "a1eba6b619e63fa4edfc6d7ff56e095c1af47a8ac5b656acf5072b71f3eedaf1"
+      },
+      {
+        "bytes": 134966,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+        "sha256": "6774dec9a6bc1482dff17d0a3b8a61a99cb6c4212917816a15f3297d36e56e1a"
+      },
+      {
+        "bytes": 141780,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+        "sha256": "24d4ec1173cbcda4e1cf2b72e9c37aadaab89fcb980d7d87e1ce03b73f1969e1"
+      },
+      {
+        "bytes": 61210,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+        "sha256": "ad4772e8fba6420c9048102ee5cf55253b512ccce180277fe4328578599a9116"
+      },
+      {
+        "bytes": 1367,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+        "sha256": "6f769a9bdd983e8988126caffd87f5c0155710d5ec60114fda83684cfd306b41"
+      },
+      {
+        "bytes": 165436,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+        "sha256": "f8aa389bf10bf2dd8ba12b2def43666b306fc73e53369de462f180d2bee9cd14"
+      },
+      {
+        "bytes": 73576,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+        "sha256": "8e86082e7c469888a78d69302f74f242343fc4046722d21a1ec63c318ed4a216"
+      },
+      {
+        "bytes": 57127,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+        "sha256": "baaead1d4592a79a1dd2400485745d2489cd0bb6715c9f039393ceab6e4f5f98"
+      },
+      {
+        "bytes": 59746,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+        "sha256": "f38394e17b795241488aa88afa719f103666fae7e023217005733c1d1ca7b48d"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 142602,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+        "sha256": "aac2415c7b83adc9ecb23ad6fe54262dcd12a1a3d0eadb29a079d794966a36f6"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "e96252b566174af6bd8aa6896f4ad456bf0addc8ac954e10ad2d293305fd39d7"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "da24fe5e2d653ab51c2d0ea9f4ee6aeb4b042493402e6d2704385ba82a88a4b6"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "655c5e453e93b1535c89e1614e446526b61f51a521c0d4fa6b2a074e5b2230e4"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.5-dashboard-controls-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.5-dashboard-controls-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-25T21:42:43Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "branch": "codex/react-fastapi-base-work-env-qualification-harness-ci-contrast-fix-v3",
+    "detached_verify": false,
+    "head_sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "remote_exact_head": true,
+    "remote_head_sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "work_branch": "codex/react-fastapi-base-work-env-qualification-harness-ci-contrast-fix-v3",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-0e9bf1c21954856b25a66817",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-ci-contrast-fix-v3",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-ci-contrast-fix-v3"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.5-dashboard-controls-candidate",
+    "policy_sha256": "123615bf2f6e57dcac197e49ca98ceac59ada86a55e2c84445ea5d00812c0833",
+    "registry_sha256": "af81b8552f9d6a33847310e3c6bcd2d48401782b963a58efd2993e93570cb4aa"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "work-env-qualification-harness-ci-contrast-fix-v3",
+  "schema_version": 1,
+  "started_at": "2026-09-25T21:23:33Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 1150,
+    "queue_seconds": 0,
+    "total_seconds": 1150
+  },
+  "transport": {
+    "bytes": 7121,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 6740,
+    "prompt_sha256": "75ec11465105d7f7bf7f0e9f22675576693644f811bcb43e8f28b64cda4683dc",
+    "sha256": "0e9bf1c21954856b25a66817ffb34721fb8e9e185a8663534d73bea3b67ff8f9"
+  }
 }
