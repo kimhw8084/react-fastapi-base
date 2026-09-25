@@ -3,9 +3,44 @@
   "result_kind": "aggregate-performance-qualification",
   "contract_id": "project-os-performance-regression",
   "contract_sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05",
-  "overall_status": "FAIL",
-  "validation_errors": [
-    "browser-ag-grid-scale report source commit mismatch."
+  "source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "candidate_version": "1.0.0-rc.23",
+  "overall_status": "PASS",
+  "reports": {
+    "owned-pure-algorithms": {
+      "locator": "evidence/current/performance/owned-algorithms.json",
+      "sha256": "3be4920e6aa44d60f8a82be3df4491b2c4226df6bd1d32c8971058269fe42c6f"
+    },
+    "platform-data-volume": {
+      "locator": "evidence/current/performance/stress.json",
+      "sha256": "2fadf72c8d84669a818e0d09ba3ecf12f599adecc73eeef76d96ca41c932c3a0"
+    },
+    "browser-ag-grid-scale": {
+      "locator": "evidence/current/performance/browser.json",
+      "sha256": "0cb98e8ca62409622169edfcc2fe1880987efec63bd314dfebfbe43052cb95b0"
+    }
+  },
+  "required_workload_ids": [
+    "descriptive-100k",
+    "imr-100k",
+    "ewma-100k",
+    "run-rules-100k",
+    "pareto-100k",
+    "p-chart-100k",
+    "c-chart-100k",
+    "cusum-100k",
+    "correlation-100k",
+    "regression-100k",
+    "table-100k-filter-sort",
+    "planning-5000-dependencies",
+    "graph-10000-nodes-20000-edges",
+    "rack-100-racks-20000-connections",
+    "wafer-100k-die-map",
+    "observability-100k-events",
+    "dashboard-1000-widgets-layout",
+    "browser-server-page-100k-50",
+    "browser-ag-grid-virtualization-5000"
   ],
   "workloads": [
     {
@@ -17,7 +52,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.044719
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -29,7 +70,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.015115
+      },
+      "diagnostic_metrics": {
+        "result": 99999
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -41,7 +88,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.007121
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -53,7 +106,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.101526
+      },
+      "diagnostic_metrics": {
+        "result": 180411
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -66,7 +125,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.008962
+      },
+      "diagnostic_metrics": {
+        "result": 17
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -79,7 +144,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.042272
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -91,7 +162,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.008354
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -103,7 +180,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.023572
+      },
+      "diagnostic_metrics": {
+        "result": 100000
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -115,7 +198,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.025275
+      },
+      "diagnostic_metrics": {
+        "result": 1.0
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -127,7 +216,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.030452
+      },
+      "diagnostic_metrics": {
+        "result": 1.0
+      },
       "evidence_locator": "evidence/current/performance/owned-algorithms.json"
     },
     {
@@ -140,7 +235,13 @@
       "budgets": {
         "elapsed_seconds": 2.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.022371
+      },
+      "diagnostic_metrics": {
+        "result": 100
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -152,7 +253,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.000277
+      },
+      "diagnostic_metrics": {
+        "result": 4999
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -165,7 +272,13 @@
       "budgets": {
         "elapsed_seconds": 2.0
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.004161
+      },
+      "diagnostic_metrics": {
+        "result": 10000
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -179,7 +292,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.000532
+      },
+      "diagnostic_metrics": {
+        "result": 20000
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -191,7 +310,13 @@
       "budgets": {
         "elapsed_seconds": 1.0
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.003054
+      },
+      "diagnostic_metrics": {
+        "result": 94117
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -205,7 +330,13 @@
       "budgets": {
         "elapsed_seconds": 1.5
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 0.005299
+      },
+      "diagnostic_metrics": {
+        "result": 100
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -217,7 +348,13 @@
       "budgets": {
         "elapsed_seconds": 0.75
       },
-      "status": "BLOCKED",
+      "status": "PASS",
+      "hard_metrics": {
+        "elapsed_seconds": 5.1e-05
+      },
+      "diagnostic_metrics": {
+        "result": 86
+      },
       "evidence_locator": "evidence/current/performance/stress.json"
     },
     {
@@ -231,8 +368,25 @@
       "budgets": {
         "initial_readiness_ms": 5000
       },
-      "status": "BLOCKED",
-      "evidence_locator": "evidence/current/performance/browser.json"
+      "status": "PASS",
+      "hard_metrics": {
+        "logical_rows": 100000,
+        "loaded_rows": 50,
+        "rendered_rows_before_deep_scroll": 20,
+        "rendered_rows_after_deep_scroll": 20,
+        "initial_readiness_ms": 253
+      },
+      "diagnostic_metrics": {
+        "rendered_row_ratio": null,
+        "used_js_heap_bytes": 13400000
+      },
+      "evidence_locator": "evidence/current/performance/browser.json",
+      "fixture_kind": "production-shaped-server-page",
+      "browser_project": "chromium",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      }
     },
     {
       "id": "browser-ag-grid-virtualization-5000",
@@ -246,9 +400,49 @@
         "deep_scroll_settle_ms": 5000,
         "sort_interaction_ms": 5000
       },
-      "status": "BLOCKED",
-      "evidence_locator": "evidence/current/performance/browser.json"
+      "status": "PASS",
+      "hard_metrics": {
+        "logical_rows": 100000,
+        "loaded_rows": 5000,
+        "rendered_rows_before_deep_scroll": 20,
+        "rendered_rows_after_deep_scroll": 20,
+        "rendered_row_ratio": 0.004,
+        "initial_rows_recycled": true,
+        "reached_target_row": true,
+        "selection_or_keyboard_works": true,
+        "representative_sort_works": true,
+        "initial_readiness_ms": 307,
+        "deep_scroll_settle_ms": 42,
+        "sort_interaction_ms": 244
+      },
+      "diagnostic_metrics": {
+        "used_js_heap_bytes": 42100000
+      },
+      "evidence_locator": "evidence/current/performance/browser.json",
+      "fixture_kind": "synthetic-test-only",
+      "browser_project": "chromium",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "row_recycling_proof": {
+        "initial_identity": "Synthetic work item 0000",
+        "removed_after_deep_scroll": true
+      },
+      "selection_result": {
+        "target_label": "Synthetic work item 4999",
+        "keyboard": "Space",
+        "selected_region": true
+      },
+      "sort_result": {
+        "column": "Title",
+        "first_row": "Synthetic work item 0000"
+      }
     }
   ],
-  "company_performance_boundary": "Repository performance evidence never marks the external CompanyQualification performance gate PASS."
+  "company_performance_boundary": "Repository performance PASS is not CompanyQualification performance PASS; authentic company/profile production-like evidence remains external and BLOCKED.",
+  "contract": {
+    "locator": "contracts/performance-regression.json",
+    "sha256": "9576b1ff4a034e00f7c302585309cbe1c73c44f50aab873ad8034134c89f0d05"
+  }
 }

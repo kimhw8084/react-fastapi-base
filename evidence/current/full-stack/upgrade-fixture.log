@@ -1,1 +1,191 @@
-Node 22 is required for the generated-app fixture.
+{
+  "schema_version": 2,
+  "candidate_head": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "checkout_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "created_at": "2026-09-25T18:11:41Z",
+  "timestamp": "2026-09-25T18:11:41Z",
+  "command": [
+    "python3",
+    "scripts/upgrade_fixture.py"
+  ],
+  "exit_code": 0,
+  "environment": {
+    "platform": "Darwin",
+    "machine": "arm64",
+    "profile": "development"
+  },
+  "hashes": {
+    "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b"
+  },
+  "profile": "development",
+  "application_owned_preserved": true,
+  "result": "PASS",
+  "duration_seconds": 29.818,
+  "steps": [
+    {
+      "name": "application-data-seed",
+      "command": [
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "-c",
+        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); database=Database(settings); tenant=provision(database, 'Upgrade fixture tenant', 'alice'); database.close(); app=create_app(settings); client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development' and bootstrap['user_id']=='alice'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); created=client.post('/api/v1/projects', json={'title':'Application-owned project','summary':'survives managed core upgrade','status':'active','owner':'alice'}); assert created.status_code==201; print(json.dumps({'tenant_id':tenant,'project_id':created.json()['id'],'title':created.json()['title']})); client.close()"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/backend",
+      "exit_code": 0,
+      "duration_seconds": 1.87,
+      "stdout_tail": "{\"tenant_id\": \"85869ae2-486d-4773-89d5-d0250b6e1d50\", \"project_id\": \"8c565714-f9ed-4ca2-99f9-17267abf87ba\", \"title\": \"Application-owned project\"}\n",
+      "stderr_tail": "",
+      "record": {
+        "tenant_id": "85869ae2-486d-4773-89d5-d0250b6e1d50",
+        "project_id": "8c565714-f9ed-4ca2-99f9-17267abf87ba",
+        "title": "Application-owned project"
+      }
+    },
+    {
+      "name": "upgrade-plan",
+      "exit_code": 0,
+      "plan_hash": "dc98710fa718a2f7484f99039367e2758beff8c706cf4af5fa8d4f4dae944c7c",
+      "changes": 1,
+      "conflicts": 0,
+      "source_provenance": {
+        "platform_version": "1.0.0-rc.23",
+        "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+        "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b"
+      }
+    },
+    {
+      "name": "upgrade-apply",
+      "exit_code": 0,
+      "journal": "../../../../../../../private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/.template-upgrades/20260925T181116Z-dc98710fa718/journal.json"
+    },
+    {
+      "name": "application-config-preserved-after-apply",
+      "exit_code": 0,
+      "preserved": true
+    },
+    {
+      "name": "application-data-preserved-after-apply",
+      "command": [
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "-c",
+        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='85869ae2-486d-4773-89d5-d0250b6e1d50'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/backend",
+      "exit_code": 0,
+      "duration_seconds": 1.601,
+      "stdout_tail": "{\"tenant_id\": \"85869ae2-486d-4773-89d5-d0250b6e1d50\", \"project_id\": \"8c565714-f9ed-4ca2-99f9-17267abf87ba\", \"title\": \"Application-owned project\"}\n",
+      "stderr_tail": "",
+      "record": {
+        "tenant_id": "85869ae2-486d-4773-89d5-d0250b6e1d50",
+        "project_id": "8c565714-f9ed-4ca2-99f9-17267abf87ba",
+        "title": "Application-owned project"
+      }
+    },
+    {
+      "name": "migration",
+      "command": [
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "-c",
+        "from app.platform.settings import Settings; from app.platform.database import Database; from app.platform.migrations import migrate, assert_revision; s=Settings(environment=\"test\", profile=\"development\"); d=Database(s); migrate(d); migrate(d, \"85869ae2-486d-4773-89d5-d0250b6e1d50\"); assert_revision(d); assert_revision(d, \"85869ae2-486d-4773-89d5-d0250b6e1d50\")"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/backend",
+      "exit_code": 0,
+      "duration_seconds": 0.561,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "frontend-install",
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/frontend",
+      "exit_code": 0,
+      "duration_seconds": 2.373,
+      "stdout_tail": "\nadded 272 packages, and audited 273 packages in 2s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
+      "stderr_tail": "npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation\n"
+    },
+    {
+      "command": [
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "scripts/generate_contracts.py"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app",
+      "exit_code": 0,
+      "duration_seconds": 1.969,
+      "stdout_tail": "OpenAPI and TypeScript contracts generated.\n",
+      "stderr_tail": "",
+      "name": "contracts"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/frontend",
+      "exit_code": 0,
+      "duration_seconds": 5.394,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.23 typecheck\n> tsc --noEmit\n\n",
+      "stderr_tail": "",
+      "name": "frontend-typecheck"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/frontend",
+      "exit_code": 0,
+      "duration_seconds": 5.024,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.23 test\n> vitest run\n\n\n RUN  v4.1.11 /private/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/frontend\n\n\n Test Files  28 passed (28)\n      Tests  88 passed (88)\n   Start at  13:11:30\n   Duration  3.77s (transform 2.05s, setup 6.33s, import 2.62s, tests 2.73s, environment 21.33s)\n\n",
+      "stderr_tail": "",
+      "name": "frontend-tests"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/frontend",
+      "exit_code": 0,
+      "duration_seconds": 5.523,
+      "stdout_tail": "\n> react-fastapi-base-frontend@1.0.0-rc.23 prebuild\n> node scripts/prepare-lab.mjs\n\n\n> react-fastapi-base-frontend@1.0.0-rc.23 build\n> tsc --noEmit && vite build\n\nvite v8.2.2 building client environment for production...\ntransforming...\n\u2713 206 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                              0.40 kB \u2502 gzip:   0.28 kB\ndist/assets/index-C_dw8m3e.css             111.93 kB \u2502 gzip:  19.02 kB\ndist/assets/WorkspaceShell-DAu7HeR-.js       1.16 kB \u2502 gzip:   0.49 kB\ndist/assets/model-Dp3BhK-X.js                1.19 kB \u2502 gzip:   0.60 kB\ndist/assets/Workspace-Cn3JJ8vx.js            1.45 kB \u2502 gzip:   0.73 kB\ndist/assets/model-DYk614PN.js                1.49 kB \u2502 gzip:   0.61 kB\ndist/assets/Workspace-Bg986YfE.js            1.79 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-DtnD6jXH.js            1.84 kB \u2502 gzip:   0.84 kB\ndist/assets/Workspace-B_JS7WgO.js            2.16 kB \u2502 gzip:   0.94 kB\ndist/assets/focusReveal-Bb5GrZYs.js          3.24 kB \u2502 gzip:   1.36 kB\ndist/assets/Workspace-BTHaup7e.js            3.90 kB \u2502 gzip:   1.50 kB\ndist/assets/Workspace-CcpqhGDj.js            5.26 kB \u2502 gzip:   1.92 kB\ndist/assets/Workspace-Dlc-7gRM.js            5.29 kB \u2502 gzip:   1.93 kB\ndist/assets/Workspace-Ca0rHYi_.js            5.33 kB \u2502 gzip:   1.84 kB\ndist/assets/Workspace-DKS_05a6.js            5.38 kB \u2502 gzip:   2.09 kB\ndist/assets/Workspace-bmNJGU-v.js            5.45 kB \u2502 gzip:   2.02 kB\ndist/assets/Workspace-Dnkh5FzX.js            5.71 kB \u2502 gzip:   2.04 kB\ndist/assets/Workspace-D5DBcvqC.js            6.02 kB \u2502 gzip:   2.15 kB\ndist/assets/Workspace-Cj8ezTwA.js            6.18 kB \u2502 gzip:   2.54 kB\ndist/assets/Workspace-D5ZXrbtT.js            6.22 kB \u2502 gzip:   2.20 kB\ndist/assets/Workspace-DQUyZnMb.js            6.51 kB \u2502 gzip:   2.36 kB\ndist/assets/Workspace-0_260J2u.js            6.76 kB \u2502 gzip:   2.30 kB\ndist/assets/Workspace-DQRgPek5.js            7.31 kB \u2502 gzip:   2.32 kB\ndist/assets/primitives-BuY10_Ir.js           8.61 kB \u2502 gzip:   2.72 kB\ndist/assets/Workspace-YlDfnZ9z.js            9.38 kB \u2502 gzip:   3.24 kB\ndist/assets/Workspace-Czrqra5V.js           10.94 kB \u2502 gzip:   3.91 kB\ndist/assets/Workspace-B1U5czT-.js           12.54 kB \u2502 gzip:   4.31 kB\ndist/assets/Workspace-BJ5dvijw.js           13.57 kB \u2502 gzip:   3.94 kB\ndist/assets/ExperienceLab-D04zMJgs.js       21.58 kB \u2502 gzip:   6.46 kB\ndist/assets/EntityWorkspace-Bdzu5S7X.js    108.39 kB \u2502 gzip:  28.54 kB\ndist/assets/index-hEYQK-D_.js              268.15 kB \u2502 gzip:  83.44 kB\ndist/assets/FieldInput--6DF-a4Z.js       1,166.00 kB \u2502 gzip: 321.95 kB\n\n\u2713 built in 590ms\n",
+      "stderr_tail": "",
+      "name": "frontend-build"
+    },
+    {
+      "name": "upgrade-rollback",
+      "exit_code": 0,
+      "integrity_restored": true
+    },
+    {
+      "name": "application-config-preserved-after-rollback",
+      "exit_code": 0,
+      "preserved": true
+    },
+    {
+      "name": "application-data-preserved-after-rollback",
+      "command": [
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "-c",
+        "import json, os; from pathlib import Path; from fastapi.testclient import TestClient; from app.main import create_app; from app.platform.database import Database; from app.platform.provision import provision; from app.platform.settings import Settings; root=Path(os.environ['FIXTURE_DATA_ROOT']); settings=Settings(environment='test', profile='development', data_root=root, dev_user='alice'); app=create_app(settings); tenant='85869ae2-486d-4773-89d5-d0250b6e1d50'; client=TestClient(app); bootstrap=client.get('/api/v1/bootstrap').json(); assert bootstrap['profile']=='development'; client.headers.update({'X-Tenant-Id':tenant,'X-CSRF-Token':bootstrap['csrf_token']}); listed=client.get('/api/v1/projects'); assert listed.status_code==200 and listed.json()['total']==1; project=listed.json()['items'][0]; assert project['title']=='Application-owned project'; assert 'AccessKey' not in str(bootstrap) and 'data_root' not in str(bootstrap); print(json.dumps({'tenant_id':tenant,'project_id':project['id'],'title':project['title']})); client.close()"
+      ],
+      "cwd": "/var/folders/nz/6q2p_ldx3txdbw_gttbpnwjr0000gn/T/react-fastapi-upgrade-kj5tkg2d/old-generated-app/backend",
+      "exit_code": 0,
+      "duration_seconds": 1.223,
+      "stdout_tail": "{\"tenant_id\": \"85869ae2-486d-4773-89d5-d0250b6e1d50\", \"project_id\": \"8c565714-f9ed-4ca2-99f9-17267abf87ba\", \"title\": \"Application-owned project\"}\n",
+      "stderr_tail": "",
+      "record": {
+        "tenant_id": "85869ae2-486d-4773-89d5-d0250b6e1d50",
+        "project_id": "8c565714-f9ed-4ca2-99f9-17267abf87ba",
+        "title": "Application-owned project"
+      }
+    }
+  ]
+}

@@ -6,6 +6,14 @@ CHG-235 R2 is a bounded continuation of R1 candidate `b470ded76db726cc5218b42139
 
 The canonical operator workflow is [docs/WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md). Its detailed evidence remains operator-private and offline.
 
+## CHG-235 R2 local qualification
+
+The verified executable source is `16cc403090b7bb1fb44978a797bcc57369438316` with digest `9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b`. `./dev contracts`, `./dev architecture`, `./dev verify`, and `./dev verify-release` passed. Exact-base API compatibility passed against `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`; API major 1/revision 2 is unchanged.
+
+Current RC.23 verification and source hashes are `evidence/current/full-stack/verification.json` and `evidence/current/full-stack/source-hashes.json`. Release identity, readiness matrix, manifest, and evidence binding are `deploy/rc23-release-identity.json` and `evidence/current/release/rc23-{readiness-matrix,manifest,evidence-binding}.json`. Repository code readiness is true and production readiness remains false. Technical release and release-evidence gates pass; authentic company identity, storage, deployment, UI/accessibility, performance, and operations remain externally blocked. RC.21 and RC.22 reports remain historical and have not been relabelled.
+
+The sanitized Project OS Artifact Bridge bundle is published at `project-os-artifacts/react-fastapi-base/chg-235-r2-work-env-qualification-harness-fix-v2:evidence-binding/CHG-235-R2-work-env-qualification.json`. Native R1 Fabric evidence remains available at `codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1:.codex-fabric/audit.json` (job `CF-a76e16568c01043040d78b6e`, evidence commit `03f48f9c5b8428d0ec776677e647cb37899a6cc6`).
+
 ## RC.22 historical release status
 
 ## Decision

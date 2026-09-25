@@ -1,45 +1,17 @@
 Collected 32 backend test files into 4 deterministic shards.
---- backend shard 1 (33.8s, exit 0) ---
+--- backend shard 1 (33.9s, exit 0) ---
 ....................................................................     [100%]
-=============================== warnings summary ===============================
-../../../../../../opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1
-  /opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: /Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/full-stack/backend-junit.shard-1.xml -
-68 passed, 1 warning in 32.14s
---- backend shard 2 (12.4s, exit 0) ---
+68 passed in 31.40s
+--- backend shard 2 (14.9s, exit 0) ---
 ....................................                                     [100%]
-=============================== warnings summary ===============================
-../../../../../../opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1
-  /opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: /Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/full-stack/backend-junit.shard-2.xml -
-36 passed, 1 warning in 9.81s
---- backend shard 3 (43.9s, exit 0) ---
+36 passed in 11.56s
+--- backend shard 3 (43.2s, exit 0) ---
 ...........s............................................................ [ 68%]
 .................................                                        [100%]
-=============================== warnings summary ===============================
-../../../../../../opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1
-  /opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: /Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/full-stack/backend-junit.shard-3.xml -
 =========================== short test summary info ============================
 SKIPPED [1] tests/test_company_qualification_contract.py:211: generated repository release identity is not present yet
-104 passed, 1 skipped, 1 warning in 42.32s
---- backend shard 4 (51.3s, exit 0) ---
+104 passed, 1 skipped in 40.50s
+--- backend shard 4 (51.6s, exit 0) ---
 ........................................................................ [ 76%]
 ......................                                                   [100%]
-=============================== warnings summary ===============================
-../../../../../../opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1
-  /opt/anaconda3/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: /Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/evidence/current/full-stack/backend-junit.shard-4.xml -
-94 passed, 1 warning in 49.79s
+94 passed in 49.01s

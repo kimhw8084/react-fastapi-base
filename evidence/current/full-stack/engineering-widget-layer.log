@@ -1,5 +1,5 @@
 RUN strict-types-and-artifact-parity
-FAIL strict-types-and-artifact-parity
+PASS strict-types-and-artifact-parity
 RUN pure-model-tests
 PASS pure-model-tests
 RUN static-http-server
@@ -7,22 +7,5 @@ PASS static-http-server
 RUN catalog-drift
 PASS catalog-drift
 RUN browser-interactions
-FAIL browser-interactions
-Traceback (most recent call last):
-  File "/Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/scripts/verify_lab.py", line 31, in <module>
-    if __name__=='__main__':raise SystemExit(main())
-                                             ^^^^^^
-  File "/Users/haewonkim/.codex-fabric/worktrees/CF-a76e16568c01043040d78b6e/scripts/verify_lab.py", line 27, in main
-    report={'product':'react-fastapi-base','version':(ROOT/'VERSION').read_text(encoding='utf-8').strip(),'timestamp':datetime.now(timezone.utc).isoformat(),'platform':platform.platform(),'python_version':platform.python_version(),'node_version':subprocess.check_output(['node','--version'],text=True).strip(),'typescript_version':subprocess.check_output([str(ROOT/'frontend/node_modules/.bin/tsc') if (ROOT/'frontend/node_modules/.bin/tsc').is_file() else 'tsc','--version'],text=True).strip(),'browser_mode':args.mode,'checks':checks,'source_sha256':files,'lab_checks_pass':all(x['status']=='PASS' for x in checks),'react_host_verified':False,'macos_verified':False,'production_certified':False,'scope':'Compiled native widget layer. The in_memory mode does not test browser-to-HTTP serving or browser persistence. Neither mode certifies backend integration, full accessibility, manufacturing semantics or company infrastructure.'}
-                                                                                                                                                                                                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/anaconda3/lib/python3.11/subprocess.py", line 466, in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/anaconda3/lib/python3.11/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/anaconda3/lib/python3.11/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/opt/anaconda3/lib/python3.11/subprocess.py", line 1950, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'tsc'
+PASS browser-interactions
+Report: /Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/native-lab/verification.json

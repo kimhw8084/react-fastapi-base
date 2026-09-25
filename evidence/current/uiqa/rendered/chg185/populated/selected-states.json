@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "request": "CHG-185",
+  "candidate_sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "candidate_tree": "2fef15fbdd18bcd5e3d158320e8823f29fd87514",
+  "candidate_version": "1.0.0-rc.23",
+  "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "fixture": "local_synthetic_demo",
+  "rack": {
+    "geometry_proof": {
+      "devices": 4,
+      "visible_device_count": 4,
+      "selected_device": "CAP-7 chamber controller",
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png"
+    },
+    "interaction_proof": {
+      "selected": true,
+      "connected": true,
+      "trace": true,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png"
+    }
+  },
+  "planning": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+  "diagram": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+  "spc": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+  "system": {
+    "local_members": true,
+    "events": true,
+    "notifications": true,
+    "screenshots": [
+      "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png"
+    ]
+  }
+}

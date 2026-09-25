@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "request": "CHG-185",
+  "candidate_sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "candidate_tree": "2fef15fbdd18bcd5e3d158320e8823f29fd87514",
+  "candidate_version": "1.0.0-rc.23",
+  "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "empty": {
+    "title": "No active work items yet",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png"
+  },
+  "archived_empty": {
+    "title": "No archived work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png"
+  },
+  "no_match": {
+    "title": "No matching work items",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png"
+  },
+  "request_error": {
+    "alert": "Qualification fixture request failure",
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png"
+  },
+  "read_only": {
+    "permission": "read-only bootstrap permissions",
+    "access": "Read only",
+    "settled_populated": true,
+    "representative_record": "Qualify synthetic process excursion evidence",
+    "write_or_create_controls_absent": true,
+    "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png"
+  }
+}

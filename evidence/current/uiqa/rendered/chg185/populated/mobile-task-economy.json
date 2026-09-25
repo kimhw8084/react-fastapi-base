@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "request": "CHG-185",
+  "candidate_sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "candidate_tree": "2fef15fbdd18bcd5e3d158320e8823f29fd87514",
+  "candidate_version": "1.0.0-rc.23",
+  "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "limits": {
+    "task_start_top_max_px": 180,
+    "primary_action_bottom_max_px": 300,
+    "material_content_visible_px_min": 64
+  },
+  "budgets": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "task_start_top": 139,
+      "task_start_bottom": 269.484375,
+      "action_top": 229.484375,
+      "action_bottom": 269.484375,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "material_selector": ".workspace-primary > div.golden-grid",
+      "material_top": 555.8125,
+      "material_bottom": 757.8125,
+      "material_visible_px": 202,
+      "document_scroll_width": 390,
+      "body_scroll_width": 390
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "task_start_top": 139,
+      "task_start_bottom": 269.484375,
+      "action_top": 229.484375,
+      "action_bottom": 269.484375,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "material_selector": ".workspace-primary > div.golden-grid",
+      "material_top": 569.3125,
+      "material_bottom": 771.3125,
+      "material_visible_px": 202,
+      "document_scroll_width": 320,
+      "body_scroll_width": 320
+    }
+  ],
+  "faulted_workspace_chrome": {
+    "mutation": "workspace summary min-height 420px",
+    "measurement": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "task_start_top": 139,
+      "task_start_bottom": 269.484375,
+      "action_top": 229.484375,
+      "action_bottom": 269.484375,
+      "task_start_visible": true,
+      "action_reachable": true,
+      "material_selector": ".workspace-primary > div.golden-grid",
+      "material_top": 878.484375,
+      "material_bottom": 1080.484375,
+      "material_visible_px": 0,
+      "document_scroll_width": 390,
+      "body_scroll_width": 390
+    },
+    "violated_budget": "material_content_visible_px >= 64",
+    "oracle_rejected": true
+  }
+}

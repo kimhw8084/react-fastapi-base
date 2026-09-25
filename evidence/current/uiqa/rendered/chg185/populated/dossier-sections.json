@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request": "CHG-185",
+  "candidate_sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "candidate_tree": "2fef15fbdd18bcd5e3d158320e8823f29fd87514",
+  "candidate_version": "1.0.0-rc.23",
+  "executable_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "section_count": 10,
+  "sections": [
+    "overview",
+    "fields",
+    "relationships",
+    "activity",
+    "history",
+    "compare",
+    "comments",
+    "files",
+    "audit",
+    "actions"
+  ],
+  "keyboard_focus_reachable": true,
+  "native_select_options_present": true,
+  "headless_chromium_native_popup_selection": "UNPROVEN",
+  "screenshots": [
+    "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+    "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png"
+  ]
+}
