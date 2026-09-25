@@ -3,6 +3,7 @@ from pathlib import Path
 import subprocess
 import sys
 import zipfile
+from scripts import generate_checkpoint_manifest
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -22,3 +23,14 @@ def test_checkpoint_has_single_generated_manifest_and_no_secrets(tmp_path):
     finally:
         archive.unlink(missing_ok=True)
         archive.with_suffix('.zip.sha256').unlink(missing_ok=True)
+
+def test_repository_checkpoint_check_rejects_stale_manifest(tmp_path, monkeypatch, capsys):
+    (tmp_path/'source.txt').write_text('current source\n', encoding='utf-8')
+    manifest=tmp_path/'CHECKPOINT_MANIFEST.json'
+    manifest.write_text('{"files": {}}\n', encoding='utf-8')
+    monkeypatch.setattr(generate_checkpoint_manifest, 'ROOT', tmp_path)
+    monkeypatch.setattr(generate_checkpoint_manifest, 'MANIFEST', manifest)
+    monkeypatch.setattr(sys, 'argv', ['generate_checkpoint_manifest.py', '--check'])
+
+    assert generate_checkpoint_manifest.main() == 1
+    assert 'Checkpoint manifest is stale' in capsys.readouterr().out

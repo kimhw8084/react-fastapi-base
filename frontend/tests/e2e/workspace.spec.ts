@@ -14,12 +14,12 @@ test('create, reload and retrieve revision-backed details',async({page})=>{
  await page.reload()
  await expect(page.getByRole('dialog',{name:title})).toBeVisible()
  for(const tab of ['Relationships','Activity','History','Compare','Comments','Files','Audit','Actions']){
-  await page.getByRole('button',{name:tab,exact:true}).click()
+  await page.getByRole('tab',{name:tab,exact:true}).click()
   await expect(page.getByRole('dialog',{name:title})).toBeVisible()
  }
- await page.getByRole('button',{name:'History',exact:true}).click()
+ await page.getByRole('tab',{name:'History',exact:true}).click()
  await expect(page.getByRole('region',{name:'Version history'})).toContainText('Revision 1')
- await page.getByRole('button',{name:'Compare',exact:true}).click()
+ await page.getByRole('tab',{name:'Compare',exact:true}).click()
  await expect(page.getByRole('region',{name:'Compare revisions'})).toBeVisible()
 })
 
@@ -37,7 +37,7 @@ test('read-only viewer dossier comments do not expose a composer',async({page})=
   await route.fulfill({response,json:body})
  })
  await page.reload()
- await page.getByRole('button',{name:'Comments',exact:true}).click()
+  await page.getByRole('tab',{name:'Comments',exact:true}).click()
  await expect(page.getByText('Comments are read-only for this record.',{exact:true})).toBeVisible()
  await expect(page.getByRole('textbox',{name:'Add comment'})).toHaveCount(0)
 })
@@ -144,7 +144,7 @@ test('major workspaces remain axe clean under high contrast, reduced motion and 
   await page.goto(route)
   await expect(page.locator('main, [role="main"]').first()).toBeVisible()
   if(route==='/'){
-   await page.getByLabel('Contrast',{exact:true}).selectOption('high')
+   const contrast=page.locator('#desktop-contrast');await expect(contrast).toBeVisible();await expect(contrast).toHaveAccessibleName('Contrast');await contrast.selectOption('high')
   }
   await expect(page.locator('html')).toHaveAttribute('data-contrast','high')
   const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
@@ -160,8 +160,8 @@ test('major workspaces remain axe clean under high contrast, reduced motion and 
 })
 
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
- await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
- await page.getByLabel('Theme',{exact:true}).selectOption({label:theme})
+ await page.setViewportSize({width:1280,height:900});await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
+ const themeControl=page.locator('#desktop-theme');await expect(themeControl).toBeVisible();await expect(themeControl).toHaveAccessibleName('Theme');await themeControl.selectOption({label:theme})
  await expect(page.locator('html')).toHaveAttribute('data-theme',theme.toLowerCase())
  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
  await info.attach('axe.json',{body:Buffer.from(JSON.stringify(result,null,2)),contentType:'application/json'})

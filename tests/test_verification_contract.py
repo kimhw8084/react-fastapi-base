@@ -15,6 +15,7 @@ def test_fresh_clone_uses_exact_candidate_commit_not_remote_main():
     assert commands[0] == ['git', 'clone', '--no-local', '/candidate', 'clone']
     assert commands[1] == ['git', 'checkout', '--detach', 'abc123']
     assert all('main' not in part for command in commands[:2] for part in command)
+    assert ['npm', 'exec', '--', 'playwright', 'install', 'chromium'] in commands
 
 
 def test_unavailable_macos_qualification_is_blocked_but_portable_candidate_can_pass():

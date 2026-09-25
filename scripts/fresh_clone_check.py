@@ -48,7 +48,7 @@ def verification_commands(source_root: Path, source_commit: str) -> list[list[st
         ['npm', 'run', 'typecheck'],
         ['npm', 'run', 'build'],
         ['npm', 'run', 'build:storybook'],
-        ['npx', 'playwright', 'install', 'chromium'],
+        ['npm', 'exec', '--', 'playwright', 'install', 'chromium'],
         [python, 'scripts/e2e_runner.py'],
     ]
 

@@ -16,6 +16,7 @@ import { RackWorkspace } from './RackWorkspace'
 import { SavedViews } from './SavedViews'
 import { resolveWorkspaceVisualizations, sanitizeWorkspaceView } from './workspaceState'
 import { revealHorizontalFocus } from '../ui/focusReveal'
+import { visualizationDisplayLabel } from './visualizationDisplay'
 
 interface Props<T extends BaseRecord> extends WorkspaceContext {
   adapter: WorkspaceAdapter<T>
@@ -78,7 +79,7 @@ export function EntityWorkspace<T extends BaseRecord>(props: Props<T>) {
   }
 
   const projectionSwitch = available.length > 1 ? <div ref={visualizationSwitchRef} className="visualization-switch-scroll" role="group" aria-label="Visualization" onFocusCapture={event => { if (event.target instanceof HTMLElement) revealHorizontalFocus(event.currentTarget, event.target) }}><div className="segmented visualization-switch">
-    {available.map(mode => <button key={mode} aria-pressed={view.visualization === mode} onClick={() => selectVisualization(mode)}>{mode[0]?.toUpperCase()}{mode.slice(1)}</button>)}
+    {available.map(mode => <button key={mode} data-visualization-key={mode} aria-pressed={view.visualization === mode} onClick={() => selectVisualization(mode)}>{visualizationDisplayLabel(mode)}</button>)}
   </div></div> : undefined
 
   const viewTools = <div className="workspace-view-tools">

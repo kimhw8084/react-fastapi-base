@@ -1,8 +1,9 @@
-import { useMemo, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { FieldDefinition } from '../../generated/schema'
 import type { Draft } from './types'
 import { FieldInput } from './FieldInput'
 import { useDirtyGuard } from '../state/dirtyGuard'
+import { isFocusEligible } from '../ui/focus'
 
 export type FormPresentation = 'simple'|'sectioned'|'tabbed'|'wizard'|'bulk'
 export interface FormSection { id:string; label:string; fieldKeys:string[]; description?:string }
@@ -34,9 +35,13 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
   const dirty=useMemo(()=>JSON.stringify(draft)!==JSON.stringify(initial),[draft,initial])
   const [clientErrors,setClientErrors]=useState<Record<string,string>>({})
   const [pendingFields,setPendingFields]=useState<Set<string>>(new Set())
+  const [pendingSubmission,setPendingSubmission]=useState(false)
   const validationTokens=useRef(new Map<string,number>())
   useDirtyGuard(dirty)
   const errors={...clientErrors,...serverErrors}
+  const fieldKeys=new Set(fields.filter(field=>!field.read_only).map(field=>field.key))
+  const linkedErrors=Object.entries(errors).filter(([key])=>fieldKeys.has(key))
+  const formErrors=Object.entries(errors).filter(([key])=>!fieldKeys.has(key))
   const visibleSections=presentation==='simple'||presentation==='bulk'?[sections[0]??defaultSections(fields)[0]!]:sections
   const current=visibleSections[Math.min(active,visibleSections.length-1)]!
   const render=(field:FieldDefinition)=>{
@@ -48,8 +53,9 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
       {pendingFields.has(field.key)&&<small className="muted" role="status">Checking…</small>}
     </label>
   }
+  useEffect(()=>{if(pendingFields.size===0)setPendingSubmission(false)},[pendingFields.size])
   const validate=async()=>{
-    if(pendingFields.size){setClientErrors(current=>({...current,__pending:'Wait for field validation to finish.'}));return false}
+    if(pendingFields.size){setPendingSubmission(true);return false}
     const next:Record<string,string>={}
     for(const field of fields){if(field.required&&!field.read_only&&!String(draft[field.key]??'').trim())next[field.key]=`${field.label} is required.`}
     if(!Object.keys(next).length&&validateAsync){Object.assign(next,await validateAsync(draft))}
@@ -59,7 +65,9 @@ export function FormEngine({formId,fields,draft,initial,onChange,onSubmit,valida
   const submit=async(event:React.FormEvent)=>{event.preventDefault();if(busy)return;if(!(await validate()))return;await onSubmit(draft)}
   const next=async()=>{if(!(await validate()))return;setActive(value=>Math.min(value+1,visibleSections.length-1))}
   return <form id={formId} onSubmit={submit} aria-label="Record form" noValidate>
-    {Object.keys(errors).length>0&&<section className="form-error-summary" role="alert" aria-label="Form errors"><strong>Review {Object.keys(errors).length} field error{Object.keys(errors).length===1?'':'s'}.</strong><ul>{Object.entries(errors).map(([key,value])=><li key={key}><button type="button" onClick={()=>document.getElementById(`record-field-${key}`)?.focus()}>{value}</button></li>)}</ul></section>}
+    {linkedErrors.length>0&&<section className="form-error-summary" role="alert" aria-label="Form errors"><strong>Review {linkedErrors.length} field error{linkedErrors.length===1?'':'s'}.</strong><ul>{linkedErrors.map(([key,value])=><li key={key}><button type="button" onClick={()=>{const target=document.getElementById(`record-field-${key}`);if(target&&isFocusEligible(target))target.focus()}}>{value}</button></li>)}</ul></section>}
+    {formErrors.length>0&&<section className="form-level-errors" role="alert" aria-label="Form-level errors">{formErrors.map(([key,value])=><p key={key}>{value}</p>)}</section>}
+    {pendingSubmission&&pendingFields.size>0&&<p className="muted" role="status">Wait for field validation to finish before saving.</p>}
     {presentation==='tabbed'&&<div className="segmented" role="tablist" aria-label="Form sections">{sections.map((section,index)=><button type="button" role="tab" aria-selected={active===index} key={section.id} onClick={()=>setActive(index)}>{section.label}</button>)}</div>}
     {presentation==='wizard'&&<nav className="wizard-steps" aria-label="Form steps">{sections.map((section,index)=><button type="button" key={section.id} aria-current={active===index?'step':undefined} onClick={()=>index<=active&&setActive(index)}>{index+1}. {section.label}</button>)}</nav>}
     {presentation==='sectioned'||presentation==='simple'||presentation==='bulk'?visibleSections.map(section=><fieldset key={section.id}><legend>{section.label}</legend>{section.description&&<p className="muted">{section.description}</p>}<div className="form-grid">{section.fieldKeys.map(key=>fields.find(field=>field.key===key)).filter((field):field is FieldDefinition=>Boolean(field)).map(render)}</div></fieldset>):<fieldset key={current.id}><legend>{current.label}</legend>{current.description&&<p className="muted">{current.description}</p>}<div className="form-grid">{current.fieldKeys.map(key=>fields.find(field=>field.key===key)).filter((field):field is FieldDefinition=>Boolean(field)).map(render)}</div></fieldset>}

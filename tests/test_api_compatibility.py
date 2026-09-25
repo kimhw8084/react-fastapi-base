@@ -122,6 +122,33 @@ def test_contract_revision_must_increase_for_observable_changes():
     assert any(change['kind'] == 'revision-regression' for change in result(base, candidate)['changes'])
 
 
+def test_bootstrap_revision_default_can_follow_a_monotonic_contract_revision_bump():
+    bootstrap = {
+        'type': 'object',
+        'required': ['api_revision'],
+        'properties': {'api_revision': {**schema('integer'), 'default': 1}},
+    }
+    base = contract(operations={
+        '/api/v1/bootstrap': {
+            'get': operation(response={'$ref': '#/components/schemas/Bootstrap'}, operation_id='bootstrap'),
+        },
+    })
+    base['components']['schemas']['Bootstrap'] = deepcopy(bootstrap)
+    candidate = deepcopy(base)
+    candidate['components']['schemas']['Bootstrap']['properties']['api_revision']['default'] = 2
+    candidate['info']['x-api-contract-revision'] = 2
+    candidate['components']['schemas']['Bootstrap']['properties']['application'] = schema()
+    report = result(base, candidate)
+    assert report['result'] == 'PASS'
+    assert report['breaking_changes'] == 0
+    assert sum(change['kind'] == 'api-revision-metadata-bump' for change in report['changes']) == 2
+
+    candidate['info']['x-api-contract-revision'] = 1
+    unversioned = result(base, candidate)
+    assert unversioned['result'] == 'FAIL'
+    assert any(change['kind'] == 'schema-constraint-change' for change in unversioned['changes'])
+
+
 def test_missing_baseline_is_blocked_and_report_is_machine_readable(tmp_path):
     output = tmp_path / 'compatibility.json'
     completed = subprocess.run(

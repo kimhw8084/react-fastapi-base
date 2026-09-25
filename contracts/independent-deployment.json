@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "contract_id": "react-fastapi-base.independent-deployment",
-  "candidate_version": "1.0.0-rc.21",
+  "candidate_version": "1.0.0-rc.22",
   "status": "repository_supported_not_company_certified",
   "topology": {
     "independent_publishers": true,
@@ -19,7 +19,7 @@
   },
   "api_compatibility": {
     "major": 1,
-    "frontend_compiled_revision": 1,
+    "frontend_compiled_revision": 2,
     "backend_overlap_rule": "same_major_and_backend_revision_greater_than_or_equal_to_frontend_compiled_revision",
     "rollout_order": "backend_first",
     "bootstrap_failure": "missing_incompatible_or_older_backend_fails_closed"

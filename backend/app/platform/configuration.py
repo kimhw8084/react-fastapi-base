@@ -5,9 +5,14 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 class NavigationItem(BaseModel):
-    model_config = ConfigDict(extra='forbid',json_schema_serialization_defaults_required=True)
+    # group/icon are application-owned navigation hints. Keep them optional on
+    # the wire so older application configs and clients remain valid while
+    # serialized defaults still provide the reference app's current behavior.
+    model_config = ConfigDict(extra='forbid')
     workspace: str = Field(pattern=r'^[a-z][a-z0-9_]{0,39}$')
     label: str = Field(min_length=1, max_length=60)
+    group: str = Field(default='Workspaces',min_length=1,max_length=40)
+    icon: Literal['work-items','projects','racks','equipment','knowledge','investigations','research','risks','planning','diagrams','measurements','wafers','lots','equipment-states','recipes','services','delivery','observability','incidents','objectives','system','command','refresh','add','quick-look','close','expand','chevron','search'] = 'work-items'
 
 class ApplicationConfig(BaseModel):
     model_config = ConfigDict(extra='forbid',json_schema_serialization_defaults_required=True)

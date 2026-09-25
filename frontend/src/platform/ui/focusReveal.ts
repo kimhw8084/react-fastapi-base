@@ -31,5 +31,11 @@ export function revealHorizontalFocus(owner: HTMLElement, target: HTMLElement): 
     if (targetRight > right) nextScrollLeft += targetRight - right
     const maximum = Math.max(0, owner.scrollWidth - owner.clientWidth)
     owner.scrollLeft = Math.min(maximum, Math.max(0, nextScrollLeft))
+    const verticalTarget = target.getBoundingClientRect()
+    const focusTop = verticalTarget.top - extent
+    const focusBottom = verticalTarget.bottom + extent
+    const viewportInset = 1 / Math.max(1, window.devicePixelRatio)
+    if (focusTop < viewportInset) window.scrollBy(0, focusTop - viewportInset)
+    else if (focusBottom > window.innerHeight - viewportInset) window.scrollBy(0, focusBottom - window.innerHeight + viewportInset)
   })
 }

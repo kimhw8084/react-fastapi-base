@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.21` — source-bound Golden UI v2 mobile navigation-shell repair candidate; V1 local code complete; company qualification pending.
+`1.0.0-rc.22` — CHG-185 Golden UI v3 review overlay candidate; company qualification remains pending. The v3 review law remains provisional and does not change Project OS authority.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 

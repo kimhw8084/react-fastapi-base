@@ -8,87 +8,129 @@
   "navigation": [
     {
       "workspace": "work_items",
-      "label": "Work items"
+      "label": "Work items",
+      "group": "Work",
+      "icon": "work-items"
     },
     {
       "workspace": "projects",
-      "label": "Projects"
+      "label": "Projects",
+      "group": "Work",
+      "icon": "projects"
     },
     {
       "workspace": "racks",
-      "label": "Racks"
+      "label": "Racks",
+      "group": "Infrastructure",
+      "icon": "racks"
     },
     {
       "workspace": "equipment",
-      "label": "Equipment"
+      "label": "Equipment",
+      "group": "Infrastructure",
+      "icon": "equipment"
     },
     {
       "workspace": "knowledge_entries",
-      "label": "Knowledge"
+      "label": "Knowledge",
+      "group": "Knowledge and risk",
+      "icon": "knowledge"
     },
     {
       "workspace": "investigations",
-      "label": "Investigations"
+      "label": "Investigations",
+      "group": "Knowledge and risk",
+      "icon": "investigations"
     },
     {
       "workspace": "research",
-      "label": "Research"
+      "label": "Research",
+      "group": "Knowledge and risk",
+      "icon": "research"
     },
     {
       "workspace": "risks",
-      "label": "Risk analysis"
+      "label": "Risk analysis",
+      "group": "Knowledge and risk",
+      "icon": "risks"
     },
     {
       "workspace": "plan_tasks",
-      "label": "Planning"
+      "label": "Planning",
+      "group": "Work",
+      "icon": "planning"
     },
     {
       "workspace": "diagram_documents",
-      "label": "Diagram studio"
+      "label": "Diagram studio",
+      "group": "Process engineering",
+      "icon": "diagrams"
     },
     {
       "workspace": "process_measurements",
-      "label": "Process measurements"
+      "label": "Process measurements",
+      "group": "Process engineering",
+      "icon": "measurements"
     },
     {
       "workspace": "wafer_runs",
-      "label": "Wafer runs"
+      "label": "Wafer runs",
+      "group": "Manufacturing",
+      "icon": "wafers"
     },
     {
       "workspace": "manufacturing_lots",
-      "label": "Manufacturing lots"
+      "label": "Manufacturing lots",
+      "group": "Manufacturing",
+      "icon": "lots"
     },
     {
       "workspace": "equipment_states",
-      "label": "Equipment states"
+      "label": "Equipment states",
+      "group": "Manufacturing",
+      "icon": "equipment-states"
     },
     {
       "workspace": "process_recipes",
-      "label": "Process recipes"
+      "label": "Process recipes",
+      "group": "Manufacturing",
+      "icon": "recipes"
     },
     {
       "workspace": "software_services",
-      "label": "Software services"
+      "label": "Software services",
+      "group": "Service operations",
+      "icon": "services"
     },
     {
       "workspace": "delivery_runs",
-      "label": "Delivery runs"
+      "label": "Delivery runs",
+      "group": "Service operations",
+      "icon": "delivery"
     },
     {
       "workspace": "observability_events",
-      "label": "Observability events"
+      "label": "Observability events",
+      "group": "Service operations",
+      "icon": "observability"
     },
     {
       "workspace": "incidents",
-      "label": "Incidents"
+      "label": "Incidents",
+      "group": "Service operations",
+      "icon": "incidents"
     },
     {
       "workspace": "service_objectives",
-      "label": "Service objectives"
+      "label": "Service objectives",
+      "group": "Service operations",
+      "icon": "objectives"
     },
     {
       "workspace": "system",
-      "label": "System"
+      "label": "System",
+      "group": "Administration",
+      "icon": "system"
     }
   ],
   "support_url": ""

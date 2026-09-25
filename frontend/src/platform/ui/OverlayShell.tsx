@@ -2,9 +2,8 @@ import { useCallback, useEffect, useId, useRef, useState, type ReactNode } from 
 import type { SurfaceKind } from './surface'
 import { SurfaceShell } from './SurfaceShell'
 import { useSurfaceRegistration } from './SurfaceManager'
-
-const focusable='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
-function focusables(root:HTMLElement|null){return root?Array.from(root.querySelectorAll<HTMLElement>(focusable)).filter(node=>node.getAttribute('aria-hidden')!=='true'):[]}
+import { focusables, restoreOverlayFocus } from './focus'
+import { Icon } from './Icon'
 
 export interface OverlayShellProps {
  open:boolean
@@ -34,7 +33,8 @@ export function OverlayShell({open,kind,title,subtitle,status,footer,onClose,chi
   if(!open){wasOpen.current=false;return}
   wasOpen.current=true
   queueMicrotask(()=>{const nodes=focusables(ref.current);(nodes[0]??ref.current)?.focus()})
-  return ()=>{const previous=returnFocus.current;returnFocus.current=null;if(previous?.isConnected)queueMicrotask(()=>{if(previous.isConnected)previous.focus()})}
+  const overlay=ref.current
+  return ()=>{const previous=returnFocus.current;returnFocus.current=null;queueMicrotask(()=>restoreOverlayFocus(previous,overlay))}
  },[open])
  useEffect(()=>{if(!open)setExpanded(false)},[open])
  useEffect(()=>{const node=ref.current;if(!open||!node)return;const handler=()=>requestClose();node.addEventListener('golden-request-close',handler);return()=>node.removeEventListener('golden-request-close',handler)},[open,requestClose])
@@ -50,7 +50,7 @@ export function OverlayShell({open,kind,title,subtitle,status,footer,onClose,chi
  return <div className={`overlay-layer ${className}`.trim()} data-surface-kind={kind} data-expanded={expanded||undefined} data-wide={wide||undefined} style={{zIndex:layer}}>
   <div className="surface-backdrop" aria-hidden="true" onClick={requestClose}/>
   <div ref={ref} className="overlay-surface" role="dialog" aria-modal={modal||undefined} aria-labelledby={titleId} tabIndex={-1} onKeyDown={onKeyDown}>
-   <SurfaceShell title={title} titleId={titleId} subtitle={subtitle} status={status} controls={<>{expandable&&<button type="button" className="icon-button" onClick={()=>setExpanded(value=>!value)} disabled={busy} aria-label={expanded?`Restore ${String(title)}`:`Expand ${String(title)}`}>{expanded?'↙':'↗'}</button>}<button type="button" className="icon-button" onClick={requestClose} disabled={busy} aria-label={`Close ${String(title)}`}>×</button></>} footer={footer}>{children}</SurfaceShell>
+   <SurfaceShell title={title} titleId={titleId} subtitle={subtitle} status={status} controls={<>{expandable&&<button type="button" className="icon-button" onClick={()=>setExpanded(value=>!value)} disabled={busy} aria-label={expanded?`Restore ${String(title)}`:`Expand ${String(title)}`}><Icon name="expand"/></button>}<button type="button" className="icon-button" onClick={requestClose} disabled={busy} aria-label={`Close ${String(title)}`}><Icon name="close"/></button></>} footer={footer}>{children}</SurfaceShell>
   </div>
  </div>
 }

@@ -14,8 +14,7 @@ from app.platform.migrations import migrate
 from app.platform.backup import snapshot,restore
 from app.profiles.company.storage_probe import probe
 from app.profiles.loader import load_profile
-from app.tooling.work_items import create_work_item_direct
-from app.features.work_items.schemas import WorkItemCreate
+from app.tooling.demo_qualification import seed_demo_qualification
 from app.platform.version import VERSION
 from scripts.source_manifest import source_provenance
 
@@ -166,9 +165,8 @@ def main():
             if database.path().exists():raise ValueError('Demo seeding requires a new data root. Existing data is preserved.')
             tenant_id=provision(database,'Demo workspace',settings.dev_user)
             for role in ('editor','viewer'):add_member(database,tenant_id,'demo.'+role,role)
-            for title,status,priority in [('Qualify company identity','open','high'),('Confirm storage provider guarantees','in_progress','high'),('Customize application branding','open','normal'),('Review the neutral reference workflow','done','normal'),('Rehearse an isolated restore','open','normal')]:
-                create_work_item_direct(database,tenant_id,WorkItemCreate(title=title,status=status,priority=priority))
-            print(json.dumps({'tenant_id':tenant_id,'user':settings.dev_user}))
+            fixture=seed_demo_qualification(database,tenant_id,settings.dev_user)
+            print(json.dumps({'tenant_id':tenant_id,'user':settings.dev_user,'qualification_fixture':fixture}))
     finally:database.close()
     return 0
 

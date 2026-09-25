@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatComparisonValue } from './Dossier'
+import { dossierTabFallbackText, formatComparisonValue } from './Dossier'
 
 describe('dossier arbitrary revision comparison values', () => {
   it('keeps text and markdown readable without interpreting markup', () => {
@@ -15,5 +15,13 @@ describe('dossier arbitrary revision comparison values', () => {
 
   it('gives empty values a stable comparison marker', () => {
     expect(formatComparisonValue(null)).toEqual({ kind: 'empty', text: '—' })
+  })
+})
+
+describe('dossier optional section fallback copy', () => {
+  it('uses concise product language without implementation adapter jargon', () => {
+    const copy = dossierTabFallbackText('actions')
+    expect(copy).toBe('No additional record-specific actions are available.')
+    expect(copy.toLocaleLowerCase()).not.toContain('adapter')
   })
 })
