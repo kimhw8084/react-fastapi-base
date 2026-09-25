@@ -245,7 +245,8 @@ class RunStore:
     @staticmethod
     def _expanded_phases(phases: dict[str, Any]) -> list[dict[str, Any]]:
         expanded = []
-        for phase_id, phase in phases.items():
+        for phase_id in PHASES:
+            phase = phases[phase_id]
             reasons = [
                 {'code': code, 'explanation': reason_detail(code).explanation, 'next_action': reason_detail(code).next_action}
                 for code in phase.get('reason_codes', [])
@@ -266,10 +267,12 @@ class RunStore:
             f"- Decision: `{state['decision']}`", '- Production ready: `false`', '',
             '## Phases', '', '| Phase | Status | Reason codes |', '|---|---|---|',
         ]
-        for phase_id, phase in state['phases'].items():
+        for phase_id in PHASES:
+            phase = state['phases'][phase_id]
             lines.append(f"| `{phase_id}` | **{phase['status']}** | {', '.join(f'`{code}`' for code in phase.get('reason_codes', [])) or '—'} |")
         lines.extend(['', '## Reasons and next actions', ''])
-        for phase_id, phase in state['phases'].items():
+        for phase_id in PHASES:
+            phase = state['phases'][phase_id]
             for code in phase.get('reason_codes', []):
                 detail = reason_detail(code)
                 lines.extend([f"### {phase_id}: `{code}`", '', detail.explanation, '', f'Next action: {detail.next_action}', ''])
@@ -304,7 +307,8 @@ class RunStore:
         allowed_phases = set(PHASES)
         if first_unproven is not None:
             allowed_phases = {'source_identity', 'configuration', 'customization', *chain[:first_unproven + 1]}
-        for phase_id, phase in state['phases'].items():
+        for phase_id in PHASES:
+            phase = state['phases'][phase_id]
             if phase_id not in allowed_phases: continue
             if phase['status'] == 'PASS': continue
             instruction = phase.get('operator_action_instruction')

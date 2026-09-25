@@ -27,7 +27,7 @@ from scripts.work_qualification.assess import (
     phase_result,
     validate_operations,
 )
-from scripts.work_qualification.reasons import GATE_PHASE, GATES, REASONS, STATUSES
+from scripts.work_qualification.reasons import GATE_PHASE, GATES, PHASES, REASONS, STATUSES
 from scripts.work_qualification.safety import UnsafeEvidence, assert_safe, assert_safe_patch, safe_path_name
 from scripts.work_qualification.source import BASE_COMMIT, BASE_TREE, configuration_observations, repository_identity
 from scripts.work_qualification.store import RunStore, compact_status, ensure_private_root
@@ -836,6 +836,28 @@ def make_initial_state(tmp_path: Path):
     state['decision'] = 'QUALIFICATION_INCOMPLETE'
     state['production_ready'] = False
     return store, state
+
+
+def test_render_is_stable_across_canonical_state_reload(tmp_path: Path) -> None:
+    store, state = make_initial_state(tmp_path)
+    phase_map = state['phases']
+    state['phases'] = {phase: phase_map[phase] for phase in PHASES}
+
+    first_handoff = store.render(state)
+    first_files = {
+        name: (store.directory / name).read_bytes()
+        for name in ('report.json', 'report.md', 'next.txt', 'inventory.json', 'handoff.txt')
+    }
+
+    reloaded = json.loads(json.dumps(state, sort_keys=True))
+    second_handoff = store.render(reloaded)
+    second_files = {
+        name: (store.directory / name).read_bytes()
+        for name in first_files
+    }
+
+    assert first_handoff == second_handoff
+    assert first_files == second_files
 
 
 def test_final_all_pass_maps_only_existing_eight_gates_and_never_approves() -> None:
