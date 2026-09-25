@@ -1,0 +1,659 @@
+{
+  "actual_run_samples": {
+    "handoff": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=ATTN gates=TR:B:EXACT,ID:B:MISSING,ST:B:SUPPORT,DEP:B:CSRF,UI:B:NATIVE,PF:B:MISSING,OP:B:DB:B,RE:B:EXACT cust=CUST_NONE run=ff73e8a3 bundle=5ec6fa81d58a",
+    "next": "Work-environment qualification next actions\n\n- [source_identity] WAITING_FOR_OPERATOR_ACTION: Keep the checked-out source binding with its private qualification run.\n- [configuration] WAITING_FOR_OPERATOR_ACTION: Provision a random secret of at least 32 characters in the provider secret store.\n- [identity] WAITING_FOR_OPERATOR_ACTION: Collect A1, B1, A2, B2, restart or redeploy, then A3 and B3 with the generated probe.",
+    "report": {
+      "decision": "QUALIFICATION_INCOMPLETE",
+      "external_transport": false,
+      "phase_count": 11,
+      "production_ready": false,
+      "source_digest_prefix": "1c375377"
+    },
+    "state": {
+      "candidate_version": "1.0.0-rc.23",
+      "decision": "QUALIFICATION_INCOMPLETE",
+      "phase_statuses": {
+        "configuration": "BLOCKED",
+        "customization": "PASS",
+        "deployment": "BLOCKED",
+        "final_qualification": "BLOCKED",
+        "identity": "BLOCKED",
+        "operations": "BLOCKED",
+        "performance": "BLOCKED",
+        "source_identity": "BLOCKED",
+        "storage": "BLOCKED",
+        "tenant_membership": "BLOCKED",
+        "ui_accessibility": "BLOCKED"
+      },
+      "production_ready": false,
+      "source_status": "PASS"
+    }
+  },
+  "artifact_type": "PROJECT_OS_ARTIFACT_BRIDGE",
+  "candidate_identity": {
+    "code_ready": true,
+    "executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+    "executable_source_tree": "4e68f8325d94145479e3879c07d6b622112a4eac",
+    "production_ready": false,
+    "release_status": "NOT_CERTIFIED",
+    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
+    "version": "1.0.0-rc.23"
+  },
+  "change": "CHG-235",
+  "changed_paths_from_r1": {
+    "base": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+    "count": 179,
+    "paths": [
+      "CHANGELOG.md",
+      "CHECKPOINT_MANIFEST.json",
+      "README.md",
+      "deploy/rc23-release-identity.json",
+      "docs/RELEASE_STATUS.md",
+      "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+      "docs/requirements-status.json",
+      "evidence/current/deployment/qualification.json",
+      "evidence/current/full-stack/api-compatibility.json",
+      "evidence/current/full-stack/api-compatibility.log",
+      "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "evidence/current/full-stack/backend-junit.xml",
+      "evidence/current/full-stack/backend-tests.log",
+      "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "evidence/current/full-stack/checkpoint-manifest.log",
+      "evidence/current/full-stack/deployment-contract.log",
+      "evidence/current/full-stack/engineering-widget-layer.log",
+      "evidence/current/full-stack/fresh-clone-macos.json",
+      "evidence/current/full-stack/frontend-build.log",
+      "evidence/current/full-stack/frontend-storybook.log",
+      "evidence/current/full-stack/frontend-typecheck.log",
+      "evidence/current/full-stack/frontend-unit.log",
+      "evidence/current/full-stack/independent-deployment-qualification.log",
+      "evidence/current/full-stack/macos-fresh-install.log",
+      "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "evidence/current/full-stack/native-lab/static-http-server.log",
+      "evidence/current/full-stack/native-lab/strict-types-and-artifact-parity.log",
+      "evidence/current/full-stack/native-lab/verification.json",
+      "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "evidence/current/full-stack/operational-reliability-qualification.log",
+      "evidence/current/full-stack/performance-owned-algorithms.log",
+      "evidence/current/full-stack/performance-results.log",
+      "evidence/current/full-stack/performance-stress.log",
+      "evidence/current/full-stack/reference-apps.log",
+      "evidence/current/full-stack/security-source.log",
+      "evidence/current/full-stack/source-hashes.json",
+      "evidence/current/full-stack/static-server.log",
+      "evidence/current/full-stack/storage-qualification.log",
+      "evidence/current/full-stack/tooling-tests.log",
+      "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "evidence/current/full-stack/upgrade-fixture.json",
+      "evidence/current/full-stack/upgrade-fixture.log",
+      "evidence/current/full-stack/verification.json",
+      "evidence/current/operations/qualification.json",
+      "evidence/current/performance/browser.json",
+      "evidence/current/performance/owned-algorithms.json",
+      "evidence/current/performance/qualification.json",
+      "evidence/current/performance/stress.json",
+      "evidence/current/recovery/object-restore.json",
+      "evidence/current/release/rc23-evidence-binding.json",
+      "evidence/current/release/rc23-manifest.json",
+      "evidence/current/release/rc23-readiness-matrix.json",
+      "evidence/current/release/reference-apps.json",
+      "evidence/current/reuse/qualification.json",
+      "evidence/current/storage/qualification.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+      "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+      "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+      "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+      "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+      "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+      "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+      "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+      "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+      "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+      "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+      "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+      "evidence/current/uiqa/ui-state-matrix-results.json",
+      "scripts/work_qualification/assess.py",
+      "scripts/work_qualification/engine.py",
+      "scripts/work_qualification/safety.py",
+      "scripts/work_qualification/source.py",
+      "scripts/work_qualification/store.py",
+      "tests/test_work_qualification.py"
+    ]
+  },
+  "decision": "PASS_LOCAL_CODE_COMPLETE_STOP_FOR_PROJECT_OS_AUDIT",
+  "git": {
+    "base_is_ancestor": true,
+    "branch": "codex/react-fastapi-base-work-env-qualification-harness-fix-v2",
+    "candidate_head": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "candidate_tree": "85cf02e2bcb16deb708870d1d68e99e93e7eff0a",
+    "dispatch_base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "remote_exact_head": true,
+    "remote_head_sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_observed_after_execution": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "worktree_clean": true
+  },
+  "native_fabric_evidence": {
+    "r1_audit_locator": ".codex-fabric/audit.json",
+    "r1_evidence_commit": "03f48f9c5b8428d0ec776677e647cb37899a6cc6",
+    "r1_job_id": "CF-a76e16568c01043040d78b6e",
+    "r1_remote_ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1",
+    "r2_native_fabric_run": "not available in this worktree; immutable R1 Fabric evidence retained"
+  },
+  "negative_control_proof": {
+    "field_name_cases_rejected": 9,
+    "material_categories": [
+      "access_key",
+      "cookie",
+      "authorization_bearer",
+      "jwt",
+      "csrf",
+      "password",
+      "session",
+      "token",
+      "secret"
+    ],
+    "sentinel_persisted": false,
+    "sentinel_values_in_bundle": false,
+    "source_patch_cases_rejected": 4,
+    "unsafe_serialization_contexts_rejected": 4,
+    "value_cases_rejected": 9
+  },
+  "next_action": "Stop here for Project OS audit before integration or any release approval.",
+  "operation": "FIX_AND_QUALIFY",
+  "phase_reason_matrix": {
+    "configuration": {
+      "reason_codes": [
+        "CFG_CSRF_INVALID",
+        "CFG_DATA_ROOT_INVALID",
+        "CFG_DEPLOYMENT_ID_MISSING",
+        "CFG_NOT_QUALIFICATION",
+        "CFG_ORIGIN_OR_HOST_INVALID",
+        "CFG_PROFILE_NOT_COMPANY",
+        "CFG_SCANNER_REQUIRED_MISSING"
+      ],
+      "status": "BLOCKED"
+    },
+    "customization": {
+      "reason_codes": [
+        "CUST_NONE"
+      ],
+      "status": "PASS"
+    },
+    "deployment": {
+      "reason_codes": [
+        "ATTENTION_UNKNOWN",
+        "CFG_CSRF_INVALID",
+        "CFG_DATA_ROOT_INVALID",
+        "CFG_DEPLOYMENT_ID_MISSING",
+        "CFG_NOT_QUALIFICATION",
+        "CFG_ORIGIN_OR_HOST_INVALID",
+        "CFG_PROFILE_NOT_COMPANY",
+        "CFG_SCANNER_REQUIRED_MISSING",
+        "DEP_INGRESS_AUTH_UNPROVEN"
+      ],
+      "status": "BLOCKED"
+    },
+    "final_qualification": {
+      "reason_codes": [
+        "QUAL_GATES_BLOCKED"
+      ],
+      "status": "BLOCKED"
+    },
+    "identity": {
+      "reason_codes": [
+        "ID_MISSING"
+      ],
+      "status": "BLOCKED"
+    },
+    "operations": {
+      "reason_codes": [
+        "OPS_DATABASE_READINESS_DEGRADATION_BLOCKED",
+        "OPS_DEPENDENCY_UNAVAILABLE_RECOVERY_BLOCKED",
+        "OPS_OUTBOUND_INTEGRATION_FAILURE_RETRY_BLOCKED",
+        "OPS_RECOVERY_RESTORE_BLOCKED",
+        "OPS_REQUEST_LOG_CORRELATION_BLOCKED",
+        "OPS_STARTUP_RESTART_BLOCKED",
+        "OPS_WORKER_CRASH_LEASE_RECOVERY_BLOCKED"
+      ],
+      "status": "BLOCKED"
+    },
+    "performance": {
+      "reason_codes": [
+        "ATTENTION_UNKNOWN",
+        "PERF_COMPANY_OBSERVATION_MISSING"
+      ],
+      "status": "BLOCKED"
+    },
+    "source_identity": {
+      "reason_codes": [
+        "SRC_EXACT",
+        "SRC_UNKNOWN_DEPLOYED_BUILD"
+      ],
+      "status": "BLOCKED"
+    },
+    "storage": {
+      "reason_codes": [
+        "ATTENTION_UNKNOWN",
+        "ST_PROVIDER_SUPPORT_MISSING"
+      ],
+      "status": "BLOCKED"
+    },
+    "tenant_membership": {
+      "reason_codes": [
+        "TENANT_MIGRATION_REQUIRED"
+      ],
+      "status": "BLOCKED"
+    },
+    "ui_accessibility": {
+      "reason_codes": [
+        "ATTENTION_UNKNOWN",
+        "UI_NATIVE_ASSISTIVE_BLOCKED"
+      ],
+      "status": "BLOCKED"
+    }
+  },
+  "production_ready": false,
+  "project_id": "react-fastapi-base",
+  "qualification_acceptance": {
+    "descendant_retained_executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+    "exact_candidate_on_main": "PASS",
+    "handoff_deterministic": "PASS",
+    "handoff_limit_characters": 300,
+    "incomplete_configuration_guided_status": "BLOCKED",
+    "later_main_descendant": "PASS",
+    "main_head_mismatch_absent": true,
+    "main_release_identity_current": true,
+    "main_repository_source_status": "PASS",
+    "observed_handoff_characters": 199,
+    "observed_handoff_sample": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=ATTN gates=TR:B:EXACT,ID:B:MISSING,ST:B:SUPPORT,DEP:B:CSRF,UI:B:NATIVE,PF:B:MISSING,OP:B:DB:B,RE:B:EXACT cust=CUST_NONE run=ff73e8a3 bundle=5ec6fa81d58a",
+    "plain_start_with_only_private_evidence_root": "PASS",
+    "plan_non_mutating": "PASS",
+    "private_evidence_root_only_base_setting": true,
+    "report_rendered": "PASS",
+    "resume_events_unchanged": true,
+    "resume_idempotent": "PASS",
+    "resume_observations_unchanged": true,
+    "resume_report_next_inventory_handoff_byte_identical": true,
+    "status": "PASS"
+  },
+  "r1_authority": {
+    "candidate_head": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+    "candidate_tree": "682c3a61fad8f62b97cb57ce93454d56f2834b06",
+    "fabric_job_id": "CF-a76e16568c01043040d78b6e",
+    "native_evidence_commit": "03f48f9c5b8428d0ec776677e647cb37899a6cc6",
+    "preserved_in_candidate_ancestry": true
+  },
+  "release_evidence": {
+    "binding_locator": "evidence/current/release/rc23-evidence-binding.json",
+    "binding_result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
+    "binding_status": "PASS",
+    "evidence_commit": "e7d58c142e316c02dc47f75ed43a2da765d64694",
+    "files": {
+      "CHECKPOINT_MANIFEST.json": {
+        "sha256": "8cab7f8db93cc522a72bf8ff6678d296c3fe85a3f14c7be7a728580cb73aa097"
+      },
+      "deploy/rc23-release-identity.json": {
+        "sha256": "702de122abde83ff758355adff92afe8dfe82ffe72c10db972c2b32e80d5a85a"
+      },
+      "evidence/current/full-stack/api-compatibility.json": {
+        "sha256": "bd05cf768e7b76c2f3d1210bd23d9763948fd5e69ae5ecb58db23cc5e74e76a6"
+      },
+      "evidence/current/full-stack/source-hashes.json": {
+        "sha256": "da81056dcb37a853700261154101b77ca710d966097b4a4f26fa222d96f3e2e4"
+      },
+      "evidence/current/full-stack/verification.json": {
+        "sha256": "6e7a8dbd090fe79381da1ba1d6a96b81842360ad41aaeb3dd96cf42c6860e947"
+      },
+      "evidence/current/release/rc23-evidence-binding.json": {
+        "sha256": "b8665b796dc229294d2f5ce4afffbdf3fc08382913388db5575ef7884e2fe936"
+      },
+      "evidence/current/release/rc23-manifest.json": {
+        "sha256": "8b6acc031e23069b8a4d3f865f906790f5181a78927ed03ebd433703745aca12"
+      },
+      "evidence/current/release/rc23-readiness-matrix.json": {
+        "sha256": "2f6733f39fb9ee896d20924cdb305267e504d26a75618f95633cb35b6e4b0076"
+      }
+    },
+    "identity_locator": "deploy/rc23-release-identity.json",
+    "manifest_locator": "evidence/current/release/rc23-manifest.json",
+    "readiness_locator": "evidence/current/release/rc23-readiness-matrix.json",
+    "source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
+    "source_hashes_locator": "evidence/current/full-stack/source-hashes.json",
+    "target_base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "verification_locator": "evidence/current/full-stack/verification.json"
+  },
+  "remaining_limitations": [
+    "Authentic company identity and per-user isolation evidence is external.",
+    "Tenant and role membership plus explicit migration acknowledgement remain operator evidence.",
+    "Provider SQLite locking, persistence, same-host behavior, backup and restore remain external.",
+    "Company publication, ingress, HTTPS, restart, redeploy and recovery remain external.",
+    "Company UI/accessibility including native assistive-technology evidence remains external.",
+    "Company route performance and all seven operational drills remain external.",
+    "The release is NOT_CERTIFIED; this candidate does not approve production or switch BASE_ENVIRONMENT."
+  ],
+  "repairs": {
+    "defect_1": "repository_identity emits non-secret sensitive_path_risk metadata; concrete credential-bearing values and field names remain rejected.",
+    "defect_2": "source validity checks repository identity, exact target base/tree lineage, current executable source, and release identity; branch is provenance only.",
+    "defect_3": "maintained RC.23 source-bound verification, release identity, readiness, manifest, evidence binding, and checkpoint outputs bind to the exact executable source commit/digest.",
+    "defect_4": "sanitized deterministic Project OS Artifact Bridge audit bundle published with this commit; R1 native Fabric evidence remains preserved.",
+    "no_api_change": true,
+    "no_automatic_production_approval_or_environment_switch": true
+  },
+  "request": "work-env-qualification-harness-fix-v2",
+  "sanitized_outcome_samples": [
+    {
+      "class": "PASS",
+      "handoff": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=READY_FOR_OPERATOR_APPROVAL gates= cust=CUST_NONE run=00000001 bundle=d9a70f5c13ea",
+      "handoff_characters": 129,
+      "next": "Review the complete private report, run production preflight and final two-user smoke, then use the authorized approval workflow.",
+      "report": {
+        "decision": "READY_FOR_OPERATOR_APPROVAL",
+        "gate_statuses": {
+          "deployment": "PASS",
+          "identity": "PASS",
+          "operations": "PASS",
+          "performance": "PASS",
+          "release_evidence": "PASS",
+          "storage": "PASS",
+          "technical_release": "PASS",
+          "ui_accessibility": "PASS"
+        },
+        "operator_approval_required": true,
+        "production_ready": false
+      },
+      "state": {
+        "decision": "READY_FOR_OPERATOR_APPROVAL",
+        "phase_status": "PASS",
+        "production_ready": false,
+        "reason_codes": [],
+        "unknown_values_retained": null
+      }
+    },
+    {
+      "class": "FAIL",
+      "handoff": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=FAIL gates=TR:F:HEAD cust=CUST_NONE run=00000001 bundle=45d7a0eb2b0f",
+      "handoff_characters": 115,
+      "next": "Rebuild and qualify the exact checked-out source before using this deployment.",
+      "report": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "gate_statuses": {
+          "deployment": "PASS",
+          "identity": "PASS",
+          "operations": "PASS",
+          "performance": "PASS",
+          "release_evidence": "PASS",
+          "storage": "PASS",
+          "technical_release": "FAIL",
+          "ui_accessibility": "PASS"
+        },
+        "operator_approval_required": true,
+        "production_ready": false
+      },
+      "state": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "phase_status": "FAIL",
+        "production_ready": false,
+        "reason_codes": [
+          "SRC_HEAD_MISMATCH"
+        ],
+        "unknown_values_retained": null
+      }
+    },
+    {
+      "class": "BLOCKED",
+      "handoff": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=ATTN gates=ID:B:MISSING cust=CUST_NONE run=00000001 bundle=7ac6b8a144bf",
+      "handoff_characters": 118,
+      "next": "Collect A1, B1, A2, B2, restart or redeploy, then A3 and B3 with the generated probe.",
+      "report": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "gate_statuses": {
+          "deployment": "PASS",
+          "identity": "BLOCKED",
+          "operations": "PASS",
+          "performance": "PASS",
+          "release_evidence": "PASS",
+          "storage": "PASS",
+          "technical_release": "PASS",
+          "ui_accessibility": "PASS"
+        },
+        "operator_approval_required": true,
+        "production_ready": false
+      },
+      "state": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "phase_status": "BLOCKED",
+        "production_ready": false,
+        "reason_codes": [
+          "ID_MISSING"
+        ],
+        "unknown_values_retained": null
+      }
+    },
+    {
+      "class": "UNKNOWN",
+      "handoff": "RFBWQ1 v=rc23 src=1c375377 dep=unknown0 result=ATTN gates=ID:B:UNKNOWN cust=CUST_NONE run=00000001 bundle=1b91603c8d9a",
+      "handoff_characters": 118,
+      "next": "Review the original system privately and provide a supported observation form.",
+      "report": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "gate_statuses": {
+          "deployment": "PASS",
+          "identity": "BLOCKED",
+          "operations": "PASS",
+          "performance": "PASS",
+          "release_evidence": "PASS",
+          "storage": "PASS",
+          "technical_release": "PASS",
+          "ui_accessibility": "PASS"
+        },
+        "operator_approval_required": true,
+        "production_ready": false
+      },
+      "state": {
+        "decision": "QUALIFICATION_INCOMPLETE",
+        "phase_status": "ATTENTION",
+        "production_ready": false,
+        "reason_codes": [
+          "ATTENTION_UNKNOWN"
+        ],
+        "unknown_values_retained": false
+      }
+    }
+  ],
+  "schema_version": 1,
+  "verification": {
+    "api_compatibility": {
+      "api_major": 1,
+      "api_revision": 2,
+      "exact_base": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+      "public_api_changed": false,
+      "status": "PASS"
+    },
+    "checkpoint_manifest_sha256": "8cab7f8db93cc522a72bf8ff6678d296c3fe85a3f14c7be7a728580cb73aa097",
+    "commands": [
+      {
+        "command": "python3 -m pytest -q tests/test_work_qualification.py",
+        "exit_code": 0,
+        "result": "99 passed"
+      },
+      {
+        "command": "./dev contracts",
+        "exit_code": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "./dev architecture",
+        "exit_code": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "API_COMPATIBILITY_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d ./dev verify",
+        "exit_code": 0,
+        "result": "PASS; code_ready=true"
+      },
+      {
+        "command": "API_COMPATIBILITY_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d ./dev verify-release",
+        "exit_code": 0,
+        "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED"
+      },
+      {
+        "command": "python3 scripts/generate_checkpoint_manifest.py --check",
+        "exit_code": 0,
+        "result": "PASS; 743 files"
+      }
+    ],
+    "focused_work_qualification": "PASS: 99 passed",
+    "node_runtime": "Node 22.13.0 for full frontend/browser verification",
+    "release_gate_matrix": {
+      "deployment": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      },
+      "identity": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      },
+      "operations": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      },
+      "performance": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      },
+      "release_evidence": {
+        "evidence_state": "repository_verification",
+        "qualification_status": "REPOSITORY_PASS",
+        "status": "PASS"
+      },
+      "storage": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      },
+      "technical_release": {
+        "evidence_state": "repository_verification",
+        "qualification_status": "REPOSITORY_PASS",
+        "status": "PASS"
+      },
+      "ui_accessibility": {
+        "evidence_state": "external_unproven",
+        "qualification_status": "BLOCKED_EXTERNAL",
+        "status": "BLOCKED"
+      }
+    },
+    "source_hash_inventory_count": 674
+  }
+}
