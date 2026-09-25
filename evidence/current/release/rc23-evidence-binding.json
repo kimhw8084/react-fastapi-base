@@ -1,17 +1,17 @@
 {
   "artifact_label": "rc23",
-  "binding_status": "PENDING_EVIDENCE_COMMIT",
+  "binding_status": "PASS",
   "deployment_qualification": {
     "locator": "evidence/current/deployment/qualification.json",
     "required_for": "code",
     "sha256": "22db8e9f84cc9c0bac6f18a4261286e4a98820379d70e3ffb42603bd9736e9a8"
   },
-  "evidence_commit": null,
+  "evidence_commit": "d303de7e4ff3a66278cdc854ed2a5a47a1ecdceb",
   "manifest": {
     "locator": "evidence/current/release/rc23-manifest.json",
-    "sha256": "59dc95a9678096638afe3d3f9da43444aa66a47942b2ab5ce151b74ac03b6548"
+    "sha256": "bc2a02fc7c23fa29918b00f8d05c8c54513897d4fd2ef5cfa643f683a37764eb"
   },
-  "note": "Bind evidence_commit only after this exact source evidence is committed. Accepted Head and repository merge SHA are post-acceptance/integration facts and are not BUILD evidence.",
+  "note": "Source/evidence identity is bound; target_base_sha is the pre-integration base only. Accepted Head and repository merge SHA become available only after their later workflows.",
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
@@ -23,9 +23,6 @@
     "locator": "evidence/current/release/rc23-readiness-matrix.json",
     "sha256": "bec432aa264e6b514180151ff3a1b0ec67a6c295d335a26762e9a029e90d63f9"
   },
-  "release_identity": {
-    "locator": "deploy/rc23-release-identity.json"
-  },
   "repository_operations_qualification": {
     "company_operations_gate": "BLOCKED_EXTERNAL",
     "locator": "evidence/current/operations/qualification.json",
@@ -33,7 +30,7 @@
     "required_for": "code",
     "sha256": "c67123dd465a165cfb91d9282a9604a3a76d8bdd8030d279a9626364dc112d82"
   },
-  "result": "NOT_CERTIFIED",
+  "result": "PASS_SOURCE_BOUND_NOT_CERTIFIED",
   "reusable_platform_qualification": {
     "locator": "evidence/current/reuse/qualification.json",
     "required_for": "code",

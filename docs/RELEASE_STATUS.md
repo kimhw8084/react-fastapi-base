@@ -12,6 +12,8 @@ The verified executable source is `16cc403090b7bb1fb44978a797bcc57369438316` wit
 
 Current RC.23 verification and source hashes are `evidence/current/full-stack/verification.json` and `evidence/current/full-stack/source-hashes.json`. Release identity, readiness matrix, manifest, and evidence binding are `deploy/rc23-release-identity.json` and `evidence/current/release/rc23-{readiness-matrix,manifest,evidence-binding}.json`. Repository code readiness is true and production readiness remains false. Technical release and release-evidence gates pass; authentic company identity, storage, deployment, UI/accessibility, performance, and operations remain externally blocked. RC.21 and RC.22 reports remain historical and have not been relabelled.
 
+The evidence binding is `PASS` and points to evidence commit `d303de7e4ff3a66278cdc854ed2a5a47a1ecdceb`; it binds the exact source commit/digest above and the exact main base.
+
 The sanitized Project OS Artifact Bridge bundle is published at `project-os-artifacts/react-fastapi-base/chg-235-r2-work-env-qualification-harness-fix-v2:evidence-binding/CHG-235-R2-work-env-qualification.json`. Native R1 Fabric evidence remains available at `codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1:.codex-fabric/audit.json` (job `CF-a76e16568c01043040d78b6e`, evidence commit `03f48f9c5b8428d0ec776677e647cb37899a6cc6`).
 
 ## RC.22 historical release status
