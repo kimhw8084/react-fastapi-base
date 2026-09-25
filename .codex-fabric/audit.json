@@ -1,132 +1,1115 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-25T13:22:07Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 5,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 28,
+      "deletions": 17,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 4,
+      "deletions": 2,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 1,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 45,
+      "deletions": 0,
+      "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+      "status": "A"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 45,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 20,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 168,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 0,
+      "deletions": 14,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 5465,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 5048,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/strict-types-and-artifact-parity.log",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/performance-results.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 4,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1660,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 22,
+      "deletions": 156,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 191,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 23,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 25,
+      "deletions": 219,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "scripts/source_manifest.py",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "scripts/work_qualification/__init__.py",
+      "status": "A"
+    },
+    {
+      "additions": 586,
+      "deletions": 0,
+      "path": "scripts/work_qualification/assess.py",
+      "status": "A"
+    },
+    {
+      "additions": 65,
+      "deletions": 0,
+      "path": "scripts/work_qualification/browser_probe.js",
+      "status": "A"
+    },
+    {
+      "additions": 184,
+      "deletions": 0,
+      "path": "scripts/work_qualification/cli.py",
+      "status": "A"
+    },
+    {
+      "additions": 759,
+      "deletions": 0,
+      "path": "scripts/work_qualification/engine.py",
+      "status": "A"
+    },
+    {
+      "additions": 136,
+      "deletions": 0,
+      "path": "scripts/work_qualification/reasons.py",
+      "status": "A"
+    },
+    {
+      "additions": 88,
+      "deletions": 0,
+      "path": "scripts/work_qualification/safety.py",
+      "status": "A"
+    },
+    {
+      "additions": 303,
+      "deletions": 0,
+      "path": "scripts/work_qualification/source.py",
+      "status": "A"
+    },
+    {
+      "additions": 437,
+      "deletions": 0,
+      "path": "scripts/work_qualification/store.py",
+      "status": "A"
+    },
+    {
+      "additions": 838,
+      "deletions": 0,
+      "path": "tests/test_work_qualification.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '320,420p' scripts/work_qualification/store.py && rtk sed -n '1,130p' scripts/work_qualification/store.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '420,455p' scripts/work_qualification/store.py && rtk sed -n '15,52p' scripts/work_qualification/reasons.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"OPS_\" scripts/work_qualification/reasons.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '125,175p' scripts/work_qualification/store.py && rtk sed -n '680,790p' scripts/work_qualification/engine.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"PERF_COMPANY_OBSERVATION_MISSING|CFG_|ID_|ST_|DEP_|UI_|OPS_|CUST_|SRC_\" scripts/work_qualification/reasons.py | wc -l'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m pytest --collect-only -q tests/test_work_qualification.py'",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 7246,
+        "output_sha256": "80ed6a58e2da9c0a5eb2903a3ee6307206b038301a1a683eed0c5d8c64472dba",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m pytest -q tests/test_work_qualification.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 66
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 99,
+        "output_sha256": "032ecec9d92ec49072d3609b4ba90ac8870b56d6a2989080234ec1c30f5a80b7",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import importlib.util; print({name: importlib.util.find_spec(name) is not None for name in (\\\"fastapi\\\",\\\"pydantic\\\",\\\"sqlalchemy\\\",\\\"pytest\\\",\\\"httpx\\\",\\\"alembic\\\",\\\"jsonschema\\\")})'\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 124,
+        "output_sha256": "ef8ecbc8e4f34424eb2fd4f9036df642f423e0e21fb8d65c56853cbc1f281887",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py --help'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'from pathlib import Path; print({name: Path(name).exists() for name in (\\\"backend/.venv/bin/python\\\",\\\"frontend/node_modules\\\",\\\"frontend/node_modules/.bin/tsc\\\")})'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/checkpoint.py --help'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/version_check.py --base-sha 67ec2ce5ec44d38ee44d22602035c2554a08e00d'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m venv --system-site-packages backend/.venv'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"deployment.*contract|check_deployment_contract\" README.md docs dev scripts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,260p' scripts/check_deployment_contract.py && rtk rg -n \\\"deployment-contract|Independent deployment|candidate_version\\\" scripts deploy frontend\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,75p' contracts/independent-deployment.json\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev contracts'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 -m pytest -q tests/test_work_qualification.py'",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "passed": 76
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 179,
+        "output_sha256": "36931a204f9262fe946aeb2a80bc30eec75241970f95ae280a779262b2f98b7f",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,260p' scripts/verify.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,260p' scripts/backend_test_runner.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,220p' scripts/checkpoint_manifest.py 2>/dev/null || rtk sed -n '1,220p' scripts/generate_checkpoint_manifest.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk backend/.venv/bin/python -c 'import importlib.util; print(\\\"pip_audit_available\\\", importlib.util.find_spec(\\\"pip_audit\\\") is not None)' && rtk git status --short\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import sys; print(sys.executable)'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk which node && rtk which npm'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ./dev architecture'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'from pathlib import Path; p=Path(\\\"/tmp/chg235-verify-home\\\"); p.mkdir(mode=0o700, exist_ok=True); p.chmod(0o700); print(\\\"isolated verification home ready\\\")' && rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home RELEASE_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d API_COMPATIBILITY_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d ./dev verify\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nfrom pathlib import Path\nimport re\np=Path('evidence/current/full-stack/tooling-tests.log')\nif not p.exists(): print('tooling_log_missing'); raise SystemExit\ntext=p.read_text(errors='replace')\nrows=re.findall(r'\"'^FAILED'\"\\\\s+([\"'^'\"\\\\s]+)',text,re.M)\nprint('failed_test_ids:', rows[:20])\nprint('pytest_summary:', next((line.strip() for line in reversed(text.splitlines()) if 'failed' in line.lower() and 'passed' in line.lower()), 'summary_unavailable'))\nPY\"",
+      "exit_code": 0,
+      "test_result": {
+        "counts": {
+          "failed": 1,
+          "passed": 184
+        },
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 186,
+        "output_sha256": "9c642e91a60510dad3ae70b33542dc6170d67e29e24e6633df0caa0626094961",
+        "summary_detected": true
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n -C 5 \"documentation_and_command_contract_matches_current_dev_entrypoint\" tests/test_reusable_platform_qualification.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk rg -n -A60 -B10 \\\"def _validate_documentation\\\" scripts/reusable_platform_qualification.py && rtk sed -n '1,135p' tests/test_reusable_platform_qualification.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nfrom pathlib import Path\nfrom scripts.reusable_platform_qualification import _validate_documentation,_dev_commands\nproblems=[]; _validate_documentation(Path('VERSION').read_text().strip(),problems)\nprint('problems:',problems)\nprint('dev_commands:',sorted(_dev_commands()))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,40p' docs/MAC_QUICKSTART.md && rtk sed -n '1,35p' docs/UPGRADING.md\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"subprocess|npm|pip|http|urlopen|download|clone\" scripts/fresh_clone_check.py scripts/upgrade_fixture.py scripts/verify_lab.py scripts/recovery_fixture.py scripts/reference_app_proof.py'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nfrom scripts.reusable_platform_qualification import EVIDENCE_PATHS\nprint({key: value for key,value in EVIDENCE_PATHS.items() if key in {'clean_clone','upgrade_fixture','storage_qualification','reference_apps'}})\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk sed -n '1,155p' scripts/fresh_clone_check.py && rtk sed -n '1,100p' scripts/verify_lab.py\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py && rtk python3 scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home RELEASE_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d API_COMPATIBILITY_BASE_SHA=67ec2ce5ec44d38ee44d22602035c2554a08e00d npm_config_offline=true ./dev verify-release'",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home BASE_WORK_QUALIFICATION_EVIDENCE_ROOT=/tmp/chg235-work-qualification-evidence-final ./dev work-qualify'",
+      "exit_code": 2,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home BASE_WORK_QUALIFICATION_EVIDENCE_ROOT=/tmp/chg235-work-qualification-evidence-final python3 - <<'PY'\nfrom pathlib import Path\nfrom scripts.work_qualification.source import repository_identity\nfrom scripts.work_qualification.store import RunStore, ensure_private_root\nroot_path=Path('/tmp/chg235-work-qualification-evidence-final')\ntry:\n source=repository_identity(); print('source_discovery', 'PASS', source['candidate_version'], source['status'])\n root=ensure_private_root(root_path, Path.cwd()); print('private_root', 'PASS')\n store=RunStore.latest(root) if (root/'latest-run.json').is_file() else RunStore.create(root, source=source)\n print('run_creation', 'PASS')\nexcept Exception as error:\n print('failure_type', type(error).__name__)\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home python3 - <<'PY'\nfrom scripts.work_qualification.source import repository_identity\nfrom scripts.work_qualification.safety import assert_safe\nsource=repository_identity()\ntry:\n assert_safe(source); print('source_safe', True)\nexcept Exception as error:\n print('source_safe', False, type(error).__name__, str(error))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home python3 - <<'PY'\nimport re,hashlib\nfrom scripts.work_qualification.source import repository_identity\nfrom scripts.work_qualification.safety import _SECRET_KEY\nvalue=repository_identity(); found=[]\ndef walk(item, path='root'):\n if isinstance(item,dict):\n  for key,child in item.items():\n   if _SECRET_KEY.search(key): found.append((path,hashlib.sha256(key.encode()).hexdigest()[:10]))\n   walk(child,path+'/'+hashlib.sha256(str(key).encode()).hexdigest()[:8])\n elif isinstance(item,(list,tuple)):\n  for index,child in enumerate(item): walk(child,path+f'/{index}')\nwalk(value)\nprint('unsafe_key_count',len(found),'fingerprints',found[:8])\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nfrom pathlib import Path\nfrom scripts.source_manifest import executable_source_commit, source_digest\nfrom scripts.release_version import current_release_paths\nfrom app.platform.version import API_MAJOR, API_CONTRACT_REVISION\nversion=Path('VERSION').read_text().strip()\nidentity=current_release_paths(Path.cwd()).identity\nprint('version',version)\nprint('executable_source_commit',executable_source_commit())\nprint('source_digest',source_digest())\nprint('api',f'{API_MAJOR}/{API_CONTRACT_REVISION}')\nprint('current_release_identity_present',identity.is_file())\nPY\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short && rtk git rev-parse HEAD && rtk git rev-parse HEAD''^{tree} && rtk git branch --show-current'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk env -i PATH=/Users/haewonkim/.nvm/versions/node/v20.19.4/bin:/opt/anaconda3/bin:/usr/bin:/bin HOME=/tmp/chg235-verify-home ./dev work-qualify --plan'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk rg -n \"''^def _source_local_checks|secret_risk_detected|def assert_safe'\"\\\\(\\\" scripts/work_qualification/source.py scripts/work_qualification/engine.py scripts/work_qualification/safety.py && rtk git diff --stat\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd() / 'backend'))\nfrom app.platform.version import API_MAJOR, API_CONTRACT_REVISION\nfrom scripts.source_manifest import executable_source_commit, source_digest\nfrom scripts.release_version import current_release_paths\nidentity=current_release_paths(Path.cwd()).identity\nprint('version',Path('VERSION').read_text().strip())\nprint('executable_source_commit',executable_source_commit())\nprint('source_digest',source_digest())\nprint('api',f'{API_MAJOR}/{API_CONTRACT_REVISION}')\nprint('rc23_release_identity_present',identity.is_file())\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/version_check.py --base-sha 67ec2ce5ec44d38ee44d22602035c2554a08e00d && rtk python3 scripts/check_deployment_contract.py && rtk python3 scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.156.1",
+    "configured_model": "gpt-6-luna",
+    "event_count": 817,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.39,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 53469696,
+      "fresh_input_tokens": 874489,
+      "input_tokens": 54344185,
+      "non_reasoning_output_tokens": 134148,
+      "output_tokens": 348294,
+      "reasoning_output_tokens": 214146,
+      "total_processed_tokens": 54692479
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+      "subject": "fabric: capture completed model changes [CF-a76e16568c01043040d78b6e]"
+    }
+  ],
+  "diff": {
+    "additions": 14344,
+    "changed_files": 64,
+    "commit_count": 1,
+    "deletions": 2630
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 50,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 16177,
+        "path": "CHANGELOG.md",
+        "sha256": "b72f813ec70d8c59d9747cbba9cbcc29d2953b2e67332a6235539bbb8b076897"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 85936,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "c803b2ae4f1287a795a23a682bfd6f6f2d7edc7d4cf800edb0c474c808f81c31"
       },
       {
-        "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "bytes": 4501,
+        "path": "README.md",
+        "sha256": "47884f62d77fc158eafaa2f70304be3a9f074032e36fc969bf7d548706f3f763"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "8710c7e9b5d6cd25717c7759a19a0360387118aacaee3561a801af6ff97bf4be"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 1252537,
+        "path": "contracts/openapi.json",
+        "sha256": "13472853836571eef24b6828091ef510889ed15e5cd9dbe7c9562ea0513f1e1f"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 11165,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "8371d11d131502d72431e61a0e0d60a096b96ed78b48a9d60c109d03d6f68cd7"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 8957,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "076e5b29bd914ecc5b8194b8f2eaeaaf8bdb8ad5e7c6cbd3f63b51d4cb22444b"
+      },
+      {
+        "bytes": 3171,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "437ba1e73c56cff9f67eda1e42f907d2f551d83a08707b9c08ebdc74b0cbe150"
+      },
+      {
+        "bytes": 46146,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "5db6f67720ff9282aefb39d423d9c56b7c7445565f300405c771d12a4f5b307b"
+      },
+      {
+        "bytes": 17106,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "a033e75bd51216709bcffe97bdc2a4e36eac8126477c89001e922acaad4e264b"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "0694c0f97412eb7edd929084a30c808943b39fabcecd348d75b1962bf9b2c072"
+      },
+      {
+        "bytes": 7520,
+        "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+        "sha256": "2b4ac41532be511acdcf99fccf03478a66a7f2dec52f07d4aa753fed554d908e"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "4ace737acb04aaa5fd650fe1c8b4e65455b1d4b84b761c2f854608ef4d973928"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "8579ccb3c4675b26b59725cdd622d2284174c8b4a62bfcc7ace864d98f4c528d"
+      },
+      {
+        "bytes": 8351,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "d05dec2ef3124af5a38ee8ee50fcd0b1ed371f5ff081f0dcc68f5043ef28bc2d"
+      },
+      {
+        "bytes": 4978,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "74f6ec48685da67c52feefb3e8f989101daef75bc63c6b1fafac2ebc8c2e6044"
+      },
+      {
+        "bytes": 13496,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "2c7e43a67146bbc63eca8db10c72223273382b31502c7922e98828387c7c086d"
+      },
+      {
+        "bytes": 12132,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "3e16352ff7c86e403d0e6d0a3dfce706d95cab448777fa6d437b7b79169d4752"
+      },
+      {
+        "bytes": 38073,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "fcf8f6f689e6860c8b99963bfca9cdc95d5665cf77b622ab955fee07888fb316"
+      },
+      {
+        "bytes": 3592,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "dcd7f06795fb209633ca4fac56a59dfeb84282c5c3665ed997833368f82aa99c"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "d22924bfb904fa3da024196f0357007a89996df87148b56f7c85ceb3f55fae66"
+      },
+      {
+        "bytes": 2781,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "26c8da3bd28979833f1392c8f643446c1d97c2ed277c62a1240ceef9d730293f"
+      },
+      {
+        "bytes": 2608,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "9984f23c144e00d1b029e10af5010020ba6d4fec42097c2b952f962320167748"
+      },
+      {
+        "bytes": 0,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 320576,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "36aa3b72d1cdc84bf394d0cc3418d491ee4e0dc0b3aab6e3996fb3ef950aca0a"
+      },
+      {
+        "bytes": 431258,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "88a4aa04da8672588e5b4dfa50e0627c07677e1694f515eabda58f230ebe3477"
+      },
+      {
+        "bytes": 6443,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "0e6013dbf39a7dba0b62cf6da581ab39710ecb65b795d7dc506611be28cb4a90"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "71fa4d7ac9c34a99b4267768199e7ff5a64366e9180e6bce7d1d0f41c123be07"
+      },
+      {
+        "bytes": 73,
+        "path": "evidence/current/full-stack/native-lab/strict-types-and-artifact-parity.log",
+        "sha256": "018331df37d9cfab3252d6a1de0b5abff8ac96aef8356feaf623dbe0dc65fc04"
+      },
+      {
+        "bytes": 1781,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "f57ec7119be765b4d45446570dc04dfcddcf5df8432da6b2f9996302233e84bd"
+      },
+      {
+        "bytes": 945,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "c55a5d5790ef536f80ec7d025426543f2d2a90dabab3e353237469d013ba4625"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "c71d6e8932f611e7c22c05663749b6ed2a1b134cc5d67bf7f0beb65a4743025c"
+      },
+      {
+        "bytes": 94,
+        "path": "evidence/current/full-stack/performance-results.log",
+        "sha256": "f79dfd39bee0e43793120295c627c4f65258aafd032d13c52a1dd59c46a1ad60"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "49b74e4d06fb6d19f99d6b7cf98d3876571d19aa5f92b04c730f15d4ba92adc8"
+      },
+      {
+        "bytes": 45,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "2a39d39ecb38d705e690fd4b3517e9caac97ec717be5529e7ad826a13138248d"
+      },
+      {
+        "bytes": 160,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "74e0c1a560133bdd649c72c46010235650b14d87cb809465a22146712e866299"
+      },
+      {
+        "bytes": 2721,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "abb3e28dcfe83450bec12165e155886130cfdd7230e55235b3438395785abed9"
+      },
+      {
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "d163577959c151c18d6262a05ada3b1eb31ca69d49f922b3362b7ec52d4cc888"
+      },
+      {
+        "bytes": 261,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "c5f8c00d1d509d8902373f91be3476083322ca17cc5e0c567f8e2f767e282999"
+      },
+      {
+        "bytes": 1062,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "2b1558e9a865f12936325135ad91f3f335d79b84b408b1e95ee418463ccd33c0"
+      },
+      {
+        "bytes": 51,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "53cf8594cba70ecdff73bebac171b1ce6d5c9aa1bc4de6ef794142b1b0f766d2"
+      },
+      {
+        "bytes": 285,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "ae8f7a758362be5b25c179feb4636dc2af319b782f511df95d49128de09603ec"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "4034379f81e92898145c07a0f484915903c55f65a9e9c37752033341ca515a78"
+      },
+      {
+        "bytes": 6125,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "b735c92de72ea132a61abd8e5fc6d413889affb9434f0c886d1b3a28d8f8b3db"
+      },
+      {
+        "bytes": 6692,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "183b143c47423995a966ceaf02c46f6d88ace792a23ff93fb957f5df7738aa7d"
+      },
+      {
+        "bytes": 3491,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "9ed1902422f0f2a4d8b68b4028adf9a52f7145860efae0947e1de2452e1384b5"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "ca4b90d5088ccc82c2ee83e5cae73d5aa887ac36ae5ac4dbf228f7aeeda28286"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "5f704285c56179ef8b5cb9b5290db84092f2f30dbbb8f15d72667ba911405f13"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "da24fe5e2d653ab51c2d0ea9f4ee6aeb4b042493402e6d2704385ba82a88a4b6"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "655c5e453e93b1535c89e1614e446526b61f51a521c0d4fa6b2a074e5b2230e4"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.5-dashboard-controls-candidate",
+  "fabric_capture": {
+    "applied": true,
+    "commit_message": "fabric: capture completed model changes [CF-a76e16568c01043040d78b6e]",
+    "commit_sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+    "paths_before": 56,
+    "status_before": [
+      " M CHANGELOG.md",
+      " M CHECKPOINT_MANIFEST.json",
+      " M README.md",
+      " M VERSION",
+      " M backend/pyproject.toml",
+      " M contracts/independent-deployment.json",
+      " M contracts/openapi.json",
+      " M dev",
+      " M docs/COMPANY_QUALIFICATION.md",
+      " M docs/DEPLOYMENT.md",
+      " M docs/MAC_QUICKSTART.md",
+      " M docs/MASTER_DESIGN.md",
+      " M docs/RELEASE_STATUS.md",
+      " M docs/UPGRADING.md",
+      " M evidence/current/full-stack/api-compatibility.json",
+      " M evidence/current/full-stack/api-compatibility.log",
+      " M evidence/current/full-stack/backend-junit.shard-1.xml",
+      " M evidence/current/full-stack/backend-junit.shard-2.xml",
+      " M evidence/current/full-stack/backend-junit.shard-3.xml",
+      " M evidence/current/full-stack/backend-junit.shard-4.xml",
+      " M evidence/current/full-stack/backend-junit.xml",
+      " M evidence/current/full-stack/backend-tests.log",
+      " M evidence/current/full-stack/checkpoint-manifest.log",
+      " M evidence/current/full-stack/engineering-widget-layer.log",
+      " M evidence/current/full-stack/fresh-clone-macos.json",
+      " M evidence/current/full-stack/macos-fresh-install.log",
+      " M evidence/current/full-stack/native-lab/browser-interactions.log",
+      " M evidence/current/full-stack/native-lab/browser-junit.xml",
+      " M evidence/current/full-stack/native-lab/pure-model-tests.log",
+      " M evidence/current/full-stack/native-lab/static-http-server.log",
+      " M evidence/current/full-stack/native-lab/strict-types-and-artifact-parity.log",
+      " M evidence/current/full-stack/object-inclusive-backup-restore.log",
+      " M evidence/current/full-stack/operational-reliability-qualification.log",
+      " M evidence/current/full-stack/performance-owned-algorithms.log",
+      " M evidence/current/full-stack/performance-results.log",
+      " M evidence/current/full-stack/performance-stress.log",
+      " M evidence/current/full-stack/reference-apps.log",
+      " M evidence/current/full-stack/security-source.log",
+      " M evidence/current/full-stack/static-server.log",
+      " M evidence/current/full-stack/storage-qualification.log",
+      " M evidence/current/full-stack/tooling-tests.log",
+      " M evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      " M evidence/current/full-stack/upgrade-fixture.log",
+      " M evidence/current/full-stack/version-metadata.log",
+      " M evidence/current/operations/qualification.json",
+      " M evidence/current/performance/owned-algorithms.json",
+      " M evidence/current/performance/qualification.json",
+      " M evidence/current/performance/stress.json",
+      " M evidence/current/recovery/object-restore.json",
+      " M evidence/current/storage/qualification.json",
+      " M frontend/package-lock.json",
+      " M frontend/package.json",
+      " M scripts/source_manifest.py",
+      "?? docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+      "?? scripts/work_qualification/",
+      "?? tests/test_work_qualification.py"
+    ],
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.5-dashboard-controls-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-25T15:30:50Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "branch": "codex/react-fastapi-base-work-env-qualification-harness-v1",
+    "detached_verify": false,
+    "head_sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+    "remote_exact_head": true,
+    "remote_head_sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "work_branch": "codex/react-fastapi-base-work-env-qualification-harness-v1",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-a76e16568c01043040d78b6e",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1"
+  },
+  "operation": "BUILD",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.5-dashboard-controls-candidate",
+    "policy_sha256": "123615bf2f6e57dcac197e49ca98ceac59ada86a55e2c84445ea5d00812c0833",
+    "registry_sha256": "af81b8552f9d6a33847310e3c6bcd2d48401782b963a58efd2993e93570cb4aa"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "work-env-qualification-harness-v1",
+  "schema_version": 1,
+  "started_at": "2026-09-25T13:22:08Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 7722,
+    "queue_seconds": 1,
+    "total_seconds": 7723
+  },
+  "transport": {
+    "bytes": 15528,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 15176,
+    "prompt_sha256": "35856c10951af58d9e636c1d757f9583d1472d42f415ebbe65436424c4c1e5ad",
+    "sha256": "a76e16568c01043040d78b6e72d305bf62cce41df868376552efd3c6c77db392"
+  }
 }
