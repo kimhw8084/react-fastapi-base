@@ -13,21 +13,20 @@
   "deployment_qualification": {
     "locator": "evidence/current/deployment/qualification.json",
     "required_for": "code",
-    "sha256": "22db8e9f84cc9c0bac6f18a4261286e4a98820379d70e3ffb42603bd9736e9a8"
+    "sha256": "69b2dfb6b6876906e4d7e4f3d9e35520ea173f88a0bd08b155c9e319d86898c5"
   },
-  "evidence_binding": "evidence/current/release/rc23-evidence-binding.json",
-  "evidence_commit": "d303de7e4ff3a66278cdc854ed2a5a47a1ecdceb",
+  "evidence_commit": null,
   "performance_qualification": {
     "locator": "evidence/current/performance/qualification.json",
     "required_for": "code",
-    "sha256": "eae8bbbf544938a3476a3da16e466caa15774686ce0b4a142d1ee245a697a689"
+    "sha256": "0e3dcc2672e986772f4941473cc0bdec5e53b5f36da550b70e4ef7e4a11260d0"
   },
   "product": "react-fastapi-base",
   "production_ready": false,
   "profile": "company",
   "readiness_matrix": {
     "locator": "evidence/current/release/rc23-readiness-matrix.json",
-    "sha256": "bec432aa264e6b514180151ff3a1b0ec67a6c295d335a26762e9a029e90d63f9"
+    "sha256": "2f6733f39fb9ee896d20924cdb305267e504d26a75618f95633cb35b6e4b0076"
   },
   "release_identity": {
     "locator": "deploy/rc23-release-identity.json"
@@ -38,31 +37,31 @@
     "locator": "evidence/current/operations/qualification.json",
     "repository_status": "PASS",
     "required_for": "code",
-    "sha256": "c67123dd465a165cfb91d9282a9604a3a76d8bdd8030d279a9626364dc112d82"
+    "sha256": "64be954457427c0b0527b1c47df9cfe4bb47417e1dffdc00894e18e42712dfbf"
   },
   "reusable_platform_qualification": {
     "locator": "evidence/current/reuse/qualification.json",
     "required_for": "code",
-    "sha256": "49f4726ddd515ab46d3c788a02d21438659d7ac6572a6b5f460bbb855307a9aa"
+    "sha256": "672fe5ec10e3ce34b6f034e0ea6b750a22147dffd7d1188313dd133ab6d84e1e"
   },
   "schema_version": 2,
-  "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b",
+  "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
   "storage_qualification": {
     "locator": "evidence/current/storage/qualification.json",
     "required_for": "code",
-    "sha256": "ea8f6d4d562b72e2d42fa80d1a4f3d9c5383c37b36e659e452e01a0d80958d97"
+    "sha256": "5fff38d12015b23eadaac6ef43f15a8cd03a85f6055f2659c8d8ba177d88679b"
   },
   "target_base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
   "uiqa_matrix": {
     "locator": "evidence/current/uiqa/ui-state-matrix-results.json",
     "required_for": "code",
-    "sha256": "3e14b491fb2710ea85648e75d6c3dfccae5eca5b87310074de89e1eda5d02ee0"
+    "sha256": "e96252b566174af6bd8aa6896f4ad456bf0addc8ac954e10ad2d293305fd39d7"
   },
   "verification": {
     "locator": "evidence/current/full-stack/verification.json",
-    "source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
-    "source_digest": "9940de42ed199509e2fea0145fe8e531553f7e27d27c16514ffc29603762415b"
+    "source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b"
   },
-  "verified_source_commit": "16cc403090b7bb1fb44978a797bcc57369438316",
+  "verified_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
   "version": "1.0.0-rc.23"
 }

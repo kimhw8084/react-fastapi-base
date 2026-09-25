@@ -351,7 +351,7 @@
     "deploy/rc20-release-identity.json": "46cf2d4e32f28db11352cd1aeb6e79b64c6dc1db1c217c84edcda7b904dc0672",
     "deploy/rc21-release-identity.json": "1012776d5fd7e72884f32197456c17062e2845a5c971f692fc21572625bcf068",
     "deploy/rc22-release-identity.json": "15ae825c248981d192784612818bf5827b15c5abd7b073bbd650a47200bb29fe",
-    "deploy/rc23-release-identity.json": "2671cce5179d1d980f768f1c89b653bf6f2d3444d2c90d41718de68c5e7a35ba",
+    "deploy/rc23-release-identity.json": "702de122abde83ff758355adff92afe8dfe82ffe72c10db972c2b32e80d5a85a",
     "deploy/runtime-config.example.json": "b878855046386915d7ad74d536de0b743facfaf858a6c9f49e242aeb68d089d9",
     "dev": "45e560c8221e80775f2ce4f29dd5a5804e5053ad118d6db8f877213cca6446e1",
     "docs/ADRS.md": "fa05d4532d0e4782557ed16f211260920be4387a47735261e9f77d360bcdffbd",
@@ -726,7 +726,7 @@
     "scripts/work_qualification/reasons.py": "1be68ab576342a87018bae8463073f611b54775a3f7eb2d469a4cd5d06d822a2",
     "scripts/work_qualification/safety.py": "c2eecf5558e6280e7f1c7645db675e052aadc588e2db794a958c12fdebc12434",
     "scripts/work_qualification/source.py": "6c7ff0c7edea816e625d1265957274f247e5fd36ca902635594917fe4a58b0ce",
-    "scripts/work_qualification/store.py": "a178245ea32e6ffd6a72e2c57bdc3358f1db09d0f7c588c28604ec141edc18ef",
+    "scripts/work_qualification/store.py": "986fee1b237aa465b06e4d3636c034257359a31c07209f57d99c7828684a0f2a",
     "tests/test_api_compatibility.py": "ce34496896afb767f15f4a582047d09c5ec884f319e1be72d012e33ed6e0a8bd",
     "tests/test_checkpoint.py": "669f78afe07e6ab139a95979470ec9c21f03aa218a6815f442ea50192a29727e",
     "tests/test_entity_generator.py": "3f97de747ad42b062c2243218915efa2d4a978899e0eee26a55da301fd99e50d",
@@ -743,7 +743,7 @@
     "tests/test_template_tools.py": "68ea745c5df6bef31be2ef4f4150632d9b715f3d8a76e4371f7c7ac7017610e4",
     "tests/test_ui_state_matrix.py": "aa2bf2bd7a5d57efc24d0126b2c66d6c6b0430649d97f2d935814b43f3cc1ee7",
     "tests/test_verification_contract.py": "60915e1cec714d0732e1aeda315b7fe17ad9938675d6c2f8dc3e807fa77b57ce",
-    "tests/test_work_qualification.py": "6d12e02ae5c77af34a52ac7ca5abf55e4cba064153dcef15a28e1ab67c2cfccf"
+    "tests/test_work_qualification.py": "7b086649ddaae075452effba662548aa82514a38a6e6ea71c89da016fe45381d"
   },
   "schema_version": 1,
   "self_exclusion": "CHECKPOINT_MANIFEST.json is excluded from files to avoid recursive hashing."
