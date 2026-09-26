@@ -1,4 +1,36 @@
-# Release status — react-fastapi-base 1.0.0-rc.22
+# Release status — react-fastapi-base 1.0.0-rc.24
+
+## Current candidate
+
+CHG-235 R4 is a bounded continuation of exact R2 candidate `16899bd448b7a0afb4782871389e14255fbe1106`, on `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`. It retains the one-command qualification harness and adds a computed-paint readiness predicate before the existing serious/critical axe assertions, capture-before-assertion evidence, and a contrast negative control. No application theme tokens, backend behavior, API major/revision, identity, tenant, storage, or deployment-security behavior changes. RC.24 advances the existing prerelease ancestry while RC.23 remains historical. This candidate does not merge or move `main`, approve company qualification, or certify production; company gates remain external until authentic evidence is supplied.
+
+The canonical operator workflow is [docs/WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md). Its detailed evidence remains operator-private and offline.
+
+## CHG-235 R4 verification
+
+The repaired executable source is `b7a8d94bd3daa56e167860dc15ddb63be4833270`, source digest `e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c`, on candidate checkout `e6c9730e149b137ee739867bef6ea64ddc9b4c4e` with tree `6e04c8cffd07325209ea621214a96ab5dfdfe83c`. Its ancestry carries the exact R2 candidate `16899bd448b7a0afb4782871389e14255fbe1106` above unchanged `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`.
+
+The original Linux CI artifact bound to source `425d3632c75165fe8f030679910485f5d0196ae0` records one browser failure at `/system`: the serious `color-contrast` assertion observed white `#ffffff` text against `#f4f6f9` (1.08:1) for the eyebrow, title and description. Its aggregate also has a dependent reusable-platform qualification failure; the referenced qualification report was absent from the downloaded artifact. R3 diagnostic outputs and temporary test source were unavailable. Reconstructed R2 diagnostics and the R4 traces support a test-readiness race between switching high contrast and the browser's painted background; they do not prove the exact transient CI frame. The shared theme implementation was therefore left unchanged. R4 waits on the observed semantic and computed paint state, saves JSON and screenshots before assertions, and includes a negative control that detects the original 1.08:1 contrast failure.
+
+The focused Chromium regression passed three fresh contexts per explicit light and dark preference across direct `/system` loads, navigation to `/system`, and reloads with Operations theme, high contrast and reduced motion. Before and after axe analysis, all six captures show `--surface-page: #000`, an opaque black body canvas, white headings, and no serious/critical violations; the transparent `html` background correctly propagates through the body canvas. The negative control reports the expected serious contrast violation at 1.08:1. The full browser suite passed 70 tests on local macOS with Playwright 1.62.1 and Chromium 151.0.7922.34.
+
+`./dev contracts`, `./dev architecture`, `./dev verify`, and exact-base `./dev verify-release` passed. The exact-base API compatibility check passed and API major 1/revision 2 is unchanged. The retained work-qualification baseline passed 99 tests; plain `./dev work-qualify`, `--plan`, `--status`, two idempotent `--resume` runs and the <=300-character `--handoff` passed. The isolated candidate fresh-install proof passed on macOS. Repository code readiness is true; release status is `NOT_CERTIFIED` and production readiness is false. Company identity, provider storage and deployment remain externally blocked. Ubuntu CI was not run for R4, so local macOS browser evidence is not Linux proof.
+
+Current verification, source hashes, UI matrix, release identity, readiness matrix, manifest and evidence binding are generated at `evidence/current/` and `deploy/rc24-release-identity.json`. The RC.24 evidence binding is `PASS` for the exact source and base recorded in its binding file. The sanitized R4 Artifact Bridge bundle is a separate staged audit record; it does not accept, integrate or certify this candidate. RC.23 artifacts below remain historical and unchanged.
+
+## RC.23 historical release status — CHG-235 R2
+
+### CHG-235 R2 local qualification
+
+The verified executable source is `425d3632c75165fe8f030679910485f5d0196ae0` with digest `1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b`. The focused work-qualification suite passed 99 tests. `./dev contracts`, `./dev architecture`, `./dev verify`, and `./dev verify-release` passed. Exact-base API compatibility passed against `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`; API major 1/revision 2 is unchanged.
+
+Current RC.23 verification and source hashes are `evidence/current/full-stack/verification.json` and `evidence/current/full-stack/source-hashes.json`. Release identity, readiness matrix, manifest, and evidence binding are `deploy/rc23-release-identity.json` and `evidence/current/release/rc23-{readiness-matrix,manifest,evidence-binding}.json`. Repository code readiness is true and production readiness remains false. Technical release and release-evidence gates pass; authentic company identity, storage, deployment, UI/accessibility, performance, and operations remain externally blocked. RC.21 and RC.22 reports remain historical and have not been relabelled.
+
+The evidence binding is `PASS` and points to evidence commit `e7d58c142e316c02dc47f75ed43a2da765d64694`; it binds the exact source commit/digest above and the exact main base.
+
+The sanitized Project OS Artifact Bridge bundle is published at `project-os-artifacts/react-fastapi-base/chg-235-r2-work-env-qualification-harness-fix-v2:evidence-binding/CHG-235-R2-work-env-qualification.json`. Native R1 Fabric evidence remains available at `codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-v1:.codex-fabric/audit.json` (job `CF-a76e16568c01043040d78b6e`, evidence commit `03f48f9c5b8428d0ec776677e647cb37899a6cc6`).
+
+## RC.22 historical release status
 
 ## Decision
 

@@ -6,7 +6,9 @@
 
 > CHG-34 / 1.0.0-rc.12 adds the canonical UI state matrix and browser accessibility regression gate. The matrix and local evidence are repository proof only; the final company/profile `ui_accessibility` qualification remains external.
 
-**Version: 1.0.0-rc.22 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+**Version: 1.0.0-rc.24 · Reference: SysGrid 66244b997a70b85e6e887870c96db958f3f0d22d · Release: NOT_CERTIFIED**
+
+> **CHG-235 operator tooling:** the private `./dev work-qualify` harness records source-bound work-environment observations and customization inventory against the existing company qualification contracts. It adds no product/API behavior, provider adapter, identity semantics, or production approval path. See `docs/WORK_ENVIRONMENT_QUALIFICATION.md`.
 
 The CHG-32 configuration and secrets contract is defined in
 `docs/CONFIGURATION_CONTRACT.md` and `deploy/configuration-contract.json`.

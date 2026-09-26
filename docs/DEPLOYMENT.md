@@ -1,4 +1,4 @@
-# Independent frontend/backend deployment contract — 1.0.0-rc.22, repository-qualified only
+# Independent frontend/backend deployment contract — 1.0.0-rc.24, repository-qualified only
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
@@ -8,6 +8,8 @@ evidence.
 ## Hard boundary
 
 No provided command publishes or changes a live company deployment. Code readiness, source review, dependency clearance and company qualification are all required. Do not bypass a missing qualification by selecting development mode.
+
+Use [WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md) for the private, resumable `./dev work-qualify` operator workflow. It observes a deployment only when explicit frontend/backend origins are supplied and does not publish, change, or approve that deployment.
 
 The backend has separate `development`, `test`, `qualification` and
 `production` environments. `qualification` is an authorized, disposable

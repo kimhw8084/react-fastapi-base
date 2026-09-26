@@ -2,6 +2,8 @@
 
 Status: no real company environment was available in the originating execution. Every production approval is pending.
 
+For the resumable one-command operator workflow, see [WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md). It feeds only proven facts into the existing eight-gate contract described here and never sets approval or production readiness.
+
 ## Qualification bootstrap
 
 The deployment has four explicit environment states: `development`, `test`,

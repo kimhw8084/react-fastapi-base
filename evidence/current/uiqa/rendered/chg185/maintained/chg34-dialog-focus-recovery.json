@@ -1,0 +1,17 @@
+{
+  "state_id": "chg34-dialog-focus-recovery",
+  "material_state_class": "normal",
+  "initial_focus": {
+    "tag": "BUTTON",
+    "name": "Close Save current view"
+  },
+  "aria_snapshot": "- dialog \"Save current view\":\n  - heading \"Save current view\" [level=2]\n  - button \"Close Save current view\"\n  - text: Name\n  - textbox \"Name\"\n  - text: Visibility\n  - combobox \"Visibility\":\n    - option \"Only me\" [selected]\n    - option \"A team\"\n  - checkbox \"Favorite\"\n  - text: Favorite\n  - checkbox \"Default for this workspace\"\n  - text: Default for this workspace\n  - paragraph: Saves search, filters, layout and density—not record data. Team membership is enforced by the server.\n  - button \"Cancel\"\n  - button \"Save view\"",
+  "restored_focus": {
+    "tag": "BUTTON",
+    "name": "Save view"
+  },
+  "axe": {
+    "total_violations": 0,
+    "serious_or_critical": []
+  }
+}

@@ -1,0 +1,136 @@
+"""Stable reason catalog for the work-environment qualification phases."""
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+STATUSES = frozenset({'PASS', 'FAIL', 'BLOCKED', 'ATTENTION', 'NOT_RUN'})
+PHASES = (
+    'source_identity', 'configuration', 'identity', 'tenant_membership',
+    'storage', 'deployment', 'ui_accessibility', 'performance', 'operations',
+    'customization', 'final_qualification',
+)
+GATES = (
+    'technical_release', 'identity', 'storage', 'deployment',
+    'ui_accessibility', 'performance', 'operations', 'release_evidence',
+)
+GATE_PHASE = {
+    'technical_release': 'source_identity',
+    'identity': 'identity',
+    'storage': 'storage',
+    'deployment': 'deployment',
+    'ui_accessibility': 'ui_accessibility',
+    'performance': 'performance',
+    'operations': 'operations',
+    'release_evidence': 'source_identity',
+}
+
+
+@dataclass(frozen=True)
+class Reason:
+    explanation: str
+    next_action: str
+
+
+REASONS: dict[str, Reason] = {
+    'SRC_EXACT': Reason('Checked-out source and repository release identity agree.', 'Keep the checked-out source binding with its private qualification run.'),
+    'SRC_OLD_BUILD': Reason('The deployed build version is older than this repository candidate.', 'Publish the reviewed candidate to the qualification environment, then repeat the browser probe.'),
+    'SRC_HEAD_MISMATCH': Reason('The deployed or release-bound source does not match the checked-out candidate.', 'Rebuild and qualify the exact checked-out source before using this deployment.'),
+    'SRC_DIRTY_WORKTREE': Reason('The worktree has local changes; the changed paths were inventoried without recording file contents.', 'Review the customization inventory and rerun source verification for source-affecting changes.'),
+    'SRC_RELEASE_IDENTITY_MISMATCH': Reason('The current-version repository release identity is missing, stale, or inconsistent.', 'Run the maintained release verification and regenerate the current-version release identity.'),
+    'SRC_API_INCOMPATIBLE': Reason('Frontend and backend API major/revision requirements are incompatible.', 'Deploy compatible API major/revision artifacts using the documented overlap order.'),
+    'SRC_UNKNOWN_DEPLOYED_BUILD': Reason('The deployed build version could not be established from an allowlisted observation.', 'Run the generated browser probe against the deployed frontend and backend.'),
+    'CFG_NOT_QUALIFICATION': Reason('The backend is not configured for the authorized qualification environment.', 'Use an authorized disposable qualification deployment; do not change the profile to make a check pass.'),
+    'CFG_PROFILE_NOT_COMPANY': Reason('The selected profile is not the company identity profile.', 'Configure the qualification deployment with the company profile and platform-provided identity.'),
+    'CFG_DATA_ROOT_INVALID': Reason('The configured persistent data root is missing or not an absolute path.', 'Ask the operator to bind the already provisioned absolute persistent root.'),
+    'CFG_DEPLOYMENT_ID_MISSING': Reason('The deployment ID is absent or is the local default.', 'Set the stable deployment ID in the qualification provider configuration.'),
+    'CFG_ORIGIN_OR_HOST_INVALID': Reason('Explicit HTTPS origins and deployment hosts are not configured safely.', 'Set the exact HTTPS frontend origins and explicit backend host allowlist.'),
+    'CFG_CSRF_INVALID': Reason('The CSRF secret is missing or below the configured strength minimum.', 'Provision a random secret of at least 32 characters in the provider secret store.'),
+    'CFG_SCANNER_REQUIRED_MISSING': Reason('Uploads require a configured scanner, or the selected upload mode is not explicitly understood.', 'Configure a real scanner adapter or choose the documented trusted-types/disabled policy.'),
+    'CFG_QUALIFICATION_PREREQS_MISSING': Reason('The typed qualification prerequisites file is missing, invalid, or does not bind this deployment and root.', 'Have the authorized operator create the separate prerequisites record using the existing schema.'),
+    'CFG_PREFLIGHT_FAIL': Reason('The repository preflight returned an unsuccessful result.', 'Review preflight in the qualification environment and correct the reported operator-owned configuration.'),
+    'CFG_READINESS_FAIL': Reason('The backend readiness endpoint did not report ready.', 'Resolve the readiness dependency/configuration issue and repeat the read-only probe.'),
+    'CFG_DOCS_EXPOSED': Reason('The qualification backend exposed interactive docs or OpenAPI when policy expects them disabled.', 'Disable docs/OpenAPI exposure in the deployment configuration and repeat the status-only probe.'),
+    'ID_MISSING': Reason('The six interleaved real-user browser observations are incomplete.', 'Collect A1, B1, A2, B2, restart or redeploy, then A3 and B3 with the generated probe.'),
+    'ID_SAME_USER': Reason('The paired browser sessions resolved to the same user identity.', 'Stop security-sensitive multi-user testing and have the identity provider correct user routing.'),
+    'ID_USER_UNSTABLE': Reason('A real user identity changed across that user’s interleaved observations.', 'Stop security-sensitive testing and investigate provider identity/session stability.'),
+    'ID_SHARED_INSTANCE': Reason('Both real users reached the same process instance under a per-user process claim.', 'Treat the process AccessKey topology as shared and block multi-user mutation testing.'),
+    'ID_DEPLOYMENT_MISMATCH': Reason('Identity observations resolved to different deployment IDs.', 'Pin both users to the same intended qualification deployment and repeat the sequence.'),
+    'ID_PROFILE_MISMATCH': Reason('Identity observations did not consistently report the company profile.', 'Use one company-profile qualification deployment for the paired-user sequence.'),
+    'ID_TOPOLOGY_UNPROVEN': Reason('Provider evidence does not prove isolated per-user execution.', 'Obtain a provider-owned topology statement proving per-user process isolation.'),
+    'ID_CROSS_USER_ROUTING_UNPROVEN': Reason('Provider evidence does not prove cross-user routing is refused.', 'Obtain provider evidence that requests cannot route into another user’s process.'),
+    'ID_AFTER_RESTART_MISMATCH': Reason('A user’s identity, tenant, deployment, or profile changed after restart/redeploy.', 'Stop multi-user mutation tests and resolve lifecycle identity mapping.'),
+    'ID_SHARED_PROCESS_ACCESSKEY': Reason('The process-scoped AccessKey resolved different users through one shared instance.', 'Do not use this topology for company multi-user qualification.'),
+    'ID_PASS_PER_USER_PROCESS': Reason('Interleaved real-user observations and provider topology evidence support per-user process isolation.', 'Preserve the source-bound observations and continue to tenant/membership checks.'),
+    'TENANT_CREATED': Reason('A dedicated qualification tenant was provisioned through the existing operator flow.', 'Verify the admin and viewer/editor memberships through bootstrap before proceeding.'),
+    'TENANT_REUSED': Reason('An existing dedicated qualification tenant and its expected memberships were verified.', 'Keep this tenant isolated to the qualification run.'),
+    'TENANT_MEMBER_MISMATCH': Reason('The selected qualification tenant does not have the required distinct admin and viewer/editor memberships.', 'Use the existing add-member operator command, then collect fresh bootstrap observations.'),
+    'TENANT_MIGRATION_REQUIRED': Reason('No completed, source-bound tenant provisioning/migration observation is available.', 'After identity passes, provision or reuse a dedicated tenant and run the existing migration command under its maintenance procedure.'),
+    'TENANT_MIGRATION_FAIL': Reason('The explicit tenant migration action did not complete successfully.', 'Stop tenant writes and follow the repository migration recovery procedure.'),
+    'ST_PROVIDER_SUPPORT_MISSING': Reason('No authentic provider SQLite support reference is available.', 'Obtain the provider document for SQLite locking, random writes, atomic operations, and durability.'),
+    'ST_KIND_UNSUPPORTED': Reason('The storage kind is not one of the documented supported company storage kinds.', 'Use local_disk or documented provider_supported_posix only.'),
+    'ST_MULTI_HOST_UNSUPPORTED': Reason('The current SQLite profile does not prove that all database clients share one host.', 'Use a supported shared database or prove the same-host client guarantee.'),
+    'ST_ROOT_MISMATCH': Reason('The prerequisite record does not bind the exact configured persistent root.', 'Correct the operator-owned root binding; do not move or overwrite the existing root.'),
+    'ST_DOCTOR_FAIL': Reason('The bounded doctor-storage check failed or was not run in approved disposable scratch.', 'Choose approved disposable scratch and run the existing doctor-storage command.'),
+    'ST_RESTART_LOSS': Reason('Persisted data did not survive the observed application restart.', 'Stop writes and investigate the provider persistence binding.'),
+    'ST_REDEPLOY_LOSS': Reason('Persisted data did not survive the observed application redeploy.', 'Stop writes and investigate provider volume attachment and lifecycle behavior.'),
+    'ST_BACKUP_FAIL': Reason('The maintenance-controlled backup drill did not pass.', 'Stop all writers and repeat the existing object-inclusive backup procedure.'),
+    'ST_RESTORE_FAIL': Reason('Restore into a new, empty root did not pass.', 'Preserve the original root and repeat restore into a new target after reviewing the recovery procedure.'),
+    'ST_ATTACHMENT_MISMATCH': Reason('Restored attachment bytes did not match the original SHA-256.', 'Treat recovery as failed and investigate the object-inclusive backup/restore path.'),
+    'ST_PASS': Reason('Provider support, same-host SQLite topology, root binding, disposable diagnostics, lifecycle persistence, and restore evidence passed.', 'Preserve the private storage evidence and continue to deployment qualification.'),
+    'DEP_HEALTH_FAIL': Reason('The deployed backend health endpoint failed.', 'Restore backend liveness in the qualification deployment before continuing.'),
+    'DEP_READINESS_FAIL': Reason('The deployed backend readiness endpoint failed.', 'Resolve backend readiness before testing application workflows.'),
+    'DEP_FRONTEND_BACKEND_MISMATCH': Reason('The independently published frontend runtime API base or build binding is inconsistent.', 'Align the deployed runtime-config apiBase and backend candidate/API revision.'),
+    'DEP_HTTPS_FAIL': Reason('The deployed frontend or backend did not use HTTPS.', 'Publish both qualification services behind their approved HTTPS origins.'),
+    'DEP_INGRESS_AUTH_UNPROVEN': Reason('Authenticated ingress and direct backend access behavior are not proven.', 'Have the provider demonstrate authenticated ingress and the unauthenticated/direct-access refusal behavior.'),
+    'DEP_UNAUTHENTICATED_ACCESS': Reason('An unauthenticated access probe reached a protected identity surface.', 'Treat ingress as exposed and correct provider access controls before continuing.'),
+    'DEP_REDEPLOY_FAIL': Reason('The observed qualification redeploy failed or changed the stable deployment binding.', 'Restore the intended qualification deployment and repeat lifecycle checks.'),
+    'DEP_ROLLBACK_FAIL': Reason('The documented rollback/recovery action did not restore the expected compatible service.', 'Stop rollout and follow the provider rollback procedure.'),
+    'DEP_PASS': Reason('Deployed health, readiness, runtime API binding, HTTPS, ingress, lifecycle, and compatibility observations passed.', 'Preserve deployment evidence and continue to company UI checks.'),
+    'UI_BROWSER_FAIL': Reason('A deployed company-browser workflow failed.', 'Repeat the workflow with sanitized diagnostics and fix the company/runtime behavior.'),
+    'UI_PERMISSION_STATE_FAIL': Reason('A role or permission state differed from the verified bootstrap policy.', 'Correct tenant membership/policy and repeat as both real users.'),
+    'UI_KEYBOARD_FAIL': Reason('A required keyboard or focus workflow failed.', 'Repair the deployed workflow and rerun the keyboard/focus checks.'),
+    'UI_A11Y_AUTOMATION_FAIL': Reason('Automated accessibility checks failed or were not source/deployment bound.', 'Run the maintained accessibility tooling against the deployed company UI and resolve failures.'),
+    'UI_REFLOW_FAIL': Reason('A required narrow viewport, zoom, or reflow check failed.', 'Repeat and repair the 320px/390px, zoom, and reflow scenarios.'),
+    'UI_NATIVE_ASSISTIVE_BLOCKED': Reason('Native assistive-technology evidence has not been performed by a human tester.', 'A tester must exercise the real deployed workflows with the supported native assistive technology and record a sanitized result.'),
+    'UI_PASS': Reason('The deployed workflows, roles, keyboard behavior, automated accessibility, reflow, and required human evidence passed.', 'Preserve the private UI evidence and continue to performance qualification.'),
+    'PERF_REPOSITORY_FAIL': Reason('Repository performance or virtualization contracts failed or are stale for this source.', 'Run the maintained repository performance/virtualization checks for this candidate.'),
+    'PERF_COMPANY_OBSERVATION_MISSING': Reason('No bounded representative company-route performance observation is available.', 'Collect read-only company-route timings with environment and route-class metadata.'),
+    'PERF_THRESHOLD_FAIL': Reason('A bounded company observation exceeded its declared threshold.', 'Repeat the bounded observation, then investigate the affected company route/data path.'),
+    'PERF_PASS': Reason('Repository performance contracts and bounded company observations passed.', 'Preserve the source-bound performance result and continue to operations drills.'),
+    'OPS_STARTUP_RESTART_BLOCKED': Reason('The startup/restart company drill is incomplete.', 'Perform the startup and clean restart drill; record only a timestamp, safe correlation ID, and outcome.'),
+    'OPS_STARTUP_RESTART_FAIL': Reason('The startup/restart company drill failed.', 'Restore a healthy qualification service and repeat the bounded restart drill.'),
+    'OPS_DEPENDENCY_UNAVAILABLE_RECOVERY_BLOCKED': Reason('The dependency-unavailable recovery drill is incomplete.', 'Exercise the approved dependency outage and recovery, then record sanitized outcomes.'),
+    'OPS_DEPENDENCY_UNAVAILABLE_RECOVERY_FAIL': Reason('The dependency-unavailable recovery drill failed.', 'Restore dependencies and repeat the approved recovery drill.'),
+    'OPS_DATABASE_READINESS_DEGRADATION_BLOCKED': Reason('The database/readiness degradation drill is incomplete.', 'Perform the approved database readiness fault drill and verify the bounded readiness response.'),
+    'OPS_DATABASE_READINESS_DEGRADATION_FAIL': Reason('The database/readiness degradation drill failed.', 'Stop writes and resolve the database/readiness failure before repeating.'),
+    'OPS_WORKER_CRASH_LEASE_RECOVERY_BLOCKED': Reason('The worker crash/lease recovery drill is incomplete.', 'Exercise worker interruption and lease recovery with a safe correlation ID.'),
+    'OPS_WORKER_CRASH_LEASE_RECOVERY_FAIL': Reason('The worker crash/lease recovery drill failed.', 'Resolve lease recovery or duplicate-side-effect handling before repeating.'),
+    'OPS_OUTBOUND_INTEGRATION_FAILURE_RETRY_BLOCKED': Reason('The outbound integration failure/retry drill is incomplete.', 'Exercise a controlled integration failure and idempotent retry, then record sanitized results.'),
+    'OPS_OUTBOUND_INTEGRATION_FAILURE_RETRY_FAIL': Reason('The outbound integration failure/retry drill failed.', 'Stop external side effects and correct the retry/idempotency behavior.'),
+    'OPS_RECOVERY_RESTORE_BLOCKED': Reason('The recovery/restore operations drill is incomplete.', 'Restore the approved snapshot into a new root and record object/attachment integrity.'),
+    'OPS_RECOVERY_RESTORE_FAIL': Reason('The recovery/restore operations drill failed.', 'Preserve the original root and investigate the new-root restore.'),
+    'OPS_REQUEST_LOG_CORRELATION_BLOCKED': Reason('The request/log correlation drill is incomplete.', 'Perform a real request and verify safe correlation across the approved logs.'),
+    'OPS_REQUEST_LOG_CORRELATION_FAIL': Reason('The request/log correlation drill failed.', 'Correct correlation behavior while keeping request bodies and credentials out of evidence.'),
+    'OPS_STARTUP_RESTART_PASS': Reason('The startup/restart drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_DEPENDENCY_UNAVAILABLE_RECOVERY_PASS': Reason('The dependency recovery drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_DATABASE_READINESS_DEGRADATION_PASS': Reason('The database/readiness drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_WORKER_CRASH_LEASE_RECOVERY_PASS': Reason('The worker lease recovery drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_OUTBOUND_INTEGRATION_FAILURE_RETRY_PASS': Reason('The outbound retry drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_RECOVERY_RESTORE_PASS': Reason('The recovery/restore drill passed under the existing typed evidence contract.', 'Continue the remaining operations drills.'),
+    'OPS_REQUEST_LOG_CORRELATION_PASS': Reason('The request/log correlation drill passed under the existing typed evidence contract.', 'Preserve the private operations evidence.'),
+    'CUST_NONE': Reason('No tracked or untracked work-local customization was found.', 'Keep the source binding unchanged while gathering external qualification evidence.'),
+    'CUST_CONFIG_ONLY': Reason('Detected changes are limited to supported application/workspace/entity/policy configuration.', 'Review the path/hash inventory and repeat the affected company behavior checks.'),
+    'CUST_SUPPORTED': Reason('Changed files match a repository-supported customization boundary.', 'Review the inventory and retain the matching local evidence.'),
+    'CUST_SOURCE_REVERIFY_REQUIRED': Reason('Executable source, dependencies, deployment, or operator code changed locally.', 'Run the applicable source checks and bind all qualification evidence to the updated executable source.'),
+    'CUST_API_REVISION_REQUIRED': Reason('A detected source change alters the public API contract.', 'Use the maintained API compatibility process and advance the API revision only when the contract changed.'),
+    'CUST_PLATFORM_BOUNDARY_FAIL': Reason('A detected import/ownership boundary violation crosses platform and feature ownership.', 'Resolve the platform/feature boundary before release verification.'),
+    'CUST_SECRET_RISK': Reason('A changed path indicates a possible secret-bearing local file.', 'Keep the file private, rotate exposed credentials if necessary, and remove secret material from the source candidate.'),
+    'CUST_UNKNOWN': Reason('A customization path could not be classified using the maintained ownership map.', 'Review the private path/hash inventory and classify the path before qualifying the customized source.'),
+    'ATTENTION_UNKNOWN': Reason('An observation did not match a known safe shape; its value was not retained.', 'Review the original system privately and provide a supported observation form.'),
+    'QUAL_GATES_BLOCKED': Reason('One or more of the eight existing CompanyQualification gates are not proven.', 'Complete the named gate actions and rerun; the harness will not approve or enable production.'),
+    'READY_FOR_OPERATOR_APPROVAL': Reason('All eight gates have proven source-bound evidence; operator approval is still required.', 'Review the complete private report, run production preflight and final two-user smoke, then use the authorized approval workflow.'),
+}
+
+
+def reason_detail(code: str) -> Reason:
+    return REASONS.get(code, Reason('The observation is unrecognized and was not accepted as evidence.', 'Review the source privately and provide a supported observation.'))

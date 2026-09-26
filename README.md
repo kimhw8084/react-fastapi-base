@@ -1,6 +1,6 @@
 # react-fastapi-base
 
-`1.0.0-rc.22` — CHG-185 Golden UI v3 review overlay candidate; company qualification remains pending. The v3 review law remains provisional and does not change Project OS authority.
+`1.0.0-rc.24` — CHG-235 R4 carries forward the R2 work-environment qualification harness and repairs high-contrast browser-test readiness evidence. Company qualification remains pending; this operator tooling does not change product behavior or Project OS authority.
 
 This repository is a React/FastAPI engineering-workstation template. It contains a typed React application, a FastAPI/SQLite backend with explicit migrations, generated API contracts, reusable workspace primitives, domain packs, generators, and the compiled Experience Lab. SysGrid is read-only behavioral reference; it is not modified or bundled as copied application code.
 
@@ -29,6 +29,8 @@ The backend includes canonical feature modules for work items, projects, racks, 
 The implementation ledger is [docs/v1-completion-status.json](docs/v1-completion-status.json). All locally achievable V1 subsystem contracts are implemented and evidenced there; only company qualification remains externally blocked. The retained 605-item catalog is checked by `scripts/catalog.py --check --release`.
 
 ## Verification
+
+For a real company work-environment qualification, use the one-command operator path in [docs/WORK_ENVIRONMENT_QUALIFICATION.md](docs/WORK_ENVIRONMENT_QUALIFICATION.md): `./dev work-qualify`. It keeps detailed evidence in a private local run directory and never approves production.
 
 Run the local gates from the repository root:
 
@@ -63,4 +65,4 @@ Do not use the local profile with company data. Do not treat UI flags as authori
 
 ## Documentation
 
-[Release status](docs/RELEASE_STATUS.md) · [Configuration/secrets contract](docs/CONFIGURATION_CONTRACT.md) · [API compatibility/versioning](docs/API_COMPATIBILITY.md) · [Completion matrix](docs/v1-completion-status.json) · [Component coverage](docs/COMPONENT_COVERAGE.md) · [Master design](docs/MASTER_DESIGN.md) · [Testing](docs/TESTING.md) · [Company qualification](docs/COMPANY_QUALIFICATION.md) · [Recovery](docs/RECOVERY.md) · [Upgrade process](docs/UPGRADING.md)
+[Release status](docs/RELEASE_STATUS.md) · [Work-environment qualification](docs/WORK_ENVIRONMENT_QUALIFICATION.md) · [Configuration/secrets contract](docs/CONFIGURATION_CONTRACT.md) · [API compatibility/versioning](docs/API_COMPATIBILITY.md) · [Completion matrix](docs/v1-completion-status.json) · [Component coverage](docs/COMPONENT_COVERAGE.md) · [Master design](docs/MASTER_DESIGN.md) · [Testing](docs/TESTING.md) · [Company qualification](docs/COMPANY_QUALIFICATION.md) · [Recovery](docs/RECOVERY.md) · [Upgrade process](docs/UPGRADING.md)

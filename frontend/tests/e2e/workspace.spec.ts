@@ -1,5 +1,23 @@
-import {test,expect} from '@playwright/test'
+import {test,expect,type Page} from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+
+async function waitForHighContrastPaint(page:Page){
+ await page.waitForFunction(()=>{
+  const root=document.documentElement,heading=document.querySelector('.page-heading h1')
+  if(root.dataset.contrast!=='high'||!root.dataset.theme||!root.dataset.mode||!heading)return false
+  const rootStyle=getComputedStyle(root),bodyStyle=getComputedStyle(document.body),headingColor=getComputedStyle(heading).color
+  return rootStyle.getPropertyValue('--surface-page').trim()==='#000'&&rootStyle.getPropertyValue('--text-primary').trim()==='#fff'&&bodyStyle.backgroundColor==='rgb(0, 0, 0)'&&headingColor==='rgb(255, 255, 255)'
+ },undefined,{timeout:10000})
+}
+
+function readThemePaint(){
+ const root=document.documentElement,rootStyle=getComputedStyle(root),bodyStyle=getComputedStyle(document.body)
+ const transparent=(color:string)=>color==='transparent'||color==='rgba(0, 0, 0, 0)'
+ const ancestors=(element:Element)=>{const result:Array<{tag:string;selector:string;color:string;backgroundColor:string;backgroundImage:string}>=[];for(let node:Element|null=element;node&&result.length<8;node=node.parentElement){const style=getComputedStyle(node);result.push({tag:node.tagName,selector:node.id?`#${node.id}`:typeof node.className==='string'?node.className.split(/\s+/).filter(Boolean).map(name=>`.${name}`).join(''):'',color:style.color,backgroundColor:style.backgroundColor,backgroundImage:style.backgroundImage})}return result}
+ const headingStyles=['.page-heading .eyebrow','.page-heading h1','.page-heading p'].map(selector=>{const element=document.querySelector(selector);if(!element)return{selector,missing:true};const style=getComputedStyle(element),chain=ancestors(element);return{selector,color:style.color,backgroundColor:style.backgroundColor,fontSize:style.fontSize,fontWeight:style.fontWeight,nearestOpaqueAncestor:chain.find(node=>!transparent(node.backgroundColor))??{source:'canvas'},ancestors:chain}})
+ const stylesheets=[...document.styleSheets].map(sheet=>{let ruleCount=0,highContrastRule=false;try{const rules=[...sheet.cssRules];ruleCount=rules.length;highContrastRule=rules.some(rule=>rule.cssText.includes('data-contrast'))}catch{}return{path:sheet.href?new URL(sheet.href).pathname:null,disabled:sheet.disabled,ruleCount,highContrastRule}})
+ return{url:location.pathname,attributes:{theme:root.dataset.theme??null,mode:root.dataset.mode??null,contrast:root.dataset.contrast??null},media:{prefersDark:matchMedia('(prefers-color-scheme: dark)').matches,prefersLight:matchMedia('(prefers-color-scheme: light)').matches,prefersReducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches},html:{color:rootStyle.color,backgroundColor:rootStyle.backgroundColor,backgroundImage:rootStyle.backgroundImage,semantic:Object.fromEntries(['--surface-page','--surface-sidebar','--surface-panel','--text-primary','--text-secondary','--text-muted','--accent','--danger','--warning','--success','--focus'].map(name=>[name,rootStyle.getPropertyValue(name).trim()]))},body:{color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage},effectiveCanvasBackground:!transparent(bodyStyle.backgroundColor)?bodyStyle.backgroundColor:(!transparent(rootStyle.backgroundColor)?rootStyle.backgroundColor:'browser-default'),headings:headingStyles,stylesheets}
+}
 
 test('create, reload and retrieve revision-backed details',async({page})=>{
  await page.goto('/')
@@ -135,29 +153,42 @@ test('representative mobile surfaces remain keyboard and axe clean',async({page}
  expect(consoleErrors).toEqual([])
 })
 
-test('major workspaces remain axe clean under high contrast, reduced motion and zoom',async({page},info)=>{
- await page.emulateMedia({reducedMotion:'reduce'})
- await page.setViewportSize({width:1280,height:900})
- const routes=['/','/work-items','/projects','/racks','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/knowledge-entries','/investigations','/risks','/research','/process-measurements','/wafer-runs','/manufacturing-lots','/equipment-states','/process-recipes','/software-services','/delivery-runs','/observability-events','/incidents','/service-objectives','/system']
- const reports:Record<string,unknown>={}
- for(const route of routes){
-  await page.goto(route)
-  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
-  if(route==='/'){
+const highContrastRoutes=['/','/work-items','/projects','/racks','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/knowledge-entries','/investigations','/risks','/research','/process-measurements','/wafer-runs','/manufacturing-lots','/equipment-states','/process-recipes','/software-services','/delivery-runs','/observability-events','/incidents','/service-objectives','/system']
+for(const route of highContrastRoutes){
+ const routeName=route==='/'?'root':route.replace(/[/?=]/g,'-').replace(/^-+|-+$/g,'')
+ test(`major workspace ${routeName} (${route}) remains axe clean under high contrast, reduced motion and zoom`,async({page},info)=>{
+  await page.emulateMedia({reducedMotion:'reduce'})
+  await page.setViewportSize({width:1280,height:900})
+  const reports:Record<string,unknown>={}
+  try{
+   await page.goto(route)
+   await expect(page.locator('main, [role="main"]').first()).toBeVisible()
+   const theme=page.locator('#desktop-theme');await expect(theme).toBeVisible();await expect(theme).toHaveAccessibleName('Theme');await theme.selectOption('operations')
    const contrast=page.locator('#desktop-contrast');await expect(contrast).toBeVisible();await expect(contrast).toHaveAccessibleName('Contrast');await contrast.selectOption('high')
+   await expect(page.locator('html')).toHaveAttribute('data-contrast','high')
+   await waitForHighContrastPaint(page)
+   const before=route==='/system'?await page.evaluate(readThemePaint):undefined
+   const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
+   const serious=result.violations.filter(v=>v.impact==='serious'||v.impact==='critical')
+   const after=route==='/system'?await page.evaluate(readThemePaint):undefined
+   reports[route]={serious_or_critical:serious.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,checks:n.any.map(check=>({message:check.message,data:check.data}))}))})),total:result.violations.length,zoom:'100%',reduced_motion:'reduce',contrast:await page.locator('html').getAttribute('data-contrast'),...(route==='/system'?{computed_before_axe:before,computed_after_axe:after}:{})}
+   if(route==='/system'||serious.length){
+    await info.attach('major-workspaces-axe-progress.json',{body:Buffer.from(JSON.stringify(reports,null,2)),contentType:'application/json'})
+    await info.attach(`major-workspaces-${route==='/system'?'system':'failure'}.png`,{body:await page.screenshot(),contentType:'image/png'})
+   }
+   expect(serious,`${route} serious/critical axe violations`).toEqual([])
+   await page.evaluate(()=>{document.documentElement.style.zoom='2'})
+   await expect(page.locator('main, [role="main"]').first()).toBeVisible()
+   await page.evaluate(()=>{document.documentElement.style.zoom='4'})
+   await expect(page.locator('main, [role="main"]').first()).toBeVisible()
+   await page.evaluate(()=>{document.documentElement.style.zoom=''})
+  }finally{
+   try{reports.last_observed_state=await page.evaluate(readThemePaint)}catch{}
+   await info.attach('major-surfaces-axe.json',{body:Buffer.from(JSON.stringify(reports,null,2)),contentType:'application/json'})
+   try{await info.attach('major-surfaces-final.png',{body:await page.screenshot(),contentType:'image/png'})}catch{}
   }
-  await expect(page.locator('html')).toHaveAttribute('data-contrast','high')
-  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
-  reports[route]={serious_or_critical:result.violations.filter(v=>v.impact==='serious'||v.impact==='critical').map(v=>v.id),total:result.violations.length,zoom:'100%',reduced_motion:'reduce',contrast:await page.locator('html').getAttribute('data-contrast')}
-  expect(result.violations.filter(v=>v.impact==='serious'||v.impact==='critical')).toEqual([])
-  await page.evaluate(()=>{document.documentElement.style.zoom='2'})
-  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
-  await page.evaluate(()=>{document.documentElement.style.zoom='4'})
-  await expect(page.locator('main, [role="main"]').first()).toBeVisible()
-  await page.evaluate(()=>{document.documentElement.style.zoom=''})
- }
- await info.attach('major-surfaces-axe.json',{body:Buffer.from(JSON.stringify(reports,null,2)),contentType:'application/json'})
-})
+ })
+}
 
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
  await page.setViewportSize({width:1280,height:900});await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
