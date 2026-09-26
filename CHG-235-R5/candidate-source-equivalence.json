@@ -1,0 +1,32 @@
+{
+  "comparison": {
+    "added_paths": [],
+    "algorithm": "scripts/source_manifest.py canonical source set; SHA-256 per path",
+    "file_count": 675,
+    "modified_paths": [],
+    "removed_paths": [],
+    "result": "PASS_EXACT_SOURCE_EQUIVALENCE"
+  },
+  "exact_base": {
+    "ref": "main",
+    "sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "tree": "092a56eb25dab69d1bdcce74f66af4b2dff8dad1"
+  },
+  "r2_ancestry": {
+    "commit": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "preserved_as_ancestor": true
+  },
+  "r4_authority": {
+    "executable_source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+    "executable_source_tree": "a3e87ee94365672304d468469e8415e4f0d24c80",
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
+    "version": "1.0.0-rc.24",
+    "work_head": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+    "work_tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300"
+  },
+  "schema_version": 1,
+  "scope_note": "R5 carries exact R4 head by fast-forward on fresh verification branch. No Product/tooling executable source path differs from R4. Verification and evidence publication do not change this candidate.",
+  "verification_branch": "codex/react-fastapi-base-work-env-qualification-harness-ci-evidence-verify-v5",
+  "verification_head": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+  "verification_tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300"
+}

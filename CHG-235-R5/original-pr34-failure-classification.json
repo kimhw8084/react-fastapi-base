@@ -1,0 +1,52 @@
+{
+  "dependent_failure": {
+    "classification": "dependent/blocked after browser gate failure",
+    "gate": "reusable-platform-qualification",
+    "report": "referenced qualification report was absent from downloaded artifact"
+  },
+  "evidence_note": "The original 15.5 MiB AR-80 Notion ZIP could not be independently byte-read through the current Notion connector; this Git carrier provides readable classification and focused JSON directly.",
+  "failure": {
+    "affected_content": [
+      "eyebrow",
+      "title",
+      "description"
+    ],
+    "background": "#f4f6f9",
+    "contrast_ratio": "1.08:1",
+    "foreground": "#ffffff",
+    "impact": "serious",
+    "route": "/system",
+    "rule": "color-contrast"
+  },
+  "original_failing_source_binding": {
+    "basis": "docs/RELEASE_STATUS.md R4 verification section",
+    "executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0"
+  },
+  "project": "kimhw8084/react-fastapi-base",
+  "pull_request": {
+    "base_ref": "main",
+    "base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "head_sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+    "number": 34
+  },
+  "r4_root_classification": {
+    "application_theme_css_runtime_changed": false,
+    "category": "test readiness / browser paint timing",
+    "confidence": "medium",
+    "exact_transient_ci_frame_proved": false
+  },
+  "r5_negative_control": "focused/negative-control.json independently demonstrates axe detects the serious white-on-light color-contrast class.",
+  "schema_version": 1,
+  "workflow_run": {
+    "artifact": {
+      "id": 10885401386,
+      "name": "platform-code-evidence",
+      "sha256": "07c9921e4a0da9c39eba512983f1742a57ee809a7be6d7b224003ce767c0bc9b",
+      "size_bytes": 74858863
+    },
+    "conclusion": "failure",
+    "failed_gate": "browser-e2e-accessibility",
+    "id": 36182134604,
+    "job_id": 108226786675
+  }
+}

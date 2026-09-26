@@ -1,0 +1,486 @@
+{
+  "candidate": {
+    "executable_source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+    "head": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
+    "tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300",
+    "version": "1.0.0-rc.24"
+  },
+  "environment": {
+    "browser": "Chromium 151.0.7922.34",
+    "platform": "macOS 26.6.2 arm64",
+    "playwright": "1.62.1"
+  },
+  "evidence_origin": "R4 recorded full local macOS browser/accessibility run; exact executable source and digest match R5 candidate source equivalence.",
+  "failed": 0,
+  "limitation": "This is recorded R4 local macOS suite evidence; the 70-test full suite was not rerun in this R5 turn. The focused theme-readiness suite was rerun on exact R4 source and passed 8/8.",
+  "passed": 70,
+  "result": "PASS",
+  "retained_route_high_contrast_assertions": {
+    "assertion": "Each listed route remains axe-clean under high contrast, reduced motion and zoom.",
+    "focused_regression_contexts": {
+      "dark": 3,
+      "light": 3,
+      "route_lifecycle_cases_per_context": [
+        "direct-load-system",
+        "client-navigation-system",
+        "reload-system"
+      ],
+      "serious_or_critical_violations": 0
+    },
+    "major_workspace_routes": 21,
+    "negative_control": "Separate focused JSON demonstrates expected serious color-contrast detection.",
+    "routes": [
+      "root (/)",
+      "work-items (/work-items)",
+      "projects (/projects)",
+      "racks (/racks)",
+      "plan-tasks-visualization-gantt (/plan-tasks?visualization=gantt)",
+      "diagram-documents-visualization-designer (/diagram-documents?visualization=designer)",
+      "knowledge-entries (/knowledge-entries)",
+      "investigations (/investigations)",
+      "risks (/risks)",
+      "research (/research)",
+      "process-measurements (/process-measurements)",
+      "wafer-runs (/wafer-runs)",
+      "manufacturing-lots (/manufacturing-lots)",
+      "equipment-states (/equipment-states)",
+      "process-recipes (/process-recipes)",
+      "software-services (/software-services)",
+      "delivery-runs (/delivery-runs)",
+      "observability-events (/observability-events)",
+      "incidents (/incidents)",
+      "service-objectives (/service-objectives)",
+      "system (/system)"
+    ],
+    "theme_axe_assertions": [
+      "theme Operations: no serious/critical automated accessibility violations",
+      "theme Clarity: no serious/critical automated accessibility violations",
+      "theme Minimal: no serious/critical automated accessibility violations"
+    ]
+  },
+  "schema_version": 1,
+  "tests": [
+    {
+      "duration": "8.1s",
+      "ordinal": 1,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:105:1 \u203a CHG-185 populated routed product visual qualification"
+    },
+    {
+      "duration": "348ms",
+      "ordinal": 2,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:140:1 \u203a CHG-185 Process Recipes remains usable and bounded at 320 CSS px"
+    },
+    {
+      "duration": "396ms",
+      "ordinal": 3,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:176:1 \u203a CHG-185 initial-view and width oracles reject known layout mutations"
+    },
+    {
+      "duration": "1.3s",
+      "ordinal": 4,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:202:1 \u203a CHG-185 rack, planning, diagram, SPC and system data states"
+    },
+    {
+      "duration": "538ms",
+      "ordinal": 5,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:222:1 \u203a CHG-185 mobile task economy budget and fault sensitivity"
+    },
+    {
+      "duration": "348ms",
+      "ordinal": 6,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:242:1 \u203a CHG-185 mobile workspace controls keep scope visible and applied state discoverable"
+    },
+    {
+      "duration": "662ms",
+      "ordinal": 7,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:257:1 \u203a CHG-185 desktop active navigation reveals deep destinations without needless scrolling"
+    },
+    {
+      "duration": "2.1s",
+      "ordinal": 8,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:269:1 \u203a CHG-185 true empty, no-match, request-error and permission states"
+    },
+    {
+      "duration": "437ms",
+      "ordinal": 9,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:287:1 \u203a CHG-185 responsive stress preserves task access and section reachability"
+    },
+    {
+      "duration": "580ms",
+      "ordinal": 10,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:300:1 \u203a CHG-185 narrow dossier section selector reaches all ten sections"
+    },
+    {
+      "duration": "405ms",
+      "ordinal": 11,
+      "status": "PASS",
+      "test": "tests/e2e/golden-ui-v3.spec.ts:310:1 \u203a CHG-185 revision conflict preserves the edited draft for recovery"
+    },
+    {
+      "duration": "302ms",
+      "ordinal": 12,
+      "status": "PASS",
+      "test": "tests/e2e/performance.spec.ts:50:1 \u203a browser-server-page-100k-50 preserves the production paging boundary"
+    },
+    {
+      "duration": "697ms",
+      "ordinal": 13,
+      "status": "PASS",
+      "test": "tests/e2e/performance.spec.ts:77:1 \u203a browser-ag-grid-virtualization-5000 proves synthetic test-only row recycling"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 14,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-001 chg34-theme-operations-primary-action"
+    },
+    {
+      "duration": "1.2s",
+      "ordinal": 15,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-002 chg34-grid-semantic-theme-modes"
+    },
+    {
+      "duration": "1.2s",
+      "ordinal": 16,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-003 chg34-saved-view-checkbox-selection"
+    },
+    {
+      "duration": "795ms",
+      "ordinal": 17,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-007 chg34-notification-timestamp-contrast"
+    },
+    {
+      "duration": "678ms",
+      "ordinal": 18,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-008 chg34-work-items-loading"
+    },
+    {
+      "duration": "691ms",
+      "ordinal": 19,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-009 chg34-work-items-empty"
+    },
+    {
+      "duration": "2.0s",
+      "ordinal": 20,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-010 chg34-work-items-error"
+    },
+    {
+      "duration": "1.0s",
+      "ordinal": 21,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-011 chg34-work-items-permission-readonly"
+    },
+    {
+      "duration": "1.5s",
+      "ordinal": 22,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-012 chg34-grid-row-selection"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 23,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-013 chg34-dialog-focus-recovery"
+    },
+    {
+      "duration": "764ms",
+      "ordinal": 24,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-014 chg34-reflow-320-css-px"
+    },
+    {
+      "duration": "921ms",
+      "ordinal": 25,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-015 chg34-reduced-motion"
+    },
+    {
+      "duration": "1.0s",
+      "ordinal": 26,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-016 chg34-forced-colors"
+    },
+    {
+      "duration": "2.1s",
+      "ordinal": 27,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-017 chg153-system-responsive-geometry"
+    },
+    {
+      "duration": "8.4s",
+      "ordinal": 28,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-018 chg153-visualization-responsive-geometry"
+    },
+    {
+      "duration": "7.6s",
+      "ordinal": 29,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:45:2 \u203a uiqa-019 chg153-mobile-navigation-shell"
+    },
+    {
+      "duration": "228ms",
+      "ordinal": 30,
+      "status": "PASS",
+      "test": "tests/e2e/uiqa.spec.ts:475:1 \u203a uiqa-019 chg153-mobile-navigation-shell keyboard activation"
+    },
+    {
+      "duration": "784ms",
+      "ordinal": 31,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:22:1 \u203a create, reload and retrieve revision-backed details"
+    },
+    {
+      "duration": "629ms",
+      "ordinal": 32,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:44:1 \u203a read-only viewer dossier comments do not expose a composer"
+    },
+    {
+      "duration": "336ms",
+      "ordinal": 33,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:63:1 \u203a dirty form close requires a decision"
+    },
+    {
+      "duration": "338ms",
+      "ordinal": 34,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:73:1 \u203a dirty form protects browser Back navigation"
+    },
+    {
+      "duration": "361ms",
+      "ordinal": 35,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:89:1 \u203a team saved views persist scope, favorite and default metadata"
+    },
+    {
+      "duration": "322ms",
+      "ordinal": 36,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:104:1 \u203a admin can manage membership-scoped workspace teams"
+    },
+    {
+      "duration": "1.8s",
+      "ordinal": 37,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:122:1 \u203a registered workspaces load without browser errors"
+    },
+    {
+      "duration": "1.9s",
+      "ordinal": 38,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:137:1 \u203a representative mobile surfaces remain keyboard and axe clean"
+    },
+    {
+      "duration": "1.4s",
+      "ordinal": 39,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace root (/) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.4s",
+      "ordinal": 40,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace work-items (/work-items) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 41,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace projects (/projects) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.2s",
+      "ordinal": 42,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace racks (/racks) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "760ms",
+      "ordinal": 43,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace plan-tasks-visualization-gantt (/plan-tasks?visualization=gantt) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "844ms",
+      "ordinal": 44,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace diagram-documents-visualization-designer (/diagram-documents?visualization=designer) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "978ms",
+      "ordinal": 45,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace knowledge-entries (/knowledge-entries) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "970ms",
+      "ordinal": 46,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace investigations (/investigations) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "852ms",
+      "ordinal": 47,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace risks (/risks) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "970ms",
+      "ordinal": 48,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace research (/research) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "846ms",
+      "ordinal": 49,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace process-measurements (/process-measurements) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.2s",
+      "ordinal": 50,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace wafer-runs (/wafer-runs) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "660ms",
+      "ordinal": 51,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace manufacturing-lots (/manufacturing-lots) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "638ms",
+      "ordinal": 52,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace equipment-states (/equipment-states) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "670ms",
+      "ordinal": 53,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace process-recipes (/process-recipes) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 54,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace software-services (/software-services) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "706ms",
+      "ordinal": 55,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace delivery-runs (/delivery-runs) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "670ms",
+      "ordinal": 56,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace observability-events (/observability-events) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 57,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace incidents (/incidents) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "903ms",
+      "ordinal": 58,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace service-objectives (/service-objectives) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "672ms",
+      "ordinal": 59,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:159:2 \u203a major workspace system (/system) remains axe clean under high contrast, reduced motion and zoom"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 60,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:193:55 \u203a theme Operations: no serious/critical automated accessibility violations"
+    },
+    {
+      "duration": "1.1s",
+      "ordinal": 61,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:193:55 \u203a theme Clarity: no serious/critical automated accessibility violations"
+    },
+    {
+      "duration": "1.0s",
+      "ordinal": 62,
+      "status": "PASS",
+      "test": "tests/e2e/workspace.spec.ts:193:55 \u203a theme Minimal: no serious/critical automated accessibility violations"
+    },
+    {
+      "duration": "2.3s",
+      "ordinal": 63,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: light system preference, fresh context 1"
+    },
+    {
+      "duration": "2.4s",
+      "ordinal": 64,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: light system preference, fresh context 2"
+    },
+    {
+      "duration": "2.5s",
+      "ordinal": 65,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: light system preference, fresh context 3"
+    },
+    {
+      "duration": "2.3s",
+      "ordinal": 66,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: dark system preference, fresh context 1"
+    },
+    {
+      "duration": "2.4s",
+      "ordinal": 67,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: dark system preference, fresh context 2"
+    },
+    {
+      "duration": "2.6s",
+      "ordinal": 68,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:56:75 \u203a System high contrast initializes before axe: dark system preference, fresh context 3"
+    },
+    {
+      "duration": "1.2s",
+      "ordinal": 69,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:95:1 \u203a axe negative control detects white text on the light System canvas"
+    },
+    {
+      "duration": "447ms",
+      "ordinal": 70,
+      "status": "PASS",
+      "test": "tests/e2e/theme-readiness.spec.ts:129:1 \u203a supported themes preserve semantic accent and status colors in both modes"
+    }
+  ],
+  "total": 70
+}

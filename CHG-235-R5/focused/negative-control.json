@@ -1,0 +1,566 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "negative_control": {
+    "after": {
+      "attributes": {
+        "contrast": "high",
+        "mode": "light",
+        "theme": "operations"
+      },
+      "body": {
+        "backgroundColor": "rgb(244, 246, 249)",
+        "backgroundImage": "none",
+        "color": "rgb(255, 255, 255)"
+      },
+      "effectiveCanvasBackground": "rgb(244, 246, 249)",
+      "headings": [
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".eyebrow",
+              "tag": "SPAN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "700",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading .eyebrow"
+        },
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "H1"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "29px",
+          "fontWeight": "700",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading h1"
+        },
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "P"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading p"
+        }
+      ],
+      "html": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(255, 255, 255)",
+        "semantic": {
+          "--accent": "#00e5ff",
+          "--danger": "#ff7070",
+          "--focus": "#ff0",
+          "--success": "#6dff9b",
+          "--surface-page": "#000",
+          "--surface-panel": "#000",
+          "--surface-sidebar": "#000",
+          "--text-muted": "#f0f0f0",
+          "--text-primary": "#fff",
+          "--text-secondary": "#fff",
+          "--warning": "#ffe066"
+        }
+      },
+      "media": {
+        "prefersDark": false,
+        "prefersLight": true,
+        "prefersReducedMotion": true
+      },
+      "stylesheets": [
+        {
+          "disabled": false,
+          "highContrastRule": true,
+          "path": "/assets/index-C_dw8m3e.css",
+          "ruleCount": 993
+        }
+      ],
+      "url": "/system"
+    },
+    "before": {
+      "attributes": {
+        "contrast": "high",
+        "mode": "light",
+        "theme": "operations"
+      },
+      "body": {
+        "backgroundColor": "rgb(244, 246, 249)",
+        "backgroundImage": "none",
+        "color": "rgb(255, 255, 255)"
+      },
+      "effectiveCanvasBackground": "rgb(244, 246, 249)",
+      "headings": [
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".eyebrow",
+              "tag": "SPAN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "700",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading .eyebrow"
+        },
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "H1"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "29px",
+          "fontWeight": "700",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading h1"
+        },
+        {
+          "ancestors": [
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "P"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".page-heading",
+              "tag": "SECTION"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".workspace",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": "#main-content",
+              "tag": "MAIN"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-content",
+              "tag": "DIV"
+            },
+            {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "none",
+              "color": "rgb(255, 255, 255)",
+              "selector": ".application-shell",
+              "tag": "DIV"
+            }
+          ],
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "nearestOpaqueAncestor": {
+            "source": "canvas"
+          },
+          "selector": ".page-heading p"
+        }
+      ],
+      "html": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(255, 255, 255)",
+        "semantic": {
+          "--accent": "#00e5ff",
+          "--danger": "#ff7070",
+          "--focus": "#ff0",
+          "--success": "#6dff9b",
+          "--surface-page": "#000",
+          "--surface-panel": "#000",
+          "--surface-sidebar": "#000",
+          "--text-muted": "#f0f0f0",
+          "--text-primary": "#fff",
+          "--text-secondary": "#fff",
+          "--warning": "#ffe066"
+        }
+      },
+      "media": {
+        "prefersDark": false,
+        "prefersLight": true,
+        "prefersReducedMotion": true
+      },
+      "stylesheets": [
+        {
+          "disabled": false,
+          "highContrastRule": true,
+          "path": "/assets/index-C_dw8m3e.css",
+          "ruleCount": 993
+        }
+      ],
+      "url": "/system"
+    },
+    "violation": {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": [
+        {
+          "checks": [
+            {
+              "background": "#f4f6f9",
+              "contrastRatio": 1.08,
+              "expectedContrastRatio": "4.5:1",
+              "foreground": "#ffffff",
+              "id": "color-contrast",
+              "message": "Element has insufficient color contrast of 1.08 (foreground color: #ffffff, background color: #f4f6f9, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "target": [
+            ".eyebrow"
+          ]
+        },
+        {
+          "checks": [
+            {
+              "background": "#f4f6f9",
+              "contrastRatio": 1.08,
+              "expectedContrastRatio": "3:1",
+              "foreground": "#ffffff",
+              "id": "color-contrast",
+              "message": "Element has insufficient color contrast of 1.08 (foreground color: #ffffff, background color: #f4f6f9, font size: 21.8pt (29px), font weight: bold). Expected contrast ratio of 3:1"
+            }
+          ],
+          "target": [
+            "h1"
+          ]
+        },
+        {
+          "checks": [
+            {
+              "background": "#f4f6f9",
+              "contrastRatio": 1.08,
+              "expectedContrastRatio": "4.5:1",
+              "foreground": "#ffffff",
+              "id": "color-contrast",
+              "message": "Element has insufficient color contrast of 1.08 (foreground color: #ffffff, background color: #f4f6f9, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "target": [
+            ".page-heading > div > p"
+          ]
+        }
+      ]
+    }
+  },
+  "source": {
+    "candidate_tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300",
+    "candidate_version": "1.0.0-rc.24",
+    "source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c"
+  },
+  "status": "PASS_EXPECTED_VIOLATION_DETECTED",
+  "test_title": "axe negative control detects white text on the light System canvas"
+}

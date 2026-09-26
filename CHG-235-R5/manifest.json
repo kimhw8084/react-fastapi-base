@@ -1,0 +1,116 @@
+{
+  "artifact_ref": "project-os-artifacts/react-fastapi-base/chg-235-r5-verify-372ba8c0ca5d",
+  "candidate_head": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+  "candidate_tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300",
+  "exact_base": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+  "files": [
+    {
+      "path": "AUDIT.md",
+      "sha256": "08a2f29b1785e93ce39aeb9032f0caf94b5ffa56b25a222a49c814ddee63874e",
+      "size_bytes": 2863
+    },
+    {
+      "path": "api-compatibility.json",
+      "sha256": "79333ad806843892c592e59f7d4645cbe5dd172a92826b41b03e47d3e9f6248e",
+      "size_bytes": 717
+    },
+    {
+      "path": "browser-a11y-summary.json",
+      "sha256": "a1075aa4741f14acec151b4ce810be16975e257ab69cb078d1ce7e447e41f493",
+      "size_bytes": 17770
+    },
+    {
+      "path": "candidate-source-equivalence.json",
+      "sha256": "2534964d26fab9651ba608d93d6f62638512f541447dc3f7787e9f1ed671ce2e",
+      "size_bytes": 1418
+    },
+    {
+      "path": "focused/dark-context-1.json",
+      "sha256": "e0e27ecdfd9d21c45588e897a33ccf1a0d2e44230d3fa5311acd21f2d27deea8",
+      "size_bytes": 81379
+    },
+    {
+      "path": "focused/dark-context-2.json",
+      "sha256": "b08eca49f38c935fc41e57edd01cd192cd9a458be8f4ddd83e2cc4d23ae30563",
+      "size_bytes": 81379
+    },
+    {
+      "path": "focused/dark-context-3.json",
+      "sha256": "00c974b1cd578a01e25d6cf7dfc7aec912c29f69913eb1bc5b933e9d6b2f6e88",
+      "size_bytes": 81379
+    },
+    {
+      "path": "focused/light-context-1.json",
+      "sha256": "fdc342bdd492003f8fda7d69e0cab3ecee45f2dfa16fc112ea4beb7369b91e8a",
+      "size_bytes": 81390
+    },
+    {
+      "path": "focused/light-context-2.json",
+      "sha256": "a267278d0f7e1748917c30872d9ce5e5f5ed4f4b712c30b1617bf7dc94d32e45",
+      "size_bytes": 81390
+    },
+    {
+      "path": "focused/light-context-3.json",
+      "sha256": "543dd7d91611e6f31fc0a29d634342e71166178b525eaa68b8886dee7eee3022",
+      "size_bytes": 81390
+    },
+    {
+      "path": "focused/negative-control.json",
+      "sha256": "89492081aec08cf87bd9c27f5c02c5a47184eb7d2527b96c3aea59997402fadb",
+      "size_bytes": 18069
+    },
+    {
+      "path": "focused/semantic-theme-matrix.json",
+      "sha256": "ba579ebab45820c7969b9ee72a386230f5d13576a2134cd8ce6f380135465c2b",
+      "size_bytes": 1619
+    },
+    {
+      "path": "gate-results.json",
+      "sha256": "01be482c36d735f975e96fd3db984cc1f94d864e9cc8f825bd9574de006475a2",
+      "size_bytes": 2650
+    },
+    {
+      "path": "original-pr34-failure-classification.json",
+      "sha256": "e8d4ea4bb77e03944959b099184be7919ded8a4703c38c017c8eec263fd05aa5",
+      "size_bytes": 1874
+    },
+    {
+      "path": "r4-executable-source-hashes.json",
+      "sha256": "d82d9a46a60f9763588f1a31e33348d65e66357ab14137ca34e68471539bcbbc",
+      "size_bytes": 77595
+    },
+    {
+      "path": "r4-verification.json",
+      "sha256": "6f8f97957d0173fb12643aa2eafe40659d290eabd690fcde4bedb48378128df3",
+      "size_bytes": 17390
+    },
+    {
+      "path": "rc24-evidence-binding.json",
+      "sha256": "6b2ae028861e9d5d01d33deb63b87abe61b917d9ccb5a758a615121334195d28",
+      "size_bytes": 2387
+    },
+    {
+      "path": "rc24-manifest.json",
+      "sha256": "cc3a16f89428570d6a2aed9607c52c4ef655c1f51e57e59b2ba90b4528507239",
+      "size_bytes": 2659
+    },
+    {
+      "path": "rc24-readiness-matrix.json",
+      "sha256": "0456820bb6c3d01f6430308df9cf3d65de1e4e74ab48697e7174586f2da492a9",
+      "size_bytes": 3559
+    },
+    {
+      "path": "rc24-release-identity.json",
+      "sha256": "47a861f8d34c23b5adf117462a4d90287a854fb83fcb026028fe4c9529be9dd0",
+      "size_bytes": 643
+    },
+    {
+      "path": "work-qualification-summary.json",
+      "sha256": "8da088e5728620e3f42b19cdbf3843d24321a2d767ba22a46f2f9a809f9bea52",
+      "size_bytes": 1411
+    }
+  ],
+  "manifest_scope": "All payload files in this ref except manifest.json itself; the manifest SHA-256 is supplied out of band with the verification report.",
+  "project": "kimhw8084/react-fastapi-base",
+  "schema_version": 1
+}

@@ -1,0 +1,71 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "matrix": [
+    {
+      "mode": "light",
+      "theme": "operations",
+      "tokens": {
+        "--accent": "#175496",
+        "--danger": "#a32235",
+        "--success": "#216646",
+        "--warning": "#9a5e08"
+      }
+    },
+    {
+      "mode": "dark",
+      "theme": "operations",
+      "tokens": {
+        "--accent": "#91c3ff",
+        "--danger": "#ffaaa9",
+        "--success": "#91ddb7",
+        "--warning": "#f3c878"
+      }
+    },
+    {
+      "mode": "light",
+      "theme": "clarity",
+      "tokens": {
+        "--accent": "#164e94",
+        "--danger": "#a32235",
+        "--success": "#216646",
+        "--warning": "#9a5e08"
+      }
+    },
+    {
+      "mode": "dark",
+      "theme": "clarity",
+      "tokens": {
+        "--accent": "#7eb8ff",
+        "--danger": "#ffaaa9",
+        "--success": "#91ddb7",
+        "--warning": "#f3c878"
+      }
+    },
+    {
+      "mode": "light",
+      "theme": "minimal",
+      "tokens": {
+        "--accent": "#315827",
+        "--danger": "#a32235",
+        "--success": "#216646",
+        "--warning": "#9a5e08"
+      }
+    },
+    {
+      "mode": "dark",
+      "theme": "minimal",
+      "tokens": {
+        "--accent": "#a5d29b",
+        "--danger": "#ffaaa9",
+        "--success": "#91ddb7",
+        "--warning": "#f3c878"
+      }
+    }
+  ],
+  "source": {
+    "candidate_tree": "8ad5d1a21eccf03f1e623888bf9d4dd789946300",
+    "candidate_version": "1.0.0-rc.24",
+    "source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c"
+  }
+}
