@@ -1,12 +1,18 @@
-# Release status — react-fastapi-base 1.0.0-rc.23
+# Release status — react-fastapi-base 1.0.0-rc.24
 
 ## Current candidate
 
-CHG-235 R2 is a bounded continuation of R1 candidate `b470ded76db726cc5218b421396be0f6ce6e10e7`, whose complete source tree remains in this candidate's ancestry. It repairs qualification evidence serialization, removes temporary branch-name gating while retaining repository/base lineage checks, makes resumed reports and handoffs deterministic across canonical state reloads, and completes the maintained RC.23 release lifecycle. API major 1/revision 2 remains unchanged. R2 does not merge or move `main`, approve a company qualification, or certify production. Real company qualification gates remain external until authentic evidence is provided.
+CHG-235 R4 is a bounded continuation of exact R2 candidate `16899bd448b7a0afb4782871389e14255fbe1106`, on `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`. It retains the one-command qualification harness and adds a computed-paint readiness predicate before the existing serious/critical axe assertions, capture-before-assertion evidence, and a contrast negative control. No application theme tokens, backend behavior, API major/revision, identity, tenant, storage, or deployment-security behavior changes. RC.24 advances the existing prerelease ancestry while RC.23 remains historical. This candidate does not merge or move `main`, approve company qualification, or certify production; company gates remain external until authentic evidence is supplied.
 
 The canonical operator workflow is [docs/WORK_ENVIRONMENT_QUALIFICATION.md](WORK_ENVIRONMENT_QUALIFICATION.md). Its detailed evidence remains operator-private and offline.
 
-## CHG-235 R2 local qualification
+## CHG-235 R4 verification
+
+Repository verification is in progress. Final source identity, focused and full test results, exact-base compatibility, release bindings, and remaining limitations will be recorded after all requested gates finish. Local browser runs are macOS evidence and do not establish Ubuntu CI behavior.
+
+## RC.23 historical release status — CHG-235 R2
+
+### CHG-235 R2 local qualification
 
 The verified executable source is `425d3632c75165fe8f030679910485f5d0196ae0` with digest `1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b`. The focused work-qualification suite passed 99 tests. `./dev contracts`, `./dev architecture`, `./dev verify`, and `./dev verify-release` passed. Exact-base API compatibility passed against `main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`; API major 1/revision 2 is unchanged.
 
