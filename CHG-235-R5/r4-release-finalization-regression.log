@@ -1,0 +1,4 @@
+command: python -m pytest -q tests/test_release_finalization.py
+status: PASS
+result: 1 passed in 0.49s
+coverage: release identity is generated before checkpoint regeneration; final checkpoint check passes; changing covered release identity after finalization is rejected as stale.

@@ -11,66 +11,82 @@
     {
       "command": "./dev contracts (generator --check plus config/deployment/qualification/operational/performance contract checks)",
       "gate": "contracts",
+      "record": "",
       "result": "PASS",
       "scope": "rerun on R5 exact R4 candidate"
     },
     {
       "command": "./dev architecture",
       "gate": "architecture",
+      "record": "",
       "result": "PASS",
       "scope": "rerun on R5 exact R4 candidate"
     },
     {
       "command": "./dev verify",
       "gate": "verify",
+      "record": "r4-verification.json",
       "result": "PASS",
       "scope": "R4 recorded full-stack verification; source digest matches R5; see r4-verification.json"
     },
     {
       "command": "./dev verify-release --base-ref 67ec2ce5ec44d38ee44d22602035c2554a08e00d",
       "gate": "verify-release",
+      "record": "r4-release-status.md (CHG-235 R4 verification section)",
       "result": "PASS",
       "scope": "R4 recorded release verification on exact base; RC.24 evidence binding retained"
     },
     {
       "command": "scripts/check_api_compatibility.py --base-ref 67ec2ce5ec44d38ee44d22602035c2554a08e00d",
       "gate": "api-compatibility",
+      "record": "",
       "result": "PASS",
       "scope": "R5 rerun; 0 compatible changes, 0 breaking changes; API 1/revision 2"
     },
     {
       "command": "scripts/generate_checkpoint_manifest.py --check",
       "gate": "checkpoint",
+      "record": "candidate-source-equivalence.json; R4 release finalization regression also retained in r4-release-finalization-regression.log",
       "result": "PASS",
       "scope": "R5 rerun; current manifest, 745 source files"
     },
     {
       "command": "backend/.venv/bin/python -m pytest -q tests/test_work_qualification.py",
       "gate": "work-qualification-tests",
+      "record": "",
       "result": "PASS",
       "scope": "R5 rerun; 99 passed"
     },
     {
       "command": "Playwright theme-readiness.spec.ts on temporary detached checkout of exact R4 head",
       "gate": "focused-browser-readiness",
+      "record": "",
       "result": "PASS",
       "scope": "R5 rerun; six fresh context cases, negative control, semantic theme matrix; 8 tests passed"
     },
     {
       "command": "Playwright full suite",
       "gate": "full-browser-accessibility",
+      "record": "",
       "result": "PASS",
       "scope": "R4 recorded; 70 passed on local macOS; not rerun in R5"
     },
     {
       "gate": "Ubuntu-CI",
+      "record": "",
       "result": "NOT_RUN",
       "scope": "R4 and R5"
     },
     {
       "gate": "company-qualification",
+      "record": "",
       "result": "BLOCKED_EXTERNAL",
       "scope": "authentic company identity/storage/deployment and operator qualification remain external"
+    },
+    {
+      "gate": "release-finalization-regression",
+      "result": "PASS",
+      "scope": "R4 retained; 1 test passed; evidence copied to r4-release-finalization-regression.log"
     }
   ],
   "schema_version": 1
