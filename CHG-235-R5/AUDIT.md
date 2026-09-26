@@ -10,7 +10,7 @@ The complete R4 local macOS browser/accessibility suite is retained as prior evi
 
 ## Gate and release evidence
 
-R5 reran contracts, architecture, exact-base API compatibility, checkpoint validation and the 99-test work-qualification suite; focused browser readiness also passed. R4's full `./dev verify` and exact-base `./dev verify-release` records are reused and included; the exact R4 release-status document and release-finalization regression log are included. RC.24 release identity/readiness/manifest/evidence binding are exact readable copies; binding status is PASS_SOURCE_BOUND_NOT_CERTIFIED for source digest `e4ff89…` and target base above. API remains major 1, contract revision 2.
+R5 reran the contract-check components, architecture, exact-base API compatibility, checkpoint validation and the 99-test work-qualification suite; R4 recorded the `./dev contracts` wrapper pass; focused browser readiness also passed. R4's full `./dev verify` and exact-base `./dev verify-release` records are reused and included; the exact R4 release-status document and release-finalization regression log are included. RC.24 release identity/readiness/manifest/evidence binding are exact readable copies; binding status is PASS_SOURCE_BOUND_NOT_CERTIFIED for source digest `e4ff89…` and target base above. API remains major 1, contract revision 2.
 
 ## Limits and blockers
 

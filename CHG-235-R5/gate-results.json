@@ -9,11 +9,18 @@
   },
   "results": [
     {
-      "command": "./dev contracts (generator --check plus config/deployment/qualification/operational/performance contract checks)",
+      "command": [
+        "scripts/generate_contracts.py --check",
+        "check_configuration_contract.py",
+        "check_deployment_contract.py --evidence evidence/current/deployment/qualification.json",
+        "check_qualification_contract.py",
+        "check_operational_reliability_contract.py",
+        "performance_results.py --contract-only"
+      ],
       "gate": "contracts",
       "record": "",
       "result": "PASS",
-      "scope": "rerun on R5 exact R4 candidate"
+      "scope": "R5 reran each listed component check; the R4 ./dev contracts wrapper pass is recorded in r4-release-status.md."
     },
     {
       "command": "./dev architecture",
@@ -30,11 +37,11 @@
       "scope": "R4 recorded full-stack verification; source digest matches R5; see r4-verification.json"
     },
     {
-      "command": "./dev verify-release --base-ref 67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+      "command": "./dev verify-release",
       "gate": "verify-release",
       "record": "r4-release-status.md (CHG-235 R4 verification section)",
       "result": "PASS",
-      "scope": "R4 recorded release verification on exact base; RC.24 evidence binding retained"
+      "scope": "R4 recorded PASS against exact base main@67ec2ce5ec44d38ee44d22602035c2554a08e00d; release status and RC.24 evidence binding retained."
     },
     {
       "command": "scripts/check_api_compatibility.py --base-ref 67ec2ce5ec44d38ee44d22602035c2554a08e00d",
