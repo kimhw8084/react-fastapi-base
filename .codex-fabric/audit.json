@@ -1,132 +1,2574 @@
 {
-  "schema_version": 1,
-  "kind": "codex-fabric-audit-evidence",
-  "operation": "BUILD",
-  "status": "EXECUTED_WITH_EXTERNAL_BLOCKERS",
-  "project_id": "react-fastapi-base",
-  "request": "CHG-33-r2-source-binding",
-  "git": {
-    "target_branch": "main",
-    "target_base_sha": "6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-    "branch": "codex/react-fastapi-base-company-qualification-source-binding-r2",
-    "r1_implementation_source_commit": "209c6b0a8bf0f417af4f39077dfab81062d8f4a5",
-    "r1_verification_evidence_commit": "43975bfc3dc2c6bcdb5b345ea4ea64f6a5f7283c",
-    "r1_binding_head": "cbcbac3a4f1ade81612852252f85d7d53a30615a",
-    "r1_fabric_evidence_commit": "21e153a062b69f14cb87f36689a1a9362aff9ffc",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "evidence_commit": "9da6387d9c14e11b44f9b6c7019beae72e143029",
-    "evidence_binding_head": "67bbc060f18d59c2b297a7f5811e769ad02d4c34",
-    "target_changed": false,
-    "post_acceptance_and_integration_facts": "Unavailable at BUILD time; no Project OS acceptance or repository integration is claimed."
-  },
-  "source_anchor": {
-    "identity_locator": "deploy/rc11-release-identity.json",
-    "project": "react-fastapi-base",
-    "profile": "company",
-    "version": "1.0.0-rc.11",
-    "verified_executable_source_commit": "95751b3bef22f85dc9827c6e56b74073e0cffe25",
-    "source_digest": "44e8da41d5ef648f45bc0c12305ce0b7373234b542ad80ad2e1fdf163d347c29",
-    "source_evidence_locator": "evidence/current/full-stack/source-hashes.json",
-    "code_ready": true,
-    "production_ready": false,
-    "release_status": "NOT_CERTIFIED"
-  },
-  "checks": [
+  "accepted_at": "2026-09-26T01:03:16Z",
+  "changed_files": [
     {
-      "name": "focused-source-binding",
-      "command": "PYTHONPATH=backend backend/.venv/bin/python -m pytest -q backend/tests/test_company_qualification_contract.py backend/tests/test_qualification_bootstrap.py backend/tests/test_release_safety.py tests/test_release_evidence.py",
-      "status": "PASS",
-      "detail": "53 passed, 1 skipped"
+      "additions": 6,
+      "deletions": 0,
+      "path": "CHANGELOG.md",
+      "status": "M"
     },
     {
-      "name": "contracts",
-      "command": "./dev contracts",
-      "status": "PASS"
+      "additions": 33,
+      "deletions": 19,
+      "path": "CHECKPOINT_MANIFEST.json",
+      "status": "M"
     },
     {
-      "name": "architecture",
-      "command": "./dev architecture",
-      "status": "PASS"
+      "additions": 4,
+      "deletions": 2,
+      "path": "README.md",
+      "status": "M"
     },
     {
-      "name": "verify",
-      "command": "./dev verify",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false
+      "additions": 1,
+      "deletions": 1,
+      "path": "VERSION",
+      "status": "M"
     },
     {
-      "name": "verify-release",
-      "command": "API_COMPATIBILITY_BASE_SHA=6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf ./dev verify-release",
-      "status": "PASS_WITH_EXTERNAL_BLOCKERS",
-      "code_ready": true,
-      "production_ready": false,
-      "release_status": "NOT_CERTIFIED",
-      "external_blockers": [
-        "identity",
-        "storage",
-        "deployment",
-        "ui_accessibility",
-        "performance",
-        "operations"
-      ]
+      "additions": 1,
+      "deletions": 1,
+      "path": "backend/pyproject.toml",
+      "status": "M"
     },
     {
-      "name": "source-identity-generation",
-      "command": "backend/.venv/bin/python scripts/generate_release_identity.py",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/independent-deployment.json",
+      "status": "M"
     },
     {
-      "name": "evidence-binding",
-      "command": "backend/.venv/bin/python scripts/bind_release_evidence.py --verified-source-commit 95751b3bef22f85dc9827c6e56b74073e0cffe25 --evidence-commit 9da6387d9c14e11b44f9b6c7019beae72e143029 --target-base-sha 6b3d7a69b37d04cbd015c63bea17a8f859e7a7cf",
-      "status": "PASS"
+      "additions": 1,
+      "deletions": 1,
+      "path": "contracts/openapi.json",
+      "status": "M"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc23-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "deploy/rc24-release-identity.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "dev",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "docs/COMPANY_QUALIFICATION.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/DEPLOYMENT.md",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "docs/MAC_QUICKSTART.md",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 1,
+      "path": "docs/MASTER_DESIGN.md",
+      "status": "M"
+    },
+    {
+      "additions": 33,
+      "deletions": 1,
+      "path": "docs/RELEASE_STATUS.md",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/UPGRADING.md",
+      "status": "M"
+    },
+    {
+      "additions": 45,
+      "deletions": 0,
+      "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+      "status": "A"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "docs/requirements-status.json",
+      "status": "M"
+    },
+    {
+      "additions": 5,
+      "deletions": 5,
+      "path": "evidence/current/deployment/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 7,
+      "deletions": 7,
+      "path": "evidence/current/full-stack/api-compatibility.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/api-compatibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/backend-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 15,
+      "deletions": 15,
+      "path": "evidence/current/full-stack/backend-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 2100,
+      "deletions": 1075,
+      "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/checkpoint-manifest.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/deployment-contract.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/engineering-widget-layer.log",
+      "status": "M"
+    },
+    {
+      "additions": 32,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/fresh-clone-macos.json",
+      "status": "M"
+    },
+    {
+      "additions": 33,
+      "deletions": 33,
+      "path": "evidence/current/full-stack/frontend-build.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/frontend-storybook.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/frontend-typecheck.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/full-stack/frontend-unit.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/macos-fresh-install.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+      "status": "M"
+    },
+    {
+      "additions": 40,
+      "deletions": 40,
+      "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 28,
+      "deletions": 28,
+      "path": "evidence/current/full-stack/native-lab/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+      "status": "M"
+    },
+    {
+      "additions": 3,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/performance-stress.log",
+      "status": "M"
+    },
+    {
+      "additions": 400,
+      "deletions": 295,
+      "path": "evidence/current/full-stack/reference-apps.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/security-source.log",
+      "status": "M"
+    },
+    {
+      "additions": 91,
+      "deletions": 57,
+      "path": "evidence/current/full-stack/source-hashes.json",
+      "status": "M"
+    },
+    {
+      "additions": 16,
+      "deletions": 16,
+      "path": "evidence/current/full-stack/static-server.log",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/storage-qualification.log",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 3,
+      "path": "evidence/current/full-stack/tooling-tests.log",
+      "status": "M"
+    },
+    {
+      "additions": 31,
+      "deletions": 31,
+      "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+      "status": "M"
+    },
+    {
+      "additions": 52,
+      "deletions": 52,
+      "path": "evidence/current/full-stack/upgrade-fixture.json",
+      "status": "M"
+    },
+    {
+      "additions": 52,
+      "deletions": 52,
+      "path": "evidence/current/full-stack/upgrade-fixture.log",
+      "status": "M"
+    },
+    {
+      "additions": 103,
+      "deletions": 103,
+      "path": "evidence/current/full-stack/verification.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "evidence/current/full-stack/version-metadata.log",
+      "status": "M"
+    },
+    {
+      "additions": 6,
+      "deletions": 6,
+      "path": "evidence/current/operations/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 8,
+      "deletions": 8,
+      "path": "evidence/current/performance/browser.json",
+      "status": "M"
+    },
+    {
+      "additions": 23,
+      "deletions": 23,
+      "path": "evidence/current/performance/owned-algorithms.json",
+      "status": "M"
+    },
+    {
+      "additions": 29,
+      "deletions": 29,
+      "path": "evidence/current/performance/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 10,
+      "deletions": 10,
+      "path": "evidence/current/performance/stress.json",
+      "status": "M"
+    },
+    {
+      "additions": 13,
+      "deletions": 13,
+      "path": "evidence/current/recovery/object-restore.json",
+      "status": "M"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 68,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc23-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 54,
+      "deletions": 0,
+      "path": "evidence/current/release/rc24-evidence-binding.json",
+      "status": "A"
+    },
+    {
+      "additions": 68,
+      "deletions": 0,
+      "path": "evidence/current/release/rc24-manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": 99,
+      "deletions": 0,
+      "path": "evidence/current/release/rc24-readiness-matrix.json",
+      "status": "A"
+    },
+    {
+      "additions": 400,
+      "deletions": 295,
+      "path": "evidence/current/release/reference-apps.json",
+      "status": "M"
+    },
+    {
+      "additions": 12,
+      "deletions": 12,
+      "path": "evidence/current/reuse/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 9,
+      "deletions": 9,
+      "path": "evidence/current/storage/qualification.json",
+      "status": "M"
+    },
+    {
+      "additions": 5912,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+      "status": "A"
+    },
+    {
+      "additions": 538,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 1280,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+      "status": "A"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+      "status": "A"
+    },
+    {
+      "additions": 29,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+      "status": "A"
+    },
+    {
+      "additions": 46,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+      "status": "A"
+    },
+    {
+      "additions": 107,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+      "status": "A"
+    },
+    {
+      "additions": 34,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+      "status": "A"
+    },
+    {
+      "additions": 20,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+      "status": "A"
+    },
+    {
+      "additions": 36,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+      "status": "A"
+    },
+    {
+      "additions": 26,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+      "status": "A"
+    },
+    {
+      "additions": 11,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+      "status": "A"
+    },
+    {
+      "additions": 12,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+      "status": "A"
+    },
+    {
+      "additions": 5653,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 70,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 564,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+      "status": "A"
+    },
+    {
+      "additions": 75,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": 40,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 58,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+      "status": "A"
+    },
+    {
+      "additions": 18,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 37,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 33,
+      "deletions": 0,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+      "status": "A"
+    },
+    {
+      "additions": null,
+      "deletions": null,
+      "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+      "status": "A"
+    },
+    {
+      "additions": 30,
+      "deletions": 30,
+      "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 2,
+      "path": "frontend/package-lock.json",
+      "status": "M"
+    },
+    {
+      "additions": 1,
+      "deletions": 1,
+      "path": "frontend/package.json",
+      "status": "M"
+    },
+    {
+      "additions": 152,
+      "deletions": 0,
+      "path": "frontend/tests/e2e/theme-readiness.spec.ts",
+      "status": "A"
+    },
+    {
+      "additions": 53,
+      "deletions": 22,
+      "path": "frontend/tests/e2e/workspace.spec.ts",
+      "status": "M"
+    },
+    {
+      "additions": 2,
+      "deletions": 0,
+      "path": "scripts/source_manifest.py",
+      "status": "M"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "scripts/work_qualification/__init__.py",
+      "status": "A"
+    },
+    {
+      "additions": 586,
+      "deletions": 0,
+      "path": "scripts/work_qualification/assess.py",
+      "status": "A"
+    },
+    {
+      "additions": 65,
+      "deletions": 0,
+      "path": "scripts/work_qualification/browser_probe.js",
+      "status": "A"
+    },
+    {
+      "additions": 184,
+      "deletions": 0,
+      "path": "scripts/work_qualification/cli.py",
+      "status": "A"
+    },
+    {
+      "additions": 759,
+      "deletions": 0,
+      "path": "scripts/work_qualification/engine.py",
+      "status": "A"
+    },
+    {
+      "additions": 136,
+      "deletions": 0,
+      "path": "scripts/work_qualification/reasons.py",
+      "status": "A"
+    },
+    {
+      "additions": 88,
+      "deletions": 0,
+      "path": "scripts/work_qualification/safety.py",
+      "status": "A"
+    },
+    {
+      "additions": 302,
+      "deletions": 0,
+      "path": "scripts/work_qualification/source.py",
+      "status": "A"
+    },
+    {
+      "additions": 441,
+      "deletions": 0,
+      "path": "scripts/work_qualification/store.py",
+      "status": "A"
+    },
+    {
+      "additions": 955,
+      "deletions": 0,
+      "path": "tests/test_work_qualification.py",
+      "status": "A"
     }
   ],
+  "checks": [
+    {
+      "command": "/bin/zsh -lc 'rtk tail -n 40 /tmp/chg235-r4/attempt-19-verify-release-final-exact-base/full-stack-evidence/browser-e2e-accessibility.log'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git branch --show-current > /tmp/chg235-r4/current-branch.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse e6c9730e149b137ee739867bef6ea64ddc9b4c4e''^{tree} > /tmp/chg235-r4/test-candidate-tree.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git rev-parse 'HEAD\"'^{tree}'\"' > /tmp/chg235-r4/current-tree.txt\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD > /tmp/chg235-r4/current-head.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --name-only 16899bd448b7a0afb4782871389e14255fbe1106..b7a8d94bd3daa56e167860dc15ddb63be4833270 > /tmp/chg235-r4/source-paths.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff 16899bd448b7a0afb4782871389e14255fbe1106..b7a8d94bd3daa56e167860dc15ddb63be4833270 -- frontend/tests/e2e/theme-readiness.spec.ts frontend/tests/e2e/workspace.spec.ts > /tmp/chg235-r4/test-repair.diff'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat /tmp/chg235-r4/current-head.txt /tmp/chg235-r4/current-tree.txt /tmp/chg235-r4/current-branch.txt /tmp/chg235-r4/test-candidate-tree.txt /tmp/chg235-r4/source-paths.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk tail -n 24 /tmp/chg235-r4/test-repair.diff && rtk wc -l /tmp/chg235-r4/test-repair.diff'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nfrom __future__ import annotations\nimport hashlib, json, os, pathlib, re, shutil, zipfile\nfrom datetime import datetime, timezone\nfrom scripts.source_manifest import source_hashes, source_digest\n\nROOT = pathlib.Path.cwd()\nBASE = pathlib.Path('/tmp/chg235-r4')\nOUT = BASE / 'project-os-artifact'\nif OUT.exists():\n    shutil.rmtree(OUT)\nfor sub in ['original-ci','r2-diagnostic','r4-focused/contexts','r4-focused/screenshots','r4-focused/traces','release','qualification','attempts']:\n    (OUT/sub).mkdir(parents=True,exist_ok=True)\n\ndef write_json(rel, data):\n    p=OUT/rel; p.parent.mkdir(parents=True,exist_ok=True); p.write_text(json.dumps(data,indent=2,sort_keys=True)+'\\\\n')\n\ndef copy(src, rel):\n    p=OUT/rel; p.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(src,p); return p\n\ndef sha(p):\n    h=hashlib.sha256()\n    with open(p,'rb') as f:\n        for b in iter(lambda:f.read(1024*1024),b''): h.update(b)\n    return h.hexdigest()\n\n# Exact local handoff identity and source tree metadata.\ncurrent_head=(BASE/'current-head.txt').read_text().strip()\ncurrent_tree=(BASE/'current-tree.txt').read_text().strip()\nbranch=(BASE/'current-branch.txt').read_text().strip()\ntested_tree=(BASE/'test-candidate-tree.txt').read_text().strip()\nsource_hash_map=source_hashes(ROOT)\ncomputed_digest=source_digest(source_hash_map)\nversion=(ROOT/'VERSION').read_text().strip()\nrelease_identity=json.loads((ROOT/'deploy/rc24-release-identity.json').read_text())\nrelease_binding=json.loads((ROOT/'evidence/current/release/rc24-evidence-binding.json').read_text())\nrelease_manifest=json.loads((ROOT/'evidence/current/release/rc24-manifest.json').read_text())\nreadiness=json.loads((ROOT/'evidence/current/release/rc24-readiness-matrix.json').read_text())\nverification=json.loads((ROOT/'evidence/current/full-stack/verification.json').read_text())\noriginal_zip=BASE/'platform-code-evidence-10885401386.zip'\noriginal_trace=BASE/'ci-artifact/frontend/test-results/workspace-major-workspaces-1cee0-ast-reduced-motion-and-zoom-chromium/trace.zip'\noriginal_error=BASE/'ci-artifact/frontend/test-results/workspace-major-workspaces-1cee0-ast-reduced-motion-and-zoom-chromium/error-context.md'\noriginal_png=BASE/'ci-artifact/frontend/test-results/workspace-major-workspaces-1cee0-ast-reduced-motion-and-zoom-chromium/test-failed-1.png'\noriginal_verification=json.loads((BASE/'ci-artifact/.evidence/ci/verification.json').read_text())\nassert computed_digest==release_identity['source_digest']\nassert release_binding['binding_status']=='PASS'\nassert release_binding['verified_source_commit']=='b7a8d94bd3daa56e167860dc15ddb63be4833270'\nassert release_binding['target_base_sha']=='67ec2ce5ec44d38ee44d22602035c2554a08e00d'\n\n# Original artifact: retain precise assertion, aggregate failures, and trace-bound state.\ncopy(original_error,'original-ci/error-context.md')\ncopy(original_png,'original-ci/failure-screenshot.png')\nwith zipfile.ZipFile(original_trace) as z:\n    events=[json.loads(line) for line in z.read('0-trace.trace').splitlines() if line.strip()]\n    axe_frame=[e for e in events if e.get('type')=='before' and e.get('stepId')=='pw:api@457' and e.get('class')=='Frame']\n    assert axe_frame, 'could not locate the failing axe frame call in the retained trace'\n    start=axe_frame[-1].get('startTime')\n    snapshots=[]\n    for e in events:\n        if e.get('type')\"'!='\"'frame-snapshot': continue\n        s=e.get('snapshot',{})\n        if not str(s.get('frameUrl','')).endswith('/system'): continue\n        if s.get('timestamp',float('inf')) > start: continue\n        html=s.get('html')\n        attrs=html[1] if isinstance(html,list) and len(html)>1 and isinstance(html[1],dict) else {}\n        if attrs.get('data-contrast')=='high': snapshots.append(s)\n    prior=snapshots[-1] if snapshots else None\n    ctx=json.loads(z.read('test.trace').splitlines()[0])\n    ua_matches=re.findall(rb'Chrome/[0-9.]+',z.read('test.trace'))\n    browser_version=ua_matches[-1].decode().split('/',1)[1] if ua_matches else 'Chrome version not recovered'\n    original_excerpt={\n      'artifact':{'run_id':'36182134604','job_id':'108226786675','artifact_id':'10885401386','name':'platform-code-evidence','zip_sha256':sha(original_zip),'zip_bytes':original_zip.stat().st_size},\n      'source_binding':{'candidate_head':'db86086c3437e42c38f38438b9b7da7f9f9cde49','executable_source_commit':'425d3632c75165fe8f030679910485f5d0196ae0','source_digest':'1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b','target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d'},\n      'ci_host':{'platform':original_verification.get('platform'),'python':original_verification.get('environment',{}).get('python')},\n      'trace_runtime':{'trace_platform':ctx.get('platform'),'playwright_version':ctx.get('playwrightVersion'),'trace_context_options':ctx.get('options'),'browser_engine':'Chromium','browser_version':browser_version,'axe_core':'4.10.3','user_agent_observation':'Axe trace UA reports Windows NT 10.0; CI verification independently records a Linux host. The UA is not used to infer runner OS.'},\n      'test':{'title':'workspace.spec.ts >> major workspaces remain axe clean under high contrast, reduced motion and zoom','source_location':'frontend/tests/e2e/workspace.spec.ts:138:1','failing_assertion':'expect(serious, \"'`${route} serious/critical axe violations`).toEqual([])'\"','route':'/system','emulated_preferences':{'prefers_reduced_motion':'reduce','color_scheme':'not explicitly emulated in Playwright context options','observed_app_mode':'light','theme':'operations','contrast':'high'},'axe_call_start_time':start,'axe_call_step_id':axe_frame[-1].get('stepId')},\n      'state_snapshot_immediately_before_axe':None if prior is None else {'snapshot_name':prior.get('snapshotName'),'route':'/system','timestamp':prior.get('timestamp'),'root_attributes':{k:v for k,v in (prior.get('html',[None,{}])[1] if isinstance(prior.get('html'),list) and len(prior.get('html'))>1 and isinstance(prior.get('html')[1],dict) else {}).items() if k in ('data-theme','data-mode','data-contrast')},'viewport':prior.get('viewport'),'resource_overrides':prior.get('resourceOverrides')},\n      'assertion_observed':{'expected':[],'observed_violation':{'id':'color-contrast','impact':'serious','foreground':'#ffffff','background':'#f4f6f9','ratio':1.08,'nodes':[{'target':'.eyebrow','expected_ratio':'4.5:1'},{'target':'h1','expected_ratio':'3:1'},{'target':'.page-heading > div > p','expected_ratio':'4.5:1'}]}},\n      'raw_trace':{'path_in_original_artifact':'frontend/test-results/workspace-major-workspaces-1cee0-ast-reduced-motion-and-zoom-chromium/trace.zip','sha256':sha(original_trace),'bytes':original_trace.stat().st_size,'included_in_this_bundle':False},\n      'screenshot_observation':'The retained failure screenshot renders the System page with a black canvas after the assertion failure, despite axe reporting #f4f6f9 as the contrast background.'\n    }\n    write_json('original-ci/trace-state-before-axe.json',original_excerpt)\nfailures=[]\nfor item in original_verification.get('results',[]):\n    if item.get('status')\"'!='\"'PASS':\n        failures.append({k:item.get(k) for k in ('name','status','exit_code','reason','required_for','result','log') if k in item})\nwrite_json('original-ci/aggregate-nonpass-results.json',{'source_commit':original_verification.get('executable_source_commit'),'platform':original_verification.get('platform'),'results':failures,'classification':{'browser-e2e-accessibility':'FAILED: original CI browser test, observed serious color-contrast assertion at /system','reusable-platform-qualification':'FAILED aggregate entry; referenced reusable-platform-qualification.json was absent from the downloaded artifact, exact underlying report unavailable','ui-state-matrix-results':'BLOCKED downstream of browser failure','company_identity_storage_deployment':'BLOCKED external evidence, not the triggering code failure','release_only_fixture_backup_storage':'BLOCKED because the original aggregate was a non-release verify run'}})\n\n# R2-bound local diagnostic report (full computed-style/semantic/axe captures, no work-qualification data).\ncopy(BASE/'attempt-01-r2-local-diagnostic/report.json','r2-diagnostic/report.json')\ncopy(BASE/'attempt-01-r2-local-diagnostic/command.json','r2-diagnostic/command.json')\nfor src,name in [\n (BASE/'attempt-01-r2-local-diagnostic/light-trial-1-direct-load-ready-before-axe.png','light-direct-load-before-axe.png'),\n (BASE/'attempt-01-r2-local-diagnostic/light-trial-1-direct-load-ready-after-axe.png','light-direct-load-after-axe.png'),\n (BASE/'attempt-01-r2-local-diagnostic/dark-trial-1-direct-load-ready-before-axe.png','dark-direct-load-before-axe.png'),\n (BASE/'attempt-01-r2-local-diagnostic/dark-trial-1-direct-load-ready-after-axe.png','dark-direct-load-after-axe.png')]:\n    copy(src,'r2-diagnostic/screenshots/'+name)\n\n# R4 focus: all six per-context JSON attachments, representative light/dark/negative traces and screenshots.\ntrace_root=BASE/'attempt-11-full-e2e-split-routes/frontend-test-results'\npositive=[]\nnegative=None\nfor p in sorted(trace_root.glob('theme-readiness-*/trace.zip')):\n    if 'supported--' in p.parent.name: continue\n    with zipfile.ZipFile(p) as z:\n        ev=[json.loads(line) for line in z.read('test.trace').splitlines() if line.strip()]\n        attachments=[]\n        for e in ev:\n            if e.get('type')=='after': attachments.extend(e.get('attachments',[]))\n        j=next((a for a in attachments if a.get('name')=='theme-readiness.json'),None)\n        if not j: continue\n        data=json.loads(z.read('resources/'+j['sha1']))\n        if data.get('negative_control') is not None:\n            negative=(p,data,ev,attachments)\n        else:\n            positive.append((p,data,ev,attachments))\nassert len(positive)==6 and negative\npositive.sort(key=lambda x:(x[1]['system_preference'],x[1]['route_observations'][0]['kind']))\nper_scheme={'light':0,'dark':0}\nfor p,data,ev,attachments in positive:\n    scheme=data['system_preference']; per_scheme[scheme]+=1\n    index=per_scheme[scheme]\n    dest=f'r4-focused/contexts/{scheme}-fresh-context-{index}.json'\n    write_json(dest,data)\n    # keep first full trace for each preference, while all six detailed JSON are retained\n    if index==1:\n        copy(p,f'r4-focused/traces/{scheme}-fresh-context.trace.zip')\n        for a in attachments:\n            if a.get('name') in {'direct-load-before-ready.png','direct-load-system-after-axe.png','client-navigation-system-after-axe.png','reload-system-after-axe.png'}:\n                copy_bytes=zbytes=None\n                with zipfile.ZipFile(p) as z:\n                    (OUT/'r4-focused/screenshots'/f'{scheme}-{a[\\\"name\\\"]}').write_bytes(z.read('resources/'+a['sha1']))\n# negative control\np,data,ev,attachments=negative\nwrite_json('r4-focused/contexts/negative-control.json',data)\ncopy(p,'r4-focused/traces/negative-control.trace.zip')\nfor a in attachments:\n    if a.get('name')=='negative-control-after-axe.png':\n        with zipfile.ZipFile(p) as z:\n            (OUT/'r4-focused/screenshots'/a['name']).write_bytes(z.read('resources/'+a['sha1']))\n# semantic theme/status matrix from its test attachment\nsupported=next(trace_root.glob('theme-readiness-supported--*/trace.zip'))\nwith zipfile.ZipFile(supported) as z:\n    ev=[json.loads(line) for line in z.read('test.trace').splitlines() if line.strip()]\n    at=[a for e in ev if e.get('type')=='after' for a in e.get('attachments',[])]\n    a=next(a for a in at if a.get('name')=='semantic-theme-color-matrix.json')\n    (OUT/'r4-focused/semantic-theme-color-matrix.json').write_bytes(z.read('resources/'+a['sha1']))\n\n# Exact base API compatibility, verification summary, release bindings and checkpoint record.\ncopy(BASE/'api-compatibility-final.json','release/api-compatibility-final.json')\nfor src,dst in [\n (ROOT/'deploy/rc24-release-identity.json','release/rc24-release-identity.json'),\n (ROOT/'evidence/current/release/rc24-readiness-matrix.json','release/rc24-readiness-matrix.json'),\n (ROOT/'evidence/current/release/rc24-manifest.json','release/rc24-manifest.json'),\n (ROOT/'evidence/current/release/rc24-evidence-binding.json','release/rc24-evidence-binding.json'),\n (ROOT/'evidence/current/full-stack/source-hashes.json','release/source-hashes.json')]:\n    copy(src,str(dst.relative_to(OUT)))\nresults=[]\nfor item in verification.get('results',[]):\n    results.append({k:item.get(k) for k in ('name','status','exit_code','duration_seconds','reason','required_for','result') if k in item})\nverify_summary={k:verification.get(k) for k in ('schema_version','created_at','timestamp','candidate_head','executable_source_commit','source_digest','code_ready','production_ready','release_status','platform','python_version') if k in verification}\nverify_summary['results']=results\nverify_summary['non_pass_results']=[r for r in results if r.get('status')\"'!='\"'PASS']\nwrite_json('release/verification-summary.json',verify_summary)\n# list only individual Playwright test result lines to avoid copying local HTTP request chatter\nbrowser_log=(BASE/'attempt-19-verify-release-final-exact-base/full-stack-evidence/browser-e2e-accessibility.log').read_text(errors='replace')\npassed_lines=[line.strip() for line in browser_log.splitlines() if re.match(r'\\\\s*✓\\\\s+\\\\d+\\\\s+\\\\[chromium\\\\]',line)]\nsummary_line=next((line.strip() for line in reversed(browser_log.splitlines()) if re.search(r'\\\\d+ passed',line)),None)\nwrite_json('release/browser-e2e-tests.json',{'run':'final ./dev verify-release','platform':'macOS/Darwin','browser':'Chromium 151.0.7922.34','playwright':'1.62.1','summary':summary_line,'passed_test_count':len(passed_lines),'tests':passed_lines})\n# release CLI/test metadata is intentionally sanitized: no work-environment evidence or generated report content.\nhandoff=(BASE/'work-qualification/runs/wq1-20260926-d5d0f4bb/handoff.txt').read_text()\nqualification={'tests':[{'command':'pytest tests/test_work_qualification.py -q','exit_code':0,'result':'99 passed'}],\n 'cli_commands':[{'command':'./dev work-qualify','exit_code':0},{'command':'./dev work-qualify --plan','exit_code':0},{'command':'./dev work-qualify --status','exit_code':0},{'command':'./dev work-qualify --resume','exit_code':0,'idempotent':True},{'command':'./dev work-qualify --resume','exit_code':0,'idempotent':True},{'command':'./dev work-qualify --handoff','exit_code':0,'handoff_character_count_excluding_newline':len(handoff.rstrip('\\\\n')),'limit':300}],\n 'expected_harness_outcome':'QUALIFICATION_INCOMPLETE / production_ready=false in this local environment',\n 'privacy':'No generated work-environment evidence, identifiers, reports, or private inputs are included.'}\nwrite_json('qualification/work-qualification-test-summary.json',qualification)\n\n# Source delta and exact paths are copied from RTK-captured git outputs.\npaths=[line.strip() for line in (BASE/'source-paths.txt').read_text().splitlines() if line.strip() and line.strip()\"'!='\"'Changes:']\ndiff=(BASE/'test-repair.diff').read_text(errors='replace')\n(OUT/'attempts/r2-to-r4-test-change.diff').write_text(diff)\nchanged_source={'r2_candidate':'16899bd448b7a0afb4782871389e14255fbe1106','target_base':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','verified_source_commit':'b7a8d94bd3daa56e167860dc15ddb63be4833270','tested_candidate_head':'e6c9730e149b137ee739867bef6ea64ddc9b4c4e','tested_candidate_tree':tested_tree,'changed_paths_r2_to_r4':paths,'test_only_patch_file':'attempts/r2-to-r4-test-change.diff','application_theme_css_changed':False,'public_api_identity_tenant_storage_deployment_security_changed':False}\nwrite_json('attempts/source-delta.json',changed_source)\nattempts={\n 'r2_reproduction':{'id':'attempt-01','source':'R2 exact candidate 16899bd448b7a0afb4782871389e14255fbe1106','result':'six local diagnostic trials; three light and three dark; direct /system, navigate to /system, reload; no serious/critical axe violations; report and all six traces/screenshots retained locally; representative report/screenshots in this bundle'},\n 'first_full_e2e_after_repair':{'id':'attempt-10','result':'49 passed; 1 route-loop test timed out at 30 seconds while 21 routes were inside one test; failure trace/results retained locally; test was split per route while preserving all 21 route cases'},\n 'python_interpreter_setup_attempts':{'ids':['attempt-12','attempt-13','attempt-14'],'result':'local system Python 3.9.6 could not satisfy pinned Alembic 1.18.4; no dependency pin changed; supported Python runs used subsequently'},\n 'clean_clone':{'id':'attempt-15','result':'PASS on macOS with supported Python 3.14 and isolated caches'},\n 'missing_exact_base_env':{'id':'attempt-16','result':'verify-release failed due omitted exact-base environment; preserved separately; corrected exact-base runs passed'},\n 'exact_base_release':{'id':'attempt-19','result':'PASS; all repository release gates including clean clone and full browser/accessibility passed; company gates remain externally blocked'},\n 'exact_base_nonrelease':{'id':'attempt-18','result':'PASS; release-only fixture/backup/storage gates correctly marked release-only'},\n 'final_checkpoint':{'result':'PASS; 1237 files; zip integrity and sidecar hash verified; maintained checkpoint manifest current','sha256':'1e44cd2e650d47f6b6c160e422d16afe3e11a46697c3e5c5128d2b3fc8f66758'},\n 'stale_checkpoint_manifest_experiments':{'ids':['attempt-20','attempt-21'],'result':'archives preserved separately; initial archives passed ZIP/hash integrity but manifest check was stale after documentation changed; maintained manifest regenerated and final archive passes'}\n}\nwrite_json('attempts/attempt-index.json',attempts)\n# A concise human-readable report inside the bundle.\nreport={\n 'schema':'project-os.chg235-r4-diagnostic/1',\n 'request':'FIX CHG-235 R4 in kimhw8084/react-fastapi-base',\n 'decision':'REPAIRED CODE CANDIDATE; STOP FOR INDEPENDENT PROJECT OS AUDIT',\n 'identity':{'project':'react-fastapi-base','branch':branch,'actual_head':current_head,'actual_tree':current_tree,'version':version,'target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','carried_forward_r2_candidate':'16899bd448b7a0afb4782871389e14255fbe1106','tested_candidate_head':'e6c9730e149b137ee739867bef6ea64ddc9b4c4e','tested_candidate_tree':tested_tree,'verified_executable_source_commit':'b7a8d94bd3daa56e167860dc15ddb63be4833270','verified_source_tree':'a3e87ee94365672304d468469e8415e4f0d24c80','source_digest':computed_digest,'evidence_commit':release_binding['evidence_commit'],'binding_commit':current_head,'release_binding_status':release_binding['binding_status']},\n 'original_ci_failure':{'run_id':'36182134604','job_id':'108226786675','artifact_id':'10885401386','artifact_zip_sha256':sha(original_zip),'source_commit':'425d3632c75165fe8f030679910485f5d0196ae0','source_digest':'1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b','test':'major workspaces remain axe clean under high contrast, reduced motion and zoom','route':'/system','browser':'Chromium 151.0.7922.34','emulation':'prefers-reduced-motion reduce; color scheme not explicitly emulated; app mode light, theme operations, contrast high','assertion':'serious/critical axe violations must equal []','observed':'1 serious color-contrast violation; white #ffffff on #f4f6f9 at 1.08:1; eyebrow and description require 4.5:1, large title requires 3:1','trace_attributes_before_axe':original_excerpt['state_snapshot_immediately_before_axe']['root_attributes'] if original_excerpt['state_snapshot_immediately_before_axe'] else None,'screenshot':'retained screenshot is visually black after failure; it does not establish the exact transient frame at axe time','other_aggregate_failures':failures},\n 'classification':{'category':'test readiness / paint timing','confidence':'medium','basis':['CI trace shows Operations/light/high-contrast attributes before axe, so absent state attributes are ruled out as the sole cause','axe observed a light body background and white text while the later screenshot appears black','R2-bound direct-load/navigation/reload diagnostics passed in six light/dark local trials with computed black canvas and zero serious/critical violations','R4 waits for observed semantic and computed paint state before axe; no app CSS/token change was needed; real negative control reproduces the 1.08:1 failure'],'limit':'The CI artifact does not record same-frame computed styles at axe time; the exact transient mechanism is not proved.'},\n 'r4_results':{'focused':'PASS: 6 fresh Chromium contexts (3 explicit light, 3 explicit dark), each covering direct /system load, navigation to /system, reload, Operations theme, high contrast and reduced motion; captured computed html/body/headings/semantic variables/opaque canvas/stylesheets and axe before/after','negative_control':'PASS: forced #ffffff on #f4f6f9; axe serious color-contrast reports 1.08:1 and expected ratios','full_browser':'PASS: 70 tests, full route coverage retained, accessibility/serious/critical checks retained','full_release_verification':'PASS: ./dev verify-release with exact API and release base; repository code_ready=true; production_ready=false','nonrelease_verification':'PASS: ./dev verify','contracts_architecture':'PASS: ./dev contracts; ./dev architecture','api_compatibility':'PASS against exact base; API major 1/revision 2 unchanged','qualification_baseline':'PASS: 99 tests; work-qualify default/plan/status/resume twice/handoff all exit 0; resume idempotent; handoff 206 characters; no work-environment data exported','checkpoint':'PASS: maintained checkpoint manifest current; 1237-file archive ZIP integrity and SHA256 verified','r4_ubuntu_ci':'NOT RUN; local macOS runs do not prove Linux CI'},\n 'release':{'candidate_version':version,'release_status':release_identity['release_status'],'code_ready':release_identity['code_ready'],'production_ready':release_identity['production_ready'],'readiness_matrix':readiness['gates'],'remaining_blockers':['company identity: real company users and deployment/ingress proof absent','company storage: provider-supported locking/durability/redeploy proof absent','company deployment: actual publish/routing/restart/redeploy not exercised','company/profile UI accessibility, performance, operations evidence remain external']},\n 'r3_evidence_unavailable':'Retained R3 worktree was unavailable. Native audit has no diagnostic report/trace/source attachment; its restore action means no R3 repair or test result is credited.',\n 'changed_paths':paths,\n 'no_external_mutations':{'main_moved_or_merged':False,'previous_execution_branches_modified':False,'pr_34_modified':False,'sysgrid_touched':False,'work_environment_data_exported':False}\n}\nwrite_json('report.json',report)\nmd=f'''# CHG-235 R4 accessibility and release evidence\\\\n\\\\n**Outcome:** repaired RC.24 code candidate, staged for independent Project OS audit. This bundle does not accept, integrate, deploy, or certify production.\\\\n\\\\n## Candidate identity\\\\n\\\\n- Tested candidate checkout: \"'`{report['\"'identity']['tested_candidate_head']}\"'` (`{report['\"'identity']['tested_candidate_tree']}\"'`); executable source: `{report['\"'identity']['verified_executable_source_commit']}\"'`; version `{version}`.'\"\\\\n- Current evidence handoff head/tree: \"'`{current_head}` / `{current_tree}` on `{branch}`. Source digest: `{computed_digest}`.'\"\\\\n- Exact base: \"'`main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`; exact R2 candidate ancestry retained.'\"\\\\n- RC.24 binding: \"'`{release_binding['\"'binding_status']}\"'`, evidence commit `{release_binding['\"'evidence_commit']}\"'`.'\"\\\\n\\\\n## Original CI failure\\\\n\\\\nRun \"'`36182134604`, job `108226786675`, artifact `10885401386` (ZIP SHA256 `{sha(original_zip)}`), source `{report['\"'original_ci_failure']['source_commit']}\"'` / `{report['\"'original_ci_failure']['source_digest']}\"'`. The original `/system` assertion expected no serious or critical axe violations and observed a serious `color-contrast` violation: white `#ffffff` against `#f4f6f9`, 1.08:1. The eyebrow and description needed 4.5:1; the large title needed 3:1. The trace shows `data-theme=operations`, `data-mode=light`, `data-contrast=high` before axe. Reduced motion was emulated; color scheme was not explicitly emulated. The saved screenshot is black after failure. The downloaded aggregate also failed reusable-platform qualification, whose referenced detail report was absent; the UI matrix was blocked downstream.'\"\\\\n\\\\n## Root classification\\\\n\\\\nBest-supported category is a test readiness/paint timing race (medium confidence). The later black screenshot and local six-trial R2 reproduction support that classification. The CI trace lacks same-frame computed styles at axe time, so the exact transient is unproved. The shared application theme CSS/tokens remain unchanged.\\\\n\\\\n## Repair and observed results\\\\n\\\\nThe shared workspace test now waits for the Operations/high-contrast semantic tokens and computed black body canvas/white heading paint before running its existing serious/critical axe assertion. It records JSON/screenshots in finalization paths before assertions. A negative control forces the original white-on-\"'`#f4f6f9` state and confirms axe catches the 1.08:1 contrast violation.'\"\\\\n\\\\nFocused tests passed six fresh contexts (three explicit light and three explicit dark), each covering direct \"'`/system`, navigation to `/system`, and reload under reduced motion. Full E2E/accessibility passed 70 tests; all routes and serious/critical assertions remain covered. The R2 work-qualification baseline passed 99 tests. Contracts, architecture, `./dev verify`, exact-base `./dev verify-release`, exact-base API compatibility, CLI plan/status/resume/handoff, and the final checkpoint passed. Ubuntu CI for R4 was not run.'\"\\\\n\\\\n## Release state\\\\n\\\\nVersion \"'`{version}` is `code_ready=true`, `production_ready=false`, `release_status=NOT_CERTIFIED`. Company identity, provider storage, deployment, and applicable company/profile accessibility, performance, and operations remain blocked on authentic external evidence.'\"\\\\n\\\\nR3 diagnostic files were unavailable. No main/PR #34/previous branch mutation, SysGrid change, production action, or work-environment data export occurred.\\\\n'''\n(OUT/'README.md').write_text(md)\n# Hash each included file before writing the inner manifest.\nfiles={}\nfor p in sorted(OUT.rglob('*')):\n    if p.is_file() and p.name\"'!='\"'manifest.json': files[p.relative_to(OUT).as_posix()]={'sha256':sha(p),'bytes':p.stat().st_size}\ninner={'schema':'project-os.chg235-r4-bundle/1','files':files,'file_count':len(files),'note':'This inner manifest excludes itself; detached publication manifest binds the archive and standalone report.'}\nwrite_json('manifest.json',inner)\nmanifest_sha=sha(OUT/'manifest.json')\nbundle=BASE/'CHG-235-R4-project-os-evidence.zip'\nif bundle.exists(): bundle.unlink()\nwith zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:\n    for p in sorted(OUT.rglob('*')):\n        if p.is_file(): z.write(p,p.relative_to(OUT).as_posix())\n# The standalone report and detached publication manifest are uploaded next to the bundle.\nreport_file=OUT/'report.json'\npub={'schema':'project-os.artifact-bundle/1','carrier':'direct-notion-api-fallback','request':'work-env-qualification-harness-ci-contrast-fix-v4','operation':'FIX','project':'react-fastapi-base','source_commit':report['identity']['verified_executable_source_commit'],'source_digest':computed_digest,'source_tree':'a3e87ee94365672304d468469e8415e4f0d24c80','tested_candidate_head':report['identity']['tested_candidate_head'],'tested_candidate_tree':tested_tree,'current_candidate_head':current_head,'current_candidate_tree':current_tree,'candidate_version':version,'target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','evidence_commit':release_binding['evidence_commit'],'binding_status':release_binding['binding_status'],'bundle_filename':bundle.name,'bundle_sha256':sha(bundle),'bundle_bytes':bundle.stat().st_size,'inner_manifest_sha256':manifest_sha,'report_filename':'CHG-235-R4-report.json','report_sha256':sha(report_file),'report_bytes':report_file.stat().st_size,'inner_files':files,'created_at_utc':datetime.now(timezone.utc).isoformat(),'privacy':'Sanitized: no local work-qualification evidence or private environment files.'}\npubfile=BASE/'CHG-235-R4-publication-manifest.json'\npubfile.write_text(json.dumps(pub,indent=2,sort_keys=True)+'\\\\n')\nprint(json.dumps({'bundle':str(bundle),'bundle_bytes':bundle.stat().st_size,'bundle_sha256':sha(bundle),'report':str(report_file),'report_sha256':sha(report_file),'publication_manifest':str(pubfile),'publication_manifest_sha256':sha(pubfile),'inner_files':len(files),'focused_contexts':per_scheme,'original_trace_before_axe':original_excerpt['state_snapshot_immediately_before_axe']},indent=2))\nPY\"",
+      "exit_code": 1,
+      "test_result": {
+        "exit_code": 1,
+        "framework": "pytest",
+        "outcome": "test_failures",
+        "output_bytes": 135,
+        "output_sha256": "3dfc1aa97e196c0743d0d824ee7474c211c978dfd9d1e98259de9a2ea6bf3464",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk mkdir -p /tmp/chg235-r4/attempt-22-bundle-builder-failure'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk mv /tmp/chg235-r4/project-os-artifact /tmp/chg235-r4/attempt-22-bundle-builder-failure/partial-output'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import json,pathlib; pathlib.Path(\\\"/tmp/chg235-r4/attempt-22-bundle-builder-failure/attempt.json\\\").write_text(json.dumps({\\\"command\\\":\\\"assemble sanitized CHG-235 R4 bundle from retained artifacts\\\",\\\"exit_code\\\":1,\\\"failure\\\":\\\"AttributeError: destination was str and relative_to was called\\\",\\\"source_mutation\\\":False,\\\"partial_output\\\":\\\"partial-output/\\\",\\\"failed_before\\\":\\\"bundle archive creation\\\",\\\"repair\\\":\\\"write the fixed artifact destinations as relative path strings\\\"},indent=2)+\\\"\\\\n\\\")'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk ls -lah /tmp/chg235-r4/attempt-22-bundle-builder-failure/partial-output && rtk rg --files /tmp/chg235-r4/attempt-22-bundle-builder-failure/partial-output | rtk head -n 35'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk mv /tmp/chg235-r4/attempt-22-bundle-builder-failure/partial-output /tmp/chg235-r4/project-os-artifact'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport hashlib,json,pathlib,re,shutil,zipfile\nfrom datetime import datetime,timezone\nfrom scripts.source_manifest import source_hashes,source_digest\nROOT=pathlib.Path.cwd(); BASE=pathlib.Path('/tmp/chg235-r4'); OUT=BASE/'project-os-artifact'\ndef sha(p):\n h=hashlib.sha256()\n with open(p,'rb') as f:\n  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)\n return h.hexdigest()\ndef write_json(rel,d):\n p=OUT/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,indent=2,sort_keys=True)+'\\\\n')\ndef copy(src,rel):\n p=OUT/rel;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,p);return p\n# Exact identities.\nhead=(BASE/'current-head.txt').read_text().strip(); tree=(BASE/'current-tree.txt').read_text().strip(); branch=(BASE/'current-branch.txt').read_text().strip(); tested_tree=(BASE/'test-candidate-tree.txt').read_text().strip()\ndigest=source_digest(source_hashes(ROOT)); version=(ROOT/'VERSION').read_text().strip()\nidentity=json.loads((ROOT/'deploy/rc24-release-identity.json').read_text()); binding=json.loads((ROOT/'evidence/current/release/rc24-evidence-binding.json').read_text()); manifest=json.loads((ROOT/'evidence/current/release/rc24-manifest.json').read_text()); readiness=json.loads((ROOT/'evidence/current/release/rc24-readiness-matrix.json').read_text()); verification=json.loads((ROOT/'evidence/current/full-stack/verification.json').read_text())\nassert digest==identity['source_digest'] and binding['binding_status']=='PASS' and binding['evidence_commit']=='400cb2bda485e106d153f2e0b24c1e6dd32c5c96'\n# Copy source delta from exact RTK git diff output.\npaths=[x.strip() for x in (BASE/'source-paths.txt').read_text().splitlines() if x.strip() and x.strip()\"'!='\"'Changes:']\ncopy(BASE/'test-repair.diff','attempts/r2-to-r4-test-change.diff')\nwrite_json('attempts/source-delta.json',{'r2_candidate':'16899bd448b7a0afb4782871389e14255fbe1106','target_base':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','verified_source_commit':'b7a8d94bd3daa56e167860dc15ddb63be4833270','tested_candidate_head':'e6c9730e149b137ee739867bef6ea64ddc9b4c4e','tested_candidate_tree':tested_tree,'changed_paths_r2_to_r4':paths,'test_only_patch_file':'attempts/r2-to-r4-test-change.diff','application_theme_css_changed':False,'public_api_identity_tenant_storage_deployment_security_changed':False})\n# Release artefacts.\nfor src,rel in [(ROOT/'deploy/rc24-release-identity.json','release/rc24-release-identity.json'),(ROOT/'evidence/current/release/rc24-readiness-matrix.json','release/rc24-readiness-matrix.json'),(ROOT/'evidence/current/release/rc24-manifest.json','release/rc24-manifest.json'),(ROOT/'evidence/current/release/rc24-evidence-binding.json','release/rc24-evidence-binding.json'),(ROOT/'evidence/current/full-stack/source-hashes.json','release/source-hashes.json'),(ROOT/'CHECKPOINT_MANIFEST.json','release/CHECKPOINT_MANIFEST.json')]:copy(src,rel)\nresults=[{k:x.get(k) for k in ('name','status','exit_code','duration_seconds','reason','required_for','result') if k in x} for x in verification.get('results',[])]\nvs={k:verification.get(k) for k in ('schema_version','created_at','timestamp','candidate_head','executable_source_commit','source_digest','code_ready','production_ready','release_status','platform','python_version') if k in verification};vs['results']=results;vs['non_pass_results']=[x for x in results if x.get('status')\"'!='\"'PASS']\nwrite_json('release/verification-summary.json',vs)\ncopy(BASE/'api-compatibility-final.json','release/api-compatibility-final.json')\nblog=(BASE/'attempt-19-verify-release-final-exact-base/full-stack-evidence/browser-e2e-accessibility.log').read_text(errors='replace')\nblines=[x.strip() for x in blog.splitlines() if re.match(r'\\\\s*✓\\\\s+\\\\d+\\\\s+\\\\[chromium\\\\]',x)]\nsummary=next((x.strip() for x in reversed(blog.splitlines()) if re.search(r'\\\\d+ passed',x)),None)\nwrite_json('release/browser-e2e-tests.json',{'run':'final ./dev verify-release','platform':'macOS/Darwin','browser':'Chromium 151.0.7922.34','playwright':'1.62.1','summary':summary,'passed_test_count':len(blines),'tests':blines})\n# Sanitized qualification summary: report outcomes and handoff length only; exclude all generated work-environment material.\nhandoff=(BASE/'work-qualification/runs/wq1-20260926-d5d0f4bb/handoff.txt').read_text()\nwrite_json('qualification/work-qualification-test-summary.json',{'tests':[{'command':'pytest tests/test_work_qualification.py -q','exit_code':0,'result':'99 passed'}],'cli_commands':[{'command':'./dev work-qualify','exit_code':0},{'command':'./dev work-qualify --plan','exit_code':0},{'command':'./dev work-qualify --status','exit_code':0},{'command':'./dev work-qualify --resume','exit_code':0,'idempotent':True},{'command':'./dev work-qualify --resume','exit_code':0,'idempotent':True},{'command':'./dev work-qualify --handoff','exit_code':0,'handoff_character_count_excluding_newline':len(handoff.rstrip('\\\\n')),'limit':300}],'expected_harness_outcome':'QUALIFICATION_INCOMPLETE / production_ready=false in local environment','privacy':'No generated work-environment evidence, identifiers, reports, or private inputs are included.'})\n# Attempts index.\nattempts={'r2_reproduction':{'id':'attempt-01','source':'R2 exact candidate 16899bd448b7a0afb4782871389e14255fbe1106','result':'six local diagnostic trials; three light and three dark; direct /system, navigate to /system, reload; no serious/critical axe violations; report and all six traces/screenshots retained locally; representative report/screenshots in this bundle'},'first_full_e2e_after_repair':{'id':'attempt-10','result':'49 passed; 1 route-loop test timed out at 30 seconds while 21 routes were inside one test; failure trace/results retained locally; test was split per route while preserving all 21 route cases'},'python_interpreter_setup_attempts':{'ids':['attempt-12','attempt-13','attempt-14'],'result':'local system Python 3.9.6 could not satisfy pinned Alembic 1.18.4; no dependency pin changed; supported Python runs used subsequently'},'clean_clone':{'id':'attempt-15','result':'PASS on macOS with supported Python 3.14 and isolated caches'},'missing_exact_base_env':{'id':'attempt-16','result':'verify-release failed due omitted exact-base environment; preserved separately; corrected exact-base runs passed'},'exact_base_release':{'id':'attempt-19','result':'PASS; repository release gates including clean clone and full browser/accessibility passed; company gates remain externally blocked'},'exact_base_nonrelease':{'id':'attempt-18','result':'PASS; release-only fixture/backup/storage gates correctly marked release-only'},'final_checkpoint':{'result':'PASS; 1237 files; ZIP integrity and sidecar hash verified; maintained checkpoint manifest current','sha256':'1e44cd2e650d47f6b6c160e422d16afe3e11a46697c3e5c5128d2b3fc8f66758'},'stale_checkpoint_manifest_experiments':{'ids':['attempt-20','attempt-21'],'result':'archives preserved separately; initial archives passed ZIP/hash integrity but manifest check was stale after documentation changed; maintained manifest regenerated and final archive passes'},'bundle_builder':{'id':'attempt-22','result':'first packaging script halted before archive creation on a Path/string handling error; partial output retained; corrected builder used for this bundle'}}\nwrite_json('attempts/attempt-index.json',attempts)\n# Human-readable report identity and conclusion.\norig=json.loads((OUT/'original-ci/trace-state-before-axe.json').read_text());fails=json.loads((OUT/'original-ci/aggregate-nonpass-results.json').read_text())['results']\nreport={'schema':'project-os.chg235-r4-diagnostic/1','request':'FIX CHG-235 R4 in kimhw8084/react-fastapi-base','decision':'REPAIRED CODE CANDIDATE; STOP FOR INDEPENDENT PROJECT OS AUDIT','identity':{'project':'react-fastapi-base','branch':branch,'actual_head':head,'actual_tree':tree,'version':version,'target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','carried_forward_r2_candidate':'16899bd448b7a0afb4782871389e14255fbe1106','tested_candidate_head':'e6c9730e149b137ee739867bef6ea64ddc9b4c4e','tested_candidate_tree':tested_tree,'verified_executable_source_commit':'b7a8d94bd3daa56e167860dc15ddb63be4833270','verified_source_tree':'a3e87ee94365672304d468469e8415e4f0d24c80','source_digest':digest,'evidence_commit':binding['evidence_commit'],'release_binding_status':binding['binding_status']},'original_ci_failure':{'run_id':'36182134604','job_id':'108226786675','artifact_id':'10885401386','artifact_zip_sha256':orig['artifact']['zip_sha256'],'source_commit':'425d3632c75165fe8f030679910485f5d0196ae0','source_digest':'1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b','test':'major workspaces remain axe clean under high contrast, reduced motion and zoom','route':'/system','browser':'Chromium 151.0.7922.34','emulation':'prefers-reduced-motion reduce; color scheme not explicitly emulated; app mode light, theme operations, contrast high','assertion':'serious/critical axe violations must equal []','observed':'1 serious color-contrast violation; white #ffffff on #f4f6f9 at 1.08:1; eyebrow and description require 4.5:1, large title requires 3:1','trace_attributes_before_axe':orig['state_snapshot_immediately_before_axe']['root_attributes'] if orig.get('state_snapshot_immediately_before_axe') else None,'screenshot':'retained screenshot is visually black after failure; it does not establish the exact transient frame at axe time','other_aggregate_failures':fails},'classification':{'category':'test readiness / paint timing','confidence':'medium','basis':['CI trace shows Operations/light/high-contrast attributes before axe, so absent state attributes are ruled out as the sole cause','axe observed a light body background and white text while the later screenshot appears black','R2-bound direct-load/navigation/reload diagnostics passed in six light/dark local trials with computed black canvas and zero serious/critical violations','R4 waits for observed semantic and computed paint state before axe; no app CSS/token change was needed; real negative control reproduces the 1.08:1 failure'],'limit':'The CI artifact does not record same-frame computed styles at axe time; the exact transient mechanism is not proved.'},'r4_results':{'focused':'PASS: 6 fresh Chromium contexts (3 explicit light, 3 explicit dark), each covering direct /system load, navigation to /system, reload, Operations theme, high contrast and reduced motion; captured computed html/body/headings/semantic variables/opaque canvas/stylesheets and axe before/after','negative_control':'PASS: forced #ffffff on #f4f6f9; axe serious color-contrast reports 1.08:1 and expected ratios','full_browser':'PASS: 70 tests, full route coverage retained, accessibility/serious/critical checks retained','full_release_verification':'PASS: ./dev verify-release with exact API and release base; repository code_ready=true; production_ready=false','nonrelease_verification':'PASS: ./dev verify','contracts_architecture':'PASS: ./dev contracts; ./dev architecture','api_compatibility':'PASS against exact base; API major 1/revision 2 unchanged','qualification_baseline':'PASS: 99 tests; work-qualify default/plan/status/resume twice/handoff all exit 0; resume idempotent; handoff 206 characters; no work-environment data exported','checkpoint':'PASS: maintained checkpoint manifest current; 1237-file archive ZIP integrity and SHA256 verified','r4_ubuntu_ci':'NOT RUN; local macOS runs do not prove Linux CI'},'release':{'candidate_version':version,'release_status':identity['release_status'],'code_ready':identity['code_ready'],'production_ready':identity['production_ready'],'readiness_matrix':readiness['gates'],'remaining_blockers':['company identity: real company users and deployment/ingress proof absent','company storage: provider-supported locking/durability/redeploy proof absent','company deployment: actual publish/routing/restart/redeploy not exercised','company/profile UI accessibility, performance, operations evidence remain external']},'r3_evidence_unavailable':'Retained R3 worktree was unavailable. Native audit has no diagnostic report/trace/source attachment; its restore action means no R3 repair or test result is credited.','changed_paths':paths,'no_external_mutations':{'main_moved_or_merged':False,'previous_execution_branches_modified':False,'pr_34_modified':False,'sysgrid_touched':False,'work_environment_data_exported':False}}\nwrite_json('report.json',report)\nmd=f'''# CHG-235 R4 accessibility and release evidence\\\\n\\\\n**Outcome:** repaired RC.24 code candidate, staged for independent Project OS audit. This bundle does not accept, integrate, deploy, or certify production.\\\\n\\\\n## Candidate identity\\\\n\\\\n- Tested candidate checkout: \"'`{report['\"'identity']['tested_candidate_head']}\"'` (`{tested_tree}`); executable source: `{report['\"'identity']['verified_executable_source_commit']}\"'`; version `{version}`.'\"\\\\n- Current evidence handoff head/tree: \"'`{head}` / `{tree}` on `{branch}`. Source digest: `{digest}`.'\"\\\\n- Exact base: \"'`main@67ec2ce5ec44d38ee44d22602035c2554a08e00d`; exact R2 candidate ancestry retained.'\"\\\\n- RC.24 binding: \"'`{binding['\"'binding_status']}\"'`, evidence commit `{binding['\"'evidence_commit']}\"'`.'\"\\\\n\\\\n## Original CI failure\\\\n\\\\nRun \"'`36182134604`, job `108226786675`, artifact `10885401386` (ZIP SHA256 `{orig['\"'artifact']['zip_sha256']}\"'`), source `425d3632c75165fe8f030679910485f5d0196ae0` / `1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b`. The original `/system` assertion expected no serious or critical axe violations and observed a serious `color-contrast` violation: white `#ffffff` against `#f4f6f9`, 1.08:1. The eyebrow and description needed 4.5:1; the large title needed 3:1. The trace shows `data-theme=operations`, `data-mode=light`, `data-contrast=high` before axe. Reduced motion was emulated; color scheme was not explicitly emulated. The saved screenshot is black after failure. The downloaded aggregate also failed reusable-platform qualification, whose referenced detail report was absent; the UI matrix was blocked downstream.'\"\\\\n\\\\n## Root classification\\\\n\\\\nBest-supported category is a test readiness/paint timing race (medium confidence). The later black screenshot and local six-trial R2 reproduction support that classification. The CI trace lacks same-frame computed styles at axe time, so the exact transient is unproved. The shared application theme CSS/tokens remain unchanged.\\\\n\\\\n## Repair and observed results\\\\n\\\\nThe shared workspace test now waits for the Operations/high-contrast semantic tokens and computed black body canvas/white heading paint before running its existing serious/critical axe assertion. It records JSON/screenshots in finalization paths before assertions. A negative control forces the original white-on-\"'`#f4f6f9` state and confirms axe catches the 1.08:1 contrast violation.'\"\\\\n\\\\nFocused tests passed six fresh contexts (three explicit light and three explicit dark), each covering direct \"'`/system`, navigation to `/system`, and reload under reduced motion. Full E2E/accessibility passed 70 tests; all routes and serious/critical assertions remain covered. The R2 work-qualification baseline passed 99 tests. Contracts, architecture, `./dev verify`, exact-base `./dev verify-release`, exact-base API compatibility, CLI plan/status/resume/handoff, and the final checkpoint passed. Ubuntu CI for R4 was not run.'\"\\\\n\\\\n## Release state\\\\n\\\\nVersion \"'`{version}` is `code_ready=true`, `production_ready=false`, `release_status=NOT_CERTIFIED`. Company identity, provider storage, deployment, and applicable company/profile accessibility, performance, and operations remain blocked on authentic external evidence.'\"\\\\n\\\\nR3 diagnostic files were unavailable. No main/PR #34/previous branch mutation, SysGrid change, production action, or work-environment data export occurred.\\\\n'''\n(OUT/'README.md').write_text(md)\n# Inner inventory, archive, and detached manifest.\nfiles={}\nfor p in sorted(OUT.rglob('*')):\n if p.is_file() and p.name\"'!='\"'manifest.json':files[p.relative_to(OUT).as_posix()]={'sha256':sha(p),'bytes':p.stat().st_size}\nwrite_json('manifest.json',{'schema':'project-os.chg235-r4-bundle/1','files':files,'file_count':len(files),'note':'Inner manifest excludes itself; detached manifest binds archive and standalone report.'})\ninner_sha=sha(OUT/'manifest.json'); bundle=BASE/'CHG-235-R4-project-os-evidence.zip'\nif bundle.exists():bundle.unlink()\nwith zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:\n for p in sorted(OUT.rglob('*')):\n  if p.is_file():z.write(p,p.relative_to(OUT).as_posix())\nreport_file=OUT/'report.json'; pub={'schema':'project-os.artifact-bundle/1','carrier':'direct-notion-api-fallback','request':'work-env-qualification-harness-ci-contrast-fix-v4','operation':'FIX','project':'react-fastapi-base','source_commit':report['identity']['verified_executable_source_commit'],'source_digest':digest,'source_tree':'a3e87ee94365672304d468469e8415e4f0d24c80','tested_candidate_head':report['identity']['tested_candidate_head'],'tested_candidate_tree':tested_tree,'current_candidate_head':head,'current_candidate_tree':tree,'candidate_version':version,'target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','evidence_commit':binding['evidence_commit'],'binding_status':binding['binding_status'],'bundle_filename':bundle.name,'bundle_sha256':sha(bundle),'bundle_bytes':bundle.stat().st_size,'inner_manifest_sha256':inner_sha,'report_filename':'CHG-235-R4-report.json','report_sha256':sha(report_file),'report_bytes':report_file.stat().st_size,'inner_files':files,'created_at_utc':datetime.now(timezone.utc).isoformat(),'privacy':'Sanitized: no local work-qualification evidence or private environment files.'}\npubfile=BASE/'CHG-235-R4-publication-manifest.json';pubfile.write_text(json.dumps(pub,indent=2,sort_keys=True)+'\\\\n')\nprint(json.dumps({'bundle':str(bundle),'bundle_bytes':bundle.stat().st_size,'bundle_sha256':sha(bundle),'report':str(report_file),'report_sha256':sha(report_file),'publication_manifest':str(pubfile),'publication_manifest_sha256':sha(pubfile),'inner_file_count':len(files),'browser_pass_line_count':len(blines),'browser_summary':summary,'handoff_chars':len(handoff.rstrip('\\\\n')),'current_head':head,'current_tree':tree,'source_digest':digest,'binding_status':binding['binding_status']},indent=2))\nPY\"",
+      "exit_code": 0,
+      "test_result": {
+        "exit_code": 0,
+        "framework": "pytest",
+        "outcome": "passed",
+        "output_bytes": 877,
+        "output_sha256": "0fcb82e32b24e4d57e9ee9c526bb548eefea84379cbe5065dac258fac4ae7af5",
+        "summary_detected": false
+      },
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git diff --name-only 16899bd448b7a0afb4782871389e14255fbe1106..HEAD > /tmp/chg235-r4/all-change-paths.txt'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport hashlib,json,pathlib,re,zipfile\nfrom scripts.source_manifest import source_digest,source_hashes\nROOT=pathlib.Path.cwd(); BASE=pathlib.Path('/tmp/chg235-r4'); OUT=BASE/'project-os-artifact'\ndef sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()\ndef write_json(rel,d): p=OUT/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,indent=2,sort_keys=True)+'\\\\n')\ndef gate_summary(path):\n d=json.loads(path.read_text()); results=[{k:x.get(k) for k in ('name','status','exit_code','duration_seconds','reason','required_for','result') if k in x} for x in d.get('results',[])]\n return {k:d.get(k) for k in ('schema_version','created_at','timestamp','candidate_head','executable_source_commit','source_digest','code_ready','production_ready','release_status','platform','python_version') if k in d}|{'results':results,'non_pass_results':[x for x in results if x.get('status')\"'!='\"'PASS']}\n# Complete changed-path accounting from exact R2 to the committed handoff HEAD.\nfull=[x.strip() for x in (BASE/'all-change-paths.txt').read_text().splitlines() if x.strip() and x.strip()\"'!='\"'Changes:']\nsource=[x.strip() for x in (BASE/'source-paths.txt').read_text().splitlines() if x.strip() and x.strip()\"'!='\"'Changes:']\ndelta=json.loads((OUT/'attempts/source-delta.json').read_text());delta['changed_paths_r2_to_current_handoff_head']=full;delta['source_and_release_code_paths_r2_to_tested_source']=source;write_json('attempts/source-delta.json',delta)\nreport=json.loads((OUT/'report.json').read_text());report['changed_paths']=full;report['source_changed_paths']=source;report['identity']['actual_head_tree']='as separately recorded in identity actual_head and actual_tree';write_json('report.json',report)\n# Preserve both maintained top-level verifier reports in sanitized form.\nv18=pathlib.Path('/tmp/chg235-r4/attempt-18-verify-exact-base/full-stack-evidence/verification.json')\nwrite_json('release/nonrelease-verification-summary.json',gate_summary(v18))\nwrite_json('release/gate-run-index.json',{'runs':[{'id':'attempt-18','command':'./dev verify','exit_code':0,'api_compatibility_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','release_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','summary_file':'release/nonrelease-verification-summary.json'},{'id':'attempt-19','command':'./dev verify-release','exit_code':0,'api_compatibility_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','release_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','summary_file':'release/verification-summary.json'}]})\n# Rebuild inner manifest and archive deterministically from the final bundle directory.\nfiles={}\nfor p in sorted(OUT.rglob('*')):\n if p.is_file() and p.name\"'!='\"'manifest.json':files[p.relative_to(OUT).as_posix()]={'sha256':sha(p),'bytes':p.stat().st_size}\nwrite_json('manifest.json',{'schema':'project-os.chg235-r4-bundle/1','files':files,'file_count':len(files),'note':'Inner manifest excludes itself; detached manifest binds archive and standalone report.'})\ninner_sha=sha(OUT/'manifest.json');bundle=BASE/'CHG-235-R4-project-os-evidence.zip'\nwith zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:\n for p in sorted(OUT.rglob('*')):\n  if p.is_file():z.write(p,p.relative_to(OUT).as_posix())\nreportfile=OUT/'report.json';binding=json.loads((ROOT/'evidence/current/release/rc24-evidence-binding.json').read_text());digest=source_digest(source_hashes(ROOT));pub={'schema':'project-os.artifact-bundle/1','carrier':'direct-notion-api-fallback','request':'work-env-qualification-harness-ci-contrast-fix-v4','operation':'FIX','project':'react-fastapi-base','source_commit':'b7a8d94bd3daa56e167860dc15ddb63be4833270','source_digest':digest,'source_tree':'a3e87ee94365672304d468469e8415e4f0d24c80','tested_candidate_head':'e6c9730e149b137ee739867bef6ea64ddc9b4c4e','tested_candidate_tree':(BASE/'test-candidate-tree.txt').read_text().strip(),'current_candidate_head':(BASE/'current-head.txt').read_text().strip(),'current_candidate_tree':(BASE/'current-tree.txt').read_text().strip(),'candidate_version':(ROOT/'VERSION').read_text().strip(),'target_base_sha':'67ec2ce5ec44d38ee44d22602035c2554a08e00d','evidence_commit':binding['evidence_commit'],'binding_status':binding['binding_status'],'bundle_filename':bundle.name,'bundle_sha256':sha(bundle),'bundle_bytes':bundle.stat().st_size,'inner_manifest_sha256':inner_sha,'report_filename':'CHG-235-R4-report.json','report_sha256':sha(reportfile),'report_bytes':reportfile.stat().st_size,'inner_files':files,'created_at_utc':reportfile.stat().st_mtime,'privacy':'Sanitized: no local work-qualification evidence or private environment files.'}\npubfile=BASE/'CHG-235-R4-publication-manifest.json';pub['created_at_utc']='2026-09-26T00:00:00Z';pubfile.write_text(json.dumps(pub,indent=2,sort_keys=True)+'\\\\n')\nprint(json.dumps({'bundle_sha256':sha(bundle),'bundle_bytes':bundle.stat().st_size,'report_sha256':sha(reportfile),'publication_manifest_sha256':sha(pubfile),'full_changed_path_count':len(full),'source_changed_path_count':len(source),'inner_files':len(files)},indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json,pathlib\np=pathlib.Path('/tmp/chg235-r4/project-os-artifact/original-ci/trace-state-before-axe.json');d=json.loads(p.read_text());print(json.dumps({k:d[k] for k in ('ci_host','trace_runtime','test','state_snapshot_immediately_before_axe','assertion_observed')},indent=2))\nprint('aggregate_nonpass:')\nprint(json.dumps(json.loads(pathlib.Path('/tmp/chg235-r4/project-os-artifact/original-ci/aggregate-nonpass-results.json').read_text()),indent=2)[:4000])\nprint('report_identity:',json.dumps(json.loads(pathlib.Path('/tmp/chg235-r4/project-os-artifact/report.json').read_text())['identity'],indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport hashlib,json,pathlib,zipfile\nfrom datetime import datetime,timezone\nBASE=pathlib.Path('/tmp/chg235-r4');OUT=BASE/'project-os-artifact'\ndef write(rel,d):p=OUT/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,indent=2,sort_keys=True)+'\\\\n')\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\norigpath=OUT/'original-ci/trace-state-before-axe.json';orig=json.loads(origpath.read_text());orig['test']['assertion_location']='frontend/tests/e2e/workspace.spec.ts:152';write('original-ci/trace-state-before-axe.json',orig)\nreportp=OUT/'report.json';report=json.loads(reportp.read_text());report['identity'].pop('actual_head_tree',None);report['original_ci_failure']['assertion_location']='frontend/tests/e2e/workspace.spec.ts:152';report['r3_evidence_unavailable']='For job CF-0e9bf1c21954856b25a66817, native audit 12bea165bb63ccf29473c9d47ef9458bc1e5cd85 contains no diagnostic report/trace/source attachment. Retained R3 worktree was unavailable; the audit records restoring temporary diagnostic tests/evidence, so no R3 repair or test result is credited.';write('report.json',report)\nreadme=(OUT/'README.md').read_text().replace('The original \"'`/system` assertion expected no serious or critical axe violations'\"','The original \"'`/system` assertion at `frontend/tests/e2e/workspace.spec.ts:152` expected no serious or critical axe violations'\"').replace('R3 diagnostic files were unavailable.','R3 diagnostic files were unavailable (native audit \"'`12bea165bb63ccf29473c9d47ef9458bc1e5cd85`; Fabric job `CF-0e9bf1c21954856b25a66817`).'\"')\n(OUT/'README.md').write_text(readme)\nfiles={}\nfor p in sorted(OUT.rglob('*')):\n if p.is_file() and p.name\"'!='\"'manifest.json':files[p.relative_to(OUT).as_posix()]={'sha256':sha(p),'bytes':p.stat().st_size}\nwrite('manifest.json',{'schema':'project-os.chg235-r4-bundle/1','files':files,'file_count':len(files),'note':'Inner manifest excludes itself; detached publication manifest binds archive and standalone report.'})\nbundle=BASE/'CHG-235-R4-project-os-evidence.zip'\nwith zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:\n for p in sorted(OUT.rglob('*')):\n  if p.is_file():z.write(p,p.relative_to(OUT).as_posix())\npubp=BASE/'CHG-235-R4-publication-manifest.json';pub=json.loads(pubp.read_text());pub.update(bundle_sha256=sha(bundle),bundle_bytes=bundle.stat().st_size,report_sha256=sha(reportp),report_bytes=reportp.stat().st_size,inner_manifest_sha256=sha(OUT/'manifest.json'),inner_files=files,created_at_utc=datetime.now(timezone.utc).isoformat());pubp.write_text(json.dumps(pub,indent=2,sort_keys=True)+'\\\\n')\nprint(json.dumps({'bundle_bytes':bundle.stat().st_size,'under_notion_20_mib_limit':bundle.stat().st_size<20*1024*1024,'bundle_sha256':sha(bundle),'report_sha256':sha(reportp),'publication_manifest_sha256':sha(pubp),'file_count':len(files),'created_at_utc':pub['created_at_utc']},indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport hashlib,json,pathlib,zipfile\nbase=pathlib.Path('/tmp/chg235-r4'); bundle=base/'CHG-235-R4-project-os-evidence.zip'; pub=json.loads((base/'CHG-235-R4-publication-manifest.json').read_text()); out=base/'project-os-artifact'; inner=json.loads((out/'manifest.json').read_text()); errors=[]\nwith zipfile.ZipFile(bundle) as z:\n bad=z.testzip()\n if bad:errors.append('bad zip member '+bad)\n for name,meta in inner['files'].items():\n  b=z.read(name)\n  if hashlib.sha256(b).hexdigest()\"'!=meta['\"'sha256'] or len(b)\"'!=meta['\"'bytes']:errors.append('inner hash mismatch '+name)\n if hashlib.sha256(z.read('manifest.json')).hexdigest()\"'!=pub['\"'inner_manifest_sha256']:errors.append('inner manifest hash mismatch')\n if z.namelist() and set(z.namelist())\"'!={*inner['\"'files'].keys(),'manifest.json'}:errors.append('zip entry set differs from manifest')\nif hashlib.sha256(bundle.read_bytes()).hexdigest()\"'!=pub['\"'bundle_sha256']:errors.append('bundle hash mismatch')\nreport=json.loads((out/'report.json').read_text())\nif report['identity']['source_digest']\"'!=pub['\"'source_digest']:errors.append('source digest mismatch')\nif not bundle.stat().st_size<20*1024*1024:errors.append('bundle exceeds 20MiB')\nprint(json.dumps({'bundle_sha256':hashlib.sha256(bundle.read_bytes()).hexdigest(),'bundle_bytes':bundle.stat().st_size,'inner_file_count':len(inner['files']),'zip_member_count':len(zipfile.ZipFile(bundle).namelist()),'size_under_20_mib':bundle.stat().st_size<20*1024*1024,'errors':errors},indent=2))\nraise SystemExit(bool(errors))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk curl --silent --show-error --fail -X POST -H 'Authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip;type=application/zip' 'https://api.notion.com/v1/mcp/file_uploads/3e7c564c-8d04-8113-be5a-00b272ecbd3f/send' -o /tmp/chg235-r4/notion-bundle-upload-response.json -w '%{http_code}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json,pathlib\np=pathlib.Path('/tmp/chg235-r4/notion-bundle-upload-response.json');d=json.loads(p.read_text());print(json.dumps({k:d.get(k) for k in ('file_upload_id','id','status','filename','content_type','size') if k in d}))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk curl --silent --show-error --fail -X POST -H 'Authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg235-r4/CHG-235-R4-publication-manifest.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3e7c564c-8d04-81e3-b7db-00b2a401cd69/send' -o '/tmp/chg235-r4/notion-manifest-upload-response.json' -w '%{http_code}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk curl --silent --show-error --fail -X POST -H 'Authorization: Bearer [REDACTED_SECRET]' -F 'file=@/tmp/chg235-r4/project-os-artifact/report.json;type=application/json' 'https://api.notion.com/v1/mcp/file_uploads/3e7c564c-8d04-815d-9896-00b2f0c573b4/send' -o '/tmp/chg235-r4/notion-report-upload-response.json' -w '%{http_code}'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "update_properties",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "add_files",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat /tmp/chg235-r4/CHG-235-R4-publication-manifest.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat /tmp/chg235-r4/project-os-artifact/report.json'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "update_properties",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "update_content",
+      "type": "mcp_tool_call"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk cat VERSION'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk git rev-parse 'HEAD\"'^{tree}'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git rev-parse b7a8d94bd3daa56e167860dc15ddb63be4833270''^{tree}'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor 67ec2ce5ec44d38ee44d22602035c2554a08e00d HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git merge-base --is-ancestor 16899bd448b7a0afb4782871389e14255fbe1106 HEAD'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk shasum -a 256 -c react-fastapi-base-chg235-r4.zip.sha256'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'from scripts.source_manifest import source_hashes,source_digest; print(source_digest(source_hashes()))'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk python3 scripts/generate_checkpoint_manifest.py --check'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json,pathlib\nb=json.loads(pathlib.Path('evidence/current/release/rc24-evidence-binding.json').read_text());m=json.loads(pathlib.Path('evidence/current/release/rc24-manifest.json').read_text());v=json.loads(pathlib.Path('evidence/current/full-stack/verification.json').read_text());i=json.loads(pathlib.Path('deploy/rc24-release-identity.json').read_text());assert b['binding_status']=='PASS' and b['target_base_sha']=='67ec2ce5ec44d38ee44d22602035c2554a08e00d';assert m['evidence_commit']==b['evidence_commit'];assert i['source_digest']==b['source_digest']==v['source_digest'];assert v['code_ready'] is True and v['production_ready'] is False;print(json.dumps({'binding_status':b['binding_status'],'evidence_commit':b['evidence_commit'],'verified_source_commit':b['verified_source_commit'],'source_digest':b['source_digest'],'target_base_sha':b['target_base_sha'],'code_ready':v['code_ready'],'production_ready':v['production_ready'],'release_status':v['release_status']},indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 - <<'PY'\nimport json,pathlib,hashlib,zipfile\nb=pathlib.Path('/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip');p=json.loads(pathlib.Path('/tmp/chg235-r4/CHG-235-R4-publication-manifest.json').read_text());r=json.loads(pathlib.Path('/tmp/chg235-r4/project-os-artifact/report.json').read_text());z=zipfile.ZipFile(b);m=json.loads(z.read('manifest.json'));assert hashlib.sha256(b.read_bytes()).hexdigest()==p['bundle_sha256'];assert hashlib.sha256(z.read('report.json')).hexdigest()==p['report_sha256'];assert p['bundle_bytes']==b.stat().st_size<20*1024*1024;assert r['original_ci_failure']['artifact_zip_sha256']=='07c9921e4a0da9c39eba512983f1742a57ee809a7be6d7b224003ce767c0bc9b';assert len(m['files'])==47;assert r['identity']['source_digest']=='e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c';print(json.dumps({'bundle_sha256':p['bundle_sha256'],'bytes':p['bundle_bytes'],'inner_files':len(m['files']),'original_ci_artifact_sha256':r['original_ci_failure']['artifact_zip_sha256'],'source_digest':r['identity']['source_digest'],'checks':'PASS'},indent=2))\nPY\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk unzip -t /tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip > /tmp/chg235-r4/final-bridge-zip-test.log 2>&1'",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import zipfile,hashlib,pathlib; p=pathlib.Path(\\\"/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip\\\"); z=zipfile.ZipFile(p); bad=z.testzip(); print(\\\"zip_test\\\", \\\"PASS\\\" if bad is None else \\\"FAIL:\\\"+bad); print(\\\"bytes\\\",p.stat().st_size); print(\\\"sha256\\\",hashlib.sha256(p.read_bytes()).hexdigest())'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import hashlib,json,pathlib,zipfile; z=zipfile.ZipFile(\\\"/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip\\\"); names=set(z.namelist()); manifest_name=next(n for n in names if n.endswith(\\\"manifest.json\\\") and \\\"publication\\\" not in n); m=json.loads(z.read(manifest_name)); files=m.get(\\\"files\\\",m.get(\\\"artifacts\\\",[])); checked=0; bad=[]; [(bad.append((x.get(\\\"path\\\",x.get(\\\"name\\\")), \\\"missing\\\")) if (x.get(\\\"path\\\",x.get(\\\"name\\\")) not in names) else None) for x in files]; print(\\\"inner_manifest\\\",manifest_name,\\\"entries\\\",len(files),\\\"missing\\\",len(bad)); print(\\\"sample_missing\\\",bad[:3])'\"",
+      "exit_code": 1,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import json,zipfile; z=zipfile.ZipFile(\\\"/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip\\\"); ns=[n for n in z.namelist() if n.endswith(\\\"manifest.json\\\")]; print(ns); [(print(n,z.read(n)[:1200].decode(\\\"utf-8\\\",\\\"replace\\\"))) for n in ns]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import hashlib,json,zipfile; z=zipfile.ZipFile(\\\"/tmp/chg235-r4/CHG-235-R4-project-os-evidence.zip\\\"); m=json.loads(z.read(\\\"manifest.json\\\")); bad=[]; [(bad.append((n,\\\"missing\\\")) if n not in z.namelist() else None) for n in m[\\\"files\\\"]]; [(bad.append((n,\\\"hash/size\\\")) if len(z.read(n))\"'!=v[\"bytes\"] or hashlib.sha256(z.read(n)).hexdigest()!=v[\"sha256\"] else None) for n,v in m[\"files\"].items() if n in z.namelist()]; print(\"manifest_entries\",m[\"file_count\"],\"verified\",len(m[\"files\"]),\"mismatches\",bad)'\"'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc 'rtk git status --short --branch && rtk git rev-parse HEAD HEAD''^{tree} && rtk git log -1 --format=%s && rtk python3 -c '\"'import json; p=\\\"deploy/rc24-release-identity.json\\\"; d=json.load(open(p)); print(json.dumps({k:d.get(k) for k in [\\\"version\\\",\\\"source_commit\\\",\\\"source_sha256\\\",\\\"api_compatibility_base_sha\\\"]},sort_keys=True))'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    },
+    {
+      "command": "/bin/zsh -lc \"rtk python3 -c 'import json; files=[\\\"deploy/rc24-release-identity.json\\\",\\\"evidence/current/release/rc24-evidence-binding.json\\\"]; [(print(p,json.dumps(json.load(open(p)),sort_keys=True))) for p in files]'\"",
+      "exit_code": 0,
+      "type": "command_execution"
+    }
+  ],
+  "codex": {
+    "cli_version": "codex-cli 0.157.0",
+    "configured_model": "gpt-6-luna",
+    "event_count": 914,
+    "provider_reported_model": null,
+    "reasoning_effort": "xhigh",
+    "terminal_type": "turn.completed",
+    "usage": {
+      "cache_hit_percent": 98.02,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 71948544,
+      "fresh_input_tokens": 1453279,
+      "input_tokens": 73401823,
+      "non_reasoning_output_tokens": 113493,
+      "output_tokens": 371960,
+      "reasoning_output_tokens": 258467,
+      "total_processed_tokens": 73773783
+    },
+    "warnings": []
+  },
+  "commits": [
+    {
+      "sha": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+      "subject": "Bind final CHG-235 R4 checkpoint evidence"
+    },
+    {
+      "sha": "400cb2bda485e106d153f2e0b24c1e6dd32c5c96",
+      "subject": "Record final CHG-235 R4 checkpoint inputs"
+    },
+    {
+      "sha": "ab8f36524add7a1a24edf06c5ac6a0fc491ae2d4",
+      "subject": "Bind CHG-235 R4 checkpoint evidence"
+    },
+    {
+      "sha": "bf5f6da1664b46686564d3e01cbb75718be6be02",
+      "subject": "Refresh CHG-235 R4 checkpoint manifest"
+    },
+    {
+      "sha": "5f022045ce478f637f043057593362c31188d5b8",
+      "subject": "Finalize CHG-235 R4 evidence binding"
+    },
+    {
+      "sha": "b14c37a0024b7a09bb5021ad87ad375a3ab98102",
+      "subject": "Bind CHG-235 R4 RC.24 verification evidence"
+    },
+    {
+      "sha": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+      "subject": "docs: carry CHG-235 R4 release status forward"
+    },
+    {
+      "sha": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+      "subject": "test: isolate high contrast workspace route checks"
+    },
+    {
+      "sha": "c7bbf35755fe37b8ea2cbe144555a0fd603d2138",
+      "subject": "fix: wait for high contrast paint before axe analysis"
+    },
+    {
+      "sha": "16899bd448b7a0afb4782871389e14255fbe1106",
+      "subject": "release: finalize RC.23 evidence binding and status"
+    },
+    {
+      "sha": "e7d58c142e316c02dc47f75ed43a2da765d64694",
+      "subject": "evidence: bind RC.23 verification to deterministic resume source"
+    },
+    {
+      "sha": "425d3632c75165fe8f030679910485f5d0196ae0",
+      "subject": "fix: make qualification resume output deterministic"
+    },
+    {
+      "sha": "047c6866cf68888b6b1fa09c0448e2a488499bb0",
+      "subject": "CHG-235 finalize RC.23 evidence binding"
+    },
+    {
+      "sha": "d303de7e4ff3a66278cdc854ed2a5a47a1ecdceb",
+      "subject": "CHG-235 bind RC.23 verification and release identity"
+    },
+    {
+      "sha": "16cc403090b7bb1fb44978a797bcc57369438316",
+      "subject": "CHG-235 R2 repair qualification harness and release binding"
+    },
+    {
+      "sha": "b470ded76db726cc5218b421396be0f6ce6e10e7",
+      "subject": "fabric: capture completed model changes [CF-a76e16568c01043040d78b6e]"
+    }
+  ],
+  "diff": {
+    "additions": 22673,
+    "changed_files": 201,
+    "commit_count": 16,
+    "deletions": 2387
+  },
+  "error_code": null,
   "evidence_manifest": {
-    "version": 1,
+    "count": 185,
     "items": [
       {
-        "path": "deploy/rc11-release-identity.json",
-        "bytes": 648,
-        "sha256": "ce9b8bc8b4204c5eab89630194cdea538bb3b3c81788ce0982322735167c1601"
+        "bytes": 16461,
+        "path": "CHANGELOG.md",
+        "sha256": "ab43e16a5801d2ce8721ea3d64a0e106de159b102908c414e0e698db0676f6eb"
       },
       {
-        "path": "evidence/current/full-stack/verification.json",
-        "bytes": 11674,
-        "sha256": "a0fc16167abee89dedcadd986053d228ce73327b72166ccd9c9d55768afae1ed"
+        "bytes": 86272,
+        "path": "CHECKPOINT_MANIFEST.json",
+        "sha256": "474cc17a02802a8a0fed6341bd544a18a6ffdd505606545d92f1f8ea32f6fd22"
       },
       {
+        "bytes": 4537,
+        "path": "README.md",
+        "sha256": "7ff7f46e23757578c00b113bffaa2133c0f824fe80920d53592cb0c7e68e14ca"
+      },
+      {
+        "bytes": 3618,
+        "path": "contracts/independent-deployment.json",
+        "sha256": "28459adbcd0b01c2b02ca5b860e3bed6053a037e5ac2ffd10393c2da32e4fafa"
+      },
+      {
+        "bytes": 1252537,
+        "path": "contracts/openapi.json",
+        "sha256": "29ea4f96667baec7aa1e7d0894bdf6f30c26b8644c8db84440bcbd0b4770cede"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc23-release-identity.json",
+        "sha256": "702de122abde83ff758355adff92afe8dfe82ffe72c10db972c2b32e80d5a85a"
+      },
+      {
+        "bytes": 643,
+        "path": "deploy/rc24-release-identity.json",
+        "sha256": "47a861f8d34c23b5adf117462a4d90287a854fb83fcb026028fe4c9529be9dd0"
+      },
+      {
+        "bytes": 11165,
+        "path": "docs/COMPANY_QUALIFICATION.md",
+        "sha256": "8371d11d131502d72431e61a0e0d60a096b96ed78b48a9d60c109d03d6f68cd7"
+      },
+      {
+        "bytes": 8957,
+        "path": "docs/DEPLOYMENT.md",
+        "sha256": "d0a301a92435351e40b77950128d792f62e4852025b59419237309c4758f3612"
+      },
+      {
+        "bytes": 3171,
+        "path": "docs/MAC_QUICKSTART.md",
+        "sha256": "c4ffac464a9b673b803df9cceba4705de1dea56431ebd3bff49c8e32bf4357cc"
+      },
+      {
+        "bytes": 46146,
+        "path": "docs/MASTER_DESIGN.md",
+        "sha256": "461dc89c5115321296c5dd6604bb5c672845707a8832803b8be29cbaa6900304"
+      },
+      {
+        "bytes": 22233,
+        "path": "docs/RELEASE_STATUS.md",
+        "sha256": "72227fc7f22d4839fc838d990f574d083b2be7c069322cc907e058ef454ec206"
+      },
+      {
+        "bytes": 2407,
+        "path": "docs/UPGRADING.md",
+        "sha256": "15f5d3e1e66090519168396f3e9e366c9653cdc5b4d31262ffe6c14102fbb749"
+      },
+      {
+        "bytes": 7726,
+        "path": "docs/WORK_ENVIRONMENT_QUALIFICATION.md",
+        "sha256": "07b8839fc765e814adca41f17c6cb366abf73cfeb0af8092f5722b4d78b2e32a"
+      },
+      {
+        "bytes": 32865,
+        "path": "docs/requirements-status.json",
+        "sha256": "6866a9a1c45284f5c7ffea7c244594a69c12d737b3f5af6ce9a3f5eb4a3a9ca3"
+      },
+      {
+        "bytes": 2590,
+        "path": "evidence/current/deployment/qualification.json",
+        "sha256": "e911951bad3f67c8b3187d0d59ca30f215e8858d323bc09eaa581ba94f253df4"
+      },
+      {
+        "bytes": 717,
+        "path": "evidence/current/full-stack/api-compatibility.json",
+        "sha256": "7784ddd1f9d69eb6cab9ad7d7395cee5130e342d90ad001007a23d32bf69103e"
+      },
+      {
+        "bytes": 155,
+        "path": "evidence/current/full-stack/api-compatibility.log",
+        "sha256": "c6b575c0f3f3f68a40c09395d52d04a48baf6b2786033b5f09d98a972a469c69"
+      },
+      {
+        "bytes": 8351,
+        "path": "evidence/current/full-stack/backend-junit.shard-1.xml",
+        "sha256": "43b9f575f9b7164181429b79d5abfd747ac1e505d6e499cce94321ae593b2a55"
+      },
+      {
+        "bytes": 4978,
+        "path": "evidence/current/full-stack/backend-junit.shard-2.xml",
+        "sha256": "304c0f7180d1925c18b32af238f7671bad6122c037e627ddfe20ecb63011e9aa"
+      },
+      {
+        "bytes": 13199,
+        "path": "evidence/current/full-stack/backend-junit.shard-3.xml",
+        "sha256": "1ec12e1fa47e771ec33720ab315b468abf3da0c5b0b322575358f7559c051ed9"
+      },
+      {
+        "bytes": 12132,
+        "path": "evidence/current/full-stack/backend-junit.shard-4.xml",
+        "sha256": "2b07056846b9a21c25aa54ace6eacc9f20780067234a8fbbae92ba23fd43fcaf"
+      },
+      {
+        "bytes": 37775,
+        "path": "evidence/current/full-stack/backend-junit.xml",
+        "sha256": "be6c92a78e92b93042e3a1c97be5e274eecb286c579045207560fd154ef5ba51"
+      },
+      {
+        "bytes": 781,
+        "path": "evidence/current/full-stack/backend-tests.log",
+        "sha256": "f40f1685083f0fe533c2093353f7b0fca4eebd286cc95b7d150cdf093397a0ac"
+      },
+      {
+        "bytes": 198244,
+        "path": "evidence/current/full-stack/browser-e2e-accessibility.log",
+        "sha256": "0559580b5395be8b359368ac7cab0e11295fb308d98bead0be4b1a1d3c501a3c"
+      },
+      {
+        "bytes": 50,
+        "path": "evidence/current/full-stack/checkpoint-manifest.log",
+        "sha256": "ab0174ab4b8ddaf1e3e06d54c3cba6ff963557435b138f4bfc2abda9ac9c3b4a"
+      },
+      {
+        "bytes": 156,
+        "path": "evidence/current/full-stack/deployment-contract.log",
+        "sha256": "236c2ffd98046f8d09aea55570e1c67e7cf502c1b005296c7d8c0a67b5e5ad05"
+      },
+      {
+        "bytes": 387,
+        "path": "evidence/current/full-stack/engineering-widget-layer.log",
+        "sha256": "e257fbd62328c17426724176a50f5e960f2328ec8407df4e40e33b18cbb81de2"
+      },
+      {
+        "bytes": 52642,
+        "path": "evidence/current/full-stack/fresh-clone-macos.json",
+        "sha256": "b071a4981dae20a8dac38b6704b0478cc3ab9c3bb42dcb64597698b2b579c546"
+      },
+      {
+        "bytes": 2665,
+        "path": "evidence/current/full-stack/frontend-build.log",
+        "sha256": "d784fc0fbbdffc6b48ebad04177b64f75757fc110232c252f0b17fffacfee5c4"
+      },
+      {
+        "bytes": 3829,
+        "path": "evidence/current/full-stack/frontend-storybook.log",
+        "sha256": "898ea2162405d812f1063dc9cd7cf6c56b1687f865aa593e2171441d2ac59a6a"
+      },
+      {
+        "bytes": 69,
+        "path": "evidence/current/full-stack/frontend-typecheck.log",
+        "sha256": "75e7a8035755bb491e1597c83ad62db8f4158d9aa7e2fe0e22cebecbb9ce6cca"
+      },
+      {
+        "bytes": 333,
+        "path": "evidence/current/full-stack/frontend-unit.log",
+        "sha256": "5a6392bc8af77c3a13209f5d6a81cc918549fb88116bd629d882660fa1f6e754"
+      },
+      {
+        "bytes": 159,
+        "path": "evidence/current/full-stack/independent-deployment-qualification.log",
+        "sha256": "641a52a57353f78fc42b26649bca8cb9ce8289a6867ea7819d39756b1d9e5bc0"
+      },
+      {
+        "bytes": 1238,
+        "path": "evidence/current/full-stack/macos-fresh-install.log",
+        "sha256": "02c042ac299bbe64b07330b3014496497e163f85cedd0eff6ec8c6c5438476e4"
+      },
+      {
+        "bytes": 181,
+        "path": "evidence/current/full-stack/native-lab/browser-interactions.log",
+        "sha256": "4eb378f2faf5e4a5daea634df551d7989869fa163ac8f35220bb992b9f7e3fce"
+      },
+      {
+        "bytes": 13077,
+        "path": "evidence/current/full-stack/native-lab/browser-junit.xml",
+        "sha256": "7f583fa465a789f7d4fdb56da11d07f6adc0f24b6b8c8751b6312e72002f89fb"
+      },
+      {
+        "bytes": 6447,
+        "path": "evidence/current/full-stack/native-lab/pure-model-tests.log",
+        "sha256": "175d5d0888b3df332690284df8fea59447cfdbecae70b1aa3adba0baf0650154"
+      },
+      {
+        "bytes": 98,
+        "path": "evidence/current/full-stack/native-lab/static-http-server.log",
+        "sha256": "9330d6b7bc86d9806c387d479668de86af2a0be0d9e8761df5a82ab42cee3592"
+      },
+      {
+        "bytes": 11428,
+        "path": "evidence/current/full-stack/native-lab/verification.json",
+        "sha256": "1d568d6ce7603cefee4e0ce25bb3ca9da57a942b27270be02893612ccbccfbba"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/full-stack/object-inclusive-backup-restore.log",
+        "sha256": "7b3977720aca0bc7765db4871ea7c79d8576b3b0761ac6548f722eefbde9a07c"
+      },
+      {
+        "bytes": 696,
+        "path": "evidence/current/full-stack/operational-reliability-qualification.log",
+        "sha256": "e4c953a541031cdb5bc934f0ea75a7124939c5efeac3f9abb28cc0faf4156b7c"
+      },
+      {
+        "bytes": 528,
+        "path": "evidence/current/full-stack/performance-owned-algorithms.log",
+        "sha256": "5ff3632cc6089e6cf1c84bea9e8ce9631642e816fd24265f3be439d6e62af4ad"
+      },
+      {
+        "bytes": 509,
+        "path": "evidence/current/full-stack/performance-stress.log",
+        "sha256": "0d8a5cc0d96ee816f6ab79f4fa5b3c3ccf85d10f4a4ead1e2c98c5e8a08eac27"
+      },
+      {
+        "bytes": 181180,
+        "path": "evidence/current/full-stack/reference-apps.log",
+        "sha256": "20b4b3f754dc8f94a46ae4c49da5b8ed22dc43c26fc0572c0a73e1da03e8ba06"
+      },
+      {
+        "bytes": 161,
+        "path": "evidence/current/full-stack/security-source.log",
+        "sha256": "4528998f8468d3016bf9ef67a1c1bfdacd47319fee3a15c5d5190cab3cb24075"
+      },
+      {
+        "bytes": 77595,
         "path": "evidence/current/full-stack/source-hashes.json",
-        "bytes": 69828,
-        "sha256": "432356437891e746f36c8c9dff20ef94dcfb6cc470cba9d7a043f0ba2c2f3f09"
+        "sha256": "d82d9a46a60f9763588f1a31e33348d65e66357ab14137ca34e68471539bcbbc"
       },
       {
-        "path": "evidence/current/release/CHG-33-company-qualification.json",
-        "bytes": 1345,
-        "sha256": "50fd7360b2171baadfff1741c519b2977ca5f6e65ada255604d918b8bc6f38e1"
+        "bytes": 2731,
+        "path": "evidence/current/full-stack/static-server.log",
+        "sha256": "da1b3fc1185cdb7777b8948e186a6d3ae8aca74656d654987676f194e8234eed"
       },
       {
-        "path": "evidence/current/release/rc11-readiness-matrix.json",
-        "bytes": 2843,
-        "sha256": "9af66bd4078d7bb0ff7cf43a8029506aefa6cc2ef9f716d73c5483d3e81e7994"
+        "bytes": 152,
+        "path": "evidence/current/full-stack/storage-qualification.log",
+        "sha256": "92d11b789b692cb7037d11d2931e8f0fa48e0358505e8f3b3b45a67284937596"
       },
       {
-        "path": "evidence/current/release/rc11-manifest.json",
-        "bytes": 1201,
-        "sha256": "f19feacd5593f4e0855e47192e457380066806949f84ae606b9193150edcd10a"
+        "bytes": 261,
+        "path": "evidence/current/full-stack/tooling-tests.log",
+        "sha256": "709a0f71da2c503baa6b9aff9cddfce199e30d76262d56a75c01d5ce70fad1f1"
       },
       {
-        "path": "evidence/current/release/rc11-evidence-binding.json",
-        "bytes": 1009,
-        "sha256": "057d2c594a560d47ac065b5f6efe34d749aede49cc93a49d6a8aa2ca1a7fca73"
+        "bytes": 5735,
+        "path": "evidence/current/full-stack/typescript-syntax-and-pure-client.log",
+        "sha256": "9adc0fb644687a365845c931c74548b31a31872e7dd3a2772ad5ed08aca69aa7"
+      },
+      {
+        "bytes": 13729,
+        "path": "evidence/current/full-stack/upgrade-fixture.json",
+        "sha256": "7cb6553e2cff72766e6f1ada10391b67d129f01500a7a67baf448fabfd991bf5"
+      },
+      {
+        "bytes": 13729,
+        "path": "evidence/current/full-stack/upgrade-fixture.log",
+        "sha256": "7cb6553e2cff72766e6f1ada10391b67d129f01500a7a67baf448fabfd991bf5"
+      },
+      {
+        "bytes": 17390,
+        "path": "evidence/current/full-stack/verification.json",
+        "sha256": "6f8f97957d0173fb12643aa2eafe40659d290eabd690fcde4bedb48378128df3"
+      },
+      {
+        "bytes": 363,
+        "path": "evidence/current/full-stack/version-metadata.log",
+        "sha256": "7d11a7ba05055b2a3492266636b3ef541dbe35a38a2d4ad1772ed5cf6356f8b8"
+      },
+      {
+        "bytes": 5689,
+        "path": "evidence/current/operations/qualification.json",
+        "sha256": "5ebbe9d6af5023b08d13260205d510b97b5e5b44e490675fa0262b99099fea00"
+      },
+      {
+        "bytes": 3021,
+        "path": "evidence/current/performance/browser.json",
+        "sha256": "e0e327cc34760ee57bc4288394dad2b022ccfac8ffa89f9dc80578875ea829a7"
+      },
+      {
+        "bytes": 6125,
+        "path": "evidence/current/performance/owned-algorithms.json",
+        "sha256": "05bf62b9f7708a7b694a8169c4899bc889d98b6ff4fdf770e184bac4733e9f05"
+      },
+      {
+        "bytes": 11936,
+        "path": "evidence/current/performance/qualification.json",
+        "sha256": "013e43ab2cdc63bd7e88aea43b75eaa16e88624613b625c4e9219c36ad7d817d"
+      },
+      {
+        "bytes": 3493,
+        "path": "evidence/current/performance/stress.json",
+        "sha256": "7fc7b53fc988015908bd5061ca20887dc9a4da717d30fd28a1eff69ac3b2d48f"
+      },
+      {
+        "bytes": 1532,
+        "path": "evidence/current/recovery/object-restore.json",
+        "sha256": "7b3977720aca0bc7765db4871ea7c79d8576b3b0761ac6548f722eefbde9a07c"
+      },
+      {
+        "bytes": 2387,
+        "path": "evidence/current/release/rc23-evidence-binding.json",
+        "sha256": "b8665b796dc229294d2f5ce4afffbdf3fc08382913388db5575ef7884e2fe936"
+      },
+      {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc23-manifest.json",
+        "sha256": "8b6acc031e23069b8a4d3f865f906790f5181a78927ed03ebd433703745aca12"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc23-readiness-matrix.json",
+        "sha256": "2f6733f39fb9ee896d20924cdb305267e504d26a75618f95633cb35b6e4b0076"
+      },
+      {
+        "bytes": 2387,
+        "path": "evidence/current/release/rc24-evidence-binding.json",
+        "sha256": "6b2ae028861e9d5d01d33deb63b87abe61b917d9ccb5a758a615121334195d28"
+      },
+      {
+        "bytes": 2659,
+        "path": "evidence/current/release/rc24-manifest.json",
+        "sha256": "cc3a16f89428570d6a2aed9607c52c4ef655c1f51e57e59b2ba90b4528507239"
+      },
+      {
+        "bytes": 3559,
+        "path": "evidence/current/release/rc24-readiness-matrix.json",
+        "sha256": "0456820bb6c3d01f6430308df9cf3d65de1e4e74ab48697e7174586f2da492a9"
+      },
+      {
+        "bytes": 181180,
+        "path": "evidence/current/release/reference-apps.json",
+        "sha256": "20b4b3f754dc8f94a46ae4c49da5b8ed22dc43c26fc0572c0a73e1da03e8ba06"
+      },
+      {
+        "bytes": 3512,
+        "path": "evidence/current/reuse/qualification.json",
+        "sha256": "746d4db84cdbbdcc4613db06b137b396d79394b41f7b31d1a4e007bb85df0717"
+      },
+      {
+        "bytes": 1875,
+        "path": "evidence/current/storage/qualification.json",
+        "sha256": "78c3850edbb040722bae09c68a051cd73bc1b61eeb2138dab73be48e5312cc4d"
+      },
+      {
+        "bytes": 192875,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.json",
+        "sha256": "4486b9d5b41113ee44df294122094f40f0055344cf22e313015e47ccae752393"
+      },
+      {
+        "bytes": 143051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-mobile-navigation-shell.png",
+        "sha256": "c4e4d843d03b7c86d6c9323dad66f5724d1f391cf2a4ae6fecfc8cd7fbf6ae7c"
+      },
+      {
+        "bytes": 15142,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.json",
+        "sha256": "b1cbcc90acc03636c2a69f7d947b42c879e310f1a5c84546b1d42283233aa08d"
+      },
+      {
+        "bytes": 60080,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-system-responsive-geometry.png",
+        "sha256": "c7b9b477ded17aa6bd124a6de8537bd2432839cbc6c9483e0b0bde0f48c50825"
+      },
+      {
+        "bytes": 35182,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.json",
+        "sha256": "2c3bfcabdd69f0c1efc4979ce336e662233e9c336b7bfea11965c21e694ca3ec"
+      },
+      {
+        "bytes": 70094,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg153-visualization-responsive-geometry.png",
+        "sha256": "90c84bb9bfc6d35dfae9a5b3d94dacdf35af63bc69357f94d90ef57b21399edb"
+      },
+      {
+        "bytes": 904,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-dialog-focus-recovery.json",
+        "sha256": "97620e0ef235787ddcdc28992a42c8e1e02a1d5f33989ab86b63cae4154c645b"
+      },
+      {
+        "bytes": 532,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.json",
+        "sha256": "0619824df4cf1b28b3c1673289be466b35c107570e9cb4bd9f8569bd1c4fdef8"
+      },
+      {
+        "bytes": 136152,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-forced-colors.png",
+        "sha256": "5b0a50f9cc6331e4547761e8ee3f80a528f49af9ed92c76b5816977235ec50e5"
+      },
+      {
+        "bytes": 699,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.json",
+        "sha256": "0ea6d04084b234e7ca51c05eaf44711650c4362eab7b08bad6dab3677ec5b80d"
+      },
+      {
+        "bytes": 161052,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-row-selection.png",
+        "sha256": "984992c93458e3b43c4fa4ee9eb837da6a8d09510f1f1c66f151b2353e51d117"
+      },
+      {
+        "bytes": 1051,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.json",
+        "sha256": "d96e964f8633ffb9bb2b565a2bc122b008e50454fa32459f79e5d73658ff3e92"
+      },
+      {
+        "bytes": 131220,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-grid-semantic-theme-modes.png",
+        "sha256": "14e8207be2c9945861d793c051e6c409869a244721c01ead29ba985e2922b3c0"
+      },
+      {
+        "bytes": 1589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-notification-timestamp-contrast.json",
+        "sha256": "022e6c2b53fdeeba4bd598f6553a5a1631e954adae42159924e3da88fd925a63"
+      },
+      {
+        "bytes": 573,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reduced-motion.json",
+        "sha256": "9f83b5b8eda4f0c4d47c19cd14bccb9eaa452bfabf27adf26c079ab2011351ca"
+      },
+      {
+        "bytes": 410,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.json",
+        "sha256": "6a3c84c6240e813bde5734071902d81516db8861eef89ead1f2a4fa4c07e1cfd"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-reflow-320-css-px.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 718,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-saved-view-checkbox-selection.json",
+        "sha256": "365fa14de170cf1a8d6f401e8e4e407e05af0c759ce6ac556a09ef013c693813"
+      },
+      {
+        "bytes": 477,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.json",
+        "sha256": "02f4a832c5716682e2c2286082276a4a12f25d320dfc5f1581f3e6a00fc05498"
+      },
+      {
+        "bytes": 155604,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-theme-operations-primary-action.png",
+        "sha256": "414b72c68cc7f0363579eab1ea8ec93f7b5497a7647fd783500d09ce1229e5dc"
+      },
+      {
+        "bytes": 253,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-empty.json",
+        "sha256": "4ce6146b0e32c27a83dd7ee2a1e91a4124944c61892eb1c8555bf4159b470cbe"
+      },
+      {
+        "bytes": 263,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-error.json",
+        "sha256": "88e014faa2263a83977e23304004f23e4f212299177a4d2d342880087b1b0499"
+      },
+      {
+        "bytes": 246,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-loading.json",
+        "sha256": "b4589dc6a6aae4c308a6bdc7fc8b00c838fbbbb960f107259cd766b2ab00279a"
+      },
+      {
+        "bytes": 281,
+        "path": "evidence/current/uiqa/rendered/chg185/maintained/chg34-work-items-permission-readonly.json",
+        "sha256": "a3eb91a59a7bc4871e40ff6860ff0e04c0ce1b3936472387a94ba5ce575d658d"
+      },
+      {
+        "bytes": 174117,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/all-21-initial-view.json",
+        "sha256": "6223f547e6dd31e957ce69dbce92dce5c520db59c7cf4ce2ec17b3e55d4cf48c"
+      },
+      {
+        "bytes": 55485,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-320x800.png",
+        "sha256": "feb62f6dabb736688bda23b3f6f320268ef45f1211eddeaabcd8e0f4af3866da"
+      },
+      {
+        "bytes": 58331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-closed-390x844.png",
+        "sha256": "f5a4ed70c03f5e755525d1f2145ba56fa33c8045d2f2262a1a7ec40ec9e62769"
+      },
+      {
+        "bytes": 76331,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-320x800.png",
+        "sha256": "3d5d6d8f826e5738eafdb09b469617ed2e7d3db227889f0d33162fdd91ae3292"
+      },
+      {
+        "bytes": 79915,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/planning-mobile-open-390x844.png",
+        "sha256": "29363bbdda2dcdd39f2e0d0794ac06deb73123dd79c8b620d9e610194082b5c0"
+      },
+      {
+        "bytes": 58128,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-320x800.png",
+        "sha256": "c192931d94ebeb1a0982f55c1d400596f6412f3fef8f74e057ca17e26cdff17f"
+      },
+      {
+        "bytes": 60487,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-closed-390x844.png",
+        "sha256": "40dfcb7b1cb447430588b7244d8497be66432991e08a0f92416cc95ba0f04f2c"
+      },
+      {
+        "bytes": 81321,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-320x800.png",
+        "sha256": "3d59a8ce121cd4e45fc115af4a5af5ede2ff4c543627cdf1e50f659178a82d6e"
+      },
+      {
+        "bytes": 78557,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x420.png",
+        "sha256": "fc932940224cf47f2ba47942e5a63fdfdc4082600b4c21488692c47d10eea751"
+      },
+      {
+        "bytes": 84956,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/system-mobile-open-390x844.png",
+        "sha256": "3456ddbbf16c47b20d4382ec89dab3f5a13c2765d4443a1f4adaebe87937663f"
+      },
+      {
+        "bytes": 166190,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-desktop-1440x900.png",
+        "sha256": "822d42de4f23c7a01d85cc167dc0bc2eac560711d4b62b8bc9212c30004cf94f"
+      },
+      {
+        "bytes": 61589,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-320x800.png",
+        "sha256": "0908f3110375534dcabde11e89ab07eb4e27d419aadae5578e91de1f213f1aa2"
+      },
+      {
+        "bytes": 64745,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-closed-390x844.png",
+        "sha256": "1c49dbf68a6572da567040f8c584f30cbeee843482c329c33d26662af2c112fd"
+      },
+      {
+        "bytes": 93564,
+        "path": "evidence/current/uiqa/rendered/chg185/navigation-shell/work-items-mobile-open-390x844.png",
+        "sha256": "da77f768752f03fa43bab37775afde7291ca570134c9543240ccde11564f82a7"
+      },
+      {
+        "bytes": 160649,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/desktop-1440x900.png",
+        "sha256": "0e2f44a888fca83a9157ba840b19b0f537b8bbd4ce779742e43e4c857c84b46e"
+      },
+      {
+        "bytes": 72328,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/delivery_runs/mobile-390x844.png",
+        "sha256": "21f1e12132705c5d0b7c1ba79bfafc420fcf9aa4be4dcac04179d54acf778c6f"
+      },
+      {
+        "bytes": 1871,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-active-nav.json",
+        "sha256": "5cb7681cc44ef94621da685d97d4056189a7c0493705b6d14dd42d1ca7a44688"
+      },
+      {
+        "bytes": 175764,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-service-operations-1440x900.png",
+        "sha256": "81587f021b5e85e1dbfdad1a271eb2cd53b76b1e7b7f3a96fa5a272d519f6193"
+      },
+      {
+        "bytes": 141722,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/desktop-nav-system-1440x900.png",
+        "sha256": "9f3a0eec177367d51041ab535af1e97347e8947e431120e7b7469404f28032c8"
+      },
+      {
+        "bytes": 176671,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram-selected-inspector-1440x900.png",
+        "sha256": "8255cca7a8364587d6aa0454ab9fda66f70288c0e10016e5cf99dc7084c6bbf9"
+      },
+      {
+        "bytes": 174826,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/desktop-1440x900.png",
+        "sha256": "5ac43db9d544c4daa91f26014de61df3ec40c1e8fd2b5d7effb58fd869b1c063"
+      },
+      {
+        "bytes": 73855,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/diagram_documents/mobile-390x844.png",
+        "sha256": "7ae1a3a9dddd3231e2c32f4e2ca32ce3e950dcf2afbd796eacf149484314b625"
+      },
+      {
+        "bytes": 68730,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-actions-390x844.png",
+        "sha256": "7bd39fff491117c188527884934e1708652e2112de2a888ce0ebbe4807470e18"
+      },
+      {
+        "bytes": 65724,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-mobile-overview-390x844.png",
+        "sha256": "585a5897271b14a27d16a960228d3a9c1aefe2c718af908c2f90994a45162753"
+      },
+      {
+        "bytes": 969,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/dossier-sections.json",
+        "sha256": "564f0b288c4bcf039dfc3eccc2b7cbd34db8d136e7129b2c946043ac6aa3cb52"
+      },
+      {
+        "bytes": 153655,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/desktop-1440x900.png",
+        "sha256": "907d822ef7472d5322727bcf502bd0f2f6aec8850ec27168ee71ea18961fff7b"
+      },
+      {
+        "bytes": 66325,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment/mobile-390x844.png",
+        "sha256": "f1cc6d223653e1198b5cfdff8c26422006d35c070465116ffe50ad57835b235c"
+      },
+      {
+        "bytes": 169457,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/desktop-1440x900.png",
+        "sha256": "1646580e11730f9855b95de047d1832511a07c2c88ac5055f8625e23b30c51be"
+      },
+      {
+        "bytes": 68513,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/equipment_states/mobile-390x844.png",
+        "sha256": "bc7da0a24d56d6ade9af8971aee87f86dc22efd16dfb9dd3cae6278a256198bc"
+      },
+      {
+        "bytes": 182963,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/desktop-1440x900.png",
+        "sha256": "559a492f12a9ef0b5bad0fea701fa65712cff91b9b64544370802052e6062318"
+      },
+      {
+        "bytes": 75521,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/incidents/mobile-390x844.png",
+        "sha256": "44913adc1f948be569e8306f8f03403819e7989f0c057cc30ea57932788a3b80"
+      },
+      {
+        "bytes": 179328,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/desktop-1440x900.png",
+        "sha256": "13fddef7d16894b50eca2c97e2b730eb0bd5e13da27ad574786c048f52492608"
+      },
+      {
+        "bytes": 73019,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/investigations/mobile-390x844.png",
+        "sha256": "2edfe61f647a983ff32aa7f5b9b9ed88d263e20c12a6771f667f18e5c3145537"
+      },
+      {
+        "bytes": 193461,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/desktop-1440x900.png",
+        "sha256": "e009d1e266834a5fe4852c1d5f645b2ddbe54b3ecdfd3398426c47ab6357944c"
+      },
+      {
+        "bytes": 70554,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/knowledge_entries/mobile-390x844.png",
+        "sha256": "618c0550bf829ad265e265cde6382178c16292c26d5c852e7f7ba9d8ca125199"
+      },
+      {
+        "bytes": 21059,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manifest.json",
+        "sha256": "b791779647df53564060b62561c08981c4929eeb8d1f0e3c564899331b4cdecf"
+      },
+      {
+        "bytes": 162932,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/desktop-1440x900.png",
+        "sha256": "21f6d20c74ff663dcd05734b6f010094b5b6831198bd25bf87f7f79025f17f08"
+      },
+      {
+        "bytes": 69245,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/manufacturing_lots/mobile-390x844.png",
+        "sha256": "97b6336dce1c5be1f764c539414a6e2800fdda5305773949174e1c0b90be0202"
+      },
+      {
+        "bytes": 872,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-controls.json",
+        "sha256": "a96012e54176fb9ddbf28022564f97065424c2141c19313e2fd318c3b9730e3e"
+      },
+      {
+        "bytes": 2294,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/mobile-task-economy.json",
+        "sha256": "10d53db34582fd0c363897e90abf160ced8492fa6049f2d14d640060a8cae506"
+      },
+      {
+        "bytes": 161748,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/desktop-1440x900.png",
+        "sha256": "8f9ff9a7e166dddd284175e94f269ca1e433746489c51323064cbc0d99ca704c"
+      },
+      {
+        "bytes": 70112,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/observability_events/mobile-390x844.png",
+        "sha256": "e97b293c0e48a9419e261256499c7bd91eb20c43d202a84ef6c2b7d978aa64b0"
+      },
+      {
+        "bytes": 161003,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/desktop-1440x900.png",
+        "sha256": "c681aadcb56751f0c6e17bb6973ba34c76d7e06db9de586897f3c9efb8f758bd"
+      },
+      {
+        "bytes": 62326,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/plan_tasks/mobile-390x844.png",
+        "sha256": "9dca6f02f081bbaf0050488da83091a2ed4526955a3d56ef60b446fb04b5a50d"
+      },
+      {
+        "bytes": 161003,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/planning-populated-1440x900.png",
+        "sha256": "c681aadcb56751f0c6e17bb6973ba34c76d7e06db9de586897f3c9efb8f758bd"
+      },
+      {
+        "bytes": 1103,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.json",
+        "sha256": "211ca942cbaeed1d0ce22821fac0dc2430faa82c9cc977cf6c2ba838158541d1"
+      },
+      {
+        "bytes": 64600,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process-recipes-320x800.png",
+        "sha256": "3328de8b9f3e78ae87fd90a474df5c879713c2a06e8542534e1cceb57afcd48f"
+      },
+      {
+        "bytes": 160918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/desktop-1440x900.png",
+        "sha256": "edc884116938cc994b0861e633967d462b0d8b524e44733d8e5bd547693c9682"
+      },
+      {
+        "bytes": 72511,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_measurements/mobile-390x844.png",
+        "sha256": "c609fb50ebb31a7fdc143e5d9a749fe34f1d99f46dd7dc13152b4ac0f1a20a6b"
+      },
+      {
+        "bytes": 153721,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/desktop-1440x900.png",
+        "sha256": "5752f78fc9d0f52a789da2b98dd24628d44c3dddeee86f21e8c3d4817b3b4e7f"
+      },
+      {
+        "bytes": 70577,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/process_recipes/mobile-390x844.png",
+        "sha256": "eaab8990c5da20cf0cf1a2120047c01c13a299a6ecbccf83c9547848ccac93e3"
+      },
+      {
+        "bytes": 151461,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/desktop-1440x900.png",
+        "sha256": "7293cb6ecba3ca893f8887dd0234eb4ecef19df26b499845e4abea957bd2a1c8"
+      },
+      {
+        "bytes": 63596,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/projects/mobile-390x844.png",
+        "sha256": "4af8d539507de6bb4d63d1496d40c3b4038a2bf81f8a8c62d6f22f77cb930bfa"
+      },
+      {
+        "bytes": 84484,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-occupied-estate-selected-1440x900.png",
+        "sha256": "333baeed50d7188e56666953e54fb6f85c03ff0ed011aae18e1fe3a5c294fc51"
+      },
+      {
+        "bytes": 123933,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/rack-selected-connected-trace-1440x900.png",
+        "sha256": "699c2453d8f4fd5752bbf66163d7ad60d3ba3cca89d695e3da1d58837574a96d"
+      },
+      {
+        "bytes": 141213,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/desktop-1440x900.png",
+        "sha256": "dff17d2af81f8e3bacd1a2c91dc87fcb102fed340e88a5626bc73bf797d8fb74"
+      },
+      {
+        "bytes": 56768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/racks/mobile-390x844.png",
+        "sha256": "93bd59b82e3fa8992543ffd0900cc8f0c1e59d033ce0c1b4f526a074689dbd33"
+      },
+      {
+        "bytes": 174144,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/desktop-1440x900.png",
+        "sha256": "38f96013204e81d5b870c12ebc39aa973f6c8d06e63b65ca9c9bccf892abd776"
+      },
+      {
+        "bytes": 70150,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/research/mobile-390x844.png",
+        "sha256": "d048b8a1b1aca041b91259dfd8ffbdd3df34eb14df2cf9c47b4dcdee79f2f6d0"
+      },
+      {
+        "bytes": 1567,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/responsive-stress.json",
+        "sha256": "8656aad60fd12811f7b5d89886ec12f0cd6b73d7f4dbb0572bd795ccc23fa5ea"
+      },
+      {
+        "bytes": 918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/revision-conflict.json",
+        "sha256": "b15280934ae5d37d170fae53c140a1f5a2e7f521d3376945f9301b92d7ea73b7"
+      },
+      {
+        "bytes": 172768,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/desktop-1440x900.png",
+        "sha256": "da1d8515571dc936d12a924706160a391883648e49aa47a0bae2c63dae77f7c4"
+      },
+      {
+        "bytes": 71158,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/risks/mobile-390x844.png",
+        "sha256": "749587e03fcbbe67d9f872f2f4acd857807a2789d2dfa1416120817272d13722"
+      },
+      {
+        "bytes": 1558,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/selected-states.json",
+        "sha256": "d88087d7c10b1bab4072a89a6c61705482ec65def74560eb7e3239f802c09d95"
+      },
+      {
+        "bytes": 147783,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/desktop-1440x900.png",
+        "sha256": "4d2fc634a461f3bbe44c3f725bfa0f4794460e219008e0caa965d33d79ef400b"
+      },
+      {
+        "bytes": 64216,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/service_objectives/mobile-390x844.png",
+        "sha256": "c7fb8e7d20b38c0f1f0702f4f27139d52b5495ca02fe55103a67e52051b56d9f"
+      },
+      {
+        "bytes": 150028,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/desktop-1440x900.png",
+        "sha256": "80092cc4ce9e65968faabd9d56149a88499a9d8a6ea95cf70bda8d785eefb524"
+      },
+      {
+        "bytes": 66708,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/software_services/mobile-390x844.png",
+        "sha256": "0df710a2d8f5d6c679090c0167094f21ecb2a9a32f2397bc296a1bb6ca4cdff3"
+      },
+      {
+        "bytes": 160918,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/spc-exception-series-1440x900.png",
+        "sha256": "edc884116938cc994b0861e633967d462b0d8b524e44733d8e5bd547693c9682"
+      },
+      {
+        "bytes": 127906,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-active-1440x900.png",
+        "sha256": "cd56f74d758a8021ee747265b90e23344a882d57f0e8a6fd9a4549fa9abe9291"
+      },
+      {
+        "bytes": 128370,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/empty-archived-1440x900.png",
+        "sha256": "232745ef5aacd413f5c4cd6bcc9485933d3a10671bd05fc744e1da427f7627fd"
+      },
+      {
+        "bytes": 129443,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/no-match-1440x900.png",
+        "sha256": "1120875cc499ead2e0310d74b14094dbfabf5d5a6350088984ca2fbab726827a"
+      },
+      {
+        "bytes": 145203,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/read-only-1440x900.png",
+        "sha256": "5872e79608a2df1fe8879617592afdbd244a3a00114e0f7d2208370f03c7dd30"
+      },
+      {
+        "bytes": 139540,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/request-error-1440x900.png",
+        "sha256": "39202d04aa3fae35526d3457e48ba9a5e32661f5047a955bfd56a13972444114"
+      },
+      {
+        "bytes": 159343,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/states/revision-conflict-retained-draft-1440x900.png",
+        "sha256": "f832bbfde68112c1560cf70fcc18d8bba8b1bf4b79eff5c28c8ee7d919efd046"
+      },
+      {
+        "bytes": 174081,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-events-1440x900.png",
+        "sha256": "cb7a56a204b48836bb99bc226f99114f208688ed146bc42b127a881e9c5f228f"
+      },
+      {
+        "bytes": 124646,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-members-1440x900.png",
+        "sha256": "a3ca481b29049bfcbfc8285abbd7235f35b5f9a36f35fe9b87dea20a59070fe3"
+      },
+      {
+        "bytes": 135197,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system-notifications-1440x900.png",
+        "sha256": "b96e786a3144a50f7418e291694ae00bf211bbca496cd4deb1fdf27e80485215"
+      },
+      {
+        "bytes": 141722,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/desktop-1440x900.png",
+        "sha256": "9f3a0eec177367d51041ab535af1e97347e8947e431120e7b7469404f28032c8"
+      },
+      {
+        "bytes": 61210,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/system/mobile-390x844.png",
+        "sha256": "ad4772e8fba6420c9048102ee5cf55253b512ccce180277fe4328578599a9116"
+      },
+      {
+        "bytes": 1367,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/truthful-states.json",
+        "sha256": "f6c5dafe5a29c71c218aea4e30e15e9628fccd104d7da48e282c5b3b55ae6b84"
+      },
+      {
+        "bytes": 165401,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/desktop-1440x900.png",
+        "sha256": "e6a9c6139531e2788d98ad164d1a9ad9713f1ba62f0fd08d77fc293db4621c4a"
+      },
+      {
+        "bytes": 73576,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/wafer_runs/mobile-390x844.png",
+        "sha256": "8e86082e7c469888a78d69302f74f242343fc4046722d21a1ec63c318ed4a216"
+      },
+      {
+        "bytes": 57127,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-mobile-controls-applied-state-390x844.png",
+        "sha256": "baaead1d4592a79a1dd2400485745d2489cd0bb6715c9f039393ceab6e4f5f98"
+      },
+      {
+        "bytes": 59746,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-320x800.png",
+        "sha256": "f38394e17b795241488aa88afa719f103666fae7e023217005733c1d1ca7b48d"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work-items-task-budget-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 142549,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/desktop-1440x900.png",
+        "sha256": "8fc535fee3a0740eb6d53249b5850edb5617605d9a9b5e4f147ee6dfb3c70704"
+      },
+      {
+        "bytes": 64736,
+        "path": "evidence/current/uiqa/rendered/chg185/populated/work_items/mobile-390x844.png",
+        "sha256": "ccad107db0de6ce210a49c10b11a8a9ef9434fd85618f38957893bb9efde6193"
+      },
+      {
+        "bytes": 8848,
+        "path": "evidence/current/uiqa/ui-state-matrix-results.json",
+        "sha256": "d1ce553f86931fb01ac187a0547b4abf8fe44ac7dc9f45bb9c9682f7ad7acb4a"
+      },
+      {
+        "bytes": 184983,
+        "path": "frontend/package-lock.json",
+        "sha256": "b95e8afc73f111821416cf18c0e16452c436b05e8ca967f6f7d889692360b7e6"
+      },
+      {
+        "bytes": 1658,
+        "path": "frontend/package.json",
+        "sha256": "383ecd0f66edd024ce3528e8b964aed02f9d442b5debafb4bc63b53d650b5861"
       }
-    ]
+    ],
+    "version": 1
   },
-  "release": {
-    "version": "1.0.0-rc.11",
-    "code_ready": true,
-    "production_ready": false,
-    "project_os_go": false
+  "evidence_publisher_release": "1.2.5-dashboard-controls-candidate",
+  "fabric_capture": {
+    "applied": false,
+    "paths_before": 0,
+    "transient_untracked_removed": {
+      "count": 0,
+      "items": []
+    }
   },
-  "note": "This deterministic R2 audit records observed source-bound verification and evidence publication. It preserves the R1 commits in ancestry, does not certify company identity, storage, deployment, production readiness, Project OS acceptance, or repository integration, and does not contain credentials or qualification payload values."
+  "fabric_release": "1.2.5-dashboard-controls-candidate",
+  "failure_class": null,
+  "finished_at": "2026-09-26T04:10:09Z",
+  "git": {
+    "base_is_ancestor": true,
+    "base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "branch": "codex/react-fastapi-base-work-env-qualification-harness-ci-recovery-v4",
+    "detached_verify": false,
+    "head_sha": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+    "remote_exact_head": true,
+    "remote_head_sha": "372ba8c0ca5ddbc5eff87fc403e6fc181678e5ea",
+    "target_branch": "main",
+    "target_drifted_since_acceptance": false,
+    "target_head_observed_after_execution": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
+    "work_branch": "codex/react-fastapi-base-work-env-qualification-harness-ci-recovery-v4",
+    "worktree_clean": true
+  },
+  "instructions": {
+    "files": [
+      {
+        "bytes": 2593,
+        "path": "AGENTS.md",
+        "sha256": "db8e16bb765a928157c8d5c60981e175d4a3e68d90a4583ce410aa44f30df9e5"
+      }
+    ],
+    "total_bytes": 2593,
+    "warning": null
+  },
+  "job_id": "CF-cd8eb5ba27d7cb9d16e57c40",
+  "kind": "codex-fabric-audit-evidence",
+  "locator": {
+    "branch": "codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-ci-recovery-v4",
+    "path": ".codex-fabric/audit.json",
+    "ref": "refs/heads/codex-fabric/evidence/react-fastapi-base/work-env-qualification-harness-ci-recovery-v4"
+  },
+  "operation": "FIX",
+  "policy": {
+    "environment_policy_sha256": "e077daca74297b3c30bee8989f00f8ca5338f7610b4d016a6c48db524205d064",
+    "fabric_release": "1.2.5-dashboard-controls-candidate",
+    "policy_sha256": "123615bf2f6e57dcac197e49ca98ceac59ada86a55e2c84445ea5d00812c0833",
+    "registry_sha256": "af81b8552f9d6a33847310e3c6bcd2d48401782b963a58efd2993e93570cb4aa"
+  },
+  "project_id": "react-fastapi-base",
+  "recovery": {
+    "model_rerun_safe": false,
+    "recovery_required": false,
+    "retry_safe": false,
+    "retry_scope": null,
+    "worktree_retained": true
+  },
+  "request": "work-env-qualification-harness-ci-recovery-v4",
+  "schema_version": 1,
+  "started_at": "2026-09-26T01:03:17Z",
+  "status": "EXECUTED_CHANGE",
+  "timing": {
+    "execution_seconds": 11212,
+    "queue_seconds": 1,
+    "total_seconds": 11213
+  },
+  "transport": {
+    "bytes": 7504,
+    "envelope": "FABRIC/2",
+    "prompt_bytes": 7131,
+    "prompt_sha256": "90bf55d2e4b6d14761f083c2f74e204c1a2cb72247346c243c77bd65993c6cd6",
+    "sha256": "cd8eb5ba27d7cb9d16e57c405c266482f841d1c7eb9225f162e593a7cab43387"
+  }
 }
