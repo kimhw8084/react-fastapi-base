@@ -153,19 +153,18 @@ test('representative mobile surfaces remain keyboard and axe clean',async({page}
  expect(consoleErrors).toEqual([])
 })
 
-test('major workspaces remain axe clean under high contrast, reduced motion and zoom',async({page},info)=>{
- await page.emulateMedia({reducedMotion:'reduce'})
- await page.setViewportSize({width:1280,height:900})
- const routes=['/','/work-items','/projects','/racks','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/knowledge-entries','/investigations','/risks','/research','/process-measurements','/wafer-runs','/manufacturing-lots','/equipment-states','/process-recipes','/software-services','/delivery-runs','/observability-events','/incidents','/service-objectives','/system']
+const highContrastRoutes=['/','/work-items','/projects','/racks','/plan-tasks?visualization=gantt','/diagram-documents?visualization=designer','/knowledge-entries','/investigations','/risks','/research','/process-measurements','/wafer-runs','/manufacturing-lots','/equipment-states','/process-recipes','/software-services','/delivery-runs','/observability-events','/incidents','/service-objectives','/system']
+for(const route of highContrastRoutes){
+ const routeName=route==='/'?'root':route.replace(/[/?=]/g,'-').replace(/^-+|-+$/g,'')
+ test(`major workspace ${routeName} (${route}) remains axe clean under high contrast, reduced motion and zoom`,async({page},info)=>{
+  await page.emulateMedia({reducedMotion:'reduce'})
+  await page.setViewportSize({width:1280,height:900})
   const reports:Record<string,unknown>={}
- try{
-  for(const route of routes){
+  try{
    await page.goto(route)
    await expect(page.locator('main, [role="main"]').first()).toBeVisible()
-   if(route==='/'){
-    const theme=page.locator('#desktop-theme');await expect(theme).toBeVisible();await expect(theme).toHaveAccessibleName('Theme');await theme.selectOption('operations')
-    const contrast=page.locator('#desktop-contrast');await expect(contrast).toBeVisible();await expect(contrast).toHaveAccessibleName('Contrast');await contrast.selectOption('high')
-   }
+   const theme=page.locator('#desktop-theme');await expect(theme).toBeVisible();await expect(theme).toHaveAccessibleName('Theme');await theme.selectOption('operations')
+   const contrast=page.locator('#desktop-contrast');await expect(contrast).toBeVisible();await expect(contrast).toHaveAccessibleName('Contrast');await contrast.selectOption('high')
    await expect(page.locator('html')).toHaveAttribute('data-contrast','high')
    await waitForHighContrastPaint(page)
    const before=route==='/system'?await page.evaluate(readThemePaint):undefined
@@ -183,13 +182,13 @@ test('major workspaces remain axe clean under high contrast, reduced motion and 
    await page.evaluate(()=>{document.documentElement.style.zoom='4'})
    await expect(page.locator('main, [role="main"]').first()).toBeVisible()
    await page.evaluate(()=>{document.documentElement.style.zoom=''})
+  }finally{
+   try{reports.last_observed_state=await page.evaluate(readThemePaint)}catch{}
+   await info.attach('major-surfaces-axe.json',{body:Buffer.from(JSON.stringify(reports,null,2)),contentType:'application/json'})
+   try{await info.attach('major-surfaces-final.png',{body:await page.screenshot(),contentType:'image/png'})}catch{}
   }
- }finally{
-  try{reports.last_observed_state=await page.evaluate(readThemePaint)}catch{}
-  await info.attach('major-surfaces-axe.json',{body:Buffer.from(JSON.stringify(reports,null,2)),contentType:'application/json'})
-  try{await info.attach('major-surfaces-final.png',{body:await page.screenshot(),contentType:'image/png'})}catch{}
- }
-})
+ })
+}
 
 for(const theme of ['Operations','Clarity','Minimal'])test(`theme ${theme}: no serious/critical automated accessibility violations`,async({page},info)=>{
  await page.setViewportSize({width:1280,height:900});await page.goto('/');await expect(page.getByRole('heading',{name:'Work items',exact:true})).toBeVisible()
