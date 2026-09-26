@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "candidate_head": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "checkout_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
+  "candidate_head": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+  "checkout_commit": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+  "executable_source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+  "source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+  "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
   "source_hashes": "source-hashes.json",
   "python_version": "3.11.7",
   "platform": "macOS-26.6.2-arm64-arm-64bit",
-  "created_at": "2026-09-25T19:20:47.135290+00:00",
-  "timestamp": "2026-09-25T19:20:47.135532+00:00",
+  "created_at": "2026-09-26T03:29:53.796970+00:00",
+  "timestamp": "2026-09-26T03:29:53.797138+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
     "scripts/verify.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack",
     "--release"
   ],
   "exit_code": 0,
@@ -23,13 +23,13 @@
     "python": "3.11.7"
   },
   "hashes": {
-    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b"
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c"
   },
   "release_status": "NOT_CERTIFIED",
   "production_ready": false,
   "code_ready": true,
-  "readiness_matrix": "evidence/current/release/rc23-readiness-matrix.json",
-  "readiness_matrix_sha256": "2f6733f39fb9ee896d20924cdb305267e504d26a75618f95633cb35b6e4b0076",
+  "readiness_matrix": "evidence/current/release/rc24-readiness-matrix.json",
+  "readiness_matrix_sha256": "0456820bb6c3d01f6430308df9cf3d65de1e4e74ab48697e7174586f2da492a9",
   "results": [
     {
       "name": "performance-contract",
@@ -37,13 +37,13 @@
       "exit_code": 0,
       "log": "performance-contract.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/performance_results.py",
         "--contract",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/contracts/performance-regression.json",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/contracts/performance-regression.json",
         "--contract-only"
       ],
-      "duration_seconds": 0.036
+      "duration_seconds": 0.03
     },
     {
       "name": "backend-tests",
@@ -51,12 +51,12 @@
       "exit_code": 0,
       "log": "backend-tests.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/backend_test_runner.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/backend-junit.xml"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack/backend-junit.xml"
       ],
-      "duration_seconds": 40.721
+      "duration_seconds": 38.04
     },
     {
       "name": "tooling-tests",
@@ -64,13 +64,13 @@
       "exit_code": 0,
       "log": "tooling-tests.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "-m",
         "pytest",
         "-q",
         "tests"
       ],
-      "duration_seconds": 33.587
+      "duration_seconds": 29.422
     },
     {
       "name": "operational-reliability-qualification",
@@ -78,12 +78,12 @@
       "exit_code": 0,
       "log": "operational-reliability-qualification.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/operational_reliability.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/operations/qualification.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/operations/qualification.json"
       ],
-      "duration_seconds": 4.465
+      "duration_seconds": 3.737
     },
     {
       "name": "architecture",
@@ -91,10 +91,10 @@
       "exit_code": 0,
       "log": "architecture.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_architecture.py"
       ],
-      "duration_seconds": 0.505
+      "duration_seconds": 0.42
     },
     {
       "name": "security-source",
@@ -102,10 +102,10 @@
       "exit_code": 0,
       "log": "security-source.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/security_source_check.py"
       ],
-      "duration_seconds": 0.248
+      "duration_seconds": 0.21
     },
     {
       "name": "configuration-contract",
@@ -113,10 +113,10 @@
       "exit_code": 0,
       "log": "configuration-contract.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_configuration_contract.py"
       ],
-      "duration_seconds": 0.146
+      "duration_seconds": 0.116
     },
     {
       "name": "operational-reliability-contract",
@@ -124,10 +124,10 @@
       "exit_code": 0,
       "log": "operational-reliability-contract.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_operational_reliability_contract.py"
       ],
-      "duration_seconds": 0.146
+      "duration_seconds": 0.114
     },
     {
       "name": "checkpoint-manifest",
@@ -135,11 +135,11 @@
       "exit_code": 0,
       "log": "checkpoint-manifest.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/generate_checkpoint_manifest.py",
         "--check"
       ],
-      "duration_seconds": 0.359
+      "duration_seconds": 0.304
     },
     {
       "name": "version-metadata",
@@ -147,10 +147,10 @@
       "exit_code": 0,
       "log": "version-metadata.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/version_check.py"
       ],
-      "duration_seconds": 12.212
+      "duration_seconds": 10.252
     },
     {
       "name": "candidate-progression",
@@ -158,12 +158,12 @@
       "base_sha": "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
       "progression": {
         "allowed": true,
-        "mode": "ordinary_build",
+        "mode": "stacked_ordinary_build",
         "base_version": "1.0.0-rc.22",
-        "candidate_version": "1.0.0-rc.23",
+        "candidate_version": "1.0.0-rc.24",
         "source_changed": true,
         "version_projection_only": false,
-        "reason": "Candidate advances exactly from 1.0.0-rc.22 to 1.0.0-rc.23."
+        "reason": "Candidate preserves contiguous prerelease ancestry from 1.0.0-rc.22 through 1.0.0-rc.23, 1.0.0-rc.24 and advances to 1.0.0-rc.24."
       }
     },
     {
@@ -172,10 +172,10 @@
       "exit_code": 0,
       "log": "performance-owned-algorithms.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/performance_check.py"
       ],
-      "duration_seconds": 0.776
+      "duration_seconds": 0.697
     },
     {
       "name": "performance-stress",
@@ -183,10 +183,10 @@
       "exit_code": 0,
       "log": "performance-stress.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/performance_stress.py"
       ],
-      "duration_seconds": 0.492
+      "duration_seconds": 0.426
     },
     {
       "name": "generated-contracts",
@@ -194,11 +194,11 @@
       "exit_code": 0,
       "log": "generated-contracts.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/generate_contracts.py",
         "--check"
       ],
-      "duration_seconds": 2.094
+      "duration_seconds": 1.649
     },
     {
       "name": "ui-state-matrix-contract",
@@ -206,10 +206,10 @@
       "exit_code": 0,
       "log": "ui-state-matrix-contract.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_ui_state_matrix.py"
       ],
-      "duration_seconds": 0.035
+      "duration_seconds": 0.029
     },
     {
       "name": "api-compatibility",
@@ -217,14 +217,14 @@
       "exit_code": 0,
       "log": "api-compatibility.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_api_compatibility.py",
         "--base-ref",
         "67ec2ce5ec44d38ee44d22602035c2554a08e00d",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/api-compatibility.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack/api-compatibility.json"
       ],
-      "duration_seconds": 0.184
+      "duration_seconds": 0.151
     },
     {
       "name": "typescript-syntax-and-pure-client",
@@ -235,7 +235,7 @@
         "node",
         "scripts/source_smoke.mjs"
       ],
-      "duration_seconds": 0.775
+      "duration_seconds": 0.483
     },
     {
       "name": "static-server",
@@ -247,7 +247,7 @@
         "--test",
         "frontend/tests/server.test.mjs"
       ],
-      "duration_seconds": 0.221
+      "duration_seconds": 0.128
     },
     {
       "name": "localhost-http",
@@ -255,10 +255,10 @@
       "exit_code": 0,
       "log": "localhost-http.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/http_smoke.py"
       ],
-      "duration_seconds": 2.981
+      "duration_seconds": 2.368
     },
     {
       "name": "independent-deployment-qualification",
@@ -266,12 +266,12 @@
       "exit_code": 0,
       "log": "independent-deployment-qualification.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/independent_deployment_qualification.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/deployment/qualification.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/deployment/qualification.json"
       ],
-      "duration_seconds": 9.733
+      "duration_seconds": 8.007
     },
     {
       "name": "deployment-contract",
@@ -279,12 +279,12 @@
       "exit_code": 0,
       "log": "deployment-contract.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_deployment_contract.py",
         "--evidence",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/deployment/qualification.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/deployment/qualification.json"
       ],
-      "duration_seconds": 0.438
+      "duration_seconds": 0.377
     },
     {
       "name": "engineering-widget-layer",
@@ -292,14 +292,14 @@
       "exit_code": 0,
       "log": "engineering-widget-layer.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/verify_lab.py",
         "--mode",
         "http",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/native-lab"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack/native-lab"
       ],
-      "duration_seconds": 24.638
+      "duration_seconds": 20.995
     },
     {
       "name": "required-catalog-completeness",
@@ -307,12 +307,12 @@
       "exit_code": 0,
       "log": "required-catalog-completeness.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/catalog.py",
         "--check",
         "--release"
       ],
-      "duration_seconds": 0.106
+      "duration_seconds": 0.064
     },
     {
       "name": "upgrade-fixture",
@@ -320,12 +320,12 @@
       "exit_code": 0,
       "log": "upgrade-fixture.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/upgrade_fixture.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/upgrade-fixture.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack/upgrade-fixture.json"
       ],
-      "duration_seconds": 27.07
+      "duration_seconds": 23.498
     },
     {
       "name": "object-inclusive-backup-restore",
@@ -333,12 +333,12 @@
       "exit_code": 0,
       "log": "object-inclusive-backup-restore.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/recovery_fixture.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/recovery/object-restore.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/recovery/object-restore.json"
       ],
-      "duration_seconds": 1.926
+      "duration_seconds": 1.591
     },
     {
       "name": "storage-qualification",
@@ -346,22 +346,22 @@
       "exit_code": 0,
       "log": "storage-qualification.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/storage_qualification.py",
         "--recovery",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/recovery/object-restore.json",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/recovery/object-restore.json",
         "--verified-source-commit",
-        "425d3632c75165fe8f030679910485f5d0196ae0",
+        "b7a8d94bd3daa56e167860dc15ddb63be4833270",
         "--source-digest",
-        "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
+        "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
         "--candidate-head",
-        "425d3632c75165fe8f030679910485f5d0196ae0",
+        "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
         "--candidate-version",
-        "1.0.0-rc.23",
+        "1.0.0-rc.24",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/storage/qualification.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/storage/qualification.json"
       ],
-      "duration_seconds": 1.495
+      "duration_seconds": 1.207
     },
     {
       "name": "reference-apps",
@@ -369,10 +369,10 @@
       "exit_code": 0,
       "log": "reference-apps.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/reference_app_proof.py"
       ],
-      "duration_seconds": 157.429
+      "duration_seconds": 126.732
     },
     {
       "name": "macos-fresh-install",
@@ -380,12 +380,12 @@
       "exit_code": 0,
       "log": "macos-fresh-install.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/fresh_clone_check.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/full-stack/fresh-clone-macos.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/full-stack/fresh-clone-macos.json"
       ],
-      "duration_seconds": 245.104
+      "duration_seconds": 257.554
     },
     {
       "name": "frontend-typecheck",
@@ -397,7 +397,7 @@
         "run",
         "typecheck"
       ],
-      "duration_seconds": 4.739
+      "duration_seconds": 4.422
     },
     {
       "name": "frontend-unit",
@@ -408,7 +408,7 @@
         "npm",
         "test"
       ],
-      "duration_seconds": 3.986
+      "duration_seconds": 3.52
     },
     {
       "name": "frontend-build",
@@ -420,7 +420,7 @@
         "run",
         "build"
       ],
-      "duration_seconds": 5.438
+      "duration_seconds": 4.585
     },
     {
       "name": "frontend-storybook",
@@ -432,7 +432,7 @@
         "run",
         "build:storybook"
       ],
-      "duration_seconds": 1.882
+      "duration_seconds": 1.756
     },
     {
       "name": "browser-e2e-accessibility",
@@ -440,10 +440,10 @@
       "exit_code": 0,
       "log": "browser-e2e-accessibility.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/e2e_runner.py"
       ],
-      "duration_seconds": 80.042
+      "duration_seconds": 102.137
     },
     {
       "name": "ui-state-matrix-results",
@@ -451,12 +451,12 @@
       "exit_code": 0,
       "log": "ui-state-matrix-results.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/check_ui_state_matrix.py",
         "--results",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/uiqa/ui-state-matrix-results.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/uiqa/ui-state-matrix-results.json"
       ],
-      "duration_seconds": 0.036
+      "duration_seconds": 0.034
     },
     {
       "name": "npm-advisories",
@@ -468,7 +468,7 @@
         "audit",
         "--audit-level=high"
       ],
-      "duration_seconds": 0.686
+      "duration_seconds": 0.656
     },
     {
       "name": "performance-results",
@@ -476,12 +476,12 @@
       "exit_code": 0,
       "log": "performance-results.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "scripts/performance_results.py",
         "--output",
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/performance/qualification.json"
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/performance/qualification.json"
       ],
-      "duration_seconds": 0.452
+      "duration_seconds": 0.426
     },
     {
       "name": "python-advisories",
@@ -489,13 +489,13 @@
       "exit_code": 0,
       "log": "python-advisories.log",
       "command": [
-        "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+        "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
         "-m",
         "pip_audit",
         "-r",
         "backend/requirements.lock"
       ],
-      "duration_seconds": 8.509
+      "duration_seconds": 7.399
     },
     {
       "name": "company-identity",

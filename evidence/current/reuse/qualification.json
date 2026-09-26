@@ -1,7 +1,7 @@
 {
-  "candidate_head": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "candidate_version": "1.0.0-rc.23",
-  "checkout_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+  "candidate_head": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+  "candidate_version": "1.0.0-rc.24",
+  "checkout_commit": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
   "checks": {
     "clean_clone_bootstrap": true,
     "documentation_and_commands": true,
@@ -57,23 +57,23 @@
     "production_ready": false,
     "status": "BLOCKED_EXTERNAL"
   },
-  "executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
+  "executable_source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
   "inputs": {
     "clean_clone": {
       "locator": "evidence/current/full-stack/fresh-clone-macos.json",
-      "sha256": "46a6140926590569506cf24d58ebd12126a596bde9360053472080e50b3eaf61"
+      "sha256": "b071a4981dae20a8dac38b6704b0478cc3ab9c3bb42dcb64597698b2b579c546"
     },
     "reference_apps": {
       "locator": "evidence/current/release/reference-apps.json",
-      "sha256": "5e682f3c493b26083119ce6cc15a614d9b4fa581e1cc0a602d2db95cc2021d53"
+      "sha256": "20b4b3f754dc8f94a46ae4c49da5b8ed22dc43c26fc0572c0a73e1da03e8ba06"
     },
     "storage_qualification": {
       "locator": "evidence/current/storage/qualification.json",
-      "sha256": "5fff38d12015b23eadaac6ef43f15a8cd03a85f6055f2659c8d8ba177d88679b"
+      "sha256": "78c3850edbb040722bae09c68a051cd73bc1b61eeb2138dab73be48e5312cc4d"
     },
     "upgrade_fixture": {
       "locator": "evidence/current/full-stack/upgrade-fixture.json",
-      "sha256": "a25073c65b96c291a40c3f0c990bc46b3ea58905c3c8d19c021da34eb32f7f49"
+      "sha256": "7cb6553e2cff72766e6f1ada10391b67d129f01500a7a67baf448fabfd991bf5"
     }
   },
   "problems": [],
@@ -84,10 +84,10 @@
   "result": "PASS",
   "schema_version": 1,
   "source_binding": {
-    "candidate_checkout": "425d3632c75165fe8f030679910485f5d0196ae0",
-    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
-    "verified_executable_source": "425d3632c75165fe8f030679910485f5d0196ae0"
+    "candidate_checkout": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
+    "verified_executable_source": "b7a8d94bd3daa56e167860dc15ddb63be4833270"
   },
-  "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
+  "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
   "status": "PASS"
 }

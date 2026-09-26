@@ -1,30 +1,30 @@
 {
   "schema_version": 2,
-  "candidate_head": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "checkout_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "executable_source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b",
-  "source_commit": "425d3632c75165fe8f030679910485f5d0196ae0",
-  "timestamp": "2026-09-25T19:12:15.374712+00:00",
+  "candidate_head": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+  "checkout_commit": "e6c9730e149b137ee739867bef6ea64ddc9b4c4e",
+  "executable_source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+  "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c",
+  "source_commit": "b7a8d94bd3daa56e167860dc15ddb63be4833270",
+  "timestamp": "2026-09-26T03:21:21.677870+00:00",
   "command": [
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/backend/.venv/bin/python",
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/backend/.venv/bin/python",
     "scripts/recovery_fixture.py",
     "--output",
-    "/Users/haewonkim/.codex-fabric/worktrees/CF-6dbd78b82b21c6cad8fb1617/evidence/current/recovery/object-restore.json"
+    "/Users/haewonkim/.codex-fabric/worktrees/CF-cd8eb5ba27d7cb9d16e57c40/evidence/current/recovery/object-restore.json"
   ],
   "environment": {
     "platform": "darwin",
     "python": "3.11.7"
   },
   "hashes": {
-    "source_digest": "1c3753771b35cc38ba78a4af1477926eed5d0a57487dc7f8be5fb006ee0e957b"
+    "source_digest": "e4ff89c0c8041217b4a22ae07ef55a2a0a4ef6c44dc0ca334dbad620e669417c"
   },
   "result": "PASS",
   "exit_code": 0,
-  "tenant": "d13f8ed8-d6e8-4b5a-8d1b-0399baf065df",
+  "tenant": "1d1b0c6e-8fcd-4efe-be47-a7b1bb92d410",
   "record_type": "work_items",
-  "record_id": "180ef153-6f82-40e3-894d-d4d06d5271f2",
-  "object_key": "attachments/f0c05fd9-a050-4a76-9257-5e93eae06c79/recovery.txt",
+  "record_id": "f281639a-beb2-4823-83cb-09227e0e4bd5",
+  "object_key": "attachments/a8423cf7-d608-4fe7-a6c8-006c4201de98/recovery.txt",
   "source_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "snapshot_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
   "restored_object_sha": "21b0b62fac419eb4b519bd0bde3831a8766393682ca64da30b41101e1369011a",
