@@ -1,4 +1,4 @@
-# Independent frontend/backend deployment contract — 1.0.0-rc.23, repository-qualified only
+# Independent frontend/backend deployment contract — 1.0.0-rc.24, repository-qualified only
 
 The complete configuration/secrets ownership and validation contract is in
 [`CONFIGURATION_CONTRACT.md`](CONFIGURATION_CONTRACT.md). The backend and
